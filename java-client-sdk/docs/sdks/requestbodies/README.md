@@ -1,5 +1,5 @@
 # RequestBodies
-(*requestBodies*)
+(*requestBodies()*)
 
 ## Overview
 
@@ -7,10 +7,14 @@ Endpoints for testing request bodies.
 
 ### Available Operations
 
+* [nullEnumPost](#nullenumpost)
 * [nullableObjectPost](#nullableobjectpost)
+* [nullableOptionalFieldsPost](#nullableoptionalfieldspost)
 * [nullableRequiredEmptyObjectPost](#nullablerequiredemptyobjectpost)
 * [nullableRequiredPropertyPost](#nullablerequiredpropertypost)
 * [nullableRequiredSharedObjectPost](#nullablerequiredsharedobjectpost)
+* [requestBodyDeprecatedRequestBodyRefPost](#requestbodydeprecatedrequestbodyrefpost)
+* [requestBodyGetInferredOptionalRequestWrapper](#requestbodygetinferredoptionalrequestwrapper)
 * [requestBodyPostApplicationJsonArray](#requestbodypostapplicationjsonarray)
 * [requestBodyPostApplicationJsonArrayCamelCase](#requestbodypostapplicationjsonarraycamelcase)
 * [requestBodyPostApplicationJsonArrayObj](#requestbodypostapplicationjsonarrayobj)
@@ -21,6 +25,7 @@ Endpoints for testing request bodies.
 * [requestBodyPostApplicationJsonArrayOfMap](#requestbodypostapplicationjsonarrayofmap)
 * [requestBodyPostApplicationJsonArrayOfMapCamelCase](#requestbodypostapplicationjsonarrayofmapcamelcase)
 * [requestBodyPostApplicationJsonArrayOfPrimitive](#requestbodypostapplicationjsonarrayofprimitive)
+* [requestBodyPostApplicationJsonArrayOfUnions](#requestbodypostapplicationjsonarrayofunions)
 * [requestBodyPostApplicationJsonDeep](#requestbodypostapplicationjsondeep)
 * [requestBodyPostApplicationJsonDeepCamelCase](#requestbodypostapplicationjsondeepcamelcase)
 * [requestBodyPostApplicationJsonMap](#requestbodypostapplicationjsonmap)
@@ -38,6 +43,7 @@ Endpoints for testing request bodies.
 * [requestBodyPostApplicationJsonSimpleCamelCase](#requestbodypostapplicationjsonsimplecamelcase)
 * [requestBodyPostComplexNumberTypes](#requestbodypostcomplexnumbertypes)
 * [requestBodyPostDefaultsAndConsts](#requestbodypostdefaultsandconsts)
+* [requestBodyPostEmptyBodyRetainedWithAllOptionalFields](#requestbodypostemptybodyretainedwithalloptionalfields)
 * [requestBodyPostEmptyObject](#requestbodypostemptyobject)
 * [requestBodyPostFormDeep](#requestbodypostformdeep)
 * [requestBodyPostFormMapPrimitive](#requestbodypostformmapprimitive)
@@ -48,6 +54,8 @@ Endpoints for testing request bodies.
 * [requestBodyPostJsonDataTypesBigInt](#requestbodypostjsondatatypesbigint)
 * [requestBodyPostJsonDataTypesBigIntStr](#requestbodypostjsondatatypesbigintstr)
 * [requestBodyPostJsonDataTypesBoolean](#requestbodypostjsondatatypesboolean)
+* [requestBodyPostJsonDataTypesComplexNumberArrays](#requestbodypostjsondatatypescomplexnumberarrays)
+* [requestBodyPostJsonDataTypesComplexNumberMaps](#requestbodypostjsondatatypescomplexnumbermaps)
 * [requestBodyPostJsonDataTypesDate](#requestbodypostjsondatatypesdate)
 * [requestBodyPostJsonDataTypesDateTime](#requestbodypostjsondatatypesdatetime)
 * [requestBodyPostJsonDataTypesDecimal](#requestbodypostjsondatatypesdecimal)
@@ -61,6 +69,7 @@ Endpoints for testing request bodies.
 * [requestBodyPostJsonDataTypesNumber](#requestbodypostjsondatatypesnumber)
 * [requestBodyPostJsonDataTypesString](#requestbodypostjsondatatypesstring)
 * [requestBodyPostMultipleContentTypesComponentFiltered](#requestbodypostmultiplecontenttypescomponentfiltered)
+* [requestBodyPostMultipleContentTypesComponentFilteredDefaultTest](#requestbodypostmultiplecontenttypescomponentfiltereddefaulttest)
 * [requestBodyPostMultipleContentTypesInlineFiltered](#requestbodypostmultiplecontenttypesinlinefiltered)
 * [requestBodyPostMultipleContentTypesSplitParamForm](#requestbodypostmultiplecontenttypessplitparamform)
 * [requestBodyPostMultipleContentTypesSplitParamJson](#requestbodypostmultiplecontenttypessplitparamjson)
@@ -78,6 +87,8 @@ Endpoints for testing request bodies.
 * [requestBodyPutMultipartDeep](#requestbodyputmultipartdeep)
 * [requestBodyPutMultipartDifferentFileName](#requestbodyputmultipartdifferentfilename)
 * [requestBodyPutMultipartFile](#requestbodyputmultipartfile)
+* [requestBodyPutMultipartFileRef](#requestbodyputmultipartfileref)
+* [requestBodyPutMultipartOptionalRequestBody](#requestbodyputmultipartoptionalrequestbody)
 * [requestBodyPutMultipartSimple](#requestbodyputmultipartsimple)
 * [requestBodyPutString](#requestbodyputstring)
 * [requestBodyPutStringWithParams](#requestbodyputstringwithparams)
@@ -89,40 +100,42 @@ Endpoints for testing request bodies.
 * [requestBodyWriteOnlyOutput](#requestbodywriteonlyoutput)
 * [requestBodyWriteOnlyUnion](#requestbodywriteonlyunion)
 
-## nullableObjectPost
+## nullEnumPost
 
 ### Example Usage
 
 ```java
 package hello.world;
 
+import java.lang.Exception;
 import org.openapis.openapi.SDK;
-import org.openapis.openapi.models.operations.NullableObjectPostResponse;
-import org.openapis.openapi.models.shared.NullableObject;
+import org.openapis.openapi.models.operations.NullEnumPostResponse;
+import org.openapis.openapi.models.shared.ObjectWithNullEnums;
 import org.openapis.openapi.models.shared.Security;
 
 public class Application {
-    public static void main(String[] args) {
-        try {
-            SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
-                    apiKeyAuth = "Token YOUR_API_KEY";
-                }})
-                .setGlobalPathParam(100L)
-                .setGlobalQueryParam("some example global query param")
+
+    public static void main(String[] args) throws Exception {
+
+        SDK sdk = SDK.builder()
+                .security(Security.builder()
+                    .apiKeyAuth("Token YOUR_API_KEY")
+                    .build())
+                .globalHeaderParam(true)
+                .globalHiddenQueryParam("hello")
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
+            .build();
+
+        ObjectWithNullEnums req = ObjectWithNullEnums.builder()
                 .build();
 
-            org.openapis.openapi.models.shared.NullableObject req = new NullableObject(302382L){{
-                optional = "string";
-            }};            
+        NullEnumPostResponse res = sdk.requestBodies().nullEnumPost()
+                .request(req)
+                .call();
 
-            NullableObjectPostResponse res = sdk.requestBodies.nullableObjectPost(req);
-
-            if (res.res != null) {
-                // handle response
-            }
-        } catch (Exception e) {
-            // handle exception
+        if (res.res().isPresent()) {
+            // handle response
         }
     }
 }
@@ -130,15 +143,129 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                                                  | Type                                                                                       | Required                                                                                   | Description                                                                                |
-| ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
-| `request`                                                                                  | [org.openapis.openapi.models.shared.NullableObject](../../models/shared/NullableObject.md) | :heavy_check_mark:                                                                         | The request object to use for the request.                                                 |
-
+| Parameter                                                         | Type                                                              | Required                                                          | Description                                                       |
+| ----------------------------------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------- |
+| `request`                                                         | [ObjectWithNullEnums](../../models/shared/ObjectWithNullEnums.md) | :heavy_check_mark:                                                | The request object to use for the request.                        |
 
 ### Response
 
-**[org.openapis.openapi.models.operations.NullableObjectPostResponse](../../models/operations/NullableObjectPostResponse.md)**
+**[NullEnumPostResponse](../../models/operations/NullEnumPostResponse.md)**
 
+### Errors
+
+| Error Type             | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+
+## nullableObjectPost
+
+### Example Usage
+
+```java
+package hello.world;
+
+import java.lang.Exception;
+import org.openapis.openapi.SDK;
+import org.openapis.openapi.models.operations.NullableObjectPostResponse;
+import org.openapis.openapi.models.shared.Security;
+
+public class Application {
+
+    public static void main(String[] args) throws Exception {
+
+        SDK sdk = SDK.builder()
+                .security(Security.builder()
+                    .apiKeyAuth("Token YOUR_API_KEY")
+                    .build())
+                .globalHeaderParam(true)
+                .globalHiddenQueryParam("hello")
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
+            .build();
+
+        NullableObjectPostResponse res = sdk.requestBodies().nullableObjectPost()
+                .call();
+
+        if (res.res().isPresent()) {
+            // handle response
+        }
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                               | Type                                                    | Required                                                | Description                                             |
+| ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
+| `request`                                               | [NullableObject](../../models/shared/NullableObject.md) | :heavy_check_mark:                                      | The request object to use for the request.              |
+
+### Response
+
+**[NullableObjectPostResponse](../../models/operations/NullableObjectPostResponse.md)**
+
+### Errors
+
+| Error Type             | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+
+## nullableOptionalFieldsPost
+
+### Example Usage
+
+```java
+package hello.world;
+
+import java.lang.Exception;
+import org.openapis.openapi.SDK;
+import org.openapis.openapi.models.operations.NullableOptionalFieldsPostRequestBody;
+import org.openapis.openapi.models.operations.NullableOptionalFieldsPostResponse;
+import org.openapis.openapi.models.shared.Security;
+
+public class Application {
+
+    public static void main(String[] args) throws Exception {
+
+        SDK sdk = SDK.builder()
+                .security(Security.builder()
+                    .apiKeyAuth("Token YOUR_API_KEY")
+                    .build())
+                .globalHeaderParam(true)
+                .globalHiddenQueryParam("hello")
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
+            .build();
+
+        NullableOptionalFieldsPostRequestBody req = NullableOptionalFieldsPostRequestBody.builder()
+                .nullableRequired("<value>")
+                .build();
+
+        NullableOptionalFieldsPostResponse res = sdk.requestBodies().nullableOptionalFieldsPost()
+                .request(req)
+                .call();
+
+        if (res.object().isPresent()) {
+            // handle response
+        }
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                                 | Type                                                                                                      | Required                                                                                                  | Description                                                                                               |
+| --------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- |
+| `request`                                                                                                 | [NullableOptionalFieldsPostRequestBody](../../models/operations/NullableOptionalFieldsPostRequestBody.md) | :heavy_check_mark:                                                                                        | The request object to use for the request.                                                                |
+
+### Response
+
+**[NullableOptionalFieldsPostResponse](../../models/operations/NullableOptionalFieldsPostResponse.md)**
+
+### Errors
+
+| Error Type             | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
 
 ## nullableRequiredEmptyObjectPost
 
@@ -147,8 +274,8 @@ public class Application {
 ```java
 package hello.world;
 
+import java.lang.Exception;
 import org.openapis.openapi.SDK;
-import org.openapis.openapi.models.operations.NullableOptionalObj;
 import org.openapis.openapi.models.operations.NullableRequiredEmptyObjectPostRequestBody;
 import org.openapis.openapi.models.operations.NullableRequiredEmptyObjectPostResponse;
 import org.openapis.openapi.models.operations.NullableRequiredObj;
@@ -156,27 +283,32 @@ import org.openapis.openapi.models.operations.RequiredObj;
 import org.openapis.openapi.models.shared.Security;
 
 public class Application {
-    public static void main(String[] args) {
-        try {
-            SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
-                    apiKeyAuth = "Token YOUR_API_KEY";
-                }})
-                .setGlobalPathParam(100L)
-                .setGlobalQueryParam("some example global query param")
+
+    public static void main(String[] args) throws Exception {
+
+        SDK sdk = SDK.builder()
+                .security(Security.builder()
+                    .apiKeyAuth("Token YOUR_API_KEY")
+                    .build())
+                .globalHeaderParam(true)
+                .globalHiddenQueryParam("hello")
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
+            .build();
+
+        NullableRequiredEmptyObjectPostRequestBody req = NullableRequiredEmptyObjectPostRequestBody.builder()
+                .nullableRequiredObj(NullableRequiredObj.builder()
+                    .build())
+                .requiredObj(RequiredObj.builder()
+                    .build())
                 .build();
 
-            NullableRequiredEmptyObjectPostRequestBody req = new NullableRequiredEmptyObjectPostRequestBody(new NullableRequiredObj(), new RequiredObj()){{
-                nullableOptionalObj = new NullableOptionalObj();
-            }};            
+        NullableRequiredEmptyObjectPostResponse res = sdk.requestBodies().nullableRequiredEmptyObjectPost()
+                .request(req)
+                .call();
 
-            NullableRequiredEmptyObjectPostResponse res = sdk.requestBodies.nullableRequiredEmptyObjectPost(req);
-
-            if (res.res != null) {
-                // handle response
-            }
-        } catch (Exception e) {
-            // handle exception
+        if (res.object().isPresent()) {
+            // handle response
         }
     }
 }
@@ -184,15 +316,19 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                                                                                                                  | Type                                                                                                                                                       | Required                                                                                                                                                   | Description                                                                                                                                                |
-| ---------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `request`                                                                                                                                                  | [org.openapis.openapi.models.operations.NullableRequiredEmptyObjectPostRequestBody](../../models/operations/NullableRequiredEmptyObjectPostRequestBody.md) | :heavy_check_mark:                                                                                                                                         | The request object to use for the request.                                                                                                                 |
-
+| Parameter                                                                                                           | Type                                                                                                                | Required                                                                                                            | Description                                                                                                         |
+| ------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- |
+| `request`                                                                                                           | [NullableRequiredEmptyObjectPostRequestBody](../../models/operations/NullableRequiredEmptyObjectPostRequestBody.md) | :heavy_check_mark:                                                                                                  | The request object to use for the request.                                                                          |
 
 ### Response
 
-**[org.openapis.openapi.models.operations.NullableRequiredEmptyObjectPostResponse](../../models/operations/NullableRequiredEmptyObjectPostResponse.md)**
+**[NullableRequiredEmptyObjectPostResponse](../../models/operations/NullableRequiredEmptyObjectPostResponse.md)**
 
+### Errors
+
+| Error Type             | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
 
 ## nullableRequiredPropertyPost
 
@@ -201,6 +337,11 @@ public class Application {
 ```java
 package hello.world;
 
+import java.lang.Exception;
+import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.time.OffsetDateTime;
+import java.util.List;
 import org.openapis.openapi.SDK;
 import org.openapis.openapi.models.operations.NullableRequiredEnum;
 import org.openapis.openapi.models.operations.NullableRequiredPropertyPostRequestBody;
@@ -208,29 +349,35 @@ import org.openapis.openapi.models.operations.NullableRequiredPropertyPostRespon
 import org.openapis.openapi.models.shared.Security;
 
 public class Application {
-    public static void main(String[] args) {
-        try {
-            SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
-                    apiKeyAuth = "Token YOUR_API_KEY";
-                }})
-                .setGlobalPathParam(100L)
-                .setGlobalQueryParam("some example global query param")
+
+    public static void main(String[] args) throws Exception {
+
+        SDK sdk = SDK.builder()
+                .security(Security.builder()
+                    .apiKeyAuth("Token YOUR_API_KEY")
+                    .build())
+                .globalHeaderParam(true)
+                .globalHiddenQueryParam("hello")
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
+            .build();
+
+        NullableRequiredPropertyPostRequestBody req = NullableRequiredPropertyPostRequestBody.builder()
+                .nullableRequiredArray(List.of(
+                    2355.17d))
+                .nullableRequiredBigIntStr(new BigInteger("50266"))
+                .nullableRequiredDateTime(OffsetDateTime.parse("2024-07-13T08:11:28.024Z"))
+                .nullableRequiredDecimalStr(new BigDecimal("8839.33"))
+                .nullableRequiredEnum(NullableRequiredEnum.FIRST)
+                .nullableRequiredInt(783710L)
                 .build();
 
-            NullableRequiredPropertyPostRequestBody req = new NullableRequiredPropertyPostRequestBody(new Double[]{{
-    add(2355.17d),
-}}, NullableRequiredEnum.SECOND, 50266L){{
-                nullableOptionalInt = 282026L;
-            }};            
+        NullableRequiredPropertyPostResponse res = sdk.requestBodies().nullableRequiredPropertyPost()
+                .request(req)
+                .call();
 
-            NullableRequiredPropertyPostResponse res = sdk.requestBodies.nullableRequiredPropertyPost(req);
-
-            if (res.res != null) {
-                // handle response
-            }
-        } catch (Exception e) {
-            // handle exception
+        if (res.object().isPresent()) {
+            // handle response
         }
     }
 }
@@ -238,15 +385,19 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                                                                                                            | Type                                                                                                                                                 | Required                                                                                                                                             | Description                                                                                                                                          |
-| ---------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `request`                                                                                                                                            | [org.openapis.openapi.models.operations.NullableRequiredPropertyPostRequestBody](../../models/operations/NullableRequiredPropertyPostRequestBody.md) | :heavy_check_mark:                                                                                                                                   | The request object to use for the request.                                                                                                           |
-
+| Parameter                                                                                                     | Type                                                                                                          | Required                                                                                                      | Description                                                                                                   |
+| ------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
+| `request`                                                                                                     | [NullableRequiredPropertyPostRequestBody](../../models/operations/NullableRequiredPropertyPostRequestBody.md) | :heavy_check_mark:                                                                                            | The request object to use for the request.                                                                    |
 
 ### Response
 
-**[org.openapis.openapi.models.operations.NullableRequiredPropertyPostResponse](../../models/operations/NullableRequiredPropertyPostResponse.md)**
+**[NullableRequiredPropertyPostResponse](../../models/operations/NullableRequiredPropertyPostResponse.md)**
 
+### Errors
+
+| Error Type             | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
 
 ## nullableRequiredSharedObjectPost
 
@@ -255,38 +406,37 @@ public class Application {
 ```java
 package hello.world;
 
+import java.lang.Exception;
+import java.util.Optional;
 import org.openapis.openapi.SDK;
 import org.openapis.openapi.models.operations.NullableRequiredSharedObjectPostRequestBody;
 import org.openapis.openapi.models.operations.NullableRequiredSharedObjectPostResponse;
-import org.openapis.openapi.models.shared.NullableObject;
 import org.openapis.openapi.models.shared.Security;
 
 public class Application {
-    public static void main(String[] args) {
-        try {
-            SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
-                    apiKeyAuth = "Token YOUR_API_KEY";
-                }})
-                .setGlobalPathParam(100L)
-                .setGlobalQueryParam("some example global query param")
+
+    public static void main(String[] args) throws Exception {
+
+        SDK sdk = SDK.builder()
+                .security(Security.builder()
+                    .apiKeyAuth("Token YOUR_API_KEY")
+                    .build())
+                .globalHeaderParam(true)
+                .globalHiddenQueryParam("hello")
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
+            .build();
+
+        NullableRequiredSharedObjectPostRequestBody req = NullableRequiredSharedObjectPostRequestBody.builder()
+                .nullableRequiredObj(Optional.empty())
                 .build();
 
-            NullableRequiredSharedObjectPostRequestBody req = new NullableRequiredSharedObjectPostRequestBody(new NullableObject(86533L){{
-optional = "string";
-}}){{
-                nullableOptionalObj = new NullableObject(964394L){{
-                    optional = "string";
-                }};
-            }};            
+        NullableRequiredSharedObjectPostResponse res = sdk.requestBodies().nullableRequiredSharedObjectPost()
+                .request(req)
+                .call();
 
-            NullableRequiredSharedObjectPostResponse res = sdk.requestBodies.nullableRequiredSharedObjectPost(req);
-
-            if (res.res != null) {
-                // handle response
-            }
-        } catch (Exception e) {
-            // handle exception
+        if (res.object().isPresent()) {
+            // handle response
         }
     }
 }
@@ -294,450 +444,57 @@ optional = "string";
 
 ### Parameters
 
-| Parameter                                                                                                                                                    | Type                                                                                                                                                         | Required                                                                                                                                                     | Description                                                                                                                                                  |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                    | [org.openapis.openapi.models.operations.NullableRequiredSharedObjectPostRequestBody](../../models/operations/NullableRequiredSharedObjectPostRequestBody.md) | :heavy_check_mark:                                                                                                                                           | The request object to use for the request.                                                                                                                   |
-
+| Parameter                                                                                                             | Type                                                                                                                  | Required                                                                                                              | Description                                                                                                           |
+| --------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- |
+| `request`                                                                                                             | [NullableRequiredSharedObjectPostRequestBody](../../models/operations/NullableRequiredSharedObjectPostRequestBody.md) | :heavy_check_mark:                                                                                                    | The request object to use for the request.                                                                            |
 
 ### Response
 
-**[org.openapis.openapi.models.operations.NullableRequiredSharedObjectPostResponse](../../models/operations/NullableRequiredSharedObjectPostResponse.md)**
+**[NullableRequiredSharedObjectPostResponse](../../models/operations/NullableRequiredSharedObjectPostResponse.md)**
 
+### Errors
 
-## requestBodyPostApplicationJsonArray
+| Error Type             | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+
+## requestBodyDeprecatedRequestBodyRefPost
 
 ### Example Usage
 
 ```java
 package hello.world;
 
-import java.time.LocalDate;
-import java.time.OffsetDateTime;
+import java.lang.Exception;
 import org.openapis.openapi.SDK;
-import org.openapis.openapi.models.operations.RequestBodyPostApplicationJsonArrayResponse;
-import org.openapis.openapi.models.shared.Enum;
-import org.openapis.openapi.models.shared.Int32Enum;
-import org.openapis.openapi.models.shared.IntEnum;
+import org.openapis.openapi.models.operations.RequestBodyDeprecatedRequestBodyRefPostResponse;
+import org.openapis.openapi.models.shared.DeprecatedObjectWithExample;
 import org.openapis.openapi.models.shared.Security;
-import org.openapis.openapi.models.shared.SimpleObject;
 
 public class Application {
-    public static void main(String[] args) {
-        try {
-            SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
-                    apiKeyAuth = "Token YOUR_API_KEY";
-                }})
-                .setGlobalPathParam(100L)
-                .setGlobalQueryParam("some example global query param")
+
+    public static void main(String[] args) throws Exception {
+
+        SDK sdk = SDK.builder()
+                .security(Security.builder()
+                    .apiKeyAuth("Token YOUR_API_KEY")
+                    .build())
+                .globalHeaderParam(true)
+                .globalHiddenQueryParam("hello")
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
+            .build();
+
+        DeprecatedObjectWithExample req = DeprecatedObjectWithExample.builder()
+                .str("testvalue")
                 .build();
 
-            org.openapis.openapi.models.. req =             new org.openapis.openapi.models.shared.SimpleObject[]{{
-                add(new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, Int32Enum.FIFTY_FIVE, IntEnum.Second, 1.1d, "test"){{
-                    any = "any";
-                    bigint = 8821239038968084L;
-                    bigintStr = "9223372036854775808";
-                    bool = true;
-                    boolOpt = true;
-                    date = LocalDate.parse("2020-01-01");
-                    dateTime = OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z");
-                    decimal = 3.141592653589793d;
-                    decimalStr = "3.14159265358979344719667586";
-                    enum_ = Enum.ONE;
-                    float32 = 1.1f;
-                    int_ = 1L;
-                    int32 = 1;
-                    int32Enum = Int32Enum.FIFTY_FIVE;
-                    intEnum = IntEnum.Second;
-                    num = 1.1d;
-                    str = "test";
-                    strOpt = "testOptional";
-                }}),
-            }};            
-
-            RequestBodyPostApplicationJsonArrayResponse res = sdk.requestBodies.requestBodyPostApplicationJsonArray(req);
-
-            if (res.res != null) {
-                // handle response
-            }
-        } catch (Exception e) {
-            // handle exception
-        }
-    }
-}
-```
-
-### Parameters
-
-| Parameter                                                              | Type                                                                   | Required                                                               | Description                                                            |
-| ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
-| `request`                                                              | [org.openapis.openapi.models.shared.SimpleObject[]](../../models//.md) | :heavy_check_mark:                                                     | The request object to use for the request.                             |
-| `serverURL`                                                            | *String*                                                               | :heavy_minus_sign:                                                     | An optional server URL to use.                                         |
-
-
-### Response
-
-**[org.openapis.openapi.models.operations.RequestBodyPostApplicationJsonArrayResponse](../../models/operations/RequestBodyPostApplicationJsonArrayResponse.md)**
-
-
-## requestBodyPostApplicationJsonArrayCamelCase
-
-### Example Usage
-
-```java
-package hello.world;
-
-import java.time.LocalDate;
-import java.time.OffsetDateTime;
-import org.openapis.openapi.SDK;
-import org.openapis.openapi.models.operations.RequestBodyPostApplicationJsonArrayCamelCaseResponse;
-import org.openapis.openapi.models.shared.Enum;
-import org.openapis.openapi.models.shared.Int32EnumVal;
-import org.openapis.openapi.models.shared.IntEnumVal;
-import org.openapis.openapi.models.shared.Security;
-import org.openapis.openapi.models.shared.SimpleObjectCamelCase;
-
-public class Application {
-    public static void main(String[] args) {
-        try {
-            SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
-                    apiKeyAuth = "Token YOUR_API_KEY";
-                }})
-                .setGlobalPathParam(100L)
-                .setGlobalQueryParam("some example global query param")
-                .build();
-
-            org.openapis.openapi.models.. req =             new org.openapis.openapi.models.shared.SimpleObjectCamelCase[]{{
-                add(new SimpleObjectCamelCase("any example", true, OffsetDateTime.parse("2020-01-01T00:00:00Z"), LocalDate.parse("2020-01-01"), Enum.ONE, 2.2222222f, Int32EnumVal.SIXTY_NINE, 1, IntEnumVal.Third, 999999L, 1.1d, "example"){{
-                    anyVal = "any example";
-                    boolOptVal = true;
-                    boolVal = true;
-                    dateTimeVal = OffsetDateTime.parse("2020-01-01T00:00:00Z");
-                    dateVal = LocalDate.parse("2020-01-01");
-                    enumVal = Enum.ONE;
-                    float32Val = 2.2222222f;
-                    int32EnumVal = Int32EnumVal.SIXTY_NINE;
-                    int32Val = 1;
-                    intEnumVal = IntEnumVal.Third;
-                    intOptNullVal = 999999L;
-                    intVal = 999999L;
-                    numOptNullVal = 1.1d;
-                    numVal = 1.1d;
-                    strOptVal = "optional example";
-                    strVal = "example";
-                }}),
-            }};            
-
-            RequestBodyPostApplicationJsonArrayCamelCaseResponse res = sdk.requestBodies.requestBodyPostApplicationJsonArrayCamelCase(req);
-
-            if (res.res != null) {
-                // handle response
-            }
-        } catch (Exception e) {
-            // handle exception
-        }
-    }
-}
-```
-
-### Parameters
-
-| Parameter                                                                       | Type                                                                            | Required                                                                        | Description                                                                     |
-| ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
-| `request`                                                                       | [org.openapis.openapi.models.shared.SimpleObjectCamelCase[]](../../models//.md) | :heavy_check_mark:                                                              | The request object to use for the request.                                      |
-| `serverURL`                                                                     | *String*                                                                        | :heavy_minus_sign:                                                              | An optional server URL to use.                                                  |
-
-
-### Response
-
-**[org.openapis.openapi.models.operations.RequestBodyPostApplicationJsonArrayCamelCaseResponse](../../models/operations/RequestBodyPostApplicationJsonArrayCamelCaseResponse.md)**
-
-
-## requestBodyPostApplicationJsonArrayObj
-
-### Example Usage
-
-```java
-package hello.world;
-
-import java.time.LocalDate;
-import java.time.OffsetDateTime;
-import org.openapis.openapi.SDK;
-import org.openapis.openapi.models.operations.RequestBodyPostApplicationJsonArrayObjResponse;
-import org.openapis.openapi.models.shared.Enum;
-import org.openapis.openapi.models.shared.Int32Enum;
-import org.openapis.openapi.models.shared.IntEnum;
-import org.openapis.openapi.models.shared.Security;
-import org.openapis.openapi.models.shared.SimpleObject;
-
-public class Application {
-    public static void main(String[] args) {
-        try {
-            SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
-                    apiKeyAuth = "Token YOUR_API_KEY";
-                }})
-                .setGlobalPathParam(100L)
-                .setGlobalQueryParam("some example global query param")
-                .build();
-
-            org.openapis.openapi.models.. req =             new org.openapis.openapi.models.shared.SimpleObject[]{{
-                add(new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, Int32Enum.FIFTY_FIVE, IntEnum.Second, 1.1d, "test"){{
-                    any = "any";
-                    bigint = 8821239038968084L;
-                    bigintStr = "9223372036854775808";
-                    bool = true;
-                    boolOpt = true;
-                    date = LocalDate.parse("2020-01-01");
-                    dateTime = OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z");
-                    decimal = 3.141592653589793d;
-                    decimalStr = "3.14159265358979344719667586";
-                    enum_ = Enum.ONE;
-                    float32 = 1.1f;
-                    int_ = 1L;
-                    int32 = 1;
-                    int32Enum = Int32Enum.FIFTY_FIVE;
-                    intEnum = IntEnum.Second;
-                    num = 1.1d;
-                    str = "test";
-                    strOpt = "testOptional";
-                }}),
-            }};            
-
-            RequestBodyPostApplicationJsonArrayObjResponse res = sdk.requestBodies.requestBodyPostApplicationJsonArrayObj(req);
-
-            if (res.arrObjValue != null) {
-                // handle response
-            }
-        } catch (Exception e) {
-            // handle exception
-        }
-    }
-}
-```
-
-### Parameters
-
-| Parameter                                                              | Type                                                                   | Required                                                               | Description                                                            |
-| ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
-| `request`                                                              | [org.openapis.openapi.models.shared.SimpleObject[]](../../models//.md) | :heavy_check_mark:                                                     | The request object to use for the request.                             |
-
-
-### Response
-
-**[org.openapis.openapi.models.operations.RequestBodyPostApplicationJsonArrayObjResponse](../../models/operations/RequestBodyPostApplicationJsonArrayObjResponse.md)**
-
-
-## requestBodyPostApplicationJsonArrayObjCamelCase
-
-### Example Usage
-
-```java
-package hello.world;
-
-import java.time.LocalDate;
-import java.time.OffsetDateTime;
-import org.openapis.openapi.SDK;
-import org.openapis.openapi.models.operations.RequestBodyPostApplicationJsonArrayObjCamelCaseResponse;
-import org.openapis.openapi.models.shared.Enum;
-import org.openapis.openapi.models.shared.Int32EnumVal;
-import org.openapis.openapi.models.shared.IntEnumVal;
-import org.openapis.openapi.models.shared.Security;
-import org.openapis.openapi.models.shared.SimpleObjectCamelCase;
-
-public class Application {
-    public static void main(String[] args) {
-        try {
-            SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
-                    apiKeyAuth = "Token YOUR_API_KEY";
-                }})
-                .setGlobalPathParam(100L)
-                .setGlobalQueryParam("some example global query param")
-                .build();
-
-            org.openapis.openapi.models.. req =             new org.openapis.openapi.models.shared.SimpleObjectCamelCase[]{{
-                add(new SimpleObjectCamelCase("any example", true, OffsetDateTime.parse("2020-01-01T00:00:00Z"), LocalDate.parse("2020-01-01"), Enum.ONE, 2.2222222f, Int32EnumVal.SIXTY_NINE, 1, IntEnumVal.Third, 999999L, 1.1d, "example"){{
-                    anyVal = "any example";
-                    boolOptVal = true;
-                    boolVal = true;
-                    dateTimeVal = OffsetDateTime.parse("2020-01-01T00:00:00Z");
-                    dateVal = LocalDate.parse("2020-01-01");
-                    enumVal = Enum.ONE;
-                    float32Val = 2.2222222f;
-                    int32EnumVal = Int32EnumVal.SIXTY_NINE;
-                    int32Val = 1;
-                    intEnumVal = IntEnumVal.Third;
-                    intOptNullVal = 999999L;
-                    intVal = 999999L;
-                    numOptNullVal = 1.1d;
-                    numVal = 1.1d;
-                    strOptVal = "optional example";
-                    strVal = "example";
-                }}),
-            }};            
-
-            RequestBodyPostApplicationJsonArrayObjCamelCaseResponse res = sdk.requestBodies.requestBodyPostApplicationJsonArrayObjCamelCase(req);
-
-            if (res.arrObjValueCamelCase != null) {
-                // handle response
-            }
-        } catch (Exception e) {
-            // handle exception
-        }
-    }
-}
-```
-
-### Parameters
-
-| Parameter                                                                       | Type                                                                            | Required                                                                        | Description                                                                     |
-| ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
-| `request`                                                                       | [org.openapis.openapi.models.shared.SimpleObjectCamelCase[]](../../models//.md) | :heavy_check_mark:                                                              | The request object to use for the request.                                      |
-
-
-### Response
-
-**[org.openapis.openapi.models.operations.RequestBodyPostApplicationJsonArrayObjCamelCaseResponse](../../models/operations/RequestBodyPostApplicationJsonArrayObjCamelCaseResponse.md)**
-
-
-## requestBodyPostApplicationJsonArrayOfArray
-
-### Example Usage
-
-```java
-package hello.world;
-
-import java.time.LocalDate;
-import java.time.OffsetDateTime;
-import org.openapis.openapi.SDK;
-import org.openapis.openapi.models.operations.RequestBodyPostApplicationJsonArrayOfArrayResponse;
-import org.openapis.openapi.models.shared.Enum;
-import org.openapis.openapi.models.shared.Int32Enum;
-import org.openapis.openapi.models.shared.IntEnum;
-import org.openapis.openapi.models.shared.Security;
-import org.openapis.openapi.models.shared.SimpleObject;
-
-public class Application {
-    public static void main(String[] args) {
-        try {
-            SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
-                    apiKeyAuth = "Token YOUR_API_KEY";
-                }})
-                .setGlobalPathParam(100L)
-                .setGlobalQueryParam("some example global query param")
-                .build();
-
-            org.openapis.openapi.models.. req =             new org.openapis.openapi.models.shared.SimpleObject[][]{{
-                add(new org.openapis.openapi.models.shared.SimpleObject[]{{
-                    add(new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, Int32Enum.FIFTY_FIVE, IntEnum.Second, 1.1d, "test"){{
-                        any = "any";
-                        bigint = 8821239038968084L;
-                        bigintStr = "9223372036854775808";
-                        bool = true;
-                        boolOpt = true;
-                        date = LocalDate.parse("2020-01-01");
-                        dateTime = OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z");
-                        decimal = 3.141592653589793d;
-                        decimalStr = "3.14159265358979344719667586";
-                        enum_ = Enum.ONE;
-                        float32 = 1.1f;
-                        int_ = 1L;
-                        int32 = 1;
-                        int32Enum = Int32Enum.FIFTY_FIVE;
-                        intEnum = IntEnum.Second;
-                        num = 1.1d;
-                        str = "test";
-                        strOpt = "testOptional";
-                    }}),
-                }}),
-            }};            
-
-            RequestBodyPostApplicationJsonArrayOfArrayResponse res = sdk.requestBodies.requestBodyPostApplicationJsonArrayOfArray(req);
-
-            if (res.res != null) {
-                // handle response
-            }
-        } catch (Exception e) {
-            // handle exception
-        }
-    }
-}
-```
-
-### Parameters
-
-| Parameter                                                                | Type                                                                     | Required                                                                 | Description                                                              |
-| ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
-| `request`                                                                | [org.openapis.openapi.models.shared.SimpleObject[][]](../../models//.md) | :heavy_check_mark:                                                       | The request object to use for the request.                               |
-| `serverURL`                                                              | *String*                                                                 | :heavy_minus_sign:                                                       | An optional server URL to use.                                           |
-
-
-### Response
-
-**[org.openapis.openapi.models.operations.RequestBodyPostApplicationJsonArrayOfArrayResponse](../../models/operations/RequestBodyPostApplicationJsonArrayOfArrayResponse.md)**
-
-
-## requestBodyPostApplicationJsonArrayOfArrayCamelCase
-
-### Example Usage
-
-```java
-package hello.world;
-
-import java.time.LocalDate;
-import java.time.OffsetDateTime;
-import org.openapis.openapi.SDK;
-import org.openapis.openapi.models.operations.RequestBodyPostApplicationJsonArrayOfArrayCamelCaseResponse;
-import org.openapis.openapi.models.shared.Enum;
-import org.openapis.openapi.models.shared.Int32EnumVal;
-import org.openapis.openapi.models.shared.IntEnumVal;
-import org.openapis.openapi.models.shared.Security;
-import org.openapis.openapi.models.shared.SimpleObjectCamelCase;
-
-public class Application {
-    public static void main(String[] args) {
-        try {
-            SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
-                    apiKeyAuth = "Token YOUR_API_KEY";
-                }})
-                .setGlobalPathParam(100L)
-                .setGlobalQueryParam("some example global query param")
-                .build();
-
-            org.openapis.openapi.models.. req =             new org.openapis.openapi.models.shared.SimpleObjectCamelCase[][]{{
-                add(new org.openapis.openapi.models.shared.SimpleObjectCamelCase[]{{
-                    add(new SimpleObjectCamelCase("any example", true, OffsetDateTime.parse("2020-01-01T00:00:00Z"), LocalDate.parse("2020-01-01"), Enum.ONE, 2.2222222f, Int32EnumVal.SIXTY_NINE, 1, IntEnumVal.Third, 999999L, 1.1d, "example"){{
-                        anyVal = "any example";
-                        boolOptVal = true;
-                        boolVal = true;
-                        dateTimeVal = OffsetDateTime.parse("2020-01-01T00:00:00Z");
-                        dateVal = LocalDate.parse("2020-01-01");
-                        enumVal = Enum.ONE;
-                        float32Val = 2.2222222f;
-                        int32EnumVal = Int32EnumVal.SIXTY_NINE;
-                        int32Val = 1;
-                        intEnumVal = IntEnumVal.Third;
-                        intOptNullVal = 999999L;
-                        intVal = 999999L;
-                        numOptNullVal = 1.1d;
-                        numVal = 1.1d;
-                        strOptVal = "optional example";
-                        strVal = "example";
-                    }}),
-                }}),
-            }};            
-
-            RequestBodyPostApplicationJsonArrayOfArrayCamelCaseResponse res = sdk.requestBodies.requestBodyPostApplicationJsonArrayOfArrayCamelCase(req);
-
-            if (res.res != null) {
-                // handle response
-            }
-        } catch (Exception e) {
-            // handle exception
+        RequestBodyDeprecatedRequestBodyRefPostResponse res = sdk.requestBodies().requestBodyDeprecatedRequestBodyRefPost()
+                .request(req)
+                .call();
+
+        if (res.object().isPresent()) {
+            // handle response
         }
     }
 }
@@ -747,50 +504,185 @@ public class Application {
 
 | Parameter                                                                         | Type                                                                              | Required                                                                          | Description                                                                       |
 | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
-| `request`                                                                         | [org.openapis.openapi.models.shared.SimpleObjectCamelCase[][]](../../models//.md) | :heavy_check_mark:                                                                | The request object to use for the request.                                        |
-| `serverURL`                                                                       | *String*                                                                          | :heavy_minus_sign:                                                                | An optional server URL to use.                                                    |
-
+| `request`                                                                         | [DeprecatedObjectWithExample](../../models/shared/DeprecatedObjectWithExample.md) | :heavy_check_mark:                                                                | The request object to use for the request.                                        |
 
 ### Response
 
-**[org.openapis.openapi.models.operations.RequestBodyPostApplicationJsonArrayOfArrayCamelCaseResponse](../../models/operations/RequestBodyPostApplicationJsonArrayOfArrayCamelCaseResponse.md)**
+**[RequestBodyDeprecatedRequestBodyRefPostResponse](../../models/operations/RequestBodyDeprecatedRequestBodyRefPostResponse.md)**
 
+### Errors
 
-## requestBodyPostApplicationJsonArrayOfArrayOfPrimitive
+| Error Type             | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+
+## requestBodyGetInferredOptionalRequestWrapper
 
 ### Example Usage
 
 ```java
 package hello.world;
 
+import java.lang.Exception;
 import org.openapis.openapi.SDK;
-import org.openapis.openapi.models.operations.RequestBodyPostApplicationJsonArrayOfArrayOfPrimitiveResponse;
+import org.openapis.openapi.models.operations.RequestBodyGetInferredOptionalRequestWrapperRequest;
+import org.openapis.openapi.models.operations.RequestBodyGetInferredOptionalRequestWrapperResponse;
 import org.openapis.openapi.models.shared.Security;
 
 public class Application {
-    public static void main(String[] args) {
-        try {
-            SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
-                    apiKeyAuth = "Token YOUR_API_KEY";
-                }})
-                .setGlobalPathParam(100L)
-                .setGlobalQueryParam("some example global query param")
+
+    public static void main(String[] args) throws Exception {
+
+        SDK sdk = SDK.builder()
+                .security(Security.builder()
+                    .apiKeyAuth("Token YOUR_API_KEY")
+                    .build())
+                .globalHeaderParam(true)
+                .globalHiddenQueryParam("hello")
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
+            .build();
+
+        RequestBodyGetInferredOptionalRequestWrapperRequest req = RequestBodyGetInferredOptionalRequestWrapperRequest.builder()
                 .build();
 
-            org.openapis.openapi.models.. req =             new String[][]{{
-                add(new String[]{{
-                    add("string"),
-                }}),
-            }};            
+        RequestBodyGetInferredOptionalRequestWrapperResponse res = sdk.requestBodies().requestBodyGetInferredOptionalRequestWrapper()
+                .request(req)
+                .call();
 
-            RequestBodyPostApplicationJsonArrayOfArrayOfPrimitiveResponse res = sdk.requestBodies.requestBodyPostApplicationJsonArrayOfArrayOfPrimitive(req);
+        if (res.object().isPresent()) {
+            // handle response
+        }
+    }
+}
+```
 
-            if (res.res != null) {
-                // handle response
-            }
-        } catch (Exception e) {
-            // handle exception
+### Parameters
+
+| Parameter                                                                                                                             | Type                                                                                                                                  | Required                                                                                                                              | Description                                                                                                                           |
+| ------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- |
+| `request`                                                                                                                             | [RequestBodyGetInferredOptionalRequestWrapperRequest](../../models/operations/RequestBodyGetInferredOptionalRequestWrapperRequest.md) | :heavy_check_mark:                                                                                                                    | The request object to use for the request.                                                                                            |
+| `serverURL`                                                                                                                           | *String*                                                                                                                              | :heavy_minus_sign:                                                                                                                    | An optional server URL to use.                                                                                                        |
+
+### Response
+
+**[RequestBodyGetInferredOptionalRequestWrapperResponse](../../models/operations/RequestBodyGetInferredOptionalRequestWrapperResponse.md)**
+
+### Errors
+
+| Error Type             | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+
+## requestBodyPostApplicationJsonArray
+
+### Example Usage
+
+```java
+package hello.world;
+
+import java.lang.Exception;
+import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.time.LocalDate;
+import java.time.OffsetDateTime;
+import java.util.List;
+import org.openapis.openapi.SDK;
+import org.openapis.openapi.models.operations.RequestBodyPostApplicationJsonArrayResponse;
+import org.openapis.openapi.models.shared.Enum;
+import org.openapis.openapi.models.shared.Int32Enum;
+import org.openapis.openapi.models.shared.IntEnum;
+import org.openapis.openapi.models.shared.Security;
+import org.openapis.openapi.models.shared.SimpleObject;
+
+public class Application {
+
+    public static void main(String[] args) throws Exception {
+
+        SDK sdk = SDK.builder()
+                .security(Security.builder()
+                    .apiKeyAuth("Token YOUR_API_KEY")
+                    .build())
+                .globalHeaderParam(true)
+                .globalHiddenQueryParam("hello")
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
+            .build();
+
+        List<SimpleObject> req = List.of(
+                SimpleObject.builder()
+                    .any("any")
+                    .bool(true)
+                    .date(LocalDate.parse("2020-01-01"))
+                    .dateTime(OffsetDateTime.parse("2020-01-01T00:00:00.001Z"))
+                    .enum_(Enum.ONE)
+                    .float32(1.1f)
+                    .int_(1L)
+                    .int32(1)
+                    .int32Enum(Int32Enum.FIFTY_FIVE)
+                    .intEnum(IntEnum.Second)
+                    .num(1.1d)
+                    .str("test")
+                    .bigint(new BigInteger("8821239038968084"))
+                    .bigintStr(new BigInteger("9223372036854775808"))
+                    .boolOpt(true)
+                    .decimal(new BigDecimal("3.141592653589793"))
+                    .decimalStr(new BigDecimal("3.14159265358979344719667586"))
+                    .float64Str("1.1")
+                    .int64Str("100")
+                    .strOpt("testOptional")
+                    .build(),
+                SimpleObject.builder()
+                    .any("any")
+                    .bool(true)
+                    .date(LocalDate.parse("2020-01-01"))
+                    .dateTime(OffsetDateTime.parse("2020-01-01T00:00:00.001Z"))
+                    .enum_(Enum.ONE)
+                    .float32(1.1f)
+                    .int_(1L)
+                    .int32(1)
+                    .int32Enum(Int32Enum.FIFTY_FIVE)
+                    .intEnum(IntEnum.Second)
+                    .num(1.1d)
+                    .str("test")
+                    .bigint(new BigInteger("8821239038968084"))
+                    .bigintStr(new BigInteger("9223372036854775808"))
+                    .boolOpt(true)
+                    .decimal(new BigDecimal("3.141592653589793"))
+                    .decimalStr(new BigDecimal("3.14159265358979344719667586"))
+                    .float64Str("1.1")
+                    .int64Str("100")
+                    .strOpt("testOptional")
+                    .build(),
+                SimpleObject.builder()
+                    .any("any")
+                    .bool(true)
+                    .date(LocalDate.parse("2020-01-01"))
+                    .dateTime(OffsetDateTime.parse("2020-01-01T00:00:00.001Z"))
+                    .enum_(Enum.ONE)
+                    .float32(1.1f)
+                    .int_(1L)
+                    .int32(1)
+                    .int32Enum(Int32Enum.FIFTY_FIVE)
+                    .intEnum(IntEnum.Second)
+                    .num(1.1d)
+                    .str("test")
+                    .bigint(new BigInteger("8821239038968084"))
+                    .bigintStr(new BigInteger("9223372036854775808"))
+                    .boolOpt(true)
+                    .decimal(new BigDecimal("3.141592653589793"))
+                    .decimalStr(new BigDecimal("3.14159265358979344719667586"))
+                    .float64Str("1.1")
+                    .int64Str("100")
+                    .strOpt("testOptional")
+                    .build());
+
+        RequestBodyPostApplicationJsonArrayResponse res = sdk.requestBodies().requestBodyPostApplicationJsonArray()
+                .request(req)
+                .call();
+
+        if (res.res().isPresent()) {
+            // handle response
         }
     }
 }
@@ -800,14 +692,598 @@ public class Application {
 
 | Parameter                                  | Type                                       | Required                                   | Description                                |
 | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
-| `request`                                  | [String[][]](../../models//.md)            | :heavy_check_mark:                         | The request object to use for the request. |
+| `request`                                  | [List<SimpleObject>](../../models//.md)    | :heavy_check_mark:                         | The request object to use for the request. |
 | `serverURL`                                | *String*                                   | :heavy_minus_sign:                         | An optional server URL to use.             |
-
 
 ### Response
 
-**[org.openapis.openapi.models.operations.RequestBodyPostApplicationJsonArrayOfArrayOfPrimitiveResponse](../../models/operations/RequestBodyPostApplicationJsonArrayOfArrayOfPrimitiveResponse.md)**
+**[RequestBodyPostApplicationJsonArrayResponse](../../models/operations/RequestBodyPostApplicationJsonArrayResponse.md)**
 
+### Errors
+
+| Error Type             | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+
+## requestBodyPostApplicationJsonArrayCamelCase
+
+### Example Usage
+
+```java
+package hello.world;
+
+import java.lang.Exception;
+import java.time.LocalDate;
+import java.time.OffsetDateTime;
+import java.util.List;
+import org.openapis.openapi.SDK;
+import org.openapis.openapi.models.operations.RequestBodyPostApplicationJsonArrayCamelCaseResponse;
+import org.openapis.openapi.models.shared.Enum;
+import org.openapis.openapi.models.shared.Int32EnumVal;
+import org.openapis.openapi.models.shared.IntEnumVal;
+import org.openapis.openapi.models.shared.Security;
+import org.openapis.openapi.models.shared.SimpleObjectCamelCase;
+
+public class Application {
+
+    public static void main(String[] args) throws Exception {
+
+        SDK sdk = SDK.builder()
+                .security(Security.builder()
+                    .apiKeyAuth("Token YOUR_API_KEY")
+                    .build())
+                .globalHeaderParam(true)
+                .globalHiddenQueryParam("hello")
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
+            .build();
+
+        List<SimpleObjectCamelCase> req = List.of(
+                SimpleObjectCamelCase.builder()
+                    .anyVal("any example")
+                    .boolVal(true)
+                    .dateTimeVal(OffsetDateTime.parse("2020-01-01T00:00:00.001Z"))
+                    .dateVal(LocalDate.parse("2020-01-01"))
+                    .enumVal(Enum.ONE)
+                    .float32Val(2.2222222f)
+                    .int32EnumVal(Int32EnumVal.SIXTY_NINE)
+                    .int32Val(1)
+                    .intEnumVal(IntEnumVal.Third)
+                    .intVal(999999L)
+                    .numVal(1.1d)
+                    .strVal("example")
+                    .boolOptVal(true)
+                    .intOptNullVal(999999L)
+                    .numOptNullVal(1.1d)
+                    .strOptVal("optional example")
+                    .build(),
+                SimpleObjectCamelCase.builder()
+                    .anyVal("any example")
+                    .boolVal(true)
+                    .dateTimeVal(OffsetDateTime.parse("2020-01-01T00:00:00.001Z"))
+                    .dateVal(LocalDate.parse("2020-01-01"))
+                    .enumVal(Enum.ONE)
+                    .float32Val(2.2222222f)
+                    .int32EnumVal(Int32EnumVal.SIXTY_NINE)
+                    .int32Val(1)
+                    .intEnumVal(IntEnumVal.Third)
+                    .intVal(999999L)
+                    .numVal(1.1d)
+                    .strVal("example")
+                    .boolOptVal(true)
+                    .intOptNullVal(999999L)
+                    .numOptNullVal(1.1d)
+                    .strOptVal("optional example")
+                    .build(),
+                SimpleObjectCamelCase.builder()
+                    .anyVal("any example")
+                    .boolVal(true)
+                    .dateTimeVal(OffsetDateTime.parse("2020-01-01T00:00:00.001Z"))
+                    .dateVal(LocalDate.parse("2020-01-01"))
+                    .enumVal(Enum.ONE)
+                    .float32Val(2.2222222f)
+                    .int32EnumVal(Int32EnumVal.SIXTY_NINE)
+                    .int32Val(1)
+                    .intEnumVal(IntEnumVal.Third)
+                    .intVal(999999L)
+                    .numVal(1.1d)
+                    .strVal("example")
+                    .boolOptVal(true)
+                    .intOptNullVal(999999L)
+                    .numOptNullVal(1.1d)
+                    .strOptVal("optional example")
+                    .build());
+
+        RequestBodyPostApplicationJsonArrayCamelCaseResponse res = sdk.requestBodies().requestBodyPostApplicationJsonArrayCamelCase()
+                .request(req)
+                .call();
+
+        if (res.res().isPresent()) {
+            // handle response
+        }
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                        | Type                                             | Required                                         | Description                                      |
+| ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ |
+| `request`                                        | [List<SimpleObjectCamelCase>](../../models//.md) | :heavy_check_mark:                               | The request object to use for the request.       |
+| `serverURL`                                      | *String*                                         | :heavy_minus_sign:                               | An optional server URL to use.                   |
+
+### Response
+
+**[RequestBodyPostApplicationJsonArrayCamelCaseResponse](../../models/operations/RequestBodyPostApplicationJsonArrayCamelCaseResponse.md)**
+
+### Errors
+
+| Error Type             | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+
+## requestBodyPostApplicationJsonArrayObj
+
+### Example Usage
+
+```java
+package hello.world;
+
+import java.lang.Exception;
+import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.time.LocalDate;
+import java.time.OffsetDateTime;
+import java.util.List;
+import org.openapis.openapi.SDK;
+import org.openapis.openapi.models.operations.RequestBodyPostApplicationJsonArrayObjResponse;
+import org.openapis.openapi.models.shared.Enum;
+import org.openapis.openapi.models.shared.Int32Enum;
+import org.openapis.openapi.models.shared.IntEnum;
+import org.openapis.openapi.models.shared.Security;
+import org.openapis.openapi.models.shared.SimpleObject;
+
+public class Application {
+
+    public static void main(String[] args) throws Exception {
+
+        SDK sdk = SDK.builder()
+                .security(Security.builder()
+                    .apiKeyAuth("Token YOUR_API_KEY")
+                    .build())
+                .globalHeaderParam(true)
+                .globalHiddenQueryParam("hello")
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
+            .build();
+
+        List<SimpleObject> req = List.of(
+                SimpleObject.builder()
+                    .any("any")
+                    .bool(true)
+                    .date(LocalDate.parse("2020-01-01"))
+                    .dateTime(OffsetDateTime.parse("2020-01-01T00:00:00.001Z"))
+                    .enum_(Enum.ONE)
+                    .float32(1.1f)
+                    .int_(1L)
+                    .int32(1)
+                    .int32Enum(Int32Enum.FIFTY_FIVE)
+                    .intEnum(IntEnum.Second)
+                    .num(1.1d)
+                    .str("test")
+                    .bigint(new BigInteger("8821239038968084"))
+                    .bigintStr(new BigInteger("9223372036854775808"))
+                    .boolOpt(true)
+                    .decimal(new BigDecimal("3.141592653589793"))
+                    .decimalStr(new BigDecimal("3.14159265358979344719667586"))
+                    .float64Str("1.1")
+                    .int64Str("100")
+                    .strOpt("testOptional")
+                    .build(),
+                SimpleObject.builder()
+                    .any("any")
+                    .bool(true)
+                    .date(LocalDate.parse("2020-01-01"))
+                    .dateTime(OffsetDateTime.parse("2020-01-01T00:00:00.001Z"))
+                    .enum_(Enum.ONE)
+                    .float32(1.1f)
+                    .int_(1L)
+                    .int32(1)
+                    .int32Enum(Int32Enum.FIFTY_FIVE)
+                    .intEnum(IntEnum.Second)
+                    .num(1.1d)
+                    .str("test")
+                    .bigint(new BigInteger("8821239038968084"))
+                    .bigintStr(new BigInteger("9223372036854775808"))
+                    .boolOpt(true)
+                    .decimal(new BigDecimal("3.141592653589793"))
+                    .decimalStr(new BigDecimal("3.14159265358979344719667586"))
+                    .float64Str("1.1")
+                    .int64Str("100")
+                    .strOpt("testOptional")
+                    .build());
+
+        RequestBodyPostApplicationJsonArrayObjResponse res = sdk.requestBodies().requestBodyPostApplicationJsonArrayObj()
+                .request(req)
+                .call();
+
+        if (res.arrObjValue().isPresent()) {
+            // handle response
+        }
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                  | Type                                       | Required                                   | Description                                |
+| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
+| `request`                                  | [List<SimpleObject>](../../models//.md)    | :heavy_check_mark:                         | The request object to use for the request. |
+
+### Response
+
+**[RequestBodyPostApplicationJsonArrayObjResponse](../../models/operations/RequestBodyPostApplicationJsonArrayObjResponse.md)**
+
+### Errors
+
+| Error Type             | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+
+## requestBodyPostApplicationJsonArrayObjCamelCase
+
+### Example Usage
+
+```java
+package hello.world;
+
+import java.lang.Exception;
+import java.time.LocalDate;
+import java.time.OffsetDateTime;
+import java.util.List;
+import org.openapis.openapi.SDK;
+import org.openapis.openapi.models.operations.RequestBodyPostApplicationJsonArrayObjCamelCaseResponse;
+import org.openapis.openapi.models.shared.Enum;
+import org.openapis.openapi.models.shared.Int32EnumVal;
+import org.openapis.openapi.models.shared.IntEnumVal;
+import org.openapis.openapi.models.shared.Security;
+import org.openapis.openapi.models.shared.SimpleObjectCamelCase;
+
+public class Application {
+
+    public static void main(String[] args) throws Exception {
+
+        SDK sdk = SDK.builder()
+                .security(Security.builder()
+                    .apiKeyAuth("Token YOUR_API_KEY")
+                    .build())
+                .globalHeaderParam(true)
+                .globalHiddenQueryParam("hello")
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
+            .build();
+
+        List<SimpleObjectCamelCase> req = List.of(
+                SimpleObjectCamelCase.builder()
+                    .anyVal("any example")
+                    .boolVal(true)
+                    .dateTimeVal(OffsetDateTime.parse("2020-01-01T00:00:00.001Z"))
+                    .dateVal(LocalDate.parse("2020-01-01"))
+                    .enumVal(Enum.ONE)
+                    .float32Val(2.2222222f)
+                    .int32EnumVal(Int32EnumVal.SIXTY_NINE)
+                    .int32Val(1)
+                    .intEnumVal(IntEnumVal.Third)
+                    .intVal(999999L)
+                    .numVal(1.1d)
+                    .strVal("example")
+                    .boolOptVal(true)
+                    .intOptNullVal(999999L)
+                    .numOptNullVal(1.1d)
+                    .strOptVal("optional example")
+                    .build(),
+                SimpleObjectCamelCase.builder()
+                    .anyVal("any example")
+                    .boolVal(true)
+                    .dateTimeVal(OffsetDateTime.parse("2020-01-01T00:00:00.001Z"))
+                    .dateVal(LocalDate.parse("2020-01-01"))
+                    .enumVal(Enum.ONE)
+                    .float32Val(2.2222222f)
+                    .int32EnumVal(Int32EnumVal.SIXTY_NINE)
+                    .int32Val(1)
+                    .intEnumVal(IntEnumVal.Third)
+                    .intVal(999999L)
+                    .numVal(1.1d)
+                    .strVal("example")
+                    .boolOptVal(true)
+                    .intOptNullVal(999999L)
+                    .numOptNullVal(1.1d)
+                    .strOptVal("optional example")
+                    .build());
+
+        RequestBodyPostApplicationJsonArrayObjCamelCaseResponse res = sdk.requestBodies().requestBodyPostApplicationJsonArrayObjCamelCase()
+                .request(req)
+                .call();
+
+        if (res.arrObjValueCamelCase().isPresent()) {
+            // handle response
+        }
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                        | Type                                             | Required                                         | Description                                      |
+| ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ |
+| `request`                                        | [List<SimpleObjectCamelCase>](../../models//.md) | :heavy_check_mark:                               | The request object to use for the request.       |
+
+### Response
+
+**[RequestBodyPostApplicationJsonArrayObjCamelCaseResponse](../../models/operations/RequestBodyPostApplicationJsonArrayObjCamelCaseResponse.md)**
+
+### Errors
+
+| Error Type             | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+
+## requestBodyPostApplicationJsonArrayOfArray
+
+### Example Usage
+
+```java
+package hello.world;
+
+import java.lang.Exception;
+import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.time.LocalDate;
+import java.time.OffsetDateTime;
+import java.util.List;
+import org.openapis.openapi.SDK;
+import org.openapis.openapi.models.operations.RequestBodyPostApplicationJsonArrayOfArrayResponse;
+import org.openapis.openapi.models.shared.Enum;
+import org.openapis.openapi.models.shared.Int32Enum;
+import org.openapis.openapi.models.shared.IntEnum;
+import org.openapis.openapi.models.shared.Security;
+import org.openapis.openapi.models.shared.SimpleObject;
+
+public class Application {
+
+    public static void main(String[] args) throws Exception {
+
+        SDK sdk = SDK.builder()
+                .security(Security.builder()
+                    .apiKeyAuth("Token YOUR_API_KEY")
+                    .build())
+                .globalHeaderParam(true)
+                .globalHiddenQueryParam("hello")
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
+            .build();
+
+        List<List<SimpleObject>> req = List.of(
+                List.of(
+                    SimpleObject.builder()
+                        .any("any")
+                        .bool(true)
+                        .date(LocalDate.parse("2020-01-01"))
+                        .dateTime(OffsetDateTime.parse("2020-01-01T00:00:00.001Z"))
+                        .enum_(Enum.ONE)
+                        .float32(1.1f)
+                        .int_(1L)
+                        .int32(1)
+                        .int32Enum(Int32Enum.FIFTY_FIVE)
+                        .intEnum(IntEnum.Second)
+                        .num(1.1d)
+                        .str("test")
+                        .bigint(new BigInteger("8821239038968084"))
+                        .bigintStr(new BigInteger("9223372036854775808"))
+                        .boolOpt(true)
+                        .decimal(new BigDecimal("3.141592653589793"))
+                        .decimalStr(new BigDecimal("3.14159265358979344719667586"))
+                        .float64Str("1.1")
+                        .int64Str("100")
+                        .strOpt("testOptional")
+                        .build()),
+                List.of(
+                    SimpleObject.builder()
+                        .any("any")
+                        .bool(true)
+                        .date(LocalDate.parse("2020-01-01"))
+                        .dateTime(OffsetDateTime.parse("2020-01-01T00:00:00.001Z"))
+                        .enum_(Enum.ONE)
+                        .float32(1.1f)
+                        .int_(1L)
+                        .int32(1)
+                        .int32Enum(Int32Enum.FIFTY_FIVE)
+                        .intEnum(IntEnum.Second)
+                        .num(1.1d)
+                        .str("test")
+                        .bigint(new BigInteger("8821239038968084"))
+                        .bigintStr(new BigInteger("9223372036854775808"))
+                        .boolOpt(true)
+                        .decimal(new BigDecimal("3.141592653589793"))
+                        .decimalStr(new BigDecimal("3.14159265358979344719667586"))
+                        .float64Str("1.1")
+                        .int64Str("100")
+                        .strOpt("testOptional")
+                        .build()));
+
+        RequestBodyPostApplicationJsonArrayOfArrayResponse res = sdk.requestBodies().requestBodyPostApplicationJsonArrayOfArray()
+                .request(req)
+                .call();
+
+        if (res.res().isPresent()) {
+            // handle response
+        }
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                     | Type                                          | Required                                      | Description                                   |
+| --------------------------------------------- | --------------------------------------------- | --------------------------------------------- | --------------------------------------------- |
+| `request`                                     | [List<List<SimpleObject>>](../../models//.md) | :heavy_check_mark:                            | The request object to use for the request.    |
+| `serverURL`                                   | *String*                                      | :heavy_minus_sign:                            | An optional server URL to use.                |
+
+### Response
+
+**[RequestBodyPostApplicationJsonArrayOfArrayResponse](../../models/operations/RequestBodyPostApplicationJsonArrayOfArrayResponse.md)**
+
+### Errors
+
+| Error Type             | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+
+## requestBodyPostApplicationJsonArrayOfArrayCamelCase
+
+### Example Usage
+
+```java
+package hello.world;
+
+import java.lang.Exception;
+import java.time.LocalDate;
+import java.time.OffsetDateTime;
+import java.util.List;
+import org.openapis.openapi.SDK;
+import org.openapis.openapi.models.operations.RequestBodyPostApplicationJsonArrayOfArrayCamelCaseResponse;
+import org.openapis.openapi.models.shared.Enum;
+import org.openapis.openapi.models.shared.Int32EnumVal;
+import org.openapis.openapi.models.shared.IntEnumVal;
+import org.openapis.openapi.models.shared.Security;
+import org.openapis.openapi.models.shared.SimpleObjectCamelCase;
+
+public class Application {
+
+    public static void main(String[] args) throws Exception {
+
+        SDK sdk = SDK.builder()
+                .security(Security.builder()
+                    .apiKeyAuth("Token YOUR_API_KEY")
+                    .build())
+                .globalHeaderParam(true)
+                .globalHiddenQueryParam("hello")
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
+            .build();
+
+        List<List<SimpleObjectCamelCase>> req = List.of(
+                List.of(
+                    SimpleObjectCamelCase.builder()
+                        .anyVal("any example")
+                        .boolVal(true)
+                        .dateTimeVal(OffsetDateTime.parse("2020-01-01T00:00:00.001Z"))
+                        .dateVal(LocalDate.parse("2020-01-01"))
+                        .enumVal(Enum.ONE)
+                        .float32Val(2.2222222f)
+                        .int32EnumVal(Int32EnumVal.SIXTY_NINE)
+                        .int32Val(1)
+                        .intEnumVal(IntEnumVal.Third)
+                        .intVal(999999L)
+                        .numVal(1.1d)
+                        .strVal("example")
+                        .boolOptVal(true)
+                        .intOptNullVal(999999L)
+                        .numOptNullVal(1.1d)
+                        .strOptVal("optional example")
+                        .build()));
+
+        RequestBodyPostApplicationJsonArrayOfArrayCamelCaseResponse res = sdk.requestBodies().requestBodyPostApplicationJsonArrayOfArrayCamelCase()
+                .request(req)
+                .call();
+
+        if (res.res().isPresent()) {
+            // handle response
+        }
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                              | Type                                                   | Required                                               | Description                                            |
+| ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ |
+| `request`                                              | [List<List<SimpleObjectCamelCase>>](../../models//.md) | :heavy_check_mark:                                     | The request object to use for the request.             |
+| `serverURL`                                            | *String*                                               | :heavy_minus_sign:                                     | An optional server URL to use.                         |
+
+### Response
+
+**[RequestBodyPostApplicationJsonArrayOfArrayCamelCaseResponse](../../models/operations/RequestBodyPostApplicationJsonArrayOfArrayCamelCaseResponse.md)**
+
+### Errors
+
+| Error Type             | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+
+## requestBodyPostApplicationJsonArrayOfArrayOfPrimitive
+
+### Example Usage
+
+```java
+package hello.world;
+
+import java.lang.Exception;
+import java.lang.String;
+import java.util.List;
+import org.openapis.openapi.SDK;
+import org.openapis.openapi.models.operations.RequestBodyPostApplicationJsonArrayOfArrayOfPrimitiveResponse;
+import org.openapis.openapi.models.shared.Security;
+
+public class Application {
+
+    public static void main(String[] args) throws Exception {
+
+        SDK sdk = SDK.builder()
+                .security(Security.builder()
+                    .apiKeyAuth("Token YOUR_API_KEY")
+                    .build())
+                .globalHeaderParam(true)
+                .globalHiddenQueryParam("hello")
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
+            .build();
+
+        List<List<String>> req = List.of(
+                List.of(
+                    "foo",
+                    "bar"),
+                List.of(
+                    "buzz",
+                    "bazz"));
+
+        RequestBodyPostApplicationJsonArrayOfArrayOfPrimitiveResponse res = sdk.requestBodies().requestBodyPostApplicationJsonArrayOfArrayOfPrimitive()
+                .request(req)
+                .call();
+
+        if (res.res().isPresent()) {
+            // handle response
+        }
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                  | Type                                       | Required                                   | Description                                |
+| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
+| `request`                                  | [List<List<String>>](../../models//.md)    | :heavy_check_mark:                         | The request object to use for the request. |
+| `serverURL`                                | *String*                                   | :heavy_minus_sign:                         | An optional server URL to use.             |
+
+### Response
+
+**[RequestBodyPostApplicationJsonArrayOfArrayOfPrimitiveResponse](../../models/operations/RequestBodyPostApplicationJsonArrayOfArrayOfPrimitiveResponse.md)**
+
+### Errors
+
+| Error Type             | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
 
 ## requestBodyPostApplicationJsonArrayOfMap
 
@@ -816,8 +1292,14 @@ public class Application {
 ```java
 package hello.world;
 
+import java.lang.Exception;
+import java.lang.String;
+import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.time.LocalDate;
 import java.time.OffsetDateTime;
+import java.util.List;
+import java.util.Map;
 import org.openapis.openapi.SDK;
 import org.openapis.openapi.models.operations.RequestBodyPostApplicationJsonArrayOfMapResponse;
 import org.openapis.openapi.models.shared.Enum;
@@ -827,48 +1309,117 @@ import org.openapis.openapi.models.shared.Security;
 import org.openapis.openapi.models.shared.SimpleObject;
 
 public class Application {
-    public static void main(String[] args) {
-        try {
-            SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
-                    apiKeyAuth = "Token YOUR_API_KEY";
-                }})
-                .setGlobalPathParam(100L)
-                .setGlobalQueryParam("some example global query param")
-                .build();
 
-            org.openapis.openapi.models.. req =             new java.util.HashMap<String, org.openapis.openapi.models.shared.SimpleObject>[]{{
-                add(new java.util.HashMap<String, org.openapis.openapi.models.shared.SimpleObject>(){{
-                    put("key", new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, Int32Enum.FIFTY_FIVE, IntEnum.Second, 1.1d, "test"){{
-                        any = "any";
-                        bigint = 8821239038968084L;
-                        bigintStr = "9223372036854775808";
-                        bool = true;
-                        boolOpt = true;
-                        date = LocalDate.parse("2020-01-01");
-                        dateTime = OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z");
-                        decimal = 3.141592653589793d;
-                        decimalStr = "3.14159265358979344719667586";
-                        enum_ = Enum.ONE;
-                        float32 = 1.1f;
-                        int_ = 1L;
-                        int32 = 1;
-                        int32Enum = Int32Enum.FIFTY_FIVE;
-                        intEnum = IntEnum.Second;
-                        num = 1.1d;
-                        str = "test";
-                        strOpt = "testOptional";
-                    }});
-                }}),
-            }};            
+    public static void main(String[] args) throws Exception {
 
-            RequestBodyPostApplicationJsonArrayOfMapResponse res = sdk.requestBodies.requestBodyPostApplicationJsonArrayOfMap(req);
+        SDK sdk = SDK.builder()
+                .security(Security.builder()
+                    .apiKeyAuth("Token YOUR_API_KEY")
+                    .build())
+                .globalHeaderParam(true)
+                .globalHiddenQueryParam("hello")
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
+            .build();
 
-            if (res.res != null) {
-                // handle response
-            }
-        } catch (Exception e) {
-            // handle exception
+        List<Map<String, SimpleObject>> req = List.of(
+                Map.ofEntries(
+                    Map.entry("mapElem1", SimpleObject.builder()
+                        .any("any")
+                        .bool(true)
+                        .date(LocalDate.parse("2020-01-01"))
+                        .dateTime(OffsetDateTime.parse("2020-01-01T00:00:00.001Z"))
+                        .enum_(Enum.ONE)
+                        .float32(1.1f)
+                        .int_(1L)
+                        .int32(1)
+                        .int32Enum(Int32Enum.FIFTY_FIVE)
+                        .intEnum(IntEnum.Second)
+                        .num(1.1d)
+                        .str("test")
+                        .bigint(new BigInteger("8821239038968084"))
+                        .bigintStr(new BigInteger("9223372036854775808"))
+                        .boolOpt(true)
+                        .decimal(new BigDecimal("3.141592653589793"))
+                        .decimalStr(new BigDecimal("3.14159265358979344719667586"))
+                        .float64Str("1.1")
+                        .int64Str("100")
+                        .strOpt("testOptional")
+                        .build()),
+                    Map.entry("mapElem2", SimpleObject.builder()
+                        .any("any")
+                        .bool(true)
+                        .date(LocalDate.parse("2020-01-01"))
+                        .dateTime(OffsetDateTime.parse("2020-01-01T00:00:00.001Z"))
+                        .enum_(Enum.ONE)
+                        .float32(1.1f)
+                        .int_(1L)
+                        .int32(1)
+                        .int32Enum(Int32Enum.FIFTY_FIVE)
+                        .intEnum(IntEnum.Second)
+                        .num(1.1d)
+                        .str("test")
+                        .bigint(new BigInteger("8821239038968084"))
+                        .bigintStr(new BigInteger("9223372036854775808"))
+                        .boolOpt(true)
+                        .decimal(new BigDecimal("3.141592653589793"))
+                        .decimalStr(new BigDecimal("3.14159265358979344719667586"))
+                        .float64Str("1.1")
+                        .int64Str("100")
+                        .strOpt("testOptional")
+                        .build())),
+                Map.ofEntries(
+                    Map.entry("mapElem1", SimpleObject.builder()
+                        .any("any")
+                        .bool(true)
+                        .date(LocalDate.parse("2020-01-01"))
+                        .dateTime(OffsetDateTime.parse("2020-01-01T00:00:00.001Z"))
+                        .enum_(Enum.ONE)
+                        .float32(1.1f)
+                        .int_(1L)
+                        .int32(1)
+                        .int32Enum(Int32Enum.FIFTY_FIVE)
+                        .intEnum(IntEnum.Second)
+                        .num(1.1d)
+                        .str("test")
+                        .bigint(new BigInteger("8821239038968084"))
+                        .bigintStr(new BigInteger("9223372036854775808"))
+                        .boolOpt(true)
+                        .decimal(new BigDecimal("3.141592653589793"))
+                        .decimalStr(new BigDecimal("3.14159265358979344719667586"))
+                        .float64Str("1.1")
+                        .int64Str("100")
+                        .strOpt("testOptional")
+                        .build()),
+                    Map.entry("mapElem2", SimpleObject.builder()
+                        .any("any")
+                        .bool(true)
+                        .date(LocalDate.parse("2020-01-01"))
+                        .dateTime(OffsetDateTime.parse("2020-01-01T00:00:00.001Z"))
+                        .enum_(Enum.ONE)
+                        .float32(1.1f)
+                        .int_(1L)
+                        .int32(1)
+                        .int32Enum(Int32Enum.FIFTY_FIVE)
+                        .intEnum(IntEnum.Second)
+                        .num(1.1d)
+                        .str("test")
+                        .bigint(new BigInteger("8821239038968084"))
+                        .bigintStr(new BigInteger("9223372036854775808"))
+                        .boolOpt(true)
+                        .decimal(new BigDecimal("3.141592653589793"))
+                        .decimalStr(new BigDecimal("3.14159265358979344719667586"))
+                        .float64Str("1.1")
+                        .int64Str("100")
+                        .strOpt("testOptional")
+                        .build())));
+
+        RequestBodyPostApplicationJsonArrayOfMapResponse res = sdk.requestBodies().requestBodyPostApplicationJsonArrayOfMap()
+                .request(req)
+                .call();
+
+        if (res.res().isPresent()) {
+            // handle response
         }
     }
 }
@@ -876,16 +1427,20 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                                                     | Type                                                                                          | Required                                                                                      | Description                                                                                   |
-| --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
-| `request`                                                                                     | [java.util.Map<String, org.openapis.openapi.models.shared.SimpleObject>[]](../../models//.md) | :heavy_check_mark:                                                                            | The request object to use for the request.                                                    |
-| `serverURL`                                                                                   | *String*                                                                                      | :heavy_minus_sign:                                                                            | An optional server URL to use.                                                                |
-
+| Parameter                                            | Type                                                 | Required                                             | Description                                          |
+| ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- |
+| `request`                                            | [List<Map<String, SimpleObject>>](../../models//.md) | :heavy_check_mark:                                   | The request object to use for the request.           |
+| `serverURL`                                          | *String*                                             | :heavy_minus_sign:                                   | An optional server URL to use.                       |
 
 ### Response
 
-**[org.openapis.openapi.models.operations.RequestBodyPostApplicationJsonArrayOfMapResponse](../../models/operations/RequestBodyPostApplicationJsonArrayOfMapResponse.md)**
+**[RequestBodyPostApplicationJsonArrayOfMapResponse](../../models/operations/RequestBodyPostApplicationJsonArrayOfMapResponse.md)**
 
+### Errors
+
+| Error Type             | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
 
 ## requestBodyPostApplicationJsonArrayOfMapCamelCase
 
@@ -894,8 +1449,12 @@ public class Application {
 ```java
 package hello.world;
 
+import java.lang.Exception;
+import java.lang.String;
 import java.time.LocalDate;
 import java.time.OffsetDateTime;
+import java.util.List;
+import java.util.Map;
 import org.openapis.openapi.SDK;
 import org.openapis.openapi.models.operations.RequestBodyPostApplicationJsonArrayOfMapCamelCaseResponse;
 import org.openapis.openapi.models.shared.Enum;
@@ -905,46 +1464,101 @@ import org.openapis.openapi.models.shared.Security;
 import org.openapis.openapi.models.shared.SimpleObjectCamelCase;
 
 public class Application {
-    public static void main(String[] args) {
-        try {
-            SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
-                    apiKeyAuth = "Token YOUR_API_KEY";
-                }})
-                .setGlobalPathParam(100L)
-                .setGlobalQueryParam("some example global query param")
-                .build();
 
-            org.openapis.openapi.models.. req =             new java.util.HashMap<String, org.openapis.openapi.models.shared.SimpleObjectCamelCase>[]{{
-                add(new java.util.HashMap<String, org.openapis.openapi.models.shared.SimpleObjectCamelCase>(){{
-                    put("key", new SimpleObjectCamelCase("any example", true, OffsetDateTime.parse("2020-01-01T00:00:00Z"), LocalDate.parse("2020-01-01"), Enum.ONE, 2.2222222f, Int32EnumVal.SIXTY_NINE, 1, IntEnumVal.Third, 999999L, 1.1d, "example"){{
-                        anyVal = "any example";
-                        boolOptVal = true;
-                        boolVal = true;
-                        dateTimeVal = OffsetDateTime.parse("2020-01-01T00:00:00Z");
-                        dateVal = LocalDate.parse("2020-01-01");
-                        enumVal = Enum.ONE;
-                        float32Val = 2.2222222f;
-                        int32EnumVal = Int32EnumVal.SIXTY_NINE;
-                        int32Val = 1;
-                        intEnumVal = IntEnumVal.Third;
-                        intOptNullVal = 999999L;
-                        intVal = 999999L;
-                        numOptNullVal = 1.1d;
-                        numVal = 1.1d;
-                        strOptVal = "optional example";
-                        strVal = "example";
-                    }});
-                }}),
-            }};            
+    public static void main(String[] args) throws Exception {
 
-            RequestBodyPostApplicationJsonArrayOfMapCamelCaseResponse res = sdk.requestBodies.requestBodyPostApplicationJsonArrayOfMapCamelCase(req);
+        SDK sdk = SDK.builder()
+                .security(Security.builder()
+                    .apiKeyAuth("Token YOUR_API_KEY")
+                    .build())
+                .globalHeaderParam(true)
+                .globalHiddenQueryParam("hello")
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
+            .build();
 
-            if (res.res != null) {
-                // handle response
-            }
-        } catch (Exception e) {
-            // handle exception
+        List<Map<String, SimpleObjectCamelCase>> req = List.of(
+                Map.ofEntries(
+                    Map.entry("mapElem1", SimpleObjectCamelCase.builder()
+                        .anyVal("any example")
+                        .boolVal(true)
+                        .dateTimeVal(OffsetDateTime.parse("2020-01-01T00:00:00.001Z"))
+                        .dateVal(LocalDate.parse("2020-01-01"))
+                        .enumVal(Enum.ONE)
+                        .float32Val(2.2222222f)
+                        .int32EnumVal(Int32EnumVal.SIXTY_NINE)
+                        .int32Val(1)
+                        .intEnumVal(IntEnumVal.Third)
+                        .intVal(999999L)
+                        .numVal(1.1d)
+                        .strVal("example")
+                        .boolOptVal(true)
+                        .intOptNullVal(999999L)
+                        .numOptNullVal(1.1d)
+                        .strOptVal("optional example")
+                        .build()),
+                    Map.entry("mapElem2", SimpleObjectCamelCase.builder()
+                        .anyVal("any example")
+                        .boolVal(true)
+                        .dateTimeVal(OffsetDateTime.parse("2020-01-01T00:00:00.001Z"))
+                        .dateVal(LocalDate.parse("2020-01-01"))
+                        .enumVal(Enum.ONE)
+                        .float32Val(2.2222222f)
+                        .int32EnumVal(Int32EnumVal.SIXTY_NINE)
+                        .int32Val(1)
+                        .intEnumVal(IntEnumVal.Third)
+                        .intVal(999999L)
+                        .numVal(1.1d)
+                        .strVal("example")
+                        .boolOptVal(true)
+                        .intOptNullVal(999999L)
+                        .numOptNullVal(1.1d)
+                        .strOptVal("optional example")
+                        .build())),
+                Map.ofEntries(
+                    Map.entry("mapElem1", SimpleObjectCamelCase.builder()
+                        .anyVal("any example")
+                        .boolVal(true)
+                        .dateTimeVal(OffsetDateTime.parse("2020-01-01T00:00:00.001Z"))
+                        .dateVal(LocalDate.parse("2020-01-01"))
+                        .enumVal(Enum.ONE)
+                        .float32Val(2.2222222f)
+                        .int32EnumVal(Int32EnumVal.SIXTY_NINE)
+                        .int32Val(1)
+                        .intEnumVal(IntEnumVal.Third)
+                        .intVal(999999L)
+                        .numVal(1.1d)
+                        .strVal("example")
+                        .boolOptVal(true)
+                        .intOptNullVal(999999L)
+                        .numOptNullVal(1.1d)
+                        .strOptVal("optional example")
+                        .build()),
+                    Map.entry("mapElem2", SimpleObjectCamelCase.builder()
+                        .anyVal("any example")
+                        .boolVal(true)
+                        .dateTimeVal(OffsetDateTime.parse("2020-01-01T00:00:00.001Z"))
+                        .dateVal(LocalDate.parse("2020-01-01"))
+                        .enumVal(Enum.ONE)
+                        .float32Val(2.2222222f)
+                        .int32EnumVal(Int32EnumVal.SIXTY_NINE)
+                        .int32Val(1)
+                        .intEnumVal(IntEnumVal.Third)
+                        .intVal(999999L)
+                        .numVal(1.1d)
+                        .strVal("example")
+                        .boolOptVal(true)
+                        .intOptNullVal(999999L)
+                        .numOptNullVal(1.1d)
+                        .strOptVal("optional example")
+                        .build())));
+
+        RequestBodyPostApplicationJsonArrayOfMapCamelCaseResponse res = sdk.requestBodies().requestBodyPostApplicationJsonArrayOfMapCamelCase()
+                .request(req)
+                .call();
+
+        if (res.res().isPresent()) {
+            // handle response
         }
     }
 }
@@ -952,16 +1566,20 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                                                              | Type                                                                                                   | Required                                                                                               | Description                                                                                            |
-| ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                              | [java.util.Map<String, org.openapis.openapi.models.shared.SimpleObjectCamelCase>[]](../../models//.md) | :heavy_check_mark:                                                                                     | The request object to use for the request.                                                             |
-| `serverURL`                                                                                            | *String*                                                                                               | :heavy_minus_sign:                                                                                     | An optional server URL to use.                                                                         |
-
+| Parameter                                                     | Type                                                          | Required                                                      | Description                                                   |
+| ------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------- |
+| `request`                                                     | [List<Map<String, SimpleObjectCamelCase>>](../../models//.md) | :heavy_check_mark:                                            | The request object to use for the request.                    |
+| `serverURL`                                                   | *String*                                                      | :heavy_minus_sign:                                            | An optional server URL to use.                                |
 
 ### Response
 
-**[org.openapis.openapi.models.operations.RequestBodyPostApplicationJsonArrayOfMapCamelCaseResponse](../../models/operations/RequestBodyPostApplicationJsonArrayOfMapCamelCaseResponse.md)**
+**[RequestBodyPostApplicationJsonArrayOfMapCamelCaseResponse](../../models/operations/RequestBodyPostApplicationJsonArrayOfMapCamelCaseResponse.md)**
 
+### Errors
+
+| Error Type             | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
 
 ## requestBodyPostApplicationJsonArrayOfPrimitive
 
@@ -970,32 +1588,37 @@ public class Application {
 ```java
 package hello.world;
 
+import java.lang.Exception;
+import java.lang.String;
+import java.util.List;
 import org.openapis.openapi.SDK;
 import org.openapis.openapi.models.operations.RequestBodyPostApplicationJsonArrayOfPrimitiveResponse;
 import org.openapis.openapi.models.shared.Security;
 
 public class Application {
-    public static void main(String[] args) {
-        try {
-            SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
-                    apiKeyAuth = "Token YOUR_API_KEY";
-                }})
-                .setGlobalPathParam(100L)
-                .setGlobalQueryParam("some example global query param")
-                .build();
 
-            org.openapis.openapi.models.. req =             new String[]{{
-                add("string"),
-            }};            
+    public static void main(String[] args) throws Exception {
 
-            RequestBodyPostApplicationJsonArrayOfPrimitiveResponse res = sdk.requestBodies.requestBodyPostApplicationJsonArrayOfPrimitive(req);
+        SDK sdk = SDK.builder()
+                .security(Security.builder()
+                    .apiKeyAuth("Token YOUR_API_KEY")
+                    .build())
+                .globalHeaderParam(true)
+                .globalHiddenQueryParam("hello")
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
+            .build();
 
-            if (res.res != null) {
-                // handle response
-            }
-        } catch (Exception e) {
-            // handle exception
+        List<String> req = List.of(
+                "hello",
+                "world");
+
+        RequestBodyPostApplicationJsonArrayOfPrimitiveResponse res = sdk.requestBodies().requestBodyPostApplicationJsonArrayOfPrimitive()
+                .request(req)
+                .call();
+
+        if (res.res().isPresent()) {
+            // handle response
         }
     }
 }
@@ -1005,14 +1628,86 @@ public class Application {
 
 | Parameter                                  | Type                                       | Required                                   | Description                                |
 | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
-| `request`                                  | [String[]](../../models//.md)              | :heavy_check_mark:                         | The request object to use for the request. |
+| `request`                                  | [List<String>](../../models//.md)          | :heavy_check_mark:                         | The request object to use for the request. |
 | `serverURL`                                | *String*                                   | :heavy_minus_sign:                         | An optional server URL to use.             |
-
 
 ### Response
 
-**[org.openapis.openapi.models.operations.RequestBodyPostApplicationJsonArrayOfPrimitiveResponse](../../models/operations/RequestBodyPostApplicationJsonArrayOfPrimitiveResponse.md)**
+**[RequestBodyPostApplicationJsonArrayOfPrimitiveResponse](../../models/operations/RequestBodyPostApplicationJsonArrayOfPrimitiveResponse.md)**
 
+### Errors
+
+| Error Type             | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+
+## requestBodyPostApplicationJsonArrayOfUnions
+
+### Example Usage
+
+```java
+package hello.world;
+
+import java.lang.Exception;
+import java.time.LocalDate;
+import java.util.List;
+import org.openapis.openapi.SDK;
+import org.openapis.openapi.models.operations.RequestBodyPostApplicationJsonArrayOfUnionsRequestBody;
+import org.openapis.openapi.models.operations.RequestBodyPostApplicationJsonArrayOfUnionsResponse;
+import org.openapis.openapi.models.shared.Security;
+import org.openapis.openapi.models.shared.TypedObject1;
+import org.openapis.openapi.models.shared.TypedObject1Type;
+import org.openapis.openapi.models.shared.TypedObjectOneOf;
+
+public class Application {
+
+    public static void main(String[] args) throws Exception {
+
+        SDK sdk = SDK.builder()
+                .security(Security.builder()
+                    .apiKeyAuth("Token YOUR_API_KEY")
+                    .build())
+                .globalHeaderParam(true)
+                .globalHiddenQueryParam("hello")
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
+            .build();
+
+        RequestBodyPostApplicationJsonArrayOfUnionsRequestBody req = RequestBodyPostApplicationJsonArrayOfUnionsRequestBody.builder()
+                .dates(List.of(
+                    LocalDate.parse("2022-10-04")))
+                .unions(List.of(
+                    TypedObjectOneOf.of(TypedObject1.builder()
+                        .type(TypedObject1Type.OBJ1)
+                        .value("<value>")
+                        .build())))
+                .build();
+
+        RequestBodyPostApplicationJsonArrayOfUnionsResponse res = sdk.requestBodies().requestBodyPostApplicationJsonArrayOfUnions()
+                .request(req)
+                .call();
+
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                                                                   | Type                                                                                                                                        | Required                                                                                                                                    | Description                                                                                                                                 |
+| ------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
+| `request`                                                                                                                                   | [RequestBodyPostApplicationJsonArrayOfUnionsRequestBody](../../models/operations/RequestBodyPostApplicationJsonArrayOfUnionsRequestBody.md) | :heavy_check_mark:                                                                                                                          | The request object to use for the request.                                                                                                  |
+| `serverURL`                                                                                                                                 | *String*                                                                                                                                    | :heavy_minus_sign:                                                                                                                          | An optional server URL to use.                                                                                                              |
+
+### Response
+
+**[RequestBodyPostApplicationJsonArrayOfUnionsResponse](../../models/operations/RequestBodyPostApplicationJsonArrayOfUnionsResponse.md)**
+
+### Errors
+
+| Error Type             | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
 
 ## requestBodyPostApplicationJsonDeep
 
@@ -1021,10 +1716,16 @@ public class Application {
 ```java
 package hello.world;
 
+import java.lang.Exception;
+import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.time.LocalDate;
 import java.time.OffsetDateTime;
+import java.util.List;
+import java.util.Map;
 import org.openapis.openapi.SDK;
 import org.openapis.openapi.models.operations.RequestBodyPostApplicationJsonDeepResponse;
+import org.openapis.openapi.models.shared.Any;
 import org.openapis.openapi.models.shared.DeepObject;
 import org.openapis.openapi.models.shared.Enum;
 import org.openapis.openapi.models.shared.Int32Enum;
@@ -1033,118 +1734,166 @@ import org.openapis.openapi.models.shared.Security;
 import org.openapis.openapi.models.shared.SimpleObject;
 
 public class Application {
-    public static void main(String[] args) {
-        try {
-            SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
-                    apiKeyAuth = "Token YOUR_API_KEY";
-                }})
-                .setGlobalPathParam(100L)
-                .setGlobalQueryParam("some example global query param")
+
+    public static void main(String[] args) throws Exception {
+
+        SDK sdk = SDK.builder()
+                .security(Security.builder()
+                    .apiKeyAuth("Token YOUR_API_KEY")
+                    .build())
+                .globalHeaderParam(true)
+                .globalHiddenQueryParam("hello")
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
+            .build();
+
+        DeepObject req = DeepObject.builder()
+                .any(Any.of(SimpleObject.builder()
+                    .any("any")
+                    .bool(true)
+                    .date(LocalDate.parse("2020-01-01"))
+                    .dateTime(OffsetDateTime.parse("2020-01-01T00:00:00.001Z"))
+                    .enum_(Enum.ONE)
+                    .float32(1.1f)
+                    .int_(1L)
+                    .int32(1)
+                    .int32Enum(Int32Enum.FIFTY_FIVE)
+                    .intEnum(IntEnum.Second)
+                    .num(1.1d)
+                    .str("test")
+                    .bigint(new BigInteger("8821239038968084"))
+                    .bigintStr(new BigInteger("9223372036854775808"))
+                    .boolOpt(true)
+                    .decimal(new BigDecimal("3.141592653589793"))
+                    .decimalStr(new BigDecimal("3.14159265358979344719667586"))
+                    .float64Str("1.1")
+                    .int64Str("100")
+                    .strOpt("testOptional")
+                    .build()))
+                .arr(List.of(
+                    SimpleObject.builder()
+                        .any("any")
+                        .bool(true)
+                        .date(LocalDate.parse("2020-01-01"))
+                        .dateTime(OffsetDateTime.parse("2020-01-01T00:00:00.001Z"))
+                        .enum_(Enum.ONE)
+                        .float32(1.1f)
+                        .int_(1L)
+                        .int32(1)
+                        .int32Enum(Int32Enum.FIFTY_FIVE)
+                        .intEnum(IntEnum.Second)
+                        .num(1.1d)
+                        .str("test")
+                        .bigint(new BigInteger("8821239038968084"))
+                        .bigintStr(new BigInteger("9223372036854775808"))
+                        .boolOpt(true)
+                        .decimal(new BigDecimal("3.141592653589793"))
+                        .decimalStr(new BigDecimal("3.14159265358979344719667586"))
+                        .float64Str("1.1")
+                        .int64Str("100")
+                        .strOpt("testOptional")
+                        .build(),
+                    SimpleObject.builder()
+                        .any("any")
+                        .bool(true)
+                        .date(LocalDate.parse("2020-01-01"))
+                        .dateTime(OffsetDateTime.parse("2020-01-01T00:00:00.001Z"))
+                        .enum_(Enum.ONE)
+                        .float32(1.1f)
+                        .int_(1L)
+                        .int32(1)
+                        .int32Enum(Int32Enum.FIFTY_FIVE)
+                        .intEnum(IntEnum.Second)
+                        .num(1.1d)
+                        .str("test")
+                        .bigint(new BigInteger("8821239038968084"))
+                        .bigintStr(new BigInteger("9223372036854775808"))
+                        .boolOpt(true)
+                        .decimal(new BigDecimal("3.141592653589793"))
+                        .decimalStr(new BigDecimal("3.14159265358979344719667586"))
+                        .float64Str("1.1")
+                        .int64Str("100")
+                        .strOpt("testOptional")
+                        .build()))
+                .bool(true)
+                .int_(1L)
+                .map(Map.ofEntries(
+                    Map.entry("key", SimpleObject.builder()
+                        .any("any")
+                        .bool(true)
+                        .date(LocalDate.parse("2020-01-01"))
+                        .dateTime(OffsetDateTime.parse("2020-01-01T00:00:00.001Z"))
+                        .enum_(Enum.ONE)
+                        .float32(1.1f)
+                        .int_(1L)
+                        .int32(1)
+                        .int32Enum(Int32Enum.FIFTY_FIVE)
+                        .intEnum(IntEnum.Second)
+                        .num(1.1d)
+                        .str("test")
+                        .bigint(new BigInteger("8821239038968084"))
+                        .bigintStr(new BigInteger("9223372036854775808"))
+                        .boolOpt(true)
+                        .decimal(new BigDecimal("3.141592653589793"))
+                        .decimalStr(new BigDecimal("3.14159265358979344719667586"))
+                        .float64Str("1.1")
+                        .int64Str("100")
+                        .strOpt("testOptional")
+                        .build()),
+                    Map.entry("key2", SimpleObject.builder()
+                        .any("any")
+                        .bool(true)
+                        .date(LocalDate.parse("2020-01-01"))
+                        .dateTime(OffsetDateTime.parse("2020-01-01T00:00:00.001Z"))
+                        .enum_(Enum.ONE)
+                        .float32(1.1f)
+                        .int_(1L)
+                        .int32(1)
+                        .int32Enum(Int32Enum.FIFTY_FIVE)
+                        .intEnum(IntEnum.Second)
+                        .num(1.1d)
+                        .str("test")
+                        .bigint(new BigInteger("8821239038968084"))
+                        .bigintStr(new BigInteger("9223372036854775808"))
+                        .boolOpt(true)
+                        .decimal(new BigDecimal("3.141592653589793"))
+                        .decimalStr(new BigDecimal("3.14159265358979344719667586"))
+                        .float64Str("1.1")
+                        .int64Str("100")
+                        .strOpt("testOptional")
+                        .build())))
+                .num(1.1d)
+                .obj(SimpleObject.builder()
+                    .any("any")
+                    .bool(true)
+                    .date(LocalDate.parse("2020-01-01"))
+                    .dateTime(OffsetDateTime.parse("2020-01-01T00:00:00.001Z"))
+                    .enum_(Enum.ONE)
+                    .float32(1.1f)
+                    .int_(1L)
+                    .int32(1)
+                    .int32Enum(Int32Enum.FIFTY_FIVE)
+                    .intEnum(IntEnum.Second)
+                    .num(1.1d)
+                    .str("test")
+                    .bigint(new BigInteger("8821239038968084"))
+                    .bigintStr(new BigInteger("9223372036854775808"))
+                    .boolOpt(true)
+                    .decimal(new BigDecimal("3.141592653589793"))
+                    .decimalStr(new BigDecimal("3.14159265358979344719667586"))
+                    .float64Str("1.1")
+                    .int64Str("100")
+                    .strOpt("testOptional")
+                    .build())
+                .str("test")
                 .build();
 
-            org.openapis.openapi.models.shared.DeepObject req = new DeepObject("anyOf[0]", new org.openapis.openapi.models.shared.SimpleObject[]{{
-    add(new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, Int32Enum.FIFTY_FIVE, IntEnum.Second, 1.1d, "test"){{
-        any = "any";
-        bigint = 8821239038968084L;
-        bigintStr = "9223372036854775808";
-        bool = true;
-        boolOpt = true;
-        date = LocalDate.parse("2020-01-01");
-        dateTime = OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z");
-        decimal = 3.141592653589793d;
-        decimalStr = "3.14159265358979344719667586";
-        enum_ = Enum.ONE;
-        float32 = 1.1f;
-        int_ = 1L;
-        int32 = 1;
-        int32Enum = Int32Enum.FIFTY_FIVE;
-        intEnum = IntEnum.Second;
-        num = 1.1d;
-        str = "test";
-        strOpt = "testOptional";
-    }}),
-    add(new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, Int32Enum.FIFTY_FIVE, IntEnum.Second, 1.1d, "test"){{
-        any = "any";
-        bigint = 8821239038968084L;
-        bigintStr = "9223372036854775808";
-        bool = true;
-        boolOpt = true;
-        date = LocalDate.parse("2020-01-01");
-        dateTime = OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z");
-        decimal = 3.141592653589793d;
-        decimalStr = "3.14159265358979344719667586";
-        enum_ = Enum.ONE;
-        float32 = 1.1f;
-        int_ = 1L;
-        int32 = 1;
-        int32Enum = Int32Enum.FIFTY_FIVE;
-        intEnum = IntEnum.Second;
-        num = 1.1d;
-        str = "test";
-        strOpt = "testOptional";
-    }}),
-}}, true, 1L, new java.util.HashMap<String, org.openapis.openapi.models.shared.SimpleObject>(){{
-    put("key", new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, Int32Enum.FIFTY_FIVE, IntEnum.Second, 1.1d, "test"){{
-        any = "any";
-        bigint = 8821239038968084L;
-        bigintStr = "9223372036854775808";
-        bool = true;
-        boolOpt = true;
-        date = LocalDate.parse("2020-01-01");
-        dateTime = OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z");
-        decimal = 3.141592653589793d;
-        decimalStr = "3.14159265358979344719667586";
-        enum_ = Enum.ONE;
-        float32 = 1.1f;
-        int_ = 1L;
-        int32 = 1;
-        int32Enum = Int32Enum.FIFTY_FIVE;
-        intEnum = IntEnum.Second;
-        num = 1.1d;
-        str = "test";
-        strOpt = "testOptional";
-    }});
-    put("key2", new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, Int32Enum.FIFTY_FIVE, IntEnum.Second, 1.1d, "test"){{
-        any = "any";
-        bigint = 8821239038968084L;
-        bigintStr = "9223372036854775808";
-        bool = true;
-        boolOpt = true;
-        date = LocalDate.parse("2020-01-01");
-        dateTime = OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z");
-        decimal = 3.141592653589793d;
-        decimalStr = "3.14159265358979344719667586";
-        enum_ = Enum.ONE;
-        float32 = 1.1f;
-        int_ = 1L;
-        int32 = 1;
-        int32Enum = Int32Enum.FIFTY_FIVE;
-        intEnum = IntEnum.Second;
-        num = 1.1d;
-        str = "test";
-        strOpt = "testOptional";
-    }});
-}}, 1.1d, new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, Int32Enum.FIFTY_FIVE, IntEnum.Second, 1.1d, "test"){{
-bigint = 8821239038968084L;
-bigintStr = "9223372036854775808";
-boolOpt = true;
-decimal = 3.141592653589793d;
-decimalStr = "3.14159265358979344719667586";
-intOptNull = 949502L;
-numOptNull = 5521.28d;
-strOpt = "testOptional";
-}}, "test"){{
-                type = "string";
-            }};            
+        RequestBodyPostApplicationJsonDeepResponse res = sdk.requestBodies().requestBodyPostApplicationJsonDeep()
+                .request(req)
+                .call();
 
-            RequestBodyPostApplicationJsonDeepResponse res = sdk.requestBodies.requestBodyPostApplicationJsonDeep(req);
-
-            if (res.res != null) {
-                // handle response
-            }
-        } catch (Exception e) {
-            // handle exception
+        if (res.res().isPresent()) {
+            // handle response
         }
     }
 }
@@ -1152,15 +1901,19 @@ strOpt = "testOptional";
 
 ### Parameters
 
-| Parameter                                                                          | Type                                                                               | Required                                                                           | Description                                                                        |
-| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| `request`                                                                          | [org.openapis.openapi.models.shared.DeepObject](../../models/shared/DeepObject.md) | :heavy_check_mark:                                                                 | The request object to use for the request.                                         |
-
+| Parameter                                       | Type                                            | Required                                        | Description                                     |
+| ----------------------------------------------- | ----------------------------------------------- | ----------------------------------------------- | ----------------------------------------------- |
+| `request`                                       | [DeepObject](../../models/shared/DeepObject.md) | :heavy_check_mark:                              | The request object to use for the request.      |
 
 ### Response
 
-**[org.openapis.openapi.models.operations.RequestBodyPostApplicationJsonDeepResponse](../../models/operations/RequestBodyPostApplicationJsonDeepResponse.md)**
+**[RequestBodyPostApplicationJsonDeepResponse](../../models/operations/RequestBodyPostApplicationJsonDeepResponse.md)**
 
+### Errors
+
+| Error Type             | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
 
 ## requestBodyPostApplicationJsonDeepCamelCase
 
@@ -1169,10 +1922,14 @@ strOpt = "testOptional";
 ```java
 package hello.world;
 
+import java.lang.Exception;
 import java.time.LocalDate;
 import java.time.OffsetDateTime;
+import java.util.List;
+import java.util.Map;
 import org.openapis.openapi.SDK;
 import org.openapis.openapi.models.operations.RequestBodyPostApplicationJsonDeepCamelCaseResponse;
+import org.openapis.openapi.models.shared.AnyVal;
 import org.openapis.openapi.models.shared.DeepObjectCamelCase;
 import org.openapis.openapi.models.shared.Enum;
 import org.openapis.openapi.models.shared.Int32EnumVal;
@@ -1181,73 +1938,124 @@ import org.openapis.openapi.models.shared.Security;
 import org.openapis.openapi.models.shared.SimpleObjectCamelCase;
 
 public class Application {
-    public static void main(String[] args) {
-        try {
-            SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
-                    apiKeyAuth = "Token YOUR_API_KEY";
-                }})
-                .setGlobalPathParam(100L)
-                .setGlobalQueryParam("some example global query param")
+
+    public static void main(String[] args) throws Exception {
+
+        SDK sdk = SDK.builder()
+                .security(Security.builder()
+                    .apiKeyAuth("Token YOUR_API_KEY")
+                    .build())
+                .globalHeaderParam(true)
+                .globalHiddenQueryParam("hello")
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
+            .build();
+
+        DeepObjectCamelCase req = DeepObjectCamelCase.builder()
+                .anyVal(AnyVal.of(SimpleObjectCamelCase.builder()
+                    .anyVal("any example")
+                    .boolVal(true)
+                    .dateTimeVal(OffsetDateTime.parse("2020-01-01T00:00:00.001Z"))
+                    .dateVal(LocalDate.parse("2020-01-01"))
+                    .enumVal(Enum.ONE)
+                    .float32Val(2.2222222f)
+                    .int32EnumVal(Int32EnumVal.SIXTY_NINE)
+                    .int32Val(1)
+                    .intEnumVal(IntEnumVal.Third)
+                    .intVal(999999L)
+                    .numVal(1.1d)
+                    .strVal("example")
+                    .boolOptVal(true)
+                    .intOptNullVal(999999L)
+                    .numOptNullVal(1.1d)
+                    .strOptVal("optional example")
+                    .build()))
+                .arrVal(List.of(
+                    SimpleObjectCamelCase.builder()
+                        .anyVal("any example")
+                        .boolVal(true)
+                        .dateTimeVal(OffsetDateTime.parse("2020-01-01T00:00:00.001Z"))
+                        .dateVal(LocalDate.parse("2020-01-01"))
+                        .enumVal(Enum.ONE)
+                        .float32Val(2.2222222f)
+                        .int32EnumVal(Int32EnumVal.SIXTY_NINE)
+                        .int32Val(1)
+                        .intEnumVal(IntEnumVal.Third)
+                        .intVal(999999L)
+                        .numVal(1.1d)
+                        .strVal("example")
+                        .boolOptVal(true)
+                        .intOptNullVal(999999L)
+                        .numOptNullVal(1.1d)
+                        .strOptVal("optional example")
+                        .build(),
+                    SimpleObjectCamelCase.builder()
+                        .anyVal("any example")
+                        .boolVal(true)
+                        .dateTimeVal(OffsetDateTime.parse("2020-01-01T00:00:00.001Z"))
+                        .dateVal(LocalDate.parse("2020-01-01"))
+                        .enumVal(Enum.ONE)
+                        .float32Val(2.2222222f)
+                        .int32EnumVal(Int32EnumVal.SIXTY_NINE)
+                        .int32Val(1)
+                        .intEnumVal(IntEnumVal.Third)
+                        .intVal(999999L)
+                        .numVal(1.1d)
+                        .strVal("example")
+                        .boolOptVal(true)
+                        .intOptNullVal(999999L)
+                        .numOptNullVal(1.1d)
+                        .strOptVal("optional example")
+                        .build()))
+                .boolVal(true)
+                .intVal(1L)
+                .mapVal(Map.ofEntries(
+                    Map.entry("key", SimpleObjectCamelCase.builder()
+                        .anyVal("any example")
+                        .boolVal(true)
+                        .dateTimeVal(OffsetDateTime.parse("2020-01-01T00:00:00.001Z"))
+                        .dateVal(LocalDate.parse("2020-01-01"))
+                        .enumVal(Enum.ONE)
+                        .float32Val(2.2222222f)
+                        .int32EnumVal(Int32EnumVal.SIXTY_NINE)
+                        .int32Val(1)
+                        .intEnumVal(IntEnumVal.Third)
+                        .intVal(999999L)
+                        .numVal(1.1d)
+                        .strVal("example")
+                        .boolOptVal(true)
+                        .intOptNullVal(999999L)
+                        .numOptNullVal(1.1d)
+                        .strOptVal("optional example")
+                        .build())))
+                .numVal(1.1d)
+                .objVal(SimpleObjectCamelCase.builder()
+                    .anyVal("any example")
+                    .boolVal(true)
+                    .dateTimeVal(OffsetDateTime.parse("2020-01-01T00:00:00.001Z"))
+                    .dateVal(LocalDate.parse("2020-01-01"))
+                    .enumVal(Enum.ONE)
+                    .float32Val(2.2222222f)
+                    .int32EnumVal(Int32EnumVal.SIXTY_NINE)
+                    .int32Val(1)
+                    .intEnumVal(IntEnumVal.Third)
+                    .intVal(999999L)
+                    .numVal(1.1d)
+                    .strVal("example")
+                    .boolOptVal(true)
+                    .intOptNullVal(999999L)
+                    .numOptNullVal(1.1d)
+                    .strOptVal("optional example")
+                    .build())
+                .strVal("test")
                 .build();
 
-            org.openapis.openapi.models.shared.DeepObjectCamelCase req = new DeepObjectCamelCase("string", new org.openapis.openapi.models.shared.SimpleObjectCamelCase[]{{
-    add(new SimpleObjectCamelCase("any example", true, OffsetDateTime.parse("2020-01-01T00:00:00Z"), LocalDate.parse("2020-01-01"), Enum.ONE, 2.2222222f, Int32EnumVal.SIXTY_NINE, 1, IntEnumVal.Third, 999999L, 1.1d, "example"){{
-        anyVal = "any example";
-        boolOptVal = true;
-        boolVal = true;
-        dateTimeVal = OffsetDateTime.parse("2020-01-01T00:00:00Z");
-        dateVal = LocalDate.parse("2020-01-01");
-        enumVal = Enum.ONE;
-        float32Val = 2.2222222f;
-        int32EnumVal = Int32EnumVal.SIXTY_NINE;
-        int32Val = 1;
-        intEnumVal = IntEnumVal.Third;
-        intOptNullVal = 999999L;
-        intVal = 999999L;
-        numOptNullVal = 1.1d;
-        numVal = 1.1d;
-        strOptVal = "optional example";
-        strVal = "example";
-    }}),
-}}, false, 66469L, new java.util.HashMap<String, org.openapis.openapi.models.shared.SimpleObjectCamelCase>(){{
-    put("key", new SimpleObjectCamelCase("any example", true, OffsetDateTime.parse("2020-01-01T00:00:00Z"), LocalDate.parse("2020-01-01"), Enum.ONE, 2.2222222f, Int32EnumVal.SIXTY_NINE, 1, IntEnumVal.Third, 999999L, 1.1d, "example"){{
-        anyVal = "any example";
-        boolOptVal = true;
-        boolVal = true;
-        dateTimeVal = OffsetDateTime.parse("2020-01-01T00:00:00Z");
-        dateVal = LocalDate.parse("2020-01-01");
-        enumVal = Enum.ONE;
-        float32Val = 2.2222222f;
-        int32EnumVal = Int32EnumVal.SIXTY_NINE;
-        int32Val = 1;
-        intEnumVal = IntEnumVal.Third;
-        intOptNullVal = 999999L;
-        intVal = 999999L;
-        numOptNullVal = 1.1d;
-        numVal = 1.1d;
-        strOptVal = "optional example";
-        strVal = "example";
-    }});
-}}, 9629.09d, new SimpleObjectCamelCase("any example", true, OffsetDateTime.parse("2020-01-01T00:00:00Z"), LocalDate.parse("2020-01-01"), Enum.ONE, 2.2222222f, Int32EnumVal.SIXTY_NINE, 1, IntEnumVal.Third, 999999L, 1.1d, "example"){{
-bigintStrVal = "string";
-bigintVal = 206440L;
-boolOptVal = true;
-decimalVal = 4241.4d;
-intOptNullVal = 999999L;
-numOptNullVal = 1.1d;
-strOptVal = "optional example";
-}}, "string"){{
-                type = "string";
-            }};            
+        RequestBodyPostApplicationJsonDeepCamelCaseResponse res = sdk.requestBodies().requestBodyPostApplicationJsonDeepCamelCase()
+                .request(req)
+                .call();
 
-            RequestBodyPostApplicationJsonDeepCamelCaseResponse res = sdk.requestBodies.requestBodyPostApplicationJsonDeepCamelCase(req);
-
-            if (res.res != null) {
-                // handle response
-            }
-        } catch (Exception e) {
-            // handle exception
+        if (res.res().isPresent()) {
+            // handle response
         }
     }
 }
@@ -1255,15 +2063,19 @@ strOptVal = "optional example";
 
 ### Parameters
 
-| Parameter                                                                                            | Type                                                                                                 | Required                                                                                             | Description                                                                                          |
-| ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
-| `request`                                                                                            | [org.openapis.openapi.models.shared.DeepObjectCamelCase](../../models/shared/DeepObjectCamelCase.md) | :heavy_check_mark:                                                                                   | The request object to use for the request.                                                           |
-
+| Parameter                                                         | Type                                                              | Required                                                          | Description                                                       |
+| ----------------------------------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------- |
+| `request`                                                         | [DeepObjectCamelCase](../../models/shared/DeepObjectCamelCase.md) | :heavy_check_mark:                                                | The request object to use for the request.                        |
 
 ### Response
 
-**[org.openapis.openapi.models.operations.RequestBodyPostApplicationJsonDeepCamelCaseResponse](../../models/operations/RequestBodyPostApplicationJsonDeepCamelCaseResponse.md)**
+**[RequestBodyPostApplicationJsonDeepCamelCaseResponse](../../models/operations/RequestBodyPostApplicationJsonDeepCamelCaseResponse.md)**
 
+### Errors
+
+| Error Type             | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
 
 ## requestBodyPostApplicationJsonMap
 
@@ -1272,8 +2084,13 @@ strOptVal = "optional example";
 ```java
 package hello.world;
 
+import java.lang.Exception;
+import java.lang.String;
+import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.time.LocalDate;
 import java.time.OffsetDateTime;
+import java.util.Map;
 import org.openapis.openapi.SDK;
 import org.openapis.openapi.models.operations.RequestBodyPostApplicationJsonMapResponse;
 import org.openapis.openapi.models.shared.Enum;
@@ -1283,46 +2100,71 @@ import org.openapis.openapi.models.shared.Security;
 import org.openapis.openapi.models.shared.SimpleObject;
 
 public class Application {
-    public static void main(String[] args) {
-        try {
-            SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
-                    apiKeyAuth = "Token YOUR_API_KEY";
-                }})
-                .setGlobalPathParam(100L)
-                .setGlobalQueryParam("some example global query param")
-                .build();
 
-            org.openapis.openapi.models.. req =             new java.util.HashMap<String, org.openapis.openapi.models.shared.SimpleObject>(){{
-                put("key", new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, Int32Enum.FIFTY_FIVE, IntEnum.Second, 1.1d, "test"){{
-                    any = "any";
-                    bigint = 8821239038968084L;
-                    bigintStr = "9223372036854775808";
-                    bool = true;
-                    boolOpt = true;
-                    date = LocalDate.parse("2020-01-01");
-                    dateTime = OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z");
-                    decimal = 3.141592653589793d;
-                    decimalStr = "3.14159265358979344719667586";
-                    enum_ = Enum.ONE;
-                    float32 = 1.1f;
-                    int_ = 1L;
-                    int32 = 1;
-                    int32Enum = Int32Enum.FIFTY_FIVE;
-                    intEnum = IntEnum.Second;
-                    num = 1.1d;
-                    str = "test";
-                    strOpt = "testOptional";
-                }});
-            }};            
+    public static void main(String[] args) throws Exception {
 
-            RequestBodyPostApplicationJsonMapResponse res = sdk.requestBodies.requestBodyPostApplicationJsonMap(req);
+        SDK sdk = SDK.builder()
+                .security(Security.builder()
+                    .apiKeyAuth("Token YOUR_API_KEY")
+                    .build())
+                .globalHeaderParam(true)
+                .globalHiddenQueryParam("hello")
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
+            .build();
 
-            if (res.res != null) {
-                // handle response
-            }
-        } catch (Exception e) {
-            // handle exception
+        Map<String, SimpleObject> req = Map.ofEntries(
+                Map.entry("mapElem1", SimpleObject.builder()
+                    .any("any")
+                    .bool(true)
+                    .date(LocalDate.parse("2020-01-01"))
+                    .dateTime(OffsetDateTime.parse("2020-01-01T00:00:00.001Z"))
+                    .enum_(Enum.ONE)
+                    .float32(1.1f)
+                    .int_(1L)
+                    .int32(1)
+                    .int32Enum(Int32Enum.FIFTY_FIVE)
+                    .intEnum(IntEnum.Second)
+                    .num(1.1d)
+                    .str("test")
+                    .bigint(new BigInteger("8821239038968084"))
+                    .bigintStr(new BigInteger("9223372036854775808"))
+                    .boolOpt(true)
+                    .decimal(new BigDecimal("3.141592653589793"))
+                    .decimalStr(new BigDecimal("3.14159265358979344719667586"))
+                    .float64Str("1.1")
+                    .int64Str("100")
+                    .strOpt("testOptional")
+                    .build()),
+                Map.entry("mapElem2", SimpleObject.builder()
+                    .any("any")
+                    .bool(true)
+                    .date(LocalDate.parse("2020-01-01"))
+                    .dateTime(OffsetDateTime.parse("2020-01-01T00:00:00.001Z"))
+                    .enum_(Enum.ONE)
+                    .float32(1.1f)
+                    .int_(1L)
+                    .int32(1)
+                    .int32Enum(Int32Enum.FIFTY_FIVE)
+                    .intEnum(IntEnum.Second)
+                    .num(1.1d)
+                    .str("test")
+                    .bigint(new BigInteger("8821239038968084"))
+                    .bigintStr(new BigInteger("9223372036854775808"))
+                    .boolOpt(true)
+                    .decimal(new BigDecimal("3.141592653589793"))
+                    .decimalStr(new BigDecimal("3.14159265358979344719667586"))
+                    .float64Str("1.1")
+                    .int64Str("100")
+                    .strOpt("testOptional")
+                    .build()));
+
+        RequestBodyPostApplicationJsonMapResponse res = sdk.requestBodies().requestBodyPostApplicationJsonMap()
+                .request(req)
+                .call();
+
+        if (res.res().isPresent()) {
+            // handle response
         }
     }
 }
@@ -1330,16 +2172,20 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                                                   | Type                                                                                        | Required                                                                                    | Description                                                                                 |
-| ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
-| `request`                                                                                   | [java.util.Map<String, org.openapis.openapi.models.shared.SimpleObject>](../../models//.md) | :heavy_check_mark:                                                                          | The request object to use for the request.                                                  |
-| `serverURL`                                                                                 | *String*                                                                                    | :heavy_minus_sign:                                                                          | An optional server URL to use.                                                              |
-
+| Parameter                                      | Type                                           | Required                                       | Description                                    |
+| ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- |
+| `request`                                      | [Map<String, SimpleObject>](../../models//.md) | :heavy_check_mark:                             | The request object to use for the request.     |
+| `serverURL`                                    | *String*                                       | :heavy_minus_sign:                             | An optional server URL to use.                 |
 
 ### Response
 
-**[org.openapis.openapi.models.operations.RequestBodyPostApplicationJsonMapResponse](../../models/operations/RequestBodyPostApplicationJsonMapResponse.md)**
+**[RequestBodyPostApplicationJsonMapResponse](../../models/operations/RequestBodyPostApplicationJsonMapResponse.md)**
 
+### Errors
+
+| Error Type             | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
 
 ## requestBodyPostApplicationJsonMapCamelCase
 
@@ -1348,8 +2194,11 @@ public class Application {
 ```java
 package hello.world;
 
+import java.lang.Exception;
+import java.lang.String;
 import java.time.LocalDate;
 import java.time.OffsetDateTime;
+import java.util.Map;
 import org.openapis.openapi.SDK;
 import org.openapis.openapi.models.operations.RequestBodyPostApplicationJsonMapCamelCaseResponse;
 import org.openapis.openapi.models.shared.Enum;
@@ -1359,44 +2208,63 @@ import org.openapis.openapi.models.shared.Security;
 import org.openapis.openapi.models.shared.SimpleObjectCamelCase;
 
 public class Application {
-    public static void main(String[] args) {
-        try {
-            SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
-                    apiKeyAuth = "Token YOUR_API_KEY";
-                }})
-                .setGlobalPathParam(100L)
-                .setGlobalQueryParam("some example global query param")
-                .build();
 
-            org.openapis.openapi.models.. req =             new java.util.HashMap<String, org.openapis.openapi.models.shared.SimpleObjectCamelCase>(){{
-                put("key", new SimpleObjectCamelCase("any example", true, OffsetDateTime.parse("2020-01-01T00:00:00Z"), LocalDate.parse("2020-01-01"), Enum.ONE, 2.2222222f, Int32EnumVal.SIXTY_NINE, 1, IntEnumVal.Third, 999999L, 1.1d, "example"){{
-                    anyVal = "any example";
-                    boolOptVal = true;
-                    boolVal = true;
-                    dateTimeVal = OffsetDateTime.parse("2020-01-01T00:00:00Z");
-                    dateVal = LocalDate.parse("2020-01-01");
-                    enumVal = Enum.ONE;
-                    float32Val = 2.2222222f;
-                    int32EnumVal = Int32EnumVal.SIXTY_NINE;
-                    int32Val = 1;
-                    intEnumVal = IntEnumVal.Third;
-                    intOptNullVal = 999999L;
-                    intVal = 999999L;
-                    numOptNullVal = 1.1d;
-                    numVal = 1.1d;
-                    strOptVal = "optional example";
-                    strVal = "example";
-                }});
-            }};            
+    public static void main(String[] args) throws Exception {
 
-            RequestBodyPostApplicationJsonMapCamelCaseResponse res = sdk.requestBodies.requestBodyPostApplicationJsonMapCamelCase(req);
+        SDK sdk = SDK.builder()
+                .security(Security.builder()
+                    .apiKeyAuth("Token YOUR_API_KEY")
+                    .build())
+                .globalHeaderParam(true)
+                .globalHiddenQueryParam("hello")
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
+            .build();
 
-            if (res.res != null) {
-                // handle response
-            }
-        } catch (Exception e) {
-            // handle exception
+        Map<String, SimpleObjectCamelCase> req = Map.ofEntries(
+                Map.entry("mapElem1", SimpleObjectCamelCase.builder()
+                    .anyVal("any example")
+                    .boolVal(true)
+                    .dateTimeVal(OffsetDateTime.parse("2020-01-01T00:00:00.001Z"))
+                    .dateVal(LocalDate.parse("2020-01-01"))
+                    .enumVal(Enum.ONE)
+                    .float32Val(2.2222222f)
+                    .int32EnumVal(Int32EnumVal.SIXTY_NINE)
+                    .int32Val(1)
+                    .intEnumVal(IntEnumVal.Third)
+                    .intVal(999999L)
+                    .numVal(1.1d)
+                    .strVal("example")
+                    .boolOptVal(true)
+                    .intOptNullVal(999999L)
+                    .numOptNullVal(1.1d)
+                    .strOptVal("optional example")
+                    .build()),
+                Map.entry("mapElem2", SimpleObjectCamelCase.builder()
+                    .anyVal("any example")
+                    .boolVal(true)
+                    .dateTimeVal(OffsetDateTime.parse("2020-01-01T00:00:00.001Z"))
+                    .dateVal(LocalDate.parse("2020-01-01"))
+                    .enumVal(Enum.ONE)
+                    .float32Val(2.2222222f)
+                    .int32EnumVal(Int32EnumVal.SIXTY_NINE)
+                    .int32Val(1)
+                    .intEnumVal(IntEnumVal.Third)
+                    .intVal(999999L)
+                    .numVal(1.1d)
+                    .strVal("example")
+                    .boolOptVal(true)
+                    .intOptNullVal(999999L)
+                    .numOptNullVal(1.1d)
+                    .strOptVal("optional example")
+                    .build()));
+
+        RequestBodyPostApplicationJsonMapCamelCaseResponse res = sdk.requestBodies().requestBodyPostApplicationJsonMapCamelCase()
+                .request(req)
+                .call();
+
+        if (res.res().isPresent()) {
+            // handle response
         }
     }
 }
@@ -1404,16 +2272,20 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                                                            | Type                                                                                                 | Required                                                                                             | Description                                                                                          |
-| ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
-| `request`                                                                                            | [java.util.Map<String, org.openapis.openapi.models.shared.SimpleObjectCamelCase>](../../models//.md) | :heavy_check_mark:                                                                                   | The request object to use for the request.                                                           |
-| `serverURL`                                                                                          | *String*                                                                                             | :heavy_minus_sign:                                                                                   | An optional server URL to use.                                                                       |
-
+| Parameter                                               | Type                                                    | Required                                                | Description                                             |
+| ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
+| `request`                                               | [Map<String, SimpleObjectCamelCase>](../../models//.md) | :heavy_check_mark:                                      | The request object to use for the request.              |
+| `serverURL`                                             | *String*                                                | :heavy_minus_sign:                                      | An optional server URL to use.                          |
 
 ### Response
 
-**[org.openapis.openapi.models.operations.RequestBodyPostApplicationJsonMapCamelCaseResponse](../../models/operations/RequestBodyPostApplicationJsonMapCamelCaseResponse.md)**
+**[RequestBodyPostApplicationJsonMapCamelCaseResponse](../../models/operations/RequestBodyPostApplicationJsonMapCamelCaseResponse.md)**
 
+### Errors
+
+| Error Type             | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
 
 ## requestBodyPostApplicationJsonMapObj
 
@@ -1422,8 +2294,13 @@ public class Application {
 ```java
 package hello.world;
 
+import java.lang.Exception;
+import java.lang.String;
+import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.time.LocalDate;
 import java.time.OffsetDateTime;
+import java.util.Map;
 import org.openapis.openapi.SDK;
 import org.openapis.openapi.models.operations.RequestBodyPostApplicationJsonMapObjResponse;
 import org.openapis.openapi.models.shared.Enum;
@@ -1433,46 +2310,71 @@ import org.openapis.openapi.models.shared.Security;
 import org.openapis.openapi.models.shared.SimpleObject;
 
 public class Application {
-    public static void main(String[] args) {
-        try {
-            SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
-                    apiKeyAuth = "Token YOUR_API_KEY";
-                }})
-                .setGlobalPathParam(100L)
-                .setGlobalQueryParam("some example global query param")
-                .build();
 
-            org.openapis.openapi.models.. req =             new java.util.HashMap<String, org.openapis.openapi.models.shared.SimpleObject>(){{
-                put("key", new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, Int32Enum.FIFTY_FIVE, IntEnum.Second, 1.1d, "test"){{
-                    any = "any";
-                    bigint = 8821239038968084L;
-                    bigintStr = "9223372036854775808";
-                    bool = true;
-                    boolOpt = true;
-                    date = LocalDate.parse("2020-01-01");
-                    dateTime = OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z");
-                    decimal = 3.141592653589793d;
-                    decimalStr = "3.14159265358979344719667586";
-                    enum_ = Enum.ONE;
-                    float32 = 1.1f;
-                    int_ = 1L;
-                    int32 = 1;
-                    int32Enum = Int32Enum.FIFTY_FIVE;
-                    intEnum = IntEnum.Second;
-                    num = 1.1d;
-                    str = "test";
-                    strOpt = "testOptional";
-                }});
-            }};            
+    public static void main(String[] args) throws Exception {
 
-            RequestBodyPostApplicationJsonMapObjResponse res = sdk.requestBodies.requestBodyPostApplicationJsonMapObj(req);
+        SDK sdk = SDK.builder()
+                .security(Security.builder()
+                    .apiKeyAuth("Token YOUR_API_KEY")
+                    .build())
+                .globalHeaderParam(true)
+                .globalHiddenQueryParam("hello")
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
+            .build();
 
-            if (res.mapObjValue != null) {
-                // handle response
-            }
-        } catch (Exception e) {
-            // handle exception
+        Map<String, SimpleObject> req = Map.ofEntries(
+                Map.entry("mapElem1", SimpleObject.builder()
+                    .any("any")
+                    .bool(true)
+                    .date(LocalDate.parse("2020-01-01"))
+                    .dateTime(OffsetDateTime.parse("2020-01-01T00:00:00.001Z"))
+                    .enum_(Enum.ONE)
+                    .float32(1.1f)
+                    .int_(1L)
+                    .int32(1)
+                    .int32Enum(Int32Enum.FIFTY_FIVE)
+                    .intEnum(IntEnum.Second)
+                    .num(1.1d)
+                    .str("test")
+                    .bigint(new BigInteger("8821239038968084"))
+                    .bigintStr(new BigInteger("9223372036854775808"))
+                    .boolOpt(true)
+                    .decimal(new BigDecimal("3.141592653589793"))
+                    .decimalStr(new BigDecimal("3.14159265358979344719667586"))
+                    .float64Str("1.1")
+                    .int64Str("100")
+                    .strOpt("testOptional")
+                    .build()),
+                Map.entry("mapElem2", SimpleObject.builder()
+                    .any("any")
+                    .bool(true)
+                    .date(LocalDate.parse("2020-01-01"))
+                    .dateTime(OffsetDateTime.parse("2020-01-01T00:00:00.001Z"))
+                    .enum_(Enum.ONE)
+                    .float32(1.1f)
+                    .int_(1L)
+                    .int32(1)
+                    .int32Enum(Int32Enum.FIFTY_FIVE)
+                    .intEnum(IntEnum.Second)
+                    .num(1.1d)
+                    .str("test")
+                    .bigint(new BigInteger("8821239038968084"))
+                    .bigintStr(new BigInteger("9223372036854775808"))
+                    .boolOpt(true)
+                    .decimal(new BigDecimal("3.141592653589793"))
+                    .decimalStr(new BigDecimal("3.14159265358979344719667586"))
+                    .float64Str("1.1")
+                    .int64Str("100")
+                    .strOpt("testOptional")
+                    .build()));
+
+        RequestBodyPostApplicationJsonMapObjResponse res = sdk.requestBodies().requestBodyPostApplicationJsonMapObj()
+                .request(req)
+                .call();
+
+        if (res.mapObjValue().isPresent()) {
+            // handle response
         }
     }
 }
@@ -1480,15 +2382,19 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                                                   | Type                                                                                        | Required                                                                                    | Description                                                                                 |
-| ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
-| `request`                                                                                   | [java.util.Map<String, org.openapis.openapi.models.shared.SimpleObject>](../../models//.md) | :heavy_check_mark:                                                                          | The request object to use for the request.                                                  |
-
+| Parameter                                      | Type                                           | Required                                       | Description                                    |
+| ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- |
+| `request`                                      | [Map<String, SimpleObject>](../../models//.md) | :heavy_check_mark:                             | The request object to use for the request.     |
 
 ### Response
 
-**[org.openapis.openapi.models.operations.RequestBodyPostApplicationJsonMapObjResponse](../../models/operations/RequestBodyPostApplicationJsonMapObjResponse.md)**
+**[RequestBodyPostApplicationJsonMapObjResponse](../../models/operations/RequestBodyPostApplicationJsonMapObjResponse.md)**
 
+### Errors
+
+| Error Type             | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
 
 ## requestBodyPostApplicationJsonMapObjCamelCase
 
@@ -1497,8 +2403,11 @@ public class Application {
 ```java
 package hello.world;
 
+import java.lang.Exception;
+import java.lang.String;
 import java.time.LocalDate;
 import java.time.OffsetDateTime;
+import java.util.Map;
 import org.openapis.openapi.SDK;
 import org.openapis.openapi.models.operations.RequestBodyPostApplicationJsonMapObjCamelCaseResponse;
 import org.openapis.openapi.models.shared.Enum;
@@ -1508,44 +2417,63 @@ import org.openapis.openapi.models.shared.Security;
 import org.openapis.openapi.models.shared.SimpleObjectCamelCase;
 
 public class Application {
-    public static void main(String[] args) {
-        try {
-            SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
-                    apiKeyAuth = "Token YOUR_API_KEY";
-                }})
-                .setGlobalPathParam(100L)
-                .setGlobalQueryParam("some example global query param")
-                .build();
 
-            org.openapis.openapi.models.. req =             new java.util.HashMap<String, org.openapis.openapi.models.shared.SimpleObjectCamelCase>(){{
-                put("key", new SimpleObjectCamelCase("any example", true, OffsetDateTime.parse("2020-01-01T00:00:00Z"), LocalDate.parse("2020-01-01"), Enum.ONE, 2.2222222f, Int32EnumVal.SIXTY_NINE, 1, IntEnumVal.Third, 999999L, 1.1d, "example"){{
-                    anyVal = "any example";
-                    boolOptVal = true;
-                    boolVal = true;
-                    dateTimeVal = OffsetDateTime.parse("2020-01-01T00:00:00Z");
-                    dateVal = LocalDate.parse("2020-01-01");
-                    enumVal = Enum.ONE;
-                    float32Val = 2.2222222f;
-                    int32EnumVal = Int32EnumVal.SIXTY_NINE;
-                    int32Val = 1;
-                    intEnumVal = IntEnumVal.Third;
-                    intOptNullVal = 999999L;
-                    intVal = 999999L;
-                    numOptNullVal = 1.1d;
-                    numVal = 1.1d;
-                    strOptVal = "optional example";
-                    strVal = "example";
-                }});
-            }};            
+    public static void main(String[] args) throws Exception {
 
-            RequestBodyPostApplicationJsonMapObjCamelCaseResponse res = sdk.requestBodies.requestBodyPostApplicationJsonMapObjCamelCase(req);
+        SDK sdk = SDK.builder()
+                .security(Security.builder()
+                    .apiKeyAuth("Token YOUR_API_KEY")
+                    .build())
+                .globalHeaderParam(true)
+                .globalHiddenQueryParam("hello")
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
+            .build();
 
-            if (res.mapObjValueCamelCase != null) {
-                // handle response
-            }
-        } catch (Exception e) {
-            // handle exception
+        Map<String, SimpleObjectCamelCase> req = Map.ofEntries(
+                Map.entry("mapElem1", SimpleObjectCamelCase.builder()
+                    .anyVal("any example")
+                    .boolVal(true)
+                    .dateTimeVal(OffsetDateTime.parse("2020-01-01T00:00:00.001Z"))
+                    .dateVal(LocalDate.parse("2020-01-01"))
+                    .enumVal(Enum.ONE)
+                    .float32Val(2.2222222f)
+                    .int32EnumVal(Int32EnumVal.SIXTY_NINE)
+                    .int32Val(1)
+                    .intEnumVal(IntEnumVal.Third)
+                    .intVal(999999L)
+                    .numVal(1.1d)
+                    .strVal("example")
+                    .boolOptVal(true)
+                    .intOptNullVal(999999L)
+                    .numOptNullVal(1.1d)
+                    .strOptVal("optional example")
+                    .build()),
+                Map.entry("mapElem2", SimpleObjectCamelCase.builder()
+                    .anyVal("any example")
+                    .boolVal(true)
+                    .dateTimeVal(OffsetDateTime.parse("2020-01-01T00:00:00.001Z"))
+                    .dateVal(LocalDate.parse("2020-01-01"))
+                    .enumVal(Enum.ONE)
+                    .float32Val(2.2222222f)
+                    .int32EnumVal(Int32EnumVal.SIXTY_NINE)
+                    .int32Val(1)
+                    .intEnumVal(IntEnumVal.Third)
+                    .intVal(999999L)
+                    .numVal(1.1d)
+                    .strVal("example")
+                    .boolOptVal(true)
+                    .intOptNullVal(999999L)
+                    .numOptNullVal(1.1d)
+                    .strOptVal("optional example")
+                    .build()));
+
+        RequestBodyPostApplicationJsonMapObjCamelCaseResponse res = sdk.requestBodies().requestBodyPostApplicationJsonMapObjCamelCase()
+                .request(req)
+                .call();
+
+        if (res.mapObjValueCamelCase().isPresent()) {
+            // handle response
         }
     }
 }
@@ -1553,15 +2481,19 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                                                            | Type                                                                                                 | Required                                                                                             | Description                                                                                          |
-| ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
-| `request`                                                                                            | [java.util.Map<String, org.openapis.openapi.models.shared.SimpleObjectCamelCase>](../../models//.md) | :heavy_check_mark:                                                                                   | The request object to use for the request.                                                           |
-
+| Parameter                                               | Type                                                    | Required                                                | Description                                             |
+| ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
+| `request`                                               | [Map<String, SimpleObjectCamelCase>](../../models//.md) | :heavy_check_mark:                                      | The request object to use for the request.              |
 
 ### Response
 
-**[org.openapis.openapi.models.operations.RequestBodyPostApplicationJsonMapObjCamelCaseResponse](../../models/operations/RequestBodyPostApplicationJsonMapObjCamelCaseResponse.md)**
+**[RequestBodyPostApplicationJsonMapObjCamelCaseResponse](../../models/operations/RequestBodyPostApplicationJsonMapObjCamelCaseResponse.md)**
 
+### Errors
+
+| Error Type             | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
 
 ## requestBodyPostApplicationJsonMapOfArray
 
@@ -1570,8 +2502,14 @@ public class Application {
 ```java
 package hello.world;
 
+import java.lang.Exception;
+import java.lang.String;
+import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.time.LocalDate;
 import java.time.OffsetDateTime;
+import java.util.List;
+import java.util.Map;
 import org.openapis.openapi.SDK;
 import org.openapis.openapi.models.operations.RequestBodyPostApplicationJsonMapOfArrayResponse;
 import org.openapis.openapi.models.shared.Enum;
@@ -1581,48 +2519,117 @@ import org.openapis.openapi.models.shared.Security;
 import org.openapis.openapi.models.shared.SimpleObject;
 
 public class Application {
-    public static void main(String[] args) {
-        try {
-            SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
-                    apiKeyAuth = "Token YOUR_API_KEY";
-                }})
-                .setGlobalPathParam(100L)
-                .setGlobalQueryParam("some example global query param")
-                .build();
 
-            org.openapis.openapi.models.. req =             new java.util.HashMap<String, org.openapis.openapi.models.shared.SimpleObject[]>(){{
-                put("key", new org.openapis.openapi.models.shared.SimpleObject[]{{
-                    add(new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, Int32Enum.FIFTY_FIVE, IntEnum.Second, 1.1d, "test"){{
-                        any = "any";
-                        bigint = 8821239038968084L;
-                        bigintStr = "9223372036854775808";
-                        bool = true;
-                        boolOpt = true;
-                        date = LocalDate.parse("2020-01-01");
-                        dateTime = OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z");
-                        decimal = 3.141592653589793d;
-                        decimalStr = "3.14159265358979344719667586";
-                        enum_ = Enum.ONE;
-                        float32 = 1.1f;
-                        int_ = 1L;
-                        int32 = 1;
-                        int32Enum = Int32Enum.FIFTY_FIVE;
-                        intEnum = IntEnum.Second;
-                        num = 1.1d;
-                        str = "test";
-                        strOpt = "testOptional";
-                    }}),
-                }});
-            }};            
+    public static void main(String[] args) throws Exception {
 
-            RequestBodyPostApplicationJsonMapOfArrayResponse res = sdk.requestBodies.requestBodyPostApplicationJsonMapOfArray(req);
+        SDK sdk = SDK.builder()
+                .security(Security.builder()
+                    .apiKeyAuth("Token YOUR_API_KEY")
+                    .build())
+                .globalHeaderParam(true)
+                .globalHiddenQueryParam("hello")
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
+            .build();
 
-            if (res.res != null) {
-                // handle response
-            }
-        } catch (Exception e) {
-            // handle exception
+        Map<String, List<SimpleObject>> req = Map.ofEntries(
+                Map.entry("mapElem1", List.of(
+                    SimpleObject.builder()
+                        .any("any")
+                        .bool(true)
+                        .date(LocalDate.parse("2020-01-01"))
+                        .dateTime(OffsetDateTime.parse("2020-01-01T00:00:00.001Z"))
+                        .enum_(Enum.ONE)
+                        .float32(1.1f)
+                        .int_(1L)
+                        .int32(1)
+                        .int32Enum(Int32Enum.FIFTY_FIVE)
+                        .intEnum(IntEnum.Second)
+                        .num(1.1d)
+                        .str("test")
+                        .bigint(new BigInteger("8821239038968084"))
+                        .bigintStr(new BigInteger("9223372036854775808"))
+                        .boolOpt(true)
+                        .decimal(new BigDecimal("3.141592653589793"))
+                        .decimalStr(new BigDecimal("3.14159265358979344719667586"))
+                        .float64Str("1.1")
+                        .int64Str("100")
+                        .strOpt("testOptional")
+                        .build(),
+                    SimpleObject.builder()
+                        .any("any")
+                        .bool(true)
+                        .date(LocalDate.parse("2020-01-01"))
+                        .dateTime(OffsetDateTime.parse("2020-01-01T00:00:00.001Z"))
+                        .enum_(Enum.ONE)
+                        .float32(1.1f)
+                        .int_(1L)
+                        .int32(1)
+                        .int32Enum(Int32Enum.FIFTY_FIVE)
+                        .intEnum(IntEnum.Second)
+                        .num(1.1d)
+                        .str("test")
+                        .bigint(new BigInteger("8821239038968084"))
+                        .bigintStr(new BigInteger("9223372036854775808"))
+                        .boolOpt(true)
+                        .decimal(new BigDecimal("3.141592653589793"))
+                        .decimalStr(new BigDecimal("3.14159265358979344719667586"))
+                        .float64Str("1.1")
+                        .int64Str("100")
+                        .strOpt("testOptional")
+                        .build())),
+                Map.entry("mapElem2", List.of(
+                    SimpleObject.builder()
+                        .any("any")
+                        .bool(true)
+                        .date(LocalDate.parse("2020-01-01"))
+                        .dateTime(OffsetDateTime.parse("2020-01-01T00:00:00.001Z"))
+                        .enum_(Enum.ONE)
+                        .float32(1.1f)
+                        .int_(1L)
+                        .int32(1)
+                        .int32Enum(Int32Enum.FIFTY_FIVE)
+                        .intEnum(IntEnum.Second)
+                        .num(1.1d)
+                        .str("test")
+                        .bigint(new BigInteger("8821239038968084"))
+                        .bigintStr(new BigInteger("9223372036854775808"))
+                        .boolOpt(true)
+                        .decimal(new BigDecimal("3.141592653589793"))
+                        .decimalStr(new BigDecimal("3.14159265358979344719667586"))
+                        .float64Str("1.1")
+                        .int64Str("100")
+                        .strOpt("testOptional")
+                        .build(),
+                    SimpleObject.builder()
+                        .any("any")
+                        .bool(true)
+                        .date(LocalDate.parse("2020-01-01"))
+                        .dateTime(OffsetDateTime.parse("2020-01-01T00:00:00.001Z"))
+                        .enum_(Enum.ONE)
+                        .float32(1.1f)
+                        .int_(1L)
+                        .int32(1)
+                        .int32Enum(Int32Enum.FIFTY_FIVE)
+                        .intEnum(IntEnum.Second)
+                        .num(1.1d)
+                        .str("test")
+                        .bigint(new BigInteger("8821239038968084"))
+                        .bigintStr(new BigInteger("9223372036854775808"))
+                        .boolOpt(true)
+                        .decimal(new BigDecimal("3.141592653589793"))
+                        .decimalStr(new BigDecimal("3.14159265358979344719667586"))
+                        .float64Str("1.1")
+                        .int64Str("100")
+                        .strOpt("testOptional")
+                        .build())));
+
+        RequestBodyPostApplicationJsonMapOfArrayResponse res = sdk.requestBodies().requestBodyPostApplicationJsonMapOfArray()
+                .request(req)
+                .call();
+
+        if (res.res().isPresent()) {
+            // handle response
         }
     }
 }
@@ -1630,16 +2637,20 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                                                     | Type                                                                                          | Required                                                                                      | Description                                                                                   |
-| --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
-| `request`                                                                                     | [java.util.Map<String, org.openapis.openapi.models.shared.SimpleObject[]>](../../models//.md) | :heavy_check_mark:                                                                            | The request object to use for the request.                                                    |
-| `serverURL`                                                                                   | *String*                                                                                      | :heavy_minus_sign:                                                                            | An optional server URL to use.                                                                |
-
+| Parameter                                            | Type                                                 | Required                                             | Description                                          |
+| ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- |
+| `request`                                            | [Map<String, List<SimpleObject>>](../../models//.md) | :heavy_check_mark:                                   | The request object to use for the request.           |
+| `serverURL`                                          | *String*                                             | :heavy_minus_sign:                                   | An optional server URL to use.                       |
 
 ### Response
 
-**[org.openapis.openapi.models.operations.RequestBodyPostApplicationJsonMapOfArrayResponse](../../models/operations/RequestBodyPostApplicationJsonMapOfArrayResponse.md)**
+**[RequestBodyPostApplicationJsonMapOfArrayResponse](../../models/operations/RequestBodyPostApplicationJsonMapOfArrayResponse.md)**
 
+### Errors
+
+| Error Type             | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
 
 ## requestBodyPostApplicationJsonMapOfArrayCamelCase
 
@@ -1648,8 +2659,12 @@ public class Application {
 ```java
 package hello.world;
 
+import java.lang.Exception;
+import java.lang.String;
 import java.time.LocalDate;
 import java.time.OffsetDateTime;
+import java.util.List;
+import java.util.Map;
 import org.openapis.openapi.SDK;
 import org.openapis.openapi.models.operations.RequestBodyPostApplicationJsonMapOfArrayCamelCaseResponse;
 import org.openapis.openapi.models.shared.Enum;
@@ -1659,46 +2674,101 @@ import org.openapis.openapi.models.shared.Security;
 import org.openapis.openapi.models.shared.SimpleObjectCamelCase;
 
 public class Application {
-    public static void main(String[] args) {
-        try {
-            SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
-                    apiKeyAuth = "Token YOUR_API_KEY";
-                }})
-                .setGlobalPathParam(100L)
-                .setGlobalQueryParam("some example global query param")
-                .build();
 
-            org.openapis.openapi.models.. req =             new java.util.HashMap<String, org.openapis.openapi.models.shared.SimpleObjectCamelCase[]>(){{
-                put("key", new org.openapis.openapi.models.shared.SimpleObjectCamelCase[]{{
-                    add(new SimpleObjectCamelCase("any example", true, OffsetDateTime.parse("2020-01-01T00:00:00Z"), LocalDate.parse("2020-01-01"), Enum.ONE, 2.2222222f, Int32EnumVal.SIXTY_NINE, 1, IntEnumVal.Third, 999999L, 1.1d, "example"){{
-                        anyVal = "any example";
-                        boolOptVal = true;
-                        boolVal = true;
-                        dateTimeVal = OffsetDateTime.parse("2020-01-01T00:00:00Z");
-                        dateVal = LocalDate.parse("2020-01-01");
-                        enumVal = Enum.ONE;
-                        float32Val = 2.2222222f;
-                        int32EnumVal = Int32EnumVal.SIXTY_NINE;
-                        int32Val = 1;
-                        intEnumVal = IntEnumVal.Third;
-                        intOptNullVal = 999999L;
-                        intVal = 999999L;
-                        numOptNullVal = 1.1d;
-                        numVal = 1.1d;
-                        strOptVal = "optional example";
-                        strVal = "example";
-                    }}),
-                }});
-            }};            
+    public static void main(String[] args) throws Exception {
 
-            RequestBodyPostApplicationJsonMapOfArrayCamelCaseResponse res = sdk.requestBodies.requestBodyPostApplicationJsonMapOfArrayCamelCase(req);
+        SDK sdk = SDK.builder()
+                .security(Security.builder()
+                    .apiKeyAuth("Token YOUR_API_KEY")
+                    .build())
+                .globalHeaderParam(true)
+                .globalHiddenQueryParam("hello")
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
+            .build();
 
-            if (res.res != null) {
-                // handle response
-            }
-        } catch (Exception e) {
-            // handle exception
+        Map<String, List<SimpleObjectCamelCase>> req = Map.ofEntries(
+                Map.entry("mapElem1", List.of(
+                    SimpleObjectCamelCase.builder()
+                        .anyVal("any example")
+                        .boolVal(true)
+                        .dateTimeVal(OffsetDateTime.parse("2020-01-01T00:00:00.001Z"))
+                        .dateVal(LocalDate.parse("2020-01-01"))
+                        .enumVal(Enum.ONE)
+                        .float32Val(2.2222222f)
+                        .int32EnumVal(Int32EnumVal.SIXTY_NINE)
+                        .int32Val(1)
+                        .intEnumVal(IntEnumVal.Third)
+                        .intVal(999999L)
+                        .numVal(1.1d)
+                        .strVal("example")
+                        .boolOptVal(true)
+                        .intOptNullVal(999999L)
+                        .numOptNullVal(1.1d)
+                        .strOptVal("optional example")
+                        .build(),
+                    SimpleObjectCamelCase.builder()
+                        .anyVal("any example")
+                        .boolVal(true)
+                        .dateTimeVal(OffsetDateTime.parse("2020-01-01T00:00:00.001Z"))
+                        .dateVal(LocalDate.parse("2020-01-01"))
+                        .enumVal(Enum.ONE)
+                        .float32Val(2.2222222f)
+                        .int32EnumVal(Int32EnumVal.SIXTY_NINE)
+                        .int32Val(1)
+                        .intEnumVal(IntEnumVal.Third)
+                        .intVal(999999L)
+                        .numVal(1.1d)
+                        .strVal("example")
+                        .boolOptVal(true)
+                        .intOptNullVal(999999L)
+                        .numOptNullVal(1.1d)
+                        .strOptVal("optional example")
+                        .build())),
+                Map.entry("mapElem2", List.of(
+                    SimpleObjectCamelCase.builder()
+                        .anyVal("any example")
+                        .boolVal(true)
+                        .dateTimeVal(OffsetDateTime.parse("2020-01-01T00:00:00.001Z"))
+                        .dateVal(LocalDate.parse("2020-01-01"))
+                        .enumVal(Enum.ONE)
+                        .float32Val(2.2222222f)
+                        .int32EnumVal(Int32EnumVal.SIXTY_NINE)
+                        .int32Val(1)
+                        .intEnumVal(IntEnumVal.Third)
+                        .intVal(999999L)
+                        .numVal(1.1d)
+                        .strVal("example")
+                        .boolOptVal(true)
+                        .intOptNullVal(999999L)
+                        .numOptNullVal(1.1d)
+                        .strOptVal("optional example")
+                        .build(),
+                    SimpleObjectCamelCase.builder()
+                        .anyVal("any example")
+                        .boolVal(true)
+                        .dateTimeVal(OffsetDateTime.parse("2020-01-01T00:00:00.001Z"))
+                        .dateVal(LocalDate.parse("2020-01-01"))
+                        .enumVal(Enum.ONE)
+                        .float32Val(2.2222222f)
+                        .int32EnumVal(Int32EnumVal.SIXTY_NINE)
+                        .int32Val(1)
+                        .intEnumVal(IntEnumVal.Third)
+                        .intVal(999999L)
+                        .numVal(1.1d)
+                        .strVal("example")
+                        .boolOptVal(true)
+                        .intOptNullVal(999999L)
+                        .numOptNullVal(1.1d)
+                        .strOptVal("optional example")
+                        .build())));
+
+        RequestBodyPostApplicationJsonMapOfArrayCamelCaseResponse res = sdk.requestBodies().requestBodyPostApplicationJsonMapOfArrayCamelCase()
+                .request(req)
+                .call();
+
+        if (res.res().isPresent()) {
+            // handle response
         }
     }
 }
@@ -1706,16 +2776,20 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                                                              | Type                                                                                                   | Required                                                                                               | Description                                                                                            |
-| ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                              | [java.util.Map<String, org.openapis.openapi.models.shared.SimpleObjectCamelCase[]>](../../models//.md) | :heavy_check_mark:                                                                                     | The request object to use for the request.                                                             |
-| `serverURL`                                                                                            | *String*                                                                                               | :heavy_minus_sign:                                                                                     | An optional server URL to use.                                                                         |
-
+| Parameter                                                     | Type                                                          | Required                                                      | Description                                                   |
+| ------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------- |
+| `request`                                                     | [Map<String, List<SimpleObjectCamelCase>>](../../models//.md) | :heavy_check_mark:                                            | The request object to use for the request.                    |
+| `serverURL`                                                   | *String*                                                      | :heavy_minus_sign:                                            | An optional server URL to use.                                |
 
 ### Response
 
-**[org.openapis.openapi.models.operations.RequestBodyPostApplicationJsonMapOfArrayCamelCaseResponse](../../models/operations/RequestBodyPostApplicationJsonMapOfArrayCamelCaseResponse.md)**
+**[RequestBodyPostApplicationJsonMapOfArrayCamelCaseResponse](../../models/operations/RequestBodyPostApplicationJsonMapOfArrayCamelCaseResponse.md)**
 
+### Errors
+
+| Error Type             | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
 
 ## requestBodyPostApplicationJsonMapOfMap
 
@@ -1724,8 +2798,13 @@ public class Application {
 ```java
 package hello.world;
 
+import java.lang.Exception;
+import java.lang.String;
+import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.time.LocalDate;
 import java.time.OffsetDateTime;
+import java.util.Map;
 import org.openapis.openapi.SDK;
 import org.openapis.openapi.models.operations.RequestBodyPostApplicationJsonMapOfMapResponse;
 import org.openapis.openapi.models.shared.Enum;
@@ -1735,48 +2814,117 @@ import org.openapis.openapi.models.shared.Security;
 import org.openapis.openapi.models.shared.SimpleObject;
 
 public class Application {
-    public static void main(String[] args) {
-        try {
-            SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
-                    apiKeyAuth = "Token YOUR_API_KEY";
-                }})
-                .setGlobalPathParam(100L)
-                .setGlobalQueryParam("some example global query param")
-                .build();
 
-            org.openapis.openapi.models.. req =             new java.util.HashMap<String, java.util.HashMap<String, org.openapis.openapi.models.shared.SimpleObject>>(){{
-                put("key", new java.util.HashMap<String, org.openapis.openapi.models.shared.SimpleObject>(){{
-                    put("key", new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, Int32Enum.FIFTY_FIVE, IntEnum.Second, 1.1d, "test"){{
-                        any = "any";
-                        bigint = 8821239038968084L;
-                        bigintStr = "9223372036854775808";
-                        bool = true;
-                        boolOpt = true;
-                        date = LocalDate.parse("2020-01-01");
-                        dateTime = OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z");
-                        decimal = 3.141592653589793d;
-                        decimalStr = "3.14159265358979344719667586";
-                        enum_ = Enum.ONE;
-                        float32 = 1.1f;
-                        int_ = 1L;
-                        int32 = 1;
-                        int32Enum = Int32Enum.FIFTY_FIVE;
-                        intEnum = IntEnum.Second;
-                        num = 1.1d;
-                        str = "test";
-                        strOpt = "testOptional";
-                    }});
-                }});
-            }};            
+    public static void main(String[] args) throws Exception {
 
-            RequestBodyPostApplicationJsonMapOfMapResponse res = sdk.requestBodies.requestBodyPostApplicationJsonMapOfMap(req);
+        SDK sdk = SDK.builder()
+                .security(Security.builder()
+                    .apiKeyAuth("Token YOUR_API_KEY")
+                    .build())
+                .globalHeaderParam(true)
+                .globalHiddenQueryParam("hello")
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
+            .build();
 
-            if (res.res != null) {
-                // handle response
-            }
-        } catch (Exception e) {
-            // handle exception
+        Map<String, Map<String, SimpleObject>> req = Map.ofEntries(
+                Map.entry("mapElem1", Map.ofEntries(
+                    Map.entry("subMapElem1", SimpleObject.builder()
+                        .any("any")
+                        .bool(true)
+                        .date(LocalDate.parse("2020-01-01"))
+                        .dateTime(OffsetDateTime.parse("2020-01-01T00:00:00.001Z"))
+                        .enum_(Enum.ONE)
+                        .float32(1.1f)
+                        .int_(1L)
+                        .int32(1)
+                        .int32Enum(Int32Enum.FIFTY_FIVE)
+                        .intEnum(IntEnum.Second)
+                        .num(1.1d)
+                        .str("test")
+                        .bigint(new BigInteger("8821239038968084"))
+                        .bigintStr(new BigInteger("9223372036854775808"))
+                        .boolOpt(true)
+                        .decimal(new BigDecimal("3.141592653589793"))
+                        .decimalStr(new BigDecimal("3.14159265358979344719667586"))
+                        .float64Str("1.1")
+                        .int64Str("100")
+                        .strOpt("testOptional")
+                        .build()),
+                    Map.entry("subMapElem2", SimpleObject.builder()
+                        .any("any")
+                        .bool(true)
+                        .date(LocalDate.parse("2020-01-01"))
+                        .dateTime(OffsetDateTime.parse("2020-01-01T00:00:00.001Z"))
+                        .enum_(Enum.ONE)
+                        .float32(1.1f)
+                        .int_(1L)
+                        .int32(1)
+                        .int32Enum(Int32Enum.FIFTY_FIVE)
+                        .intEnum(IntEnum.Second)
+                        .num(1.1d)
+                        .str("test")
+                        .bigint(new BigInteger("8821239038968084"))
+                        .bigintStr(new BigInteger("9223372036854775808"))
+                        .boolOpt(true)
+                        .decimal(new BigDecimal("3.141592653589793"))
+                        .decimalStr(new BigDecimal("3.14159265358979344719667586"))
+                        .float64Str("1.1")
+                        .int64Str("100")
+                        .strOpt("testOptional")
+                        .build()))),
+                Map.entry("mapElem2", Map.ofEntries(
+                    Map.entry("subMapElem1", SimpleObject.builder()
+                        .any("any")
+                        .bool(true)
+                        .date(LocalDate.parse("2020-01-01"))
+                        .dateTime(OffsetDateTime.parse("2020-01-01T00:00:00.001Z"))
+                        .enum_(Enum.ONE)
+                        .float32(1.1f)
+                        .int_(1L)
+                        .int32(1)
+                        .int32Enum(Int32Enum.FIFTY_FIVE)
+                        .intEnum(IntEnum.Second)
+                        .num(1.1d)
+                        .str("test")
+                        .bigint(new BigInteger("8821239038968084"))
+                        .bigintStr(new BigInteger("9223372036854775808"))
+                        .boolOpt(true)
+                        .decimal(new BigDecimal("3.141592653589793"))
+                        .decimalStr(new BigDecimal("3.14159265358979344719667586"))
+                        .float64Str("1.1")
+                        .int64Str("100")
+                        .strOpt("testOptional")
+                        .build()),
+                    Map.entry("subMapElem2", SimpleObject.builder()
+                        .any("any")
+                        .bool(true)
+                        .date(LocalDate.parse("2020-01-01"))
+                        .dateTime(OffsetDateTime.parse("2020-01-01T00:00:00.001Z"))
+                        .enum_(Enum.ONE)
+                        .float32(1.1f)
+                        .int_(1L)
+                        .int32(1)
+                        .int32Enum(Int32Enum.FIFTY_FIVE)
+                        .intEnum(IntEnum.Second)
+                        .num(1.1d)
+                        .str("test")
+                        .bigint(new BigInteger("8821239038968084"))
+                        .bigintStr(new BigInteger("9223372036854775808"))
+                        .boolOpt(true)
+                        .decimal(new BigDecimal("3.141592653589793"))
+                        .decimalStr(new BigDecimal("3.14159265358979344719667586"))
+                        .float64Str("1.1")
+                        .int64Str("100")
+                        .strOpt("testOptional")
+                        .build()))));
+
+        RequestBodyPostApplicationJsonMapOfMapResponse res = sdk.requestBodies().requestBodyPostApplicationJsonMapOfMap()
+                .request(req)
+                .call();
+
+        if (res.res().isPresent()) {
+            // handle response
         }
     }
 }
@@ -1784,16 +2932,20 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                                                                          | Type                                                                                                               | Required                                                                                                           | Description                                                                                                        |
-| ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                          | [java.util.Map<String, java.util.Map<String, org.openapis.openapi.models.shared.SimpleObject>>](../../models//.md) | :heavy_check_mark:                                                                                                 | The request object to use for the request.                                                                         |
-| `serverURL`                                                                                                        | *String*                                                                                                           | :heavy_minus_sign:                                                                                                 | An optional server URL to use.                                                                                     |
-
+| Parameter                                                   | Type                                                        | Required                                                    | Description                                                 |
+| ----------------------------------------------------------- | ----------------------------------------------------------- | ----------------------------------------------------------- | ----------------------------------------------------------- |
+| `request`                                                   | [Map<String, Map<String, SimpleObject>>](../../models//.md) | :heavy_check_mark:                                          | The request object to use for the request.                  |
+| `serverURL`                                                 | *String*                                                    | :heavy_minus_sign:                                          | An optional server URL to use.                              |
 
 ### Response
 
-**[org.openapis.openapi.models.operations.RequestBodyPostApplicationJsonMapOfMapResponse](../../models/operations/RequestBodyPostApplicationJsonMapOfMapResponse.md)**
+**[RequestBodyPostApplicationJsonMapOfMapResponse](../../models/operations/RequestBodyPostApplicationJsonMapOfMapResponse.md)**
 
+### Errors
+
+| Error Type             | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
 
 ## requestBodyPostApplicationJsonMapOfMapCamelCase
 
@@ -1802,8 +2954,11 @@ public class Application {
 ```java
 package hello.world;
 
+import java.lang.Exception;
+import java.lang.String;
 import java.time.LocalDate;
 import java.time.OffsetDateTime;
+import java.util.Map;
 import org.openapis.openapi.SDK;
 import org.openapis.openapi.models.operations.RequestBodyPostApplicationJsonMapOfMapCamelCaseResponse;
 import org.openapis.openapi.models.shared.Enum;
@@ -1813,46 +2968,101 @@ import org.openapis.openapi.models.shared.Security;
 import org.openapis.openapi.models.shared.SimpleObjectCamelCase;
 
 public class Application {
-    public static void main(String[] args) {
-        try {
-            SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
-                    apiKeyAuth = "Token YOUR_API_KEY";
-                }})
-                .setGlobalPathParam(100L)
-                .setGlobalQueryParam("some example global query param")
-                .build();
 
-            org.openapis.openapi.models.. req =             new java.util.HashMap<String, java.util.HashMap<String, org.openapis.openapi.models.shared.SimpleObjectCamelCase>>(){{
-                put("key", new java.util.HashMap<String, org.openapis.openapi.models.shared.SimpleObjectCamelCase>(){{
-                    put("key", new SimpleObjectCamelCase("any example", true, OffsetDateTime.parse("2020-01-01T00:00:00Z"), LocalDate.parse("2020-01-01"), Enum.ONE, 2.2222222f, Int32EnumVal.SIXTY_NINE, 1, IntEnumVal.Third, 999999L, 1.1d, "example"){{
-                        anyVal = "any example";
-                        boolOptVal = true;
-                        boolVal = true;
-                        dateTimeVal = OffsetDateTime.parse("2020-01-01T00:00:00Z");
-                        dateVal = LocalDate.parse("2020-01-01");
-                        enumVal = Enum.ONE;
-                        float32Val = 2.2222222f;
-                        int32EnumVal = Int32EnumVal.SIXTY_NINE;
-                        int32Val = 1;
-                        intEnumVal = IntEnumVal.Third;
-                        intOptNullVal = 999999L;
-                        intVal = 999999L;
-                        numOptNullVal = 1.1d;
-                        numVal = 1.1d;
-                        strOptVal = "optional example";
-                        strVal = "example";
-                    }});
-                }});
-            }};            
+    public static void main(String[] args) throws Exception {
 
-            RequestBodyPostApplicationJsonMapOfMapCamelCaseResponse res = sdk.requestBodies.requestBodyPostApplicationJsonMapOfMapCamelCase(req);
+        SDK sdk = SDK.builder()
+                .security(Security.builder()
+                    .apiKeyAuth("Token YOUR_API_KEY")
+                    .build())
+                .globalHeaderParam(true)
+                .globalHiddenQueryParam("hello")
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
+            .build();
 
-            if (res.res != null) {
-                // handle response
-            }
-        } catch (Exception e) {
-            // handle exception
+        Map<String, Map<String, SimpleObjectCamelCase>> req = Map.ofEntries(
+                Map.entry("mapElem1", Map.ofEntries(
+                    Map.entry("subMapElem1", SimpleObjectCamelCase.builder()
+                        .anyVal("any example")
+                        .boolVal(true)
+                        .dateTimeVal(OffsetDateTime.parse("2020-01-01T00:00:00.001Z"))
+                        .dateVal(LocalDate.parse("2020-01-01"))
+                        .enumVal(Enum.ONE)
+                        .float32Val(2.2222222f)
+                        .int32EnumVal(Int32EnumVal.SIXTY_NINE)
+                        .int32Val(1)
+                        .intEnumVal(IntEnumVal.Third)
+                        .intVal(999999L)
+                        .numVal(1.1d)
+                        .strVal("example")
+                        .boolOptVal(true)
+                        .intOptNullVal(999999L)
+                        .numOptNullVal(1.1d)
+                        .strOptVal("optional example")
+                        .build()),
+                    Map.entry("subMapElem2", SimpleObjectCamelCase.builder()
+                        .anyVal("any example")
+                        .boolVal(true)
+                        .dateTimeVal(OffsetDateTime.parse("2020-01-01T00:00:00.001Z"))
+                        .dateVal(LocalDate.parse("2020-01-01"))
+                        .enumVal(Enum.ONE)
+                        .float32Val(2.2222222f)
+                        .int32EnumVal(Int32EnumVal.SIXTY_NINE)
+                        .int32Val(1)
+                        .intEnumVal(IntEnumVal.Third)
+                        .intVal(999999L)
+                        .numVal(1.1d)
+                        .strVal("example")
+                        .boolOptVal(true)
+                        .intOptNullVal(999999L)
+                        .numOptNullVal(1.1d)
+                        .strOptVal("optional example")
+                        .build()))),
+                Map.entry("mapElem2", Map.ofEntries(
+                    Map.entry("subMapElem1", SimpleObjectCamelCase.builder()
+                        .anyVal("any example")
+                        .boolVal(true)
+                        .dateTimeVal(OffsetDateTime.parse("2020-01-01T00:00:00.001Z"))
+                        .dateVal(LocalDate.parse("2020-01-01"))
+                        .enumVal(Enum.ONE)
+                        .float32Val(2.2222222f)
+                        .int32EnumVal(Int32EnumVal.SIXTY_NINE)
+                        .int32Val(1)
+                        .intEnumVal(IntEnumVal.Third)
+                        .intVal(999999L)
+                        .numVal(1.1d)
+                        .strVal("example")
+                        .boolOptVal(true)
+                        .intOptNullVal(999999L)
+                        .numOptNullVal(1.1d)
+                        .strOptVal("optional example")
+                        .build()),
+                    Map.entry("subMapElem2", SimpleObjectCamelCase.builder()
+                        .anyVal("any example")
+                        .boolVal(true)
+                        .dateTimeVal(OffsetDateTime.parse("2020-01-01T00:00:00.001Z"))
+                        .dateVal(LocalDate.parse("2020-01-01"))
+                        .enumVal(Enum.ONE)
+                        .float32Val(2.2222222f)
+                        .int32EnumVal(Int32EnumVal.SIXTY_NINE)
+                        .int32Val(1)
+                        .intEnumVal(IntEnumVal.Third)
+                        .intVal(999999L)
+                        .numVal(1.1d)
+                        .strVal("example")
+                        .boolOptVal(true)
+                        .intOptNullVal(999999L)
+                        .numOptNullVal(1.1d)
+                        .strOptVal("optional example")
+                        .build()))));
+
+        RequestBodyPostApplicationJsonMapOfMapCamelCaseResponse res = sdk.requestBodies().requestBodyPostApplicationJsonMapOfMapCamelCase()
+                .request(req)
+                .call();
+
+        if (res.res().isPresent()) {
+            // handle response
         }
     }
 }
@@ -1860,16 +3070,20 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                                                                                   | Type                                                                                                                        | Required                                                                                                                    | Description                                                                                                                 |
-| --------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
-| `request`                                                                                                                   | [java.util.Map<String, java.util.Map<String, org.openapis.openapi.models.shared.SimpleObjectCamelCase>>](../../models//.md) | :heavy_check_mark:                                                                                                          | The request object to use for the request.                                                                                  |
-| `serverURL`                                                                                                                 | *String*                                                                                                                    | :heavy_minus_sign:                                                                                                          | An optional server URL to use.                                                                                              |
-
+| Parameter                                                            | Type                                                                 | Required                                                             | Description                                                          |
+| -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- |
+| `request`                                                            | [Map<String, Map<String, SimpleObjectCamelCase>>](../../models//.md) | :heavy_check_mark:                                                   | The request object to use for the request.                           |
+| `serverURL`                                                          | *String*                                                             | :heavy_minus_sign:                                                   | An optional server URL to use.                                       |
 
 ### Response
 
-**[org.openapis.openapi.models.operations.RequestBodyPostApplicationJsonMapOfMapCamelCaseResponse](../../models/operations/RequestBodyPostApplicationJsonMapOfMapCamelCaseResponse.md)**
+**[RequestBodyPostApplicationJsonMapOfMapCamelCaseResponse](../../models/operations/RequestBodyPostApplicationJsonMapOfMapCamelCaseResponse.md)**
 
+### Errors
+
+| Error Type             | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
 
 ## requestBodyPostApplicationJsonMapOfMapOfPrimitive
 
@@ -1878,34 +3092,41 @@ public class Application {
 ```java
 package hello.world;
 
+import java.lang.Exception;
+import java.lang.String;
+import java.util.Map;
 import org.openapis.openapi.SDK;
 import org.openapis.openapi.models.operations.RequestBodyPostApplicationJsonMapOfMapOfPrimitiveResponse;
 import org.openapis.openapi.models.shared.Security;
 
 public class Application {
-    public static void main(String[] args) {
-        try {
-            SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
-                    apiKeyAuth = "Token YOUR_API_KEY";
-                }})
-                .setGlobalPathParam(100L)
-                .setGlobalQueryParam("some example global query param")
-                .build();
 
-            org.openapis.openapi.models.. req =             new java.util.HashMap<String, java.util.HashMap<String, String>>(){{
-                put("key", new java.util.HashMap<String, String>(){{
-                    put("key", "string");
-                }});
-            }};            
+    public static void main(String[] args) throws Exception {
 
-            RequestBodyPostApplicationJsonMapOfMapOfPrimitiveResponse res = sdk.requestBodies.requestBodyPostApplicationJsonMapOfMapOfPrimitive(req);
+        SDK sdk = SDK.builder()
+                .security(Security.builder()
+                    .apiKeyAuth("Token YOUR_API_KEY")
+                    .build())
+                .globalHeaderParam(true)
+                .globalHiddenQueryParam("hello")
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
+            .build();
 
-            if (res.res != null) {
-                // handle response
-            }
-        } catch (Exception e) {
-            // handle exception
+        Map<String, Map<String, String>> req = Map.ofEntries(
+                Map.entry("mapElem1", Map.ofEntries(
+                    Map.entry("subMapElem1", "foo"),
+                    Map.entry("subMapElem2", "bar"))),
+                Map.entry("mapElem2", Map.ofEntries(
+                    Map.entry("subMapElem1", "buzz"),
+                    Map.entry("subMapElem2", "bazz"))));
+
+        RequestBodyPostApplicationJsonMapOfMapOfPrimitiveResponse res = sdk.requestBodies().requestBodyPostApplicationJsonMapOfMapOfPrimitive()
+                .request(req)
+                .call();
+
+        if (res.res().isPresent()) {
+            // handle response
         }
     }
 }
@@ -1913,16 +3134,20 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                                 | Type                                                                      | Required                                                                  | Description                                                               |
-| ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
-| `request`                                                                 | [java.util.Map<String, java.util.Map<String, String>>](../../models//.md) | :heavy_check_mark:                                                        | The request object to use for the request.                                |
-| `serverURL`                                                               | *String*                                                                  | :heavy_minus_sign:                                                        | An optional server URL to use.                                            |
-
+| Parameter                                             | Type                                                  | Required                                              | Description                                           |
+| ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |
+| `request`                                             | [Map<String, Map<String, String>>](../../models//.md) | :heavy_check_mark:                                    | The request object to use for the request.            |
+| `serverURL`                                           | *String*                                              | :heavy_minus_sign:                                    | An optional server URL to use.                        |
 
 ### Response
 
-**[org.openapis.openapi.models.operations.RequestBodyPostApplicationJsonMapOfMapOfPrimitiveResponse](../../models/operations/RequestBodyPostApplicationJsonMapOfMapOfPrimitiveResponse.md)**
+**[RequestBodyPostApplicationJsonMapOfMapOfPrimitiveResponse](../../models/operations/RequestBodyPostApplicationJsonMapOfMapOfPrimitiveResponse.md)**
 
+### Errors
+
+| Error Type             | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
 
 ## requestBodyPostApplicationJsonMapOfPrimitive
 
@@ -1931,32 +3156,37 @@ public class Application {
 ```java
 package hello.world;
 
+import java.lang.Exception;
+import java.lang.String;
+import java.util.Map;
 import org.openapis.openapi.SDK;
 import org.openapis.openapi.models.operations.RequestBodyPostApplicationJsonMapOfPrimitiveResponse;
 import org.openapis.openapi.models.shared.Security;
 
 public class Application {
-    public static void main(String[] args) {
-        try {
-            SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
-                    apiKeyAuth = "Token YOUR_API_KEY";
-                }})
-                .setGlobalPathParam(100L)
-                .setGlobalQueryParam("some example global query param")
-                .build();
 
-            org.openapis.openapi.models.. req =             new java.util.HashMap<String, String>(){{
-                put("key", "string");
-            }};            
+    public static void main(String[] args) throws Exception {
 
-            RequestBodyPostApplicationJsonMapOfPrimitiveResponse res = sdk.requestBodies.requestBodyPostApplicationJsonMapOfPrimitive(req);
+        SDK sdk = SDK.builder()
+                .security(Security.builder()
+                    .apiKeyAuth("Token YOUR_API_KEY")
+                    .build())
+                .globalHeaderParam(true)
+                .globalHiddenQueryParam("hello")
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
+            .build();
 
-            if (res.res != null) {
-                // handle response
-            }
-        } catch (Exception e) {
-            // handle exception
+        Map<String, String> req = Map.ofEntries(
+                Map.entry("mapElem1", "hello"),
+                Map.entry("mapElem2", "world"));
+
+        RequestBodyPostApplicationJsonMapOfPrimitiveResponse res = sdk.requestBodies().requestBodyPostApplicationJsonMapOfPrimitive()
+                .request(req)
+                .call();
+
+        if (res.res().isPresent()) {
+            // handle response
         }
     }
 }
@@ -1964,16 +3194,20 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                          | Type                                               | Required                                           | Description                                        |
-| -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- |
-| `request`                                          | [java.util.Map<String, String>](../../models//.md) | :heavy_check_mark:                                 | The request object to use for the request.         |
-| `serverURL`                                        | *String*                                           | :heavy_minus_sign:                                 | An optional server URL to use.                     |
-
+| Parameter                                  | Type                                       | Required                                   | Description                                |
+| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
+| `request`                                  | [Map<String, String>](../../models//.md)   | :heavy_check_mark:                         | The request object to use for the request. |
+| `serverURL`                                | *String*                                   | :heavy_minus_sign:                         | An optional server URL to use.             |
 
 ### Response
 
-**[org.openapis.openapi.models.operations.RequestBodyPostApplicationJsonMapOfPrimitiveResponse](../../models/operations/RequestBodyPostApplicationJsonMapOfPrimitiveResponse.md)**
+**[RequestBodyPostApplicationJsonMapOfPrimitiveResponse](../../models/operations/RequestBodyPostApplicationJsonMapOfPrimitiveResponse.md)**
 
+### Errors
+
+| Error Type             | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
 
 ## requestBodyPostApplicationJsonMultipleJsonFiltered
 
@@ -1982,6 +3216,9 @@ public class Application {
 ```java
 package hello.world;
 
+import java.lang.Exception;
+import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.time.LocalDate;
 import java.time.OffsetDateTime;
 import org.openapis.openapi.SDK;
@@ -1993,34 +3230,48 @@ import org.openapis.openapi.models.shared.Security;
 import org.openapis.openapi.models.shared.SimpleObject;
 
 public class Application {
-    public static void main(String[] args) {
-        try {
-            SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
-                    apiKeyAuth = "Token YOUR_API_KEY";
-                }})
-                .setGlobalPathParam(100L)
-                .setGlobalQueryParam("some example global query param")
+
+    public static void main(String[] args) throws Exception {
+
+        SDK sdk = SDK.builder()
+                .security(Security.builder()
+                    .apiKeyAuth("Token YOUR_API_KEY")
+                    .build())
+                .globalHeaderParam(true)
+                .globalHiddenQueryParam("hello")
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
+            .build();
+
+        SimpleObject req = SimpleObject.builder()
+                .any("any")
+                .bool(true)
+                .date(LocalDate.parse("2020-01-01"))
+                .dateTime(OffsetDateTime.parse("2020-01-01T00:00:00.001Z"))
+                .enum_(Enum.ONE)
+                .float32(1.1f)
+                .int_(1L)
+                .int32(1)
+                .int32Enum(Int32Enum.FIFTY_FIVE)
+                .intEnum(IntEnum.Second)
+                .num(1.1d)
+                .str("test")
+                .bigint(new BigInteger("8821239038968084"))
+                .bigintStr(new BigInteger("9223372036854775808"))
+                .boolOpt(true)
+                .decimal(new BigDecimal("3.141592653589793"))
+                .decimalStr(new BigDecimal("3.14159265358979344719667586"))
+                .float64Str("1.1")
+                .int64Str("100")
+                .strOpt("testOptional")
                 .build();
 
-            org.openapis.openapi.models.shared.SimpleObject req = new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, Int32Enum.FIFTY_FIVE, IntEnum.Second, 1.1d, "test"){{
-                bigint = 8821239038968084L;
-                bigintStr = "9223372036854775808";
-                boolOpt = true;
-                decimal = 3.141592653589793d;
-                decimalStr = "3.14159265358979344719667586";
-                intOptNull = 543193L;
-                numOptNull = 1244.08d;
-                strOpt = "testOptional";
-            }};            
+        RequestBodyPostApplicationJsonMultipleJsonFilteredResponse res = sdk.requestBodies().requestBodyPostApplicationJsonMultipleJsonFiltered()
+                .request(req)
+                .call();
 
-            RequestBodyPostApplicationJsonMultipleJsonFilteredResponse res = sdk.requestBodies.requestBodyPostApplicationJsonMultipleJsonFiltered(req);
-
-            if (res.res != null) {
-                // handle response
-            }
-        } catch (Exception e) {
-            // handle exception
+        if (res.res().isPresent()) {
+            // handle response
         }
     }
 }
@@ -2028,15 +3279,19 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                                              | Type                                                                                   | Required                                                                               | Description                                                                            |
-| -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
-| `request`                                                                              | [org.openapis.openapi.models.shared.SimpleObject](../../models/shared/SimpleObject.md) | :heavy_check_mark:                                                                     | The request object to use for the request.                                             |
-
+| Parameter                                           | Type                                                | Required                                            | Description                                         |
+| --------------------------------------------------- | --------------------------------------------------- | --------------------------------------------------- | --------------------------------------------------- |
+| `request`                                           | [SimpleObject](../../models/shared/SimpleObject.md) | :heavy_check_mark:                                  | The request object to use for the request.          |
 
 ### Response
 
-**[org.openapis.openapi.models.operations.RequestBodyPostApplicationJsonMultipleJsonFilteredResponse](../../models/operations/RequestBodyPostApplicationJsonMultipleJsonFilteredResponse.md)**
+**[RequestBodyPostApplicationJsonMultipleJsonFilteredResponse](../../models/operations/RequestBodyPostApplicationJsonMultipleJsonFilteredResponse.md)**
 
+### Errors
+
+| Error Type             | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
 
 ## requestBodyPostApplicationJsonSimple
 
@@ -2045,6 +3300,9 @@ public class Application {
 ```java
 package hello.world;
 
+import java.lang.Exception;
+import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.time.LocalDate;
 import java.time.OffsetDateTime;
 import org.openapis.openapi.SDK;
@@ -2056,34 +3314,48 @@ import org.openapis.openapi.models.shared.Security;
 import org.openapis.openapi.models.shared.SimpleObject;
 
 public class Application {
-    public static void main(String[] args) {
-        try {
-            SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
-                    apiKeyAuth = "Token YOUR_API_KEY";
-                }})
-                .setGlobalPathParam(100L)
-                .setGlobalQueryParam("some example global query param")
+
+    public static void main(String[] args) throws Exception {
+
+        SDK sdk = SDK.builder()
+                .security(Security.builder()
+                    .apiKeyAuth("Token YOUR_API_KEY")
+                    .build())
+                .globalHeaderParam(true)
+                .globalHiddenQueryParam("hello")
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
+            .build();
+
+        SimpleObject req = SimpleObject.builder()
+                .any("any")
+                .bool(true)
+                .date(LocalDate.parse("2020-01-01"))
+                .dateTime(OffsetDateTime.parse("2020-01-01T00:00:00.001Z"))
+                .enum_(Enum.ONE)
+                .float32(1.1f)
+                .int_(1L)
+                .int32(1)
+                .int32Enum(Int32Enum.FIFTY_FIVE)
+                .intEnum(IntEnum.Second)
+                .num(1.1d)
+                .str("test")
+                .bigint(new BigInteger("8821239038968084"))
+                .bigintStr(new BigInteger("9223372036854775808"))
+                .boolOpt(true)
+                .decimal(new BigDecimal("3.141592653589793"))
+                .decimalStr(new BigDecimal("3.14159265358979344719667586"))
+                .float64Str("1.1")
+                .int64Str("100")
+                .strOpt("testOptional")
                 .build();
 
-            org.openapis.openapi.models.shared.SimpleObject req = new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, Int32Enum.FIFTY_FIVE, IntEnum.Second, 1.1d, "test"){{
-                bigint = 8821239038968084L;
-                bigintStr = "9223372036854775808";
-                boolOpt = true;
-                decimal = 3.141592653589793d;
-                decimalStr = "3.14159265358979344719667586";
-                intOptNull = 30389L;
-                numOptNull = 3765.71d;
-                strOpt = "testOptional";
-            }};            
+        RequestBodyPostApplicationJsonSimpleResponse res = sdk.requestBodies().requestBodyPostApplicationJsonSimple()
+                .request(req)
+                .call();
 
-            RequestBodyPostApplicationJsonSimpleResponse res = sdk.requestBodies.requestBodyPostApplicationJsonSimple(req);
-
-            if (res.res != null) {
-                // handle response
-            }
-        } catch (Exception e) {
-            // handle exception
+        if (res.res().isPresent()) {
+            // handle response
         }
     }
 }
@@ -2091,15 +3363,19 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                                              | Type                                                                                   | Required                                                                               | Description                                                                            |
-| -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
-| `request`                                                                              | [org.openapis.openapi.models.shared.SimpleObject](../../models/shared/SimpleObject.md) | :heavy_check_mark:                                                                     | The request object to use for the request.                                             |
-
+| Parameter                                           | Type                                                | Required                                            | Description                                         |
+| --------------------------------------------------- | --------------------------------------------------- | --------------------------------------------------- | --------------------------------------------------- |
+| `request`                                           | [SimpleObject](../../models/shared/SimpleObject.md) | :heavy_check_mark:                                  | The request object to use for the request.          |
 
 ### Response
 
-**[org.openapis.openapi.models.operations.RequestBodyPostApplicationJsonSimpleResponse](../../models/operations/RequestBodyPostApplicationJsonSimpleResponse.md)**
+**[RequestBodyPostApplicationJsonSimpleResponse](../../models/operations/RequestBodyPostApplicationJsonSimpleResponse.md)**
 
+### Errors
+
+| Error Type             | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
 
 ## requestBodyPostApplicationJsonSimpleCamelCase
 
@@ -2108,6 +3384,7 @@ public class Application {
 ```java
 package hello.world;
 
+import java.lang.Exception;
 import java.time.LocalDate;
 import java.time.OffsetDateTime;
 import org.openapis.openapi.SDK;
@@ -2119,33 +3396,44 @@ import org.openapis.openapi.models.shared.Security;
 import org.openapis.openapi.models.shared.SimpleObjectCamelCase;
 
 public class Application {
-    public static void main(String[] args) {
-        try {
-            SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
-                    apiKeyAuth = "Token YOUR_API_KEY";
-                }})
-                .setGlobalPathParam(100L)
-                .setGlobalQueryParam("some example global query param")
+
+    public static void main(String[] args) throws Exception {
+
+        SDK sdk = SDK.builder()
+                .security(Security.builder()
+                    .apiKeyAuth("Token YOUR_API_KEY")
+                    .build())
+                .globalHeaderParam(true)
+                .globalHiddenQueryParam("hello")
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
+            .build();
+
+        SimpleObjectCamelCase req = SimpleObjectCamelCase.builder()
+                .anyVal("any example")
+                .boolVal(true)
+                .dateTimeVal(OffsetDateTime.parse("2020-01-01T00:00:00.001Z"))
+                .dateVal(LocalDate.parse("2020-01-01"))
+                .enumVal(Enum.ONE)
+                .float32Val(2.2222222f)
+                .int32EnumVal(Int32EnumVal.SIXTY_NINE)
+                .int32Val(1)
+                .intEnumVal(IntEnumVal.Third)
+                .intVal(999999L)
+                .numVal(1.1d)
+                .strVal("example")
+                .boolOptVal(true)
+                .intOptNullVal(999999L)
+                .numOptNullVal(1.1d)
+                .strOptVal("optional example")
                 .build();
 
-            org.openapis.openapi.models.shared.SimpleObjectCamelCase req = new SimpleObjectCamelCase("any example", true, OffsetDateTime.parse("2020-01-01T00:00:00Z"), LocalDate.parse("2020-01-01"), Enum.ONE, 2.2222222f, Int32EnumVal.SIXTY_NINE, 1, IntEnumVal.Third, 999999L, 1.1d, "example"){{
-                bigintStrVal = "string";
-                bigintVal = 281697L;
-                boolOptVal = true;
-                decimalVal = 9976.38d;
-                intOptNullVal = 999999L;
-                numOptNullVal = 1.1d;
-                strOptVal = "optional example";
-            }};            
+        RequestBodyPostApplicationJsonSimpleCamelCaseResponse res = sdk.requestBodies().requestBodyPostApplicationJsonSimpleCamelCase()
+                .request(req)
+                .call();
 
-            RequestBodyPostApplicationJsonSimpleCamelCaseResponse res = sdk.requestBodies.requestBodyPostApplicationJsonSimpleCamelCase(req);
-
-            if (res.res != null) {
-                // handle response
-            }
-        } catch (Exception e) {
-            // handle exception
+        if (res.res().isPresent()) {
+            // handle response
         }
     }
 }
@@ -2153,15 +3441,19 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                                                                | Type                                                                                                     | Required                                                                                                 | Description                                                                                              |
-| -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
-| `request`                                                                                                | [org.openapis.openapi.models.shared.SimpleObjectCamelCase](../../models/shared/SimpleObjectCamelCase.md) | :heavy_check_mark:                                                                                       | The request object to use for the request.                                                               |
-
+| Parameter                                                             | Type                                                                  | Required                                                              | Description                                                           |
+| --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- |
+| `request`                                                             | [SimpleObjectCamelCase](../../models/shared/SimpleObjectCamelCase.md) | :heavy_check_mark:                                                    | The request object to use for the request.                            |
 
 ### Response
 
-**[org.openapis.openapi.models.operations.RequestBodyPostApplicationJsonSimpleCamelCaseResponse](../../models/operations/RequestBodyPostApplicationJsonSimpleCamelCaseResponse.md)**
+**[RequestBodyPostApplicationJsonSimpleCamelCaseResponse](../../models/operations/RequestBodyPostApplicationJsonSimpleCamelCaseResponse.md)**
 
+### Errors
+
+| Error Type             | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
 
 ## requestBodyPostComplexNumberTypes
 
@@ -2170,6 +3462,9 @@ public class Application {
 ```java
 package hello.world;
 
+import java.lang.Exception;
+import java.math.BigDecimal;
+import java.math.BigInteger;
 import org.openapis.openapi.SDK;
 import org.openapis.openapi.models.operations.RequestBodyPostComplexNumberTypesRequest;
 import org.openapis.openapi.models.operations.RequestBodyPostComplexNumberTypesResponse;
@@ -2177,25 +3472,42 @@ import org.openapis.openapi.models.shared.ComplexNumberTypes;
 import org.openapis.openapi.models.shared.Security;
 
 public class Application {
-    public static void main(String[] args) {
-        try {
-            SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
-                    apiKeyAuth = "Token YOUR_API_KEY";
-                }})
-                .setGlobalPathParam(100L)
-                .setGlobalQueryParam("some example global query param")
+
+    public static void main(String[] args) throws Exception {
+
+        SDK sdk = SDK.builder()
+                .security(Security.builder()
+                    .apiKeyAuth("Token YOUR_API_KEY")
+                    .build())
+                .globalHeaderParam(true)
+                .globalHiddenQueryParam("hello")
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
+            .build();
+
+        RequestBodyPostComplexNumberTypesRequest req = RequestBodyPostComplexNumberTypesRequest.builder()
+                .complexNumberTypes(ComplexNumberTypes.builder()
+                    .bigint(new BigInteger("8821239038968084"))
+                    .bigintStr(new BigInteger("9223372036854775808"))
+                    .decimal(new BigDecimal("3.141592653589793"))
+                    .decimalStr(new BigDecimal("3.14159265358979344719667586"))
+                    .build())
+                .pathBigInt(new BigInteger("8821239038968084"))
+                .pathBigIntStr(new BigInteger("9223372036854775808"))
+                .pathDecimal(new BigDecimal("3.141592653589793"))
+                .pathDecimalStr(new BigDecimal("3.14159265358979344719667586"))
+                .queryBigInt(new BigInteger("8821239038968084"))
+                .queryBigIntStr(new BigInteger("9223372036854775808"))
+                .queryDecimal(new BigDecimal("3.141592653589793"))
+                .queryDecimalStr(new BigDecimal("3.14159265358979344719667586"))
                 .build();
 
-            RequestBodyPostComplexNumberTypesRequest req = new RequestBodyPostComplexNumberTypesRequest(new ComplexNumberTypes(765757L, "string", 9344.87d, "string"), 250514L, "string", 6831.11d, "string", 500580L, "string", 7419.03d, "string");            
+        RequestBodyPostComplexNumberTypesResponse res = sdk.requestBodies().requestBodyPostComplexNumberTypes()
+                .request(req)
+                .call();
 
-            RequestBodyPostComplexNumberTypesResponse res = sdk.requestBodies.requestBodyPostComplexNumberTypes(req);
-
-            if (res.object != null) {
-                // handle response
-            }
-        } catch (Exception e) {
-            // handle exception
+        if (res.object().isPresent()) {
+            // handle response
         }
     }
 }
@@ -2203,15 +3515,19 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                                                                                                              | Type                                                                                                                                                   | Required                                                                                                                                               | Description                                                                                                                                            |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                              | [org.openapis.openapi.models.operations.RequestBodyPostComplexNumberTypesRequest](../../models/operations/RequestBodyPostComplexNumberTypesRequest.md) | :heavy_check_mark:                                                                                                                                     | The request object to use for the request.                                                                                                             |
-
+| Parameter                                                                                                       | Type                                                                                                            | Required                                                                                                        | Description                                                                                                     |
+| --------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
+| `request`                                                                                                       | [RequestBodyPostComplexNumberTypesRequest](../../models/operations/RequestBodyPostComplexNumberTypesRequest.md) | :heavy_check_mark:                                                                                              | The request object to use for the request.                                                                      |
 
 ### Response
 
-**[org.openapis.openapi.models.operations.RequestBodyPostComplexNumberTypesResponse](../../models/operations/RequestBodyPostComplexNumberTypesResponse.md)**
+**[RequestBodyPostComplexNumberTypesResponse](../../models/operations/RequestBodyPostComplexNumberTypesResponse.md)**
 
+### Errors
+
+| Error Type             | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
 
 ## requestBodyPostDefaultsAndConsts
 
@@ -2220,52 +3536,36 @@ public class Application {
 ```java
 package hello.world;
 
-import java.time.LocalDate;
-import java.time.OffsetDateTime;
+import java.lang.Exception;
 import org.openapis.openapi.SDK;
 import org.openapis.openapi.models.operations.RequestBodyPostDefaultsAndConstsResponse;
-import org.openapis.openapi.models.shared.ConstEnumInt;
-import org.openapis.openapi.models.shared.ConstEnumStr;
-import org.openapis.openapi.models.shared.DefaultEnumInt;
-import org.openapis.openapi.models.shared.DefaultEnumStr;
 import org.openapis.openapi.models.shared.DefaultsAndConsts;
 import org.openapis.openapi.models.shared.Security;
 
 public class Application {
-    public static void main(String[] args) {
-        try {
-            SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
-                    apiKeyAuth = "Token YOUR_API_KEY";
-                }})
-                .setGlobalPathParam(100L)
-                .setGlobalQueryParam("some example global query param")
+
+    public static void main(String[] args) throws Exception {
+
+        SDK sdk = SDK.builder()
+                .security(Security.builder()
+                    .apiKeyAuth("Token YOUR_API_KEY")
+                    .build())
+                .globalHeaderParam(true)
+                .globalHiddenQueryParam("hello")
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
+            .build();
+
+        DefaultsAndConsts req = DefaultsAndConsts.builder()
+                .normalField("test")
                 .build();
 
-            org.openapis.openapi.models.shared.DefaultsAndConsts req = new DefaultsAndConsts(559205L, "string", false, LocalDate.parse("2021-09-13"), OffsetDateTime.parse("2022-12-15T04:16:08.794Z"), 9160.69d, "string", ConstEnumInt.ONE, ConstEnumStr.THREE, 299545L, 4612.63d, "string", "string", "string"){{
-                defaultBigInt = 450379L;
-                defaultBigIntStr = "string";
-                defaultBool = false;
-                defaultDate = LocalDate.parse("2023-04-28");
-                defaultDateTime = OffsetDateTime.parse("2021-10-01T11:08:55.738Z");
-                defaultDecimal = 4585.94d;
-                defaultDecimalStr = "string";
-                defaultEnumInt = DefaultEnumInt.TWO;
-                defaultEnumStr = DefaultEnumStr.ONE;
-                defaultInt = 788517L;
-                defaultNum = 639.73d;
-                defaultStr = "string";
-                defaultStrNullable = "string";
-                defaultStrOptional = "string";
-            }};            
+        RequestBodyPostDefaultsAndConstsResponse res = sdk.requestBodies().requestBodyPostDefaultsAndConsts()
+                .request(req)
+                .call();
 
-            RequestBodyPostDefaultsAndConstsResponse res = sdk.requestBodies.requestBodyPostDefaultsAndConsts(req);
-
-            if (res.object != null) {
-                // handle response
-            }
-        } catch (Exception e) {
-            // handle exception
+        if (res.object().isPresent()) {
+            // handle response
         }
     }
 }
@@ -2273,15 +3573,76 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                                                        | Type                                                                                             | Required                                                                                         | Description                                                                                      |
-| ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ |
-| `request`                                                                                        | [org.openapis.openapi.models.shared.DefaultsAndConsts](../../models/shared/DefaultsAndConsts.md) | :heavy_check_mark:                                                                               | The request object to use for the request.                                                       |
-
+| Parameter                                                     | Type                                                          | Required                                                      | Description                                                   |
+| ------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------- |
+| `request`                                                     | [DefaultsAndConsts](../../models/shared/DefaultsAndConsts.md) | :heavy_check_mark:                                            | The request object to use for the request.                    |
 
 ### Response
 
-**[org.openapis.openapi.models.operations.RequestBodyPostDefaultsAndConstsResponse](../../models/operations/RequestBodyPostDefaultsAndConstsResponse.md)**
+**[RequestBodyPostDefaultsAndConstsResponse](../../models/operations/RequestBodyPostDefaultsAndConstsResponse.md)**
 
+### Errors
+
+| Error Type             | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+
+## requestBodyPostEmptyBodyRetainedWithAllOptionalFields
+
+### Example Usage
+
+```java
+package hello.world;
+
+import java.lang.Exception;
+import org.openapis.openapi.SDK;
+import org.openapis.openapi.models.operations.RequestBodyPostEmptyBodyRetainedWithAllOptionalFieldsRequestBody;
+import org.openapis.openapi.models.operations.RequestBodyPostEmptyBodyRetainedWithAllOptionalFieldsResponse;
+import org.openapis.openapi.models.shared.Security;
+
+public class Application {
+
+    public static void main(String[] args) throws Exception {
+
+        SDK sdk = SDK.builder()
+                .security(Security.builder()
+                    .apiKeyAuth("Token YOUR_API_KEY")
+                    .build())
+                .globalHeaderParam(true)
+                .globalHiddenQueryParam("hello")
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
+            .build();
+
+        RequestBodyPostEmptyBodyRetainedWithAllOptionalFieldsRequestBody req = RequestBodyPostEmptyBodyRetainedWithAllOptionalFieldsRequestBody.builder()
+                .build();
+
+        RequestBodyPostEmptyBodyRetainedWithAllOptionalFieldsResponse res = sdk.requestBodies().requestBodyPostEmptyBodyRetainedWithAllOptionalFields()
+                .request(req)
+                .call();
+
+        if (res.object().isPresent()) {
+            // handle response
+        }
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                       | Type                                                                                                                                                            | Required                                                                                                                                                        | Description                                                                                                                                                     |
+| --------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `request`                                                                                                                                                       | [RequestBodyPostEmptyBodyRetainedWithAllOptionalFieldsRequestBody](../../models/operations/RequestBodyPostEmptyBodyRetainedWithAllOptionalFieldsRequestBody.md) | :heavy_check_mark:                                                                                                                                              | The request object to use for the request.                                                                                                                      |
+
+### Response
+
+**[RequestBodyPostEmptyBodyRetainedWithAllOptionalFieldsResponse](../../models/operations/RequestBodyPostEmptyBodyRetainedWithAllOptionalFieldsResponse.md)**
+
+### Errors
+
+| Error Type             | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
 
 ## requestBodyPostEmptyObject
 
@@ -2290,36 +3651,35 @@ public class Application {
 ```java
 package hello.world;
 
+import java.lang.Exception;
 import org.openapis.openapi.SDK;
-import org.openapis.openapi.models.operations.Empty;
-import org.openapis.openapi.models.operations.EmptyWithEmptyProperties;
 import org.openapis.openapi.models.operations.RequestBodyPostEmptyObjectRequestBody;
 import org.openapis.openapi.models.operations.RequestBodyPostEmptyObjectResponse;
 import org.openapis.openapi.models.shared.Security;
 
 public class Application {
-    public static void main(String[] args) {
-        try {
-            SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
-                    apiKeyAuth = "Token YOUR_API_KEY";
-                }})
-                .setGlobalPathParam(100L)
-                .setGlobalQueryParam("some example global query param")
+
+    public static void main(String[] args) throws Exception {
+
+        SDK sdk = SDK.builder()
+                .security(Security.builder()
+                    .apiKeyAuth("Token YOUR_API_KEY")
+                    .build())
+                .globalHeaderParam(true)
+                .globalHiddenQueryParam("hello")
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
+            .build();
+
+        RequestBodyPostEmptyObjectRequestBody req = RequestBodyPostEmptyObjectRequestBody.builder()
                 .build();
 
-            RequestBodyPostEmptyObjectRequestBody req = new RequestBodyPostEmptyObjectRequestBody(){{
-                empty = new Empty();
-                emptyWithEmptyProperties = new EmptyWithEmptyProperties();
-            }};            
+        RequestBodyPostEmptyObjectResponse res = sdk.requestBodies().requestBodyPostEmptyObject()
+                .request(req)
+                .call();
 
-            RequestBodyPostEmptyObjectResponse res = sdk.requestBodies.requestBodyPostEmptyObject(req);
-
-            if (res.object != null) {
-                // handle response
-            }
-        } catch (Exception e) {
-            // handle exception
+        if (res.object().isPresent()) {
+            // handle response
         }
     }
 }
@@ -2327,15 +3687,19 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                                                                                                        | Type                                                                                                                                             | Required                                                                                                                                         | Description                                                                                                                                      |
-| ------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                        | [org.openapis.openapi.models.operations.RequestBodyPostEmptyObjectRequestBody](../../models/operations/RequestBodyPostEmptyObjectRequestBody.md) | :heavy_check_mark:                                                                                                                               | The request object to use for the request.                                                                                                       |
-
+| Parameter                                                                                                 | Type                                                                                                      | Required                                                                                                  | Description                                                                                               |
+| --------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- |
+| `request`                                                                                                 | [RequestBodyPostEmptyObjectRequestBody](../../models/operations/RequestBodyPostEmptyObjectRequestBody.md) | :heavy_check_mark:                                                                                        | The request object to use for the request.                                                                |
 
 ### Response
 
-**[org.openapis.openapi.models.operations.RequestBodyPostEmptyObjectResponse](../../models/operations/RequestBodyPostEmptyObjectResponse.md)**
+**[RequestBodyPostEmptyObjectResponse](../../models/operations/RequestBodyPostEmptyObjectResponse.md)**
 
+### Errors
+
+| Error Type             | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
 
 ## requestBodyPostFormDeep
 
@@ -2344,10 +3708,16 @@ public class Application {
 ```java
 package hello.world;
 
+import java.lang.Exception;
+import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.time.LocalDate;
 import java.time.OffsetDateTime;
+import java.util.List;
+import java.util.Map;
 import org.openapis.openapi.SDK;
 import org.openapis.openapi.models.operations.RequestBodyPostFormDeepResponse;
+import org.openapis.openapi.models.shared.Any;
 import org.openapis.openapi.models.shared.DeepObject;
 import org.openapis.openapi.models.shared.Enum;
 import org.openapis.openapi.models.shared.Int32Enum;
@@ -2356,118 +3726,166 @@ import org.openapis.openapi.models.shared.Security;
 import org.openapis.openapi.models.shared.SimpleObject;
 
 public class Application {
-    public static void main(String[] args) {
-        try {
-            SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
-                    apiKeyAuth = "Token YOUR_API_KEY";
-                }})
-                .setGlobalPathParam(100L)
-                .setGlobalQueryParam("some example global query param")
+
+    public static void main(String[] args) throws Exception {
+
+        SDK sdk = SDK.builder()
+                .security(Security.builder()
+                    .apiKeyAuth("Token YOUR_API_KEY")
+                    .build())
+                .globalHeaderParam(true)
+                .globalHiddenQueryParam("hello")
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
+            .build();
+
+        DeepObject req = DeepObject.builder()
+                .any(Any.of(SimpleObject.builder()
+                    .any("any")
+                    .bool(true)
+                    .date(LocalDate.parse("2020-01-01"))
+                    .dateTime(OffsetDateTime.parse("2020-01-01T00:00:00.001Z"))
+                    .enum_(Enum.ONE)
+                    .float32(1.1f)
+                    .int_(1L)
+                    .int32(1)
+                    .int32Enum(Int32Enum.FIFTY_FIVE)
+                    .intEnum(IntEnum.Second)
+                    .num(1.1d)
+                    .str("test")
+                    .bigint(new BigInteger("8821239038968084"))
+                    .bigintStr(new BigInteger("9223372036854775808"))
+                    .boolOpt(true)
+                    .decimal(new BigDecimal("3.141592653589793"))
+                    .decimalStr(new BigDecimal("3.14159265358979344719667586"))
+                    .float64Str("1.1")
+                    .int64Str("100")
+                    .strOpt("testOptional")
+                    .build()))
+                .arr(List.of(
+                    SimpleObject.builder()
+                        .any("any")
+                        .bool(true)
+                        .date(LocalDate.parse("2020-01-01"))
+                        .dateTime(OffsetDateTime.parse("2020-01-01T00:00:00.001Z"))
+                        .enum_(Enum.ONE)
+                        .float32(1.1f)
+                        .int_(1L)
+                        .int32(1)
+                        .int32Enum(Int32Enum.FIFTY_FIVE)
+                        .intEnum(IntEnum.Second)
+                        .num(1.1d)
+                        .str("test")
+                        .bigint(new BigInteger("8821239038968084"))
+                        .bigintStr(new BigInteger("9223372036854775808"))
+                        .boolOpt(true)
+                        .decimal(new BigDecimal("3.141592653589793"))
+                        .decimalStr(new BigDecimal("3.14159265358979344719667586"))
+                        .float64Str("1.1")
+                        .int64Str("100")
+                        .strOpt("testOptional")
+                        .build(),
+                    SimpleObject.builder()
+                        .any("any")
+                        .bool(true)
+                        .date(LocalDate.parse("2020-01-01"))
+                        .dateTime(OffsetDateTime.parse("2020-01-01T00:00:00.001Z"))
+                        .enum_(Enum.ONE)
+                        .float32(1.1f)
+                        .int_(1L)
+                        .int32(1)
+                        .int32Enum(Int32Enum.FIFTY_FIVE)
+                        .intEnum(IntEnum.Second)
+                        .num(1.1d)
+                        .str("test")
+                        .bigint(new BigInteger("8821239038968084"))
+                        .bigintStr(new BigInteger("9223372036854775808"))
+                        .boolOpt(true)
+                        .decimal(new BigDecimal("3.141592653589793"))
+                        .decimalStr(new BigDecimal("3.14159265358979344719667586"))
+                        .float64Str("1.1")
+                        .int64Str("100")
+                        .strOpt("testOptional")
+                        .build()))
+                .bool(true)
+                .int_(1L)
+                .map(Map.ofEntries(
+                    Map.entry("key", SimpleObject.builder()
+                        .any("any")
+                        .bool(true)
+                        .date(LocalDate.parse("2020-01-01"))
+                        .dateTime(OffsetDateTime.parse("2020-01-01T00:00:00.001Z"))
+                        .enum_(Enum.ONE)
+                        .float32(1.1f)
+                        .int_(1L)
+                        .int32(1)
+                        .int32Enum(Int32Enum.FIFTY_FIVE)
+                        .intEnum(IntEnum.Second)
+                        .num(1.1d)
+                        .str("test")
+                        .bigint(new BigInteger("8821239038968084"))
+                        .bigintStr(new BigInteger("9223372036854775808"))
+                        .boolOpt(true)
+                        .decimal(new BigDecimal("3.141592653589793"))
+                        .decimalStr(new BigDecimal("3.14159265358979344719667586"))
+                        .float64Str("1.1")
+                        .int64Str("100")
+                        .strOpt("testOptional")
+                        .build()),
+                    Map.entry("key2", SimpleObject.builder()
+                        .any("any")
+                        .bool(true)
+                        .date(LocalDate.parse("2020-01-01"))
+                        .dateTime(OffsetDateTime.parse("2020-01-01T00:00:00.001Z"))
+                        .enum_(Enum.ONE)
+                        .float32(1.1f)
+                        .int_(1L)
+                        .int32(1)
+                        .int32Enum(Int32Enum.FIFTY_FIVE)
+                        .intEnum(IntEnum.Second)
+                        .num(1.1d)
+                        .str("test")
+                        .bigint(new BigInteger("8821239038968084"))
+                        .bigintStr(new BigInteger("9223372036854775808"))
+                        .boolOpt(true)
+                        .decimal(new BigDecimal("3.141592653589793"))
+                        .decimalStr(new BigDecimal("3.14159265358979344719667586"))
+                        .float64Str("1.1")
+                        .int64Str("100")
+                        .strOpt("testOptional")
+                        .build())))
+                .num(1.1d)
+                .obj(SimpleObject.builder()
+                    .any("any")
+                    .bool(true)
+                    .date(LocalDate.parse("2020-01-01"))
+                    .dateTime(OffsetDateTime.parse("2020-01-01T00:00:00.001Z"))
+                    .enum_(Enum.ONE)
+                    .float32(1.1f)
+                    .int_(1L)
+                    .int32(1)
+                    .int32Enum(Int32Enum.FIFTY_FIVE)
+                    .intEnum(IntEnum.Second)
+                    .num(1.1d)
+                    .str("test")
+                    .bigint(new BigInteger("8821239038968084"))
+                    .bigintStr(new BigInteger("9223372036854775808"))
+                    .boolOpt(true)
+                    .decimal(new BigDecimal("3.141592653589793"))
+                    .decimalStr(new BigDecimal("3.14159265358979344719667586"))
+                    .float64Str("1.1")
+                    .int64Str("100")
+                    .strOpt("testOptional")
+                    .build())
+                .str("test")
                 .build();
 
-            org.openapis.openapi.models.shared.DeepObject req = new DeepObject("anyOf[0]", new org.openapis.openapi.models.shared.SimpleObject[]{{
-    add(new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, Int32Enum.FIFTY_FIVE, IntEnum.Second, 1.1d, "test"){{
-        any = "any";
-        bigint = 8821239038968084L;
-        bigintStr = "9223372036854775808";
-        bool = true;
-        boolOpt = true;
-        date = LocalDate.parse("2020-01-01");
-        dateTime = OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z");
-        decimal = 3.141592653589793d;
-        decimalStr = "3.14159265358979344719667586";
-        enum_ = Enum.ONE;
-        float32 = 1.1f;
-        int_ = 1L;
-        int32 = 1;
-        int32Enum = Int32Enum.FIFTY_FIVE;
-        intEnum = IntEnum.Second;
-        num = 1.1d;
-        str = "test";
-        strOpt = "testOptional";
-    }}),
-    add(new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, Int32Enum.FIFTY_FIVE, IntEnum.Second, 1.1d, "test"){{
-        any = "any";
-        bigint = 8821239038968084L;
-        bigintStr = "9223372036854775808";
-        bool = true;
-        boolOpt = true;
-        date = LocalDate.parse("2020-01-01");
-        dateTime = OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z");
-        decimal = 3.141592653589793d;
-        decimalStr = "3.14159265358979344719667586";
-        enum_ = Enum.ONE;
-        float32 = 1.1f;
-        int_ = 1L;
-        int32 = 1;
-        int32Enum = Int32Enum.FIFTY_FIVE;
-        intEnum = IntEnum.Second;
-        num = 1.1d;
-        str = "test";
-        strOpt = "testOptional";
-    }}),
-}}, true, 1L, new java.util.HashMap<String, org.openapis.openapi.models.shared.SimpleObject>(){{
-    put("key", new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, Int32Enum.FIFTY_FIVE, IntEnum.Second, 1.1d, "test"){{
-        any = "any";
-        bigint = 8821239038968084L;
-        bigintStr = "9223372036854775808";
-        bool = true;
-        boolOpt = true;
-        date = LocalDate.parse("2020-01-01");
-        dateTime = OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z");
-        decimal = 3.141592653589793d;
-        decimalStr = "3.14159265358979344719667586";
-        enum_ = Enum.ONE;
-        float32 = 1.1f;
-        int_ = 1L;
-        int32 = 1;
-        int32Enum = Int32Enum.FIFTY_FIVE;
-        intEnum = IntEnum.Second;
-        num = 1.1d;
-        str = "test";
-        strOpt = "testOptional";
-    }});
-    put("key2", new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, Int32Enum.FIFTY_FIVE, IntEnum.Second, 1.1d, "test"){{
-        any = "any";
-        bigint = 8821239038968084L;
-        bigintStr = "9223372036854775808";
-        bool = true;
-        boolOpt = true;
-        date = LocalDate.parse("2020-01-01");
-        dateTime = OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z");
-        decimal = 3.141592653589793d;
-        decimalStr = "3.14159265358979344719667586";
-        enum_ = Enum.ONE;
-        float32 = 1.1f;
-        int_ = 1L;
-        int32 = 1;
-        int32Enum = Int32Enum.FIFTY_FIVE;
-        intEnum = IntEnum.Second;
-        num = 1.1d;
-        str = "test";
-        strOpt = "testOptional";
-    }});
-}}, 1.1d, new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, Int32Enum.FIFTY_FIVE, IntEnum.Second, 1.1d, "test"){{
-bigint = 8821239038968084L;
-bigintStr = "9223372036854775808";
-boolOpt = true;
-decimal = 3.141592653589793d;
-decimalStr = "3.14159265358979344719667586";
-intOptNull = 919389L;
-numOptNull = 467.92d;
-strOpt = "testOptional";
-}}, "test"){{
-                type = "string";
-            }};            
+        RequestBodyPostFormDeepResponse res = sdk.requestBodies().requestBodyPostFormDeep()
+                .request(req)
+                .call();
 
-            RequestBodyPostFormDeepResponse res = sdk.requestBodies.requestBodyPostFormDeep(req);
-
-            if (res.res != null) {
-                // handle response
-            }
-        } catch (Exception e) {
-            // handle exception
+        if (res.res().isPresent()) {
+            // handle response
         }
     }
 }
@@ -2475,15 +3893,19 @@ strOpt = "testOptional";
 
 ### Parameters
 
-| Parameter                                                                          | Type                                                                               | Required                                                                           | Description                                                                        |
-| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| `request`                                                                          | [org.openapis.openapi.models.shared.DeepObject](../../models/shared/DeepObject.md) | :heavy_check_mark:                                                                 | The request object to use for the request.                                         |
-
+| Parameter                                       | Type                                            | Required                                        | Description                                     |
+| ----------------------------------------------- | ----------------------------------------------- | ----------------------------------------------- | ----------------------------------------------- |
+| `request`                                       | [DeepObject](../../models/shared/DeepObject.md) | :heavy_check_mark:                              | The request object to use for the request.      |
 
 ### Response
 
-**[org.openapis.openapi.models.operations.RequestBodyPostFormDeepResponse](../../models/operations/RequestBodyPostFormDeepResponse.md)**
+**[RequestBodyPostFormDeepResponse](../../models/operations/RequestBodyPostFormDeepResponse.md)**
 
+### Errors
+
+| Error Type             | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
 
 ## requestBodyPostFormMapPrimitive
 
@@ -2492,32 +3914,38 @@ strOpt = "testOptional";
 ```java
 package hello.world;
 
+import java.lang.Exception;
+import java.lang.String;
+import java.util.Map;
 import org.openapis.openapi.SDK;
 import org.openapis.openapi.models.operations.RequestBodyPostFormMapPrimitiveResponse;
 import org.openapis.openapi.models.shared.Security;
 
 public class Application {
-    public static void main(String[] args) {
-        try {
-            SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
-                    apiKeyAuth = "Token YOUR_API_KEY";
-                }})
-                .setGlobalPathParam(100L)
-                .setGlobalQueryParam("some example global query param")
-                .build();
 
-            org.openapis.openapi.models.. req =             new java.util.HashMap<String, String>(){{
-                put("key", "string");
-            }};            
+    public static void main(String[] args) throws Exception {
 
-            RequestBodyPostFormMapPrimitiveResponse res = sdk.requestBodies.requestBodyPostFormMapPrimitive(req);
+        SDK sdk = SDK.builder()
+                .security(Security.builder()
+                    .apiKeyAuth("Token YOUR_API_KEY")
+                    .build())
+                .globalHeaderParam(true)
+                .globalHiddenQueryParam("hello")
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
+            .build();
 
-            if (res.res != null) {
-                // handle response
-            }
-        } catch (Exception e) {
-            // handle exception
+        Map<String, String> req = Map.ofEntries(
+                Map.entry("key1", "value1"),
+                Map.entry("key2", "value2"),
+                Map.entry("key3", "value3"));
+
+        RequestBodyPostFormMapPrimitiveResponse res = sdk.requestBodies().requestBodyPostFormMapPrimitive()
+                .request(req)
+                .call();
+
+        if (res.res().isPresent()) {
+            // handle response
         }
     }
 }
@@ -2525,15 +3953,19 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                          | Type                                               | Required                                           | Description                                        |
-| -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- |
-| `request`                                          | [java.util.Map<String, String>](../../models//.md) | :heavy_check_mark:                                 | The request object to use for the request.         |
-
+| Parameter                                  | Type                                       | Required                                   | Description                                |
+| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
+| `request`                                  | [Map<String, String>](../../models//.md)   | :heavy_check_mark:                         | The request object to use for the request. |
 
 ### Response
 
-**[org.openapis.openapi.models.operations.RequestBodyPostFormMapPrimitiveResponse](../../models/operations/RequestBodyPostFormMapPrimitiveResponse.md)**
+**[RequestBodyPostFormMapPrimitiveResponse](../../models/operations/RequestBodyPostFormMapPrimitiveResponse.md)**
 
+### Errors
+
+| Error Type             | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
 
 ## requestBodyPostFormSimple
 
@@ -2542,6 +3974,9 @@ public class Application {
 ```java
 package hello.world;
 
+import java.lang.Exception;
+import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.time.LocalDate;
 import java.time.OffsetDateTime;
 import org.openapis.openapi.SDK;
@@ -2553,34 +3988,48 @@ import org.openapis.openapi.models.shared.Security;
 import org.openapis.openapi.models.shared.SimpleObject;
 
 public class Application {
-    public static void main(String[] args) {
-        try {
-            SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
-                    apiKeyAuth = "Token YOUR_API_KEY";
-                }})
-                .setGlobalPathParam(100L)
-                .setGlobalQueryParam("some example global query param")
+
+    public static void main(String[] args) throws Exception {
+
+        SDK sdk = SDK.builder()
+                .security(Security.builder()
+                    .apiKeyAuth("Token YOUR_API_KEY")
+                    .build())
+                .globalHeaderParam(true)
+                .globalHiddenQueryParam("hello")
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
+            .build();
+
+        SimpleObject req = SimpleObject.builder()
+                .any("any")
+                .bool(true)
+                .date(LocalDate.parse("2020-01-01"))
+                .dateTime(OffsetDateTime.parse("2020-01-01T00:00:00.001Z"))
+                .enum_(Enum.ONE)
+                .float32(1.1f)
+                .int_(1L)
+                .int32(1)
+                .int32Enum(Int32Enum.FIFTY_FIVE)
+                .intEnum(IntEnum.Second)
+                .num(1.1d)
+                .str("test")
+                .bigint(new BigInteger("8821239038968084"))
+                .bigintStr(new BigInteger("9223372036854775808"))
+                .boolOpt(true)
+                .decimal(new BigDecimal("3.141592653589793"))
+                .decimalStr(new BigDecimal("3.14159265358979344719667586"))
+                .float64Str("1.1")
+                .int64Str("100")
+                .strOpt("testOptional")
                 .build();
 
-            org.openapis.openapi.models.shared.SimpleObject req = new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, Int32Enum.FIFTY_FIVE, IntEnum.Second, 1.1d, "test"){{
-                bigint = 8821239038968084L;
-                bigintStr = "9223372036854775808";
-                boolOpt = true;
-                decimal = 3.141592653589793d;
-                decimalStr = "3.14159265358979344719667586";
-                intOptNull = 654105L;
-                numOptNull = 2933.88d;
-                strOpt = "testOptional";
-            }};            
+        RequestBodyPostFormSimpleResponse res = sdk.requestBodies().requestBodyPostFormSimple()
+                .request(req)
+                .call();
 
-            RequestBodyPostFormSimpleResponse res = sdk.requestBodies.requestBodyPostFormSimple(req);
-
-            if (res.res != null) {
-                // handle response
-            }
-        } catch (Exception e) {
-            // handle exception
+        if (res.res().isPresent()) {
+            // handle response
         }
     }
 }
@@ -2588,15 +4037,19 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                                              | Type                                                                                   | Required                                                                               | Description                                                                            |
-| -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
-| `request`                                                                              | [org.openapis.openapi.models.shared.SimpleObject](../../models/shared/SimpleObject.md) | :heavy_check_mark:                                                                     | The request object to use for the request.                                             |
-
+| Parameter                                           | Type                                                | Required                                            | Description                                         |
+| --------------------------------------------------- | --------------------------------------------------- | --------------------------------------------------- | --------------------------------------------------- |
+| `request`                                           | [SimpleObject](../../models/shared/SimpleObject.md) | :heavy_check_mark:                                  | The request object to use for the request.          |
 
 ### Response
 
-**[org.openapis.openapi.models.operations.RequestBodyPostFormSimpleResponse](../../models/operations/RequestBodyPostFormSimpleResponse.md)**
+**[RequestBodyPostFormSimpleResponse](../../models/operations/RequestBodyPostFormSimpleResponse.md)**
 
+### Errors
+
+| Error Type             | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
 
 ## requestBodyPostJsonDataTypesArrayBigInt
 
@@ -2605,32 +4058,36 @@ public class Application {
 ```java
 package hello.world;
 
+import java.lang.Exception;
+import java.math.BigInteger;
+import java.util.List;
 import org.openapis.openapi.SDK;
 import org.openapis.openapi.models.operations.RequestBodyPostJsonDataTypesArrayBigIntResponse;
 import org.openapis.openapi.models.shared.Security;
 
 public class Application {
-    public static void main(String[] args) {
-        try {
-            SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
-                    apiKeyAuth = "Token YOUR_API_KEY";
-                }})
-                .setGlobalPathParam(100L)
-                .setGlobalQueryParam("some example global query param")
-                .build();
 
-            org.openapis.openapi.models.. req =             new Long[]{{
-                add(564849L),
-            }};            
+    public static void main(String[] args) throws Exception {
 
-            RequestBodyPostJsonDataTypesArrayBigIntResponse res = sdk.requestBodies.requestBodyPostJsonDataTypesArrayBigInt(req);
+        SDK sdk = SDK.builder()
+                .security(Security.builder()
+                    .apiKeyAuth("Token YOUR_API_KEY")
+                    .build())
+                .globalHeaderParam(true)
+                .globalHiddenQueryParam("hello")
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
+            .build();
 
-            if (res.object != null) {
-                // handle response
-            }
-        } catch (Exception e) {
-            // handle exception
+        List<BigInteger> req = List.of(
+                new BigInteger("1"));
+
+        RequestBodyPostJsonDataTypesArrayBigIntResponse res = sdk.requestBodies().requestBodyPostJsonDataTypesArrayBigInt()
+                .request(req)
+                .call();
+
+        if (res.object().isPresent()) {
+            // handle response
         }
     }
 }
@@ -2640,13 +4097,17 @@ public class Application {
 
 | Parameter                                  | Type                                       | Required                                   | Description                                |
 | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
-| `request`                                  | [Long[]](../../models//.md)                | :heavy_check_mark:                         | The request object to use for the request. |
-
+| `request`                                  | [List<BigInteger>](../../models//.md)      | :heavy_check_mark:                         | The request object to use for the request. |
 
 ### Response
 
-**[org.openapis.openapi.models.operations.RequestBodyPostJsonDataTypesArrayBigIntResponse](../../models/operations/RequestBodyPostJsonDataTypesArrayBigIntResponse.md)**
+**[RequestBodyPostJsonDataTypesArrayBigIntResponse](../../models/operations/RequestBodyPostJsonDataTypesArrayBigIntResponse.md)**
 
+### Errors
+
+| Error Type             | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
 
 ## requestBodyPostJsonDataTypesArrayDate
 
@@ -2655,32 +4116,36 @@ public class Application {
 ```java
 package hello.world;
 
+import java.lang.Exception;
+import java.time.LocalDate;
+import java.util.List;
 import org.openapis.openapi.SDK;
 import org.openapis.openapi.models.operations.RequestBodyPostJsonDataTypesArrayDateResponse;
 import org.openapis.openapi.models.shared.Security;
 
 public class Application {
-    public static void main(String[] args) {
-        try {
-            SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
-                    apiKeyAuth = "Token YOUR_API_KEY";
-                }})
-                .setGlobalPathParam(100L)
-                .setGlobalQueryParam("some example global query param")
-                .build();
 
-            org.openapis.openapi.models.. req =             new LocalDate[]{{
-                add(LocalDate.parse("2022-03-22")),
-            }};            
+    public static void main(String[] args) throws Exception {
 
-            RequestBodyPostJsonDataTypesArrayDateResponse res = sdk.requestBodies.requestBodyPostJsonDataTypesArrayDate(req);
+        SDK sdk = SDK.builder()
+                .security(Security.builder()
+                    .apiKeyAuth("Token YOUR_API_KEY")
+                    .build())
+                .globalHeaderParam(true)
+                .globalHiddenQueryParam("hello")
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
+            .build();
 
-            if (res.object != null) {
-                // handle response
-            }
-        } catch (Exception e) {
-            // handle exception
+        List<LocalDate> req = List.of(
+                LocalDate.parse("2020-01-01"));
+
+        RequestBodyPostJsonDataTypesArrayDateResponse res = sdk.requestBodies().requestBodyPostJsonDataTypesArrayDate()
+                .request(req)
+                .call();
+
+        if (res.object().isPresent()) {
+            // handle response
         }
     }
 }
@@ -2690,13 +4155,17 @@ public class Application {
 
 | Parameter                                  | Type                                       | Required                                   | Description                                |
 | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
-| `request`                                  | [LocalDate[]](../../models//.md)           | :heavy_check_mark:                         | The request object to use for the request. |
-
+| `request`                                  | [List<LocalDate>](../../models//.md)       | :heavy_check_mark:                         | The request object to use for the request. |
 
 ### Response
 
-**[org.openapis.openapi.models.operations.RequestBodyPostJsonDataTypesArrayDateResponse](../../models/operations/RequestBodyPostJsonDataTypesArrayDateResponse.md)**
+**[RequestBodyPostJsonDataTypesArrayDateResponse](../../models/operations/RequestBodyPostJsonDataTypesArrayDateResponse.md)**
 
+### Errors
+
+| Error Type             | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
 
 ## requestBodyPostJsonDataTypesArrayDecimalStr
 
@@ -2705,32 +4174,36 @@ public class Application {
 ```java
 package hello.world;
 
+import java.lang.Exception;
+import java.math.BigDecimal;
+import java.util.List;
 import org.openapis.openapi.SDK;
 import org.openapis.openapi.models.operations.RequestBodyPostJsonDataTypesArrayDecimalStrResponse;
 import org.openapis.openapi.models.shared.Security;
 
 public class Application {
-    public static void main(String[] args) {
-        try {
-            SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
-                    apiKeyAuth = "Token YOUR_API_KEY";
-                }})
-                .setGlobalPathParam(100L)
-                .setGlobalQueryParam("some example global query param")
-                .build();
 
-            org.openapis.openapi.models.. req =             new String[]{{
-                add("string"),
-            }};            
+    public static void main(String[] args) throws Exception {
 
-            RequestBodyPostJsonDataTypesArrayDecimalStrResponse res = sdk.requestBodies.requestBodyPostJsonDataTypesArrayDecimalStr(req);
+        SDK sdk = SDK.builder()
+                .security(Security.builder()
+                    .apiKeyAuth("Token YOUR_API_KEY")
+                    .build())
+                .globalHeaderParam(true)
+                .globalHiddenQueryParam("hello")
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
+            .build();
 
-            if (res.object != null) {
-                // handle response
-            }
-        } catch (Exception e) {
-            // handle exception
+        List<BigDecimal> req = List.of(
+                new BigDecimal("3.141592653589793438462643383279"));
+
+        RequestBodyPostJsonDataTypesArrayDecimalStrResponse res = sdk.requestBodies().requestBodyPostJsonDataTypesArrayDecimalStr()
+                .request(req)
+                .call();
+
+        if (res.object().isPresent()) {
+            // handle response
         }
     }
 }
@@ -2740,13 +4213,17 @@ public class Application {
 
 | Parameter                                  | Type                                       | Required                                   | Description                                |
 | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
-| `request`                                  | [String[]](../../models//.md)              | :heavy_check_mark:                         | The request object to use for the request. |
-
+| `request`                                  | [List<BigDecimal>](../../models//.md)      | :heavy_check_mark:                         | The request object to use for the request. |
 
 ### Response
 
-**[org.openapis.openapi.models.operations.RequestBodyPostJsonDataTypesArrayDecimalStrResponse](../../models/operations/RequestBodyPostJsonDataTypesArrayDecimalStrResponse.md)**
+**[RequestBodyPostJsonDataTypesArrayDecimalStrResponse](../../models/operations/RequestBodyPostJsonDataTypesArrayDecimalStrResponse.md)**
 
+### Errors
+
+| Error Type             | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
 
 ## requestBodyPostJsonDataTypesBigInt
 
@@ -2755,30 +4232,34 @@ public class Application {
 ```java
 package hello.world;
 
+import java.lang.Exception;
+import java.math.BigInteger;
 import org.openapis.openapi.SDK;
 import org.openapis.openapi.models.operations.RequestBodyPostJsonDataTypesBigIntResponse;
 import org.openapis.openapi.models.shared.Security;
 
 public class Application {
-    public static void main(String[] args) {
-        try {
-            SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
-                    apiKeyAuth = "Token YOUR_API_KEY";
-                }})
-                .setGlobalPathParam(100L)
-                .setGlobalQueryParam("some example global query param")
-                .build();
 
-            org.openapis.openapi.models.. req = 687617L;            
+    public static void main(String[] args) throws Exception {
 
-            RequestBodyPostJsonDataTypesBigIntResponse res = sdk.requestBodies.requestBodyPostJsonDataTypesBigInt(req);
+        SDK sdk = SDK.builder()
+                .security(Security.builder()
+                    .apiKeyAuth("Token YOUR_API_KEY")
+                    .build())
+                .globalHeaderParam(true)
+                .globalHiddenQueryParam("hello")
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
+            .build();
 
-            if (res.object != null) {
-                // handle response
-            }
-        } catch (Exception e) {
-            // handle exception
+        BigInteger req = new BigInteger("1");
+
+        RequestBodyPostJsonDataTypesBigIntResponse res = sdk.requestBodies().requestBodyPostJsonDataTypesBigInt()
+                .request(req)
+                .call();
+
+        if (res.object().isPresent()) {
+            // handle response
         }
     }
 }
@@ -2788,13 +4269,17 @@ public class Application {
 
 | Parameter                                  | Type                                       | Required                                   | Description                                |
 | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
-| `request`                                  | [Long](../../models//.md)                  | :heavy_check_mark:                         | The request object to use for the request. |
-
+| `request`                                  | [BigInteger](../../models//.md)            | :heavy_check_mark:                         | The request object to use for the request. |
 
 ### Response
 
-**[org.openapis.openapi.models.operations.RequestBodyPostJsonDataTypesBigIntResponse](../../models/operations/RequestBodyPostJsonDataTypesBigIntResponse.md)**
+**[RequestBodyPostJsonDataTypesBigIntResponse](../../models/operations/RequestBodyPostJsonDataTypesBigIntResponse.md)**
 
+### Errors
+
+| Error Type             | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
 
 ## requestBodyPostJsonDataTypesBigIntStr
 
@@ -2803,30 +4288,34 @@ public class Application {
 ```java
 package hello.world;
 
+import java.lang.Exception;
+import java.math.BigInteger;
 import org.openapis.openapi.SDK;
 import org.openapis.openapi.models.operations.RequestBodyPostJsonDataTypesBigIntStrResponse;
 import org.openapis.openapi.models.shared.Security;
 
 public class Application {
-    public static void main(String[] args) {
-        try {
-            SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
-                    apiKeyAuth = "Token YOUR_API_KEY";
-                }})
-                .setGlobalPathParam(100L)
-                .setGlobalQueryParam("some example global query param")
-                .build();
 
-            org.openapis.openapi.models.. req = "string";            
+    public static void main(String[] args) throws Exception {
 
-            RequestBodyPostJsonDataTypesBigIntStrResponse res = sdk.requestBodies.requestBodyPostJsonDataTypesBigIntStr(req);
+        SDK sdk = SDK.builder()
+                .security(Security.builder()
+                    .apiKeyAuth("Token YOUR_API_KEY")
+                    .build())
+                .globalHeaderParam(true)
+                .globalHiddenQueryParam("hello")
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
+            .build();
 
-            if (res.object != null) {
-                // handle response
-            }
-        } catch (Exception e) {
-            // handle exception
+        BigInteger req = new BigInteger("1");
+
+        RequestBodyPostJsonDataTypesBigIntStrResponse res = sdk.requestBodies().requestBodyPostJsonDataTypesBigIntStr()
+                .request(req)
+                .call();
+
+        if (res.object().isPresent()) {
+            // handle response
         }
     }
 }
@@ -2836,13 +4325,17 @@ public class Application {
 
 | Parameter                                  | Type                                       | Required                                   | Description                                |
 | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
-| `request`                                  | [String](../../models//.md)                | :heavy_check_mark:                         | The request object to use for the request. |
-
+| `request`                                  | [BigInteger](../../models//.md)            | :heavy_check_mark:                         | The request object to use for the request. |
 
 ### Response
 
-**[org.openapis.openapi.models.operations.RequestBodyPostJsonDataTypesBigIntStrResponse](../../models/operations/RequestBodyPostJsonDataTypesBigIntStrResponse.md)**
+**[RequestBodyPostJsonDataTypesBigIntStrResponse](../../models/operations/RequestBodyPostJsonDataTypesBigIntStrResponse.md)**
 
+### Errors
+
+| Error Type             | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
 
 ## requestBodyPostJsonDataTypesBoolean
 
@@ -2851,30 +4344,33 @@ public class Application {
 ```java
 package hello.world;
 
+import java.lang.Exception;
 import org.openapis.openapi.SDK;
 import org.openapis.openapi.models.operations.RequestBodyPostJsonDataTypesBooleanResponse;
 import org.openapis.openapi.models.shared.Security;
 
 public class Application {
-    public static void main(String[] args) {
-        try {
-            SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
-                    apiKeyAuth = "Token YOUR_API_KEY";
-                }})
-                .setGlobalPathParam(100L)
-                .setGlobalQueryParam("some example global query param")
-                .build();
 
-            org.openapis.openapi.models.. req = false;            
+    public static void main(String[] args) throws Exception {
 
-            RequestBodyPostJsonDataTypesBooleanResponse res = sdk.requestBodies.requestBodyPostJsonDataTypesBoolean(req);
+        SDK sdk = SDK.builder()
+                .security(Security.builder()
+                    .apiKeyAuth("Token YOUR_API_KEY")
+                    .build())
+                .globalHeaderParam(true)
+                .globalHiddenQueryParam("hello")
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
+            .build();
 
-            if (res.object != null) {
-                // handle response
-            }
-        } catch (Exception e) {
-            // handle exception
+        boolean req = true;
+
+        RequestBodyPostJsonDataTypesBooleanResponse res = sdk.requestBodies().requestBodyPostJsonDataTypesBoolean()
+                .request(req)
+                .call();
+
+        if (res.object().isPresent()) {
+            // handle response
         }
     }
 }
@@ -2884,13 +4380,131 @@ public class Application {
 
 | Parameter                                  | Type                                       | Required                                   | Description                                |
 | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
-| `request`                                  | [Boolean](../../models//.md)               | :heavy_check_mark:                         | The request object to use for the request. |
-
+| `request`                                  | [boolean](../../models//.md)               | :heavy_check_mark:                         | The request object to use for the request. |
 
 ### Response
 
-**[org.openapis.openapi.models.operations.RequestBodyPostJsonDataTypesBooleanResponse](../../models/operations/RequestBodyPostJsonDataTypesBooleanResponse.md)**
+**[RequestBodyPostJsonDataTypesBooleanResponse](../../models/operations/RequestBodyPostJsonDataTypesBooleanResponse.md)**
 
+### Errors
+
+| Error Type             | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+
+## requestBodyPostJsonDataTypesComplexNumberArrays
+
+### Example Usage
+
+```java
+package hello.world;
+
+import java.lang.Exception;
+import org.openapis.openapi.SDK;
+import org.openapis.openapi.models.operations.RequestBodyPostJsonDataTypesComplexNumberArraysResponse;
+import org.openapis.openapi.models.shared.ComplexNumberArrays;
+import org.openapis.openapi.models.shared.Security;
+
+public class Application {
+
+    public static void main(String[] args) throws Exception {
+
+        SDK sdk = SDK.builder()
+                .security(Security.builder()
+                    .apiKeyAuth("Token YOUR_API_KEY")
+                    .build())
+                .globalHeaderParam(true)
+                .globalHiddenQueryParam("hello")
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
+            .build();
+
+        ComplexNumberArrays req = ComplexNumberArrays.builder()
+                .build();
+
+        RequestBodyPostJsonDataTypesComplexNumberArraysResponse res = sdk.requestBodies().requestBodyPostJsonDataTypesComplexNumberArrays()
+                .request(req)
+                .call();
+
+        if (res.res().isPresent()) {
+            // handle response
+        }
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                         | Type                                                              | Required                                                          | Description                                                       |
+| ----------------------------------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------- |
+| `request`                                                         | [ComplexNumberArrays](../../models/shared/ComplexNumberArrays.md) | :heavy_check_mark:                                                | The request object to use for the request.                        |
+
+### Response
+
+**[RequestBodyPostJsonDataTypesComplexNumberArraysResponse](../../models/operations/RequestBodyPostJsonDataTypesComplexNumberArraysResponse.md)**
+
+### Errors
+
+| Error Type             | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+
+## requestBodyPostJsonDataTypesComplexNumberMaps
+
+### Example Usage
+
+```java
+package hello.world;
+
+import java.lang.Exception;
+import org.openapis.openapi.SDK;
+import org.openapis.openapi.models.operations.RequestBodyPostJsonDataTypesComplexNumberMapsResponse;
+import org.openapis.openapi.models.shared.ComplexNumberMaps;
+import org.openapis.openapi.models.shared.Security;
+
+public class Application {
+
+    public static void main(String[] args) throws Exception {
+
+        SDK sdk = SDK.builder()
+                .security(Security.builder()
+                    .apiKeyAuth("Token YOUR_API_KEY")
+                    .build())
+                .globalHeaderParam(true)
+                .globalHiddenQueryParam("hello")
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
+            .build();
+
+        ComplexNumberMaps req = ComplexNumberMaps.builder()
+                .build();
+
+        RequestBodyPostJsonDataTypesComplexNumberMapsResponse res = sdk.requestBodies().requestBodyPostJsonDataTypesComplexNumberMaps()
+                .request(req)
+                .call();
+
+        if (res.res().isPresent()) {
+            // handle response
+        }
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                     | Type                                                          | Required                                                      | Description                                                   |
+| ------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------- |
+| `request`                                                     | [ComplexNumberMaps](../../models/shared/ComplexNumberMaps.md) | :heavy_check_mark:                                            | The request object to use for the request.                    |
+
+### Response
+
+**[RequestBodyPostJsonDataTypesComplexNumberMapsResponse](../../models/operations/RequestBodyPostJsonDataTypesComplexNumberMapsResponse.md)**
+
+### Errors
+
+| Error Type             | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
 
 ## requestBodyPostJsonDataTypesDate
 
@@ -2899,30 +4513,34 @@ public class Application {
 ```java
 package hello.world;
 
+import java.lang.Exception;
+import java.time.LocalDate;
 import org.openapis.openapi.SDK;
 import org.openapis.openapi.models.operations.RequestBodyPostJsonDataTypesDateResponse;
 import org.openapis.openapi.models.shared.Security;
 
 public class Application {
-    public static void main(String[] args) {
-        try {
-            SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
-                    apiKeyAuth = "Token YOUR_API_KEY";
-                }})
-                .setGlobalPathParam(100L)
-                .setGlobalQueryParam("some example global query param")
-                .build();
 
-            org.openapis.openapi.models.. req = LocalDate.parse("2022-03-04");            
+    public static void main(String[] args) throws Exception {
 
-            RequestBodyPostJsonDataTypesDateResponse res = sdk.requestBodies.requestBodyPostJsonDataTypesDate(req);
+        SDK sdk = SDK.builder()
+                .security(Security.builder()
+                    .apiKeyAuth("Token YOUR_API_KEY")
+                    .build())
+                .globalHeaderParam(true)
+                .globalHiddenQueryParam("hello")
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
+            .build();
 
-            if (res.object != null) {
-                // handle response
-            }
-        } catch (Exception e) {
-            // handle exception
+        LocalDate req = LocalDate.parse("2020-01-01");
+
+        RequestBodyPostJsonDataTypesDateResponse res = sdk.requestBodies().requestBodyPostJsonDataTypesDate()
+                .request(req)
+                .call();
+
+        if (res.object().isPresent()) {
+            // handle response
         }
     }
 }
@@ -2934,11 +4552,15 @@ public class Application {
 | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
 | `request`                                  | [LocalDate](../../models//.md)             | :heavy_check_mark:                         | The request object to use for the request. |
 
-
 ### Response
 
-**[org.openapis.openapi.models.operations.RequestBodyPostJsonDataTypesDateResponse](../../models/operations/RequestBodyPostJsonDataTypesDateResponse.md)**
+**[RequestBodyPostJsonDataTypesDateResponse](../../models/operations/RequestBodyPostJsonDataTypesDateResponse.md)**
 
+### Errors
+
+| Error Type             | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
 
 ## requestBodyPostJsonDataTypesDateTime
 
@@ -2947,30 +4569,34 @@ public class Application {
 ```java
 package hello.world;
 
+import java.lang.Exception;
+import java.time.OffsetDateTime;
 import org.openapis.openapi.SDK;
 import org.openapis.openapi.models.operations.RequestBodyPostJsonDataTypesDateTimeResponse;
 import org.openapis.openapi.models.shared.Security;
 
 public class Application {
-    public static void main(String[] args) {
-        try {
-            SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
-                    apiKeyAuth = "Token YOUR_API_KEY";
-                }})
-                .setGlobalPathParam(100L)
-                .setGlobalQueryParam("some example global query param")
-                .build();
 
-            org.openapis.openapi.models.. req = OffsetDateTime.parse("2023-03-04T01:33:15.031Z");            
+    public static void main(String[] args) throws Exception {
 
-            RequestBodyPostJsonDataTypesDateTimeResponse res = sdk.requestBodies.requestBodyPostJsonDataTypesDateTime(req);
+        SDK sdk = SDK.builder()
+                .security(Security.builder()
+                    .apiKeyAuth("Token YOUR_API_KEY")
+                    .build())
+                .globalHeaderParam(true)
+                .globalHiddenQueryParam("hello")
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
+            .build();
 
-            if (res.object != null) {
-                // handle response
-            }
-        } catch (Exception e) {
-            // handle exception
+        OffsetDateTime req = OffsetDateTime.parse("2020-01-01T00:00:00.001Z");
+
+        RequestBodyPostJsonDataTypesDateTimeResponse res = sdk.requestBodies().requestBodyPostJsonDataTypesDateTime()
+                .request(req)
+                .call();
+
+        if (res.object().isPresent()) {
+            // handle response
         }
     }
 }
@@ -2982,11 +4608,15 @@ public class Application {
 | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
 | `request`                                  | [OffsetDateTime](../../models//.md)        | :heavy_check_mark:                         | The request object to use for the request. |
 
-
 ### Response
 
-**[org.openapis.openapi.models.operations.RequestBodyPostJsonDataTypesDateTimeResponse](../../models/operations/RequestBodyPostJsonDataTypesDateTimeResponse.md)**
+**[RequestBodyPostJsonDataTypesDateTimeResponse](../../models/operations/RequestBodyPostJsonDataTypesDateTimeResponse.md)**
 
+### Errors
+
+| Error Type             | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
 
 ## requestBodyPostJsonDataTypesDecimal
 
@@ -2995,30 +4625,34 @@ public class Application {
 ```java
 package hello.world;
 
+import java.lang.Exception;
+import java.math.BigDecimal;
 import org.openapis.openapi.SDK;
 import org.openapis.openapi.models.operations.RequestBodyPostJsonDataTypesDecimalResponse;
 import org.openapis.openapi.models.shared.Security;
 
 public class Application {
-    public static void main(String[] args) {
-        try {
-            SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
-                    apiKeyAuth = "Token YOUR_API_KEY";
-                }})
-                .setGlobalPathParam(100L)
-                .setGlobalQueryParam("some example global query param")
-                .build();
 
-            org.openapis.openapi.models.. req = 1107.81d;            
+    public static void main(String[] args) throws Exception {
 
-            RequestBodyPostJsonDataTypesDecimalResponse res = sdk.requestBodies.requestBodyPostJsonDataTypesDecimal(req);
+        SDK sdk = SDK.builder()
+                .security(Security.builder()
+                    .apiKeyAuth("Token YOUR_API_KEY")
+                    .build())
+                .globalHeaderParam(true)
+                .globalHiddenQueryParam("hello")
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
+            .build();
 
-            if (res.object != null) {
-                // handle response
-            }
-        } catch (Exception e) {
-            // handle exception
+        BigDecimal req = new BigDecimal("1.1");
+
+        RequestBodyPostJsonDataTypesDecimalResponse res = sdk.requestBodies().requestBodyPostJsonDataTypesDecimal()
+                .request(req)
+                .call();
+
+        if (res.object().isPresent()) {
+            // handle response
         }
     }
 }
@@ -3028,13 +4662,17 @@ public class Application {
 
 | Parameter                                  | Type                                       | Required                                   | Description                                |
 | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
-| `request`                                  | [Double](../../models//.md)                | :heavy_check_mark:                         | The request object to use for the request. |
-
+| `request`                                  | [BigDecimal](../../models//.md)            | :heavy_check_mark:                         | The request object to use for the request. |
 
 ### Response
 
-**[org.openapis.openapi.models.operations.RequestBodyPostJsonDataTypesDecimalResponse](../../models/operations/RequestBodyPostJsonDataTypesDecimalResponse.md)**
+**[RequestBodyPostJsonDataTypesDecimalResponse](../../models/operations/RequestBodyPostJsonDataTypesDecimalResponse.md)**
 
+### Errors
+
+| Error Type             | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
 
 ## requestBodyPostJsonDataTypesDecimalStr
 
@@ -3043,30 +4681,34 @@ public class Application {
 ```java
 package hello.world;
 
+import java.lang.Exception;
+import java.math.BigDecimal;
 import org.openapis.openapi.SDK;
 import org.openapis.openapi.models.operations.RequestBodyPostJsonDataTypesDecimalStrResponse;
 import org.openapis.openapi.models.shared.Security;
 
 public class Application {
-    public static void main(String[] args) {
-        try {
-            SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
-                    apiKeyAuth = "Token YOUR_API_KEY";
-                }})
-                .setGlobalPathParam(100L)
-                .setGlobalQueryParam("some example global query param")
-                .build();
 
-            org.openapis.openapi.models.. req = "string";            
+    public static void main(String[] args) throws Exception {
 
-            RequestBodyPostJsonDataTypesDecimalStrResponse res = sdk.requestBodies.requestBodyPostJsonDataTypesDecimalStr(req);
+        SDK sdk = SDK.builder()
+                .security(Security.builder()
+                    .apiKeyAuth("Token YOUR_API_KEY")
+                    .build())
+                .globalHeaderParam(true)
+                .globalHiddenQueryParam("hello")
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
+            .build();
 
-            if (res.object != null) {
-                // handle response
-            }
-        } catch (Exception e) {
-            // handle exception
+        BigDecimal req = new BigDecimal("1.1");
+
+        RequestBodyPostJsonDataTypesDecimalStrResponse res = sdk.requestBodies().requestBodyPostJsonDataTypesDecimalStr()
+                .request(req)
+                .call();
+
+        if (res.object().isPresent()) {
+            // handle response
         }
     }
 }
@@ -3076,13 +4718,17 @@ public class Application {
 
 | Parameter                                  | Type                                       | Required                                   | Description                                |
 | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
-| `request`                                  | [String](../../models//.md)                | :heavy_check_mark:                         | The request object to use for the request. |
-
+| `request`                                  | [BigDecimal](../../models//.md)            | :heavy_check_mark:                         | The request object to use for the request. |
 
 ### Response
 
-**[org.openapis.openapi.models.operations.RequestBodyPostJsonDataTypesDecimalStrResponse](../../models/operations/RequestBodyPostJsonDataTypesDecimalStrResponse.md)**
+**[RequestBodyPostJsonDataTypesDecimalStrResponse](../../models/operations/RequestBodyPostJsonDataTypesDecimalStrResponse.md)**
 
+### Errors
+
+| Error Type             | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
 
 ## requestBodyPostJsonDataTypesFloat32
 
@@ -3091,30 +4737,33 @@ public class Application {
 ```java
 package hello.world;
 
+import java.lang.Exception;
 import org.openapis.openapi.SDK;
 import org.openapis.openapi.models.operations.RequestBodyPostJsonDataTypesFloat32Response;
 import org.openapis.openapi.models.shared.Security;
 
 public class Application {
-    public static void main(String[] args) {
-        try {
-            SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
-                    apiKeyAuth = "Token YOUR_API_KEY";
-                }})
-                .setGlobalPathParam(100L)
-                .setGlobalQueryParam("some example global query param")
-                .build();
 
-            org.openapis.openapi.models.. req = 4464.34d;            
+    public static void main(String[] args) throws Exception {
 
-            RequestBodyPostJsonDataTypesFloat32Response res = sdk.requestBodies.requestBodyPostJsonDataTypesFloat32(req);
+        SDK sdk = SDK.builder()
+                .security(Security.builder()
+                    .apiKeyAuth("Token YOUR_API_KEY")
+                    .build())
+                .globalHeaderParam(true)
+                .globalHiddenQueryParam("hello")
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
+            .build();
 
-            if (res.object != null) {
-                // handle response
-            }
-        } catch (Exception e) {
-            // handle exception
+        double req = 1.1d;
+
+        RequestBodyPostJsonDataTypesFloat32Response res = sdk.requestBodies().requestBodyPostJsonDataTypesFloat32()
+                .request(req)
+                .call();
+
+        if (res.object().isPresent()) {
+            // handle response
         }
     }
 }
@@ -3124,13 +4773,17 @@ public class Application {
 
 | Parameter                                  | Type                                       | Required                                   | Description                                |
 | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
-| `request`                                  | [Double](../../models//.md)                | :heavy_check_mark:                         | The request object to use for the request. |
-
+| `request`                                  | [double](../../models//.md)                | :heavy_check_mark:                         | The request object to use for the request. |
 
 ### Response
 
-**[org.openapis.openapi.models.operations.RequestBodyPostJsonDataTypesFloat32Response](../../models/operations/RequestBodyPostJsonDataTypesFloat32Response.md)**
+**[RequestBodyPostJsonDataTypesFloat32Response](../../models/operations/RequestBodyPostJsonDataTypesFloat32Response.md)**
 
+### Errors
+
+| Error Type             | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
 
 ## requestBodyPostJsonDataTypesInt32
 
@@ -3139,30 +4792,33 @@ public class Application {
 ```java
 package hello.world;
 
+import java.lang.Exception;
 import org.openapis.openapi.SDK;
 import org.openapis.openapi.models.operations.RequestBodyPostJsonDataTypesInt32Response;
 import org.openapis.openapi.models.shared.Security;
 
 public class Application {
-    public static void main(String[] args) {
-        try {
-            SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
-                    apiKeyAuth = "Token YOUR_API_KEY";
-                }})
-                .setGlobalPathParam(100L)
-                .setGlobalQueryParam("some example global query param")
-                .build();
 
-            org.openapis.openapi.models.. req = 22155;            
+    public static void main(String[] args) throws Exception {
 
-            RequestBodyPostJsonDataTypesInt32Response res = sdk.requestBodies.requestBodyPostJsonDataTypesInt32(req);
+        SDK sdk = SDK.builder()
+                .security(Security.builder()
+                    .apiKeyAuth("Token YOUR_API_KEY")
+                    .build())
+                .globalHeaderParam(true)
+                .globalHiddenQueryParam("hello")
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
+            .build();
 
-            if (res.object != null) {
-                // handle response
-            }
-        } catch (Exception e) {
-            // handle exception
+        int req = 1;
+
+        RequestBodyPostJsonDataTypesInt32Response res = sdk.requestBodies().requestBodyPostJsonDataTypesInt32()
+                .request(req)
+                .call();
+
+        if (res.object().isPresent()) {
+            // handle response
         }
     }
 }
@@ -3172,13 +4828,17 @@ public class Application {
 
 | Parameter                                  | Type                                       | Required                                   | Description                                |
 | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
-| `request`                                  | [Integer](../../models//.md)               | :heavy_check_mark:                         | The request object to use for the request. |
-
+| `request`                                  | [int](../../models//.md)                   | :heavy_check_mark:                         | The request object to use for the request. |
 
 ### Response
 
-**[org.openapis.openapi.models.operations.RequestBodyPostJsonDataTypesInt32Response](../../models/operations/RequestBodyPostJsonDataTypesInt32Response.md)**
+**[RequestBodyPostJsonDataTypesInt32Response](../../models/operations/RequestBodyPostJsonDataTypesInt32Response.md)**
 
+### Errors
+
+| Error Type             | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
 
 ## requestBodyPostJsonDataTypesInteger
 
@@ -3187,30 +4847,33 @@ public class Application {
 ```java
 package hello.world;
 
+import java.lang.Exception;
 import org.openapis.openapi.SDK;
 import org.openapis.openapi.models.operations.RequestBodyPostJsonDataTypesIntegerResponse;
 import org.openapis.openapi.models.shared.Security;
 
 public class Application {
-    public static void main(String[] args) {
-        try {
-            SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
-                    apiKeyAuth = "Token YOUR_API_KEY";
-                }})
-                .setGlobalPathParam(100L)
-                .setGlobalQueryParam("some example global query param")
-                .build();
 
-            org.openapis.openapi.models.. req = 273673L;            
+    public static void main(String[] args) throws Exception {
 
-            RequestBodyPostJsonDataTypesIntegerResponse res = sdk.requestBodies.requestBodyPostJsonDataTypesInteger(req);
+        SDK sdk = SDK.builder()
+                .security(Security.builder()
+                    .apiKeyAuth("Token YOUR_API_KEY")
+                    .build())
+                .globalHeaderParam(true)
+                .globalHiddenQueryParam("hello")
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
+            .build();
 
-            if (res.object != null) {
-                // handle response
-            }
-        } catch (Exception e) {
-            // handle exception
+        long req = 1L;
+
+        RequestBodyPostJsonDataTypesIntegerResponse res = sdk.requestBodies().requestBodyPostJsonDataTypesInteger()
+                .request(req)
+                .call();
+
+        if (res.object().isPresent()) {
+            // handle response
         }
     }
 }
@@ -3220,13 +4883,17 @@ public class Application {
 
 | Parameter                                  | Type                                       | Required                                   | Description                                |
 | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
-| `request`                                  | [Long](../../models//.md)                  | :heavy_check_mark:                         | The request object to use for the request. |
-
+| `request`                                  | [long](../../models//.md)                  | :heavy_check_mark:                         | The request object to use for the request. |
 
 ### Response
 
-**[org.openapis.openapi.models.operations.RequestBodyPostJsonDataTypesIntegerResponse](../../models/operations/RequestBodyPostJsonDataTypesIntegerResponse.md)**
+**[RequestBodyPostJsonDataTypesIntegerResponse](../../models/operations/RequestBodyPostJsonDataTypesIntegerResponse.md)**
 
+### Errors
+
+| Error Type             | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
 
 ## requestBodyPostJsonDataTypesMapBigIntStr
 
@@ -3235,32 +4902,37 @@ public class Application {
 ```java
 package hello.world;
 
+import java.lang.Exception;
+import java.lang.String;
+import java.math.BigInteger;
+import java.util.Map;
 import org.openapis.openapi.SDK;
 import org.openapis.openapi.models.operations.RequestBodyPostJsonDataTypesMapBigIntStrResponse;
 import org.openapis.openapi.models.shared.Security;
 
 public class Application {
-    public static void main(String[] args) {
-        try {
-            SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
-                    apiKeyAuth = "Token YOUR_API_KEY";
-                }})
-                .setGlobalPathParam(100L)
-                .setGlobalQueryParam("some example global query param")
-                .build();
 
-            org.openapis.openapi.models.. req =             new java.util.HashMap<String, String>(){{
-                put("key", "string");
-            }};            
+    public static void main(String[] args) throws Exception {
 
-            RequestBodyPostJsonDataTypesMapBigIntStrResponse res = sdk.requestBodies.requestBodyPostJsonDataTypesMapBigIntStr(req);
+        SDK sdk = SDK.builder()
+                .security(Security.builder()
+                    .apiKeyAuth("Token YOUR_API_KEY")
+                    .build())
+                .globalHeaderParam(true)
+                .globalHiddenQueryParam("hello")
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
+            .build();
 
-            if (res.object != null) {
-                // handle response
-            }
-        } catch (Exception e) {
-            // handle exception
+        Map<String, BigInteger> req = Map.ofEntries(
+                Map.entry("test", new BigInteger("1")));
+
+        RequestBodyPostJsonDataTypesMapBigIntStrResponse res = sdk.requestBodies().requestBodyPostJsonDataTypesMapBigIntStr()
+                .request(req)
+                .call();
+
+        if (res.object().isPresent()) {
+            // handle response
         }
     }
 }
@@ -3268,15 +4940,19 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                          | Type                                               | Required                                           | Description                                        |
-| -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- |
-| `request`                                          | [java.util.Map<String, String>](../../models//.md) | :heavy_check_mark:                                 | The request object to use for the request.         |
-
+| Parameter                                    | Type                                         | Required                                     | Description                                  |
+| -------------------------------------------- | -------------------------------------------- | -------------------------------------------- | -------------------------------------------- |
+| `request`                                    | [Map<String, BigInteger>](../../models//.md) | :heavy_check_mark:                           | The request object to use for the request.   |
 
 ### Response
 
-**[org.openapis.openapi.models.operations.RequestBodyPostJsonDataTypesMapBigIntStrResponse](../../models/operations/RequestBodyPostJsonDataTypesMapBigIntStrResponse.md)**
+**[RequestBodyPostJsonDataTypesMapBigIntStrResponse](../../models/operations/RequestBodyPostJsonDataTypesMapBigIntStrResponse.md)**
 
+### Errors
+
+| Error Type             | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
 
 ## requestBodyPostJsonDataTypesMapDateTime
 
@@ -3285,32 +4961,37 @@ public class Application {
 ```java
 package hello.world;
 
+import java.lang.Exception;
+import java.lang.String;
+import java.time.OffsetDateTime;
+import java.util.Map;
 import org.openapis.openapi.SDK;
 import org.openapis.openapi.models.operations.RequestBodyPostJsonDataTypesMapDateTimeResponse;
 import org.openapis.openapi.models.shared.Security;
 
 public class Application {
-    public static void main(String[] args) {
-        try {
-            SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
-                    apiKeyAuth = "Token YOUR_API_KEY";
-                }})
-                .setGlobalPathParam(100L)
-                .setGlobalQueryParam("some example global query param")
-                .build();
 
-            org.openapis.openapi.models.. req =             new java.util.HashMap<String, OffsetDateTime>(){{
-                put("key", OffsetDateTime.parse("2022-09-03T18:52:14.477Z"));
-            }};            
+    public static void main(String[] args) throws Exception {
 
-            RequestBodyPostJsonDataTypesMapDateTimeResponse res = sdk.requestBodies.requestBodyPostJsonDataTypesMapDateTime(req);
+        SDK sdk = SDK.builder()
+                .security(Security.builder()
+                    .apiKeyAuth("Token YOUR_API_KEY")
+                    .build())
+                .globalHeaderParam(true)
+                .globalHiddenQueryParam("hello")
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
+            .build();
 
-            if (res.object != null) {
-                // handle response
-            }
-        } catch (Exception e) {
-            // handle exception
+        Map<String, OffsetDateTime> req = Map.ofEntries(
+                Map.entry("test", OffsetDateTime.parse("2020-01-01T00:00:00.001Z")));
+
+        RequestBodyPostJsonDataTypesMapDateTimeResponse res = sdk.requestBodies().requestBodyPostJsonDataTypesMapDateTime()
+                .request(req)
+                .call();
+
+        if (res.object().isPresent()) {
+            // handle response
         }
     }
 }
@@ -3318,15 +4999,19 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                  | Type                                                       | Required                                                   | Description                                                |
-| ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- |
-| `request`                                                  | [java.util.Map<String, OffsetDateTime>](../../models//.md) | :heavy_check_mark:                                         | The request object to use for the request.                 |
-
+| Parameter                                        | Type                                             | Required                                         | Description                                      |
+| ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ |
+| `request`                                        | [Map<String, OffsetDateTime>](../../models//.md) | :heavy_check_mark:                               | The request object to use for the request.       |
 
 ### Response
 
-**[org.openapis.openapi.models.operations.RequestBodyPostJsonDataTypesMapDateTimeResponse](../../models/operations/RequestBodyPostJsonDataTypesMapDateTimeResponse.md)**
+**[RequestBodyPostJsonDataTypesMapDateTimeResponse](../../models/operations/RequestBodyPostJsonDataTypesMapDateTimeResponse.md)**
 
+### Errors
+
+| Error Type             | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
 
 ## requestBodyPostJsonDataTypesMapDecimal
 
@@ -3335,32 +5020,37 @@ public class Application {
 ```java
 package hello.world;
 
+import java.lang.Exception;
+import java.lang.String;
+import java.math.BigDecimal;
+import java.util.Map;
 import org.openapis.openapi.SDK;
 import org.openapis.openapi.models.operations.RequestBodyPostJsonDataTypesMapDecimalResponse;
 import org.openapis.openapi.models.shared.Security;
 
 public class Application {
-    public static void main(String[] args) {
-        try {
-            SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
-                    apiKeyAuth = "Token YOUR_API_KEY";
-                }})
-                .setGlobalPathParam(100L)
-                .setGlobalQueryParam("some example global query param")
-                .build();
 
-            org.openapis.openapi.models.. req =             new java.util.HashMap<String, Double>(){{
-                put("key", 3472.82d);
-            }};            
+    public static void main(String[] args) throws Exception {
 
-            RequestBodyPostJsonDataTypesMapDecimalResponse res = sdk.requestBodies.requestBodyPostJsonDataTypesMapDecimal(req);
+        SDK sdk = SDK.builder()
+                .security(Security.builder()
+                    .apiKeyAuth("Token YOUR_API_KEY")
+                    .build())
+                .globalHeaderParam(true)
+                .globalHiddenQueryParam("hello")
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
+            .build();
 
-            if (res.object != null) {
-                // handle response
-            }
-        } catch (Exception e) {
-            // handle exception
+        Map<String, BigDecimal> req = Map.ofEntries(
+                Map.entry("test", new BigDecimal("3.141592653589793")));
+
+        RequestBodyPostJsonDataTypesMapDecimalResponse res = sdk.requestBodies().requestBodyPostJsonDataTypesMapDecimal()
+                .request(req)
+                .call();
+
+        if (res.object().isPresent()) {
+            // handle response
         }
     }
 }
@@ -3368,15 +5058,19 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                          | Type                                               | Required                                           | Description                                        |
-| -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- |
-| `request`                                          | [java.util.Map<String, Double>](../../models//.md) | :heavy_check_mark:                                 | The request object to use for the request.         |
-
+| Parameter                                    | Type                                         | Required                                     | Description                                  |
+| -------------------------------------------- | -------------------------------------------- | -------------------------------------------- | -------------------------------------------- |
+| `request`                                    | [Map<String, BigDecimal>](../../models//.md) | :heavy_check_mark:                           | The request object to use for the request.   |
 
 ### Response
 
-**[org.openapis.openapi.models.operations.RequestBodyPostJsonDataTypesMapDecimalResponse](../../models/operations/RequestBodyPostJsonDataTypesMapDecimalResponse.md)**
+**[RequestBodyPostJsonDataTypesMapDecimalResponse](../../models/operations/RequestBodyPostJsonDataTypesMapDecimalResponse.md)**
 
+### Errors
+
+| Error Type             | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
 
 ## requestBodyPostJsonDataTypesNumber
 
@@ -3385,30 +5079,33 @@ public class Application {
 ```java
 package hello.world;
 
+import java.lang.Exception;
 import org.openapis.openapi.SDK;
 import org.openapis.openapi.models.operations.RequestBodyPostJsonDataTypesNumberResponse;
 import org.openapis.openapi.models.shared.Security;
 
 public class Application {
-    public static void main(String[] args) {
-        try {
-            SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
-                    apiKeyAuth = "Token YOUR_API_KEY";
-                }})
-                .setGlobalPathParam(100L)
-                .setGlobalQueryParam("some example global query param")
-                .build();
 
-            org.openapis.openapi.models.. req = 2193.66d;            
+    public static void main(String[] args) throws Exception {
 
-            RequestBodyPostJsonDataTypesNumberResponse res = sdk.requestBodies.requestBodyPostJsonDataTypesNumber(req);
+        SDK sdk = SDK.builder()
+                .security(Security.builder()
+                    .apiKeyAuth("Token YOUR_API_KEY")
+                    .build())
+                .globalHeaderParam(true)
+                .globalHiddenQueryParam("hello")
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
+            .build();
 
-            if (res.object != null) {
-                // handle response
-            }
-        } catch (Exception e) {
-            // handle exception
+        double req = 1.1d;
+
+        RequestBodyPostJsonDataTypesNumberResponse res = sdk.requestBodies().requestBodyPostJsonDataTypesNumber()
+                .request(req)
+                .call();
+
+        if (res.object().isPresent()) {
+            // handle response
         }
     }
 }
@@ -3418,13 +5115,17 @@ public class Application {
 
 | Parameter                                  | Type                                       | Required                                   | Description                                |
 | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
-| `request`                                  | [Double](../../models//.md)                | :heavy_check_mark:                         | The request object to use for the request. |
-
+| `request`                                  | [double](../../models//.md)                | :heavy_check_mark:                         | The request object to use for the request. |
 
 ### Response
 
-**[org.openapis.openapi.models.operations.RequestBodyPostJsonDataTypesNumberResponse](../../models/operations/RequestBodyPostJsonDataTypesNumberResponse.md)**
+**[RequestBodyPostJsonDataTypesNumberResponse](../../models/operations/RequestBodyPostJsonDataTypesNumberResponse.md)**
 
+### Errors
+
+| Error Type             | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
 
 ## requestBodyPostJsonDataTypesString
 
@@ -3433,30 +5134,34 @@ public class Application {
 ```java
 package hello.world;
 
+import java.lang.Exception;
+import java.lang.String;
 import org.openapis.openapi.SDK;
 import org.openapis.openapi.models.operations.RequestBodyPostJsonDataTypesStringResponse;
 import org.openapis.openapi.models.shared.Security;
 
 public class Application {
-    public static void main(String[] args) {
-        try {
-            SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
-                    apiKeyAuth = "Token YOUR_API_KEY";
-                }})
-                .setGlobalPathParam(100L)
-                .setGlobalQueryParam("some example global query param")
-                .build();
 
-            org.openapis.openapi.models.. req = "string";            
+    public static void main(String[] args) throws Exception {
 
-            RequestBodyPostJsonDataTypesStringResponse res = sdk.requestBodies.requestBodyPostJsonDataTypesString(req);
+        SDK sdk = SDK.builder()
+                .security(Security.builder()
+                    .apiKeyAuth("Token YOUR_API_KEY")
+                    .build())
+                .globalHeaderParam(true)
+                .globalHiddenQueryParam("hello")
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
+            .build();
 
-            if (res.object != null) {
-                // handle response
-            }
-        } catch (Exception e) {
-            // handle exception
+        String req = "test";
+
+        RequestBodyPostJsonDataTypesStringResponse res = sdk.requestBodies().requestBodyPostJsonDataTypesString()
+                .request(req)
+                .call();
+
+        if (res.object().isPresent()) {
+            // handle response
         }
     }
 }
@@ -3468,11 +5173,15 @@ public class Application {
 | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
 | `request`                                  | [String](../../models//.md)                | :heavy_check_mark:                         | The request object to use for the request. |
 
-
 ### Response
 
-**[org.openapis.openapi.models.operations.RequestBodyPostJsonDataTypesStringResponse](../../models/operations/RequestBodyPostJsonDataTypesStringResponse.md)**
+**[RequestBodyPostJsonDataTypesStringResponse](../../models/operations/RequestBodyPostJsonDataTypesStringResponse.md)**
 
+### Errors
+
+| Error Type             | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
 
 ## requestBodyPostMultipleContentTypesComponentFiltered
 
@@ -3481,6 +5190,9 @@ public class Application {
 ```java
 package hello.world;
 
+import java.lang.Exception;
+import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.time.LocalDate;
 import java.time.OffsetDateTime;
 import org.openapis.openapi.SDK;
@@ -3492,34 +5204,48 @@ import org.openapis.openapi.models.shared.Security;
 import org.openapis.openapi.models.shared.SimpleObject;
 
 public class Application {
-    public static void main(String[] args) {
-        try {
-            SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
-                    apiKeyAuth = "Token YOUR_API_KEY";
-                }})
-                .setGlobalPathParam(100L)
-                .setGlobalQueryParam("some example global query param")
+
+    public static void main(String[] args) throws Exception {
+
+        SDK sdk = SDK.builder()
+                .security(Security.builder()
+                    .apiKeyAuth("Token YOUR_API_KEY")
+                    .build())
+                .globalHeaderParam(true)
+                .globalHiddenQueryParam("hello")
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
+            .build();
+
+        SimpleObject req = SimpleObject.builder()
+                .any("any")
+                .bool(true)
+                .date(LocalDate.parse("2020-01-01"))
+                .dateTime(OffsetDateTime.parse("2020-01-01T00:00:00.001Z"))
+                .enum_(Enum.ONE)
+                .float32(1.1f)
+                .int_(1L)
+                .int32(1)
+                .int32Enum(Int32Enum.FIFTY_FIVE)
+                .intEnum(IntEnum.Second)
+                .num(1.1d)
+                .str("test")
+                .bigint(new BigInteger("8821239038968084"))
+                .bigintStr(new BigInteger("9223372036854775808"))
+                .boolOpt(true)
+                .decimal(new BigDecimal("3.141592653589793"))
+                .decimalStr(new BigDecimal("3.14159265358979344719667586"))
+                .float64Str("1.1")
+                .int64Str("100")
+                .strOpt("testOptional")
                 .build();
 
-            org.openapis.openapi.models.shared.SimpleObject req = new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, Int32Enum.FIFTY_FIVE, IntEnum.Second, 1.1d, "test"){{
-                bigint = 8821239038968084L;
-                bigintStr = "9223372036854775808";
-                boolOpt = true;
-                decimal = 3.141592653589793d;
-                decimalStr = "3.14159265358979344719667586";
-                intOptNull = 239797L;
-                numOptNull = 9512.65d;
-                strOpt = "testOptional";
-            }};            
+        RequestBodyPostMultipleContentTypesComponentFilteredResponse res = sdk.requestBodies().requestBodyPostMultipleContentTypesComponentFiltered()
+                .request(req)
+                .call();
 
-            RequestBodyPostMultipleContentTypesComponentFilteredResponse res = sdk.requestBodies.requestBodyPostMultipleContentTypesComponentFiltered(req);
-
-            if (res.res != null) {
-                // handle response
-            }
-        } catch (Exception e) {
-            // handle exception
+        if (res.res().isPresent()) {
+            // handle response
         }
     }
 }
@@ -3527,15 +5253,103 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                                              | Type                                                                                   | Required                                                                               | Description                                                                            |
-| -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
-| `request`                                                                              | [org.openapis.openapi.models.shared.SimpleObject](../../models/shared/SimpleObject.md) | :heavy_check_mark:                                                                     | The request object to use for the request.                                             |
-
+| Parameter                                           | Type                                                | Required                                            | Description                                         |
+| --------------------------------------------------- | --------------------------------------------------- | --------------------------------------------------- | --------------------------------------------------- |
+| `request`                                           | [SimpleObject](../../models/shared/SimpleObject.md) | :heavy_check_mark:                                  | The request object to use for the request.          |
 
 ### Response
 
-**[org.openapis.openapi.models.operations.RequestBodyPostMultipleContentTypesComponentFilteredResponse](../../models/operations/RequestBodyPostMultipleContentTypesComponentFilteredResponse.md)**
+**[RequestBodyPostMultipleContentTypesComponentFilteredResponse](../../models/operations/RequestBodyPostMultipleContentTypesComponentFilteredResponse.md)**
 
+### Errors
+
+| Error Type             | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+
+## requestBodyPostMultipleContentTypesComponentFilteredDefaultTest
+
+### Example Usage
+
+```java
+package hello.world;
+
+import java.lang.Exception;
+import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.time.LocalDate;
+import java.time.OffsetDateTime;
+import org.openapis.openapi.SDK;
+import org.openapis.openapi.models.operations.RequestBodyPostMultipleContentTypesComponentFilteredDefaultTestResponse;
+import org.openapis.openapi.models.shared.Enum;
+import org.openapis.openapi.models.shared.Int32Enum;
+import org.openapis.openapi.models.shared.IntEnum;
+import org.openapis.openapi.models.shared.Security;
+import org.openapis.openapi.models.shared.SimpleObject;
+
+public class Application {
+
+    public static void main(String[] args) throws Exception {
+
+        SDK sdk = SDK.builder()
+                .security(Security.builder()
+                    .apiKeyAuth("Token YOUR_API_KEY")
+                    .build())
+                .globalHeaderParam(true)
+                .globalHiddenQueryParam("hello")
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
+            .build();
+
+        SimpleObject req = SimpleObject.builder()
+                .any("any")
+                .bool(true)
+                .date(LocalDate.parse("2020-01-01"))
+                .dateTime(OffsetDateTime.parse("2020-01-01T00:00:00.001Z"))
+                .enum_(Enum.ONE)
+                .float32(1.1f)
+                .int_(1L)
+                .int32(1)
+                .int32Enum(Int32Enum.FIFTY_FIVE)
+                .intEnum(IntEnum.Second)
+                .num(1.1d)
+                .str("test")
+                .bigint(new BigInteger("8821239038968084"))
+                .bigintStr(new BigInteger("9223372036854775808"))
+                .boolOpt(true)
+                .decimal(new BigDecimal("3.141592653589793"))
+                .decimalStr(new BigDecimal("3.14159265358979344719667586"))
+                .float64Str("1.1")
+                .int64Str("100")
+                .strOpt("testOptional")
+                .build();
+
+        RequestBodyPostMultipleContentTypesComponentFilteredDefaultTestResponse res = sdk.requestBodies().requestBodyPostMultipleContentTypesComponentFilteredDefaultTest()
+                .request(req)
+                .call();
+
+        if (res.res().isPresent()) {
+            // handle response
+        }
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                           | Type                                                | Required                                            | Description                                         |
+| --------------------------------------------------- | --------------------------------------------------- | --------------------------------------------------- | --------------------------------------------------- |
+| `request`                                           | [SimpleObject](../../models/shared/SimpleObject.md) | :heavy_check_mark:                                  | The request object to use for the request.          |
+
+### Response
+
+**[RequestBodyPostMultipleContentTypesComponentFilteredDefaultTestResponse](../../models/operations/RequestBodyPostMultipleContentTypesComponentFilteredDefaultTestResponse.md)**
+
+### Errors
+
+| Error Type             | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
 
 ## requestBodyPostMultipleContentTypesInlineFiltered
 
@@ -3544,31 +5358,38 @@ public class Application {
 ```java
 package hello.world;
 
+import java.lang.Exception;
 import org.openapis.openapi.SDK;
 import org.openapis.openapi.models.operations.RequestBodyPostMultipleContentTypesInlineFilteredRequestBody;
 import org.openapis.openapi.models.operations.RequestBodyPostMultipleContentTypesInlineFilteredResponse;
 import org.openapis.openapi.models.shared.Security;
 
 public class Application {
-    public static void main(String[] args) {
-        try {
-            SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
-                    apiKeyAuth = "Token YOUR_API_KEY";
-                }})
-                .setGlobalPathParam(100L)
-                .setGlobalQueryParam("some example global query param")
+
+    public static void main(String[] args) throws Exception {
+
+        SDK sdk = SDK.builder()
+                .security(Security.builder()
+                    .apiKeyAuth("Token YOUR_API_KEY")
+                    .build())
+                .globalHeaderParam(true)
+                .globalHiddenQueryParam("hello")
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
+            .build();
+
+        RequestBodyPostMultipleContentTypesInlineFilteredRequestBody req = RequestBodyPostMultipleContentTypesInlineFilteredRequestBody.builder()
+                .bool(true)
+                .num(1.1d)
+                .str("test")
                 .build();
 
-            RequestBodyPostMultipleContentTypesInlineFilteredRequestBody req = new RequestBodyPostMultipleContentTypesInlineFilteredRequestBody(false, 3558.41d, "string");            
+        RequestBodyPostMultipleContentTypesInlineFilteredResponse res = sdk.requestBodies().requestBodyPostMultipleContentTypesInlineFiltered()
+                .request(req)
+                .call();
 
-            RequestBodyPostMultipleContentTypesInlineFilteredResponse res = sdk.requestBodies.requestBodyPostMultipleContentTypesInlineFiltered(req);
-
-            if (res.res != null) {
-                // handle response
-            }
-        } catch (Exception e) {
-            // handle exception
+        if (res.res().isPresent()) {
+            // handle response
         }
     }
 }
@@ -3576,15 +5397,19 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                                                                                                                                                      | Type                                                                                                                                                                                           | Required                                                                                                                                                                                       | Description                                                                                                                                                                                    |
-| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `request`                                                                                                                                                                                      | [org.openapis.openapi.models.operations.RequestBodyPostMultipleContentTypesInlineFilteredRequestBody](../../models/operations/RequestBodyPostMultipleContentTypesInlineFilteredRequestBody.md) | :heavy_check_mark:                                                                                                                                                                             | The request object to use for the request.                                                                                                                                                     |
-
+| Parameter                                                                                                                                               | Type                                                                                                                                                    | Required                                                                                                                                                | Description                                                                                                                                             |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `request`                                                                                                                                               | [RequestBodyPostMultipleContentTypesInlineFilteredRequestBody](../../models/operations/RequestBodyPostMultipleContentTypesInlineFilteredRequestBody.md) | :heavy_check_mark:                                                                                                                                      | The request object to use for the request.                                                                                                              |
 
 ### Response
 
-**[org.openapis.openapi.models.operations.RequestBodyPostMultipleContentTypesInlineFilteredResponse](../../models/operations/RequestBodyPostMultipleContentTypesInlineFilteredResponse.md)**
+**[RequestBodyPostMultipleContentTypesInlineFilteredResponse](../../models/operations/RequestBodyPostMultipleContentTypesInlineFilteredResponse.md)**
 
+### Errors
+
+| Error Type             | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
 
 ## requestBodyPostMultipleContentTypesSplitParamForm
 
@@ -3593,34 +5418,37 @@ public class Application {
 ```java
 package hello.world;
 
+import java.lang.Exception;
 import org.openapis.openapi.SDK;
-import org.openapis.openapi.models.operations.RequestBodyPostMultipleContentTypesSplitParamFormRequest;
 import org.openapis.openapi.models.operations.RequestBodyPostMultipleContentTypesSplitParamFormRequestBody;
 import org.openapis.openapi.models.operations.RequestBodyPostMultipleContentTypesSplitParamFormResponse;
 import org.openapis.openapi.models.shared.Security;
 
 public class Application {
-    public static void main(String[] args) {
-        try {
-            SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
-                    apiKeyAuth = "Token YOUR_API_KEY";
-                }})
-                .setGlobalPathParam(100L)
-                .setGlobalQueryParam("some example global query param")
-                .build();
 
-            RequestBodyPostMultipleContentTypesSplitParamFormResponse res = sdk.requestBodies.requestBodyPostMultipleContentTypesSplitParamForm(new RequestBodyPostMultipleContentTypesSplitParamFormRequestBody(false, 1802.67d, "string"){{
-                bool3 = false;
-                num3 = 8693.24d;
-                str3 = "string";
-            }}, "string");
+    public static void main(String[] args) throws Exception {
 
-            if (res.res != null) {
-                // handle response
-            }
-        } catch (Exception e) {
-            // handle exception
+        SDK sdk = SDK.builder()
+                .security(Security.builder()
+                    .apiKeyAuth("Token YOUR_API_KEY")
+                    .build())
+                .globalHeaderParam(true)
+                .globalHiddenQueryParam("hello")
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
+            .build();
+
+        RequestBodyPostMultipleContentTypesSplitParamFormResponse res = sdk.requestBodies().requestBodyPostMultipleContentTypesSplitParamForm()
+                .requestBody(RequestBodyPostMultipleContentTypesSplitParamFormRequestBody.builder()
+                    .bool3(false)
+                    .num3(3466.17d)
+                    .str3("<value>")
+                    .build())
+                .paramStr("<value>")
+                .call();
+
+        if (res.res().isPresent()) {
+            // handle response
         }
     }
 }
@@ -3628,16 +5456,20 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                                                                                                                                                      | Type                                                                                                                                                                                           | Required                                                                                                                                                                                       | Description                                                                                                                                                                                    |
-| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `requestBody`                                                                                                                                                                                  | [org.openapis.openapi.models.operations.RequestBodyPostMultipleContentTypesSplitParamFormRequestBody](../../models/operations/RequestBodyPostMultipleContentTypesSplitParamFormRequestBody.md) | :heavy_check_mark:                                                                                                                                                                             | N/A                                                                                                                                                                                            |
-| `paramStr`                                                                                                                                                                                     | *String*                                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                                             | N/A                                                                                                                                                                                            |
-
+| Parameter                                                                                                                                               | Type                                                                                                                                                    | Required                                                                                                                                                | Description                                                                                                                                             |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `requestBody`                                                                                                                                           | [RequestBodyPostMultipleContentTypesSplitParamFormRequestBody](../../models/operations/RequestBodyPostMultipleContentTypesSplitParamFormRequestBody.md) | :heavy_check_mark:                                                                                                                                      | N/A                                                                                                                                                     |
+| `paramStr`                                                                                                                                              | *String*                                                                                                                                                | :heavy_check_mark:                                                                                                                                      | N/A                                                                                                                                                     |
 
 ### Response
 
-**[org.openapis.openapi.models.operations.RequestBodyPostMultipleContentTypesSplitParamFormResponse](../../models/operations/RequestBodyPostMultipleContentTypesSplitParamFormResponse.md)**
+**[RequestBodyPostMultipleContentTypesSplitParamFormResponse](../../models/operations/RequestBodyPostMultipleContentTypesSplitParamFormResponse.md)**
 
+### Errors
+
+| Error Type             | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
 
 ## requestBodyPostMultipleContentTypesSplitParamJson
 
@@ -3646,34 +5478,37 @@ public class Application {
 ```java
 package hello.world;
 
+import java.lang.Exception;
 import org.openapis.openapi.SDK;
-import org.openapis.openapi.models.operations.RequestBodyPostMultipleContentTypesSplitParamJsonRequest;
 import org.openapis.openapi.models.operations.RequestBodyPostMultipleContentTypesSplitParamJsonRequestBody;
 import org.openapis.openapi.models.operations.RequestBodyPostMultipleContentTypesSplitParamJsonResponse;
 import org.openapis.openapi.models.shared.Security;
 
 public class Application {
-    public static void main(String[] args) {
-        try {
-            SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
-                    apiKeyAuth = "Token YOUR_API_KEY";
-                }})
-                .setGlobalPathParam(100L)
-                .setGlobalQueryParam("some example global query param")
-                .build();
 
-            RequestBodyPostMultipleContentTypesSplitParamJsonResponse res = sdk.requestBodies.requestBodyPostMultipleContentTypesSplitParamJson(new RequestBodyPostMultipleContentTypesSplitParamJsonRequestBody(false, 5784.1d, "string"){{
-                bool = false;
-                num = 9771.91d;
-                str = "string";
-            }}, "string");
+    public static void main(String[] args) throws Exception {
 
-            if (res.res != null) {
-                // handle response
-            }
-        } catch (Exception e) {
-            // handle exception
+        SDK sdk = SDK.builder()
+                .security(Security.builder()
+                    .apiKeyAuth("Token YOUR_API_KEY")
+                    .build())
+                .globalHeaderParam(true)
+                .globalHiddenQueryParam("hello")
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
+            .build();
+
+        RequestBodyPostMultipleContentTypesSplitParamJsonResponse res = sdk.requestBodies().requestBodyPostMultipleContentTypesSplitParamJson()
+                .requestBody(RequestBodyPostMultipleContentTypesSplitParamJsonRequestBody.builder()
+                    .bool(false)
+                    .num(9771.91d)
+                    .str("<value>")
+                    .build())
+                .paramStr("<value>")
+                .call();
+
+        if (res.res().isPresent()) {
+            // handle response
         }
     }
 }
@@ -3681,16 +5516,20 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                                                                                                                                                      | Type                                                                                                                                                                                           | Required                                                                                                                                                                                       | Description                                                                                                                                                                                    |
-| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `requestBody`                                                                                                                                                                                  | [org.openapis.openapi.models.operations.RequestBodyPostMultipleContentTypesSplitParamJsonRequestBody](../../models/operations/RequestBodyPostMultipleContentTypesSplitParamJsonRequestBody.md) | :heavy_check_mark:                                                                                                                                                                             | N/A                                                                                                                                                                                            |
-| `paramStr`                                                                                                                                                                                     | *String*                                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                                             | N/A                                                                                                                                                                                            |
-
+| Parameter                                                                                                                                               | Type                                                                                                                                                    | Required                                                                                                                                                | Description                                                                                                                                             |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `requestBody`                                                                                                                                           | [RequestBodyPostMultipleContentTypesSplitParamJsonRequestBody](../../models/operations/RequestBodyPostMultipleContentTypesSplitParamJsonRequestBody.md) | :heavy_check_mark:                                                                                                                                      | N/A                                                                                                                                                     |
+| `paramStr`                                                                                                                                              | *String*                                                                                                                                                | :heavy_check_mark:                                                                                                                                      | N/A                                                                                                                                                     |
 
 ### Response
 
-**[org.openapis.openapi.models.operations.RequestBodyPostMultipleContentTypesSplitParamJsonResponse](../../models/operations/RequestBodyPostMultipleContentTypesSplitParamJsonResponse.md)**
+**[RequestBodyPostMultipleContentTypesSplitParamJsonResponse](../../models/operations/RequestBodyPostMultipleContentTypesSplitParamJsonResponse.md)**
 
+### Errors
+
+| Error Type             | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
 
 ## requestBodyPostMultipleContentTypesSplitParamMultipart
 
@@ -3699,34 +5538,37 @@ public class Application {
 ```java
 package hello.world;
 
+import java.lang.Exception;
 import org.openapis.openapi.SDK;
-import org.openapis.openapi.models.operations.RequestBodyPostMultipleContentTypesSplitParamMultipartRequest;
 import org.openapis.openapi.models.operations.RequestBodyPostMultipleContentTypesSplitParamMultipartRequestBody;
 import org.openapis.openapi.models.operations.RequestBodyPostMultipleContentTypesSplitParamMultipartResponse;
 import org.openapis.openapi.models.shared.Security;
 
 public class Application {
-    public static void main(String[] args) {
-        try {
-            SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
-                    apiKeyAuth = "Token YOUR_API_KEY";
-                }})
-                .setGlobalPathParam(100L)
-                .setGlobalQueryParam("some example global query param")
-                .build();
 
-            RequestBodyPostMultipleContentTypesSplitParamMultipartResponse res = sdk.requestBodies.requestBodyPostMultipleContentTypesSplitParamMultipart(new RequestBodyPostMultipleContentTypesSplitParamMultipartRequestBody(false, 6115.78d, "string"){{
-                bool2 = false;
-                num2 = 7000.76d;
-                str2 = "string";
-            }}, "string");
+    public static void main(String[] args) throws Exception {
 
-            if (res.res != null) {
-                // handle response
-            }
-        } catch (Exception e) {
-            // handle exception
+        SDK sdk = SDK.builder()
+                .security(Security.builder()
+                    .apiKeyAuth("Token YOUR_API_KEY")
+                    .build())
+                .globalHeaderParam(true)
+                .globalHiddenQueryParam("hello")
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
+            .build();
+
+        RequestBodyPostMultipleContentTypesSplitParamMultipartResponse res = sdk.requestBodies().requestBodyPostMultipleContentTypesSplitParamMultipart()
+                .requestBody(RequestBodyPostMultipleContentTypesSplitParamMultipartRequestBody.builder()
+                    .bool2(false)
+                    .num2(7000.75d)
+                    .str2("<value>")
+                    .build())
+                .paramStr("<value>")
+                .call();
+
+        if (res.res().isPresent()) {
+            // handle response
         }
     }
 }
@@ -3734,16 +5576,20 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                                                                                                                                                                | Type                                                                                                                                                                                                     | Required                                                                                                                                                                                                 | Description                                                                                                                                                                                              |
-| -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `requestBody`                                                                                                                                                                                            | [org.openapis.openapi.models.operations.RequestBodyPostMultipleContentTypesSplitParamMultipartRequestBody](../../models/operations/RequestBodyPostMultipleContentTypesSplitParamMultipartRequestBody.md) | :heavy_check_mark:                                                                                                                                                                                       | N/A                                                                                                                                                                                                      |
-| `paramStr`                                                                                                                                                                                               | *String*                                                                                                                                                                                                 | :heavy_check_mark:                                                                                                                                                                                       | N/A                                                                                                                                                                                                      |
-
+| Parameter                                                                                                                                                         | Type                                                                                                                                                              | Required                                                                                                                                                          | Description                                                                                                                                                       |
+| ----------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `requestBody`                                                                                                                                                     | [RequestBodyPostMultipleContentTypesSplitParamMultipartRequestBody](../../models/operations/RequestBodyPostMultipleContentTypesSplitParamMultipartRequestBody.md) | :heavy_check_mark:                                                                                                                                                | N/A                                                                                                                                                               |
+| `paramStr`                                                                                                                                                        | *String*                                                                                                                                                          | :heavy_check_mark:                                                                                                                                                | N/A                                                                                                                                                               |
 
 ### Response
 
-**[org.openapis.openapi.models.operations.RequestBodyPostMultipleContentTypesSplitParamMultipartResponse](../../models/operations/RequestBodyPostMultipleContentTypesSplitParamMultipartResponse.md)**
+**[RequestBodyPostMultipleContentTypesSplitParamMultipartResponse](../../models/operations/RequestBodyPostMultipleContentTypesSplitParamMultipartResponse.md)**
 
+### Errors
+
+| Error Type             | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
 
 ## requestBodyPostMultipleContentTypesSplitForm
 
@@ -3752,31 +5598,38 @@ public class Application {
 ```java
 package hello.world;
 
+import java.lang.Exception;
 import org.openapis.openapi.SDK;
 import org.openapis.openapi.models.operations.RequestBodyPostMultipleContentTypesSplitFormRequestBody;
 import org.openapis.openapi.models.operations.RequestBodyPostMultipleContentTypesSplitFormResponse;
 import org.openapis.openapi.models.shared.Security;
 
 public class Application {
-    public static void main(String[] args) {
-        try {
-            SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
-                    apiKeyAuth = "Token YOUR_API_KEY";
-                }})
-                .setGlobalPathParam(100L)
-                .setGlobalQueryParam("some example global query param")
+
+    public static void main(String[] args) throws Exception {
+
+        SDK sdk = SDK.builder()
+                .security(Security.builder()
+                    .apiKeyAuth("Token YOUR_API_KEY")
+                    .build())
+                .globalHeaderParam(true)
+                .globalHiddenQueryParam("hello")
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
+            .build();
+
+        RequestBodyPostMultipleContentTypesSplitFormRequestBody req = RequestBodyPostMultipleContentTypesSplitFormRequestBody.builder()
+                .bool3(false)
+                .num3(8565.79d)
+                .str3("<value>")
                 .build();
 
-            RequestBodyPostMultipleContentTypesSplitFormRequestBody req = new RequestBodyPostMultipleContentTypesSplitFormRequestBody(false, 7842.07d, "string");            
+        RequestBodyPostMultipleContentTypesSplitFormResponse res = sdk.requestBodies().requestBodyPostMultipleContentTypesSplitForm()
+                .request(req)
+                .call();
 
-            RequestBodyPostMultipleContentTypesSplitFormResponse res = sdk.requestBodies.requestBodyPostMultipleContentTypesSplitForm(req);
-
-            if (res.res != null) {
-                // handle response
-            }
-        } catch (Exception e) {
-            // handle exception
+        if (res.res().isPresent()) {
+            // handle response
         }
     }
 }
@@ -3784,15 +5637,19 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                                                                                                                                            | Type                                                                                                                                                                                 | Required                                                                                                                                                                             | Description                                                                                                                                                                          |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                            | [org.openapis.openapi.models.operations.RequestBodyPostMultipleContentTypesSplitFormRequestBody](../../models/operations/RequestBodyPostMultipleContentTypesSplitFormRequestBody.md) | :heavy_check_mark:                                                                                                                                                                   | The request object to use for the request.                                                                                                                                           |
-
+| Parameter                                                                                                                                     | Type                                                                                                                                          | Required                                                                                                                                      | Description                                                                                                                                   |
+| --------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
+| `request`                                                                                                                                     | [RequestBodyPostMultipleContentTypesSplitFormRequestBody](../../models/operations/RequestBodyPostMultipleContentTypesSplitFormRequestBody.md) | :heavy_check_mark:                                                                                                                            | The request object to use for the request.                                                                                                    |
 
 ### Response
 
-**[org.openapis.openapi.models.operations.RequestBodyPostMultipleContentTypesSplitFormResponse](../../models/operations/RequestBodyPostMultipleContentTypesSplitFormResponse.md)**
+**[RequestBodyPostMultipleContentTypesSplitFormResponse](../../models/operations/RequestBodyPostMultipleContentTypesSplitFormResponse.md)**
 
+### Errors
+
+| Error Type             | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
 
 ## requestBodyPostMultipleContentTypesSplitJson
 
@@ -3801,31 +5658,38 @@ public class Application {
 ```java
 package hello.world;
 
+import java.lang.Exception;
 import org.openapis.openapi.SDK;
 import org.openapis.openapi.models.operations.RequestBodyPostMultipleContentTypesSplitJsonRequestBody;
 import org.openapis.openapi.models.operations.RequestBodyPostMultipleContentTypesSplitJsonResponse;
 import org.openapis.openapi.models.shared.Security;
 
 public class Application {
-    public static void main(String[] args) {
-        try {
-            SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
-                    apiKeyAuth = "Token YOUR_API_KEY";
-                }})
-                .setGlobalPathParam(100L)
-                .setGlobalQueryParam("some example global query param")
+
+    public static void main(String[] args) throws Exception {
+
+        SDK sdk = SDK.builder()
+                .security(Security.builder()
+                    .apiKeyAuth("Token YOUR_API_KEY")
+                    .build())
+                .globalHeaderParam(true)
+                .globalHiddenQueryParam("hello")
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
+            .build();
+
+        RequestBodyPostMultipleContentTypesSplitJsonRequestBody req = RequestBodyPostMultipleContentTypesSplitJsonRequestBody.builder()
+                .bool(false)
+                .num(2445.56d)
+                .str("<value>")
                 .build();
 
-            RequestBodyPostMultipleContentTypesSplitJsonRequestBody req = new RequestBodyPostMultipleContentTypesSplitJsonRequestBody(false, 2445.56d, "string");            
+        RequestBodyPostMultipleContentTypesSplitJsonResponse res = sdk.requestBodies().requestBodyPostMultipleContentTypesSplitJson()
+                .request(req)
+                .call();
 
-            RequestBodyPostMultipleContentTypesSplitJsonResponse res = sdk.requestBodies.requestBodyPostMultipleContentTypesSplitJson(req);
-
-            if (res.res != null) {
-                // handle response
-            }
-        } catch (Exception e) {
-            // handle exception
+        if (res.res().isPresent()) {
+            // handle response
         }
     }
 }
@@ -3833,15 +5697,19 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                                                                                                                                            | Type                                                                                                                                                                                 | Required                                                                                                                                                                             | Description                                                                                                                                                                          |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                            | [org.openapis.openapi.models.operations.RequestBodyPostMultipleContentTypesSplitJsonRequestBody](../../models/operations/RequestBodyPostMultipleContentTypesSplitJsonRequestBody.md) | :heavy_check_mark:                                                                                                                                                                   | The request object to use for the request.                                                                                                                                           |
-
+| Parameter                                                                                                                                     | Type                                                                                                                                          | Required                                                                                                                                      | Description                                                                                                                                   |
+| --------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
+| `request`                                                                                                                                     | [RequestBodyPostMultipleContentTypesSplitJsonRequestBody](../../models/operations/RequestBodyPostMultipleContentTypesSplitJsonRequestBody.md) | :heavy_check_mark:                                                                                                                            | The request object to use for the request.                                                                                                    |
 
 ### Response
 
-**[org.openapis.openapi.models.operations.RequestBodyPostMultipleContentTypesSplitJsonResponse](../../models/operations/RequestBodyPostMultipleContentTypesSplitJsonResponse.md)**
+**[RequestBodyPostMultipleContentTypesSplitJsonResponse](../../models/operations/RequestBodyPostMultipleContentTypesSplitJsonResponse.md)**
 
+### Errors
+
+| Error Type             | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
 
 ## requestBodyPostMultipleContentTypesSplitMultipart
 
@@ -3850,31 +5718,38 @@ public class Application {
 ```java
 package hello.world;
 
+import java.lang.Exception;
 import org.openapis.openapi.SDK;
 import org.openapis.openapi.models.operations.RequestBodyPostMultipleContentTypesSplitMultipartRequestBody;
 import org.openapis.openapi.models.operations.RequestBodyPostMultipleContentTypesSplitMultipartResponse;
 import org.openapis.openapi.models.shared.Security;
 
 public class Application {
-    public static void main(String[] args) {
-        try {
-            SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
-                    apiKeyAuth = "Token YOUR_API_KEY";
-                }})
-                .setGlobalPathParam(100L)
-                .setGlobalQueryParam("some example global query param")
+
+    public static void main(String[] args) throws Exception {
+
+        SDK sdk = SDK.builder()
+                .security(Security.builder()
+                    .apiKeyAuth("Token YOUR_API_KEY")
+                    .build())
+                .globalHeaderParam(true)
+                .globalHiddenQueryParam("hello")
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
+            .build();
+
+        RequestBodyPostMultipleContentTypesSplitMultipartRequestBody req = RequestBodyPostMultipleContentTypesSplitMultipartRequestBody.builder()
+                .bool2(false)
+                .num2(2079.21d)
+                .str2("<value>")
                 .build();
 
-            RequestBodyPostMultipleContentTypesSplitMultipartRequestBody req = new RequestBodyPostMultipleContentTypesSplitMultipartRequestBody(false, 2079.2d, "string");            
+        RequestBodyPostMultipleContentTypesSplitMultipartResponse res = sdk.requestBodies().requestBodyPostMultipleContentTypesSplitMultipart()
+                .request(req)
+                .call();
 
-            RequestBodyPostMultipleContentTypesSplitMultipartResponse res = sdk.requestBodies.requestBodyPostMultipleContentTypesSplitMultipart(req);
-
-            if (res.res != null) {
-                // handle response
-            }
-        } catch (Exception e) {
-            // handle exception
+        if (res.res().isPresent()) {
+            // handle response
         }
     }
 }
@@ -3882,15 +5757,19 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                                                                                                                                                      | Type                                                                                                                                                                                           | Required                                                                                                                                                                                       | Description                                                                                                                                                                                    |
-| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `request`                                                                                                                                                                                      | [org.openapis.openapi.models.operations.RequestBodyPostMultipleContentTypesSplitMultipartRequestBody](../../models/operations/RequestBodyPostMultipleContentTypesSplitMultipartRequestBody.md) | :heavy_check_mark:                                                                                                                                                                             | The request object to use for the request.                                                                                                                                                     |
-
+| Parameter                                                                                                                                               | Type                                                                                                                                                    | Required                                                                                                                                                | Description                                                                                                                                             |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `request`                                                                                                                                               | [RequestBodyPostMultipleContentTypesSplitMultipartRequestBody](../../models/operations/RequestBodyPostMultipleContentTypesSplitMultipartRequestBody.md) | :heavy_check_mark:                                                                                                                                      | The request object to use for the request.                                                                                                              |
 
 ### Response
 
-**[org.openapis.openapi.models.operations.RequestBodyPostMultipleContentTypesSplitMultipartResponse](../../models/operations/RequestBodyPostMultipleContentTypesSplitMultipartResponse.md)**
+**[RequestBodyPostMultipleContentTypesSplitMultipartResponse](../../models/operations/RequestBodyPostMultipleContentTypesSplitMultipartResponse.md)**
 
+### Errors
+
+| Error Type             | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
 
 ## requestBodyPostNotNullableNotRequiredStringBody
 
@@ -3899,30 +5778,30 @@ public class Application {
 ```java
 package hello.world;
 
+import java.lang.Exception;
 import org.openapis.openapi.SDK;
 import org.openapis.openapi.models.operations.RequestBodyPostNotNullableNotRequiredStringBodyResponse;
 import org.openapis.openapi.models.shared.Security;
 
 public class Application {
-    public static void main(String[] args) {
-        try {
-            SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
-                    apiKeyAuth = "Token YOUR_API_KEY";
-                }})
-                .setGlobalPathParam(100L)
-                .setGlobalQueryParam("some example global query param")
-                .build();
 
-            org.openapis.openapi.models.. req = "string";            
+    public static void main(String[] args) throws Exception {
 
-            RequestBodyPostNotNullableNotRequiredStringBodyResponse res = sdk.requestBodies.requestBodyPostNotNullableNotRequiredStringBody(req);
+        SDK sdk = SDK.builder()
+                .security(Security.builder()
+                    .apiKeyAuth("Token YOUR_API_KEY")
+                    .build())
+                .globalHeaderParam(true)
+                .globalHiddenQueryParam("hello")
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
+            .build();
 
-            if (res.object != null) {
-                // handle response
-            }
-        } catch (Exception e) {
-            // handle exception
+        RequestBodyPostNotNullableNotRequiredStringBodyResponse res = sdk.requestBodies().requestBodyPostNotNullableNotRequiredStringBody()
+                .call();
+
+        if (res.object().isPresent()) {
+            // handle response
         }
     }
 }
@@ -3934,11 +5813,15 @@ public class Application {
 | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
 | `request`                                  | [String](../../models//.md)                | :heavy_check_mark:                         | The request object to use for the request. |
 
-
 ### Response
 
-**[org.openapis.openapi.models.operations.RequestBodyPostNotNullableNotRequiredStringBodyResponse](../../models/operations/RequestBodyPostNotNullableNotRequiredStringBodyResponse.md)**
+**[RequestBodyPostNotNullableNotRequiredStringBodyResponse](../../models/operations/RequestBodyPostNotNullableNotRequiredStringBodyResponse.md)**
 
+### Errors
+
+| Error Type             | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
 
 ## requestBodyPostNullArray
 
@@ -3947,32 +5830,30 @@ public class Application {
 ```java
 package hello.world;
 
+import java.lang.Exception;
 import org.openapis.openapi.SDK;
 import org.openapis.openapi.models.operations.RequestBodyPostNullArrayResponse;
 import org.openapis.openapi.models.shared.Security;
 
 public class Application {
-    public static void main(String[] args) {
-        try {
-            SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
-                    apiKeyAuth = "Token YOUR_API_KEY";
-                }})
-                .setGlobalPathParam(100L)
-                .setGlobalQueryParam("some example global query param")
-                .build();
 
-            org.openapis.openapi.models.. req =             new String[]{{
-                add("string"),
-            }};            
+    public static void main(String[] args) throws Exception {
 
-            RequestBodyPostNullArrayResponse res = sdk.requestBodies.requestBodyPostNullArray(req);
+        SDK sdk = SDK.builder()
+                .security(Security.builder()
+                    .apiKeyAuth("Token YOUR_API_KEY")
+                    .build())
+                .globalHeaderParam(true)
+                .globalHiddenQueryParam("hello")
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
+            .build();
 
-            if (res.object != null) {
-                // handle response
-            }
-        } catch (Exception e) {
-            // handle exception
+        RequestBodyPostNullArrayResponse res = sdk.requestBodies().requestBodyPostNullArray()
+                .call();
+
+        if (res.object().isPresent()) {
+            // handle response
         }
     }
 }
@@ -3982,13 +5863,17 @@ public class Application {
 
 | Parameter                                  | Type                                       | Required                                   | Description                                |
 | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
-| `request`                                  | [String[]](../../models//.md)              | :heavy_check_mark:                         | The request object to use for the request. |
-
+| `request`                                  | [List<String>](../../models//.md)          | :heavy_check_mark:                         | The request object to use for the request. |
 
 ### Response
 
-**[org.openapis.openapi.models.operations.RequestBodyPostNullArrayResponse](../../models/operations/RequestBodyPostNullArrayResponse.md)**
+**[RequestBodyPostNullArrayResponse](../../models/operations/RequestBodyPostNullArrayResponse.md)**
 
+### Errors
+
+| Error Type             | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
 
 ## requestBodyPostNullDictionary
 
@@ -3997,32 +5882,30 @@ public class Application {
 ```java
 package hello.world;
 
+import java.lang.Exception;
 import org.openapis.openapi.SDK;
 import org.openapis.openapi.models.operations.RequestBodyPostNullDictionaryResponse;
 import org.openapis.openapi.models.shared.Security;
 
 public class Application {
-    public static void main(String[] args) {
-        try {
-            SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
-                    apiKeyAuth = "Token YOUR_API_KEY";
-                }})
-                .setGlobalPathParam(100L)
-                .setGlobalQueryParam("some example global query param")
-                .build();
 
-            org.openapis.openapi.models.. req =             new java.util.HashMap<String, String>(){{
-                put("key", "string");
-            }};            
+    public static void main(String[] args) throws Exception {
 
-            RequestBodyPostNullDictionaryResponse res = sdk.requestBodies.requestBodyPostNullDictionary(req);
+        SDK sdk = SDK.builder()
+                .security(Security.builder()
+                    .apiKeyAuth("Token YOUR_API_KEY")
+                    .build())
+                .globalHeaderParam(true)
+                .globalHiddenQueryParam("hello")
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
+            .build();
 
-            if (res.object != null) {
-                // handle response
-            }
-        } catch (Exception e) {
-            // handle exception
+        RequestBodyPostNullDictionaryResponse res = sdk.requestBodies().requestBodyPostNullDictionary()
+                .call();
+
+        if (res.object().isPresent()) {
+            // handle response
         }
     }
 }
@@ -4030,15 +5913,19 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                          | Type                                               | Required                                           | Description                                        |
-| -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- |
-| `request`                                          | [java.util.Map<String, String>](../../models//.md) | :heavy_check_mark:                                 | The request object to use for the request.         |
-
+| Parameter                                  | Type                                       | Required                                   | Description                                |
+| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
+| `request`                                  | [Map<String, String>](../../models//.md)   | :heavy_check_mark:                         | The request object to use for the request. |
 
 ### Response
 
-**[org.openapis.openapi.models.operations.RequestBodyPostNullDictionaryResponse](../../models/operations/RequestBodyPostNullDictionaryResponse.md)**
+**[RequestBodyPostNullDictionaryResponse](../../models/operations/RequestBodyPostNullDictionaryResponse.md)**
 
+### Errors
+
+| Error Type             | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
 
 ## requestBodyPostNullableNotRequiredStringBody
 
@@ -4047,30 +5934,30 @@ public class Application {
 ```java
 package hello.world;
 
+import java.lang.Exception;
 import org.openapis.openapi.SDK;
 import org.openapis.openapi.models.operations.RequestBodyPostNullableNotRequiredStringBodyResponse;
 import org.openapis.openapi.models.shared.Security;
 
 public class Application {
-    public static void main(String[] args) {
-        try {
-            SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
-                    apiKeyAuth = "Token YOUR_API_KEY";
-                }})
-                .setGlobalPathParam(100L)
-                .setGlobalQueryParam("some example global query param")
-                .build();
 
-            org.openapis.openapi.models.. req = "string";            
+    public static void main(String[] args) throws Exception {
 
-            RequestBodyPostNullableNotRequiredStringBodyResponse res = sdk.requestBodies.requestBodyPostNullableNotRequiredStringBody(req);
+        SDK sdk = SDK.builder()
+                .security(Security.builder()
+                    .apiKeyAuth("Token YOUR_API_KEY")
+                    .build())
+                .globalHeaderParam(true)
+                .globalHiddenQueryParam("hello")
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
+            .build();
 
-            if (res.object != null) {
-                // handle response
-            }
-        } catch (Exception e) {
-            // handle exception
+        RequestBodyPostNullableNotRequiredStringBodyResponse res = sdk.requestBodies().requestBodyPostNullableNotRequiredStringBody()
+                .call();
+
+        if (res.object().isPresent()) {
+            // handle response
         }
     }
 }
@@ -4082,11 +5969,15 @@ public class Application {
 | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
 | `request`                                  | [String](../../models//.md)                | :heavy_check_mark:                         | The request object to use for the request. |
 
-
 ### Response
 
-**[org.openapis.openapi.models.operations.RequestBodyPostNullableNotRequiredStringBodyResponse](../../models/operations/RequestBodyPostNullableNotRequiredStringBodyResponse.md)**
+**[RequestBodyPostNullableNotRequiredStringBodyResponse](../../models/operations/RequestBodyPostNullableNotRequiredStringBodyResponse.md)**
 
+### Errors
+
+| Error Type             | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
 
 ## requestBodyPostNullableRequiredStringBody
 
@@ -4095,30 +5986,30 @@ public class Application {
 ```java
 package hello.world;
 
+import java.lang.Exception;
 import org.openapis.openapi.SDK;
 import org.openapis.openapi.models.operations.RequestBodyPostNullableRequiredStringBodyResponse;
 import org.openapis.openapi.models.shared.Security;
 
 public class Application {
-    public static void main(String[] args) {
-        try {
-            SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
-                    apiKeyAuth = "Token YOUR_API_KEY";
-                }})
-                .setGlobalPathParam(100L)
-                .setGlobalQueryParam("some example global query param")
-                .build();
 
-            org.openapis.openapi.models.. req = "string";            
+    public static void main(String[] args) throws Exception {
 
-            RequestBodyPostNullableRequiredStringBodyResponse res = sdk.requestBodies.requestBodyPostNullableRequiredStringBody(req);
+        SDK sdk = SDK.builder()
+                .security(Security.builder()
+                    .apiKeyAuth("Token YOUR_API_KEY")
+                    .build())
+                .globalHeaderParam(true)
+                .globalHiddenQueryParam("hello")
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
+            .build();
 
-            if (res.object != null) {
-                // handle response
-            }
-        } catch (Exception e) {
-            // handle exception
+        RequestBodyPostNullableRequiredStringBodyResponse res = sdk.requestBodies().requestBodyPostNullableRequiredStringBody()
+                .call();
+
+        if (res.object().isPresent()) {
+            // handle response
         }
     }
 }
@@ -4130,11 +6021,15 @@ public class Application {
 | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
 | `request`                                  | [String](../../models//.md)                | :heavy_check_mark:                         | The request object to use for the request. |
 
-
 ### Response
 
-**[org.openapis.openapi.models.operations.RequestBodyPostNullableRequiredStringBodyResponse](../../models/operations/RequestBodyPostNullableRequiredStringBodyResponse.md)**
+**[RequestBodyPostNullableRequiredStringBodyResponse](../../models/operations/RequestBodyPostNullableRequiredStringBodyResponse.md)**
 
+### Errors
+
+| Error Type             | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
 
 ## requestBodyPutBytes
 
@@ -4143,30 +6038,34 @@ public class Application {
 ```java
 package hello.world;
 
+import java.lang.Exception;
+import java.nio.charset.StandardCharsets;
 import org.openapis.openapi.SDK;
 import org.openapis.openapi.models.operations.RequestBodyPutBytesResponse;
 import org.openapis.openapi.models.shared.Security;
 
 public class Application {
-    public static void main(String[] args) {
-        try {
-            SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
-                    apiKeyAuth = "Token YOUR_API_KEY";
-                }})
-                .setGlobalPathParam(100L)
-                .setGlobalQueryParam("some example global query param")
-                .build();
 
-            org.openapis.openapi.models.. req = "0x5DbFFb1Ff9".getBytes();            
+    public static void main(String[] args) throws Exception {
 
-            RequestBodyPutBytesResponse res = sdk.requestBodies.requestBodyPutBytes(req);
+        SDK sdk = SDK.builder()
+                .security(Security.builder()
+                    .apiKeyAuth("Token YOUR_API_KEY")
+                    .build())
+                .globalHeaderParam(true)
+                .globalHiddenQueryParam("hello")
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
+            .build();
 
-            if (res.res != null) {
-                // handle response
-            }
-        } catch (Exception e) {
-            // handle exception
+        byte[] req = "0x5bF1f34D13".getBytes(StandardCharsets.UTF_8);
+
+        RequestBodyPutBytesResponse res = sdk.requestBodies().requestBodyPutBytes()
+                .request(req)
+                .call();
+
+        if (res.res().isPresent()) {
+            // handle response
         }
     }
 }
@@ -4178,11 +6077,15 @@ public class Application {
 | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
 | `request`                                  | [byte[]](../../models//.md)                | :heavy_check_mark:                         | The request object to use for the request. |
 
-
 ### Response
 
-**[org.openapis.openapi.models.operations.RequestBodyPutBytesResponse](../../models/operations/RequestBodyPutBytesResponse.md)**
+**[RequestBodyPutBytesResponse](../../models/operations/RequestBodyPutBytesResponse.md)**
 
+### Errors
+
+| Error Type             | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
 
 ## requestBodyPutBytesWithParams
 
@@ -4191,29 +6094,33 @@ public class Application {
 ```java
 package hello.world;
 
+import java.lang.Exception;
+import java.nio.charset.StandardCharsets;
 import org.openapis.openapi.SDK;
-import org.openapis.openapi.models.operations.RequestBodyPutBytesWithParamsRequest;
 import org.openapis.openapi.models.operations.RequestBodyPutBytesWithParamsResponse;
 import org.openapis.openapi.models.shared.Security;
 
 public class Application {
-    public static void main(String[] args) {
-        try {
-            SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
-                    apiKeyAuth = "Token YOUR_API_KEY";
-                }})
-                .setGlobalPathParam(100L)
-                .setGlobalQueryParam("some example global query param")
-                .build();
 
-            RequestBodyPutBytesWithParamsResponse res = sdk.requestBodies.requestBodyPutBytesWithParams("0xC1B9cA4eb5".getBytes(), "string");
+    public static void main(String[] args) throws Exception {
 
-            if (res.res != null) {
-                // handle response
-            }
-        } catch (Exception e) {
-            // handle exception
+        SDK sdk = SDK.builder()
+                .security(Security.builder()
+                    .apiKeyAuth("Token YOUR_API_KEY")
+                    .build())
+                .globalHeaderParam(true)
+                .globalHiddenQueryParam("hello")
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
+            .build();
+
+        RequestBodyPutBytesWithParamsResponse res = sdk.requestBodies().requestBodyPutBytesWithParams()
+                .requestBody("0xCBc4b0D930".getBytes(StandardCharsets.UTF_8))
+                .queryStringParam("<value>")
+                .call();
+
+        if (res.res().isPresent()) {
+            // handle response
         }
     }
 }
@@ -4226,11 +6133,15 @@ public class Application {
 | `requestBody`      | *byte[]*           | :heavy_check_mark: | N/A                |
 | `queryStringParam` | *String*           | :heavy_check_mark: | N/A                |
 
-
 ### Response
 
-**[org.openapis.openapi.models.operations.RequestBodyPutBytesWithParamsResponse](../../models/operations/RequestBodyPutBytesWithParamsResponse.md)**
+**[RequestBodyPutBytesWithParamsResponse](../../models/operations/RequestBodyPutBytesWithParamsResponse.md)**
 
+### Errors
+
+| Error Type             | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
 
 ## requestBodyPutMultipartDeep
 
@@ -4239,10 +6150,16 @@ public class Application {
 ```java
 package hello.world;
 
+import java.lang.Exception;
+import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.time.LocalDate;
 import java.time.OffsetDateTime;
+import java.util.List;
+import java.util.Map;
 import org.openapis.openapi.SDK;
 import org.openapis.openapi.models.operations.RequestBodyPutMultipartDeepResponse;
+import org.openapis.openapi.models.shared.Any;
 import org.openapis.openapi.models.shared.DeepObject;
 import org.openapis.openapi.models.shared.Enum;
 import org.openapis.openapi.models.shared.Int32Enum;
@@ -4251,118 +6168,166 @@ import org.openapis.openapi.models.shared.Security;
 import org.openapis.openapi.models.shared.SimpleObject;
 
 public class Application {
-    public static void main(String[] args) {
-        try {
-            SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
-                    apiKeyAuth = "Token YOUR_API_KEY";
-                }})
-                .setGlobalPathParam(100L)
-                .setGlobalQueryParam("some example global query param")
+
+    public static void main(String[] args) throws Exception {
+
+        SDK sdk = SDK.builder()
+                .security(Security.builder()
+                    .apiKeyAuth("Token YOUR_API_KEY")
+                    .build())
+                .globalHeaderParam(true)
+                .globalHiddenQueryParam("hello")
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
+            .build();
+
+        DeepObject req = DeepObject.builder()
+                .any(Any.of(SimpleObject.builder()
+                    .any("any")
+                    .bool(true)
+                    .date(LocalDate.parse("2020-01-01"))
+                    .dateTime(OffsetDateTime.parse("2020-01-01T00:00:00.001Z"))
+                    .enum_(Enum.ONE)
+                    .float32(1.1f)
+                    .int_(1L)
+                    .int32(1)
+                    .int32Enum(Int32Enum.FIFTY_FIVE)
+                    .intEnum(IntEnum.Second)
+                    .num(1.1d)
+                    .str("test")
+                    .bigint(new BigInteger("8821239038968084"))
+                    .bigintStr(new BigInteger("9223372036854775808"))
+                    .boolOpt(true)
+                    .decimal(new BigDecimal("3.141592653589793"))
+                    .decimalStr(new BigDecimal("3.14159265358979344719667586"))
+                    .float64Str("1.1")
+                    .int64Str("100")
+                    .strOpt("testOptional")
+                    .build()))
+                .arr(List.of(
+                    SimpleObject.builder()
+                        .any("any")
+                        .bool(true)
+                        .date(LocalDate.parse("2020-01-01"))
+                        .dateTime(OffsetDateTime.parse("2020-01-01T00:00:00.001Z"))
+                        .enum_(Enum.ONE)
+                        .float32(1.1f)
+                        .int_(1L)
+                        .int32(1)
+                        .int32Enum(Int32Enum.FIFTY_FIVE)
+                        .intEnum(IntEnum.Second)
+                        .num(1.1d)
+                        .str("test")
+                        .bigint(new BigInteger("8821239038968084"))
+                        .bigintStr(new BigInteger("9223372036854775808"))
+                        .boolOpt(true)
+                        .decimal(new BigDecimal("3.141592653589793"))
+                        .decimalStr(new BigDecimal("3.14159265358979344719667586"))
+                        .float64Str("1.1")
+                        .int64Str("100")
+                        .strOpt("testOptional")
+                        .build(),
+                    SimpleObject.builder()
+                        .any("any")
+                        .bool(true)
+                        .date(LocalDate.parse("2020-01-01"))
+                        .dateTime(OffsetDateTime.parse("2020-01-01T00:00:00.001Z"))
+                        .enum_(Enum.ONE)
+                        .float32(1.1f)
+                        .int_(1L)
+                        .int32(1)
+                        .int32Enum(Int32Enum.FIFTY_FIVE)
+                        .intEnum(IntEnum.Second)
+                        .num(1.1d)
+                        .str("test")
+                        .bigint(new BigInteger("8821239038968084"))
+                        .bigintStr(new BigInteger("9223372036854775808"))
+                        .boolOpt(true)
+                        .decimal(new BigDecimal("3.141592653589793"))
+                        .decimalStr(new BigDecimal("3.14159265358979344719667586"))
+                        .float64Str("1.1")
+                        .int64Str("100")
+                        .strOpt("testOptional")
+                        .build()))
+                .bool(true)
+                .int_(1L)
+                .map(Map.ofEntries(
+                    Map.entry("key", SimpleObject.builder()
+                        .any("any")
+                        .bool(true)
+                        .date(LocalDate.parse("2020-01-01"))
+                        .dateTime(OffsetDateTime.parse("2020-01-01T00:00:00.001Z"))
+                        .enum_(Enum.ONE)
+                        .float32(1.1f)
+                        .int_(1L)
+                        .int32(1)
+                        .int32Enum(Int32Enum.FIFTY_FIVE)
+                        .intEnum(IntEnum.Second)
+                        .num(1.1d)
+                        .str("test")
+                        .bigint(new BigInteger("8821239038968084"))
+                        .bigintStr(new BigInteger("9223372036854775808"))
+                        .boolOpt(true)
+                        .decimal(new BigDecimal("3.141592653589793"))
+                        .decimalStr(new BigDecimal("3.14159265358979344719667586"))
+                        .float64Str("1.1")
+                        .int64Str("100")
+                        .strOpt("testOptional")
+                        .build()),
+                    Map.entry("key2", SimpleObject.builder()
+                        .any("any")
+                        .bool(true)
+                        .date(LocalDate.parse("2020-01-01"))
+                        .dateTime(OffsetDateTime.parse("2020-01-01T00:00:00.001Z"))
+                        .enum_(Enum.ONE)
+                        .float32(1.1f)
+                        .int_(1L)
+                        .int32(1)
+                        .int32Enum(Int32Enum.FIFTY_FIVE)
+                        .intEnum(IntEnum.Second)
+                        .num(1.1d)
+                        .str("test")
+                        .bigint(new BigInteger("8821239038968084"))
+                        .bigintStr(new BigInteger("9223372036854775808"))
+                        .boolOpt(true)
+                        .decimal(new BigDecimal("3.141592653589793"))
+                        .decimalStr(new BigDecimal("3.14159265358979344719667586"))
+                        .float64Str("1.1")
+                        .int64Str("100")
+                        .strOpt("testOptional")
+                        .build())))
+                .num(1.1d)
+                .obj(SimpleObject.builder()
+                    .any("any")
+                    .bool(true)
+                    .date(LocalDate.parse("2020-01-01"))
+                    .dateTime(OffsetDateTime.parse("2020-01-01T00:00:00.001Z"))
+                    .enum_(Enum.ONE)
+                    .float32(1.1f)
+                    .int_(1L)
+                    .int32(1)
+                    .int32Enum(Int32Enum.FIFTY_FIVE)
+                    .intEnum(IntEnum.Second)
+                    .num(1.1d)
+                    .str("test")
+                    .bigint(new BigInteger("8821239038968084"))
+                    .bigintStr(new BigInteger("9223372036854775808"))
+                    .boolOpt(true)
+                    .decimal(new BigDecimal("3.141592653589793"))
+                    .decimalStr(new BigDecimal("3.14159265358979344719667586"))
+                    .float64Str("1.1")
+                    .int64Str("100")
+                    .strOpt("testOptional")
+                    .build())
+                .str("test")
                 .build();
 
-            org.openapis.openapi.models.shared.DeepObject req = new DeepObject("anyOf[0]", new org.openapis.openapi.models.shared.SimpleObject[]{{
-    add(new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, Int32Enum.FIFTY_FIVE, IntEnum.Second, 1.1d, "test"){{
-        any = "any";
-        bigint = 8821239038968084L;
-        bigintStr = "9223372036854775808";
-        bool = true;
-        boolOpt = true;
-        date = LocalDate.parse("2020-01-01");
-        dateTime = OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z");
-        decimal = 3.141592653589793d;
-        decimalStr = "3.14159265358979344719667586";
-        enum_ = Enum.ONE;
-        float32 = 1.1f;
-        int_ = 1L;
-        int32 = 1;
-        int32Enum = Int32Enum.FIFTY_FIVE;
-        intEnum = IntEnum.Second;
-        num = 1.1d;
-        str = "test";
-        strOpt = "testOptional";
-    }}),
-    add(new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, Int32Enum.FIFTY_FIVE, IntEnum.Second, 1.1d, "test"){{
-        any = "any";
-        bigint = 8821239038968084L;
-        bigintStr = "9223372036854775808";
-        bool = true;
-        boolOpt = true;
-        date = LocalDate.parse("2020-01-01");
-        dateTime = OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z");
-        decimal = 3.141592653589793d;
-        decimalStr = "3.14159265358979344719667586";
-        enum_ = Enum.ONE;
-        float32 = 1.1f;
-        int_ = 1L;
-        int32 = 1;
-        int32Enum = Int32Enum.FIFTY_FIVE;
-        intEnum = IntEnum.Second;
-        num = 1.1d;
-        str = "test";
-        strOpt = "testOptional";
-    }}),
-}}, true, 1L, new java.util.HashMap<String, org.openapis.openapi.models.shared.SimpleObject>(){{
-    put("key", new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, Int32Enum.FIFTY_FIVE, IntEnum.Second, 1.1d, "test"){{
-        any = "any";
-        bigint = 8821239038968084L;
-        bigintStr = "9223372036854775808";
-        bool = true;
-        boolOpt = true;
-        date = LocalDate.parse("2020-01-01");
-        dateTime = OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z");
-        decimal = 3.141592653589793d;
-        decimalStr = "3.14159265358979344719667586";
-        enum_ = Enum.ONE;
-        float32 = 1.1f;
-        int_ = 1L;
-        int32 = 1;
-        int32Enum = Int32Enum.FIFTY_FIVE;
-        intEnum = IntEnum.Second;
-        num = 1.1d;
-        str = "test";
-        strOpt = "testOptional";
-    }});
-    put("key2", new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, Int32Enum.FIFTY_FIVE, IntEnum.Second, 1.1d, "test"){{
-        any = "any";
-        bigint = 8821239038968084L;
-        bigintStr = "9223372036854775808";
-        bool = true;
-        boolOpt = true;
-        date = LocalDate.parse("2020-01-01");
-        dateTime = OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z");
-        decimal = 3.141592653589793d;
-        decimalStr = "3.14159265358979344719667586";
-        enum_ = Enum.ONE;
-        float32 = 1.1f;
-        int_ = 1L;
-        int32 = 1;
-        int32Enum = Int32Enum.FIFTY_FIVE;
-        intEnum = IntEnum.Second;
-        num = 1.1d;
-        str = "test";
-        strOpt = "testOptional";
-    }});
-}}, 1.1d, new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, Int32Enum.FIFTY_FIVE, IntEnum.Second, 1.1d, "test"){{
-bigint = 8821239038968084L;
-bigintStr = "9223372036854775808";
-boolOpt = true;
-decimal = 3.141592653589793d;
-decimalStr = "3.14159265358979344719667586";
-intOptNull = 827095L;
-numOptNull = 2043.79d;
-strOpt = "testOptional";
-}}, "test"){{
-                type = "string";
-            }};            
+        RequestBodyPutMultipartDeepResponse res = sdk.requestBodies().requestBodyPutMultipartDeep()
+                .request(req)
+                .call();
 
-            RequestBodyPutMultipartDeepResponse res = sdk.requestBodies.requestBodyPutMultipartDeep(req);
-
-            if (res.res != null) {
-                // handle response
-            }
-        } catch (Exception e) {
-            // handle exception
+        if (res.res().isPresent()) {
+            // handle response
         }
     }
 }
@@ -4370,15 +6335,19 @@ strOpt = "testOptional";
 
 ### Parameters
 
-| Parameter                                                                          | Type                                                                               | Required                                                                           | Description                                                                        |
-| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| `request`                                                                          | [org.openapis.openapi.models.shared.DeepObject](../../models/shared/DeepObject.md) | :heavy_check_mark:                                                                 | The request object to use for the request.                                         |
-
+| Parameter                                       | Type                                            | Required                                        | Description                                     |
+| ----------------------------------------------- | ----------------------------------------------- | ----------------------------------------------- | ----------------------------------------------- |
+| `request`                                       | [DeepObject](../../models/shared/DeepObject.md) | :heavy_check_mark:                              | The request object to use for the request.      |
 
 ### Response
 
-**[org.openapis.openapi.models.operations.RequestBodyPutMultipartDeepResponse](../../models/operations/RequestBodyPutMultipartDeepResponse.md)**
+**[RequestBodyPutMultipartDeepResponse](../../models/operations/RequestBodyPutMultipartDeepResponse.md)**
 
+### Errors
+
+| Error Type             | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
 
 ## requestBodyPutMultipartDifferentFileName
 
@@ -4387,34 +6356,35 @@ strOpt = "testOptional";
 ```java
 package hello.world;
 
+import java.lang.Exception;
 import org.openapis.openapi.SDK;
-import org.openapis.openapi.models.operations.DifferentFileName;
 import org.openapis.openapi.models.operations.RequestBodyPutMultipartDifferentFileNameRequestBody;
 import org.openapis.openapi.models.operations.RequestBodyPutMultipartDifferentFileNameResponse;
 import org.openapis.openapi.models.shared.Security;
 
 public class Application {
-    public static void main(String[] args) {
-        try {
-            SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
-                    apiKeyAuth = "Token YOUR_API_KEY";
-                }})
-                .setGlobalPathParam(100L)
-                .setGlobalQueryParam("some example global query param")
+
+    public static void main(String[] args) throws Exception {
+
+        SDK sdk = SDK.builder()
+                .security(Security.builder()
+                    .apiKeyAuth("Token YOUR_API_KEY")
+                    .build())
+                .globalHeaderParam(true)
+                .globalHiddenQueryParam("hello")
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
+            .build();
+
+        RequestBodyPutMultipartDifferentFileNameRequestBody req = RequestBodyPutMultipartDifferentFileNameRequestBody.builder()
                 .build();
 
-            RequestBodyPutMultipartDifferentFileNameRequestBody req = new RequestBodyPutMultipartDifferentFileNameRequestBody(){{
-                differentFileName = new DifferentFileName("0xdF19d43dd2".getBytes(), "string");
-            }};            
+        RequestBodyPutMultipartDifferentFileNameResponse res = sdk.requestBodies().requestBodyPutMultipartDifferentFileName()
+                .request(req)
+                .call();
 
-            RequestBodyPutMultipartDifferentFileNameResponse res = sdk.requestBodies.requestBodyPutMultipartDifferentFileName(req);
-
-            if (res.res != null) {
-                // handle response
-            }
-        } catch (Exception e) {
-            // handle exception
+        if (res.res().isPresent()) {
+            // handle response
         }
     }
 }
@@ -4422,15 +6392,19 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                                                                                                                                    | Type                                                                                                                                                                         | Required                                                                                                                                                                     | Description                                                                                                                                                                  |
-| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `request`                                                                                                                                                                    | [org.openapis.openapi.models.operations.RequestBodyPutMultipartDifferentFileNameRequestBody](../../models/operations/RequestBodyPutMultipartDifferentFileNameRequestBody.md) | :heavy_check_mark:                                                                                                                                                           | The request object to use for the request.                                                                                                                                   |
-
+| Parameter                                                                                                                             | Type                                                                                                                                  | Required                                                                                                                              | Description                                                                                                                           |
+| ------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- |
+| `request`                                                                                                                             | [RequestBodyPutMultipartDifferentFileNameRequestBody](../../models/operations/RequestBodyPutMultipartDifferentFileNameRequestBody.md) | :heavy_check_mark:                                                                                                                    | The request object to use for the request.                                                                                            |
 
 ### Response
 
-**[org.openapis.openapi.models.operations.RequestBodyPutMultipartDifferentFileNameResponse](../../models/operations/RequestBodyPutMultipartDifferentFileNameResponse.md)**
+**[RequestBodyPutMultipartDifferentFileNameResponse](../../models/operations/RequestBodyPutMultipartDifferentFileNameResponse.md)**
 
+### Errors
+
+| Error Type             | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
 
 ## requestBodyPutMultipartFile
 
@@ -4439,34 +6413,35 @@ public class Application {
 ```java
 package hello.world;
 
+import java.lang.Exception;
 import org.openapis.openapi.SDK;
-import org.openapis.openapi.models.operations.File;
 import org.openapis.openapi.models.operations.RequestBodyPutMultipartFileRequestBody;
 import org.openapis.openapi.models.operations.RequestBodyPutMultipartFileResponse;
 import org.openapis.openapi.models.shared.Security;
 
 public class Application {
-    public static void main(String[] args) {
-        try {
-            SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
-                    apiKeyAuth = "Token YOUR_API_KEY";
-                }})
-                .setGlobalPathParam(100L)
-                .setGlobalQueryParam("some example global query param")
+
+    public static void main(String[] args) throws Exception {
+
+        SDK sdk = SDK.builder()
+                .security(Security.builder()
+                    .apiKeyAuth("Token YOUR_API_KEY")
+                    .build())
+                .globalHeaderParam(true)
+                .globalHiddenQueryParam("hello")
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
+            .build();
+
+        RequestBodyPutMultipartFileRequestBody req = RequestBodyPutMultipartFileRequestBody.builder()
                 .build();
 
-            RequestBodyPutMultipartFileRequestBody req = new RequestBodyPutMultipartFileRequestBody(){{
-                file = new File("0xa9f2Ee38c3".getBytes(), "string");
-            }};            
+        RequestBodyPutMultipartFileResponse res = sdk.requestBodies().requestBodyPutMultipartFile()
+                .request(req)
+                .call();
 
-            RequestBodyPutMultipartFileResponse res = sdk.requestBodies.requestBodyPutMultipartFile(req);
-
-            if (res.res != null) {
-                // handle response
-            }
-        } catch (Exception e) {
-            // handle exception
+        if (res.res().isPresent()) {
+            // handle response
         }
     }
 }
@@ -4474,15 +6449,133 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                                                                                                          | Type                                                                                                                                               | Required                                                                                                                                           | Description                                                                                                                                        |
-| -------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `request`                                                                                                                                          | [org.openapis.openapi.models.operations.RequestBodyPutMultipartFileRequestBody](../../models/operations/RequestBodyPutMultipartFileRequestBody.md) | :heavy_check_mark:                                                                                                                                 | The request object to use for the request.                                                                                                         |
-
+| Parameter                                                                                                   | Type                                                                                                        | Required                                                                                                    | Description                                                                                                 |
+| ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
+| `request`                                                                                                   | [RequestBodyPutMultipartFileRequestBody](../../models/operations/RequestBodyPutMultipartFileRequestBody.md) | :heavy_check_mark:                                                                                          | The request object to use for the request.                                                                  |
 
 ### Response
 
-**[org.openapis.openapi.models.operations.RequestBodyPutMultipartFileResponse](../../models/operations/RequestBodyPutMultipartFileResponse.md)**
+**[RequestBodyPutMultipartFileResponse](../../models/operations/RequestBodyPutMultipartFileResponse.md)**
 
+### Errors
+
+| Error Type             | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+
+## requestBodyPutMultipartFileRef
+
+### Example Usage
+
+```java
+package hello.world;
+
+import java.lang.Exception;
+import org.openapis.openapi.SDK;
+import org.openapis.openapi.models.operations.RequestBodyPutMultipartFileRefRequestBody;
+import org.openapis.openapi.models.operations.RequestBodyPutMultipartFileRefResponse;
+import org.openapis.openapi.models.shared.Security;
+
+public class Application {
+
+    public static void main(String[] args) throws Exception {
+
+        SDK sdk = SDK.builder()
+                .security(Security.builder()
+                    .apiKeyAuth("Token YOUR_API_KEY")
+                    .build())
+                .globalHeaderParam(true)
+                .globalHiddenQueryParam("hello")
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
+            .build();
+
+        RequestBodyPutMultipartFileRefRequestBody req = RequestBodyPutMultipartFileRefRequestBody.builder()
+                .build();
+
+        RequestBodyPutMultipartFileRefResponse res = sdk.requestBodies().requestBodyPutMultipartFileRef()
+                .request(req)
+                .call();
+
+        if (res.res().isPresent()) {
+            // handle response
+        }
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                                         | Type                                                                                                              | Required                                                                                                          | Description                                                                                                       |
+| ----------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
+| `request`                                                                                                         | [RequestBodyPutMultipartFileRefRequestBody](../../models/operations/RequestBodyPutMultipartFileRefRequestBody.md) | :heavy_check_mark:                                                                                                | The request object to use for the request.                                                                        |
+
+### Response
+
+**[RequestBodyPutMultipartFileRefResponse](../../models/operations/RequestBodyPutMultipartFileRefResponse.md)**
+
+### Errors
+
+| Error Type             | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
+
+## requestBodyPutMultipartOptionalRequestBody
+
+### Example Usage
+
+```java
+package hello.world;
+
+import java.lang.Exception;
+import org.openapis.openapi.SDK;
+import org.openapis.openapi.models.operations.RequestBodyPutMultipartOptionalRequestBodyRequestBody;
+import org.openapis.openapi.models.operations.RequestBodyPutMultipartOptionalRequestBodyResponse;
+import org.openapis.openapi.models.shared.Security;
+
+public class Application {
+
+    public static void main(String[] args) throws Exception {
+
+        SDK sdk = SDK.builder()
+                .security(Security.builder()
+                    .apiKeyAuth("Token YOUR_API_KEY")
+                    .build())
+                .globalHeaderParam(true)
+                .globalHiddenQueryParam("hello")
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
+            .build();
+
+        RequestBodyPutMultipartOptionalRequestBodyRequestBody req = RequestBodyPutMultipartOptionalRequestBodyRequestBody.builder()
+                .build();
+
+        RequestBodyPutMultipartOptionalRequestBodyResponse res = sdk.requestBodies().requestBodyPutMultipartOptionalRequestBody()
+                .request(req)
+                .call();
+
+        if (res.res().isPresent()) {
+            // handle response
+        }
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                                                                 | Type                                                                                                                                      | Required                                                                                                                                  | Description                                                                                                                               |
+| ----------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
+| `request`                                                                                                                                 | [RequestBodyPutMultipartOptionalRequestBodyRequestBody](../../models/operations/RequestBodyPutMultipartOptionalRequestBodyRequestBody.md) | :heavy_check_mark:                                                                                                                        | The request object to use for the request.                                                                                                |
+
+### Response
+
+**[RequestBodyPutMultipartOptionalRequestBodyResponse](../../models/operations/RequestBodyPutMultipartOptionalRequestBodyResponse.md)**
+
+### Errors
+
+| Error Type             | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
 
 ## requestBodyPutMultipartSimple
 
@@ -4491,6 +6584,9 @@ public class Application {
 ```java
 package hello.world;
 
+import java.lang.Exception;
+import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.time.LocalDate;
 import java.time.OffsetDateTime;
 import org.openapis.openapi.SDK;
@@ -4502,34 +6598,48 @@ import org.openapis.openapi.models.shared.Security;
 import org.openapis.openapi.models.shared.SimpleObject;
 
 public class Application {
-    public static void main(String[] args) {
-        try {
-            SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
-                    apiKeyAuth = "Token YOUR_API_KEY";
-                }})
-                .setGlobalPathParam(100L)
-                .setGlobalQueryParam("some example global query param")
+
+    public static void main(String[] args) throws Exception {
+
+        SDK sdk = SDK.builder()
+                .security(Security.builder()
+                    .apiKeyAuth("Token YOUR_API_KEY")
+                    .build())
+                .globalHeaderParam(true)
+                .globalHiddenQueryParam("hello")
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
+            .build();
+
+        SimpleObject req = SimpleObject.builder()
+                .any("any")
+                .bool(true)
+                .date(LocalDate.parse("2020-01-01"))
+                .dateTime(OffsetDateTime.parse("2020-01-01T00:00:00.001Z"))
+                .enum_(Enum.ONE)
+                .float32(1.1f)
+                .int_(1L)
+                .int32(1)
+                .int32Enum(Int32Enum.FIFTY_FIVE)
+                .intEnum(IntEnum.Second)
+                .num(1.1d)
+                .str("test")
+                .bigint(new BigInteger("8821239038968084"))
+                .bigintStr(new BigInteger("9223372036854775808"))
+                .boolOpt(true)
+                .decimal(new BigDecimal("3.141592653589793"))
+                .decimalStr(new BigDecimal("3.14159265358979344719667586"))
+                .float64Str("1.1")
+                .int64Str("100")
+                .strOpt("testOptional")
                 .build();
 
-            org.openapis.openapi.models.shared.SimpleObject req = new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, Int32Enum.FIFTY_FIVE, IntEnum.Second, 1.1d, "test"){{
-                bigint = 8821239038968084L;
-                bigintStr = "9223372036854775808";
-                boolOpt = true;
-                decimal = 3.141592653589793d;
-                decimalStr = "3.14159265358979344719667586";
-                intOptNull = 298848L;
-                numOptNull = 9034.69d;
-                strOpt = "testOptional";
-            }};            
+        RequestBodyPutMultipartSimpleResponse res = sdk.requestBodies().requestBodyPutMultipartSimple()
+                .request(req)
+                .call();
 
-            RequestBodyPutMultipartSimpleResponse res = sdk.requestBodies.requestBodyPutMultipartSimple(req);
-
-            if (res.res != null) {
-                // handle response
-            }
-        } catch (Exception e) {
-            // handle exception
+        if (res.res().isPresent()) {
+            // handle response
         }
     }
 }
@@ -4537,15 +6647,19 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                                              | Type                                                                                   | Required                                                                               | Description                                                                            |
-| -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
-| `request`                                                                              | [org.openapis.openapi.models.shared.SimpleObject](../../models/shared/SimpleObject.md) | :heavy_check_mark:                                                                     | The request object to use for the request.                                             |
-
+| Parameter                                           | Type                                                | Required                                            | Description                                         |
+| --------------------------------------------------- | --------------------------------------------------- | --------------------------------------------------- | --------------------------------------------------- |
+| `request`                                           | [SimpleObject](../../models/shared/SimpleObject.md) | :heavy_check_mark:                                  | The request object to use for the request.          |
 
 ### Response
 
-**[org.openapis.openapi.models.operations.RequestBodyPutMultipartSimpleResponse](../../models/operations/RequestBodyPutMultipartSimpleResponse.md)**
+**[RequestBodyPutMultipartSimpleResponse](../../models/operations/RequestBodyPutMultipartSimpleResponse.md)**
 
+### Errors
+
+| Error Type             | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
 
 ## requestBodyPutString
 
@@ -4554,30 +6668,34 @@ public class Application {
 ```java
 package hello.world;
 
+import java.lang.Exception;
+import java.lang.String;
 import org.openapis.openapi.SDK;
 import org.openapis.openapi.models.operations.RequestBodyPutStringResponse;
 import org.openapis.openapi.models.shared.Security;
 
 public class Application {
-    public static void main(String[] args) {
-        try {
-            SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
-                    apiKeyAuth = "Token YOUR_API_KEY";
-                }})
-                .setGlobalPathParam(100L)
-                .setGlobalQueryParam("some example global query param")
-                .build();
 
-            org.openapis.openapi.models.. req = "string";            
+    public static void main(String[] args) throws Exception {
 
-            RequestBodyPutStringResponse res = sdk.requestBodies.requestBodyPutString(req);
+        SDK sdk = SDK.builder()
+                .security(Security.builder()
+                    .apiKeyAuth("Token YOUR_API_KEY")
+                    .build())
+                .globalHeaderParam(true)
+                .globalHiddenQueryParam("hello")
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
+            .build();
 
-            if (res.res != null) {
-                // handle response
-            }
-        } catch (Exception e) {
-            // handle exception
+        String req = "Hello World";
+
+        RequestBodyPutStringResponse res = sdk.requestBodies().requestBodyPutString()
+                .request(req)
+                .call();
+
+        if (res.res().isPresent()) {
+            // handle response
         }
     }
 }
@@ -4589,11 +6707,15 @@ public class Application {
 | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
 | `request`                                  | [String](../../models//.md)                | :heavy_check_mark:                         | The request object to use for the request. |
 
-
 ### Response
 
-**[org.openapis.openapi.models.operations.RequestBodyPutStringResponse](../../models/operations/RequestBodyPutStringResponse.md)**
+**[RequestBodyPutStringResponse](../../models/operations/RequestBodyPutStringResponse.md)**
 
+### Errors
+
+| Error Type             | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
 
 ## requestBodyPutStringWithParams
 
@@ -4602,29 +6724,32 @@ public class Application {
 ```java
 package hello.world;
 
+import java.lang.Exception;
 import org.openapis.openapi.SDK;
-import org.openapis.openapi.models.operations.RequestBodyPutStringWithParamsRequest;
 import org.openapis.openapi.models.operations.RequestBodyPutStringWithParamsResponse;
 import org.openapis.openapi.models.shared.Security;
 
 public class Application {
-    public static void main(String[] args) {
-        try {
-            SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
-                    apiKeyAuth = "Token YOUR_API_KEY";
-                }})
-                .setGlobalPathParam(100L)
-                .setGlobalQueryParam("some example global query param")
-                .build();
 
-            RequestBodyPutStringWithParamsResponse res = sdk.requestBodies.requestBodyPutStringWithParams("string", "string");
+    public static void main(String[] args) throws Exception {
 
-            if (res.res != null) {
-                // handle response
-            }
-        } catch (Exception e) {
-            // handle exception
+        SDK sdk = SDK.builder()
+                .security(Security.builder()
+                    .apiKeyAuth("Token YOUR_API_KEY")
+                    .build())
+                .globalHeaderParam(true)
+                .globalHiddenQueryParam("hello")
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
+            .build();
+
+        RequestBodyPutStringWithParamsResponse res = sdk.requestBodies().requestBodyPutStringWithParams()
+                .requestBody("Hello world")
+                .queryStringParam("test param")
+                .call();
+
+        if (res.res().isPresent()) {
+            // handle response
         }
     }
 }
@@ -4632,16 +6757,20 @@ public class Application {
 
 ### Parameters
 
-| Parameter          | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `requestBody`      | *String*           | :heavy_check_mark: | N/A                |
-| `queryStringParam` | *String*           | :heavy_check_mark: | N/A                |
-
+| Parameter          | Type               | Required           | Description        | Example            |
+| ------------------ | ------------------ | ------------------ | ------------------ | ------------------ |
+| `requestBody`      | *String*           | :heavy_check_mark: | N/A                | Hello world        |
+| `queryStringParam` | *String*           | :heavy_check_mark: | N/A                | test param         |
 
 ### Response
 
-**[org.openapis.openapi.models.operations.RequestBodyPutStringWithParamsResponse](../../models/operations/RequestBodyPutStringWithParamsResponse.md)**
+**[RequestBodyPutStringWithParamsResponse](../../models/operations/RequestBodyPutStringWithParamsResponse.md)**
 
+### Errors
+
+| Error Type             | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
 
 ## requestBodyReadAndWrite
 
@@ -4650,31 +6779,38 @@ public class Application {
 ```java
 package hello.world;
 
+import java.lang.Exception;
 import org.openapis.openapi.SDK;
 import org.openapis.openapi.models.operations.RequestBodyReadAndWriteResponse;
 import org.openapis.openapi.models.shared.ReadWriteObject;
 import org.openapis.openapi.models.shared.Security;
 
 public class Application {
-    public static void main(String[] args) {
-        try {
-            SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
-                    apiKeyAuth = "Token YOUR_API_KEY";
-                }})
-                .setGlobalPathParam(100L)
-                .setGlobalQueryParam("some example global query param")
+
+    public static void main(String[] args) throws Exception {
+
+        SDK sdk = SDK.builder()
+                .security(Security.builder()
+                    .apiKeyAuth("Token YOUR_API_KEY")
+                    .build())
+                .globalHeaderParam(true)
+                .globalHiddenQueryParam("hello")
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
+            .build();
+
+        ReadWriteObject req = ReadWriteObject.builder()
+                .num1(1L)
+                .num2(2L)
+                .num3(4L)
                 .build();
 
-            org.openapis.openapi.models.shared.ReadWriteObject req = new ReadWriteObject(797612L, 89374L, 459345L);            
+        RequestBodyReadAndWriteResponse res = sdk.requestBodies().requestBodyReadAndWrite()
+                .request(req)
+                .call();
 
-            RequestBodyReadAndWriteResponse res = sdk.requestBodies.requestBodyReadAndWrite(req);
-
-            if (res.readWriteObject != null) {
-                // handle response
-            }
-        } catch (Exception e) {
-            // handle exception
+        if (res.readWriteObject().isPresent()) {
+            // handle response
         }
     }
 }
@@ -4682,16 +6818,20 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                                                    | Type                                                                                         | Required                                                                                     | Description                                                                                  |
-| -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
-| `request`                                                                                    | [org.openapis.openapi.models.shared.ReadWriteObject](../../models/shared/ReadWriteObject.md) | :heavy_check_mark:                                                                           | The request object to use for the request.                                                   |
-| `serverURL`                                                                                  | *String*                                                                                     | :heavy_minus_sign:                                                                           | An optional server URL to use.                                                               |
-
+| Parameter                                                 | Type                                                      | Required                                                  | Description                                               |
+| --------------------------------------------------------- | --------------------------------------------------------- | --------------------------------------------------------- | --------------------------------------------------------- |
+| `request`                                                 | [ReadWriteObject](../../models/shared/ReadWriteObject.md) | :heavy_check_mark:                                        | The request object to use for the request.                |
+| `serverURL`                                               | *String*                                                  | :heavy_minus_sign:                                        | An optional server URL to use.                            |
 
 ### Response
 
-**[org.openapis.openapi.models.operations.RequestBodyReadAndWriteResponse](../../models/operations/RequestBodyReadAndWriteResponse.md)**
+**[RequestBodyReadAndWriteResponse](../../models/operations/RequestBodyReadAndWriteResponse.md)**
 
+### Errors
+
+| Error Type             | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
 
 ## requestBodyReadOnlyInput
 
@@ -4700,31 +6840,35 @@ public class Application {
 ```java
 package hello.world;
 
+import java.lang.Exception;
 import org.openapis.openapi.SDK;
 import org.openapis.openapi.models.operations.RequestBodyReadOnlyInputResponse;
 import org.openapis.openapi.models.shared.ReadOnlyObjectInput;
 import org.openapis.openapi.models.shared.Security;
 
 public class Application {
-    public static void main(String[] args) {
-        try {
-            SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
-                    apiKeyAuth = "Token YOUR_API_KEY";
-                }})
-                .setGlobalPathParam(100L)
-                .setGlobalQueryParam("some example global query param")
+
+    public static void main(String[] args) throws Exception {
+
+        SDK sdk = SDK.builder()
+                .security(Security.builder()
+                    .apiKeyAuth("Token YOUR_API_KEY")
+                    .build())
+                .globalHeaderParam(true)
+                .globalHiddenQueryParam("hello")
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
+            .build();
+
+        ReadOnlyObjectInput req = ReadOnlyObjectInput.builder()
                 .build();
 
-            org.openapis.openapi.models.shared.ReadOnlyObjectInput req = new ReadOnlyObjectInput();            
+        RequestBodyReadOnlyInputResponse res = sdk.requestBodies().requestBodyReadOnlyInput()
+                .request(req)
+                .call();
 
-            RequestBodyReadOnlyInputResponse res = sdk.requestBodies.requestBodyReadOnlyInput(req);
-
-            if (res.readOnlyObject != null) {
-                // handle response
-            }
-        } catch (Exception e) {
-            // handle exception
+        if (res.readOnlyObject().isPresent()) {
+            // handle response
         }
     }
 }
@@ -4732,16 +6876,20 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                                                            | Type                                                                                                 | Required                                                                                             | Description                                                                                          |
-| ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
-| `request`                                                                                            | [org.openapis.openapi.models.shared.ReadOnlyObjectInput](../../models/shared/ReadOnlyObjectInput.md) | :heavy_check_mark:                                                                                   | The request object to use for the request.                                                           |
-| `serverURL`                                                                                          | *String*                                                                                             | :heavy_minus_sign:                                                                                   | An optional server URL to use.                                                                       |
-
+| Parameter                                                         | Type                                                              | Required                                                          | Description                                                       |
+| ----------------------------------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------- |
+| `request`                                                         | [ReadOnlyObjectInput](../../models/shared/ReadOnlyObjectInput.md) | :heavy_check_mark:                                                | The request object to use for the request.                        |
+| `serverURL`                                                       | *String*                                                          | :heavy_minus_sign:                                                | An optional server URL to use.                                    |
 
 ### Response
 
-**[org.openapis.openapi.models.operations.RequestBodyReadOnlyInputResponse](../../models/operations/RequestBodyReadOnlyInputResponse.md)**
+**[RequestBodyReadOnlyInputResponse](../../models/operations/RequestBodyReadOnlyInputResponse.md)**
 
+### Errors
+
+| Error Type             | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
 
 ## requestBodyReadOnlyUnion
 
@@ -4750,30 +6898,63 @@ public class Application {
 ```java
 package hello.world;
 
+import java.lang.Exception;
+import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.time.LocalDate;
+import java.time.OffsetDateTime;
 import org.openapis.openapi.SDK;
 import org.openapis.openapi.models.operations.RequestBodyReadOnlyUnionResponse;
+import org.openapis.openapi.models.shared.Enum;
+import org.openapis.openapi.models.shared.Int32Enum;
+import org.openapis.openapi.models.shared.IntEnum;
 import org.openapis.openapi.models.shared.Security;
+import org.openapis.openapi.models.shared.SimpleObject;
+import org.openapis.openapi.models.shared.WeaklyTypedOneOfReadOnlyObjectInput;
 
 public class Application {
-    public static void main(String[] args) {
-        try {
-            SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
-                    apiKeyAuth = "Token YOUR_API_KEY";
-                }})
-                .setGlobalPathParam(100L)
-                .setGlobalQueryParam("some example global query param")
-                .build();
 
-            org.openapis.openapi.models.. req = "string";            
+    public static void main(String[] args) throws Exception {
 
-            RequestBodyReadOnlyUnionResponse res = sdk.requestBodies.requestBodyReadOnlyUnion(req);
+        SDK sdk = SDK.builder()
+                .security(Security.builder()
+                    .apiKeyAuth("Token YOUR_API_KEY")
+                    .build())
+                .globalHeaderParam(true)
+                .globalHiddenQueryParam("hello")
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
+            .build();
 
-            if (res.weaklyTypedOneOfReadOnlyObject != null) {
-                // handle response
-            }
-        } catch (Exception e) {
-            // handle exception
+        WeaklyTypedOneOfReadOnlyObjectInput req = WeaklyTypedOneOfReadOnlyObjectInput.of(SimpleObject.builder()
+                .any("any")
+                .bool(true)
+                .date(LocalDate.parse("2020-01-01"))
+                .dateTime(OffsetDateTime.parse("2020-01-01T00:00:00.001Z"))
+                .enum_(Enum.ONE)
+                .float32(1.1f)
+                .int_(1L)
+                .int32(1)
+                .int32Enum(Int32Enum.FIFTY_FIVE)
+                .intEnum(IntEnum.Second)
+                .num(1.1d)
+                .str("test")
+                .bigint(new BigInteger("8821239038968084"))
+                .bigintStr(new BigInteger("9223372036854775808"))
+                .boolOpt(true)
+                .decimal(new BigDecimal("3.141592653589793"))
+                .decimalStr(new BigDecimal("3.14159265358979344719667586"))
+                .float64Str("1.1")
+                .int64Str("100")
+                .strOpt("testOptional")
+                .build());
+
+        RequestBodyReadOnlyUnionResponse res = sdk.requestBodies().requestBodyReadOnlyUnion()
+                .request(req)
+                .call();
+
+        if (res.weaklyTypedOneOfReadOnlyObject().isPresent()) {
+            // handle response
         }
     }
 }
@@ -4781,16 +6962,20 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                  | Type                                       | Required                                   | Description                                |
-| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
-| `request`                                  | [Object](../../models//.md)                | :heavy_check_mark:                         | The request object to use for the request. |
-| `serverURL`                                | *String*                                   | :heavy_minus_sign:                         | An optional server URL to use.             |
-
+| Parameter                                                                                         | Type                                                                                              | Required                                                                                          | Description                                                                                       |
+| ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
+| `request`                                                                                         | [WeaklyTypedOneOfReadOnlyObjectInput](../../models/shared/WeaklyTypedOneOfReadOnlyObjectInput.md) | :heavy_check_mark:                                                                                | The request object to use for the request.                                                        |
+| `serverURL`                                                                                       | *String*                                                                                          | :heavy_minus_sign:                                                                                | An optional server URL to use.                                                                    |
 
 ### Response
 
-**[org.openapis.openapi.models.operations.RequestBodyReadOnlyUnionResponse](../../models/operations/RequestBodyReadOnlyUnionResponse.md)**
+**[RequestBodyReadOnlyUnionResponse](../../models/operations/RequestBodyReadOnlyUnionResponse.md)**
 
+### Errors
+
+| Error Type             | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
 
 ## requestBodyReadWriteOnlyUnion
 
@@ -4799,30 +6984,39 @@ public class Application {
 ```java
 package hello.world;
 
+import java.lang.Exception;
 import org.openapis.openapi.SDK;
 import org.openapis.openapi.models.operations.RequestBodyReadWriteOnlyUnionResponse;
+import org.openapis.openapi.models.shared.ReadWriteObject;
 import org.openapis.openapi.models.shared.Security;
+import org.openapis.openapi.models.shared.WeaklyTypedOneOfReadWriteObject;
 
 public class Application {
-    public static void main(String[] args) {
-        try {
-            SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
-                    apiKeyAuth = "Token YOUR_API_KEY";
-                }})
-                .setGlobalPathParam(100L)
-                .setGlobalQueryParam("some example global query param")
-                .build();
 
-            org.openapis.openapi.models.. req = "string";            
+    public static void main(String[] args) throws Exception {
 
-            RequestBodyReadWriteOnlyUnionResponse res = sdk.requestBodies.requestBodyReadWriteOnlyUnion(req);
+        SDK sdk = SDK.builder()
+                .security(Security.builder()
+                    .apiKeyAuth("Token YOUR_API_KEY")
+                    .build())
+                .globalHeaderParam(true)
+                .globalHiddenQueryParam("hello")
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
+            .build();
 
-            if (res.weaklyTypedOneOfReadWriteObject != null) {
-                // handle response
-            }
-        } catch (Exception e) {
-            // handle exception
+        WeaklyTypedOneOfReadWriteObject req = WeaklyTypedOneOfReadWriteObject.of(ReadWriteObject.builder()
+                .num1(1L)
+                .num2(2L)
+                .num3(4L)
+                .build());
+
+        RequestBodyReadWriteOnlyUnionResponse res = sdk.requestBodies().requestBodyReadWriteOnlyUnion()
+                .request(req)
+                .call();
+
+        if (res.weaklyTypedOneOfReadWriteObject().isPresent()) {
+            // handle response
         }
     }
 }
@@ -4830,16 +7024,20 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                  | Type                                       | Required                                   | Description                                |
-| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
-| `request`                                  | [Object](../../models//.md)                | :heavy_check_mark:                         | The request object to use for the request. |
-| `serverURL`                                | *String*                                   | :heavy_minus_sign:                         | An optional server URL to use.             |
-
+| Parameter                                                                                 | Type                                                                                      | Required                                                                                  | Description                                                                               |
+| ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
+| `request`                                                                                 | [WeaklyTypedOneOfReadWriteObject](../../models/shared/WeaklyTypedOneOfReadWriteObject.md) | :heavy_check_mark:                                                                        | The request object to use for the request.                                                |
+| `serverURL`                                                                               | *String*                                                                                  | :heavy_minus_sign:                                                                        | An optional server URL to use.                                                            |
 
 ### Response
 
-**[org.openapis.openapi.models.operations.RequestBodyReadWriteOnlyUnionResponse](../../models/operations/RequestBodyReadWriteOnlyUnionResponse.md)**
+**[RequestBodyReadWriteOnlyUnionResponse](../../models/operations/RequestBodyReadWriteOnlyUnionResponse.md)**
 
+### Errors
+
+| Error Type             | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
 
 ## requestBodyWriteOnly
 
@@ -4848,31 +7046,38 @@ public class Application {
 ```java
 package hello.world;
 
+import java.lang.Exception;
 import org.openapis.openapi.SDK;
 import org.openapis.openapi.models.operations.RequestBodyWriteOnlyResponse;
 import org.openapis.openapi.models.shared.Security;
 import org.openapis.openapi.models.shared.WriteOnlyObject;
 
 public class Application {
-    public static void main(String[] args) {
-        try {
-            SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
-                    apiKeyAuth = "Token YOUR_API_KEY";
-                }})
-                .setGlobalPathParam(100L)
-                .setGlobalQueryParam("some example global query param")
+
+    public static void main(String[] args) throws Exception {
+
+        SDK sdk = SDK.builder()
+                .security(Security.builder()
+                    .apiKeyAuth("Token YOUR_API_KEY")
+                    .build())
+                .globalHeaderParam(true)
+                .globalHiddenQueryParam("hello")
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
+            .build();
+
+        WriteOnlyObject req = WriteOnlyObject.builder()
+                .bool(true)
+                .num(1d)
+                .string("hello")
                 .build();
 
-            org.openapis.openapi.models.shared.WriteOnlyObject req = new WriteOnlyObject(false, 3888.42d, "string");            
+        RequestBodyWriteOnlyResponse res = sdk.requestBodies().requestBodyWriteOnly()
+                .request(req)
+                .call();
 
-            RequestBodyWriteOnlyResponse res = sdk.requestBodies.requestBodyWriteOnly(req);
-
-            if (res.readOnlyObject != null) {
-                // handle response
-            }
-        } catch (Exception e) {
-            // handle exception
+        if (res.readOnlyObject().isPresent()) {
+            // handle response
         }
     }
 }
@@ -4880,16 +7085,20 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                                                    | Type                                                                                         | Required                                                                                     | Description                                                                                  |
-| -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
-| `request`                                                                                    | [org.openapis.openapi.models.shared.WriteOnlyObject](../../models/shared/WriteOnlyObject.md) | :heavy_check_mark:                                                                           | The request object to use for the request.                                                   |
-| `serverURL`                                                                                  | *String*                                                                                     | :heavy_minus_sign:                                                                           | An optional server URL to use.                                                               |
-
+| Parameter                                                 | Type                                                      | Required                                                  | Description                                               |
+| --------------------------------------------------------- | --------------------------------------------------------- | --------------------------------------------------------- | --------------------------------------------------------- |
+| `request`                                                 | [WriteOnlyObject](../../models/shared/WriteOnlyObject.md) | :heavy_check_mark:                                        | The request object to use for the request.                |
+| `serverURL`                                               | *String*                                                  | :heavy_minus_sign:                                        | An optional server URL to use.                            |
 
 ### Response
 
-**[org.openapis.openapi.models.operations.RequestBodyWriteOnlyResponse](../../models/operations/RequestBodyWriteOnlyResponse.md)**
+**[RequestBodyWriteOnlyResponse](../../models/operations/RequestBodyWriteOnlyResponse.md)**
 
+### Errors
+
+| Error Type             | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
 
 ## requestBodyWriteOnlyOutput
 
@@ -4898,31 +7107,38 @@ public class Application {
 ```java
 package hello.world;
 
+import java.lang.Exception;
 import org.openapis.openapi.SDK;
 import org.openapis.openapi.models.operations.RequestBodyWriteOnlyOutputResponse;
 import org.openapis.openapi.models.shared.Security;
 import org.openapis.openapi.models.shared.WriteOnlyObject;
 
 public class Application {
-    public static void main(String[] args) {
-        try {
-            SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
-                    apiKeyAuth = "Token YOUR_API_KEY";
-                }})
-                .setGlobalPathParam(100L)
-                .setGlobalQueryParam("some example global query param")
+
+    public static void main(String[] args) throws Exception {
+
+        SDK sdk = SDK.builder()
+                .security(Security.builder()
+                    .apiKeyAuth("Token YOUR_API_KEY")
+                    .build())
+                .globalHeaderParam(true)
+                .globalHiddenQueryParam("hello")
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
+            .build();
+
+        WriteOnlyObject req = WriteOnlyObject.builder()
+                .bool(true)
+                .num(1d)
+                .string("hello")
                 .build();
 
-            org.openapis.openapi.models.shared.WriteOnlyObject req = new WriteOnlyObject(false, 3867.69d, "string");            
+        RequestBodyWriteOnlyOutputResponse res = sdk.requestBodies().requestBodyWriteOnlyOutput()
+                .request(req)
+                .call();
 
-            RequestBodyWriteOnlyOutputResponse res = sdk.requestBodies.requestBodyWriteOnlyOutput(req);
-
-            if (res.writeOnlyObject != null) {
-                // handle response
-            }
-        } catch (Exception e) {
-            // handle exception
+        if (res.writeOnlyObject().isPresent()) {
+            // handle response
         }
     }
 }
@@ -4930,16 +7146,20 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                                                    | Type                                                                                         | Required                                                                                     | Description                                                                                  |
-| -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
-| `request`                                                                                    | [org.openapis.openapi.models.shared.WriteOnlyObject](../../models/shared/WriteOnlyObject.md) | :heavy_check_mark:                                                                           | The request object to use for the request.                                                   |
-| `serverURL`                                                                                  | *String*                                                                                     | :heavy_minus_sign:                                                                           | An optional server URL to use.                                                               |
-
+| Parameter                                                 | Type                                                      | Required                                                  | Description                                               |
+| --------------------------------------------------------- | --------------------------------------------------------- | --------------------------------------------------------- | --------------------------------------------------------- |
+| `request`                                                 | [WriteOnlyObject](../../models/shared/WriteOnlyObject.md) | :heavy_check_mark:                                        | The request object to use for the request.                |
+| `serverURL`                                               | *String*                                                  | :heavy_minus_sign:                                        | An optional server URL to use.                            |
 
 ### Response
 
-**[org.openapis.openapi.models.operations.RequestBodyWriteOnlyOutputResponse](../../models/operations/RequestBodyWriteOnlyOutputResponse.md)**
+**[RequestBodyWriteOnlyOutputResponse](../../models/operations/RequestBodyWriteOnlyOutputResponse.md)**
 
+### Errors
+
+| Error Type             | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
 
 ## requestBodyWriteOnlyUnion
 
@@ -4948,30 +7168,39 @@ public class Application {
 ```java
 package hello.world;
 
+import java.lang.Exception;
 import org.openapis.openapi.SDK;
 import org.openapis.openapi.models.operations.RequestBodyWriteOnlyUnionResponse;
 import org.openapis.openapi.models.shared.Security;
+import org.openapis.openapi.models.shared.WeaklyTypedOneOfWriteOnlyObject;
+import org.openapis.openapi.models.shared.WriteOnlyObject;
 
 public class Application {
-    public static void main(String[] args) {
-        try {
-            SDK sdk = SDK.builder()
-                .setSecurity(new Security(){{
-                    apiKeyAuth = "Token YOUR_API_KEY";
-                }})
-                .setGlobalPathParam(100L)
-                .setGlobalQueryParam("some example global query param")
-                .build();
 
-            org.openapis.openapi.models.. req = "string";            
+    public static void main(String[] args) throws Exception {
 
-            RequestBodyWriteOnlyUnionResponse res = sdk.requestBodies.requestBodyWriteOnlyUnion(req);
+        SDK sdk = SDK.builder()
+                .security(Security.builder()
+                    .apiKeyAuth("Token YOUR_API_KEY")
+                    .build())
+                .globalHeaderParam(true)
+                .globalHiddenQueryParam("hello")
+                .globalPathParam(100L)
+                .globalQueryParam("some example global query param")
+            .build();
 
-            if (res.weaklyTypedOneOfWriteOnlyObject != null) {
-                // handle response
-            }
-        } catch (Exception e) {
-            // handle exception
+        WeaklyTypedOneOfWriteOnlyObject req = WeaklyTypedOneOfWriteOnlyObject.of(WriteOnlyObject.builder()
+                .bool(true)
+                .num(1d)
+                .string("hello")
+                .build());
+
+        RequestBodyWriteOnlyUnionResponse res = sdk.requestBodies().requestBodyWriteOnlyUnion()
+                .request(req)
+                .call();
+
+        if (res.weaklyTypedOneOfWriteOnlyObject().isPresent()) {
+            // handle response
         }
     }
 }
@@ -4979,13 +7208,17 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                  | Type                                       | Required                                   | Description                                |
-| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
-| `request`                                  | [Object](../../models//.md)                | :heavy_check_mark:                         | The request object to use for the request. |
-| `serverURL`                                | *String*                                   | :heavy_minus_sign:                         | An optional server URL to use.             |
-
+| Parameter                                                                                 | Type                                                                                      | Required                                                                                  | Description                                                                               |
+| ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------- |
+| `request`                                                                                 | [WeaklyTypedOneOfWriteOnlyObject](../../models/shared/WeaklyTypedOneOfWriteOnlyObject.md) | :heavy_check_mark:                                                                        | The request object to use for the request.                                                |
+| `serverURL`                                                                               | *String*                                                                                  | :heavy_minus_sign:                                                                        | An optional server URL to use.                                                            |
 
 ### Response
 
-**[org.openapis.openapi.models.operations.RequestBodyWriteOnlyUnionResponse](../../models/operations/RequestBodyWriteOnlyUnionResponse.md)**
+**[RequestBodyWriteOnlyUnionResponse](../../models/operations/RequestBodyWriteOnlyUnionResponse.md)**
 
+### Errors
+
+| Error Type             | Status Code            | Content Type           |
+| ---------------------- | ---------------------- | ---------------------- |
+| models/errors/SDKError | 4XX, 5XX               | \*/\*                  |
