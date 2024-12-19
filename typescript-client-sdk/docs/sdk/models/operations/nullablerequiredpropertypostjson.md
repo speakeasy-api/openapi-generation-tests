@@ -1,0 +1,32 @@
+# NullableRequiredPropertyPostJson
+
+## Example Usage
+
+```typescript
+import { NullableRequiredPropertyPostJson } from "openapi/sdk/models/operations";
+import { Decimal } from "openapi/sdk/types";
+
+let value: NullableRequiredPropertyPostJson = {
+  nullableRequiredArray: [
+    6601.74,
+  ],
+  nullableRequiredBigIntStr: BigInt("290077"),
+  nullableRequiredDateTime: new Date("2023-11-09T08:16:40.240Z"),
+  nullableRequiredDecimalStr: new Decimal("4287.69"),
+  nullableRequiredEnum: "first",
+  nullableRequiredInt: 298282,
+};
+```
+
+## Fields
+
+| Field                                                                                                                                             | Type                                                                                                                                              | Required                                                                                                                                          | Description                                                                                                                                       |
+| ------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `nullableOptionalInt`                                                                                                                             | *number*                                                                                                                                          | :heavy_minus_sign:                                                                                                                                | N/A                                                                                                                                               |
+| `nullableRequiredArray`                                                                                                                           | *number*[]                                                                                                                                        | :heavy_check_mark:                                                                                                                                | N/A                                                                                                                                               |
+| `nullableRequiredBigIntStr`                                                                                                                       | *BigInt*                                                                                                                                          | :heavy_check_mark:                                                                                                                                | N/A                                                                                                                                               |
+| `nullableRequiredDateTime`                                                                                                                        | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date)                                                     | :heavy_check_mark:                                                                                                                                | N/A                                                                                                                                               |
+| `nullableRequiredDecimalStr`                                                                                                                      | *Decimal*                                                                                                                                         | :heavy_check_mark:                                                                                                                                | N/A                                                                                                                                               |
+| `nullableRequiredEnum`                                                                                                                            | [operations.NullableRequiredPropertyPostNullableRequiredEnum](../../../sdk/models/operations/nullablerequiredpropertypostnullablerequiredenum.md) | :heavy_check_mark:                                                                                                                                | N/A                                                                                                                                               |
+| `nullableRequiredInt`                                                                                                                             | *number*                                                                                                                                          | :heavy_check_mark:                                                                                                                                | N/A                                                                                                                                               |
+| `xSpeakeasyTestInternalDirectives`                                                                                                                | *any*                                                                                                                                             | :heavy_minus_sign:                                                                                                                                | N/A                                                                                                                                               |
