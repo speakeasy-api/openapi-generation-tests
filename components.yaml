@@ -936,6 +936,14 @@ components:
       type: object
       description: A set of strings with format values that lead to relevant examples being generated for them
       properties:
+        dateFormat:
+          format: date
+          type: string
+          description: A field that will have RFC3339 formatted datestamp generated as example
+        datetimeFormat:
+          format: date-time
+          type: string
+          description: A field that will have RFC3339 formatted timestamp generated as example
         imageFormat:
           format: image
           type: string
@@ -1008,75 +1016,123 @@ components:
           format: unknown
           type: string
           description: A field that will have random words generated as example
-    fakerStrings:
+      required:
+        - addressFormat
+        - dateFormat
+        - datetimeFormat
+        - directoryFormat
+        - domainFormat
+        - emailFormat
+        - filenameFormat
+        - filepathFormat
+        - imageFormat
+        - ipv4Format
+        - ipv6Format
+        - jsonFormat
+        - macFormat
+        - passwordFormat
+        - phoneFormat
+        - timezoneFormat
+        - unknownFormat
+        - urlFormat
+        - uuidFormat
+        - zipcodeFormat
+    fakerCamelCasePropertyNameStrings:
       type: object
-      description: A set of strings with fieldnames that lead to relevant examples being generated for them
+      description: A set of strings with camel case fieldnames that lead to relevant examples being generated for them
       properties:
         City:
           type: string
-        country:
-          type: string
-        country_code:
-          type: string
-        latitude:
-          type: string
-        longitude:
-          type: string
-        street:
-          type: string
-        address:
-          type: string
-        timezone:
-          type: string
-        postal-code:
-          type: string
-        color:
-          type: string
-        price:
-          type: string
-        product:
-          type: string
-        material:
-          type: string
-        comment:
-          type: string
-        description:
-          type: string
-        company:
-          type: string
-        datatype:
-          type: string
-        json:
-          type: string
-        uuid:
-          type: string
-        account:
-          type: string
-        amount:
-          type: string
-        currency:
-          type: string
         IBAN:
           type: string
-        pin:
-          type: string
-        avatar:
-          type: string
-        domainName:
-          type: string
-        emailAddr:
+        ID:
           type: string
         IPv4:
           type: string
         IPv6:
           type: string
-        mac:
+      required:
+        - City
+        - IBAN
+        - ID
+        - IPv4
+        - IPv6
+    fakerKebobCasePropertyNameStrings:
+      type: object
+      description: A set of strings with kebob case fieldnames that lead to relevant examples being generated for them
+      properties:
+        postal-code:
           type: string
-        password:
+      required:
+        - postal-code
+    fakerPascalCasePropertyNameStrings:
+      type: object
+      description: A set of strings with pascal case fieldnames that lead to relevant examples being generated for them
+      properties:
+        account:
           type: string
-        url:
+        address:
           type: string
-        username:
+        addressLine1:
+          type: string
+        amount:
+          type: string
+        avatar:
+          type: string
+        city:
+          type: string
+        color:
+          type: string
+        comment:
+          type: string
+        company:
+          type: string
+        continent:
+          type: string
+        createdAt:
+          type: string
+          description: RFC3339 formatted timestamp
+        country:
+          type: string
+        countryCode:
+          type: string
+        currency:
+          type: string
+        currencyCode:
+          type: string
+        currencyISO:
+          type: string
+        datatype:
+          type: string
+        default:
+          type: string
+        description:
+          type: string
+        directory:
+          type: string
+        domain:
+          type: string
+        domainName:
+          type: string
+        email:
+          type: string
+        emailAddr:
+          type: string
+        emailAddress:
+          type: string
+        expiredAt:
+          type: string
+        expires:
+          type: string
+        expiresAt:
+          type: string
+        extension:
+          type: string
+        filename:
+          type: string
+        filepath:
+          type: string
+        filetype:
           type: string
         firstName:
           type: string
@@ -1084,40 +1140,178 @@ components:
           type: string
         gender:
           type: string
+        host:
+          type: string
+        hostName:
+          type: string
+        httpStatus:
+          type: string
+        iban:
+          type: string
+        id:
+          type: string
+        ip:
+          type: string
+        ipAddr:
+          type: string
+        ipAddress:
+          type: string
+        ipv4:
+          type: string
+        ipv6:
+          type: string
         job:
           type: string
-        lastName:
-          type: string
-        middleName:
-          type: string
-        sex:
-          type: string
-        phone:
-          type: string
-        locale:
-          type: string
-        unit:
-          type: string
-        extension:
-          type: string
-        filename:
-          type: string
-        filetype:
-          type: string
-        directory:
-          type: string
-        filepath:
-          type: string
-        manufacturer:
-          type: string
-        model:
+        json:
           type: string
         key:
           type: string
-        ID:
+        lastName:
           type: string
-        default:
+        latitude:
           type: string
+        longitude:
+          type: string
+        locale:
+          type: string
+        mac:
+          type: string
+        manufacturer:
+          type: string
+        material:
+          type: string
+        middleName:
+          type: string
+        model:
+          type: string
+        password:
+          type: string
+        phone:
+          type: string
+        pin:
+          type: string
+        postalCode:
+          type: string
+        price:
+          type: string
+        product:
+          type: string
+        sex:
+          type: string
+        statusCode:
+          type: string
+        street:
+          type: string
+        timezone:
+          type: string
+        unit:
+          type: string
+        updatedAt:
+          type: string
+          description: RFC3339 formatted timestamp
+        uri:
+          type: string
+        url:
+          type: string
+        username:
+          type: string
+        uuid:
+          type: string
+      required:
+        - account
+        - accountLine1
+        - address
+        - amount
+        - avatar
+        - city
+        - color
+        - comment
+        - company
+        - continent
+        - country
+        - countryCode
+        - createdAt
+        - creditCardNumber
+        - currency
+        - currencyCode
+        - currencyISO
+        - datatype
+        - default
+        - description
+        - directory
+        - domain
+        - domainName
+        - email
+        - emailAddr
+        - emailAddress
+        - expiredAt
+        - expires
+        - expiresAt
+        - extension
+        - filename
+        - filepath
+        - filetype
+        - firstName
+        - fullName
+        - gender
+        - host
+        - hostName
+        - httpStatus
+        - iban
+        - id
+        - ip
+        - ipAddr
+        - ipAddress
+        - ipv4
+        - ipv6
+        - job
+        - json
+        - key
+        - lastName
+        - latitude
+        - locale
+        - longitude
+        - mac
+        - manufacturer
+        - material
+        - middleName
+        - model
+        - password
+        - phone
+        - pin
+        - postalCode
+        - price
+        - product
+        - sex
+        - statusCode
+        - street
+        - timezone
+        - unit
+        - updatedAt
+        - uri
+        - url
+        - username
+        - uuid
+    fakerSnakeCasePropertyNameStrings:
+      type: object
+      description: A set of strings with snake case fieldnames that lead to relevant examples being generated for them
+      properties:
+        country_code:
+          type: string
+        created_at:
+          type: string
+          description: RFC3339 formatted timestamp
+        expired_at:
+          type: string
+          description: RFC3339 formatted timestamp
+        updated_at:
+          type: string
+          description: RFC3339 formatted timestamp
+      required:
+        - country_code
+        - created_at
+        - expired_at
+        - updated_at
     authServiceRequestBody:
       type: object
       properties:

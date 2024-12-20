@@ -5971,6 +5971,10 @@ paths:
       externalDocs:
         description: Usage example docs
         url: https://docs.example.com
+      # Enable to review faker generated values in generated test.
+      # The generated test is not expected to pass due to mismatch between the
+      # generated request values and generated response values.
+      x-speakeasy-test: false
       x-speakeasy-usage-example:
         title: "Second"
         description: "Do this second"
@@ -6178,10 +6182,23 @@ paths:
               properties:
                 simpleObject:
                   $ref: "components.yaml#/components/schemas/simpleObject"
-                fakerStrings:
-                  $ref: "components.yaml#/components/schemas/fakerStrings"
+                fakerCamelCasePropertyNameStrings:
+                  $ref: "components.yaml#/components/schemas/fakerCamelCasePropertyNameStrings"
+                fakerKebobCasePropertyNameStrings:
+                  $ref: "components.yaml#/components/schemas/fakerKebobCasePropertyNameStrings"
+                fakerPascalCasePropertyNameStrings:
+                  $ref: "components.yaml#/components/schemas/fakerPascalCasePropertyNameStrings"
+                fakerSnakeCasePropertyNameStrings:
+                  $ref: "components.yaml#/components/schemas/fakerSnakeCasePropertyNameStrings"
                 fakerFormattedStrings:
                   $ref: "components.yaml#/components/schemas/fakerFormattedStrings"
+              required:
+                - simpleObject
+                - fakerCamelCasePropertyNameStrings
+                - fakerKebobCasePropertyNameStrings
+                - fakerPascalCasePropertyNameStrings
+                - fakerSnakeCasePropertyNameStrings
+                - fakerFormattedStrings
       responses:
         "200":
           description: A successful response that contains the simpleObject sent in the request body
@@ -6196,10 +6213,23 @@ paths:
                     properties:
                       simpleObject:
                         $ref: "components.yaml#/components/schemas/simpleObject"
-                      fakerStrings:
-                        $ref: "components.yaml#/components/schemas/fakerStrings"
+                      fakerCamelCasePropertyNameStrings:
+                        $ref: "components.yaml#/components/schemas/fakerCamelCasePropertyNameStrings"
+                      fakerKebobCasePropertyNameStrings:
+                        $ref: "components.yaml#/components/schemas/fakerKebobCasePropertyNameStrings"
+                      fakerPascalCasePropertyNameStrings:
+                        $ref: "components.yaml#/components/schemas/fakerPascalCasePropertyNameStrings"
+                      fakerSnakeCasePropertyNameStrings:
+                        $ref: "components.yaml#/components/schemas/fakerSnakeCasePropertyNameStrings"
                       fakerFormattedStrings:
                         $ref: "components.yaml#/components/schemas/fakerFormattedStrings"
+                    required:
+                      - simpleObject
+                      - fakerCamelCasePropertyNameStrings
+                      - fakerKebobCasePropertyNameStrings
+                      - fakerPascalCasePropertyNameStrings
+                      - fakerSnakeCasePropertyNameStrings
+                      - fakerFormattedStrings
                 required:
                   - json
   /anything/dateParamWithDefault:
