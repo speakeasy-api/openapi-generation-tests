@@ -7996,6 +7996,31 @@ paths:
             type: page
         outputs:
           numPages: $.numPages
+  /pagination/limitoffset/page#optionalPageParams:
+    get:
+      x-speakeasy-exclude-test-sdk: [javav2]
+      operationId: paginationLimitOffsetOptionalPageParams
+      servers:
+        - url: http://localhost:35456
+      parameters:
+        - name: page
+          in: query
+          schema:
+            type: integer
+          required: false
+      responses:
+        "200":
+          $ref: "components.yaml#/components/responses/paginationResponse"
+      tags:
+        - pagination
+      x-speakeasy-pagination:
+        type: offsetLimit
+        inputs:
+          - name: page
+            in: parameters
+            type: page
+        outputs:
+          results: $.resultArray
   /pagination/limitoffset/deep_outputs/page:
     put:
       operationId: paginationLimitOffsetDeepOutputsPageBody
@@ -8062,6 +8087,64 @@ paths:
           application/json:
             schema:
               $ref: "components.yaml#/components/schemas/limitOffsetConfig"
+        required: true
+      responses:
+        "200":
+          $ref: "components.yaml#/components/responses/paginationResponse"
+      tags:
+        - pagination
+      x-speakeasy-pagination:
+        type: offsetLimit
+        inputs:
+          - name: limit
+            in: requestBody
+            type: limit
+          - name: offset
+            in: requestBody
+            type: offset
+        outputs:
+          results: $.resultArray
+  /pagination/limitoffset/offset#WithDefaults:
+    get:
+      operationId: paginationLimitOffsetDefaultOffsetParams
+      servers:
+        - url: http://localhost:35456
+      parameters:
+        - name: offset
+          in: query
+          schema:
+            type: integer
+            default: 10
+        - name: limit
+          in: query
+          schema:
+            type: integer
+            default: 15
+      responses:
+        "200":
+          $ref: "components.yaml#/components/responses/paginationResponse"
+      tags:
+        - pagination
+      x-speakeasy-pagination:
+        type: offsetLimit
+        inputs:
+          - name: limit
+            in: parameters
+            type: limit
+          - name: offset
+            in: parameters
+            type: offset
+        outputs:
+          results: $.resultArray
+    put:
+      operationId: paginationLimitOffsetDefaultOffsetBody
+      servers:
+        - url: http://localhost:35456
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "components.yaml#/components/schemas/limitOffsetConfigWithDefaults"
         required: true
       responses:
         "200":

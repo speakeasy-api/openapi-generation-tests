@@ -1363,6 +1363,17 @@ components:
           type: integer
         limit:
           type: integer
+    limitOffsetConfigWithDefaults:
+      type: object
+      properties:
+        offset:
+          type: integer
+          default: 10
+        page:
+          type: integer
+        limit:
+          type: integer
+          default: 15
     error:
       type: object
       properties:
