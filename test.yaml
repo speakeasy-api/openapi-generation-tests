@@ -9536,8 +9536,8 @@ paths:
 x-speakeasy-webhooks:
   security:
     type: signature
-    name: X-Signature
-    encoding: base64
+    headerName: X-Signature
+    signatureTextEncoding: base64
     algorithm: hmac-sha256
 webhooks:
   user.created:
