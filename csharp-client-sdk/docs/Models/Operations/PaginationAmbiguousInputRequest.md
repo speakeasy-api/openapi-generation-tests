@@ -1,0 +1,9 @@
+# PaginationAmbiguousInputRequest
+
+
+## Fields
+
+| Field                                                                                                 | Type                                                                                                  | Required                                                                                              | Description                                                                                           |
+| ----------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- |
+| `RequestBody`                                                                                         | [PaginationAmbiguousInputRequestBody](../../Models/Operations/PaginationAmbiguousInputRequestBody.md) | :heavy_check_mark:                                                                                    | N/A                                                                                                   |
+| `Cursor`                                                                                              | *long*                                                                                                | :heavy_minus_sign:                                                                                    | N/A                                                                                                   |
