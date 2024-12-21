@@ -1,10 +1,158 @@
 # UsageExamplePostJson
 
+## Example Usage
+
+```typescript
+import { UsageExamplePostJson } from "openapi/sdk/models/operations";
+import { IntEnum } from "openapi/sdk/models/shared";
+import { Decimal, RFCDate } from "openapi/sdk/types";
+
+let value: UsageExamplePostJson = {
+  fakerCamelCasePropertyNameStrings: {
+    city: "West Ressiehaven",
+    iban: "AE290095445003761423500",
+    id: "<id>",
+    iPv4: "95.196.176.181",
+    iPv6: "a6cb:af6b:ecbe:03a1:b46f:0d9b:be72:73c6",
+  },
+  fakerFormattedStrings: {
+    addressFormat: "966 W Broadway",
+    dateFormat: new RFCDate("2024-04-18"),
+    datetimeFormat: new Date("2022-12-10T16:41:14.824Z"),
+    directoryFormat: "/opt",
+    domainFormat: "distinct-joy.org",
+    emailFormat: "Billy20@hotmail.com",
+    filenameFormat: "example.file",
+    filepathFormat: "/tmp/and.so",
+    imageFormat: "https://loremflickr.com/537/1266?lock=2297410337015451",
+    ipv4Format: "192.255.136.241",
+    ipv6Format: "8286:aeae:dfa2:8f62:dfdb:cade:5dbb:e6fd",
+    jsonFormat: "{key: 4131808460452176, key1: null, key2: \"<value>\"}",
+    macFormat: "dc:a5:3a:d0:a7:e5",
+    passwordFormat: "NQdoSmDBD_Cv36K",
+    phoneFormat: "(349) 775-9501 x46747",
+    timezoneFormat: "Europe/Istanbul",
+    unknownFormat: "<value>",
+    urlFormat: "https://wordy-patroller.org/",
+    uuidFormat: "8bce286e-1fe1-47bb-bec4-7b2374d95dcf",
+    zipcodeFormat: "18039",
+  },
+  fakerKebobCasePropertyNameStrings: {
+    postalCode: "66055-3023",
+  },
+  fakerPascalCasePropertyNameStrings: {
+    account: "45733002",
+    address: "677 S Pine Street",
+    amount: "979.02",
+    avatar: "https://picsum.photos/seed/Z8JOn/3595/2347",
+    city: "North Nellaport",
+    color: "salmon",
+    comment:
+      "The beautiful range of Apple Naturalé that has an exciting mix of natural ingredients. With the Goodness of 100% Natural Ingredients",
+    company: "VonRueden - Jenkins",
+    continent: "Asia",
+    country: "United Kingdom",
+    countryCode: "ZA",
+    createdAt: "<value>",
+    currency: "Costa Rican Colon",
+    currencyCode: "PEN",
+    currencyISO: "BMD",
+    datatype: "real",
+    default: "<value>",
+    description: "vengeful gee funny brief where daintily role infatuated ew",
+    directory: "/opt/bin",
+    domain: "variable-skyline.name",
+    domainName: "elegant-apricot.info",
+    email: "Rhiannon.Bartoletti33@hotmail.com",
+    emailAddr: "Ocie.Wunsch89@hotmail.com",
+    emailAddress: "Maurine72@gmail.com",
+    expiredAt: "<value>",
+    expires: "<value>",
+    expiresAt: "<value>",
+    extension: "mpg4",
+    filename: "example.file",
+    filepath: "/bin/founder.epub",
+    filetype: "application",
+    firstName: "Carissa",
+    fullName: "Dr. Marjorie DuBuque",
+    gender: "Trigender",
+    host: "clean-daddy.net",
+    hostName: "dirty-effector.biz",
+    httpStatus: "101",
+    iban: "BR3640018080910033300822160Z8",
+    id: "<id>",
+    ip: "adba:a339:71ca:bf1a:584b:3ce1:bdda:cc6c",
+    ipAddr: "247.57.4.83",
+    ipAddress: "0cdf:dffc:da0d:fb73:bafd:c2a6:b6cc:6d9e",
+    ipv4: "47.178.248.44",
+    ipv6: "4fba:d4a2:769e:38de:2e1a:a479:dfbd:d749",
+    job: "Central Program Liaison",
+    json: "{key: 5405980696392778, key1: null, key2: \"<value>\"}",
+    key: "<key>",
+    lastName: "Smitham",
+    latitude: "-31.1504",
+    locale: "fr",
+    longitude: "-149.929",
+    mac: "e1:2d:4a:d9:fb:18",
+    manufacturer: "Mini",
+    material: "Soft",
+    middleName: "Alex",
+    model: "Model T",
+    password: "ogQLUcxucPBWaW2",
+    phone: "950-894-0138",
+    pin: "1804",
+    postalCode: "06917-6100",
+    price: "532.55",
+    product: "Recycled Granite Mouse",
+    sex: "female",
+    statusCode: "508",
+    street: "Forest Avenue",
+    timezone: "America/Dawson",
+    unit: "ampere",
+    updatedAt: "<value>",
+    uri: "https://sparse-collectivization.name",
+    url: "https://critical-coil.org/",
+    username: "Ellsworth.Blanda12",
+    uuid: "81bb2fb4-bb56-459e-92e0-a6cb7a8c7849",
+  },
+  fakerSnakeCasePropertyNameStrings: {
+    countryCode: "MK",
+    createdAt: "<value>",
+    expiredAt: "<value>",
+    updatedAt: "<value>",
+  },
+  simpleObject: {
+    bool: true,
+    date: new RFCDate("2020-01-01"),
+    dateTime: new Date("2020-01-01T00:00:00.001Z"),
+    enum: "one",
+    float32: 1.1,
+    int: 1,
+    int32: 1,
+    int32Enum: 55,
+    intEnum: IntEnum.Second,
+    num: 1.1,
+    str: "test",
+    any: "any",
+    bigint: BigInt("8821239038968084"),
+    bigintStr: BigInt("9223372036854775808"),
+    boolOpt: true,
+    decimal: new Decimal("3.141592653589793"),
+    decimalStr: new Decimal("3.14159265358979344719667586"),
+    float64Str: 1.1,
+    int64Str: 100,
+    strOpt: "testOptional",
+  },
+};
+```
 
 ## Fields
 
-| Field                                                                                                                                                             | Type                                                                                                                                                              | Required                                                                                                                                                          | Description                                                                                                                                                       |
-| ----------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `fakerFormattedStrings`                                                                                                                                           | [shared.FakerFormattedStrings](../../../sdk/models/shared/fakerformattedstrings.md)                                                                               | :heavy_minus_sign:                                                                                                                                                | A set of strings with format values that lead to relevant examples being generated for them                                                                       |
-| `fakerStrings`                                                                                                                                                    | [shared.FakerStrings](../../../sdk/models/shared/fakerstrings.md)                                                                                                 | :heavy_minus_sign:                                                                                                                                                | A set of strings with fieldnames that lead to relevant examples being generated for them                                                                          |
-| `simpleObject`                                                                                                                                                    | [shared.SimpleObject](../../../sdk/models/shared/simpleobject.md)                                                                                                 | :heavy_minus_sign:                                                                                                                                                | A simple object that uses all our supported primitive types and enums and has optional properties.<br/><br/>[A link to the external docs.](https://docs.speakeasyapi.dev) |
+| Field                                                                                                                                                          | Type                                                                                                                                                           | Required                                                                                                                                                       | Description                                                                                                                                                    |
+| -------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `fakerCamelCasePropertyNameStrings`                                                                                                                            | [shared.FakerCamelCasePropertyNameStrings](../../../sdk/models/shared/fakercamelcasepropertynamestrings.md)                                                    | :heavy_check_mark:                                                                                                                                             | A set of strings with camel case fieldnames that lead to relevant examples being generated for them                                                            |
+| `fakerFormattedStrings`                                                                                                                                        | [shared.FakerFormattedStrings](../../../sdk/models/shared/fakerformattedstrings.md)                                                                            | :heavy_check_mark:                                                                                                                                             | A set of strings with format values that lead to relevant examples being generated for them                                                                    |
+| `fakerKebobCasePropertyNameStrings`                                                                                                                            | [shared.FakerKebobCasePropertyNameStrings](../../../sdk/models/shared/fakerkebobcasepropertynamestrings.md)                                                    | :heavy_check_mark:                                                                                                                                             | A set of strings with kebob case fieldnames that lead to relevant examples being generated for them                                                            |
+| `fakerPascalCasePropertyNameStrings`                                                                                                                           | [shared.FakerPascalCasePropertyNameStrings](../../../sdk/models/shared/fakerpascalcasepropertynamestrings.md)                                                  | :heavy_check_mark:                                                                                                                                             | A set of strings with pascal case fieldnames that lead to relevant examples being generated for them                                                           |
+| `fakerSnakeCasePropertyNameStrings`                                                                                                                            | [shared.FakerSnakeCasePropertyNameStrings](../../../sdk/models/shared/fakersnakecasepropertynamestrings.md)                                                    | :heavy_check_mark:                                                                                                                                             | A set of strings with snake case fieldnames that lead to relevant examples being generated for them                                                            |
+| `simpleObject`                                                                                                                                                 | [shared.SimpleObject](../../../sdk/models/shared/simpleobject.md)                                                                                              | :heavy_check_mark:                                                                                                                                             | A simple object that uses all our supported primitive types and enums and has optional properties.<br/><br/>[A link to the external docs.](https://speakeasy.com/docs) |

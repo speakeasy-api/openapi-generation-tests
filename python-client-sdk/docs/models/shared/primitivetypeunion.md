@@ -3,39 +3,39 @@
 
 ## Supported Types
 
-### 
+### `str`
 
 ```python
-primitiveTypeUnion: str = /* values here */
+value: str = /* values here */
 ```
 
-### 
+### `int`
 
 ```python
-primitiveTypeUnion: int = /* values here */
+value: int = /* values here */
 ```
 
-### 
+### `int`
 
 ```python
-primitiveTypeUnion: int = /* values here */
+value: int = /* values here */
 ```
 
-### 
+### `float`
 
 ```python
-primitiveTypeUnion: float = /* values here */
+value: float = /* values here */
 ```
 
-### 
+### `float`
 
 ```python
-primitiveTypeUnion: float = /* values here */
+value: float = /* values here */
 ```
 
-### 
+### `bool`
 
 ```python
-primitiveTypeUnion: bool = /* values here */
+value: bool = /* values here */
 ```
 

@@ -3,8 +3,8 @@
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `NullableOneOfOne` | *bool*             | :heavy_check_mark: | N/A                |
-| `NullableOneOfTwo` | *object*           | :heavy_check_mark: | N/A                |
-| `OneOfOne`         | *bool*             | :heavy_check_mark: | N/A                |
+| Field                                                                                                         | Type                                                                                                          | Required                                                                                                      | Description                                                                                                   |
+| ------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
+| `NullableOneOfOne`                                                                                            | *bool*                                                                                                        | :heavy_check_mark:                                                                                            | N/A                                                                                                           |
+| `NullableOneOfTwo`                                                                                            | [NullableOneOfTypeInObjectNullableOneOfTwo](../../Models/Shared/NullableOneOfTypeInObjectNullableOneOfTwo.md) | :heavy_check_mark:                                                                                            | N/A                                                                                                           |
+| `OneOfOne`                                                                                                    | *bool*                                                                                                        | :heavy_check_mark:                                                                                            | N/A                                                                                                           |
