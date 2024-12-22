@@ -1,5 +1,22 @@
 # Slideshow
 
+## Example Usage
+
+```typescript
+import { Slideshow } from "openapi/sdk/models/shared";
+
+let value: Slideshow = {
+  author: "<value>",
+  date: "2024-04-03",
+  slides: [
+    {
+      title: "<value>",
+      type: "<value>",
+    },
+  ],
+  title: "<value>",
+};
+```
 
 ## Fields
 

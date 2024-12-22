@@ -1,5 +1,5 @@
 # Globals
-
+(*globals*)
 
 ## Overview
 
@@ -8,6 +8,8 @@ Endpoints for testing global parameters.
 ### Available Operations
 
 * [globalPathParameterGet](#globalpathparameterget)
+* [globalsHeaderGet](#globalsheaderget)
+* [globalsHiddenPost](#globalshiddenpost)
 * [globalsQueryParameterGet](#globalsqueryparameterget)
 
 ## globalPathParameterGet
@@ -15,89 +17,203 @@ Endpoints for testing global parameters.
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI;
-use \OpenAPI\OpenAPI\Models\Shared;
-use \OpenAPI\OpenAPI\Models\Operations;
+require 'vendor/autoload.php';
 
-$security = new Shared\Security();
-$security->apiKeyAuth = 'Token YOUR_API_KEY';
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Shared;
+
+$security = new Shared\Security(
+    apiKeyAuth: 'Token YOUR_API_KEY',
+);
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
-try {
 
 
-    $response = $sdk->globals->globalPathParameterGet(719830);
+$response = $sdk->globals->globalPathParameterGet(
+    globalPathParam: 100
+);
 
-    if ($response->res !== null) {
-        // handle response
-    }
-} catch (Exception $e) {
-    // handle exception
+if ($response->res !== null) {
+    // handle response
 }
 ```
 
 ### Parameters
 
-| Parameter          | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `globalPathParam`  | *int*              | :heavy_minus_sign: | N/A                |
-
+| Parameter          | Type               | Required           | Description        | Example            |
+| ------------------ | ------------------ | ------------------ | ------------------ | ------------------ |
+| `globalPathParam`  | *?int*             | :heavy_minus_sign: | N/A                | 100                |
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\GlobalPathParameterGetResponse](../../Models/Operations/GlobalPathParameterGetResponse.md)**
+**[?Operations\GlobalPathParameterGetResponse](../../Models/Operations/GlobalPathParameterGetResponse.md)**
 
+### Errors
+
+| Error Type          | Status Code         | Content Type        |
+| ------------------- | ------------------- | ------------------- |
+| Errors\SDKException | 4XX, 5XX            | \*/\*               |
+
+## globalsHeaderGet
+
+### Example Usage
+
+```php
+declare(strict_types=1);
+
+require 'vendor/autoload.php';
+
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Shared;
+
+$security = new Shared\Security(
+    apiKeyAuth: 'Token YOUR_API_KEY',
+);
+
+$sdk = OpenAPI\SDK::builder()
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
+
+
+
+$response = $sdk->globals->globalsHeaderGet(
+    globalHeaderParam: true
+);
+
+if ($response->res !== null) {
+    // handle response
+}
+```
+
+### Parameters
+
+| Parameter           | Type                | Required            | Description         | Example             |
+| ------------------- | ------------------- | ------------------- | ------------------- | ------------------- |
+| `globalHeaderParam` | *?bool*             | :heavy_minus_sign:  | N/A                 | true                |
+
+### Response
+
+**[?Operations\GlobalsHeaderGetResponse](../../Models/Operations/GlobalsHeaderGetResponse.md)**
+
+### Errors
+
+| Error Type          | Status Code         | Content Type        |
+| ------------------- | ------------------- | ------------------- |
+| Errors\SDKException | 4XX, 5XX            | \*/\*               |
+
+## globalsHiddenPost
+
+### Example Usage
+
+```php
+declare(strict_types=1);
+
+require 'vendor/autoload.php';
+
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Operations;
+use OpenAPI\OpenAPI\Models\Shared;
+
+$security = new Shared\Security(
+    apiKeyAuth: 'Token YOUR_API_KEY',
+);
+
+$sdk = OpenAPI\SDK::builder()
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
+
+$request = new Operations\GlobalsHiddenPostRequest(
+    requestBody: new Operations\GlobalsHiddenPostRequestBody(
+        other: 37,
+        test: 'friend',
+    ),
+);
+
+$response = $sdk->globals->globalsHiddenPost(
+    request: $request
+);
+
+if ($response->res !== null) {
+    // handle response
+}
+```
+
+### Parameters
+
+| Parameter                                                                                  | Type                                                                                       | Required                                                                                   | Description                                                                                |
+| ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
+| `$request`                                                                                 | [Operations\GlobalsHiddenPostRequest](../../Models/Operations/GlobalsHiddenPostRequest.md) | :heavy_check_mark:                                                                         | The request object to use for the request.                                                 |
+
+### Response
+
+**[?Operations\GlobalsHiddenPostResponse](../../Models/Operations/GlobalsHiddenPostResponse.md)**
+
+### Errors
+
+| Error Type          | Status Code         | Content Type        |
+| ------------------- | ------------------- | ------------------- |
+| Errors\SDKException | 4XX, 5XX            | \*/\*               |
 
 ## globalsQueryParameterGet
 
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI;
-use \OpenAPI\OpenAPI\Models\Shared;
-use \OpenAPI\OpenAPI\Models\Operations;
+require 'vendor/autoload.php';
 
-$security = new Shared\Security();
-$security->apiKeyAuth = 'Token YOUR_API_KEY';
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Shared;
+
+$security = new Shared\Security(
+    apiKeyAuth: 'Token YOUR_API_KEY',
+);
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
-try {
 
 
-    $response = $sdk->globals->globalsQueryParameterGet('string');
+$response = $sdk->globals->globalsQueryParameterGet(
+    globalQueryParam: 'some example global query param'
+);
 
-    if ($response->res !== null) {
-        // handle response
-    }
-} catch (Exception $e) {
-    // handle exception
+if ($response->res !== null) {
+    // handle response
 }
 ```
 
 ### Parameters
 
-| Parameter          | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `globalQueryParam` | *string*           | :heavy_minus_sign: | N/A                |
-
+| Parameter                       | Type                            | Required                        | Description                     | Example                         |
+| ------------------------------- | ------------------------------- | ------------------------------- | ------------------------------- | ------------------------------- |
+| `globalQueryParam`              | *?string*                       | :heavy_minus_sign:              | N/A                             | some example global query param |
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\GlobalsQueryParameterGetResponse](../../Models/Operations/GlobalsQueryParameterGetResponse.md)**
+**[?Operations\GlobalsQueryParameterGetResponse](../../Models/Operations/GlobalsQueryParameterGetResponse.md)**
 
+### Errors
+
+| Error Type          | Status Code         | Content Type        |
+| ------------------- | ------------------- | ------------------- |
+| Errors\SDKException | 4XX, 5XX            | \*/\*               |
