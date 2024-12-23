@@ -3,15 +3,15 @@
 
 ## Supported Types
 
-### 
+### `datetime`
 
 ```python
-unionDateTimeBigIntRequestBody: datetime = /* values here */
+value: datetime = /* values here */
 ```
 
-### 
+### `int`
 
 ```python
-unionDateTimeBigIntRequestBody: int = /* values here */
+value: int = /* values here */
 ```
 

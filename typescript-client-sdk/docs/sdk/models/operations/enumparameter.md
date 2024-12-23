@@ -2,11 +2,16 @@
 
 An enum type
 
+## Example Usage
+
+```typescript
+import { EnumParameter } from "openapi/sdk/models/operations";
+
+let value: EnumParameter = "value1";
+```
 
 ## Values
 
-| Name     | Value    |
-| -------- | -------- |
-| `Value1` | value1   |
-| `Value2` | value2   |
-| `Value3` | value3   |
+```typescript
+"value1" | "value2" | "value3"
+```

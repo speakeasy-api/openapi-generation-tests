@@ -1,5 +1,5 @@
 # Servers
-
+(*servers*)
 
 ## Overview
 
@@ -13,43 +13,52 @@ Endpoints for testing servers.
 * [serverWithTemplates](#serverwithtemplates)
 * [serverWithTemplatesGlobal](#serverwithtemplatesglobal)
 * [serversByIDWithTemplates](#serversbyidwithtemplates)
+* [serversOverrideGlobalServerURL](#serversoverrideglobalserverurl)
+* [serversOverrideOperationServerURL](#serversoverrideoperationserverurl)
 
 ## selectGlobalServer
 
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI;
-use \OpenAPI\OpenAPI\Models\Shared;
+require 'vendor/autoload.php';
 
-$security = new Shared\Security();
-$security->apiKeyAuth = 'Token YOUR_API_KEY';
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Shared;
+
+$security = new Shared\Security(
+    apiKeyAuth: 'Token YOUR_API_KEY',
+);
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
-try {
-    $response = $sdk->servers->selectGlobalServer();
 
-    if ($response->statusCode === 200) {
-        // handle response
-    }
-} catch (Exception $e) {
-    // handle exception
+
+$response = $sdk->servers->selectGlobalServer(
+
+);
+
+if ($response->statusCode === 200) {
+    // handle response
 }
 ```
 
-
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\SelectGlobalServerResponse](../../Models/Operations/SelectGlobalServerResponse.md)**
+**[?Operations\SelectGlobalServerResponse](../../Models/Operations/SelectGlobalServerResponse.md)**
 
+### Errors
+
+| Error Type          | Status Code         | Content Type        |
+| ------------------- | ------------------- | ------------------- |
+| Errors\SDKException | 4XX, 5XX            | \*/\*               |
 
 ## selectServerWithID
 
@@ -58,29 +67,32 @@ Select a server by ID.
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI;
-use \OpenAPI\OpenAPI\Models\Shared;
+require 'vendor/autoload.php';
 
-$security = new Shared\Security();
-$security->apiKeyAuth = 'Token YOUR_API_KEY';
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Shared;
+
+$security = new Shared\Security(
+    apiKeyAuth: 'Token YOUR_API_KEY',
+);
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
-try {
-    $response = $sdk->servers->selectServerWithID();
 
-    if ($response->statusCode === 200) {
-        // handle response
-    }
-} catch (Exception $e) {
-    // handle exception
+
+$response = $sdk->servers->selectServerWithID(
+
+);
+
+if ($response->statusCode === 200) {
+    // handle response
 }
 ```
 
@@ -90,40 +102,47 @@ try {
 | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ |
 | `$serverURL`                   | *string*                       | :heavy_minus_sign:             | An optional server URL to use. |
 
-
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\SelectServerWithIDResponse](../../Models/Operations/SelectServerWithIDResponse.md)**
+**[?Operations\SelectServerWithIDResponse](../../Models/Operations/SelectServerWithIDResponse.md)**
 
+### Errors
+
+| Error Type          | Status Code         | Content Type        |
+| ------------------- | ------------------- | ------------------- |
+| Errors\SDKException | 4XX, 5XX            | \*/\*               |
 
 ## serverWithProtocolTemplate
 
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI;
-use \OpenAPI\OpenAPI\Models\Shared;
+require 'vendor/autoload.php';
 
-$security = new Shared\Security();
-$security->apiKeyAuth = 'Token YOUR_API_KEY';
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Shared;
+
+$security = new Shared\Security(
+    apiKeyAuth: 'Token YOUR_API_KEY',
+);
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
-try {
-    $response = $sdk->servers->serverWithProtocolTemplate();
 
-    if ($response->statusCode === 200) {
-        // handle response
-    }
-} catch (Exception $e) {
-    // handle exception
+
+$response = $sdk->servers->serverWithProtocolTemplate(
+
+);
+
+if ($response->statusCode === 200) {
+    // handle response
 }
 ```
 
@@ -133,40 +152,47 @@ try {
 | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ |
 | `$serverURL`                   | *string*                       | :heavy_minus_sign:             | An optional server URL to use. |
 
-
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\ServerWithProtocolTemplateResponse](../../Models/Operations/ServerWithProtocolTemplateResponse.md)**
+**[?Operations\ServerWithProtocolTemplateResponse](../../Models/Operations/ServerWithProtocolTemplateResponse.md)**
 
+### Errors
+
+| Error Type          | Status Code         | Content Type        |
+| ------------------- | ------------------- | ------------------- |
+| Errors\SDKException | 4XX, 5XX            | \*/\*               |
 
 ## serverWithTemplates
 
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI;
-use \OpenAPI\OpenAPI\Models\Shared;
+require 'vendor/autoload.php';
 
-$security = new Shared\Security();
-$security->apiKeyAuth = 'Token YOUR_API_KEY';
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Shared;
+
+$security = new Shared\Security(
+    apiKeyAuth: 'Token YOUR_API_KEY',
+);
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
-try {
-    $response = $sdk->servers->serverWithTemplates();
 
-    if ($response->statusCode === 200) {
-        // handle response
-    }
-} catch (Exception $e) {
-    // handle exception
+
+$response = $sdk->servers->serverWithTemplates(
+
+);
+
+if ($response->statusCode === 200) {
+    // handle response
 }
 ```
 
@@ -176,77 +202,91 @@ try {
 | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ |
 | `$serverURL`                   | *string*                       | :heavy_minus_sign:             | An optional server URL to use. |
 
-
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\ServerWithTemplatesResponse](../../Models/Operations/ServerWithTemplatesResponse.md)**
+**[?Operations\ServerWithTemplatesResponse](../../Models/Operations/ServerWithTemplatesResponse.md)**
 
+### Errors
+
+| Error Type          | Status Code         | Content Type        |
+| ------------------- | ------------------- | ------------------- |
+| Errors\SDKException | 4XX, 5XX            | \*/\*               |
 
 ## serverWithTemplatesGlobal
 
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI;
-use \OpenAPI\OpenAPI\Models\Shared;
+require 'vendor/autoload.php';
 
-$security = new Shared\Security();
-$security->apiKeyAuth = 'Token YOUR_API_KEY';
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Shared;
+
+$security = new Shared\Security(
+    apiKeyAuth: 'Token YOUR_API_KEY',
+);
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
-try {
-    $response = $sdk->servers->serverWithTemplatesGlobal();
 
-    if ($response->statusCode === 200) {
-        // handle response
-    }
-} catch (Exception $e) {
-    // handle exception
+
+$response = $sdk->servers->serverWithTemplatesGlobal(
+
+);
+
+if ($response->statusCode === 200) {
+    // handle response
 }
 ```
 
-
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\ServerWithTemplatesGlobalResponse](../../Models/Operations/ServerWithTemplatesGlobalResponse.md)**
+**[?Operations\ServerWithTemplatesGlobalResponse](../../Models/Operations/ServerWithTemplatesGlobalResponse.md)**
 
+### Errors
+
+| Error Type          | Status Code         | Content Type        |
+| ------------------- | ------------------- | ------------------- |
+| Errors\SDKException | 4XX, 5XX            | \*/\*               |
 
 ## serversByIDWithTemplates
 
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI;
-use \OpenAPI\OpenAPI\Models\Shared;
+require 'vendor/autoload.php';
 
-$security = new Shared\Security();
-$security->apiKeyAuth = 'Token YOUR_API_KEY';
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Shared;
+
+$security = new Shared\Security(
+    apiKeyAuth: 'Token YOUR_API_KEY',
+);
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
 
-try {
-    $response = $sdk->servers->serversByIDWithTemplates();
 
-    if ($response->statusCode === 200) {
-        // handle response
-    }
-} catch (Exception $e) {
-    // handle exception
+
+$response = $sdk->servers->serversByIDWithTemplates(
+
+);
+
+if ($response->statusCode === 200) {
+    // handle response
 }
 ```
 
@@ -256,8 +296,106 @@ try {
 | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ |
 | `$serverURL`                   | *string*                       | :heavy_minus_sign:             | An optional server URL to use. |
 
+### Response
+
+**[?Operations\ServersByIDWithTemplatesResponse](../../Models/Operations/ServersByIDWithTemplatesResponse.md)**
+
+### Errors
+
+| Error Type          | Status Code         | Content Type        |
+| ------------------- | ------------------- | ------------------- |
+| Errors\SDKException | 4XX, 5XX            | \*/\*               |
+
+## serversOverrideGlobalServerURL
+
+### Example Usage
+
+```php
+declare(strict_types=1);
+
+require 'vendor/autoload.php';
+
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Shared;
+
+$security = new Shared\Security(
+    apiKeyAuth: 'Token YOUR_API_KEY',
+);
+
+$sdk = OpenAPI\SDK::builder()
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
+
+
+
+$response = $sdk->servers->serversOverrideGlobalServerURL(
+
+);
+
+if ($response->statusCode === 200) {
+    // handle response
+}
+```
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\ServersByIDWithTemplatesResponse](../../Models/Operations/ServersByIDWithTemplatesResponse.md)**
+**[?Operations\ServersOverrideGlobalServerURLResponse](../../Models/Operations/ServersOverrideGlobalServerURLResponse.md)**
 
+### Errors
+
+| Error Type          | Status Code         | Content Type        |
+| ------------------- | ------------------- | ------------------- |
+| Errors\SDKException | 4XX, 5XX            | \*/\*               |
+
+## serversOverrideOperationServerURL
+
+### Example Usage
+
+```php
+declare(strict_types=1);
+
+require 'vendor/autoload.php';
+
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Shared;
+
+$security = new Shared\Security(
+    apiKeyAuth: 'Token YOUR_API_KEY',
+);
+
+$sdk = OpenAPI\SDK::builder()
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->setSecurity($security)->build();
+
+
+
+$response = $sdk->servers->serversOverrideOperationServerURL(
+
+);
+
+if ($response->statusCode === 200) {
+    // handle response
+}
+```
+
+### Parameters
+
+| Parameter                      | Type                           | Required                       | Description                    |
+| ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ |
+| `$serverURL`                   | *string*                       | :heavy_minus_sign:             | An optional server URL to use. |
+
+### Response
+
+**[?Operations\ServersOverrideOperationServerURLResponse](../../Models/Operations/ServersOverrideOperationServerURLResponse.md)**
+
+### Errors
+
+| Error Type          | Status Code         | Content Type        |
+| ------------------- | ------------------- | ------------------- |
+| Errors\SDKException | 4XX, 5XX            | \*/\*               |

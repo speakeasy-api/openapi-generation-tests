@@ -1,5 +1,14 @@
 # MixedParametersCamelCaseHeaders
 
+## Example Usage
+
+```typescript
+import { MixedParametersCamelCaseHeaders } from "openapi/sdk/models/operations";
+
+let value: MixedParametersCamelCaseHeaders = {
+  headerParam: "headerValue",
+};
+```
 
 ## Fields
 
