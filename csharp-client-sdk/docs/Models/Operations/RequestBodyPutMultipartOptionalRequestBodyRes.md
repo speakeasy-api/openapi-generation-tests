@@ -1,0 +1,11 @@
+# RequestBodyPutMultipartOptionalRequestBodyRes
+
+OK
+
+
+## Fields
+
+| Field                                                                                                                       | Type                                                                                                                        | Required                                                                                                                    | Description                                                                                                                 |
+| --------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
+| `Files`                                                                                                                     | Dictionary<String, *string*>                                                                                                | :heavy_check_mark:                                                                                                          | N/A                                                                                                                         |
+| `Form`                                                                                                                      | [RequestBodyPutMultipartOptionalRequestBodyForm](../../Models/Operations/RequestBodyPutMultipartOptionalRequestBodyForm.md) | :heavy_minus_sign:                                                                                                          | N/A                                                                                                                         |
