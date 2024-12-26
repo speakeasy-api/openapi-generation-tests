@@ -1,5 +1,12 @@
 # RequestBodyPostEmptyObjectRequestBody
 
+## Example Usage
+
+```typescript
+import { RequestBodyPostEmptyObjectRequestBody } from "openapi/sdk/models/operations";
+
+let value: RequestBodyPostEmptyObjectRequestBody = {};
+```
 
 ## Fields
 
