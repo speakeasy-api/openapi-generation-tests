@@ -254,6 +254,64 @@ case .empty:
 ```
 <!-- End Global Parameters -->
 
+<!-- Start Authentication [security] -->
+## Authentication
+
+### Global Security Schemes
+
+The SDK supports the following security schemes globally through the `Shared.Security` type:
+
+| Name          | Type   | Scheme       |
+| ------------- | ------ | ------------ |
+| `.apiKeyAuth` | apiKey | API key      |
+| `.oauth2`     | oauth2 | OAuth2 token |
+
+You can set the appropriate security scheme by passing a `Shared.Security` value for the `security` parameter when initializing the `Client` instance. The selected scheme will be used by default to authenticate with the API for all operations that support it. For example:
+
+```swift
+import Foundation
+import OpenAPI
+
+let client = Client(security: .apiKeyAuth("Token YOUR_API_KEY"))
+
+let response = try await client.ambiguousQueryParam(
+    request: Operations.AmbiguousQueryParamRequest(
+        console: .three
+    )
+)
+
+switch response.data {
+case .empty:
+    // Handle empty response
+    break
+}
+
+```
+
+### Per-Operation Security Schemes
+
+Some operations in the SDK require the security scheme to be specified on a per-operation basis. For example:
+
+```swift
+import Foundation
+import OpenAPI
+
+let client = Client()
+
+let response = try await client.authenticatedRequest(
+    request: Operations.AuthenticatedRequestRequestBody(),
+    security: .clientCredentials("<YOUR_CLIENT_CREDENTIALS_HERE>")
+)
+
+switch response.data {
+case .empty:
+    // Handle empty response
+    break
+}
+
+```
+<!-- End Authentication [security] -->
+
 <!-- Placeholder for Future Speakeasy SDK Sections -->
 
 # Development
