@@ -6,6 +6,9 @@ Metrics:
   Enabled: false
 Style/IfInsideElse:
   Enabled: false
+# Temporary until Ruby deals with empty responses correctly
+Style/EmptyElse:
+  Enabled: false
 Style/GuardClause:
   Enabled: false
 Style/ConditionalAssignment:
@@ -63,4 +66,12 @@ Style/TrailingCommaInArrayLiteral:
 Layout/EmptyLinesAroundClassBody:
   Enabled: false
 Style/WordArray:
+  Enabled: false
+Style/RedundantReturn: # https://github.com/rubocop/rubocop/issues/12394
+  Enabled: false
+Style/RedundantAssignment:
+  Enabled: false
+Lint/LiteralAsCondition:
+  Enabled: false
+Naming/VariableNumber:
   Enabled: false

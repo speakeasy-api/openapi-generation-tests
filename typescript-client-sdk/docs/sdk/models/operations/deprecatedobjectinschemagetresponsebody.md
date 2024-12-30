@@ -2,6 +2,13 @@
 
 A successful response that contains a deprecatedObject sent in the request body
 
+## Example Usage
+
+```typescript
+import { DeprecatedObjectInSchemaGetResponseBody } from "openapi/sdk/models/operations";
+
+let value: DeprecatedObjectInSchemaGetResponseBody = {};
+```
 
 ## Fields
 
