@@ -3,9 +3,9 @@
 
 ## Supported Types
 
-### TypedObject1
+### `shared.TypedObject1`
 
 ```python
-oneOfOne: shared.TypedObject1 = /* values here */
+value: shared.TypedObject1 = /* values here */
 ```
 
