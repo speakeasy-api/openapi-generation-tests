@@ -2,6 +2,13 @@
 
 > :warning: **DEPRECATED**: This object is deprecated.
 
+## Example Usage
+
+```typescript
+import { DeprecatedObject } from "openapi/sdk/models/shared";
+
+let value: DeprecatedObject = {};
+```
 
 ## Fields
 
