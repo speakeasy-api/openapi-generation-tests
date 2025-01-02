@@ -83,6 +83,25 @@ x-speakeasy-globals:
       schema:
         type: string
       x-speakeasy-globals-hidden: true
+    - name: globalOptionalPathParam
+      description: |
+        An optional global path parameter. Some paths and operations will
+        override it to required: true, especially for verifying test generation
+        where the value should be templated in the operation request.
+      in: path
+      required: false
+      schema:
+        type: string
+    - name: globalOptionalHiddenPathParam
+      description: |
+        An optional and hidden global path parameter. Some paths and operations
+        will override it to required: true, especially for verifying test
+        generation where the value should be templated in the SDK client.
+      in: path
+      required: false
+      schema:
+        type: string
+      x-speakeasy-globals-hidden: true
 x-speakeasy-name-override:
   - operationId: getGlobalNameOverride
     methodNameOverride: globalNameOverridden
@@ -6808,6 +6827,110 @@ paths:
                   - args
                   - url
                   - headers
+  /anything/globals/{globalOptionalPathParam}/operation/required:
+    get:
+      operationId: globalsOptionalPathParameterOperationRequired
+      description: |
+        This operation requires a globally optional path parameter. A failing
+        test with 404 likely indicates that the path parameter value is not
+        being templated into the operation request (.../globals//...).
+      # TODO: Set to true when python (v1) has been sunset.
+      x-speakeasy-test: ["go", "pythonv2", "typescriptv2"]
+      x-speakeasy-test-internal-id: globals-optional-path-parameter-operation-required
+      # TODO: Remove when mockserver is default
+      x-speakeasy-test-server: "x-env: TEST_SERVER_URL"
+      tags:
+        - globals
+      parameters:
+        - name: globalOptionalPathParam
+          description: |
+            Overrides the optional global path parameter to be required at the
+            operation level.
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "2XX":
+          description: OK
+  /anything/globals/{globalOptionalPathParam}/path/required:
+    parameters:
+      - name: globalOptionalPathParam
+        description: |
+          Overrides the optional global path parameter to be required at the
+          path level.
+        in: path
+        required: true
+        schema:
+          type: string
+    get:
+      operationId: globalsOptionalPathParameterPathRequired
+      description: |
+        This path requires a globally optional path parameter. A failing
+        test with 404 likely indicates that the path parameter value is not
+        being templated into the operation request (.../globals//...).
+      # TODO: Set to true when python (v1) has been sunset.
+      x-speakeasy-test: ["go", "pythonv2", "typescriptv2"]
+      x-speakeasy-test-internal-id: globals-optional-path-parameter-path-required
+      # TODO: Remove when mockserver is default
+      x-speakeasy-test-server: "x-env: TEST_SERVER_URL"
+      tags:
+        - globals
+      responses:
+        "2XX":
+          description: OK
+  /anything/globals/hidden/{globalOptionalHiddenPathParam}/operation/required:
+    get:
+      operationId: globalsOptionalHiddenPathParameterOperationRequired
+      description: |
+        This operation requires a globally optional hidden path parameter. A
+        failing test with 404 likely indicates that the path parameter value is
+        not being templated into the client (.../hidden//...).
+      # TODO: Set to true when python (v1) has been sunset.
+      x-speakeasy-test: ["go", "pythonv2", "typescriptv2"]
+      x-speakeasy-test-internal-id: globals-optional-hidden-path-parameter-operation-required
+      # TODO: Remove when mockserver is default
+      x-speakeasy-test-server: "x-env: TEST_SERVER_URL"
+      tags:
+        - globals
+      parameters:
+        - name: globalOptionalHiddenPathParam
+          description: |
+            Overrides the optional hidden global path parameter to be required
+            at the operation level.
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "2XX":
+          description: OK
+  /anything/globals/hidden/{globalOptionalHiddenPathParam}/path/required:
+    parameters:
+      - name: globalOptionalHiddenPathParam
+        description: |
+          Overrides the optional hidden global path parameter to be required at
+          the path level.
+        in: path
+        required: true
+        schema:
+          type: string
+    get:
+      operationId: globalsOptionalHiddenPathParameterPathRequired
+      description: |
+        This path requires a globally optional hidden path parameter. A failing
+        test with 404 likely indicates that the path parameter value is not
+        being templated into the client (.../hidden//...).
+      # TODO: Set to true when python (v1) has been sunset.
+      x-speakeasy-test: ["go", "pythonv2", "typescriptv2"]
+      x-speakeasy-test-internal-id: globals-optional-hidden-path-parameter-path-required
+      # TODO: Remove when mockserver is default
+      x-speakeasy-test-server: "x-env: TEST_SERVER_URL"
+      tags:
+        - globals
+      responses:
+        "2XX":
+          description: OK
   /anything/stronglyTypedOneOf:
     post:
       operationId: stronglyTypedOneOfPost
