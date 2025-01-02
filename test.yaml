@@ -6530,6 +6530,36 @@ paths:
       responses:
         "200":
           description: OK
+  /anything/deprecatedOperationWithMultilineComment:
+    get:
+      operationId: deprecatedOperationWithMultilineCommentGet
+      tags:
+        - generation
+      deprecated: true
+      x-speakeasy-deprecation-replacement: simplePathParameterObjects
+      x-speakeasy-deprecation-message: |
+        This operation is deprecated.
+        Its deprecation message has newlines.
+      summary: This is an endpoint setup to test deprecation with multiline comments
+      parameters:
+        - name: deprecatedParameter
+          in: query
+          schema:
+            type: string
+          deprecated: true
+          x-speakeasy-deprecation-replacement: newParameter
+          x-speakeasy-deprecation-message: |
+            This parameter is deprecated.
+            Its deprecation message has newlines.
+          description: This is a string parameter
+        - name: newParameter
+          in: query
+          schema:
+            type: string
+          description: This is a string parameter
+      responses:
+        "200":
+          description: OK
   /anything/deprecatedOperationNoComments:
     get:
       operationId: deprecatedOperationNoCommentsGet
