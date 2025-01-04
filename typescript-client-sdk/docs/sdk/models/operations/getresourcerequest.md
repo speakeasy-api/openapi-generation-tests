@@ -1,5 +1,14 @@
 # GetResourceRequest
 
+## Example Usage
+
+```typescript
+import { GetResourceRequest } from "openapi/sdk/models/operations";
+
+let value: GetResourceRequest = {
+  resourceId: "<id>",
+};
+```
 
 ## Fields
 
