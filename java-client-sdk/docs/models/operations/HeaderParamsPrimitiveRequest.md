@@ -5,7 +5,7 @@
 
 | Field              | Type               | Required           | Description        | Example            |
 | ------------------ | ------------------ | ------------------ | ------------------ | ------------------ |
-| `xHeaderBoolean`   | *Boolean*          | :heavy_check_mark: | N/A                | true               |
-| `xHeaderInteger`   | *Long*             | :heavy_check_mark: | N/A                | 1                  |
-| `xHeaderNumber`    | *Double*           | :heavy_check_mark: | N/A                | 1.1                |
+| `xHeaderBoolean`   | *boolean*          | :heavy_check_mark: | N/A                | true               |
+| `xHeaderInteger`   | *long*             | :heavy_check_mark: | N/A                | 1                  |
+| `xHeaderNumber`    | *double*           | :heavy_check_mark: | N/A                | 1.1                |
 | `xHeaderString`    | *String*           | :heavy_check_mark: | N/A                | test               |
