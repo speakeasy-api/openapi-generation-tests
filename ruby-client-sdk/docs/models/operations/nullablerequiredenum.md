@@ -7,3 +7,4 @@
 | -------- | -------- |
 | `FIRST`  | first    |
 | `SECOND` | second   |
+| `NULL`   | null     |
