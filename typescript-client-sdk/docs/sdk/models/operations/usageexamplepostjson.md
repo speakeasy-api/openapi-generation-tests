@@ -1,10 +1,158 @@
 # UsageExamplePostJson
 
+## Example Usage
+
+```typescript
+import { UsageExamplePostJson } from "openapi/sdk/models/operations";
+import { IntEnum } from "openapi/sdk/models/shared";
+import { Decimal, RFCDate } from "openapi/sdk/types";
+
+let value: UsageExamplePostJson = {
+  fakerCamelCasePropertyNameStrings: {
+    city: "Willboro",
+    iban: "QA53RPUY1027856113Z6X329D8262",
+    id: "<id>",
+    iPv4: "15.53.33.49",
+    iPv6: "f122:665a:fbe8:286a:eaed:fa28:f62d:fdbc",
+  },
+  fakerFormattedStrings: {
+    addressFormat: "8926 Lind View",
+    dateFormat: new RFCDate("2023-12-01"),
+    datetimeFormat: new Date("2025-12-13T20:14:50.509Z"),
+    directoryFormat: "/var",
+    domainFormat: "lavish-skeleton.net",
+    emailFormat: "Emmanuelle_Osinski@hotmail.com",
+    filenameFormat: "example.file",
+    filepathFormat: "/opt/share/phooey_the_worthless.ear",
+    imageFormat: "https://loremflickr.com/775/449?lock=2051308505551652",
+    ipv4Format: "114.214.56.126",
+    ipv6Format: "eebc:fc14:8da9:fb6f:edca:ad3c:9e2f:d1af",
+    jsonFormat: "{key: 6648678052234395, key1: null, key2: \"<value>\"}",
+    macFormat: "ec:47:b2:37:4d:95",
+    passwordFormat: "qmqHpBxbQTA6CJY",
+    phoneFormat: "430.227.6778 x7985",
+    timezoneFormat: "Asia/Khandyga",
+    unknownFormat: "<value>",
+    urlFormat: "https://zealous-ceramic.net/",
+    uuidFormat: "d531b7be-2e64-4ff3-9a1a-da6669ee0213",
+    zipcodeFormat: "67896-8738",
+  },
+  fakerKebobCasePropertyNameStrings: {
+    postalCode: "02461",
+  },
+  fakerPascalCasePropertyNameStrings: {
+    account: "68145479",
+    address: "180 Candice Drives",
+    amount: "528.32",
+    avatar: "https://picsum.photos/seed/LRysAq/2687/1881",
+    city: "Hayleeview",
+    color: "red",
+    comment:
+      "Boston's most advanced compression wear technology increases muscle oxygenation, stabilizes active muscles",
+    company: "Stark - Russel",
+    continent: "Antarctica",
+    country: "Guinea",
+    countryCode: "UG",
+    createdAt: "1730558334289",
+    currency: "Naira",
+    currencyCode: "DJF",
+    currencyISO: "ARS",
+    datatype: "float",
+    default: "<value>",
+    description: "where defiantly sans yum creature clean meh kettledrum",
+    directory: "/usr/obj",
+    domain: "suburban-birdbath.name",
+    domainName: "tame-descendant.net",
+    email: "Rachel.Altenwerth@hotmail.com",
+    emailAddr: "Mazie88@yahoo.com",
+    emailAddress: "Pasquale.Torphy66@gmail.com",
+    expiredAt: "1735472150631",
+    expires: "<value>",
+    expiresAt: "1758390625196",
+    extension: "mpe",
+    filename: "example.file",
+    filepath: "/private/tmp/heavily_speedily.xul",
+    filetype: "audio",
+    firstName: "Dahlia",
+    fullName: "Billy Olson",
+    gender: "Transsexual female",
+    host: "powerless-term.net",
+    hostName: "noxious-spear.biz",
+    httpStatus: "302",
+    iban: "AE780030869609307813388",
+    id: "<id>",
+    ip: "153.110.232.47",
+    ipAddr: "f34f:bad4:a276:9e38:de2e:1aa4:79df:bdd7",
+    ipAddress: "105.133.11.37",
+    ipv4: "153.57.214.83",
+    ipv6: "21e2:3c5e:bdff:2cfb:0fca:bacf:eddf:1b66",
+    job: "National Paradigm Planner",
+    json: "{key: 6157334924524383, key1: null, key2: \"<value>\"}",
+    key: "<key>",
+    lastName: "Christiansen",
+    latitude: "-79.4145",
+    locale: "hi",
+    longitude: "-112.9932",
+    mac: "0e:81:df:70:16:e2",
+    manufacturer: "Rolls Royce",
+    material: "Bronze",
+    middleName: "Jamie",
+    model: "LeBaron",
+    password: "z0fZ2SzdOXti6k0",
+    phone: "511-939-0410 x5176",
+    pin: "1972",
+    postalCode: "73336-9180",
+    price: "660.65",
+    product: "Recycled Granite Pizza",
+    sex: "male",
+    statusCode: "505",
+    street: "Friesen Parks",
+    timezone: "America/Jamaica",
+    unit: "tesla",
+    updatedAt: "1736223711770",
+    uri: "https://inferior-hoof.biz/",
+    url: "https://appropriate-airman.biz/",
+    username: "Jake_Krajcik3",
+    uuid: "59d540d6-9f02-4ccc-b8f6-916b3fa4c1f0",
+  },
+  fakerSnakeCasePropertyNameStrings: {
+    countryCode: "EC",
+    createdAt: "1728658192057",
+    expiredAt: "1704761775939",
+    updatedAt: "1736231017843",
+  },
+  simpleObject: {
+    bool: true,
+    date: new RFCDate("2020-01-01"),
+    dateTime: new Date("2020-01-01T00:00:00.001Z"),
+    enum: "one",
+    float32: 1.1,
+    int: 1,
+    int32: 1,
+    int32Enum: 55,
+    intEnum: IntEnum.Second,
+    num: 1.1,
+    str: "test",
+    any: "any",
+    bigint: BigInt("8821239038968084"),
+    bigintStr: BigInt("9223372036854775808"),
+    boolOpt: true,
+    decimal: new Decimal("3.141592653589793"),
+    decimalStr: new Decimal("3.14159265358979344719667586"),
+    float64Str: 1.1,
+    int64Str: 100,
+    strOpt: "testOptional",
+  },
+};
+```
 
 ## Fields
 
-| Field                                                                                                                                                             | Type                                                                                                                                                              | Required                                                                                                                                                          | Description                                                                                                                                                       |
-| ----------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `fakerFormattedStrings`                                                                                                                                           | [shared.FakerFormattedStrings](../../../sdk/models/shared/fakerformattedstrings.md)                                                                               | :heavy_minus_sign:                                                                                                                                                | A set of strings with format values that lead to relevant examples being generated for them                                                                       |
-| `fakerStrings`                                                                                                                                                    | [shared.FakerStrings](../../../sdk/models/shared/fakerstrings.md)                                                                                                 | :heavy_minus_sign:                                                                                                                                                | A set of strings with fieldnames that lead to relevant examples being generated for them                                                                          |
-| `simpleObject`                                                                                                                                                    | [shared.SimpleObject](../../../sdk/models/shared/simpleobject.md)                                                                                                 | :heavy_minus_sign:                                                                                                                                                | A simple object that uses all our supported primitive types and enums and has optional properties.<br/><br/>[A link to the external docs.](https://docs.speakeasyapi.dev) |
+| Field                                                                                                                                                          | Type                                                                                                                                                           | Required                                                                                                                                                       | Description                                                                                                                                                    |
+| -------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `fakerCamelCasePropertyNameStrings`                                                                                                                            | [shared.FakerCamelCasePropertyNameStrings](../../../sdk/models/shared/fakercamelcasepropertynamestrings.md)                                                    | :heavy_check_mark:                                                                                                                                             | A set of strings with camel case fieldnames that lead to relevant examples being generated for them                                                            |
+| `fakerFormattedStrings`                                                                                                                                        | [shared.FakerFormattedStrings](../../../sdk/models/shared/fakerformattedstrings.md)                                                                            | :heavy_check_mark:                                                                                                                                             | A set of strings with format values that lead to relevant examples being generated for them                                                                    |
+| `fakerKebobCasePropertyNameStrings`                                                                                                                            | [shared.FakerKebobCasePropertyNameStrings](../../../sdk/models/shared/fakerkebobcasepropertynamestrings.md)                                                    | :heavy_check_mark:                                                                                                                                             | A set of strings with kebob case fieldnames that lead to relevant examples being generated for them                                                            |
+| `fakerPascalCasePropertyNameStrings`                                                                                                                           | [shared.FakerPascalCasePropertyNameStrings](../../../sdk/models/shared/fakerpascalcasepropertynamestrings.md)                                                  | :heavy_check_mark:                                                                                                                                             | A set of strings with pascal case fieldnames that lead to relevant examples being generated for them                                                           |
+| `fakerSnakeCasePropertyNameStrings`                                                                                                                            | [shared.FakerSnakeCasePropertyNameStrings](../../../sdk/models/shared/fakersnakecasepropertynamestrings.md)                                                    | :heavy_check_mark:                                                                                                                                             | A set of strings with snake case fieldnames that lead to relevant examples being generated for them                                                            |
+| `simpleObject`                                                                                                                                                 | [shared.SimpleObject](../../../sdk/models/shared/simpleobject.md)                                                                                              | :heavy_check_mark:                                                                                                                                             | A simple object that uses all our supported primitive types and enums and has optional properties.<br/><br/>[A link to the external docs.](https://speakeasy.com/docs) |
