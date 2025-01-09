@@ -265,6 +265,17 @@ paths:
       responses:
         "200":
           description: OK
+  /ping:
+    get:
+      x-speakeasy-exclude-test-sdk: [python]
+      operationId: check
+      servers:
+        - url: http://localhost:35456
+      tags:
+        - health
+      responses:
+        "200":
+          description: OK
   /ping#serversOverrideGlobalServerURL:
     get:
       operationId: serversOverrideGlobalServerURL
