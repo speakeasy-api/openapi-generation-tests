@@ -5,6 +5,6 @@ OK
 
 ## Fields
 
-| Field                   | Type                    | Required                | Description             |
-| ----------------------- | ----------------------- | ----------------------- | ----------------------- |
-| `json`                  | array<string, *string*> | :heavy_check_mark:      | N/A                     |
+| Field                                   | Type                                    | Required                                | Description                             |
+| --------------------------------------- | --------------------------------------- | --------------------------------------- | --------------------------------------- |
+| `json`                                  | array<string, *\Brick\Math\BigInteger*> | :heavy_check_mark:                      | N/A                                     |

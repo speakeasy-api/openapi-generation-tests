@@ -1,5 +1,17 @@
 # SimplePathParameterArraysRequest
 
+## Example Usage
+
+```typescript
+import { SimplePathParameterArraysRequest } from "openapi/sdk/models/operations";
+
+let value: SimplePathParameterArraysRequest = {
+  arrParam: [
+    "test",
+    "test2",
+  ],
+};
+```
 
 ## Fields
 
