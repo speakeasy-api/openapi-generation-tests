@@ -1,5 +1,12 @@
 # AllOfToAllOf
 
+## Example Usage
+
+```typescript
+import { AllOfToAllOf } from "openapi/sdk/models/shared";
+
+let value: AllOfToAllOf = {};
+```
 
 ## Fields
 

@@ -3,8 +3,8 @@
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `bool`             | *bool*             | :heavy_check_mark: | N/A                |
-| `num`              | *float*            | :heavy_check_mark: | N/A                |
-| `str`              | *string*           | :heavy_check_mark: | N/A                |
+| Field              | Type               | Required           | Description        | Example            |
+| ------------------ | ------------------ | ------------------ | ------------------ | ------------------ |
+| `bool`             | *bool*             | :heavy_check_mark: | N/A                | true               |
+| `num`              | *float*            | :heavy_check_mark: | N/A                | 1.1                |
+| `str`              | *string*           | :heavy_check_mark: | N/A                | test               |
