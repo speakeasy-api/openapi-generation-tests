@@ -1,5 +1,24 @@
 # HttpBinSimpleJsonObject
 
+## Example Usage
+
+```typescript
+import { HttpBinSimpleJsonObject } from "openapi/sdk/models/shared";
+
+let value: HttpBinSimpleJsonObject = {
+  slideshow: {
+    author: "<value>",
+    date: "2024-11-03",
+    slides: [
+      {
+        title: "<value>",
+        type: "<value>",
+      },
+    ],
+    title: "<value>",
+  },
+};
+```
 
 ## Fields
 
