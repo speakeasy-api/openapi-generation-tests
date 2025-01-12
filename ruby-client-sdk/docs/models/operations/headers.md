@@ -3,6 +3,7 @@
 
 ## Fields
 
-| Field              | Type               | Required           | Description        | Example            |
-| ------------------ | ------------------ | ------------------ | ------------------ | ------------------ |
-| `x_header_array`   | *String*           | :heavy_check_mark: | N/A                | test1,test2        |
+| Field                 | Type                  | Required              | Description           | Example               |
+| --------------------- | --------------------- | --------------------- | --------------------- | --------------------- |
+| `client_level_header` | *T.nilable(::String)* | :heavy_minus_sign:    | N/A                   | added by client       |
+| `idempotency_key`     | *T.nilable(::String)* | :heavy_minus_sign:    | N/A                   | some-key              |
