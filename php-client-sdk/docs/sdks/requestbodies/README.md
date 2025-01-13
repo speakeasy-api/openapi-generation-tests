@@ -1,5 +1,5 @@
 # RequestBodies
-
+(*requestBodies*)
 
 ## Overview
 
@@ -7,10 +7,14 @@ Endpoints for testing request bodies.
 
 ### Available Operations
 
+* [nullEnumPost](#nullenumpost)
 * [nullableObjectPost](#nullableobjectpost)
+* [nullableOptionalFieldsPost](#nullableoptionalfieldspost)
 * [nullableRequiredEmptyObjectPost](#nullablerequiredemptyobjectpost)
 * [nullableRequiredPropertyPost](#nullablerequiredpropertypost)
 * [nullableRequiredSharedObjectPost](#nullablerequiredsharedobjectpost)
+* [requestBodyDeprecatedRequestBodyRefPost](#requestbodydeprecatedrequestbodyrefpost)
+* [requestBodyGetInferredOptionalRequestWrapper](#requestbodygetinferredoptionalrequestwrapper)
 * [requestBodyPostApplicationJsonArray](#requestbodypostapplicationjsonarray)
 * [requestBodyPostApplicationJsonArrayCamelCase](#requestbodypostapplicationjsonarraycamelcase)
 * [requestBodyPostApplicationJsonArrayObj](#requestbodypostapplicationjsonarrayobj)
@@ -21,6 +25,7 @@ Endpoints for testing request bodies.
 * [requestBodyPostApplicationJsonArrayOfMap](#requestbodypostapplicationjsonarrayofmap)
 * [requestBodyPostApplicationJsonArrayOfMapCamelCase](#requestbodypostapplicationjsonarrayofmapcamelcase)
 * [requestBodyPostApplicationJsonArrayOfPrimitive](#requestbodypostapplicationjsonarrayofprimitive)
+* [requestBodyPostApplicationJsonArrayOfUnions](#requestbodypostapplicationjsonarrayofunions)
 * [requestBodyPostApplicationJsonDeep](#requestbodypostapplicationjsondeep)
 * [requestBodyPostApplicationJsonDeepCamelCase](#requestbodypostapplicationjsondeepcamelcase)
 * [requestBodyPostApplicationJsonMap](#requestbodypostapplicationjsonmap)
@@ -38,6 +43,7 @@ Endpoints for testing request bodies.
 * [requestBodyPostApplicationJsonSimpleCamelCase](#requestbodypostapplicationjsonsimplecamelcase)
 * [requestBodyPostComplexNumberTypes](#requestbodypostcomplexnumbertypes)
 * [requestBodyPostDefaultsAndConsts](#requestbodypostdefaultsandconsts)
+* [requestBodyPostEmptyBodyRetainedWithAllOptionalFields](#requestbodypostemptybodyretainedwithalloptionalfields)
 * [requestBodyPostEmptyObject](#requestbodypostemptyobject)
 * [requestBodyPostFormDeep](#requestbodypostformdeep)
 * [requestBodyPostFormMapPrimitive](#requestbodypostformmapprimitive)
@@ -48,6 +54,8 @@ Endpoints for testing request bodies.
 * [requestBodyPostJsonDataTypesBigInt](#requestbodypostjsondatatypesbigint)
 * [requestBodyPostJsonDataTypesBigIntStr](#requestbodypostjsondatatypesbigintstr)
 * [requestBodyPostJsonDataTypesBoolean](#requestbodypostjsondatatypesboolean)
+* [requestBodyPostJsonDataTypesComplexNumberArrays](#requestbodypostjsondatatypescomplexnumberarrays)
+* [requestBodyPostJsonDataTypesComplexNumberMaps](#requestbodypostjsondatatypescomplexnumbermaps)
 * [requestBodyPostJsonDataTypesDate](#requestbodypostjsondatatypesdate)
 * [requestBodyPostJsonDataTypesDateTime](#requestbodypostjsondatatypesdatetime)
 * [requestBodyPostJsonDataTypesDecimal](#requestbodypostjsondatatypesdecimal)
@@ -61,6 +69,7 @@ Endpoints for testing request bodies.
 * [requestBodyPostJsonDataTypesNumber](#requestbodypostjsondatatypesnumber)
 * [requestBodyPostJsonDataTypesString](#requestbodypostjsondatatypesstring)
 * [requestBodyPostMultipleContentTypesComponentFiltered](#requestbodypostmultiplecontenttypescomponentfiltered)
+* [requestBodyPostMultipleContentTypesComponentFilteredDefaultTest](#requestbodypostmultiplecontenttypescomponentfiltereddefaulttest)
 * [requestBodyPostMultipleContentTypesInlineFiltered](#requestbodypostmultiplecontenttypesinlinefiltered)
 * [requestBodyPostMultipleContentTypesSplitParamForm](#requestbodypostmultiplecontenttypessplitparamform)
 * [requestBodyPostMultipleContentTypesSplitParamJson](#requestbodypostmultiplecontenttypessplitparamjson)
@@ -73,11 +82,14 @@ Endpoints for testing request bodies.
 * [requestBodyPostNullDictionary](#requestbodypostnulldictionary)
 * [requestBodyPostNullableNotRequiredStringBody](#requestbodypostnullablenotrequiredstringbody)
 * [requestBodyPostNullableRequiredStringBody](#requestbodypostnullablerequiredstringbody)
+* [requestBodyPostWildcard](#requestbodypostwildcard)
 * [requestBodyPutBytes](#requestbodyputbytes)
 * [requestBodyPutBytesWithParams](#requestbodyputbyteswithparams)
 * [requestBodyPutMultipartDeep](#requestbodyputmultipartdeep)
 * [requestBodyPutMultipartDifferentFileName](#requestbodyputmultipartdifferentfilename)
 * [requestBodyPutMultipartFile](#requestbodyputmultipartfile)
+* [requestBodyPutMultipartFileRef](#requestbodyputmultipartfileref)
+* [requestBodyPutMultipartOptionalRequestBody](#requestbodyputmultipartoptionalrequestbody)
 * [requestBodyPutMultipartSimple](#requestbodyputmultipartsimple)
 * [requestBodyPutString](#requestbodyputstring)
 * [requestBodyPutStringWithParams](#requestbodyputstringwithparams)
@@ -89,139 +101,421 @@ Endpoints for testing request bodies.
 * [requestBodyWriteOnlyOutput](#requestbodywriteonlyoutput)
 * [requestBodyWriteOnlyUnion](#requestbodywriteonlyunion)
 
-## nullableObjectPost
+## nullEnumPost
 
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI;
-use \OpenAPI\OpenAPI\Models\Shared;
+require 'vendor/autoload.php';
 
-$security = new Shared\Security();
-$security->apiKeyAuth = 'Token YOUR_API_KEY';
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Shared;
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
+    ->setSecurity(
+        new Shared\Security(
+            apiKeyAuth: 'Token YOUR_API_KEY',
+        )
+    )
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
     ->build();
 
-try {
-    $request = new Shared\NullableObject();
-    $request->optional = 'string';
-    $request->required = 302382;
+$request = new Shared\ObjectWithNullEnums();
 
-    $response = $sdk->requestBodies->nullableObjectPost($request);
+$response = $sdk->requestBodies->nullEnumPost(
+    request: $request
+);
 
-    if ($response->res !== null) {
-        // handle response
-    }
-} catch (Exception $e) {
-    // handle exception
+if ($response->res !== null) {
+    // handle response
 }
 ```
 
 ### Parameters
 
-| Parameter                                                                              | Type                                                                                   | Required                                                                               | Description                                                                            |
-| -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
-| `$request`                                                                             | [\OpenAPI\OpenAPI\Models\Shared\NullableObject](../../Models/Shared/NullableObject.md) | :heavy_check_mark:                                                                     | The request object to use for the request.                                             |
-
+| Parameter                                                                | Type                                                                     | Required                                                                 | Description                                                              |
+| ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
+| `$request`                                                               | [Shared\ObjectWithNullEnums](../../Models/Shared/ObjectWithNullEnums.md) | :heavy_check_mark:                                                       | The request object to use for the request.                               |
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\NullableObjectPostResponse](../../Models/Operations/NullableObjectPostResponse.md)**
+**[?Operations\NullEnumPostResponse](../../Models/Operations/NullEnumPostResponse.md)**
 
+### Errors
+
+| Error Type          | Status Code         | Content Type        |
+| ------------------- | ------------------- | ------------------- |
+| Errors\SDKException | 4XX, 5XX            | \*/\*               |
+
+## nullableObjectPost
+
+### Example Usage
+
+```php
+declare(strict_types=1);
+
+require 'vendor/autoload.php';
+
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Shared;
+
+$sdk = OpenAPI\SDK::builder()
+    ->setSecurity(
+        new Shared\Security(
+            apiKeyAuth: 'Token YOUR_API_KEY',
+        )
+    )
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->build();
+
+$request = null;
+
+$response = $sdk->requestBodies->nullableObjectPost(
+    request: $request
+);
+
+if ($response->res !== null) {
+    // handle response
+}
+```
+
+### Parameters
+
+| Parameter                                                      | Type                                                           | Required                                                       | Description                                                    |
+| -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- |
+| `$request`                                                     | [Shared\NullableObject](../../Models/Shared/NullableObject.md) | :heavy_check_mark:                                             | The request object to use for the request.                     |
+
+### Response
+
+**[?Operations\NullableObjectPostResponse](../../Models/Operations/NullableObjectPostResponse.md)**
+
+### Errors
+
+| Error Type          | Status Code         | Content Type        |
+| ------------------- | ------------------- | ------------------- |
+| Errors\SDKException | 4XX, 5XX            | \*/\*               |
+
+## nullableOptionalFieldsPost
+
+### Example Usage
+
+```php
+declare(strict_types=1);
+
+require 'vendor/autoload.php';
+
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Operations;
+use OpenAPI\OpenAPI\Models\Shared;
+
+$sdk = OpenAPI\SDK::builder()
+    ->setSecurity(
+        new Shared\Security(
+            apiKeyAuth: 'Token YOUR_API_KEY',
+        )
+    )
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->build();
+
+$request = new Operations\NullableOptionalFieldsPostRequestBody(
+    nullableRequired: '<value>',
+);
+
+$response = $sdk->requestBodies->nullableOptionalFieldsPost(
+    request: $request
+);
+
+if ($response->object !== null) {
+    // handle response
+}
+```
+
+### Parameters
+
+| Parameter                                                                                                            | Type                                                                                                                 | Required                                                                                                             | Description                                                                                                          |
+| -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| `$request`                                                                                                           | [Operations\NullableOptionalFieldsPostRequestBody](../../Models/Operations/NullableOptionalFieldsPostRequestBody.md) | :heavy_check_mark:                                                                                                   | The request object to use for the request.                                                                           |
+
+### Response
+
+**[?Operations\NullableOptionalFieldsPostResponse](../../Models/Operations/NullableOptionalFieldsPostResponse.md)**
+
+### Errors
+
+| Error Type          | Status Code         | Content Type        |
+| ------------------- | ------------------- | ------------------- |
+| Errors\SDKException | 4XX, 5XX            | \*/\*               |
 
 ## nullableRequiredEmptyObjectPost
 
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI;
-use \OpenAPI\OpenAPI\Models\Shared;
-use \OpenAPI\OpenAPI\Models\Operations;
+require 'vendor/autoload.php';
 
-$security = new Shared\Security();
-$security->apiKeyAuth = 'Token YOUR_API_KEY';
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Operations;
+use OpenAPI\OpenAPI\Models\Shared;
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
+    ->setSecurity(
+        new Shared\Security(
+            apiKeyAuth: 'Token YOUR_API_KEY',
+        )
+    )
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
     ->build();
 
-try {
-    $request = new Operations\NullableRequiredEmptyObjectPostRequestBody();
-    $request->nullableOptionalObj = new Operations\NullableOptionalObj();
-    $request->nullableRequiredObj = new Operations\NullableRequiredObj();
-    $request->requiredObj = new Operations\RequiredObj();
+$request = new Operations\NullableRequiredEmptyObjectPostRequestBody(
+    requiredObj: new Operations\RequiredObj(),
+    nullableRequiredObj: new Operations\NullableRequiredObj(),
+);
 
-    $response = $sdk->requestBodies->nullableRequiredEmptyObjectPost($request);
+$response = $sdk->requestBodies->nullableRequiredEmptyObjectPost(
+    request: $request
+);
 
-    if ($response->res !== null) {
-        // handle response
-    }
-} catch (Exception $e) {
-    // handle exception
+if ($response->object !== null) {
+    // handle response
 }
 ```
 
 ### Parameters
 
-| Parameter                                                                                                                                              | Type                                                                                                                                                   | Required                                                                                                                                               | Description                                                                                                                                            |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `$request`                                                                                                                                             | [\OpenAPI\OpenAPI\Models\Operations\NullableRequiredEmptyObjectPostRequestBody](../../Models/Operations/NullableRequiredEmptyObjectPostRequestBody.md) | :heavy_check_mark:                                                                                                                                     | The request object to use for the request.                                                                                                             |
-
+| Parameter                                                                                                                      | Type                                                                                                                           | Required                                                                                                                       | Description                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------ |
+| `$request`                                                                                                                     | [Operations\NullableRequiredEmptyObjectPostRequestBody](../../Models/Operations/NullableRequiredEmptyObjectPostRequestBody.md) | :heavy_check_mark:                                                                                                             | The request object to use for the request.                                                                                     |
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\NullableRequiredEmptyObjectPostResponse](../../Models/Operations/NullableRequiredEmptyObjectPostResponse.md)**
+**[?Operations\NullableRequiredEmptyObjectPostResponse](../../Models/Operations/NullableRequiredEmptyObjectPostResponse.md)**
 
+### Errors
+
+| Error Type          | Status Code         | Content Type        |
+| ------------------- | ------------------- | ------------------- |
+| Errors\SDKException | 4XX, 5XX            | \*/\*               |
 
 ## nullableRequiredPropertyPost
 
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI;
-use \OpenAPI\OpenAPI\Models\Shared;
-use \OpenAPI\OpenAPI\Models\Operations;
+require 'vendor/autoload.php';
 
-$security = new Shared\Security();
-$security->apiKeyAuth = 'Token YOUR_API_KEY';
+use Brick\Math\BigDecimal;
+use Brick\Math\BigInteger;
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Operations;
+use OpenAPI\OpenAPI\Models\Shared;
+use OpenAPI\OpenAPI\Utils;
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
+    ->setSecurity(
+        new Shared\Security(
+            apiKeyAuth: 'Token YOUR_API_KEY',
+        )
+    )
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
     ->build();
 
-try {
-    $request = new Operations\NullableRequiredPropertyPostRequestBody();
-    $request->nullableOptionalInt = 235517;
-    $request->nullableRequiredArray = [
-        6917.41,
-    ];
-    $request->nullableRequiredEnum = Operations\NullableRequiredEnum::First;
-    $request->nullableRequiredInt = 282026;
+$request = new Operations\NullableRequiredPropertyPostRequestBody(
+    nullableRequiredArray: [
+        2355.17,
+    ],
+    nullableRequiredBigIntStr: BigInteger::of('50266'),
+    nullableRequiredDateTime: Utils\Utils::parseDateTime('2025-07-13T08:11:28.024Z'),
+    nullableRequiredDecimalStr: BigDecimal::of('8839.33'),
+    nullableRequiredEnum: Operations\NullableRequiredEnum::First,
+    nullableRequiredInt: 783710,
+);
 
-    $response = $sdk->requestBodies->nullableRequiredPropertyPost($request);
+$response = $sdk->requestBodies->nullableRequiredPropertyPost(
+    request: $request
+);
 
-    if ($response->res !== null) {
-        // handle response
-    }
-} catch (Exception $e) {
-    // handle exception
+if ($response->object !== null) {
+    // handle response
+}
+```
+
+### Parameters
+
+| Parameter                                                                                                                | Type                                                                                                                     | Required                                                                                                                 | Description                                                                                                              |
+| ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ |
+| `$request`                                                                                                               | [Operations\NullableRequiredPropertyPostRequestBody](../../Models/Operations/NullableRequiredPropertyPostRequestBody.md) | :heavy_check_mark:                                                                                                       | The request object to use for the request.                                                                               |
+
+### Response
+
+**[?Operations\NullableRequiredPropertyPostResponse](../../Models/Operations/NullableRequiredPropertyPostResponse.md)**
+
+### Errors
+
+| Error Type          | Status Code         | Content Type        |
+| ------------------- | ------------------- | ------------------- |
+| Errors\SDKException | 4XX, 5XX            | \*/\*               |
+
+## nullableRequiredSharedObjectPost
+
+### Example Usage
+
+```php
+declare(strict_types=1);
+
+require 'vendor/autoload.php';
+
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Operations;
+use OpenAPI\OpenAPI\Models\Shared;
+
+$sdk = OpenAPI\SDK::builder()
+    ->setSecurity(
+        new Shared\Security(
+            apiKeyAuth: 'Token YOUR_API_KEY',
+        )
+    )
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->build();
+
+$request = new Operations\NullableRequiredSharedObjectPostRequestBody(
+    nullableRequiredObj: null,
+);
+
+$response = $sdk->requestBodies->nullableRequiredSharedObjectPost(
+    request: $request
+);
+
+if ($response->object !== null) {
+    // handle response
+}
+```
+
+### Parameters
+
+| Parameter                                                                                                                        | Type                                                                                                                             | Required                                                                                                                         | Description                                                                                                                      |
+| -------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
+| `$request`                                                                                                                       | [Operations\NullableRequiredSharedObjectPostRequestBody](../../Models/Operations/NullableRequiredSharedObjectPostRequestBody.md) | :heavy_check_mark:                                                                                                               | The request object to use for the request.                                                                                       |
+
+### Response
+
+**[?Operations\NullableRequiredSharedObjectPostResponse](../../Models/Operations/NullableRequiredSharedObjectPostResponse.md)**
+
+### Errors
+
+| Error Type          | Status Code         | Content Type        |
+| ------------------- | ------------------- | ------------------- |
+| Errors\SDKException | 4XX, 5XX            | \*/\*               |
+
+## requestBodyDeprecatedRequestBodyRefPost
+
+### Example Usage
+
+```php
+declare(strict_types=1);
+
+require 'vendor/autoload.php';
+
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Shared;
+
+$sdk = OpenAPI\SDK::builder()
+    ->setSecurity(
+        new Shared\Security(
+            apiKeyAuth: 'Token YOUR_API_KEY',
+        )
+    )
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->build();
+
+$request = new Shared\DeprecatedObjectWithExample(
+    str: 'testvalue',
+);
+
+$response = $sdk->requestBodies->requestBodyDeprecatedRequestBodyRefPost(
+    request: $request
+);
+
+if ($response->object !== null) {
+    // handle response
+}
+```
+
+### Parameters
+
+| Parameter                                                                                | Type                                                                                     | Required                                                                                 | Description                                                                              |
+| ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
+| `$request`                                                                               | [Shared\DeprecatedObjectWithExample](../../Models/Shared/DeprecatedObjectWithExample.md) | :heavy_check_mark:                                                                       | The request object to use for the request.                                               |
+
+### Response
+
+**[?Operations\RequestBodyDeprecatedRequestBodyRefPostResponse](../../Models/Operations/RequestBodyDeprecatedRequestBodyRefPostResponse.md)**
+
+### Errors
+
+| Error Type          | Status Code         | Content Type        |
+| ------------------- | ------------------- | ------------------- |
+| Errors\SDKException | 4XX, 5XX            | \*/\*               |
+
+## requestBodyGetInferredOptionalRequestWrapper
+
+### Example Usage
+
+```php
+declare(strict_types=1);
+
+require 'vendor/autoload.php';
+
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Operations;
+use OpenAPI\OpenAPI\Models\Shared;
+
+$sdk = OpenAPI\SDK::builder()
+    ->setSecurity(
+        new Shared\Security(
+            apiKeyAuth: 'Token YOUR_API_KEY',
+        )
+    )
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->build();
+
+$request = new Operations\RequestBodyGetInferredOptionalRequestWrapperRequest();
+
+$response = $sdk->requestBodies->requestBodyGetInferredOptionalRequestWrapper(
+    request: $request
+);
+
+if ($response->object !== null) {
+    // handle response
 }
 ```
 
@@ -229,98 +523,78 @@ try {
 
 | Parameter                                                                                                                                        | Type                                                                                                                                             | Required                                                                                                                                         | Description                                                                                                                                      |
 | ------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `$request`                                                                                                                                       | [\OpenAPI\OpenAPI\Models\Operations\NullableRequiredPropertyPostRequestBody](../../Models/Operations/NullableRequiredPropertyPostRequestBody.md) | :heavy_check_mark:                                                                                                                               | The request object to use for the request.                                                                                                       |
-
-
-### Response
-
-**[?\OpenAPI\OpenAPI\Models\Operations\NullableRequiredPropertyPostResponse](../../Models/Operations/NullableRequiredPropertyPostResponse.md)**
-
-
-## nullableRequiredSharedObjectPost
-
-### Example Usage
-
-```php
-<?php
-
-declare(strict_types=1);
-require_once 'vendor/autoload.php';
-
-use \OpenAPI\OpenAPI;
-use \OpenAPI\OpenAPI\Models\Shared;
-use \OpenAPI\OpenAPI\Models\Operations;
-
-$security = new Shared\Security();
-$security->apiKeyAuth = 'Token YOUR_API_KEY';
-
-$sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
-    ->build();
-
-try {
-    $request = new Operations\NullableRequiredSharedObjectPostRequestBody();
-    $request->nullableOptionalObj = new Shared\NullableObject();
-    $request->nullableOptionalObj->optional = 'string';
-    $request->nullableOptionalObj->required = 86533;
-    $request->nullableRequiredObj = new Shared\NullableObject();
-    $request->nullableRequiredObj->optional = 'string';
-    $request->nullableRequiredObj->required = 964394;
-
-    $response = $sdk->requestBodies->nullableRequiredSharedObjectPost($request);
-
-    if ($response->res !== null) {
-        // handle response
-    }
-} catch (Exception $e) {
-    // handle exception
-}
-```
-
-### Parameters
-
-| Parameter                                                                                                                                                | Type                                                                                                                                                     | Required                                                                                                                                                 | Description                                                                                                                                              |
-| -------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `$request`                                                                                                                                               | [\OpenAPI\OpenAPI\Models\Operations\NullableRequiredSharedObjectPostRequestBody](../../Models/Operations/NullableRequiredSharedObjectPostRequestBody.md) | :heavy_check_mark:                                                                                                                                       | The request object to use for the request.                                                                                                               |
-
+| `$request`                                                                                                                                       | [Operations\RequestBodyGetInferredOptionalRequestWrapperRequest](../../Models/Operations/RequestBodyGetInferredOptionalRequestWrapperRequest.md) | :heavy_check_mark:                                                                                                                               | The request object to use for the request.                                                                                                       |
+| `$serverURL`                                                                                                                                     | *string*                                                                                                                                         | :heavy_minus_sign:                                                                                                                               | An optional server URL to use.                                                                                                                   |
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\NullableRequiredSharedObjectPostResponse](../../Models/Operations/NullableRequiredSharedObjectPostResponse.md)**
+**[?Operations\RequestBodyGetInferredOptionalRequestWrapperResponse](../../Models/Operations/RequestBodyGetInferredOptionalRequestWrapperResponse.md)**
 
+### Errors
+
+| Error Type          | Status Code         | Content Type        |
+| ------------------- | ------------------- | ------------------- |
+| Errors\SDKException | 4XX, 5XX            | \*/\*               |
 
 ## requestBodyPostApplicationJsonArray
 
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI;
-use \OpenAPI\OpenAPI\Models\Shared;
+require 'vendor/autoload.php';
 
-$security = new Shared\Security();
-$security->apiKeyAuth = 'Token YOUR_API_KEY';
+use Brick\DateTime\LocalDate;
+use Brick\Math\BigDecimal;
+use Brick\Math\BigInteger;
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Shared;
+use OpenAPI\OpenAPI\Utils;
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
+    ->setSecurity(
+        new Shared\Security(
+            apiKeyAuth: 'Token YOUR_API_KEY',
+        )
+    )
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
     ->build();
 
-try {
-    $request = [
-        new Shared\SimpleObject(),
-    ]
+$request = [
+    new Shared\SimpleObject(
+        any: 'any',
+        bool: true,
+        date: LocalDate::parse('2020-01-01'),
+        dateTime: Utils\Utils::parseDateTime('2020-01-01T00:00:00.001Z'),
+        enum: Shared\Enum::One,
+        float32: 1.1,
+        int: 1,
+        int32: 1,
+        int32Enum: Shared\Int32Enum::FiftyFive,
+        intEnum: Shared\IntEnum::Second,
+        num: 1.1,
+        str: 'test',
+        bigint: BigInteger::of('8821239038968084'),
+        bigintStr: BigInteger::of('9223372036854775808'),
+        boolOpt: true,
+        decimal: BigDecimal::of('3.141592653589793'),
+        decimalStr: BigDecimal::of('3.14159265358979344719667586'),
+        float64Str: '1.1',
+        int64Str: '100',
+        strOpt: 'testOptional',
+    ),
+];
 
-    $response = $sdk->requestBodies->requestBodyPostApplicationJsonArray($request);
+$response = $sdk->requestBodies->requestBodyPostApplicationJsonArray(
+    request: $request
+);
 
-    if ($response->res !== null) {
-        // handle response
-    }
-} catch (Exception $e) {
-    // handle exception
+if ($response->res !== null) {
+    // handle response
 }
 ```
 
@@ -328,95 +602,173 @@ try {
 
 | Parameter                                  | Type                                       | Required                                   | Description                                |
 | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
-| `$request`                                 | [array](../../.md)                         | :heavy_check_mark:                         | The request object to use for the request. |
+| `$request`                                 | [array<Shared\SimpleObject>](../../.md)    | :heavy_check_mark:                         | The request object to use for the request. |
 | `$serverURL`                               | *string*                                   | :heavy_minus_sign:                         | An optional server URL to use.             |
-
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\RequestBodyPostApplicationJsonArrayResponse](../../Models/Operations/RequestBodyPostApplicationJsonArrayResponse.md)**
+**[?Operations\RequestBodyPostApplicationJsonArrayResponse](../../Models/Operations/RequestBodyPostApplicationJsonArrayResponse.md)**
 
+### Errors
+
+| Error Type          | Status Code         | Content Type        |
+| ------------------- | ------------------- | ------------------- |
+| Errors\SDKException | 4XX, 5XX            | \*/\*               |
 
 ## requestBodyPostApplicationJsonArrayCamelCase
 
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI;
-use \OpenAPI\OpenAPI\Models\Shared;
+require 'vendor/autoload.php';
 
-$security = new Shared\Security();
-$security->apiKeyAuth = 'Token YOUR_API_KEY';
+use Brick\DateTime\LocalDate;
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Shared;
+use OpenAPI\OpenAPI\Utils;
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
+    ->setSecurity(
+        new Shared\Security(
+            apiKeyAuth: 'Token YOUR_API_KEY',
+        )
+    )
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
     ->build();
 
-try {
-    $request = [
-        new Shared\SimpleObjectCamelCase(),
-    ]
+$request = [
+    new Shared\SimpleObjectCamelCase(
+        anyVal: 'any example',
+        boolVal: true,
+        dateTimeVal: Utils\Utils::parseDateTime('2020-01-01T00:00:00.001Z'),
+        dateVal: LocalDate::parse('2020-01-01'),
+        enumVal: Shared\Enum::One,
+        float32Val: 2.2222222,
+        int32EnumVal: Shared\Int32EnumVal::SixtyNine,
+        int32Val: 1,
+        intEnumVal: Shared\IntEnumVal::Third,
+        intVal: 999999,
+        numVal: 1.1,
+        strVal: 'example',
+        boolOptVal: true,
+        intOptNullVal: 999999,
+        numOptNullVal: 1.1,
+        strOptVal: 'optional example',
+    ),
+];
 
-    $response = $sdk->requestBodies->requestBodyPostApplicationJsonArrayCamelCase($request);
+$response = $sdk->requestBodies->requestBodyPostApplicationJsonArrayCamelCase(
+    request: $request
+);
 
-    if ($response->res !== null) {
-        // handle response
-    }
-} catch (Exception $e) {
-    // handle exception
+if ($response->res !== null) {
+    // handle response
 }
 ```
 
 ### Parameters
 
-| Parameter                                  | Type                                       | Required                                   | Description                                |
-| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
-| `$request`                                 | [array](../../.md)                         | :heavy_check_mark:                         | The request object to use for the request. |
-| `$serverURL`                               | *string*                                   | :heavy_minus_sign:                         | An optional server URL to use.             |
-
+| Parameter                                        | Type                                             | Required                                         | Description                                      |
+| ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ |
+| `$request`                                       | [array<Shared\SimpleObjectCamelCase>](../../.md) | :heavy_check_mark:                               | The request object to use for the request.       |
+| `$serverURL`                                     | *string*                                         | :heavy_minus_sign:                               | An optional server URL to use.                   |
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\RequestBodyPostApplicationJsonArrayCamelCaseResponse](../../Models/Operations/RequestBodyPostApplicationJsonArrayCamelCaseResponse.md)**
+**[?Operations\RequestBodyPostApplicationJsonArrayCamelCaseResponse](../../Models/Operations/RequestBodyPostApplicationJsonArrayCamelCaseResponse.md)**
 
+### Errors
+
+| Error Type          | Status Code         | Content Type        |
+| ------------------- | ------------------- | ------------------- |
+| Errors\SDKException | 4XX, 5XX            | \*/\*               |
 
 ## requestBodyPostApplicationJsonArrayObj
 
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI;
-use \OpenAPI\OpenAPI\Models\Shared;
+require 'vendor/autoload.php';
 
-$security = new Shared\Security();
-$security->apiKeyAuth = 'Token YOUR_API_KEY';
+use Brick\DateTime\LocalDate;
+use Brick\Math\BigDecimal;
+use Brick\Math\BigInteger;
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Shared;
+use OpenAPI\OpenAPI\Utils;
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
+    ->setSecurity(
+        new Shared\Security(
+            apiKeyAuth: 'Token YOUR_API_KEY',
+        )
+    )
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
     ->build();
 
-try {
-    $request = [
-        new Shared\SimpleObject(),
-    ]
+$request = [
+    new Shared\SimpleObject(
+        any: 'any',
+        bool: true,
+        date: LocalDate::parse('2020-01-01'),
+        dateTime: Utils\Utils::parseDateTime('2020-01-01T00:00:00.001Z'),
+        enum: Shared\Enum::One,
+        float32: 1.1,
+        int: 1,
+        int32: 1,
+        int32Enum: Shared\Int32Enum::FiftyFive,
+        intEnum: Shared\IntEnum::Second,
+        num: 1.1,
+        str: 'test',
+        bigint: BigInteger::of('8821239038968084'),
+        bigintStr: BigInteger::of('9223372036854775808'),
+        boolOpt: true,
+        decimal: BigDecimal::of('3.141592653589793'),
+        decimalStr: BigDecimal::of('3.14159265358979344719667586'),
+        float64Str: '1.1',
+        int64Str: '100',
+        strOpt: 'testOptional',
+    ),
+    new Shared\SimpleObject(
+        any: 'any',
+        bool: true,
+        date: LocalDate::parse('2020-01-01'),
+        dateTime: Utils\Utils::parseDateTime('2020-01-01T00:00:00.001Z'),
+        enum: Shared\Enum::One,
+        float32: 1.1,
+        int: 1,
+        int32: 1,
+        int32Enum: Shared\Int32Enum::FiftyFive,
+        intEnum: Shared\IntEnum::Second,
+        num: 1.1,
+        str: 'test',
+        bigint: BigInteger::of('8821239038968084'),
+        bigintStr: BigInteger::of('9223372036854775808'),
+        boolOpt: true,
+        decimal: BigDecimal::of('3.141592653589793'),
+        decimalStr: BigDecimal::of('3.14159265358979344719667586'),
+        float64Str: '1.1',
+        int64Str: '100',
+        strOpt: 'testOptional',
+    ),
+];
 
-    $response = $sdk->requestBodies->requestBodyPostApplicationJsonArrayObj($request);
+$response = $sdk->requestBodies->requestBodyPostApplicationJsonArrayObj(
+    request: $request
+);
 
-    if ($response->arrObjValue !== null) {
-        // handle response
-    }
-} catch (Exception $e) {
-    // handle exception
+if ($response->arrObjValue !== null) {
+    // handle response
 }
 ```
 
@@ -424,195 +776,305 @@ try {
 
 | Parameter                                  | Type                                       | Required                                   | Description                                |
 | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
-| `$request`                                 | [array](../../.md)                         | :heavy_check_mark:                         | The request object to use for the request. |
-
+| `$request`                                 | [array<Shared\SimpleObject>](../../.md)    | :heavy_check_mark:                         | The request object to use for the request. |
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\RequestBodyPostApplicationJsonArrayObjResponse](../../Models/Operations/RequestBodyPostApplicationJsonArrayObjResponse.md)**
+**[?Operations\RequestBodyPostApplicationJsonArrayObjResponse](../../Models/Operations/RequestBodyPostApplicationJsonArrayObjResponse.md)**
 
+### Errors
+
+| Error Type          | Status Code         | Content Type        |
+| ------------------- | ------------------- | ------------------- |
+| Errors\SDKException | 4XX, 5XX            | \*/\*               |
 
 ## requestBodyPostApplicationJsonArrayObjCamelCase
 
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI;
-use \OpenAPI\OpenAPI\Models\Shared;
+require 'vendor/autoload.php';
 
-$security = new Shared\Security();
-$security->apiKeyAuth = 'Token YOUR_API_KEY';
+use Brick\DateTime\LocalDate;
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Shared;
+use OpenAPI\OpenAPI\Utils;
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
+    ->setSecurity(
+        new Shared\Security(
+            apiKeyAuth: 'Token YOUR_API_KEY',
+        )
+    )
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
     ->build();
 
-try {
-    $request = [
-        new Shared\SimpleObjectCamelCase(),
-    ]
+$request = [
+    new Shared\SimpleObjectCamelCase(
+        anyVal: 'any example',
+        boolVal: true,
+        dateTimeVal: Utils\Utils::parseDateTime('2020-01-01T00:00:00.001Z'),
+        dateVal: LocalDate::parse('2020-01-01'),
+        enumVal: Shared\Enum::One,
+        float32Val: 2.2222222,
+        int32EnumVal: Shared\Int32EnumVal::SixtyNine,
+        int32Val: 1,
+        intEnumVal: Shared\IntEnumVal::Third,
+        intVal: 999999,
+        numVal: 1.1,
+        strVal: 'example',
+        boolOptVal: true,
+        intOptNullVal: 999999,
+        numOptNullVal: 1.1,
+        strOptVal: 'optional example',
+    ),
+    new Shared\SimpleObjectCamelCase(
+        anyVal: 'any example',
+        boolVal: true,
+        dateTimeVal: Utils\Utils::parseDateTime('2020-01-01T00:00:00.001Z'),
+        dateVal: LocalDate::parse('2020-01-01'),
+        enumVal: Shared\Enum::One,
+        float32Val: 2.2222222,
+        int32EnumVal: Shared\Int32EnumVal::SixtyNine,
+        int32Val: 1,
+        intEnumVal: Shared\IntEnumVal::Third,
+        intVal: 999999,
+        numVal: 1.1,
+        strVal: 'example',
+        boolOptVal: true,
+        intOptNullVal: 999999,
+        numOptNullVal: 1.1,
+        strOptVal: 'optional example',
+    ),
+];
 
-    $response = $sdk->requestBodies->requestBodyPostApplicationJsonArrayObjCamelCase($request);
+$response = $sdk->requestBodies->requestBodyPostApplicationJsonArrayObjCamelCase(
+    request: $request
+);
 
-    if ($response->arrObjValueCamelCase !== null) {
-        // handle response
-    }
-} catch (Exception $e) {
-    // handle exception
+if ($response->arrObjValueCamelCase !== null) {
+    // handle response
 }
 ```
 
 ### Parameters
 
-| Parameter                                  | Type                                       | Required                                   | Description                                |
-| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
-| `$request`                                 | [array](../../.md)                         | :heavy_check_mark:                         | The request object to use for the request. |
-
+| Parameter                                        | Type                                             | Required                                         | Description                                      |
+| ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------ |
+| `$request`                                       | [array<Shared\SimpleObjectCamelCase>](../../.md) | :heavy_check_mark:                               | The request object to use for the request.       |
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\RequestBodyPostApplicationJsonArrayObjCamelCaseResponse](../../Models/Operations/RequestBodyPostApplicationJsonArrayObjCamelCaseResponse.md)**
+**[?Operations\RequestBodyPostApplicationJsonArrayObjCamelCaseResponse](../../Models/Operations/RequestBodyPostApplicationJsonArrayObjCamelCaseResponse.md)**
 
+### Errors
+
+| Error Type          | Status Code         | Content Type        |
+| ------------------- | ------------------- | ------------------- |
+| Errors\SDKException | 4XX, 5XX            | \*/\*               |
 
 ## requestBodyPostApplicationJsonArrayOfArray
 
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI;
-use \OpenAPI\OpenAPI\Models\Shared;
+require 'vendor/autoload.php';
 
-$security = new Shared\Security();
-$security->apiKeyAuth = 'Token YOUR_API_KEY';
+use Brick\DateTime\LocalDate;
+use Brick\Math\BigDecimal;
+use Brick\Math\BigInteger;
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Shared;
+use OpenAPI\OpenAPI\Utils;
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
+    ->setSecurity(
+        new Shared\Security(
+            apiKeyAuth: 'Token YOUR_API_KEY',
+        )
+    )
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
     ->build();
 
-try {
-    $request = [
-        [
-            new Shared\SimpleObject(),
-        ],
-    ]
+$request = [
+    [
+        new Shared\SimpleObject(
+            any: 'any',
+            bool: true,
+            date: LocalDate::parse('2020-01-01'),
+            dateTime: Utils\Utils::parseDateTime('2020-01-01T00:00:00.001Z'),
+            enum: Shared\Enum::One,
+            float32: 1.1,
+            int: 1,
+            int32: 1,
+            int32Enum: Shared\Int32Enum::FiftyFive,
+            intEnum: Shared\IntEnum::Second,
+            num: 1.1,
+            str: 'test',
+            bigint: BigInteger::of('8821239038968084'),
+            bigintStr: BigInteger::of('9223372036854775808'),
+            boolOpt: true,
+            decimal: BigDecimal::of('3.141592653589793'),
+            decimalStr: BigDecimal::of('3.14159265358979344719667586'),
+            float64Str: '1.1',
+            int64Str: '100',
+            strOpt: 'testOptional',
+        ),
+    ],
+];
 
-    $response = $sdk->requestBodies->requestBodyPostApplicationJsonArrayOfArray($request);
+$response = $sdk->requestBodies->requestBodyPostApplicationJsonArrayOfArray(
+    request: $request
+);
 
-    if ($response->res !== null) {
-        // handle response
-    }
-} catch (Exception $e) {
-    // handle exception
+if ($response->res !== null) {
+    // handle response
 }
 ```
 
 ### Parameters
 
-| Parameter                                  | Type                                       | Required                                   | Description                                |
-| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
-| `$request`                                 | [array](../../.md)                         | :heavy_check_mark:                         | The request object to use for the request. |
-| `$serverURL`                               | *string*                                   | :heavy_minus_sign:                         | An optional server URL to use.             |
-
+| Parameter                                      | Type                                           | Required                                       | Description                                    |
+| ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- |
+| `$request`                                     | [array<array<Shared\SimpleObject>>](../../.md) | :heavy_check_mark:                             | The request object to use for the request.     |
+| `$serverURL`                                   | *string*                                       | :heavy_minus_sign:                             | An optional server URL to use.                 |
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\RequestBodyPostApplicationJsonArrayOfArrayResponse](../../Models/Operations/RequestBodyPostApplicationJsonArrayOfArrayResponse.md)**
+**[?Operations\RequestBodyPostApplicationJsonArrayOfArrayResponse](../../Models/Operations/RequestBodyPostApplicationJsonArrayOfArrayResponse.md)**
 
+### Errors
+
+| Error Type          | Status Code         | Content Type        |
+| ------------------- | ------------------- | ------------------- |
+| Errors\SDKException | 4XX, 5XX            | \*/\*               |
 
 ## requestBodyPostApplicationJsonArrayOfArrayCamelCase
 
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI;
-use \OpenAPI\OpenAPI\Models\Shared;
+require 'vendor/autoload.php';
 
-$security = new Shared\Security();
-$security->apiKeyAuth = 'Token YOUR_API_KEY';
+use Brick\DateTime\LocalDate;
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Shared;
+use OpenAPI\OpenAPI\Utils;
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
+    ->setSecurity(
+        new Shared\Security(
+            apiKeyAuth: 'Token YOUR_API_KEY',
+        )
+    )
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
     ->build();
 
-try {
-    $request = [
-        [
-            new Shared\SimpleObjectCamelCase(),
-        ],
-    ]
+$request = [
+    [
+        new Shared\SimpleObjectCamelCase(
+            anyVal: 'any example',
+            boolVal: true,
+            dateTimeVal: Utils\Utils::parseDateTime('2020-01-01T00:00:00.001Z'),
+            dateVal: LocalDate::parse('2020-01-01'),
+            enumVal: Shared\Enum::One,
+            float32Val: 2.2222222,
+            int32EnumVal: Shared\Int32EnumVal::SixtyNine,
+            int32Val: 1,
+            intEnumVal: Shared\IntEnumVal::Third,
+            intVal: 999999,
+            numVal: 1.1,
+            strVal: 'example',
+            boolOptVal: true,
+            intOptNullVal: 999999,
+            numOptNullVal: 1.1,
+            strOptVal: 'optional example',
+        ),
+    ],
+];
 
-    $response = $sdk->requestBodies->requestBodyPostApplicationJsonArrayOfArrayCamelCase($request);
+$response = $sdk->requestBodies->requestBodyPostApplicationJsonArrayOfArrayCamelCase(
+    request: $request
+);
 
-    if ($response->res !== null) {
-        // handle response
-    }
-} catch (Exception $e) {
-    // handle exception
+if ($response->res !== null) {
+    // handle response
 }
 ```
 
 ### Parameters
 
-| Parameter                                  | Type                                       | Required                                   | Description                                |
-| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
-| `$request`                                 | [array](../../.md)                         | :heavy_check_mark:                         | The request object to use for the request. |
-| `$serverURL`                               | *string*                                   | :heavy_minus_sign:                         | An optional server URL to use.             |
-
+| Parameter                                               | Type                                                    | Required                                                | Description                                             |
+| ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
+| `$request`                                              | [array<array<Shared\SimpleObjectCamelCase>>](../../.md) | :heavy_check_mark:                                      | The request object to use for the request.              |
+| `$serverURL`                                            | *string*                                                | :heavy_minus_sign:                                      | An optional server URL to use.                          |
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\RequestBodyPostApplicationJsonArrayOfArrayCamelCaseResponse](../../Models/Operations/RequestBodyPostApplicationJsonArrayOfArrayCamelCaseResponse.md)**
+**[?Operations\RequestBodyPostApplicationJsonArrayOfArrayCamelCaseResponse](../../Models/Operations/RequestBodyPostApplicationJsonArrayOfArrayCamelCaseResponse.md)**
 
+### Errors
+
+| Error Type          | Status Code         | Content Type        |
+| ------------------- | ------------------- | ------------------- |
+| Errors\SDKException | 4XX, 5XX            | \*/\*               |
 
 ## requestBodyPostApplicationJsonArrayOfArrayOfPrimitive
 
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI;
-use \OpenAPI\OpenAPI\Models\Shared;
+require 'vendor/autoload.php';
 
-$security = new Shared\Security();
-$security->apiKeyAuth = 'Token YOUR_API_KEY';
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Shared;
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
+    ->setSecurity(
+        new Shared\Security(
+            apiKeyAuth: 'Token YOUR_API_KEY',
+        )
+    )
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
     ->build();
 
-try {
-    $request = [
-        [
-            'string',
-        ],
-    ]
+$request = [
+    [
+        'foo',
+        'bar',
+    ],
+    [
+        'buzz',
+        'bazz',
+    ],
+];
 
-    $response = $sdk->requestBodies->requestBodyPostApplicationJsonArrayOfArrayOfPrimitive($request);
+$response = $sdk->requestBodies->requestBodyPostApplicationJsonArrayOfArrayOfPrimitive(
+    request: $request
+);
 
-    if ($response->res !== null) {
-        // handle response
-    }
-} catch (Exception $e) {
-    // handle exception
+if ($response->res !== null) {
+    // handle response
 }
 ```
 
@@ -620,147 +1082,334 @@ try {
 
 | Parameter                                  | Type                                       | Required                                   | Description                                |
 | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
-| `$request`                                 | [array](../../.md)                         | :heavy_check_mark:                         | The request object to use for the request. |
+| `$request`                                 | [array<array<string>>](../../.md)          | :heavy_check_mark:                         | The request object to use for the request. |
 | `$serverURL`                               | *string*                                   | :heavy_minus_sign:                         | An optional server URL to use.             |
-
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\RequestBodyPostApplicationJsonArrayOfArrayOfPrimitiveResponse](../../Models/Operations/RequestBodyPostApplicationJsonArrayOfArrayOfPrimitiveResponse.md)**
+**[?Operations\RequestBodyPostApplicationJsonArrayOfArrayOfPrimitiveResponse](../../Models/Operations/RequestBodyPostApplicationJsonArrayOfArrayOfPrimitiveResponse.md)**
 
+### Errors
+
+| Error Type          | Status Code         | Content Type        |
+| ------------------- | ------------------- | ------------------- |
+| Errors\SDKException | 4XX, 5XX            | \*/\*               |
 
 ## requestBodyPostApplicationJsonArrayOfMap
 
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI;
-use \OpenAPI\OpenAPI\Models\Shared;
+require 'vendor/autoload.php';
 
-$security = new Shared\Security();
-$security->apiKeyAuth = 'Token YOUR_API_KEY';
+use Brick\DateTime\LocalDate;
+use Brick\Math\BigDecimal;
+use Brick\Math\BigInteger;
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Shared;
+use OpenAPI\OpenAPI\Utils;
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
+    ->setSecurity(
+        new Shared\Security(
+            apiKeyAuth: 'Token YOUR_API_KEY',
+        )
+    )
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
     ->build();
 
-try {
-    $request = [
-        [
-            'Southeast' => new Shared\SimpleObject(),
-        ],
-    ]
+$request = [
+    [
+        'mapElem1' => new Shared\SimpleObject(
+            any: 'any',
+            bool: true,
+            date: LocalDate::parse('2020-01-01'),
+            dateTime: Utils\Utils::parseDateTime('2020-01-01T00:00:00.001Z'),
+            enum: Shared\Enum::One,
+            float32: 1.1,
+            int: 1,
+            int32: 1,
+            int32Enum: Shared\Int32Enum::FiftyFive,
+            intEnum: Shared\IntEnum::Second,
+            num: 1.1,
+            str: 'test',
+            bigint: BigInteger::of('8821239038968084'),
+            bigintStr: BigInteger::of('9223372036854775808'),
+            boolOpt: true,
+            decimal: BigDecimal::of('3.141592653589793'),
+            decimalStr: BigDecimal::of('3.14159265358979344719667586'),
+            float64Str: '1.1',
+            int64Str: '100',
+            strOpt: 'testOptional',
+        ),
+        'mapElem2' => new Shared\SimpleObject(
+            any: 'any',
+            bool: true,
+            date: LocalDate::parse('2020-01-01'),
+            dateTime: Utils\Utils::parseDateTime('2020-01-01T00:00:00.001Z'),
+            enum: Shared\Enum::One,
+            float32: 1.1,
+            int: 1,
+            int32: 1,
+            int32Enum: Shared\Int32Enum::FiftyFive,
+            intEnum: Shared\IntEnum::Second,
+            num: 1.1,
+            str: 'test',
+            bigint: BigInteger::of('8821239038968084'),
+            bigintStr: BigInteger::of('9223372036854775808'),
+            boolOpt: true,
+            decimal: BigDecimal::of('3.141592653589793'),
+            decimalStr: BigDecimal::of('3.14159265358979344719667586'),
+            float64Str: '1.1',
+            int64Str: '100',
+            strOpt: 'testOptional',
+        ),
+    ],
+    [
+        'mapElem1' => new Shared\SimpleObject(
+            any: 'any',
+            bool: true,
+            date: LocalDate::parse('2020-01-01'),
+            dateTime: Utils\Utils::parseDateTime('2020-01-01T00:00:00.001Z'),
+            enum: Shared\Enum::One,
+            float32: 1.1,
+            int: 1,
+            int32: 1,
+            int32Enum: Shared\Int32Enum::FiftyFive,
+            intEnum: Shared\IntEnum::Second,
+            num: 1.1,
+            str: 'test',
+            bigint: BigInteger::of('8821239038968084'),
+            bigintStr: BigInteger::of('9223372036854775808'),
+            boolOpt: true,
+            decimal: BigDecimal::of('3.141592653589793'),
+            decimalStr: BigDecimal::of('3.14159265358979344719667586'),
+            float64Str: '1.1',
+            int64Str: '100',
+            strOpt: 'testOptional',
+        ),
+        'mapElem2' => new Shared\SimpleObject(
+            any: 'any',
+            bool: true,
+            date: LocalDate::parse('2020-01-01'),
+            dateTime: Utils\Utils::parseDateTime('2020-01-01T00:00:00.001Z'),
+            enum: Shared\Enum::One,
+            float32: 1.1,
+            int: 1,
+            int32: 1,
+            int32Enum: Shared\Int32Enum::FiftyFive,
+            intEnum: Shared\IntEnum::Second,
+            num: 1.1,
+            str: 'test',
+            bigint: BigInteger::of('8821239038968084'),
+            bigintStr: BigInteger::of('9223372036854775808'),
+            boolOpt: true,
+            decimal: BigDecimal::of('3.141592653589793'),
+            decimalStr: BigDecimal::of('3.14159265358979344719667586'),
+            float64Str: '1.1',
+            int64Str: '100',
+            strOpt: 'testOptional',
+        ),
+    ],
+];
 
-    $response = $sdk->requestBodies->requestBodyPostApplicationJsonArrayOfMap($request);
+$response = $sdk->requestBodies->requestBodyPostApplicationJsonArrayOfMap(
+    request: $request
+);
 
-    if ($response->res !== null) {
-        // handle response
-    }
-} catch (Exception $e) {
-    // handle exception
+if ($response->res !== null) {
+    // handle response
 }
 ```
 
 ### Parameters
 
-| Parameter                                  | Type                                       | Required                                   | Description                                |
-| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
-| `$request`                                 | [array](../../.md)                         | :heavy_check_mark:                         | The request object to use for the request. |
-| `$serverURL`                               | *string*                                   | :heavy_minus_sign:                         | An optional server URL to use.             |
-
+| Parameter                                              | Type                                                   | Required                                               | Description                                            |
+| ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ |
+| `$request`                                             | [array<array<string, Shared\SimpleObject>>](../../.md) | :heavy_check_mark:                                     | The request object to use for the request.             |
+| `$serverURL`                                           | *string*                                               | :heavy_minus_sign:                                     | An optional server URL to use.                         |
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\RequestBodyPostApplicationJsonArrayOfMapResponse](../../Models/Operations/RequestBodyPostApplicationJsonArrayOfMapResponse.md)**
+**[?Operations\RequestBodyPostApplicationJsonArrayOfMapResponse](../../Models/Operations/RequestBodyPostApplicationJsonArrayOfMapResponse.md)**
 
+### Errors
+
+| Error Type          | Status Code         | Content Type        |
+| ------------------- | ------------------- | ------------------- |
+| Errors\SDKException | 4XX, 5XX            | \*/\*               |
 
 ## requestBodyPostApplicationJsonArrayOfMapCamelCase
 
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI;
-use \OpenAPI\OpenAPI\Models\Shared;
+require 'vendor/autoload.php';
 
-$security = new Shared\Security();
-$security->apiKeyAuth = 'Token YOUR_API_KEY';
+use Brick\DateTime\LocalDate;
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Shared;
+use OpenAPI\OpenAPI\Utils;
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
+    ->setSecurity(
+        new Shared\Security(
+            apiKeyAuth: 'Token YOUR_API_KEY',
+        )
+    )
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
     ->build();
 
-try {
-    $request = [
-        [
-            'culpa' => new Shared\SimpleObjectCamelCase(),
-        ],
-    ]
+$request = [
+    [
+        'mapElem1' => new Shared\SimpleObjectCamelCase(
+            anyVal: 'any example',
+            boolVal: true,
+            dateTimeVal: Utils\Utils::parseDateTime('2020-01-01T00:00:00.001Z'),
+            dateVal: LocalDate::parse('2020-01-01'),
+            enumVal: Shared\Enum::One,
+            float32Val: 2.2222222,
+            int32EnumVal: Shared\Int32EnumVal::SixtyNine,
+            int32Val: 1,
+            intEnumVal: Shared\IntEnumVal::Third,
+            intVal: 999999,
+            numVal: 1.1,
+            strVal: 'example',
+            boolOptVal: true,
+            intOptNullVal: 999999,
+            numOptNullVal: 1.1,
+            strOptVal: 'optional example',
+        ),
+        'mapElem2' => new Shared\SimpleObjectCamelCase(
+            anyVal: 'any example',
+            boolVal: true,
+            dateTimeVal: Utils\Utils::parseDateTime('2020-01-01T00:00:00.001Z'),
+            dateVal: LocalDate::parse('2020-01-01'),
+            enumVal: Shared\Enum::One,
+            float32Val: 2.2222222,
+            int32EnumVal: Shared\Int32EnumVal::SixtyNine,
+            int32Val: 1,
+            intEnumVal: Shared\IntEnumVal::Third,
+            intVal: 999999,
+            numVal: 1.1,
+            strVal: 'example',
+            boolOptVal: true,
+            intOptNullVal: 999999,
+            numOptNullVal: 1.1,
+            strOptVal: 'optional example',
+        ),
+    ],
+    [
+        'mapElem1' => new Shared\SimpleObjectCamelCase(
+            anyVal: 'any example',
+            boolVal: true,
+            dateTimeVal: Utils\Utils::parseDateTime('2020-01-01T00:00:00.001Z'),
+            dateVal: LocalDate::parse('2020-01-01'),
+            enumVal: Shared\Enum::One,
+            float32Val: 2.2222222,
+            int32EnumVal: Shared\Int32EnumVal::SixtyNine,
+            int32Val: 1,
+            intEnumVal: Shared\IntEnumVal::Third,
+            intVal: 999999,
+            numVal: 1.1,
+            strVal: 'example',
+            boolOptVal: true,
+            intOptNullVal: 999999,
+            numOptNullVal: 1.1,
+            strOptVal: 'optional example',
+        ),
+        'mapElem2' => new Shared\SimpleObjectCamelCase(
+            anyVal: 'any example',
+            boolVal: true,
+            dateTimeVal: Utils\Utils::parseDateTime('2020-01-01T00:00:00.001Z'),
+            dateVal: LocalDate::parse('2020-01-01'),
+            enumVal: Shared\Enum::One,
+            float32Val: 2.2222222,
+            int32EnumVal: Shared\Int32EnumVal::SixtyNine,
+            int32Val: 1,
+            intEnumVal: Shared\IntEnumVal::Third,
+            intVal: 999999,
+            numVal: 1.1,
+            strVal: 'example',
+            boolOptVal: true,
+            intOptNullVal: 999999,
+            numOptNullVal: 1.1,
+            strOptVal: 'optional example',
+        ),
+    ],
+];
 
-    $response = $sdk->requestBodies->requestBodyPostApplicationJsonArrayOfMapCamelCase($request);
+$response = $sdk->requestBodies->requestBodyPostApplicationJsonArrayOfMapCamelCase(
+    request: $request
+);
 
-    if ($response->res !== null) {
-        // handle response
-    }
-} catch (Exception $e) {
-    // handle exception
+if ($response->res !== null) {
+    // handle response
 }
 ```
 
 ### Parameters
 
-| Parameter                                  | Type                                       | Required                                   | Description                                |
-| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
-| `$request`                                 | [array](../../.md)                         | :heavy_check_mark:                         | The request object to use for the request. |
-| `$serverURL`                               | *string*                                   | :heavy_minus_sign:                         | An optional server URL to use.             |
-
+| Parameter                                                       | Type                                                            | Required                                                        | Description                                                     |
+| --------------------------------------------------------------- | --------------------------------------------------------------- | --------------------------------------------------------------- | --------------------------------------------------------------- |
+| `$request`                                                      | [array<array<string, Shared\SimpleObjectCamelCase>>](../../.md) | :heavy_check_mark:                                              | The request object to use for the request.                      |
+| `$serverURL`                                                    | *string*                                                        | :heavy_minus_sign:                                              | An optional server URL to use.                                  |
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\RequestBodyPostApplicationJsonArrayOfMapCamelCaseResponse](../../Models/Operations/RequestBodyPostApplicationJsonArrayOfMapCamelCaseResponse.md)**
+**[?Operations\RequestBodyPostApplicationJsonArrayOfMapCamelCaseResponse](../../Models/Operations/RequestBodyPostApplicationJsonArrayOfMapCamelCaseResponse.md)**
 
+### Errors
+
+| Error Type          | Status Code         | Content Type        |
+| ------------------- | ------------------- | ------------------- |
+| Errors\SDKException | 4XX, 5XX            | \*/\*               |
 
 ## requestBodyPostApplicationJsonArrayOfPrimitive
 
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI;
-use \OpenAPI\OpenAPI\Models\Shared;
+require 'vendor/autoload.php';
 
-$security = new Shared\Security();
-$security->apiKeyAuth = 'Token YOUR_API_KEY';
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Shared;
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
+    ->setSecurity(
+        new Shared\Security(
+            apiKeyAuth: 'Token YOUR_API_KEY',
+        )
+    )
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
     ->build();
 
-try {
-    $request = [
-        'string',
-    ]
+$request = [
+    'hello',
+    'world',
+];
 
-    $response = $sdk->requestBodies->requestBodyPostApplicationJsonArrayOfPrimitive($request);
+$response = $sdk->requestBodies->requestBodyPostApplicationJsonArrayOfPrimitive(
+    request: $request
+);
 
-    if ($response->res !== null) {
-        // handle response
-    }
-} catch (Exception $e) {
-    // handle exception
+if ($response->res !== null) {
+    // handle response
 }
 ```
 
@@ -768,642 +1417,1469 @@ try {
 
 | Parameter                                  | Type                                       | Required                                   | Description                                |
 | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
-| `$request`                                 | [array](../../.md)                         | :heavy_check_mark:                         | The request object to use for the request. |
+| `$request`                                 | [array<string>](../../.md)                 | :heavy_check_mark:                         | The request object to use for the request. |
 | `$serverURL`                               | *string*                                   | :heavy_minus_sign:                         | An optional server URL to use.             |
-
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\RequestBodyPostApplicationJsonArrayOfPrimitiveResponse](../../Models/Operations/RequestBodyPostApplicationJsonArrayOfPrimitiveResponse.md)**
+**[?Operations\RequestBodyPostApplicationJsonArrayOfPrimitiveResponse](../../Models/Operations/RequestBodyPostApplicationJsonArrayOfPrimitiveResponse.md)**
 
+### Errors
+
+| Error Type          | Status Code         | Content Type        |
+| ------------------- | ------------------- | ------------------- |
+| Errors\SDKException | 4XX, 5XX            | \*/\*               |
+
+## requestBodyPostApplicationJsonArrayOfUnions
+
+### Example Usage
+
+```php
+declare(strict_types=1);
+
+require 'vendor/autoload.php';
+
+use Brick\DateTime\LocalDate;
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Operations;
+use OpenAPI\OpenAPI\Models\Shared;
+
+$sdk = OpenAPI\SDK::builder()
+    ->setSecurity(
+        new Shared\Security(
+            apiKeyAuth: 'Token YOUR_API_KEY',
+        )
+    )
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->build();
+
+$request = new Operations\RequestBodyPostApplicationJsonArrayOfUnionsRequestBody(
+    dates: [
+        LocalDate::parse('2023-11-15'),
+    ],
+    unions: [
+        new Shared\TypedObject1(
+            type: Shared\TypedObject1Type::Obj1,
+            value: '<value>',
+        ),
+    ],
+);
+
+$response = $sdk->requestBodies->requestBodyPostApplicationJsonArrayOfUnions(
+    request: $request
+);
+
+if ($response->statusCode === 200) {
+    // handle response
+}
+```
+
+### Parameters
+
+| Parameter                                                                                                                                              | Type                                                                                                                                                   | Required                                                                                                                                               | Description                                                                                                                                            |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `$request`                                                                                                                                             | [Operations\RequestBodyPostApplicationJsonArrayOfUnionsRequestBody](../../Models/Operations/RequestBodyPostApplicationJsonArrayOfUnionsRequestBody.md) | :heavy_check_mark:                                                                                                                                     | The request object to use for the request.                                                                                                             |
+| `$serverURL`                                                                                                                                           | *string*                                                                                                                                               | :heavy_minus_sign:                                                                                                                                     | An optional server URL to use.                                                                                                                         |
+
+### Response
+
+**[?Operations\RequestBodyPostApplicationJsonArrayOfUnionsResponse](../../Models/Operations/RequestBodyPostApplicationJsonArrayOfUnionsResponse.md)**
+
+### Errors
+
+| Error Type          | Status Code         | Content Type        |
+| ------------------- | ------------------- | ------------------- |
+| Errors\SDKException | 4XX, 5XX            | \*/\*               |
 
 ## requestBodyPostApplicationJsonDeep
 
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI;
-use \OpenAPI\OpenAPI\Models\Shared;
+require 'vendor/autoload.php';
 
-$security = new Shared\Security();
-$security->apiKeyAuth = 'Token YOUR_API_KEY';
+use Brick\DateTime\LocalDate;
+use Brick\Math\BigDecimal;
+use Brick\Math\BigInteger;
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Shared;
+use OpenAPI\OpenAPI\Utils;
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
+    ->setSecurity(
+        new Shared\Security(
+            apiKeyAuth: 'Token YOUR_API_KEY',
+        )
+    )
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
     ->build();
 
-try {
-    $request = new Shared\DeepObject();
-    $request->any = 'anyOf[0]';
-    $request->arr = [
-        new Shared\SimpleObject(),
-    ];
-    $request->bool = true;
-    $request->int = 1;
-    $request->map = [
-        'medium' => new Shared\SimpleObject(),
-    ];
-    $request->num = 1.1;
-    $request->obj = new Shared\SimpleObject();
-    $request->obj->any = 'any';
-    $request->obj->bigint = 8821239038968084;
-    $request->obj->bigintStr = '9223372036854775808';
-    $request->obj->bool = true;
-    $request->obj->boolOpt = true;
-    $request->obj->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
-    $request->obj->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00.000000001Z');
-    $request->obj->decimal = 3.141592653589793;
-    $request->obj->decimalStr = '3.14159265358979344719667586';
-    $request->obj->enum = Shared\Enum::One;
-    $request->obj->float32 = 1.1;
-    $request->obj->int = 1;
-    $request->obj->int32 = 1;
-    $request->obj->int32Enum = Shared\Int32Enum::FiftyFive;
-    $request->obj->intEnum = Shared\IntEnum::Third;
-    $request->obj->intOptNull = 817678;
-    $request->obj->num = 1.1;
-    $request->obj->numOptNull = 2099.66;
-    $request->obj->str = 'test';
-    $request->obj->strOpt = 'testOptional';
-    $request->str = 'test';
-    $request->type = 'string';
+$request = new Shared\DeepObject(
+    any: new Shared\SimpleObject(
+        any: 'any',
+        bool: true,
+        date: LocalDate::parse('2020-01-01'),
+        dateTime: Utils\Utils::parseDateTime('2020-01-01T00:00:00.001Z'),
+        enum: Shared\Enum::One,
+        float32: 1.1,
+        int: 1,
+        int32: 1,
+        int32Enum: Shared\Int32Enum::FiftyFive,
+        intEnum: Shared\IntEnum::Second,
+        num: 1.1,
+        str: 'test',
+        bigint: BigInteger::of('8821239038968084'),
+        bigintStr: BigInteger::of('9223372036854775808'),
+        boolOpt: true,
+        decimal: BigDecimal::of('3.141592653589793'),
+        decimalStr: BigDecimal::of('3.14159265358979344719667586'),
+        float64Str: '1.1',
+        int64Str: '100',
+        strOpt: 'testOptional',
+    ),
+    arr: [
+        new Shared\SimpleObject(
+            any: 'any',
+            bool: true,
+            date: LocalDate::parse('2020-01-01'),
+            dateTime: Utils\Utils::parseDateTime('2020-01-01T00:00:00.001Z'),
+            enum: Shared\Enum::One,
+            float32: 1.1,
+            int: 1,
+            int32: 1,
+            int32Enum: Shared\Int32Enum::FiftyFive,
+            intEnum: Shared\IntEnum::Second,
+            num: 1.1,
+            str: 'test',
+            bigint: BigInteger::of('8821239038968084'),
+            bigintStr: BigInteger::of('9223372036854775808'),
+            boolOpt: true,
+            decimal: BigDecimal::of('3.141592653589793'),
+            decimalStr: BigDecimal::of('3.14159265358979344719667586'),
+            float64Str: '1.1',
+            int64Str: '100',
+            strOpt: 'testOptional',
+        ),
+        new Shared\SimpleObject(
+            any: 'any',
+            bool: true,
+            date: LocalDate::parse('2020-01-01'),
+            dateTime: Utils\Utils::parseDateTime('2020-01-01T00:00:00.001Z'),
+            enum: Shared\Enum::One,
+            float32: 1.1,
+            int: 1,
+            int32: 1,
+            int32Enum: Shared\Int32Enum::FiftyFive,
+            intEnum: Shared\IntEnum::Second,
+            num: 1.1,
+            str: 'test',
+            bigint: BigInteger::of('8821239038968084'),
+            bigintStr: BigInteger::of('9223372036854775808'),
+            boolOpt: true,
+            decimal: BigDecimal::of('3.141592653589793'),
+            decimalStr: BigDecimal::of('3.14159265358979344719667586'),
+            float64Str: '1.1',
+            int64Str: '100',
+            strOpt: 'testOptional',
+        ),
+    ],
+    bool: true,
+    int: 1,
+    map: [
+        'key' => new Shared\SimpleObject(
+            any: 'any',
+            bool: true,
+            date: LocalDate::parse('2020-01-01'),
+            dateTime: Utils\Utils::parseDateTime('2020-01-01T00:00:00.001Z'),
+            enum: Shared\Enum::One,
+            float32: 1.1,
+            int: 1,
+            int32: 1,
+            int32Enum: Shared\Int32Enum::FiftyFive,
+            intEnum: Shared\IntEnum::Second,
+            num: 1.1,
+            str: 'test',
+            bigint: BigInteger::of('8821239038968084'),
+            bigintStr: BigInteger::of('9223372036854775808'),
+            boolOpt: true,
+            decimal: BigDecimal::of('3.141592653589793'),
+            decimalStr: BigDecimal::of('3.14159265358979344719667586'),
+            float64Str: '1.1',
+            int64Str: '100',
+            strOpt: 'testOptional',
+        ),
+        'key2' => new Shared\SimpleObject(
+            any: 'any',
+            bool: true,
+            date: LocalDate::parse('2020-01-01'),
+            dateTime: Utils\Utils::parseDateTime('2020-01-01T00:00:00.001Z'),
+            enum: Shared\Enum::One,
+            float32: 1.1,
+            int: 1,
+            int32: 1,
+            int32Enum: Shared\Int32Enum::FiftyFive,
+            intEnum: Shared\IntEnum::Second,
+            num: 1.1,
+            str: 'test',
+            bigint: BigInteger::of('8821239038968084'),
+            bigintStr: BigInteger::of('9223372036854775808'),
+            boolOpt: true,
+            decimal: BigDecimal::of('3.141592653589793'),
+            decimalStr: BigDecimal::of('3.14159265358979344719667586'),
+            float64Str: '1.1',
+            int64Str: '100',
+            strOpt: 'testOptional',
+        ),
+    ],
+    num: 1.1,
+    obj: new Shared\SimpleObject(
+        any: 'any',
+        bool: true,
+        date: LocalDate::parse('2020-01-01'),
+        dateTime: Utils\Utils::parseDateTime('2020-01-01T00:00:00.001Z'),
+        enum: Shared\Enum::One,
+        float32: 1.1,
+        int: 1,
+        int32: 1,
+        int32Enum: Shared\Int32Enum::FiftyFive,
+        intEnum: Shared\IntEnum::Second,
+        num: 1.1,
+        str: 'test',
+        bigint: BigInteger::of('8821239038968084'),
+        bigintStr: BigInteger::of('9223372036854775808'),
+        boolOpt: true,
+        decimal: BigDecimal::of('3.141592653589793'),
+        decimalStr: BigDecimal::of('3.14159265358979344719667586'),
+        float64Str: '1.1',
+        int64Str: '100',
+        strOpt: 'testOptional',
+    ),
+    str: 'test',
+);
 
-    $response = $sdk->requestBodies->requestBodyPostApplicationJsonDeep($request);
+$response = $sdk->requestBodies->requestBodyPostApplicationJsonDeep(
+    request: $request
+);
 
-    if ($response->res !== null) {
-        // handle response
-    }
-} catch (Exception $e) {
-    // handle exception
+if ($response->res !== null) {
+    // handle response
 }
 ```
 
 ### Parameters
 
-| Parameter                                                                      | Type                                                                           | Required                                                                       | Description                                                                    |
-| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
-| `$request`                                                                     | [\OpenAPI\OpenAPI\Models\Shared\DeepObject](../../Models/Shared/DeepObject.md) | :heavy_check_mark:                                                             | The request object to use for the request.                                     |
-
+| Parameter                                              | Type                                                   | Required                                               | Description                                            |
+| ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ |
+| `$request`                                             | [Shared\DeepObject](../../Models/Shared/DeepObject.md) | :heavy_check_mark:                                     | The request object to use for the request.             |
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\RequestBodyPostApplicationJsonDeepResponse](../../Models/Operations/RequestBodyPostApplicationJsonDeepResponse.md)**
+**[?Operations\RequestBodyPostApplicationJsonDeepResponse](../../Models/Operations/RequestBodyPostApplicationJsonDeepResponse.md)**
 
+### Errors
+
+| Error Type          | Status Code         | Content Type        |
+| ------------------- | ------------------- | ------------------- |
+| Errors\SDKException | 4XX, 5XX            | \*/\*               |
 
 ## requestBodyPostApplicationJsonDeepCamelCase
 
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI;
-use \OpenAPI\OpenAPI\Models\Shared;
+require 'vendor/autoload.php';
 
-$security = new Shared\Security();
-$security->apiKeyAuth = 'Token YOUR_API_KEY';
+use Brick\DateTime\LocalDate;
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Shared;
+use OpenAPI\OpenAPI\Utils;
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
+    ->setSecurity(
+        new Shared\Security(
+            apiKeyAuth: 'Token YOUR_API_KEY',
+        )
+    )
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
     ->build();
 
-try {
-    $request = new Shared\DeepObjectCamelCase();
-    $request->anyVal = 'string';
-    $request->arrVal = [
-        new Shared\SimpleObjectCamelCase(),
-    ];
-    $request->boolVal = false;
-    $request->intVal = 66469;
-    $request->mapVal = [
-        'as' => new Shared\SimpleObjectCamelCase(),
-    ];
-    $request->numVal = 4241.4;
-    $request->objVal = new Shared\SimpleObjectCamelCase();
-    $request->objVal->anyVal = 'any example';
-    $request->objVal->bigintStrVal = 'string';
-    $request->objVal->bigintVal = 942092;
-    $request->objVal->boolOptVal = true;
-    $request->objVal->boolVal = true;
-    $request->objVal->dateTimeVal = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00Z');
-    $request->objVal->dateVal = DateTime::createFromFormat('Y-m-d', '2020-01-01');
-    $request->objVal->decimalVal = 1379.45;
-    $request->objVal->enumVal = Shared\Enum::One;
-    $request->objVal->float32Val = 2.2222222;
-    $request->objVal->int32EnumVal = Shared\Int32EnumVal::OneHundredAndEightyOne;
-    $request->objVal->int32Val = 1;
-    $request->objVal->intEnumVal = Shared\IntEnumVal::First;
-    $request->objVal->intOptNullVal = 999999;
-    $request->objVal->intVal = 999999;
-    $request->objVal->numOptNullVal = 1.1;
-    $request->objVal->numVal = 1.1;
-    $request->objVal->strOptVal = 'optional example';
-    $request->objVal->strVal = 'example';
-    $request->strVal = 'string';
-    $request->type = 'string';
+$request = new Shared\DeepObjectCamelCase(
+    anyVal: new Shared\SimpleObjectCamelCase(
+        anyVal: 'any example',
+        boolVal: true,
+        dateTimeVal: Utils\Utils::parseDateTime('2020-01-01T00:00:00.001Z'),
+        dateVal: LocalDate::parse('2020-01-01'),
+        enumVal: Shared\Enum::One,
+        float32Val: 2.2222222,
+        int32EnumVal: Shared\Int32EnumVal::SixtyNine,
+        int32Val: 1,
+        intEnumVal: Shared\IntEnumVal::Third,
+        intVal: 999999,
+        numVal: 1.1,
+        strVal: 'example',
+        boolOptVal: true,
+        intOptNullVal: 999999,
+        numOptNullVal: 1.1,
+        strOptVal: 'optional example',
+    ),
+    arrVal: [
+        new Shared\SimpleObjectCamelCase(
+            anyVal: 'any example',
+            boolVal: true,
+            dateTimeVal: Utils\Utils::parseDateTime('2020-01-01T00:00:00.001Z'),
+            dateVal: LocalDate::parse('2020-01-01'),
+            enumVal: Shared\Enum::One,
+            float32Val: 2.2222222,
+            int32EnumVal: Shared\Int32EnumVal::SixtyNine,
+            int32Val: 1,
+            intEnumVal: Shared\IntEnumVal::Third,
+            intVal: 999999,
+            numVal: 1.1,
+            strVal: 'example',
+            boolOptVal: true,
+            intOptNullVal: 999999,
+            numOptNullVal: 1.1,
+            strOptVal: 'optional example',
+        ),
+        new Shared\SimpleObjectCamelCase(
+            anyVal: 'any example',
+            boolVal: true,
+            dateTimeVal: Utils\Utils::parseDateTime('2020-01-01T00:00:00.001Z'),
+            dateVal: LocalDate::parse('2020-01-01'),
+            enumVal: Shared\Enum::One,
+            float32Val: 2.2222222,
+            int32EnumVal: Shared\Int32EnumVal::SixtyNine,
+            int32Val: 1,
+            intEnumVal: Shared\IntEnumVal::Third,
+            intVal: 999999,
+            numVal: 1.1,
+            strVal: 'example',
+            boolOptVal: true,
+            intOptNullVal: 999999,
+            numOptNullVal: 1.1,
+            strOptVal: 'optional example',
+        ),
+    ],
+    boolVal: true,
+    intVal: 1,
+    mapVal: [
+        'key' => new Shared\SimpleObjectCamelCase(
+            anyVal: 'any example',
+            boolVal: true,
+            dateTimeVal: Utils\Utils::parseDateTime('2020-01-01T00:00:00.001Z'),
+            dateVal: LocalDate::parse('2020-01-01'),
+            enumVal: Shared\Enum::One,
+            float32Val: 2.2222222,
+            int32EnumVal: Shared\Int32EnumVal::SixtyNine,
+            int32Val: 1,
+            intEnumVal: Shared\IntEnumVal::Third,
+            intVal: 999999,
+            numVal: 1.1,
+            strVal: 'example',
+            boolOptVal: true,
+            intOptNullVal: 999999,
+            numOptNullVal: 1.1,
+            strOptVal: 'optional example',
+        ),
+    ],
+    numVal: 1.1,
+    objVal: new Shared\SimpleObjectCamelCase(
+        anyVal: 'any example',
+        boolVal: true,
+        dateTimeVal: Utils\Utils::parseDateTime('2020-01-01T00:00:00.001Z'),
+        dateVal: LocalDate::parse('2020-01-01'),
+        enumVal: Shared\Enum::One,
+        float32Val: 2.2222222,
+        int32EnumVal: Shared\Int32EnumVal::SixtyNine,
+        int32Val: 1,
+        intEnumVal: Shared\IntEnumVal::Third,
+        intVal: 999999,
+        numVal: 1.1,
+        strVal: 'example',
+        boolOptVal: true,
+        intOptNullVal: 999999,
+        numOptNullVal: 1.1,
+        strOptVal: 'optional example',
+    ),
+    strVal: 'test',
+);
 
-    $response = $sdk->requestBodies->requestBodyPostApplicationJsonDeepCamelCase($request);
+$response = $sdk->requestBodies->requestBodyPostApplicationJsonDeepCamelCase(
+    request: $request
+);
 
-    if ($response->res !== null) {
-        // handle response
-    }
-} catch (Exception $e) {
-    // handle exception
+if ($response->res !== null) {
+    // handle response
 }
 ```
 
 ### Parameters
 
-| Parameter                                                                                        | Type                                                                                             | Required                                                                                         | Description                                                                                      |
-| ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ |
-| `$request`                                                                                       | [\OpenAPI\OpenAPI\Models\Shared\DeepObjectCamelCase](../../Models/Shared/DeepObjectCamelCase.md) | :heavy_check_mark:                                                                               | The request object to use for the request.                                                       |
-
+| Parameter                                                                | Type                                                                     | Required                                                                 | Description                                                              |
+| ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
+| `$request`                                                               | [Shared\DeepObjectCamelCase](../../Models/Shared/DeepObjectCamelCase.md) | :heavy_check_mark:                                                       | The request object to use for the request.                               |
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\RequestBodyPostApplicationJsonDeepCamelCaseResponse](../../Models/Operations/RequestBodyPostApplicationJsonDeepCamelCaseResponse.md)**
+**[?Operations\RequestBodyPostApplicationJsonDeepCamelCaseResponse](../../Models/Operations/RequestBodyPostApplicationJsonDeepCamelCaseResponse.md)**
 
+### Errors
+
+| Error Type          | Status Code         | Content Type        |
+| ------------------- | ------------------- | ------------------- |
+| Errors\SDKException | 4XX, 5XX            | \*/\*               |
 
 ## requestBodyPostApplicationJsonMap
 
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI;
-use \OpenAPI\OpenAPI\Models\Shared;
+require 'vendor/autoload.php';
 
-$security = new Shared\Security();
-$security->apiKeyAuth = 'Token YOUR_API_KEY';
+use Brick\DateTime\LocalDate;
+use Brick\Math\BigDecimal;
+use Brick\Math\BigInteger;
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Shared;
+use OpenAPI\OpenAPI\Utils;
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
+    ->setSecurity(
+        new Shared\Security(
+            apiKeyAuth: 'Token YOUR_API_KEY',
+        )
+    )
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
     ->build();
 
-try {
-    $request = [
-        'Bentley' => new Shared\SimpleObject(),
-    ]
+$request = [
+    'mapElem1' => new Shared\SimpleObject(
+        any: 'any',
+        bool: true,
+        date: LocalDate::parse('2020-01-01'),
+        dateTime: Utils\Utils::parseDateTime('2020-01-01T00:00:00.001Z'),
+        enum: Shared\Enum::One,
+        float32: 1.1,
+        int: 1,
+        int32: 1,
+        int32Enum: Shared\Int32Enum::FiftyFive,
+        intEnum: Shared\IntEnum::Second,
+        num: 1.1,
+        str: 'test',
+        bigint: BigInteger::of('8821239038968084'),
+        bigintStr: BigInteger::of('9223372036854775808'),
+        boolOpt: true,
+        decimal: BigDecimal::of('3.141592653589793'),
+        decimalStr: BigDecimal::of('3.14159265358979344719667586'),
+        float64Str: '1.1',
+        int64Str: '100',
+        strOpt: 'testOptional',
+    ),
+    'mapElem2' => new Shared\SimpleObject(
+        any: 'any',
+        bool: true,
+        date: LocalDate::parse('2020-01-01'),
+        dateTime: Utils\Utils::parseDateTime('2020-01-01T00:00:00.001Z'),
+        enum: Shared\Enum::One,
+        float32: 1.1,
+        int: 1,
+        int32: 1,
+        int32Enum: Shared\Int32Enum::FiftyFive,
+        intEnum: Shared\IntEnum::Second,
+        num: 1.1,
+        str: 'test',
+        bigint: BigInteger::of('8821239038968084'),
+        bigintStr: BigInteger::of('9223372036854775808'),
+        boolOpt: true,
+        decimal: BigDecimal::of('3.141592653589793'),
+        decimalStr: BigDecimal::of('3.14159265358979344719667586'),
+        float64Str: '1.1',
+        int64Str: '100',
+        strOpt: 'testOptional',
+    ),
+];
 
-    $response = $sdk->requestBodies->requestBodyPostApplicationJsonMap($request);
+$response = $sdk->requestBodies->requestBodyPostApplicationJsonMap(
+    request: $request
+);
 
-    if ($response->res !== null) {
-        // handle response
-    }
-} catch (Exception $e) {
-    // handle exception
+if ($response->res !== null) {
+    // handle response
 }
 ```
 
 ### Parameters
 
-| Parameter                                  | Type                                       | Required                                   | Description                                |
-| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
-| `$request`                                 | [array](../../.md)                         | :heavy_check_mark:                         | The request object to use for the request. |
-| `$serverURL`                               | *string*                                   | :heavy_minus_sign:                         | An optional server URL to use.             |
-
+| Parameter                                       | Type                                            | Required                                        | Description                                     |
+| ----------------------------------------------- | ----------------------------------------------- | ----------------------------------------------- | ----------------------------------------------- |
+| `$request`                                      | [array<string, Shared\SimpleObject>](../../.md) | :heavy_check_mark:                              | The request object to use for the request.      |
+| `$serverURL`                                    | *string*                                        | :heavy_minus_sign:                              | An optional server URL to use.                  |
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\RequestBodyPostApplicationJsonMapResponse](../../Models/Operations/RequestBodyPostApplicationJsonMapResponse.md)**
+**[?Operations\RequestBodyPostApplicationJsonMapResponse](../../Models/Operations/RequestBodyPostApplicationJsonMapResponse.md)**
 
+### Errors
+
+| Error Type          | Status Code         | Content Type        |
+| ------------------- | ------------------- | ------------------- |
+| Errors\SDKException | 4XX, 5XX            | \*/\*               |
 
 ## requestBodyPostApplicationJsonMapCamelCase
 
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI;
-use \OpenAPI\OpenAPI\Models\Shared;
+require 'vendor/autoload.php';
 
-$security = new Shared\Security();
-$security->apiKeyAuth = 'Token YOUR_API_KEY';
+use Brick\DateTime\LocalDate;
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Shared;
+use OpenAPI\OpenAPI\Utils;
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
+    ->setSecurity(
+        new Shared\Security(
+            apiKeyAuth: 'Token YOUR_API_KEY',
+        )
+    )
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
     ->build();
 
-try {
-    $request = [
-        'archive' => new Shared\SimpleObjectCamelCase(),
-    ]
+$request = [
+    'mapElem1' => new Shared\SimpleObjectCamelCase(
+        anyVal: 'any example',
+        boolVal: true,
+        dateTimeVal: Utils\Utils::parseDateTime('2020-01-01T00:00:00.001Z'),
+        dateVal: LocalDate::parse('2020-01-01'),
+        enumVal: Shared\Enum::One,
+        float32Val: 2.2222222,
+        int32EnumVal: Shared\Int32EnumVal::SixtyNine,
+        int32Val: 1,
+        intEnumVal: Shared\IntEnumVal::Third,
+        intVal: 999999,
+        numVal: 1.1,
+        strVal: 'example',
+        boolOptVal: true,
+        intOptNullVal: 999999,
+        numOptNullVal: 1.1,
+        strOptVal: 'optional example',
+    ),
+    'mapElem2' => new Shared\SimpleObjectCamelCase(
+        anyVal: 'any example',
+        boolVal: true,
+        dateTimeVal: Utils\Utils::parseDateTime('2020-01-01T00:00:00.001Z'),
+        dateVal: LocalDate::parse('2020-01-01'),
+        enumVal: Shared\Enum::One,
+        float32Val: 2.2222222,
+        int32EnumVal: Shared\Int32EnumVal::SixtyNine,
+        int32Val: 1,
+        intEnumVal: Shared\IntEnumVal::Third,
+        intVal: 999999,
+        numVal: 1.1,
+        strVal: 'example',
+        boolOptVal: true,
+        intOptNullVal: 999999,
+        numOptNullVal: 1.1,
+        strOptVal: 'optional example',
+    ),
+];
 
-    $response = $sdk->requestBodies->requestBodyPostApplicationJsonMapCamelCase($request);
+$response = $sdk->requestBodies->requestBodyPostApplicationJsonMapCamelCase(
+    request: $request
+);
 
-    if ($response->res !== null) {
-        // handle response
-    }
-} catch (Exception $e) {
-    // handle exception
+if ($response->res !== null) {
+    // handle response
 }
 ```
 
 ### Parameters
 
-| Parameter                                  | Type                                       | Required                                   | Description                                |
-| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
-| `$request`                                 | [array](../../.md)                         | :heavy_check_mark:                         | The request object to use for the request. |
-| `$serverURL`                               | *string*                                   | :heavy_minus_sign:                         | An optional server URL to use.             |
-
+| Parameter                                                | Type                                                     | Required                                                 | Description                                              |
+| -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
+| `$request`                                               | [array<string, Shared\SimpleObjectCamelCase>](../../.md) | :heavy_check_mark:                                       | The request object to use for the request.               |
+| `$serverURL`                                             | *string*                                                 | :heavy_minus_sign:                                       | An optional server URL to use.                           |
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\RequestBodyPostApplicationJsonMapCamelCaseResponse](../../Models/Operations/RequestBodyPostApplicationJsonMapCamelCaseResponse.md)**
+**[?Operations\RequestBodyPostApplicationJsonMapCamelCaseResponse](../../Models/Operations/RequestBodyPostApplicationJsonMapCamelCaseResponse.md)**
 
+### Errors
+
+| Error Type          | Status Code         | Content Type        |
+| ------------------- | ------------------- | ------------------- |
+| Errors\SDKException | 4XX, 5XX            | \*/\*               |
 
 ## requestBodyPostApplicationJsonMapObj
 
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI;
-use \OpenAPI\OpenAPI\Models\Shared;
+require 'vendor/autoload.php';
 
-$security = new Shared\Security();
-$security->apiKeyAuth = 'Token YOUR_API_KEY';
+use Brick\DateTime\LocalDate;
+use Brick\Math\BigDecimal;
+use Brick\Math\BigInteger;
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Shared;
+use OpenAPI\OpenAPI\Utils;
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
+    ->setSecurity(
+        new Shared\Security(
+            apiKeyAuth: 'Token YOUR_API_KEY',
+        )
+    )
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
     ->build();
 
-try {
-    $request = [
-        'larder' => new Shared\SimpleObject(),
-    ]
+$request = [
+    'mapElem1' => new Shared\SimpleObject(
+        any: 'any',
+        bool: true,
+        date: LocalDate::parse('2020-01-01'),
+        dateTime: Utils\Utils::parseDateTime('2020-01-01T00:00:00.001Z'),
+        enum: Shared\Enum::One,
+        float32: 1.1,
+        int: 1,
+        int32: 1,
+        int32Enum: Shared\Int32Enum::FiftyFive,
+        intEnum: Shared\IntEnum::Second,
+        num: 1.1,
+        str: 'test',
+        bigint: BigInteger::of('8821239038968084'),
+        bigintStr: BigInteger::of('9223372036854775808'),
+        boolOpt: true,
+        decimal: BigDecimal::of('3.141592653589793'),
+        decimalStr: BigDecimal::of('3.14159265358979344719667586'),
+        float64Str: '1.1',
+        int64Str: '100',
+        strOpt: 'testOptional',
+    ),
+    'mapElem2' => new Shared\SimpleObject(
+        any: 'any',
+        bool: true,
+        date: LocalDate::parse('2020-01-01'),
+        dateTime: Utils\Utils::parseDateTime('2020-01-01T00:00:00.001Z'),
+        enum: Shared\Enum::One,
+        float32: 1.1,
+        int: 1,
+        int32: 1,
+        int32Enum: Shared\Int32Enum::FiftyFive,
+        intEnum: Shared\IntEnum::Second,
+        num: 1.1,
+        str: 'test',
+        bigint: BigInteger::of('8821239038968084'),
+        bigintStr: BigInteger::of('9223372036854775808'),
+        boolOpt: true,
+        decimal: BigDecimal::of('3.141592653589793'),
+        decimalStr: BigDecimal::of('3.14159265358979344719667586'),
+        float64Str: '1.1',
+        int64Str: '100',
+        strOpt: 'testOptional',
+    ),
+];
 
-    $response = $sdk->requestBodies->requestBodyPostApplicationJsonMapObj($request);
+$response = $sdk->requestBodies->requestBodyPostApplicationJsonMapObj(
+    request: $request
+);
 
-    if ($response->mapObjValue !== null) {
-        // handle response
-    }
-} catch (Exception $e) {
-    // handle exception
+if ($response->mapObjValue !== null) {
+    // handle response
 }
 ```
 
 ### Parameters
 
-| Parameter                                  | Type                                       | Required                                   | Description                                |
-| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
-| `$request`                                 | [array](../../.md)                         | :heavy_check_mark:                         | The request object to use for the request. |
-
+| Parameter                                       | Type                                            | Required                                        | Description                                     |
+| ----------------------------------------------- | ----------------------------------------------- | ----------------------------------------------- | ----------------------------------------------- |
+| `$request`                                      | [array<string, Shared\SimpleObject>](../../.md) | :heavy_check_mark:                              | The request object to use for the request.      |
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\RequestBodyPostApplicationJsonMapObjResponse](../../Models/Operations/RequestBodyPostApplicationJsonMapObjResponse.md)**
+**[?Operations\RequestBodyPostApplicationJsonMapObjResponse](../../Models/Operations/RequestBodyPostApplicationJsonMapObjResponse.md)**
 
+### Errors
+
+| Error Type          | Status Code         | Content Type        |
+| ------------------- | ------------------- | ------------------- |
+| Errors\SDKException | 4XX, 5XX            | \*/\*               |
 
 ## requestBodyPostApplicationJsonMapObjCamelCase
 
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI;
-use \OpenAPI\OpenAPI\Models\Shared;
+require 'vendor/autoload.php';
 
-$security = new Shared\Security();
-$security->apiKeyAuth = 'Token YOUR_API_KEY';
+use Brick\DateTime\LocalDate;
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Shared;
+use OpenAPI\OpenAPI\Utils;
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
+    ->setSecurity(
+        new Shared\Security(
+            apiKeyAuth: 'Token YOUR_API_KEY',
+        )
+    )
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
     ->build();
 
-try {
-    $request = [
-        'female' => new Shared\SimpleObjectCamelCase(),
-    ]
+$request = [
+    'mapElem1' => new Shared\SimpleObjectCamelCase(
+        anyVal: 'any example',
+        boolVal: true,
+        dateTimeVal: Utils\Utils::parseDateTime('2020-01-01T00:00:00.001Z'),
+        dateVal: LocalDate::parse('2020-01-01'),
+        enumVal: Shared\Enum::One,
+        float32Val: 2.2222222,
+        int32EnumVal: Shared\Int32EnumVal::SixtyNine,
+        int32Val: 1,
+        intEnumVal: Shared\IntEnumVal::Third,
+        intVal: 999999,
+        numVal: 1.1,
+        strVal: 'example',
+        boolOptVal: true,
+        intOptNullVal: 999999,
+        numOptNullVal: 1.1,
+        strOptVal: 'optional example',
+    ),
+    'mapElem2' => new Shared\SimpleObjectCamelCase(
+        anyVal: 'any example',
+        boolVal: true,
+        dateTimeVal: Utils\Utils::parseDateTime('2020-01-01T00:00:00.001Z'),
+        dateVal: LocalDate::parse('2020-01-01'),
+        enumVal: Shared\Enum::One,
+        float32Val: 2.2222222,
+        int32EnumVal: Shared\Int32EnumVal::SixtyNine,
+        int32Val: 1,
+        intEnumVal: Shared\IntEnumVal::Third,
+        intVal: 999999,
+        numVal: 1.1,
+        strVal: 'example',
+        boolOptVal: true,
+        intOptNullVal: 999999,
+        numOptNullVal: 1.1,
+        strOptVal: 'optional example',
+    ),
+];
 
-    $response = $sdk->requestBodies->requestBodyPostApplicationJsonMapObjCamelCase($request);
+$response = $sdk->requestBodies->requestBodyPostApplicationJsonMapObjCamelCase(
+    request: $request
+);
 
-    if ($response->mapObjValueCamelCase !== null) {
-        // handle response
-    }
-} catch (Exception $e) {
-    // handle exception
+if ($response->mapObjValueCamelCase !== null) {
+    // handle response
 }
 ```
 
 ### Parameters
 
-| Parameter                                  | Type                                       | Required                                   | Description                                |
-| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
-| `$request`                                 | [array](../../.md)                         | :heavy_check_mark:                         | The request object to use for the request. |
-
+| Parameter                                                | Type                                                     | Required                                                 | Description                                              |
+| -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
+| `$request`                                               | [array<string, Shared\SimpleObjectCamelCase>](../../.md) | :heavy_check_mark:                                       | The request object to use for the request.               |
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\RequestBodyPostApplicationJsonMapObjCamelCaseResponse](../../Models/Operations/RequestBodyPostApplicationJsonMapObjCamelCaseResponse.md)**
+**[?Operations\RequestBodyPostApplicationJsonMapObjCamelCaseResponse](../../Models/Operations/RequestBodyPostApplicationJsonMapObjCamelCaseResponse.md)**
 
+### Errors
+
+| Error Type          | Status Code         | Content Type        |
+| ------------------- | ------------------- | ------------------- |
+| Errors\SDKException | 4XX, 5XX            | \*/\*               |
 
 ## requestBodyPostApplicationJsonMapOfArray
 
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI;
-use \OpenAPI\OpenAPI\Models\Shared;
+require 'vendor/autoload.php';
 
-$security = new Shared\Security();
-$security->apiKeyAuth = 'Token YOUR_API_KEY';
+use Brick\DateTime\LocalDate;
+use Brick\Math\BigDecimal;
+use Brick\Math\BigInteger;
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Shared;
+use OpenAPI\OpenAPI\Utils;
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
+    ->setSecurity(
+        new Shared\Security(
+            apiKeyAuth: 'Token YOUR_API_KEY',
+        )
+    )
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
     ->build();
 
-try {
-    $request = [
-        'Loan' => [
-            new Shared\SimpleObject(),
-        ],
-    ]
+$request = [
+    'mapElem1' => [
+        new Shared\SimpleObject(
+            any: 'any',
+            bool: true,
+            date: LocalDate::parse('2020-01-01'),
+            dateTime: Utils\Utils::parseDateTime('2020-01-01T00:00:00.001Z'),
+            enum: Shared\Enum::One,
+            float32: 1.1,
+            int: 1,
+            int32: 1,
+            int32Enum: Shared\Int32Enum::FiftyFive,
+            intEnum: Shared\IntEnum::Second,
+            num: 1.1,
+            str: 'test',
+            bigint: BigInteger::of('8821239038968084'),
+            bigintStr: BigInteger::of('9223372036854775808'),
+            boolOpt: true,
+            decimal: BigDecimal::of('3.141592653589793'),
+            decimalStr: BigDecimal::of('3.14159265358979344719667586'),
+            float64Str: '1.1',
+            int64Str: '100',
+            strOpt: 'testOptional',
+        ),
+        new Shared\SimpleObject(
+            any: 'any',
+            bool: true,
+            date: LocalDate::parse('2020-01-01'),
+            dateTime: Utils\Utils::parseDateTime('2020-01-01T00:00:00.001Z'),
+            enum: Shared\Enum::One,
+            float32: 1.1,
+            int: 1,
+            int32: 1,
+            int32Enum: Shared\Int32Enum::FiftyFive,
+            intEnum: Shared\IntEnum::Second,
+            num: 1.1,
+            str: 'test',
+            bigint: BigInteger::of('8821239038968084'),
+            bigintStr: BigInteger::of('9223372036854775808'),
+            boolOpt: true,
+            decimal: BigDecimal::of('3.141592653589793'),
+            decimalStr: BigDecimal::of('3.14159265358979344719667586'),
+            float64Str: '1.1',
+            int64Str: '100',
+            strOpt: 'testOptional',
+        ),
+    ],
+    'mapElem2' => [
+        new Shared\SimpleObject(
+            any: 'any',
+            bool: true,
+            date: LocalDate::parse('2020-01-01'),
+            dateTime: Utils\Utils::parseDateTime('2020-01-01T00:00:00.001Z'),
+            enum: Shared\Enum::One,
+            float32: 1.1,
+            int: 1,
+            int32: 1,
+            int32Enum: Shared\Int32Enum::FiftyFive,
+            intEnum: Shared\IntEnum::Second,
+            num: 1.1,
+            str: 'test',
+            bigint: BigInteger::of('8821239038968084'),
+            bigintStr: BigInteger::of('9223372036854775808'),
+            boolOpt: true,
+            decimal: BigDecimal::of('3.141592653589793'),
+            decimalStr: BigDecimal::of('3.14159265358979344719667586'),
+            float64Str: '1.1',
+            int64Str: '100',
+            strOpt: 'testOptional',
+        ),
+        new Shared\SimpleObject(
+            any: 'any',
+            bool: true,
+            date: LocalDate::parse('2020-01-01'),
+            dateTime: Utils\Utils::parseDateTime('2020-01-01T00:00:00.001Z'),
+            enum: Shared\Enum::One,
+            float32: 1.1,
+            int: 1,
+            int32: 1,
+            int32Enum: Shared\Int32Enum::FiftyFive,
+            intEnum: Shared\IntEnum::Second,
+            num: 1.1,
+            str: 'test',
+            bigint: BigInteger::of('8821239038968084'),
+            bigintStr: BigInteger::of('9223372036854775808'),
+            boolOpt: true,
+            decimal: BigDecimal::of('3.141592653589793'),
+            decimalStr: BigDecimal::of('3.14159265358979344719667586'),
+            float64Str: '1.1',
+            int64Str: '100',
+            strOpt: 'testOptional',
+        ),
+    ],
+];
 
-    $response = $sdk->requestBodies->requestBodyPostApplicationJsonMapOfArray($request);
+$response = $sdk->requestBodies->requestBodyPostApplicationJsonMapOfArray(
+    request: $request
+);
 
-    if ($response->res !== null) {
-        // handle response
-    }
-} catch (Exception $e) {
-    // handle exception
+if ($response->res !== null) {
+    // handle response
 }
 ```
 
 ### Parameters
 
-| Parameter                                  | Type                                       | Required                                   | Description                                |
-| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
-| `$request`                                 | [array](../../.md)                         | :heavy_check_mark:                         | The request object to use for the request. |
-| `$serverURL`                               | *string*                                   | :heavy_minus_sign:                         | An optional server URL to use.             |
-
+| Parameter                                              | Type                                                   | Required                                               | Description                                            |
+| ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ |
+| `$request`                                             | [array<string, array<Shared\SimpleObject>>](../../.md) | :heavy_check_mark:                                     | The request object to use for the request.             |
+| `$serverURL`                                           | *string*                                               | :heavy_minus_sign:                                     | An optional server URL to use.                         |
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\RequestBodyPostApplicationJsonMapOfArrayResponse](../../Models/Operations/RequestBodyPostApplicationJsonMapOfArrayResponse.md)**
+**[?Operations\RequestBodyPostApplicationJsonMapOfArrayResponse](../../Models/Operations/RequestBodyPostApplicationJsonMapOfArrayResponse.md)**
 
+### Errors
+
+| Error Type          | Status Code         | Content Type        |
+| ------------------- | ------------------- | ------------------- |
+| Errors\SDKException | 4XX, 5XX            | \*/\*               |
 
 ## requestBodyPostApplicationJsonMapOfArrayCamelCase
 
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI;
-use \OpenAPI\OpenAPI\Models\Shared;
+require 'vendor/autoload.php';
 
-$security = new Shared\Security();
-$security->apiKeyAuth = 'Token YOUR_API_KEY';
+use Brick\DateTime\LocalDate;
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Shared;
+use OpenAPI\OpenAPI\Utils;
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
+    ->setSecurity(
+        new Shared\Security(
+            apiKeyAuth: 'Token YOUR_API_KEY',
+        )
+    )
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
     ->build();
 
-try {
-    $request = [
-        'nonstop' => [
-            new Shared\SimpleObjectCamelCase(),
-        ],
-    ]
+$request = [
+    'mapElem1' => [
+        new Shared\SimpleObjectCamelCase(
+            anyVal: 'any example',
+            boolVal: true,
+            dateTimeVal: Utils\Utils::parseDateTime('2020-01-01T00:00:00.001Z'),
+            dateVal: LocalDate::parse('2020-01-01'),
+            enumVal: Shared\Enum::One,
+            float32Val: 2.2222222,
+            int32EnumVal: Shared\Int32EnumVal::SixtyNine,
+            int32Val: 1,
+            intEnumVal: Shared\IntEnumVal::Third,
+            intVal: 999999,
+            numVal: 1.1,
+            strVal: 'example',
+            boolOptVal: true,
+            intOptNullVal: 999999,
+            numOptNullVal: 1.1,
+            strOptVal: 'optional example',
+        ),
+        new Shared\SimpleObjectCamelCase(
+            anyVal: 'any example',
+            boolVal: true,
+            dateTimeVal: Utils\Utils::parseDateTime('2020-01-01T00:00:00.001Z'),
+            dateVal: LocalDate::parse('2020-01-01'),
+            enumVal: Shared\Enum::One,
+            float32Val: 2.2222222,
+            int32EnumVal: Shared\Int32EnumVal::SixtyNine,
+            int32Val: 1,
+            intEnumVal: Shared\IntEnumVal::Third,
+            intVal: 999999,
+            numVal: 1.1,
+            strVal: 'example',
+            boolOptVal: true,
+            intOptNullVal: 999999,
+            numOptNullVal: 1.1,
+            strOptVal: 'optional example',
+        ),
+    ],
+    'mapElem2' => [
+        new Shared\SimpleObjectCamelCase(
+            anyVal: 'any example',
+            boolVal: true,
+            dateTimeVal: Utils\Utils::parseDateTime('2020-01-01T00:00:00.001Z'),
+            dateVal: LocalDate::parse('2020-01-01'),
+            enumVal: Shared\Enum::One,
+            float32Val: 2.2222222,
+            int32EnumVal: Shared\Int32EnumVal::SixtyNine,
+            int32Val: 1,
+            intEnumVal: Shared\IntEnumVal::Third,
+            intVal: 999999,
+            numVal: 1.1,
+            strVal: 'example',
+            boolOptVal: true,
+            intOptNullVal: 999999,
+            numOptNullVal: 1.1,
+            strOptVal: 'optional example',
+        ),
+        new Shared\SimpleObjectCamelCase(
+            anyVal: 'any example',
+            boolVal: true,
+            dateTimeVal: Utils\Utils::parseDateTime('2020-01-01T00:00:00.001Z'),
+            dateVal: LocalDate::parse('2020-01-01'),
+            enumVal: Shared\Enum::One,
+            float32Val: 2.2222222,
+            int32EnumVal: Shared\Int32EnumVal::SixtyNine,
+            int32Val: 1,
+            intEnumVal: Shared\IntEnumVal::Third,
+            intVal: 999999,
+            numVal: 1.1,
+            strVal: 'example',
+            boolOptVal: true,
+            intOptNullVal: 999999,
+            numOptNullVal: 1.1,
+            strOptVal: 'optional example',
+        ),
+    ],
+];
 
-    $response = $sdk->requestBodies->requestBodyPostApplicationJsonMapOfArrayCamelCase($request);
+$response = $sdk->requestBodies->requestBodyPostApplicationJsonMapOfArrayCamelCase(
+    request: $request
+);
 
-    if ($response->res !== null) {
-        // handle response
-    }
-} catch (Exception $e) {
-    // handle exception
+if ($response->res !== null) {
+    // handle response
 }
 ```
 
 ### Parameters
 
-| Parameter                                  | Type                                       | Required                                   | Description                                |
-| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
-| `$request`                                 | [array](../../.md)                         | :heavy_check_mark:                         | The request object to use for the request. |
-| `$serverURL`                               | *string*                                   | :heavy_minus_sign:                         | An optional server URL to use.             |
-
+| Parameter                                                       | Type                                                            | Required                                                        | Description                                                     |
+| --------------------------------------------------------------- | --------------------------------------------------------------- | --------------------------------------------------------------- | --------------------------------------------------------------- |
+| `$request`                                                      | [array<string, array<Shared\SimpleObjectCamelCase>>](../../.md) | :heavy_check_mark:                                              | The request object to use for the request.                      |
+| `$serverURL`                                                    | *string*                                                        | :heavy_minus_sign:                                              | An optional server URL to use.                                  |
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\RequestBodyPostApplicationJsonMapOfArrayCamelCaseResponse](../../Models/Operations/RequestBodyPostApplicationJsonMapOfArrayCamelCaseResponse.md)**
+**[?Operations\RequestBodyPostApplicationJsonMapOfArrayCamelCaseResponse](../../Models/Operations/RequestBodyPostApplicationJsonMapOfArrayCamelCaseResponse.md)**
 
+### Errors
+
+| Error Type          | Status Code         | Content Type        |
+| ------------------- | ------------------- | ------------------- |
+| Errors\SDKException | 4XX, 5XX            | \*/\*               |
 
 ## requestBodyPostApplicationJsonMapOfMap
 
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI;
-use \OpenAPI\OpenAPI\Models\Shared;
+require 'vendor/autoload.php';
 
-$security = new Shared\Security();
-$security->apiKeyAuth = 'Token YOUR_API_KEY';
+use Brick\DateTime\LocalDate;
+use Brick\Math\BigDecimal;
+use Brick\Math\BigInteger;
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Shared;
+use OpenAPI\OpenAPI\Utils;
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
+    ->setSecurity(
+        new Shared\Security(
+            apiKeyAuth: 'Token YOUR_API_KEY',
+        )
+    )
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
     ->build();
 
-try {
-    $request = [
-        'Senior' => [
-            'vice' => new Shared\SimpleObject(),
-        ],
-    ]
+$request = [
+    'mapElem1' => [
+        'subMapElem1' => new Shared\SimpleObject(
+            any: 'any',
+            bool: true,
+            date: LocalDate::parse('2020-01-01'),
+            dateTime: Utils\Utils::parseDateTime('2020-01-01T00:00:00.001Z'),
+            enum: Shared\Enum::One,
+            float32: 1.1,
+            int: 1,
+            int32: 1,
+            int32Enum: Shared\Int32Enum::FiftyFive,
+            intEnum: Shared\IntEnum::Second,
+            num: 1.1,
+            str: 'test',
+            bigint: BigInteger::of('8821239038968084'),
+            bigintStr: BigInteger::of('9223372036854775808'),
+            boolOpt: true,
+            decimal: BigDecimal::of('3.141592653589793'),
+            decimalStr: BigDecimal::of('3.14159265358979344719667586'),
+            float64Str: '1.1',
+            int64Str: '100',
+            strOpt: 'testOptional',
+        ),
+        'subMapElem2' => new Shared\SimpleObject(
+            any: 'any',
+            bool: true,
+            date: LocalDate::parse('2020-01-01'),
+            dateTime: Utils\Utils::parseDateTime('2020-01-01T00:00:00.001Z'),
+            enum: Shared\Enum::One,
+            float32: 1.1,
+            int: 1,
+            int32: 1,
+            int32Enum: Shared\Int32Enum::FiftyFive,
+            intEnum: Shared\IntEnum::Second,
+            num: 1.1,
+            str: 'test',
+            bigint: BigInteger::of('8821239038968084'),
+            bigintStr: BigInteger::of('9223372036854775808'),
+            boolOpt: true,
+            decimal: BigDecimal::of('3.141592653589793'),
+            decimalStr: BigDecimal::of('3.14159265358979344719667586'),
+            float64Str: '1.1',
+            int64Str: '100',
+            strOpt: 'testOptional',
+        ),
+    ],
+    'mapElem2' => [
+        'subMapElem1' => new Shared\SimpleObject(
+            any: 'any',
+            bool: true,
+            date: LocalDate::parse('2020-01-01'),
+            dateTime: Utils\Utils::parseDateTime('2020-01-01T00:00:00.001Z'),
+            enum: Shared\Enum::One,
+            float32: 1.1,
+            int: 1,
+            int32: 1,
+            int32Enum: Shared\Int32Enum::FiftyFive,
+            intEnum: Shared\IntEnum::Second,
+            num: 1.1,
+            str: 'test',
+            bigint: BigInteger::of('8821239038968084'),
+            bigintStr: BigInteger::of('9223372036854775808'),
+            boolOpt: true,
+            decimal: BigDecimal::of('3.141592653589793'),
+            decimalStr: BigDecimal::of('3.14159265358979344719667586'),
+            float64Str: '1.1',
+            int64Str: '100',
+            strOpt: 'testOptional',
+        ),
+        'subMapElem2' => new Shared\SimpleObject(
+            any: 'any',
+            bool: true,
+            date: LocalDate::parse('2020-01-01'),
+            dateTime: Utils\Utils::parseDateTime('2020-01-01T00:00:00.001Z'),
+            enum: Shared\Enum::One,
+            float32: 1.1,
+            int: 1,
+            int32: 1,
+            int32Enum: Shared\Int32Enum::FiftyFive,
+            intEnum: Shared\IntEnum::Second,
+            num: 1.1,
+            str: 'test',
+            bigint: BigInteger::of('8821239038968084'),
+            bigintStr: BigInteger::of('9223372036854775808'),
+            boolOpt: true,
+            decimal: BigDecimal::of('3.141592653589793'),
+            decimalStr: BigDecimal::of('3.14159265358979344719667586'),
+            float64Str: '1.1',
+            int64Str: '100',
+            strOpt: 'testOptional',
+        ),
+    ],
+];
 
-    $response = $sdk->requestBodies->requestBodyPostApplicationJsonMapOfMap($request);
+$response = $sdk->requestBodies->requestBodyPostApplicationJsonMapOfMap(
+    request: $request
+);
 
-    if ($response->res !== null) {
-        // handle response
-    }
-} catch (Exception $e) {
-    // handle exception
+if ($response->res !== null) {
+    // handle response
 }
 ```
 
 ### Parameters
 
-| Parameter                                  | Type                                       | Required                                   | Description                                |
-| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
-| `$request`                                 | [array](../../.md)                         | :heavy_check_mark:                         | The request object to use for the request. |
-| `$serverURL`                               | *string*                                   | :heavy_minus_sign:                         | An optional server URL to use.             |
-
+| Parameter                                                      | Type                                                           | Required                                                       | Description                                                    |
+| -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- |
+| `$request`                                                     | [array<string, array<string, Shared\SimpleObject>>](../../.md) | :heavy_check_mark:                                             | The request object to use for the request.                     |
+| `$serverURL`                                                   | *string*                                                       | :heavy_minus_sign:                                             | An optional server URL to use.                                 |
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\RequestBodyPostApplicationJsonMapOfMapResponse](../../Models/Operations/RequestBodyPostApplicationJsonMapOfMapResponse.md)**
+**[?Operations\RequestBodyPostApplicationJsonMapOfMapResponse](../../Models/Operations/RequestBodyPostApplicationJsonMapOfMapResponse.md)**
 
+### Errors
+
+| Error Type          | Status Code         | Content Type        |
+| ------------------- | ------------------- | ------------------- |
+| Errors\SDKException | 4XX, 5XX            | \*/\*               |
 
 ## requestBodyPostApplicationJsonMapOfMapCamelCase
 
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI;
-use \OpenAPI\OpenAPI\Models\Shared;
+require 'vendor/autoload.php';
 
-$security = new Shared\Security();
-$security->apiKeyAuth = 'Token YOUR_API_KEY';
+use Brick\DateTime\LocalDate;
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Shared;
+use OpenAPI\OpenAPI\Utils;
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
+    ->setSecurity(
+        new Shared\Security(
+            apiKeyAuth: 'Token YOUR_API_KEY',
+        )
+    )
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
     ->build();
 
-try {
-    $request = [
-        'Home' => [
-            'plum' => new Shared\SimpleObjectCamelCase(),
-        ],
-    ]
+$request = [
+    'mapElem1' => [
+        'subMapElem1' => new Shared\SimpleObjectCamelCase(
+            anyVal: 'any example',
+            boolVal: true,
+            dateTimeVal: Utils\Utils::parseDateTime('2020-01-01T00:00:00.001Z'),
+            dateVal: LocalDate::parse('2020-01-01'),
+            enumVal: Shared\Enum::One,
+            float32Val: 2.2222222,
+            int32EnumVal: Shared\Int32EnumVal::SixtyNine,
+            int32Val: 1,
+            intEnumVal: Shared\IntEnumVal::Third,
+            intVal: 999999,
+            numVal: 1.1,
+            strVal: 'example',
+            boolOptVal: true,
+            intOptNullVal: 999999,
+            numOptNullVal: 1.1,
+            strOptVal: 'optional example',
+        ),
+        'subMapElem2' => new Shared\SimpleObjectCamelCase(
+            anyVal: 'any example',
+            boolVal: true,
+            dateTimeVal: Utils\Utils::parseDateTime('2020-01-01T00:00:00.001Z'),
+            dateVal: LocalDate::parse('2020-01-01'),
+            enumVal: Shared\Enum::One,
+            float32Val: 2.2222222,
+            int32EnumVal: Shared\Int32EnumVal::SixtyNine,
+            int32Val: 1,
+            intEnumVal: Shared\IntEnumVal::Third,
+            intVal: 999999,
+            numVal: 1.1,
+            strVal: 'example',
+            boolOptVal: true,
+            intOptNullVal: 999999,
+            numOptNullVal: 1.1,
+            strOptVal: 'optional example',
+        ),
+    ],
+    'mapElem2' => [
+        'subMapElem1' => new Shared\SimpleObjectCamelCase(
+            anyVal: 'any example',
+            boolVal: true,
+            dateTimeVal: Utils\Utils::parseDateTime('2020-01-01T00:00:00.001Z'),
+            dateVal: LocalDate::parse('2020-01-01'),
+            enumVal: Shared\Enum::One,
+            float32Val: 2.2222222,
+            int32EnumVal: Shared\Int32EnumVal::SixtyNine,
+            int32Val: 1,
+            intEnumVal: Shared\IntEnumVal::Third,
+            intVal: 999999,
+            numVal: 1.1,
+            strVal: 'example',
+            boolOptVal: true,
+            intOptNullVal: 999999,
+            numOptNullVal: 1.1,
+            strOptVal: 'optional example',
+        ),
+        'subMapElem2' => new Shared\SimpleObjectCamelCase(
+            anyVal: 'any example',
+            boolVal: true,
+            dateTimeVal: Utils\Utils::parseDateTime('2020-01-01T00:00:00.001Z'),
+            dateVal: LocalDate::parse('2020-01-01'),
+            enumVal: Shared\Enum::One,
+            float32Val: 2.2222222,
+            int32EnumVal: Shared\Int32EnumVal::SixtyNine,
+            int32Val: 1,
+            intEnumVal: Shared\IntEnumVal::Third,
+            intVal: 999999,
+            numVal: 1.1,
+            strVal: 'example',
+            boolOptVal: true,
+            intOptNullVal: 999999,
+            numOptNullVal: 1.1,
+            strOptVal: 'optional example',
+        ),
+    ],
+];
 
-    $response = $sdk->requestBodies->requestBodyPostApplicationJsonMapOfMapCamelCase($request);
+$response = $sdk->requestBodies->requestBodyPostApplicationJsonMapOfMapCamelCase(
+    request: $request
+);
 
-    if ($response->res !== null) {
-        // handle response
-    }
-} catch (Exception $e) {
-    // handle exception
+if ($response->res !== null) {
+    // handle response
 }
 ```
 
 ### Parameters
 
-| Parameter                                  | Type                                       | Required                                   | Description                                |
-| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
-| `$request`                                 | [array](../../.md)                         | :heavy_check_mark:                         | The request object to use for the request. |
-| `$serverURL`                               | *string*                                   | :heavy_minus_sign:                         | An optional server URL to use.             |
-
+| Parameter                                                               | Type                                                                    | Required                                                                | Description                                                             |
+| ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- |
+| `$request`                                                              | [array<string, array<string, Shared\SimpleObjectCamelCase>>](../../.md) | :heavy_check_mark:                                                      | The request object to use for the request.                              |
+| `$serverURL`                                                            | *string*                                                                | :heavy_minus_sign:                                                      | An optional server URL to use.                                          |
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\RequestBodyPostApplicationJsonMapOfMapCamelCaseResponse](../../Models/Operations/RequestBodyPostApplicationJsonMapOfMapCamelCaseResponse.md)**
+**[?Operations\RequestBodyPostApplicationJsonMapOfMapCamelCaseResponse](../../Models/Operations/RequestBodyPostApplicationJsonMapOfMapCamelCaseResponse.md)**
 
+### Errors
+
+| Error Type          | Status Code         | Content Type        |
+| ------------------- | ------------------- | ------------------- |
+| Errors\SDKException | 4XX, 5XX            | \*/\*               |
 
 ## requestBodyPostApplicationJsonMapOfMapOfPrimitive
 
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI;
-use \OpenAPI\OpenAPI\Models\Shared;
+require 'vendor/autoload.php';
 
-$security = new Shared\Security();
-$security->apiKeyAuth = 'Token YOUR_API_KEY';
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Shared;
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
+    ->setSecurity(
+        new Shared\Security(
+            apiKeyAuth: 'Token YOUR_API_KEY',
+        )
+    )
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
     ->build();
 
-try {
-    $request = [
-        'turquoise' => [
-            'collaboration' => 'string',
-        ],
-    ]
+$request = [
+    'mapElem1' => [
+        'subMapElem1' => 'foo',
+        'subMapElem2' => 'bar',
+    ],
+    'mapElem2' => [
+        'subMapElem1' => 'buzz',
+        'subMapElem2' => 'bazz',
+    ],
+];
 
-    $response = $sdk->requestBodies->requestBodyPostApplicationJsonMapOfMapOfPrimitive($request);
+$response = $sdk->requestBodies->requestBodyPostApplicationJsonMapOfMapOfPrimitive(
+    request: $request
+);
 
-    if ($response->res !== null) {
-        // handle response
-    }
-} catch (Exception $e) {
-    // handle exception
+if ($response->res !== null) {
+    // handle response
 }
 ```
 
 ### Parameters
 
-| Parameter                                  | Type                                       | Required                                   | Description                                |
-| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
-| `$request`                                 | [array](../../.md)                         | :heavy_check_mark:                         | The request object to use for the request. |
-| `$serverURL`                               | *string*                                   | :heavy_minus_sign:                         | An optional server URL to use.             |
-
+| Parameter                                         | Type                                              | Required                                          | Description                                       |
+| ------------------------------------------------- | ------------------------------------------------- | ------------------------------------------------- | ------------------------------------------------- |
+| `$request`                                        | [array<string, array<string, string>>](../../.md) | :heavy_check_mark:                                | The request object to use for the request.        |
+| `$serverURL`                                      | *string*                                          | :heavy_minus_sign:                                | An optional server URL to use.                    |
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\RequestBodyPostApplicationJsonMapOfMapOfPrimitiveResponse](../../Models/Operations/RequestBodyPostApplicationJsonMapOfMapOfPrimitiveResponse.md)**
+**[?Operations\RequestBodyPostApplicationJsonMapOfMapOfPrimitiveResponse](../../Models/Operations/RequestBodyPostApplicationJsonMapOfMapOfPrimitiveResponse.md)**
 
+### Errors
+
+| Error Type          | Status Code         | Content Type        |
+| ------------------- | ------------------- | ------------------- |
+| Errors\SDKException | 4XX, 5XX            | \*/\*               |
 
 ## requestBodyPostApplicationJsonMapOfPrimitive
 
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI;
-use \OpenAPI\OpenAPI\Models\Shared;
+require 'vendor/autoload.php';
 
-$security = new Shared\Security();
-$security->apiKeyAuth = 'Token YOUR_API_KEY';
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Shared;
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
+    ->setSecurity(
+        new Shared\Security(
+            apiKeyAuth: 'Token YOUR_API_KEY',
+        )
+    )
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
     ->build();
 
-try {
-    $request = [
-        'equally' => 'string',
-    ]
+$request = [
+    'mapElem1' => 'hello',
+    'mapElem2' => 'world',
+];
 
-    $response = $sdk->requestBodies->requestBodyPostApplicationJsonMapOfPrimitive($request);
+$response = $sdk->requestBodies->requestBodyPostApplicationJsonMapOfPrimitive(
+    request: $request
+);
 
-    if ($response->res !== null) {
-        // handle response
-    }
-} catch (Exception $e) {
-    // handle exception
+if ($response->res !== null) {
+    // handle response
 }
 ```
 
@@ -1411,499 +2887,699 @@ try {
 
 | Parameter                                  | Type                                       | Required                                   | Description                                |
 | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
-| `$request`                                 | [array](../../.md)                         | :heavy_check_mark:                         | The request object to use for the request. |
+| `$request`                                 | [array<string, string>](../../.md)         | :heavy_check_mark:                         | The request object to use for the request. |
 | `$serverURL`                               | *string*                                   | :heavy_minus_sign:                         | An optional server URL to use.             |
-
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\RequestBodyPostApplicationJsonMapOfPrimitiveResponse](../../Models/Operations/RequestBodyPostApplicationJsonMapOfPrimitiveResponse.md)**
+**[?Operations\RequestBodyPostApplicationJsonMapOfPrimitiveResponse](../../Models/Operations/RequestBodyPostApplicationJsonMapOfPrimitiveResponse.md)**
 
+### Errors
+
+| Error Type          | Status Code         | Content Type        |
+| ------------------- | ------------------- | ------------------- |
+| Errors\SDKException | 4XX, 5XX            | \*/\*               |
 
 ## requestBodyPostApplicationJsonMultipleJsonFiltered
 
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI;
-use \OpenAPI\OpenAPI\Models\Shared;
+require 'vendor/autoload.php';
 
-$security = new Shared\Security();
-$security->apiKeyAuth = 'Token YOUR_API_KEY';
+use Brick\DateTime\LocalDate;
+use Brick\Math\BigDecimal;
+use Brick\Math\BigInteger;
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Shared;
+use OpenAPI\OpenAPI\Utils;
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
+    ->setSecurity(
+        new Shared\Security(
+            apiKeyAuth: 'Token YOUR_API_KEY',
+        )
+    )
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
     ->build();
 
-try {
-    $request = new Shared\SimpleObject();
-    $request->any = 'any';
-    $request->bigint = 8821239038968084;
-    $request->bigintStr = '9223372036854775808';
-    $request->bool = true;
-    $request->boolOpt = true;
-    $request->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
-    $request->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00.000000001Z');
-    $request->decimal = 3.141592653589793;
-    $request->decimalStr = '3.14159265358979344719667586';
-    $request->enum = Shared\Enum::One;
-    $request->float32 = 1.1;
-    $request->int = 1;
-    $request->int32 = 1;
-    $request->int32Enum = Shared\Int32Enum::SixtyNine;
-    $request->intEnum = Shared\IntEnum::First;
-    $request->intOptNull = 680661;
-    $request->num = 1.1;
-    $request->numOptNull = 8809.47;
-    $request->str = 'test';
-    $request->strOpt = 'testOptional';
+$request = new Shared\SimpleObject(
+    any: 'any',
+    bool: true,
+    date: LocalDate::parse('2020-01-01'),
+    dateTime: Utils\Utils::parseDateTime('2020-01-01T00:00:00.001Z'),
+    enum: Shared\Enum::One,
+    float32: 1.1,
+    int: 1,
+    int32: 1,
+    int32Enum: Shared\Int32Enum::FiftyFive,
+    intEnum: Shared\IntEnum::Second,
+    num: 1.1,
+    str: 'test',
+    bigint: BigInteger::of('8821239038968084'),
+    bigintStr: BigInteger::of('9223372036854775808'),
+    boolOpt: true,
+    decimal: BigDecimal::of('3.141592653589793'),
+    decimalStr: BigDecimal::of('3.14159265358979344719667586'),
+    float64Str: '1.1',
+    int64Str: '100',
+    strOpt: 'testOptional',
+);
 
-    $response = $sdk->requestBodies->requestBodyPostApplicationJsonMultipleJsonFiltered($request);
+$response = $sdk->requestBodies->requestBodyPostApplicationJsonMultipleJsonFiltered(
+    request: $request
+);
 
-    if ($response->res !== null) {
-        // handle response
-    }
-} catch (Exception $e) {
-    // handle exception
+if ($response->res !== null) {
+    // handle response
 }
 ```
 
 ### Parameters
 
-| Parameter                                                                          | Type                                                                               | Required                                                                           | Description                                                                        |
-| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| `$request`                                                                         | [\OpenAPI\OpenAPI\Models\Shared\SimpleObject](../../Models/Shared/SimpleObject.md) | :heavy_check_mark:                                                                 | The request object to use for the request.                                         |
-
+| Parameter                                                  | Type                                                       | Required                                                   | Description                                                |
+| ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- |
+| `$request`                                                 | [Shared\SimpleObject](../../Models/Shared/SimpleObject.md) | :heavy_check_mark:                                         | The request object to use for the request.                 |
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\RequestBodyPostApplicationJsonMultipleJsonFilteredResponse](../../Models/Operations/RequestBodyPostApplicationJsonMultipleJsonFilteredResponse.md)**
+**[?Operations\RequestBodyPostApplicationJsonMultipleJsonFilteredResponse](../../Models/Operations/RequestBodyPostApplicationJsonMultipleJsonFilteredResponse.md)**
 
+### Errors
+
+| Error Type          | Status Code         | Content Type        |
+| ------------------- | ------------------- | ------------------- |
+| Errors\SDKException | 4XX, 5XX            | \*/\*               |
 
 ## requestBodyPostApplicationJsonSimple
 
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI;
-use \OpenAPI\OpenAPI\Models\Shared;
+require 'vendor/autoload.php';
 
-$security = new Shared\Security();
-$security->apiKeyAuth = 'Token YOUR_API_KEY';
+use Brick\DateTime\LocalDate;
+use Brick\Math\BigDecimal;
+use Brick\Math\BigInteger;
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Shared;
+use OpenAPI\OpenAPI\Utils;
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
+    ->setSecurity(
+        new Shared\Security(
+            apiKeyAuth: 'Token YOUR_API_KEY',
+        )
+    )
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
     ->build();
 
-try {
-    $request = new Shared\SimpleObject();
-    $request->any = 'any';
-    $request->bigint = 8821239038968084;
-    $request->bigintStr = '9223372036854775808';
-    $request->bool = true;
-    $request->boolOpt = true;
-    $request->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
-    $request->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00.000000001Z');
-    $request->decimal = 3.141592653589793;
-    $request->decimalStr = '3.14159265358979344719667586';
-    $request->enum = Shared\Enum::One;
-    $request->float32 = 1.1;
-    $request->int = 1;
-    $request->int32 = 1;
-    $request->int32Enum = Shared\Int32Enum::FiftyFive;
-    $request->intEnum = Shared\IntEnum::Second;
-    $request->intOptNull = 387512;
-    $request->num = 1.1;
-    $request->numOptNull = 7875.71;
-    $request->str = 'test';
-    $request->strOpt = 'testOptional';
+$request = new Shared\SimpleObject(
+    any: 'any',
+    bool: true,
+    date: LocalDate::parse('2020-01-01'),
+    dateTime: Utils\Utils::parseDateTime('2020-01-01T00:00:00.001Z'),
+    enum: Shared\Enum::One,
+    float32: 1.1,
+    int: 1,
+    int32: 1,
+    int32Enum: Shared\Int32Enum::FiftyFive,
+    intEnum: Shared\IntEnum::Second,
+    num: 1.1,
+    str: 'test',
+    bigint: BigInteger::of('8821239038968084'),
+    bigintStr: BigInteger::of('9223372036854775808'),
+    boolOpt: true,
+    decimal: BigDecimal::of('3.141592653589793'),
+    decimalStr: BigDecimal::of('3.14159265358979344719667586'),
+    float64Str: '1.1',
+    int64Str: '100',
+    strOpt: 'testOptional',
+);
 
-    $response = $sdk->requestBodies->requestBodyPostApplicationJsonSimple($request);
+$response = $sdk->requestBodies->requestBodyPostApplicationJsonSimple(
+    request: $request
+);
 
-    if ($response->res !== null) {
-        // handle response
-    }
-} catch (Exception $e) {
-    // handle exception
+if ($response->res !== null) {
+    // handle response
 }
 ```
 
 ### Parameters
 
-| Parameter                                                                          | Type                                                                               | Required                                                                           | Description                                                                        |
-| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| `$request`                                                                         | [\OpenAPI\OpenAPI\Models\Shared\SimpleObject](../../Models/Shared/SimpleObject.md) | :heavy_check_mark:                                                                 | The request object to use for the request.                                         |
-
+| Parameter                                                  | Type                                                       | Required                                                   | Description                                                |
+| ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- |
+| `$request`                                                 | [Shared\SimpleObject](../../Models/Shared/SimpleObject.md) | :heavy_check_mark:                                         | The request object to use for the request.                 |
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\RequestBodyPostApplicationJsonSimpleResponse](../../Models/Operations/RequestBodyPostApplicationJsonSimpleResponse.md)**
+**[?Operations\RequestBodyPostApplicationJsonSimpleResponse](../../Models/Operations/RequestBodyPostApplicationJsonSimpleResponse.md)**
 
+### Errors
+
+| Error Type          | Status Code         | Content Type        |
+| ------------------- | ------------------- | ------------------- |
+| Errors\SDKException | 4XX, 5XX            | \*/\*               |
 
 ## requestBodyPostApplicationJsonSimpleCamelCase
 
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI;
-use \OpenAPI\OpenAPI\Models\Shared;
+require 'vendor/autoload.php';
 
-$security = new Shared\Security();
-$security->apiKeyAuth = 'Token YOUR_API_KEY';
+use Brick\DateTime\LocalDate;
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Shared;
+use OpenAPI\OpenAPI\Utils;
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
+    ->setSecurity(
+        new Shared\Security(
+            apiKeyAuth: 'Token YOUR_API_KEY',
+        )
+    )
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
     ->build();
 
-try {
-    $request = new Shared\SimpleObjectCamelCase();
-    $request->anyVal = 'any example';
-    $request->bigintStrVal = 'string';
-    $request->bigintVal = 281697;
-    $request->boolOptVal = true;
-    $request->boolVal = true;
-    $request->dateTimeVal = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00Z');
-    $request->dateVal = DateTime::createFromFormat('Y-m-d', '2020-01-01');
-    $request->decimalVal = 9976.38;
-    $request->enumVal = Shared\Enum::One;
-    $request->float32Val = 2.2222222;
-    $request->int32EnumVal = Shared\Int32EnumVal::SixtyNine;
-    $request->int32Val = 1;
-    $request->intEnumVal = Shared\IntEnumVal::Second;
-    $request->intOptNullVal = 999999;
-    $request->intVal = 999999;
-    $request->numOptNullVal = 1.1;
-    $request->numVal = 1.1;
-    $request->strOptVal = 'optional example';
-    $request->strVal = 'example';
+$request = new Shared\SimpleObjectCamelCase(
+    anyVal: 'any example',
+    boolVal: true,
+    dateTimeVal: Utils\Utils::parseDateTime('2020-01-01T00:00:00.001Z'),
+    dateVal: LocalDate::parse('2020-01-01'),
+    enumVal: Shared\Enum::One,
+    float32Val: 2.2222222,
+    int32EnumVal: Shared\Int32EnumVal::SixtyNine,
+    int32Val: 1,
+    intEnumVal: Shared\IntEnumVal::Third,
+    intVal: 999999,
+    numVal: 1.1,
+    strVal: 'example',
+    boolOptVal: true,
+    intOptNullVal: 999999,
+    numOptNullVal: 1.1,
+    strOptVal: 'optional example',
+);
 
-    $response = $sdk->requestBodies->requestBodyPostApplicationJsonSimpleCamelCase($request);
+$response = $sdk->requestBodies->requestBodyPostApplicationJsonSimpleCamelCase(
+    request: $request
+);
 
-    if ($response->res !== null) {
-        // handle response
-    }
-} catch (Exception $e) {
-    // handle exception
+if ($response->res !== null) {
+    // handle response
 }
 ```
 
 ### Parameters
 
-| Parameter                                                                                            | Type                                                                                                 | Required                                                                                             | Description                                                                                          |
-| ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
-| `$request`                                                                                           | [\OpenAPI\OpenAPI\Models\Shared\SimpleObjectCamelCase](../../Models/Shared/SimpleObjectCamelCase.md) | :heavy_check_mark:                                                                                   | The request object to use for the request.                                                           |
-
+| Parameter                                                                    | Type                                                                         | Required                                                                     | Description                                                                  |
+| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| `$request`                                                                   | [Shared\SimpleObjectCamelCase](../../Models/Shared/SimpleObjectCamelCase.md) | :heavy_check_mark:                                                           | The request object to use for the request.                                   |
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\RequestBodyPostApplicationJsonSimpleCamelCaseResponse](../../Models/Operations/RequestBodyPostApplicationJsonSimpleCamelCaseResponse.md)**
+**[?Operations\RequestBodyPostApplicationJsonSimpleCamelCaseResponse](../../Models/Operations/RequestBodyPostApplicationJsonSimpleCamelCaseResponse.md)**
 
+### Errors
+
+| Error Type          | Status Code         | Content Type        |
+| ------------------- | ------------------- | ------------------- |
+| Errors\SDKException | 4XX, 5XX            | \*/\*               |
 
 ## requestBodyPostComplexNumberTypes
 
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI;
-use \OpenAPI\OpenAPI\Models\Shared;
-use \OpenAPI\OpenAPI\Models\Operations;
+require 'vendor/autoload.php';
 
-$security = new Shared\Security();
-$security->apiKeyAuth = 'Token YOUR_API_KEY';
+use Brick\Math\BigDecimal;
+use Brick\Math\BigInteger;
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Operations;
+use OpenAPI\OpenAPI\Models\Shared;
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
+    ->setSecurity(
+        new Shared\Security(
+            apiKeyAuth: 'Token YOUR_API_KEY',
+        )
+    )
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
     ->build();
 
-try {
-    $request = new Operations\RequestBodyPostComplexNumberTypesRequest();
-    $request->complexNumberTypes = new Shared\ComplexNumberTypes();
-    $request->complexNumberTypes->bigint = 765757;
-    $request->complexNumberTypes->bigintStr = 'string';
-    $request->complexNumberTypes->decimal = 9344.87;
-    $request->complexNumberTypes->decimalStr = 'string';
-    $request->pathBigInt = 250514;
-    $request->pathBigIntStr = 'string';
-    $request->pathDecimal = 6831.11;
-    $request->pathDecimalStr = 'string';
-    $request->queryBigInt = 500580;
-    $request->queryBigIntStr = 'string';
-    $request->queryDecimal = 7419.03;
-    $request->queryDecimalStr = 'string';
+$request = new Operations\RequestBodyPostComplexNumberTypesRequest(
+    complexNumberTypes: new Shared\ComplexNumberTypes(
+        bigint: BigInteger::of('8821239038968084'),
+        bigintStr: BigInteger::of('9223372036854775808'),
+        decimal: BigDecimal::of('3.141592653589793'),
+        decimalStr: BigDecimal::of('3.14159265358979344719667586'),
+    ),
+    pathBigInt: BigInteger::of('8821239038968084'),
+    pathBigIntStr: BigInteger::of('9223372036854775808'),
+    pathDecimal: BigDecimal::of('3.141592653589793'),
+    pathDecimalStr: BigDecimal::of('3.14159265358979344719667586'),
+    queryBigInt: BigInteger::of('8821239038968084'),
+    queryBigIntStr: BigInteger::of('9223372036854775808'),
+    queryDecimal: BigDecimal::of('3.141592653589793'),
+    queryDecimalStr: BigDecimal::of('3.14159265358979344719667586'),
+);
 
-    $response = $sdk->requestBodies->requestBodyPostComplexNumberTypes($request);
+$response = $sdk->requestBodies->requestBodyPostComplexNumberTypes(
+    request: $request
+);
 
-    if ($response->object !== null) {
-        // handle response
-    }
-} catch (Exception $e) {
-    // handle exception
+if ($response->object !== null) {
+    // handle response
 }
 ```
 
 ### Parameters
 
-| Parameter                                                                                                                                          | Type                                                                                                                                               | Required                                                                                                                                           | Description                                                                                                                                        |
-| -------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `$request`                                                                                                                                         | [\OpenAPI\OpenAPI\Models\Operations\RequestBodyPostComplexNumberTypesRequest](../../Models/Operations/RequestBodyPostComplexNumberTypesRequest.md) | :heavy_check_mark:                                                                                                                                 | The request object to use for the request.                                                                                                         |
-
+| Parameter                                                                                                                  | Type                                                                                                                       | Required                                                                                                                   | Description                                                                                                                |
+| -------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
+| `$request`                                                                                                                 | [Operations\RequestBodyPostComplexNumberTypesRequest](../../Models/Operations/RequestBodyPostComplexNumberTypesRequest.md) | :heavy_check_mark:                                                                                                         | The request object to use for the request.                                                                                 |
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\RequestBodyPostComplexNumberTypesResponse](../../Models/Operations/RequestBodyPostComplexNumberTypesResponse.md)**
+**[?Operations\RequestBodyPostComplexNumberTypesResponse](../../Models/Operations/RequestBodyPostComplexNumberTypesResponse.md)**
 
+### Errors
+
+| Error Type          | Status Code         | Content Type        |
+| ------------------- | ------------------- | ------------------- |
+| Errors\SDKException | 4XX, 5XX            | \*/\*               |
 
 ## requestBodyPostDefaultsAndConsts
 
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI;
-use \OpenAPI\OpenAPI\Models\Shared;
+require 'vendor/autoload.php';
 
-$security = new Shared\Security();
-$security->apiKeyAuth = 'Token YOUR_API_KEY';
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Shared;
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
+    ->setSecurity(
+        new Shared\Security(
+            apiKeyAuth: 'Token YOUR_API_KEY',
+        )
+    )
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
     ->build();
 
-try {
-    $request = new Shared\DefaultsAndConsts();
-    $request->constBigInt = 559205;
-    $request->constBigIntStr = 'string';
-    $request->constBool = false;
-    $request->constDate = DateTime::createFromFormat('Y-m-d', '2021-09-13');
-    $request->constDateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2022-12-15T04:16:08.794Z');
-    $request->constDecimal = 9160.69;
-    $request->constDecimalStr = 'string';
-    $request->constEnumInt = Shared\ConstEnumInt::One;
-    $request->constEnumStr = Shared\ConstEnumStr::Three;
-    $request->constInt = 299545;
-    $request->constNum = 4612.63;
-    $request->constStr = 'string';
-    $request->constStrNull = 'string';
-    $request->defaultBigInt = 450379;
-    $request->defaultBigIntStr = 'string';
-    $request->defaultBool = false;
-    $request->defaultDate = DateTime::createFromFormat('Y-m-d', '2023-04-28');
-    $request->defaultDateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2021-10-01T11:08:55.738Z');
-    $request->defaultDecimal = 4585.94;
-    $request->defaultDecimalStr = 'string';
-    $request->defaultEnumInt = Shared\DefaultEnumInt::Two;
-    $request->defaultEnumStr = Shared\DefaultEnumStr::One;
-    $request->defaultInt = 788517;
-    $request->defaultNum = 639.73;
-    $request->defaultStr = 'string';
-    $request->defaultStrNullable = 'string';
-    $request->defaultStrOptional = 'string';
-    $request->normalField = 'string';
+$request = new Shared\DefaultsAndConsts(
+    normalField: 'test',
+);
 
-    $response = $sdk->requestBodies->requestBodyPostDefaultsAndConsts($request);
+$response = $sdk->requestBodies->requestBodyPostDefaultsAndConsts(
+    request: $request
+);
 
-    if ($response->object !== null) {
-        // handle response
-    }
-} catch (Exception $e) {
-    // handle exception
+if ($response->object !== null) {
+    // handle response
 }
 ```
 
 ### Parameters
 
-| Parameter                                                                                    | Type                                                                                         | Required                                                                                     | Description                                                                                  |
-| -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
-| `$request`                                                                                   | [\OpenAPI\OpenAPI\Models\Shared\DefaultsAndConsts](../../Models/Shared/DefaultsAndConsts.md) | :heavy_check_mark:                                                                           | The request object to use for the request.                                                   |
-
+| Parameter                                                            | Type                                                                 | Required                                                             | Description                                                          |
+| -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- |
+| `$request`                                                           | [Shared\DefaultsAndConsts](../../Models/Shared/DefaultsAndConsts.md) | :heavy_check_mark:                                                   | The request object to use for the request.                           |
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\RequestBodyPostDefaultsAndConstsResponse](../../Models/Operations/RequestBodyPostDefaultsAndConstsResponse.md)**
+**[?Operations\RequestBodyPostDefaultsAndConstsResponse](../../Models/Operations/RequestBodyPostDefaultsAndConstsResponse.md)**
 
+### Errors
+
+| Error Type          | Status Code         | Content Type        |
+| ------------------- | ------------------- | ------------------- |
+| Errors\SDKException | 4XX, 5XX            | \*/\*               |
+
+## requestBodyPostEmptyBodyRetainedWithAllOptionalFields
+
+### Example Usage
+
+```php
+declare(strict_types=1);
+
+require 'vendor/autoload.php';
+
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Operations;
+use OpenAPI\OpenAPI\Models\Shared;
+
+$sdk = OpenAPI\SDK::builder()
+    ->setSecurity(
+        new Shared\Security(
+            apiKeyAuth: 'Token YOUR_API_KEY',
+        )
+    )
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->build();
+
+$request = new Operations\RequestBodyPostEmptyBodyRetainedWithAllOptionalFieldsRequestBody();
+
+$response = $sdk->requestBodies->requestBodyPostEmptyBodyRetainedWithAllOptionalFields(
+    request: $request
+);
+
+if ($response->object !== null) {
+    // handle response
+}
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                  | Type                                                                                                                                                                       | Required                                                                                                                                                                   | Description                                                                                                                                                                |
+| -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `$request`                                                                                                                                                                 | [Operations\RequestBodyPostEmptyBodyRetainedWithAllOptionalFieldsRequestBody](../../Models/Operations/RequestBodyPostEmptyBodyRetainedWithAllOptionalFieldsRequestBody.md) | :heavy_check_mark:                                                                                                                                                         | The request object to use for the request.                                                                                                                                 |
+
+### Response
+
+**[?Operations\RequestBodyPostEmptyBodyRetainedWithAllOptionalFieldsResponse](../../Models/Operations/RequestBodyPostEmptyBodyRetainedWithAllOptionalFieldsResponse.md)**
+
+### Errors
+
+| Error Type          | Status Code         | Content Type        |
+| ------------------- | ------------------- | ------------------- |
+| Errors\SDKException | 4XX, 5XX            | \*/\*               |
 
 ## requestBodyPostEmptyObject
 
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI;
-use \OpenAPI\OpenAPI\Models\Shared;
-use \OpenAPI\OpenAPI\Models\Operations;
+require 'vendor/autoload.php';
 
-$security = new Shared\Security();
-$security->apiKeyAuth = 'Token YOUR_API_KEY';
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Operations;
+use OpenAPI\OpenAPI\Models\Shared;
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
+    ->setSecurity(
+        new Shared\Security(
+            apiKeyAuth: 'Token YOUR_API_KEY',
+        )
+    )
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
     ->build();
 
-try {
-    $request = new Operations\RequestBodyPostEmptyObjectRequestBody();
-    $request->empty = new Operations\EmptyT();
-    $request->emptyWithEmptyProperties = new Operations\EmptyWithEmptyProperties();
+$request = new Operations\RequestBodyPostEmptyObjectRequestBody();
 
-    $response = $sdk->requestBodies->requestBodyPostEmptyObject($request);
+$response = $sdk->requestBodies->requestBodyPostEmptyObject(
+    request: $request
+);
 
-    if ($response->object !== null) {
-        // handle response
-    }
-} catch (Exception $e) {
-    // handle exception
+if ($response->object !== null) {
+    // handle response
 }
 ```
 
 ### Parameters
 
-| Parameter                                                                                                                                    | Type                                                                                                                                         | Required                                                                                                                                     | Description                                                                                                                                  |
-| -------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
-| `$request`                                                                                                                                   | [\OpenAPI\OpenAPI\Models\Operations\RequestBodyPostEmptyObjectRequestBody](../../Models/Operations/RequestBodyPostEmptyObjectRequestBody.md) | :heavy_check_mark:                                                                                                                           | The request object to use for the request.                                                                                                   |
-
+| Parameter                                                                                                            | Type                                                                                                                 | Required                                                                                                             | Description                                                                                                          |
+| -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| `$request`                                                                                                           | [Operations\RequestBodyPostEmptyObjectRequestBody](../../Models/Operations/RequestBodyPostEmptyObjectRequestBody.md) | :heavy_check_mark:                                                                                                   | The request object to use for the request.                                                                           |
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\RequestBodyPostEmptyObjectResponse](../../Models/Operations/RequestBodyPostEmptyObjectResponse.md)**
+**[?Operations\RequestBodyPostEmptyObjectResponse](../../Models/Operations/RequestBodyPostEmptyObjectResponse.md)**
 
+### Errors
+
+| Error Type          | Status Code         | Content Type        |
+| ------------------- | ------------------- | ------------------- |
+| Errors\SDKException | 4XX, 5XX            | \*/\*               |
 
 ## requestBodyPostFormDeep
 
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI;
-use \OpenAPI\OpenAPI\Models\Shared;
+require 'vendor/autoload.php';
 
-$security = new Shared\Security();
-$security->apiKeyAuth = 'Token YOUR_API_KEY';
+use Brick\DateTime\LocalDate;
+use Brick\Math\BigDecimal;
+use Brick\Math\BigInteger;
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Shared;
+use OpenAPI\OpenAPI\Utils;
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
+    ->setSecurity(
+        new Shared\Security(
+            apiKeyAuth: 'Token YOUR_API_KEY',
+        )
+    )
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
     ->build();
 
-try {
-    $request = new Shared\DeepObject();
-    $request->any = 'anyOf[0]';
-    $request->arr = [
-        new Shared\SimpleObject(),
-    ];
-    $request->bool = true;
-    $request->int = 1;
-    $request->map = [
-        'and' => new Shared\SimpleObject(),
-    ];
-    $request->num = 1.1;
-    $request->obj = new Shared\SimpleObject();
-    $request->obj->any = 'any';
-    $request->obj->bigint = 8821239038968084;
-    $request->obj->bigintStr = '9223372036854775808';
-    $request->obj->bool = true;
-    $request->obj->boolOpt = true;
-    $request->obj->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
-    $request->obj->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00.000000001Z');
-    $request->obj->decimal = 3.141592653589793;
-    $request->obj->decimalStr = '3.14159265358979344719667586';
-    $request->obj->enum = Shared\Enum::One;
-    $request->obj->float32 = 1.1;
-    $request->obj->int = 1;
-    $request->obj->int32 = 1;
-    $request->obj->int32Enum = Shared\Int32Enum::FiftyFive;
-    $request->obj->intEnum = Shared\IntEnum::Third;
-    $request->obj->intOptNull = 769249;
-    $request->obj->num = 1.1;
-    $request->obj->numOptNull = 482.42;
-    $request->obj->str = 'test';
-    $request->obj->strOpt = 'testOptional';
-    $request->str = 'test';
-    $request->type = 'string';
+$request = new Shared\DeepObject(
+    any: new Shared\SimpleObject(
+        any: 'any',
+        bool: true,
+        date: LocalDate::parse('2020-01-01'),
+        dateTime: Utils\Utils::parseDateTime('2020-01-01T00:00:00.001Z'),
+        enum: Shared\Enum::One,
+        float32: 1.1,
+        int: 1,
+        int32: 1,
+        int32Enum: Shared\Int32Enum::FiftyFive,
+        intEnum: Shared\IntEnum::Second,
+        num: 1.1,
+        str: 'test',
+        bigint: BigInteger::of('8821239038968084'),
+        bigintStr: BigInteger::of('9223372036854775808'),
+        boolOpt: true,
+        decimal: BigDecimal::of('3.141592653589793'),
+        decimalStr: BigDecimal::of('3.14159265358979344719667586'),
+        float64Str: '1.1',
+        int64Str: '100',
+        strOpt: 'testOptional',
+    ),
+    arr: [
+        new Shared\SimpleObject(
+            any: 'any',
+            bool: true,
+            date: LocalDate::parse('2020-01-01'),
+            dateTime: Utils\Utils::parseDateTime('2020-01-01T00:00:00.001Z'),
+            enum: Shared\Enum::One,
+            float32: 1.1,
+            int: 1,
+            int32: 1,
+            int32Enum: Shared\Int32Enum::FiftyFive,
+            intEnum: Shared\IntEnum::Second,
+            num: 1.1,
+            str: 'test',
+            bigint: BigInteger::of('8821239038968084'),
+            bigintStr: BigInteger::of('9223372036854775808'),
+            boolOpt: true,
+            decimal: BigDecimal::of('3.141592653589793'),
+            decimalStr: BigDecimal::of('3.14159265358979344719667586'),
+            float64Str: '1.1',
+            int64Str: '100',
+            strOpt: 'testOptional',
+        ),
+        new Shared\SimpleObject(
+            any: 'any',
+            bool: true,
+            date: LocalDate::parse('2020-01-01'),
+            dateTime: Utils\Utils::parseDateTime('2020-01-01T00:00:00.001Z'),
+            enum: Shared\Enum::One,
+            float32: 1.1,
+            int: 1,
+            int32: 1,
+            int32Enum: Shared\Int32Enum::FiftyFive,
+            intEnum: Shared\IntEnum::Second,
+            num: 1.1,
+            str: 'test',
+            bigint: BigInteger::of('8821239038968084'),
+            bigintStr: BigInteger::of('9223372036854775808'),
+            boolOpt: true,
+            decimal: BigDecimal::of('3.141592653589793'),
+            decimalStr: BigDecimal::of('3.14159265358979344719667586'),
+            float64Str: '1.1',
+            int64Str: '100',
+            strOpt: 'testOptional',
+        ),
+    ],
+    bool: true,
+    int: 1,
+    map: [
+        'key' => new Shared\SimpleObject(
+            any: 'any',
+            bool: true,
+            date: LocalDate::parse('2020-01-01'),
+            dateTime: Utils\Utils::parseDateTime('2020-01-01T00:00:00.001Z'),
+            enum: Shared\Enum::One,
+            float32: 1.1,
+            int: 1,
+            int32: 1,
+            int32Enum: Shared\Int32Enum::FiftyFive,
+            intEnum: Shared\IntEnum::Second,
+            num: 1.1,
+            str: 'test',
+            bigint: BigInteger::of('8821239038968084'),
+            bigintStr: BigInteger::of('9223372036854775808'),
+            boolOpt: true,
+            decimal: BigDecimal::of('3.141592653589793'),
+            decimalStr: BigDecimal::of('3.14159265358979344719667586'),
+            float64Str: '1.1',
+            int64Str: '100',
+            strOpt: 'testOptional',
+        ),
+        'key2' => new Shared\SimpleObject(
+            any: 'any',
+            bool: true,
+            date: LocalDate::parse('2020-01-01'),
+            dateTime: Utils\Utils::parseDateTime('2020-01-01T00:00:00.001Z'),
+            enum: Shared\Enum::One,
+            float32: 1.1,
+            int: 1,
+            int32: 1,
+            int32Enum: Shared\Int32Enum::FiftyFive,
+            intEnum: Shared\IntEnum::Second,
+            num: 1.1,
+            str: 'test',
+            bigint: BigInteger::of('8821239038968084'),
+            bigintStr: BigInteger::of('9223372036854775808'),
+            boolOpt: true,
+            decimal: BigDecimal::of('3.141592653589793'),
+            decimalStr: BigDecimal::of('3.14159265358979344719667586'),
+            float64Str: '1.1',
+            int64Str: '100',
+            strOpt: 'testOptional',
+        ),
+    ],
+    num: 1.1,
+    obj: new Shared\SimpleObject(
+        any: 'any',
+        bool: true,
+        date: LocalDate::parse('2020-01-01'),
+        dateTime: Utils\Utils::parseDateTime('2020-01-01T00:00:00.001Z'),
+        enum: Shared\Enum::One,
+        float32: 1.1,
+        int: 1,
+        int32: 1,
+        int32Enum: Shared\Int32Enum::FiftyFive,
+        intEnum: Shared\IntEnum::Second,
+        num: 1.1,
+        str: 'test',
+        bigint: BigInteger::of('8821239038968084'),
+        bigintStr: BigInteger::of('9223372036854775808'),
+        boolOpt: true,
+        decimal: BigDecimal::of('3.141592653589793'),
+        decimalStr: BigDecimal::of('3.14159265358979344719667586'),
+        float64Str: '1.1',
+        int64Str: '100',
+        strOpt: 'testOptional',
+    ),
+    str: 'test',
+);
 
-    $response = $sdk->requestBodies->requestBodyPostFormDeep($request);
+$response = $sdk->requestBodies->requestBodyPostFormDeep(
+    request: $request
+);
 
-    if ($response->res !== null) {
-        // handle response
-    }
-} catch (Exception $e) {
-    // handle exception
+if ($response->res !== null) {
+    // handle response
 }
 ```
 
 ### Parameters
 
-| Parameter                                                                      | Type                                                                           | Required                                                                       | Description                                                                    |
-| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
-| `$request`                                                                     | [\OpenAPI\OpenAPI\Models\Shared\DeepObject](../../Models/Shared/DeepObject.md) | :heavy_check_mark:                                                             | The request object to use for the request.                                     |
-
+| Parameter                                              | Type                                                   | Required                                               | Description                                            |
+| ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ |
+| `$request`                                             | [Shared\DeepObject](../../Models/Shared/DeepObject.md) | :heavy_check_mark:                                     | The request object to use for the request.             |
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\RequestBodyPostFormDeepResponse](../../Models/Operations/RequestBodyPostFormDeepResponse.md)**
+**[?Operations\RequestBodyPostFormDeepResponse](../../Models/Operations/RequestBodyPostFormDeepResponse.md)**
 
+### Errors
+
+| Error Type          | Status Code         | Content Type        |
+| ------------------- | ------------------- | ------------------- |
+| Errors\SDKException | 4XX, 5XX            | \*/\*               |
 
 ## requestBodyPostFormMapPrimitive
 
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI;
-use \OpenAPI\OpenAPI\Models\Shared;
+require 'vendor/autoload.php';
 
-$security = new Shared\Security();
-$security->apiKeyAuth = 'Token YOUR_API_KEY';
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Shared;
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
+    ->setSecurity(
+        new Shared\Security(
+            apiKeyAuth: 'Token YOUR_API_KEY',
+        )
+    )
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
     ->build();
 
-try {
-    $request = [
-        'complexity' => 'string',
-    ]
+$request = [
+    'key1' => 'value1',
+    'key2' => 'value2',
+    'key3' => 'value3',
+];
 
-    $response = $sdk->requestBodies->requestBodyPostFormMapPrimitive($request);
+$response = $sdk->requestBodies->requestBodyPostFormMapPrimitive(
+    request: $request
+);
 
-    if ($response->res !== null) {
-        // handle response
-    }
-} catch (Exception $e) {
-    // handle exception
+if ($response->res !== null) {
+    // handle response
 }
 ```
 
@@ -1911,111 +3587,129 @@ try {
 
 | Parameter                                  | Type                                       | Required                                   | Description                                |
 | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
-| `$request`                                 | [array](../../.md)                         | :heavy_check_mark:                         | The request object to use for the request. |
-
+| `$request`                                 | [array<string, string>](../../.md)         | :heavy_check_mark:                         | The request object to use for the request. |
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\RequestBodyPostFormMapPrimitiveResponse](../../Models/Operations/RequestBodyPostFormMapPrimitiveResponse.md)**
+**[?Operations\RequestBodyPostFormMapPrimitiveResponse](../../Models/Operations/RequestBodyPostFormMapPrimitiveResponse.md)**
 
+### Errors
+
+| Error Type          | Status Code         | Content Type        |
+| ------------------- | ------------------- | ------------------- |
+| Errors\SDKException | 4XX, 5XX            | \*/\*               |
 
 ## requestBodyPostFormSimple
 
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI;
-use \OpenAPI\OpenAPI\Models\Shared;
+require 'vendor/autoload.php';
 
-$security = new Shared\Security();
-$security->apiKeyAuth = 'Token YOUR_API_KEY';
+use Brick\DateTime\LocalDate;
+use Brick\Math\BigDecimal;
+use Brick\Math\BigInteger;
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Shared;
+use OpenAPI\OpenAPI\Utils;
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
+    ->setSecurity(
+        new Shared\Security(
+            apiKeyAuth: 'Token YOUR_API_KEY',
+        )
+    )
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
     ->build();
 
-try {
-    $request = new Shared\SimpleObject();
-    $request->any = 'any';
-    $request->bigint = 8821239038968084;
-    $request->bigintStr = '9223372036854775808';
-    $request->bool = true;
-    $request->boolOpt = true;
-    $request->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
-    $request->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00.000000001Z');
-    $request->decimal = 3.141592653589793;
-    $request->decimalStr = '3.14159265358979344719667586';
-    $request->enum = Shared\Enum::One;
-    $request->float32 = 1.1;
-    $request->int = 1;
-    $request->int32 = 1;
-    $request->int32Enum = Shared\Int32Enum::SixtyNine;
-    $request->intEnum = Shared\IntEnum::First;
-    $request->intOptNull = 5565;
-    $request->num = 1.1;
-    $request->numOptNull = 8893.53;
-    $request->str = 'test';
-    $request->strOpt = 'testOptional';
+$request = new Shared\SimpleObject(
+    any: 'any',
+    bool: true,
+    date: LocalDate::parse('2020-01-01'),
+    dateTime: Utils\Utils::parseDateTime('2020-01-01T00:00:00.001Z'),
+    enum: Shared\Enum::One,
+    float32: 1.1,
+    int: 1,
+    int32: 1,
+    int32Enum: Shared\Int32Enum::FiftyFive,
+    intEnum: Shared\IntEnum::Second,
+    num: 1.1,
+    str: 'test',
+    bigint: BigInteger::of('8821239038968084'),
+    bigintStr: BigInteger::of('9223372036854775808'),
+    boolOpt: true,
+    decimal: BigDecimal::of('3.141592653589793'),
+    decimalStr: BigDecimal::of('3.14159265358979344719667586'),
+    float64Str: '1.1',
+    int64Str: '100',
+    strOpt: 'testOptional',
+);
 
-    $response = $sdk->requestBodies->requestBodyPostFormSimple($request);
+$response = $sdk->requestBodies->requestBodyPostFormSimple(
+    request: $request
+);
 
-    if ($response->res !== null) {
-        // handle response
-    }
-} catch (Exception $e) {
-    // handle exception
+if ($response->res !== null) {
+    // handle response
 }
 ```
 
 ### Parameters
 
-| Parameter                                                                          | Type                                                                               | Required                                                                           | Description                                                                        |
-| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| `$request`                                                                         | [\OpenAPI\OpenAPI\Models\Shared\SimpleObject](../../Models/Shared/SimpleObject.md) | :heavy_check_mark:                                                                 | The request object to use for the request.                                         |
-
+| Parameter                                                  | Type                                                       | Required                                                   | Description                                                |
+| ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- |
+| `$request`                                                 | [Shared\SimpleObject](../../Models/Shared/SimpleObject.md) | :heavy_check_mark:                                         | The request object to use for the request.                 |
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\RequestBodyPostFormSimpleResponse](../../Models/Operations/RequestBodyPostFormSimpleResponse.md)**
+**[?Operations\RequestBodyPostFormSimpleResponse](../../Models/Operations/RequestBodyPostFormSimpleResponse.md)**
 
+### Errors
+
+| Error Type          | Status Code         | Content Type        |
+| ------------------- | ------------------- | ------------------- |
+| Errors\SDKException | 4XX, 5XX            | \*/\*               |
 
 ## requestBodyPostJsonDataTypesArrayBigInt
 
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI;
-use \OpenAPI\OpenAPI\Models\Shared;
+require 'vendor/autoload.php';
 
-$security = new Shared\Security();
-$security->apiKeyAuth = 'Token YOUR_API_KEY';
+use Brick\Math\BigInteger;
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Shared;
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
+    ->setSecurity(
+        new Shared\Security(
+            apiKeyAuth: 'Token YOUR_API_KEY',
+        )
+    )
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
     ->build();
 
-try {
-    $request = [
-        564849,
-    ]
+$request = [
+    BigInteger::of('1'),
+];
 
-    $response = $sdk->requestBodies->requestBodyPostJsonDataTypesArrayBigInt($request);
+$response = $sdk->requestBodies->requestBodyPostJsonDataTypesArrayBigInt(
+    request: $request
+);
 
-    if ($response->object !== null) {
-        // handle response
-    }
-} catch (Exception $e) {
-    // handle exception
+if ($response->object !== null) {
+    // handle response
 }
 ```
 
@@ -2023,46 +3717,53 @@ try {
 
 | Parameter                                  | Type                                       | Required                                   | Description                                |
 | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
-| `$request`                                 | [array](../../.md)                         | :heavy_check_mark:                         | The request object to use for the request. |
-
+| `$request`                                 | [array<\Brick\Math\BigInteger>](../../.md) | :heavy_check_mark:                         | The request object to use for the request. |
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\RequestBodyPostJsonDataTypesArrayBigIntResponse](../../Models/Operations/RequestBodyPostJsonDataTypesArrayBigIntResponse.md)**
+**[?Operations\RequestBodyPostJsonDataTypesArrayBigIntResponse](../../Models/Operations/RequestBodyPostJsonDataTypesArrayBigIntResponse.md)**
 
+### Errors
+
+| Error Type          | Status Code         | Content Type        |
+| ------------------- | ------------------- | ------------------- |
+| Errors\SDKException | 4XX, 5XX            | \*/\*               |
 
 ## requestBodyPostJsonDataTypesArrayDate
 
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI;
-use \OpenAPI\OpenAPI\Models\Shared;
+require 'vendor/autoload.php';
 
-$security = new Shared\Security();
-$security->apiKeyAuth = 'Token YOUR_API_KEY';
+use Brick\DateTime\LocalDate;
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Shared;
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
+    ->setSecurity(
+        new Shared\Security(
+            apiKeyAuth: 'Token YOUR_API_KEY',
+        )
+    )
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
     ->build();
 
-try {
-    $request = [
-        DateTime::createFromFormat('Y-m-d', '2022-03-22'),
-    ]
+$request = [
+    LocalDate::parse('2020-01-01'),
+];
 
-    $response = $sdk->requestBodies->requestBodyPostJsonDataTypesArrayDate($request);
+$response = $sdk->requestBodies->requestBodyPostJsonDataTypesArrayDate(
+    request: $request
+);
 
-    if ($response->object !== null) {
-        // handle response
-    }
-} catch (Exception $e) {
-    // handle exception
+if ($response->object !== null) {
+    // handle response
 }
 ```
 
@@ -2070,46 +3771,53 @@ try {
 
 | Parameter                                  | Type                                       | Required                                   | Description                                |
 | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
-| `$request`                                 | [array](../../.md)                         | :heavy_check_mark:                         | The request object to use for the request. |
-
+| `$request`                                 | [array<LocalDate>](../../.md)              | :heavy_check_mark:                         | The request object to use for the request. |
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\RequestBodyPostJsonDataTypesArrayDateResponse](../../Models/Operations/RequestBodyPostJsonDataTypesArrayDateResponse.md)**
+**[?Operations\RequestBodyPostJsonDataTypesArrayDateResponse](../../Models/Operations/RequestBodyPostJsonDataTypesArrayDateResponse.md)**
 
+### Errors
+
+| Error Type          | Status Code         | Content Type        |
+| ------------------- | ------------------- | ------------------- |
+| Errors\SDKException | 4XX, 5XX            | \*/\*               |
 
 ## requestBodyPostJsonDataTypesArrayDecimalStr
 
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI;
-use \OpenAPI\OpenAPI\Models\Shared;
+require 'vendor/autoload.php';
 
-$security = new Shared\Security();
-$security->apiKeyAuth = 'Token YOUR_API_KEY';
+use Brick\Math\BigDecimal;
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Shared;
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
+    ->setSecurity(
+        new Shared\Security(
+            apiKeyAuth: 'Token YOUR_API_KEY',
+        )
+    )
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
     ->build();
 
-try {
-    $request = [
-        'string',
-    ]
+$request = [
+    BigDecimal::of('3.141592653589793438462643383279'),
+];
 
-    $response = $sdk->requestBodies->requestBodyPostJsonDataTypesArrayDecimalStr($request);
+$response = $sdk->requestBodies->requestBodyPostJsonDataTypesArrayDecimalStr(
+    request: $request
+);
 
-    if ($response->object !== null) {
-        // handle response
-    }
-} catch (Exception $e) {
-    // handle exception
+if ($response->object !== null) {
+    // handle response
 }
 ```
 
@@ -2117,44 +3825,51 @@ try {
 
 | Parameter                                  | Type                                       | Required                                   | Description                                |
 | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
-| `$request`                                 | [array](../../.md)                         | :heavy_check_mark:                         | The request object to use for the request. |
-
+| `$request`                                 | [array<\Brick\Math\BigDecimal>](../../.md) | :heavy_check_mark:                         | The request object to use for the request. |
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\RequestBodyPostJsonDataTypesArrayDecimalStrResponse](../../Models/Operations/RequestBodyPostJsonDataTypesArrayDecimalStrResponse.md)**
+**[?Operations\RequestBodyPostJsonDataTypesArrayDecimalStrResponse](../../Models/Operations/RequestBodyPostJsonDataTypesArrayDecimalStrResponse.md)**
 
+### Errors
+
+| Error Type          | Status Code         | Content Type        |
+| ------------------- | ------------------- | ------------------- |
+| Errors\SDKException | 4XX, 5XX            | \*/\*               |
 
 ## requestBodyPostJsonDataTypesBigInt
 
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI;
-use \OpenAPI\OpenAPI\Models\Shared;
+require 'vendor/autoload.php';
 
-$security = new Shared\Security();
-$security->apiKeyAuth = 'Token YOUR_API_KEY';
+use Brick\Math\BigInteger;
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Shared;
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
+    ->setSecurity(
+        new Shared\Security(
+            apiKeyAuth: 'Token YOUR_API_KEY',
+        )
+    )
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
     ->build();
 
-try {
-687617
+$request = BigInteger::of('1');
 
-    $response = $sdk->requestBodies->requestBodyPostJsonDataTypesBigInt($request);
+$response = $sdk->requestBodies->requestBodyPostJsonDataTypesBigInt(
+    request: $request
+);
 
-    if ($response->object !== null) {
-        // handle response
-    }
-} catch (Exception $e) {
-    // handle exception
+if ($response->object !== null) {
+    // handle response
 }
 ```
 
@@ -2162,44 +3877,51 @@ try {
 
 | Parameter                                  | Type                                       | Required                                   | Description                                |
 | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
-| `$request`                                 | [int](../../.md)                           | :heavy_check_mark:                         | The request object to use for the request. |
-
+| `$request`                                 | [\Brick\Math\BigInteger](../../.md)        | :heavy_check_mark:                         | The request object to use for the request. |
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\RequestBodyPostJsonDataTypesBigIntResponse](../../Models/Operations/RequestBodyPostJsonDataTypesBigIntResponse.md)**
+**[?Operations\RequestBodyPostJsonDataTypesBigIntResponse](../../Models/Operations/RequestBodyPostJsonDataTypesBigIntResponse.md)**
 
+### Errors
+
+| Error Type          | Status Code         | Content Type        |
+| ------------------- | ------------------- | ------------------- |
+| Errors\SDKException | 4XX, 5XX            | \*/\*               |
 
 ## requestBodyPostJsonDataTypesBigIntStr
 
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI;
-use \OpenAPI\OpenAPI\Models\Shared;
+require 'vendor/autoload.php';
 
-$security = new Shared\Security();
-$security->apiKeyAuth = 'Token YOUR_API_KEY';
+use Brick\Math\BigInteger;
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Shared;
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
+    ->setSecurity(
+        new Shared\Security(
+            apiKeyAuth: 'Token YOUR_API_KEY',
+        )
+    )
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
     ->build();
 
-try {
-'string'
+$request = BigInteger::of('1');
 
-    $response = $sdk->requestBodies->requestBodyPostJsonDataTypesBigIntStr($request);
+$response = $sdk->requestBodies->requestBodyPostJsonDataTypesBigIntStr(
+    request: $request
+);
 
-    if ($response->object !== null) {
-        // handle response
-    }
-} catch (Exception $e) {
-    // handle exception
+if ($response->object !== null) {
+    // handle response
 }
 ```
 
@@ -2207,44 +3929,50 @@ try {
 
 | Parameter                                  | Type                                       | Required                                   | Description                                |
 | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
-| `$request`                                 | [string](../../.md)                        | :heavy_check_mark:                         | The request object to use for the request. |
-
+| `$request`                                 | [\Brick\Math\BigInteger](../../.md)        | :heavy_check_mark:                         | The request object to use for the request. |
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\RequestBodyPostJsonDataTypesBigIntStrResponse](../../Models/Operations/RequestBodyPostJsonDataTypesBigIntStrResponse.md)**
+**[?Operations\RequestBodyPostJsonDataTypesBigIntStrResponse](../../Models/Operations/RequestBodyPostJsonDataTypesBigIntStrResponse.md)**
 
+### Errors
+
+| Error Type          | Status Code         | Content Type        |
+| ------------------- | ------------------- | ------------------- |
+| Errors\SDKException | 4XX, 5XX            | \*/\*               |
 
 ## requestBodyPostJsonDataTypesBoolean
 
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI;
-use \OpenAPI\OpenAPI\Models\Shared;
+require 'vendor/autoload.php';
 
-$security = new Shared\Security();
-$security->apiKeyAuth = 'Token YOUR_API_KEY';
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Shared;
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
+    ->setSecurity(
+        new Shared\Security(
+            apiKeyAuth: 'Token YOUR_API_KEY',
+        )
+    )
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
     ->build();
 
-try {
-false
+$request = true;
 
-    $response = $sdk->requestBodies->requestBodyPostJsonDataTypesBoolean($request);
+$response = $sdk->requestBodies->requestBodyPostJsonDataTypesBoolean(
+    request: $request
+);
 
-    if ($response->object !== null) {
-        // handle response
-    }
-} catch (Exception $e) {
-    // handle exception
+if ($response->object !== null) {
+    // handle response
 }
 ```
 
@@ -2254,42 +3982,151 @@ false
 | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
 | `$request`                                 | [bool](../../.md)                          | :heavy_check_mark:                         | The request object to use for the request. |
 
+### Response
+
+**[?Operations\RequestBodyPostJsonDataTypesBooleanResponse](../../Models/Operations/RequestBodyPostJsonDataTypesBooleanResponse.md)**
+
+### Errors
+
+| Error Type          | Status Code         | Content Type        |
+| ------------------- | ------------------- | ------------------- |
+| Errors\SDKException | 4XX, 5XX            | \*/\*               |
+
+## requestBodyPostJsonDataTypesComplexNumberArrays
+
+### Example Usage
+
+```php
+declare(strict_types=1);
+
+require 'vendor/autoload.php';
+
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Shared;
+
+$sdk = OpenAPI\SDK::builder()
+    ->setSecurity(
+        new Shared\Security(
+            apiKeyAuth: 'Token YOUR_API_KEY',
+        )
+    )
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->build();
+
+$request = new Shared\ComplexNumberArrays();
+
+$response = $sdk->requestBodies->requestBodyPostJsonDataTypesComplexNumberArrays(
+    request: $request
+);
+
+if ($response->res !== null) {
+    // handle response
+}
+```
+
+### Parameters
+
+| Parameter                                                                | Type                                                                     | Required                                                                 | Description                                                              |
+| ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
+| `$request`                                                               | [Shared\ComplexNumberArrays](../../Models/Shared/ComplexNumberArrays.md) | :heavy_check_mark:                                                       | The request object to use for the request.                               |
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\RequestBodyPostJsonDataTypesBooleanResponse](../../Models/Operations/RequestBodyPostJsonDataTypesBooleanResponse.md)**
+**[?Operations\RequestBodyPostJsonDataTypesComplexNumberArraysResponse](../../Models/Operations/RequestBodyPostJsonDataTypesComplexNumberArraysResponse.md)**
 
+### Errors
+
+| Error Type          | Status Code         | Content Type        |
+| ------------------- | ------------------- | ------------------- |
+| Errors\SDKException | 4XX, 5XX            | \*/\*               |
+
+## requestBodyPostJsonDataTypesComplexNumberMaps
+
+### Example Usage
+
+```php
+declare(strict_types=1);
+
+require 'vendor/autoload.php';
+
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Shared;
+
+$sdk = OpenAPI\SDK::builder()
+    ->setSecurity(
+        new Shared\Security(
+            apiKeyAuth: 'Token YOUR_API_KEY',
+        )
+    )
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->build();
+
+$request = new Shared\ComplexNumberMaps();
+
+$response = $sdk->requestBodies->requestBodyPostJsonDataTypesComplexNumberMaps(
+    request: $request
+);
+
+if ($response->res !== null) {
+    // handle response
+}
+```
+
+### Parameters
+
+| Parameter                                                            | Type                                                                 | Required                                                             | Description                                                          |
+| -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- |
+| `$request`                                                           | [Shared\ComplexNumberMaps](../../Models/Shared/ComplexNumberMaps.md) | :heavy_check_mark:                                                   | The request object to use for the request.                           |
+
+### Response
+
+**[?Operations\RequestBodyPostJsonDataTypesComplexNumberMapsResponse](../../Models/Operations/RequestBodyPostJsonDataTypesComplexNumberMapsResponse.md)**
+
+### Errors
+
+| Error Type          | Status Code         | Content Type        |
+| ------------------- | ------------------- | ------------------- |
+| Errors\SDKException | 4XX, 5XX            | \*/\*               |
 
 ## requestBodyPostJsonDataTypesDate
 
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI;
-use \OpenAPI\OpenAPI\Models\Shared;
+require 'vendor/autoload.php';
 
-$security = new Shared\Security();
-$security->apiKeyAuth = 'Token YOUR_API_KEY';
+use Brick\DateTime\LocalDate;
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Shared;
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
+    ->setSecurity(
+        new Shared\Security(
+            apiKeyAuth: 'Token YOUR_API_KEY',
+        )
+    )
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
     ->build();
 
-try {
-DateTime::createFromFormat('Y-m-d', '2022-03-04')
+$request = LocalDate::parse('2020-01-01');
 
-    $response = $sdk->requestBodies->requestBodyPostJsonDataTypesDate($request);
+$response = $sdk->requestBodies->requestBodyPostJsonDataTypesDate(
+    request: $request
+);
 
-    if ($response->object !== null) {
-        // handle response
-    }
-} catch (Exception $e) {
-    // handle exception
+if ($response->object !== null) {
+    // handle response
 }
 ```
 
@@ -2297,44 +4134,51 @@ DateTime::createFromFormat('Y-m-d', '2022-03-04')
 
 | Parameter                                  | Type                                       | Required                                   | Description                                |
 | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
-| `$request`                                 | [\DateTime](../../.md)                     | :heavy_check_mark:                         | The request object to use for the request. |
-
+| `$request`                                 | [LocalDate](../../.md)                     | :heavy_check_mark:                         | The request object to use for the request. |
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\RequestBodyPostJsonDataTypesDateResponse](../../Models/Operations/RequestBodyPostJsonDataTypesDateResponse.md)**
+**[?Operations\RequestBodyPostJsonDataTypesDateResponse](../../Models/Operations/RequestBodyPostJsonDataTypesDateResponse.md)**
 
+### Errors
+
+| Error Type          | Status Code         | Content Type        |
+| ------------------- | ------------------- | ------------------- |
+| Errors\SDKException | 4XX, 5XX            | \*/\*               |
 
 ## requestBodyPostJsonDataTypesDateTime
 
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI;
-use \OpenAPI\OpenAPI\Models\Shared;
+require 'vendor/autoload.php';
 
-$security = new Shared\Security();
-$security->apiKeyAuth = 'Token YOUR_API_KEY';
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Shared;
+use OpenAPI\OpenAPI\Utils;
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
+    ->setSecurity(
+        new Shared\Security(
+            apiKeyAuth: 'Token YOUR_API_KEY',
+        )
+    )
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
     ->build();
 
-try {
-DateTime::createFromFormat('Y-m-d\TH:i:s+', '2023-03-04T01:33:15.031Z')
+$request = Utils\Utils::parseDateTime('2020-01-01T00:00:00.001Z');
 
-    $response = $sdk->requestBodies->requestBodyPostJsonDataTypesDateTime($request);
+$response = $sdk->requestBodies->requestBodyPostJsonDataTypesDateTime(
+    request: $request
+);
 
-    if ($response->object !== null) {
-        // handle response
-    }
-} catch (Exception $e) {
-    // handle exception
+if ($response->object !== null) {
+    // handle response
 }
 ```
 
@@ -2344,42 +4188,49 @@ DateTime::createFromFormat('Y-m-d\TH:i:s+', '2023-03-04T01:33:15.031Z')
 | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
 | `$request`                                 | [\DateTime](../../.md)                     | :heavy_check_mark:                         | The request object to use for the request. |
 
-
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\RequestBodyPostJsonDataTypesDateTimeResponse](../../Models/Operations/RequestBodyPostJsonDataTypesDateTimeResponse.md)**
+**[?Operations\RequestBodyPostJsonDataTypesDateTimeResponse](../../Models/Operations/RequestBodyPostJsonDataTypesDateTimeResponse.md)**
 
+### Errors
+
+| Error Type          | Status Code         | Content Type        |
+| ------------------- | ------------------- | ------------------- |
+| Errors\SDKException | 4XX, 5XX            | \*/\*               |
 
 ## requestBodyPostJsonDataTypesDecimal
 
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI;
-use \OpenAPI\OpenAPI\Models\Shared;
+require 'vendor/autoload.php';
 
-$security = new Shared\Security();
-$security->apiKeyAuth = 'Token YOUR_API_KEY';
+use Brick\Math\BigDecimal;
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Shared;
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
+    ->setSecurity(
+        new Shared\Security(
+            apiKeyAuth: 'Token YOUR_API_KEY',
+        )
+    )
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
     ->build();
 
-try {
-1107.81
+$request = BigDecimal::of('1.1');
 
-    $response = $sdk->requestBodies->requestBodyPostJsonDataTypesDecimal($request);
+$response = $sdk->requestBodies->requestBodyPostJsonDataTypesDecimal(
+    request: $request
+);
 
-    if ($response->object !== null) {
-        // handle response
-    }
-} catch (Exception $e) {
-    // handle exception
+if ($response->object !== null) {
+    // handle response
 }
 ```
 
@@ -2387,44 +4238,51 @@ try {
 
 | Parameter                                  | Type                                       | Required                                   | Description                                |
 | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
-| `$request`                                 | [float](../../.md)                         | :heavy_check_mark:                         | The request object to use for the request. |
-
+| `$request`                                 | [\Brick\Math\BigDecimal](../../.md)        | :heavy_check_mark:                         | The request object to use for the request. |
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\RequestBodyPostJsonDataTypesDecimalResponse](../../Models/Operations/RequestBodyPostJsonDataTypesDecimalResponse.md)**
+**[?Operations\RequestBodyPostJsonDataTypesDecimalResponse](../../Models/Operations/RequestBodyPostJsonDataTypesDecimalResponse.md)**
 
+### Errors
+
+| Error Type          | Status Code         | Content Type        |
+| ------------------- | ------------------- | ------------------- |
+| Errors\SDKException | 4XX, 5XX            | \*/\*               |
 
 ## requestBodyPostJsonDataTypesDecimalStr
 
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI;
-use \OpenAPI\OpenAPI\Models\Shared;
+require 'vendor/autoload.php';
 
-$security = new Shared\Security();
-$security->apiKeyAuth = 'Token YOUR_API_KEY';
+use Brick\Math\BigDecimal;
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Shared;
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
+    ->setSecurity(
+        new Shared\Security(
+            apiKeyAuth: 'Token YOUR_API_KEY',
+        )
+    )
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
     ->build();
 
-try {
-'string'
+$request = BigDecimal::of('1.1');
 
-    $response = $sdk->requestBodies->requestBodyPostJsonDataTypesDecimalStr($request);
+$response = $sdk->requestBodies->requestBodyPostJsonDataTypesDecimalStr(
+    request: $request
+);
 
-    if ($response->object !== null) {
-        // handle response
-    }
-} catch (Exception $e) {
-    // handle exception
+if ($response->object !== null) {
+    // handle response
 }
 ```
 
@@ -2432,44 +4290,50 @@ try {
 
 | Parameter                                  | Type                                       | Required                                   | Description                                |
 | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
-| `$request`                                 | [string](../../.md)                        | :heavy_check_mark:                         | The request object to use for the request. |
-
+| `$request`                                 | [\Brick\Math\BigDecimal](../../.md)        | :heavy_check_mark:                         | The request object to use for the request. |
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\RequestBodyPostJsonDataTypesDecimalStrResponse](../../Models/Operations/RequestBodyPostJsonDataTypesDecimalStrResponse.md)**
+**[?Operations\RequestBodyPostJsonDataTypesDecimalStrResponse](../../Models/Operations/RequestBodyPostJsonDataTypesDecimalStrResponse.md)**
 
+### Errors
+
+| Error Type          | Status Code         | Content Type        |
+| ------------------- | ------------------- | ------------------- |
+| Errors\SDKException | 4XX, 5XX            | \*/\*               |
 
 ## requestBodyPostJsonDataTypesFloat32
 
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI;
-use \OpenAPI\OpenAPI\Models\Shared;
+require 'vendor/autoload.php';
 
-$security = new Shared\Security();
-$security->apiKeyAuth = 'Token YOUR_API_KEY';
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Shared;
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
+    ->setSecurity(
+        new Shared\Security(
+            apiKeyAuth: 'Token YOUR_API_KEY',
+        )
+    )
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
     ->build();
 
-try {
-4464.34
+$request = 1.1;
 
-    $response = $sdk->requestBodies->requestBodyPostJsonDataTypesFloat32($request);
+$response = $sdk->requestBodies->requestBodyPostJsonDataTypesFloat32(
+    request: $request
+);
 
-    if ($response->object !== null) {
-        // handle response
-    }
-} catch (Exception $e) {
-    // handle exception
+if ($response->object !== null) {
+    // handle response
 }
 ```
 
@@ -2479,42 +4343,48 @@ try {
 | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
 | `$request`                                 | [float](../../.md)                         | :heavy_check_mark:                         | The request object to use for the request. |
 
-
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\RequestBodyPostJsonDataTypesFloat32Response](../../Models/Operations/RequestBodyPostJsonDataTypesFloat32Response.md)**
+**[?Operations\RequestBodyPostJsonDataTypesFloat32Response](../../Models/Operations/RequestBodyPostJsonDataTypesFloat32Response.md)**
 
+### Errors
+
+| Error Type          | Status Code         | Content Type        |
+| ------------------- | ------------------- | ------------------- |
+| Errors\SDKException | 4XX, 5XX            | \*/\*               |
 
 ## requestBodyPostJsonDataTypesInt32
 
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI;
-use \OpenAPI\OpenAPI\Models\Shared;
+require 'vendor/autoload.php';
 
-$security = new Shared\Security();
-$security->apiKeyAuth = 'Token YOUR_API_KEY';
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Shared;
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
+    ->setSecurity(
+        new Shared\Security(
+            apiKeyAuth: 'Token YOUR_API_KEY',
+        )
+    )
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
     ->build();
 
-try {
-22155
+$request = 1;
 
-    $response = $sdk->requestBodies->requestBodyPostJsonDataTypesInt32($request);
+$response = $sdk->requestBodies->requestBodyPostJsonDataTypesInt32(
+    request: $request
+);
 
-    if ($response->object !== null) {
-        // handle response
-    }
-} catch (Exception $e) {
-    // handle exception
+if ($response->object !== null) {
+    // handle response
 }
 ```
 
@@ -2524,42 +4394,48 @@ try {
 | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
 | `$request`                                 | [int](../../.md)                           | :heavy_check_mark:                         | The request object to use for the request. |
 
-
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\RequestBodyPostJsonDataTypesInt32Response](../../Models/Operations/RequestBodyPostJsonDataTypesInt32Response.md)**
+**[?Operations\RequestBodyPostJsonDataTypesInt32Response](../../Models/Operations/RequestBodyPostJsonDataTypesInt32Response.md)**
 
+### Errors
+
+| Error Type          | Status Code         | Content Type        |
+| ------------------- | ------------------- | ------------------- |
+| Errors\SDKException | 4XX, 5XX            | \*/\*               |
 
 ## requestBodyPostJsonDataTypesInteger
 
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI;
-use \OpenAPI\OpenAPI\Models\Shared;
+require 'vendor/autoload.php';
 
-$security = new Shared\Security();
-$security->apiKeyAuth = 'Token YOUR_API_KEY';
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Shared;
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
+    ->setSecurity(
+        new Shared\Security(
+            apiKeyAuth: 'Token YOUR_API_KEY',
+        )
+    )
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
     ->build();
 
-try {
-273673
+$request = 1;
 
-    $response = $sdk->requestBodies->requestBodyPostJsonDataTypesInteger($request);
+$response = $sdk->requestBodies->requestBodyPostJsonDataTypesInteger(
+    request: $request
+);
 
-    if ($response->object !== null) {
-        // handle response
-    }
-} catch (Exception $e) {
-    // handle exception
+if ($response->object !== null) {
+    // handle response
 }
 ```
 
@@ -2569,91 +4445,105 @@ try {
 | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
 | `$request`                                 | [int](../../.md)                           | :heavy_check_mark:                         | The request object to use for the request. |
 
-
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\RequestBodyPostJsonDataTypesIntegerResponse](../../Models/Operations/RequestBodyPostJsonDataTypesIntegerResponse.md)**
+**[?Operations\RequestBodyPostJsonDataTypesIntegerResponse](../../Models/Operations/RequestBodyPostJsonDataTypesIntegerResponse.md)**
 
+### Errors
+
+| Error Type          | Status Code         | Content Type        |
+| ------------------- | ------------------- | ------------------- |
+| Errors\SDKException | 4XX, 5XX            | \*/\*               |
 
 ## requestBodyPostJsonDataTypesMapBigIntStr
 
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI;
-use \OpenAPI\OpenAPI\Models\Shared;
+require 'vendor/autoload.php';
 
-$security = new Shared\Security();
-$security->apiKeyAuth = 'Token YOUR_API_KEY';
+use Brick\Math\BigInteger;
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Shared;
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
+    ->setSecurity(
+        new Shared\Security(
+            apiKeyAuth: 'Token YOUR_API_KEY',
+        )
+    )
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
     ->build();
 
-try {
-    $request = [
-        'Nepal' => 'string',
-    ]
+$request = [
+    'test' => BigInteger::of('1'),
+];
 
-    $response = $sdk->requestBodies->requestBodyPostJsonDataTypesMapBigIntStr($request);
+$response = $sdk->requestBodies->requestBodyPostJsonDataTypesMapBigIntStr(
+    request: $request
+);
 
-    if ($response->object !== null) {
-        // handle response
-    }
-} catch (Exception $e) {
-    // handle exception
+if ($response->object !== null) {
+    // handle response
 }
 ```
 
 ### Parameters
 
-| Parameter                                  | Type                                       | Required                                   | Description                                |
-| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
-| `$request`                                 | [array](../../.md)                         | :heavy_check_mark:                         | The request object to use for the request. |
-
+| Parameter                                          | Type                                               | Required                                           | Description                                        |
+| -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- |
+| `$request`                                         | [array<string, \Brick\Math\BigInteger>](../../.md) | :heavy_check_mark:                                 | The request object to use for the request.         |
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\RequestBodyPostJsonDataTypesMapBigIntStrResponse](../../Models/Operations/RequestBodyPostJsonDataTypesMapBigIntStrResponse.md)**
+**[?Operations\RequestBodyPostJsonDataTypesMapBigIntStrResponse](../../Models/Operations/RequestBodyPostJsonDataTypesMapBigIntStrResponse.md)**
 
+### Errors
+
+| Error Type          | Status Code         | Content Type        |
+| ------------------- | ------------------- | ------------------- |
+| Errors\SDKException | 4XX, 5XX            | \*/\*               |
 
 ## requestBodyPostJsonDataTypesMapDateTime
 
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI;
-use \OpenAPI\OpenAPI\Models\Shared;
+require 'vendor/autoload.php';
 
-$security = new Shared\Security();
-$security->apiKeyAuth = 'Token YOUR_API_KEY';
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Shared;
+use OpenAPI\OpenAPI\Utils;
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
+    ->setSecurity(
+        new Shared\Security(
+            apiKeyAuth: 'Token YOUR_API_KEY',
+        )
+    )
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
     ->build();
 
-try {
-    $request = [
-        'quantify' => DateTime::createFromFormat('Y-m-d\TH:i:s+', '2022-02-12T21:23:09.538Z'),
-    ]
+$request = [
+    'test' => Utils\Utils::parseDateTime('2020-01-01T00:00:00.001Z'),
+];
 
-    $response = $sdk->requestBodies->requestBodyPostJsonDataTypesMapDateTime($request);
+$response = $sdk->requestBodies->requestBodyPostJsonDataTypesMapDateTime(
+    request: $request
+);
 
-    if ($response->object !== null) {
-        // handle response
-    }
-} catch (Exception $e) {
-    // handle exception
+if ($response->object !== null) {
+    // handle response
 }
 ```
 
@@ -2661,91 +4551,104 @@ try {
 
 | Parameter                                  | Type                                       | Required                                   | Description                                |
 | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
-| `$request`                                 | [array](../../.md)                         | :heavy_check_mark:                         | The request object to use for the request. |
-
+| `$request`                                 | [array<string, \DateTime>](../../.md)      | :heavy_check_mark:                         | The request object to use for the request. |
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\RequestBodyPostJsonDataTypesMapDateTimeResponse](../../Models/Operations/RequestBodyPostJsonDataTypesMapDateTimeResponse.md)**
+**[?Operations\RequestBodyPostJsonDataTypesMapDateTimeResponse](../../Models/Operations/RequestBodyPostJsonDataTypesMapDateTimeResponse.md)**
 
+### Errors
+
+| Error Type          | Status Code         | Content Type        |
+| ------------------- | ------------------- | ------------------- |
+| Errors\SDKException | 4XX, 5XX            | \*/\*               |
 
 ## requestBodyPostJsonDataTypesMapDecimal
 
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI;
-use \OpenAPI\OpenAPI\Models\Shared;
+require 'vendor/autoload.php';
 
-$security = new Shared\Security();
-$security->apiKeyAuth = 'Token YOUR_API_KEY';
+use Brick\Math\BigDecimal;
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Shared;
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
+    ->setSecurity(
+        new Shared\Security(
+            apiKeyAuth: 'Token YOUR_API_KEY',
+        )
+    )
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
     ->build();
 
-try {
-    $request = [
-        'Inverse' => 9134.24,
-    ]
+$request = [
+    'test' => BigDecimal::of('3.141592653589793'),
+];
 
-    $response = $sdk->requestBodies->requestBodyPostJsonDataTypesMapDecimal($request);
+$response = $sdk->requestBodies->requestBodyPostJsonDataTypesMapDecimal(
+    request: $request
+);
 
-    if ($response->object !== null) {
-        // handle response
-    }
-} catch (Exception $e) {
-    // handle exception
+if ($response->object !== null) {
+    // handle response
 }
 ```
 
 ### Parameters
 
-| Parameter                                  | Type                                       | Required                                   | Description                                |
-| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
-| `$request`                                 | [array](../../.md)                         | :heavy_check_mark:                         | The request object to use for the request. |
-
+| Parameter                                          | Type                                               | Required                                           | Description                                        |
+| -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- | -------------------------------------------------- |
+| `$request`                                         | [array<string, \Brick\Math\BigDecimal>](../../.md) | :heavy_check_mark:                                 | The request object to use for the request.         |
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\RequestBodyPostJsonDataTypesMapDecimalResponse](../../Models/Operations/RequestBodyPostJsonDataTypesMapDecimalResponse.md)**
+**[?Operations\RequestBodyPostJsonDataTypesMapDecimalResponse](../../Models/Operations/RequestBodyPostJsonDataTypesMapDecimalResponse.md)**
 
+### Errors
+
+| Error Type          | Status Code         | Content Type        |
+| ------------------- | ------------------- | ------------------- |
+| Errors\SDKException | 4XX, 5XX            | \*/\*               |
 
 ## requestBodyPostJsonDataTypesNumber
 
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI;
-use \OpenAPI\OpenAPI\Models\Shared;
+require 'vendor/autoload.php';
 
-$security = new Shared\Security();
-$security->apiKeyAuth = 'Token YOUR_API_KEY';
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Shared;
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
+    ->setSecurity(
+        new Shared\Security(
+            apiKeyAuth: 'Token YOUR_API_KEY',
+        )
+    )
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
     ->build();
 
-try {
-2193.66
+$request = 1.1;
 
-    $response = $sdk->requestBodies->requestBodyPostJsonDataTypesNumber($request);
+$response = $sdk->requestBodies->requestBodyPostJsonDataTypesNumber(
+    request: $request
+);
 
-    if ($response->object !== null) {
-        // handle response
-    }
-} catch (Exception $e) {
-    // handle exception
+if ($response->object !== null) {
+    // handle response
 }
 ```
 
@@ -2755,42 +4658,48 @@ try {
 | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
 | `$request`                                 | [float](../../.md)                         | :heavy_check_mark:                         | The request object to use for the request. |
 
-
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\RequestBodyPostJsonDataTypesNumberResponse](../../Models/Operations/RequestBodyPostJsonDataTypesNumberResponse.md)**
+**[?Operations\RequestBodyPostJsonDataTypesNumberResponse](../../Models/Operations/RequestBodyPostJsonDataTypesNumberResponse.md)**
 
+### Errors
+
+| Error Type          | Status Code         | Content Type        |
+| ------------------- | ------------------- | ------------------- |
+| Errors\SDKException | 4XX, 5XX            | \*/\*               |
 
 ## requestBodyPostJsonDataTypesString
 
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI;
-use \OpenAPI\OpenAPI\Models\Shared;
+require 'vendor/autoload.php';
 
-$security = new Shared\Security();
-$security->apiKeyAuth = 'Token YOUR_API_KEY';
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Shared;
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
+    ->setSecurity(
+        new Shared\Security(
+            apiKeyAuth: 'Token YOUR_API_KEY',
+        )
+    )
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
     ->build();
 
-try {
-'string'
+$request = 'test';
 
-    $response = $sdk->requestBodies->requestBodyPostJsonDataTypesString($request);
+$response = $sdk->requestBodies->requestBodyPostJsonDataTypesString(
+    request: $request
+);
 
-    if ($response->object !== null) {
-        // handle response
-    }
-} catch (Exception $e) {
-    // handle exception
+if ($response->object !== null) {
+    // handle response
 }
 ```
 
@@ -2800,453 +4709,601 @@ try {
 | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
 | `$request`                                 | [string](../../.md)                        | :heavy_check_mark:                         | The request object to use for the request. |
 
-
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\RequestBodyPostJsonDataTypesStringResponse](../../Models/Operations/RequestBodyPostJsonDataTypesStringResponse.md)**
+**[?Operations\RequestBodyPostJsonDataTypesStringResponse](../../Models/Operations/RequestBodyPostJsonDataTypesStringResponse.md)**
 
+### Errors
+
+| Error Type          | Status Code         | Content Type        |
+| ------------------- | ------------------- | ------------------- |
+| Errors\SDKException | 4XX, 5XX            | \*/\*               |
 
 ## requestBodyPostMultipleContentTypesComponentFiltered
 
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI;
-use \OpenAPI\OpenAPI\Models\Shared;
+require 'vendor/autoload.php';
 
-$security = new Shared\Security();
-$security->apiKeyAuth = 'Token YOUR_API_KEY';
+use Brick\DateTime\LocalDate;
+use Brick\Math\BigDecimal;
+use Brick\Math\BigInteger;
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Shared;
+use OpenAPI\OpenAPI\Utils;
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
+    ->setSecurity(
+        new Shared\Security(
+            apiKeyAuth: 'Token YOUR_API_KEY',
+        )
+    )
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
     ->build();
 
-try {
-    $request = new Shared\SimpleObject();
-    $request->any = 'any';
-    $request->bigint = 8821239038968084;
-    $request->bigintStr = '9223372036854775808';
-    $request->bool = true;
-    $request->boolOpt = true;
-    $request->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
-    $request->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00.000000001Z');
-    $request->decimal = 3.141592653589793;
-    $request->decimalStr = '3.14159265358979344719667586';
-    $request->enum = Shared\Enum::One;
-    $request->float32 = 1.1;
-    $request->int = 1;
-    $request->int32 = 1;
-    $request->int32Enum = Shared\Int32Enum::FiftyFive;
-    $request->intEnum = Shared\IntEnum::Third;
-    $request->intOptNull = 587803;
-    $request->num = 1.1;
-    $request->numOptNull = 9724.14;
-    $request->str = 'test';
-    $request->strOpt = 'testOptional';
+$request = new Shared\SimpleObject(
+    any: 'any',
+    bool: true,
+    date: LocalDate::parse('2020-01-01'),
+    dateTime: Utils\Utils::parseDateTime('2020-01-01T00:00:00.001Z'),
+    enum: Shared\Enum::One,
+    float32: 1.1,
+    int: 1,
+    int32: 1,
+    int32Enum: Shared\Int32Enum::FiftyFive,
+    intEnum: Shared\IntEnum::Second,
+    num: 1.1,
+    str: 'test',
+    bigint: BigInteger::of('8821239038968084'),
+    bigintStr: BigInteger::of('9223372036854775808'),
+    boolOpt: true,
+    decimal: BigDecimal::of('3.141592653589793'),
+    decimalStr: BigDecimal::of('3.14159265358979344719667586'),
+    float64Str: '1.1',
+    int64Str: '100',
+    strOpt: 'testOptional',
+);
 
-    $response = $sdk->requestBodies->requestBodyPostMultipleContentTypesComponentFiltered($request);
+$response = $sdk->requestBodies->requestBodyPostMultipleContentTypesComponentFiltered(
+    request: $request
+);
 
-    if ($response->res !== null) {
-        // handle response
-    }
-} catch (Exception $e) {
-    // handle exception
+if ($response->res !== null) {
+    // handle response
 }
 ```
 
 ### Parameters
 
-| Parameter                                                                          | Type                                                                               | Required                                                                           | Description                                                                        |
-| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| `$request`                                                                         | [\OpenAPI\OpenAPI\Models\Shared\SimpleObject](../../Models/Shared/SimpleObject.md) | :heavy_check_mark:                                                                 | The request object to use for the request.                                         |
-
+| Parameter                                                  | Type                                                       | Required                                                   | Description                                                |
+| ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- |
+| `$request`                                                 | [Shared\SimpleObject](../../Models/Shared/SimpleObject.md) | :heavy_check_mark:                                         | The request object to use for the request.                 |
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\RequestBodyPostMultipleContentTypesComponentFilteredResponse](../../Models/Operations/RequestBodyPostMultipleContentTypesComponentFilteredResponse.md)**
+**[?Operations\RequestBodyPostMultipleContentTypesComponentFilteredResponse](../../Models/Operations/RequestBodyPostMultipleContentTypesComponentFilteredResponse.md)**
 
+### Errors
+
+| Error Type          | Status Code         | Content Type        |
+| ------------------- | ------------------- | ------------------- |
+| Errors\SDKException | 4XX, 5XX            | \*/\*               |
+
+## requestBodyPostMultipleContentTypesComponentFilteredDefaultTest
+
+### Example Usage
+
+```php
+declare(strict_types=1);
+
+require 'vendor/autoload.php';
+
+use Brick\DateTime\LocalDate;
+use Brick\Math\BigDecimal;
+use Brick\Math\BigInteger;
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Shared;
+use OpenAPI\OpenAPI\Utils;
+
+$sdk = OpenAPI\SDK::builder()
+    ->setSecurity(
+        new Shared\Security(
+            apiKeyAuth: 'Token YOUR_API_KEY',
+        )
+    )
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->build();
+
+$request = new Shared\SimpleObject(
+    any: 'any',
+    bool: true,
+    date: LocalDate::parse('2020-01-01'),
+    dateTime: Utils\Utils::parseDateTime('2020-01-01T00:00:00.001Z'),
+    enum: Shared\Enum::One,
+    float32: 1.1,
+    int: 1,
+    int32: 1,
+    int32Enum: Shared\Int32Enum::FiftyFive,
+    intEnum: Shared\IntEnum::Second,
+    num: 1.1,
+    str: 'test',
+    bigint: BigInteger::of('8821239038968084'),
+    bigintStr: BigInteger::of('9223372036854775808'),
+    boolOpt: true,
+    decimal: BigDecimal::of('3.141592653589793'),
+    decimalStr: BigDecimal::of('3.14159265358979344719667586'),
+    float64Str: '1.1',
+    int64Str: '100',
+    strOpt: 'testOptional',
+);
+
+$response = $sdk->requestBodies->requestBodyPostMultipleContentTypesComponentFilteredDefaultTest(
+    request: $request
+);
+
+if ($response->res !== null) {
+    // handle response
+}
+```
+
+### Parameters
+
+| Parameter                                                  | Type                                                       | Required                                                   | Description                                                |
+| ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- |
+| `$request`                                                 | [Shared\SimpleObject](../../Models/Shared/SimpleObject.md) | :heavy_check_mark:                                         | The request object to use for the request.                 |
+
+### Response
+
+**[?Operations\RequestBodyPostMultipleContentTypesComponentFilteredDefaultTestResponse](../../Models/Operations/RequestBodyPostMultipleContentTypesComponentFilteredDefaultTestResponse.md)**
+
+### Errors
+
+| Error Type          | Status Code         | Content Type        |
+| ------------------- | ------------------- | ------------------- |
+| Errors\SDKException | 4XX, 5XX            | \*/\*               |
 
 ## requestBodyPostMultipleContentTypesInlineFiltered
 
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI;
-use \OpenAPI\OpenAPI\Models\Shared;
-use \OpenAPI\OpenAPI\Models\Operations;
+require 'vendor/autoload.php';
 
-$security = new Shared\Security();
-$security->apiKeyAuth = 'Token YOUR_API_KEY';
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Operations;
+use OpenAPI\OpenAPI\Models\Shared;
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
+    ->setSecurity(
+        new Shared\Security(
+            apiKeyAuth: 'Token YOUR_API_KEY',
+        )
+    )
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
     ->build();
 
-try {
-    $request = new Operations\RequestBodyPostMultipleContentTypesInlineFilteredRequestBody();
-    $request->bool = false;
-    $request->num = 3558.41;
-    $request->str = 'string';
+$request = new Operations\RequestBodyPostMultipleContentTypesInlineFilteredRequestBody(
+    bool: true,
+    num: 1.1,
+    str: 'test',
+);
 
-    $response = $sdk->requestBodies->requestBodyPostMultipleContentTypesInlineFiltered($request);
+$response = $sdk->requestBodies->requestBodyPostMultipleContentTypesInlineFiltered(
+    request: $request
+);
 
-    if ($response->res !== null) {
-        // handle response
-    }
-} catch (Exception $e) {
-    // handle exception
+if ($response->res !== null) {
+    // handle response
 }
 ```
 
 ### Parameters
 
-| Parameter                                                                                                                                                                                  | Type                                                                                                                                                                                       | Required                                                                                                                                                                                   | Description                                                                                                                                                                                |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `$request`                                                                                                                                                                                 | [\OpenAPI\OpenAPI\Models\Operations\RequestBodyPostMultipleContentTypesInlineFilteredRequestBody](../../Models/Operations/RequestBodyPostMultipleContentTypesInlineFilteredRequestBody.md) | :heavy_check_mark:                                                                                                                                                                         | The request object to use for the request.                                                                                                                                                 |
-
+| Parameter                                                                                                                                                          | Type                                                                                                                                                               | Required                                                                                                                                                           | Description                                                                                                                                                        |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `$request`                                                                                                                                                         | [Operations\RequestBodyPostMultipleContentTypesInlineFilteredRequestBody](../../Models/Operations/RequestBodyPostMultipleContentTypesInlineFilteredRequestBody.md) | :heavy_check_mark:                                                                                                                                                 | The request object to use for the request.                                                                                                                         |
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\RequestBodyPostMultipleContentTypesInlineFilteredResponse](../../Models/Operations/RequestBodyPostMultipleContentTypesInlineFilteredResponse.md)**
+**[?Operations\RequestBodyPostMultipleContentTypesInlineFilteredResponse](../../Models/Operations/RequestBodyPostMultipleContentTypesInlineFilteredResponse.md)**
 
+### Errors
+
+| Error Type          | Status Code         | Content Type        |
+| ------------------- | ------------------- | ------------------- |
+| Errors\SDKException | 4XX, 5XX            | \*/\*               |
 
 ## requestBodyPostMultipleContentTypesSplitParamForm
 
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI;
-use \OpenAPI\OpenAPI\Models\Shared;
-use \OpenAPI\OpenAPI\Models\Operations;
+require 'vendor/autoload.php';
 
-$security = new Shared\Security();
-$security->apiKeyAuth = 'Token YOUR_API_KEY';
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Operations;
+use OpenAPI\OpenAPI\Models\Shared;
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
+    ->setSecurity(
+        new Shared\Security(
+            apiKeyAuth: 'Token YOUR_API_KEY',
+        )
+    )
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
     ->build();
 
-try {
-    $requestBody = new Operations\RequestBodyPostMultipleContentTypesSplitParamFormRequestBody();
-    $requestBody->bool3 = false;
-    $requestBody->num3 = 8693.24;
-    $requestBody->str3 = 'string';
+$requestBody = new Operations\RequestBodyPostMultipleContentTypesSplitParamFormRequestBody(
+    bool3: false,
+    num3: 8693.24,
+    str3: '<value>',
+);
 
-    $response = $sdk->requestBodies->requestBodyPostMultipleContentTypesSplitParamForm($requestBody, 'string');
+$response = $sdk->requestBodies->requestBodyPostMultipleContentTypesSplitParamForm(
+    requestBody: $requestBody,
+    paramStr: '<value>'
 
-    if ($response->res !== null) {
-        // handle response
-    }
-} catch (Exception $e) {
-    // handle exception
+);
+
+if ($response->res !== null) {
+    // handle response
 }
 ```
 
 ### Parameters
 
-| Parameter                                                                                                                                                                                  | Type                                                                                                                                                                                       | Required                                                                                                                                                                                   | Description                                                                                                                                                                                |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `requestBody`                                                                                                                                                                              | [\OpenAPI\OpenAPI\Models\Operations\RequestBodyPostMultipleContentTypesSplitParamFormRequestBody](../../Models/Operations/RequestBodyPostMultipleContentTypesSplitParamFormRequestBody.md) | :heavy_check_mark:                                                                                                                                                                         | N/A                                                                                                                                                                                        |
-| `paramStr`                                                                                                                                                                                 | *string*                                                                                                                                                                                   | :heavy_check_mark:                                                                                                                                                                         | N/A                                                                                                                                                                                        |
-
+| Parameter                                                                                                                                                          | Type                                                                                                                                                               | Required                                                                                                                                                           | Description                                                                                                                                                        |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `requestBody`                                                                                                                                                      | [Operations\RequestBodyPostMultipleContentTypesSplitParamFormRequestBody](../../Models/Operations/RequestBodyPostMultipleContentTypesSplitParamFormRequestBody.md) | :heavy_check_mark:                                                                                                                                                 | N/A                                                                                                                                                                |
+| `paramStr`                                                                                                                                                         | *string*                                                                                                                                                           | :heavy_check_mark:                                                                                                                                                 | N/A                                                                                                                                                                |
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\RequestBodyPostMultipleContentTypesSplitParamFormResponse](../../Models/Operations/RequestBodyPostMultipleContentTypesSplitParamFormResponse.md)**
+**[?Operations\RequestBodyPostMultipleContentTypesSplitParamFormResponse](../../Models/Operations/RequestBodyPostMultipleContentTypesSplitParamFormResponse.md)**
 
+### Errors
+
+| Error Type          | Status Code         | Content Type        |
+| ------------------- | ------------------- | ------------------- |
+| Errors\SDKException | 4XX, 5XX            | \*/\*               |
 
 ## requestBodyPostMultipleContentTypesSplitParamJson
 
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI;
-use \OpenAPI\OpenAPI\Models\Shared;
-use \OpenAPI\OpenAPI\Models\Operations;
+require 'vendor/autoload.php';
 
-$security = new Shared\Security();
-$security->apiKeyAuth = 'Token YOUR_API_KEY';
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Operations;
+use OpenAPI\OpenAPI\Models\Shared;
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
+    ->setSecurity(
+        new Shared\Security(
+            apiKeyAuth: 'Token YOUR_API_KEY',
+        )
+    )
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
     ->build();
 
-try {
-    $requestBody = new Operations\RequestBodyPostMultipleContentTypesSplitParamJsonRequestBody();
-    $requestBody->bool = false;
-    $requestBody->num = 9771.91;
-    $requestBody->str = 'string';
+$requestBody = new Operations\RequestBodyPostMultipleContentTypesSplitParamJsonRequestBody(
+    bool: false,
+    num: 9771.91,
+    str: '<value>',
+);
 
-    $response = $sdk->requestBodies->requestBodyPostMultipleContentTypesSplitParamJson($requestBody, 'string');
+$response = $sdk->requestBodies->requestBodyPostMultipleContentTypesSplitParamJson(
+    requestBody: $requestBody,
+    paramStr: '<value>'
 
-    if ($response->res !== null) {
-        // handle response
-    }
-} catch (Exception $e) {
-    // handle exception
+);
+
+if ($response->res !== null) {
+    // handle response
 }
 ```
 
 ### Parameters
 
-| Parameter                                                                                                                                                                                  | Type                                                                                                                                                                                       | Required                                                                                                                                                                                   | Description                                                                                                                                                                                |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `requestBody`                                                                                                                                                                              | [\OpenAPI\OpenAPI\Models\Operations\RequestBodyPostMultipleContentTypesSplitParamJsonRequestBody](../../Models/Operations/RequestBodyPostMultipleContentTypesSplitParamJsonRequestBody.md) | :heavy_check_mark:                                                                                                                                                                         | N/A                                                                                                                                                                                        |
-| `paramStr`                                                                                                                                                                                 | *string*                                                                                                                                                                                   | :heavy_check_mark:                                                                                                                                                                         | N/A                                                                                                                                                                                        |
-
+| Parameter                                                                                                                                                          | Type                                                                                                                                                               | Required                                                                                                                                                           | Description                                                                                                                                                        |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `requestBody`                                                                                                                                                      | [Operations\RequestBodyPostMultipleContentTypesSplitParamJsonRequestBody](../../Models/Operations/RequestBodyPostMultipleContentTypesSplitParamJsonRequestBody.md) | :heavy_check_mark:                                                                                                                                                 | N/A                                                                                                                                                                |
+| `paramStr`                                                                                                                                                         | *string*                                                                                                                                                           | :heavy_check_mark:                                                                                                                                                 | N/A                                                                                                                                                                |
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\RequestBodyPostMultipleContentTypesSplitParamJsonResponse](../../Models/Operations/RequestBodyPostMultipleContentTypesSplitParamJsonResponse.md)**
+**[?Operations\RequestBodyPostMultipleContentTypesSplitParamJsonResponse](../../Models/Operations/RequestBodyPostMultipleContentTypesSplitParamJsonResponse.md)**
 
+### Errors
+
+| Error Type          | Status Code         | Content Type        |
+| ------------------- | ------------------- | ------------------- |
+| Errors\SDKException | 4XX, 5XX            | \*/\*               |
 
 ## requestBodyPostMultipleContentTypesSplitParamMultipart
 
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI;
-use \OpenAPI\OpenAPI\Models\Shared;
-use \OpenAPI\OpenAPI\Models\Operations;
+require 'vendor/autoload.php';
 
-$security = new Shared\Security();
-$security->apiKeyAuth = 'Token YOUR_API_KEY';
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Operations;
+use OpenAPI\OpenAPI\Models\Shared;
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
+    ->setSecurity(
+        new Shared\Security(
+            apiKeyAuth: 'Token YOUR_API_KEY',
+        )
+    )
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
     ->build();
 
-try {
-    $requestBody = new Operations\RequestBodyPostMultipleContentTypesSplitParamMultipartRequestBody();
-    $requestBody->bool2 = false;
-    $requestBody->num2 = 7000.76;
-    $requestBody->str2 = 'string';
+$requestBody = new Operations\RequestBodyPostMultipleContentTypesSplitParamMultipartRequestBody(
+    bool2: false,
+    num2: 7000.75,
+    str2: '<value>',
+);
 
-    $response = $sdk->requestBodies->requestBodyPostMultipleContentTypesSplitParamMultipart($requestBody, 'string');
+$response = $sdk->requestBodies->requestBodyPostMultipleContentTypesSplitParamMultipart(
+    requestBody: $requestBody,
+    paramStr: '<value>'
 
-    if ($response->res !== null) {
-        // handle response
-    }
-} catch (Exception $e) {
-    // handle exception
+);
+
+if ($response->res !== null) {
+    // handle response
 }
 ```
 
 ### Parameters
 
-| Parameter                                                                                                                                                                                            | Type                                                                                                                                                                                                 | Required                                                                                                                                                                                             | Description                                                                                                                                                                                          |
-| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `requestBody`                                                                                                                                                                                        | [\OpenAPI\OpenAPI\Models\Operations\RequestBodyPostMultipleContentTypesSplitParamMultipartRequestBody](../../Models/Operations/RequestBodyPostMultipleContentTypesSplitParamMultipartRequestBody.md) | :heavy_check_mark:                                                                                                                                                                                   | N/A                                                                                                                                                                                                  |
-| `paramStr`                                                                                                                                                                                           | *string*                                                                                                                                                                                             | :heavy_check_mark:                                                                                                                                                                                   | N/A                                                                                                                                                                                                  |
-
+| Parameter                                                                                                                                                                    | Type                                                                                                                                                                         | Required                                                                                                                                                                     | Description                                                                                                                                                                  |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `requestBody`                                                                                                                                                                | [Operations\RequestBodyPostMultipleContentTypesSplitParamMultipartRequestBody](../../Models/Operations/RequestBodyPostMultipleContentTypesSplitParamMultipartRequestBody.md) | :heavy_check_mark:                                                                                                                                                           | N/A                                                                                                                                                                          |
+| `paramStr`                                                                                                                                                                   | *string*                                                                                                                                                                     | :heavy_check_mark:                                                                                                                                                           | N/A                                                                                                                                                                          |
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\RequestBodyPostMultipleContentTypesSplitParamMultipartResponse](../../Models/Operations/RequestBodyPostMultipleContentTypesSplitParamMultipartResponse.md)**
+**[?Operations\RequestBodyPostMultipleContentTypesSplitParamMultipartResponse](../../Models/Operations/RequestBodyPostMultipleContentTypesSplitParamMultipartResponse.md)**
 
+### Errors
+
+| Error Type          | Status Code         | Content Type        |
+| ------------------- | ------------------- | ------------------- |
+| Errors\SDKException | 4XX, 5XX            | \*/\*               |
 
 ## requestBodyPostMultipleContentTypesSplitForm
 
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI;
-use \OpenAPI\OpenAPI\Models\Shared;
-use \OpenAPI\OpenAPI\Models\Operations;
+require 'vendor/autoload.php';
 
-$security = new Shared\Security();
-$security->apiKeyAuth = 'Token YOUR_API_KEY';
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Operations;
+use OpenAPI\OpenAPI\Models\Shared;
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
+    ->setSecurity(
+        new Shared\Security(
+            apiKeyAuth: 'Token YOUR_API_KEY',
+        )
+    )
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
     ->build();
 
-try {
-    $request = new Operations\RequestBodyPostMultipleContentTypesSplitFormRequestBody();
-    $request->bool3 = false;
-    $request->num3 = 7842.07;
-    $request->str3 = 'string';
+$request = new Operations\RequestBodyPostMultipleContentTypesSplitFormRequestBody(
+    bool3: false,
+    num3: 7842.07,
+    str3: '<value>',
+);
 
-    $response = $sdk->requestBodies->requestBodyPostMultipleContentTypesSplitForm($request);
+$response = $sdk->requestBodies->requestBodyPostMultipleContentTypesSplitForm(
+    request: $request
+);
 
-    if ($response->res !== null) {
-        // handle response
-    }
-} catch (Exception $e) {
-    // handle exception
+if ($response->res !== null) {
+    // handle response
 }
 ```
 
 ### Parameters
 
-| Parameter                                                                                                                                                                        | Type                                                                                                                                                                             | Required                                                                                                                                                                         | Description                                                                                                                                                                      |
-| -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `$request`                                                                                                                                                                       | [\OpenAPI\OpenAPI\Models\Operations\RequestBodyPostMultipleContentTypesSplitFormRequestBody](../../Models/Operations/RequestBodyPostMultipleContentTypesSplitFormRequestBody.md) | :heavy_check_mark:                                                                                                                                                               | The request object to use for the request.                                                                                                                                       |
-
+| Parameter                                                                                                                                                | Type                                                                                                                                                     | Required                                                                                                                                                 | Description                                                                                                                                              |
+| -------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `$request`                                                                                                                                               | [Operations\RequestBodyPostMultipleContentTypesSplitFormRequestBody](../../Models/Operations/RequestBodyPostMultipleContentTypesSplitFormRequestBody.md) | :heavy_check_mark:                                                                                                                                       | The request object to use for the request.                                                                                                               |
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\RequestBodyPostMultipleContentTypesSplitFormResponse](../../Models/Operations/RequestBodyPostMultipleContentTypesSplitFormResponse.md)**
+**[?Operations\RequestBodyPostMultipleContentTypesSplitFormResponse](../../Models/Operations/RequestBodyPostMultipleContentTypesSplitFormResponse.md)**
 
+### Errors
+
+| Error Type          | Status Code         | Content Type        |
+| ------------------- | ------------------- | ------------------- |
+| Errors\SDKException | 4XX, 5XX            | \*/\*               |
 
 ## requestBodyPostMultipleContentTypesSplitJson
 
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI;
-use \OpenAPI\OpenAPI\Models\Shared;
-use \OpenAPI\OpenAPI\Models\Operations;
+require 'vendor/autoload.php';
 
-$security = new Shared\Security();
-$security->apiKeyAuth = 'Token YOUR_API_KEY';
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Operations;
+use OpenAPI\OpenAPI\Models\Shared;
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
+    ->setSecurity(
+        new Shared\Security(
+            apiKeyAuth: 'Token YOUR_API_KEY',
+        )
+    )
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
     ->build();
 
-try {
-    $request = new Operations\RequestBodyPostMultipleContentTypesSplitJsonRequestBody();
-    $request->bool = false;
-    $request->num = 2445.56;
-    $request->str = 'string';
+$request = new Operations\RequestBodyPostMultipleContentTypesSplitJsonRequestBody(
+    bool: false,
+    num: 2445.56,
+    str: '<value>',
+);
 
-    $response = $sdk->requestBodies->requestBodyPostMultipleContentTypesSplitJson($request);
+$response = $sdk->requestBodies->requestBodyPostMultipleContentTypesSplitJson(
+    request: $request
+);
 
-    if ($response->res !== null) {
-        // handle response
-    }
-} catch (Exception $e) {
-    // handle exception
+if ($response->res !== null) {
+    // handle response
 }
 ```
 
 ### Parameters
 
-| Parameter                                                                                                                                                                        | Type                                                                                                                                                                             | Required                                                                                                                                                                         | Description                                                                                                                                                                      |
-| -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `$request`                                                                                                                                                                       | [\OpenAPI\OpenAPI\Models\Operations\RequestBodyPostMultipleContentTypesSplitJsonRequestBody](../../Models/Operations/RequestBodyPostMultipleContentTypesSplitJsonRequestBody.md) | :heavy_check_mark:                                                                                                                                                               | The request object to use for the request.                                                                                                                                       |
-
+| Parameter                                                                                                                                                | Type                                                                                                                                                     | Required                                                                                                                                                 | Description                                                                                                                                              |
+| -------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `$request`                                                                                                                                               | [Operations\RequestBodyPostMultipleContentTypesSplitJsonRequestBody](../../Models/Operations/RequestBodyPostMultipleContentTypesSplitJsonRequestBody.md) | :heavy_check_mark:                                                                                                                                       | The request object to use for the request.                                                                                                               |
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\RequestBodyPostMultipleContentTypesSplitJsonResponse](../../Models/Operations/RequestBodyPostMultipleContentTypesSplitJsonResponse.md)**
+**[?Operations\RequestBodyPostMultipleContentTypesSplitJsonResponse](../../Models/Operations/RequestBodyPostMultipleContentTypesSplitJsonResponse.md)**
 
+### Errors
+
+| Error Type          | Status Code         | Content Type        |
+| ------------------- | ------------------- | ------------------- |
+| Errors\SDKException | 4XX, 5XX            | \*/\*               |
 
 ## requestBodyPostMultipleContentTypesSplitMultipart
 
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI;
-use \OpenAPI\OpenAPI\Models\Shared;
-use \OpenAPI\OpenAPI\Models\Operations;
+require 'vendor/autoload.php';
 
-$security = new Shared\Security();
-$security->apiKeyAuth = 'Token YOUR_API_KEY';
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Operations;
+use OpenAPI\OpenAPI\Models\Shared;
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
+    ->setSecurity(
+        new Shared\Security(
+            apiKeyAuth: 'Token YOUR_API_KEY',
+        )
+    )
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
     ->build();
 
-try {
-    $request = new Operations\RequestBodyPostMultipleContentTypesSplitMultipartRequestBody();
-    $request->bool2 = false;
-    $request->num2 = 2079.2;
-    $request->str2 = 'string';
+$request = new Operations\RequestBodyPostMultipleContentTypesSplitMultipartRequestBody(
+    bool2: false,
+    num2: 2079.21,
+    str2: '<value>',
+);
 
-    $response = $sdk->requestBodies->requestBodyPostMultipleContentTypesSplitMultipart($request);
+$response = $sdk->requestBodies->requestBodyPostMultipleContentTypesSplitMultipart(
+    request: $request
+);
 
-    if ($response->res !== null) {
-        // handle response
-    }
-} catch (Exception $e) {
-    // handle exception
+if ($response->res !== null) {
+    // handle response
 }
 ```
 
 ### Parameters
 
-| Parameter                                                                                                                                                                                  | Type                                                                                                                                                                                       | Required                                                                                                                                                                                   | Description                                                                                                                                                                                |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `$request`                                                                                                                                                                                 | [\OpenAPI\OpenAPI\Models\Operations\RequestBodyPostMultipleContentTypesSplitMultipartRequestBody](../../Models/Operations/RequestBodyPostMultipleContentTypesSplitMultipartRequestBody.md) | :heavy_check_mark:                                                                                                                                                                         | The request object to use for the request.                                                                                                                                                 |
-
+| Parameter                                                                                                                                                          | Type                                                                                                                                                               | Required                                                                                                                                                           | Description                                                                                                                                                        |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `$request`                                                                                                                                                         | [Operations\RequestBodyPostMultipleContentTypesSplitMultipartRequestBody](../../Models/Operations/RequestBodyPostMultipleContentTypesSplitMultipartRequestBody.md) | :heavy_check_mark:                                                                                                                                                 | The request object to use for the request.                                                                                                                         |
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\RequestBodyPostMultipleContentTypesSplitMultipartResponse](../../Models/Operations/RequestBodyPostMultipleContentTypesSplitMultipartResponse.md)**
+**[?Operations\RequestBodyPostMultipleContentTypesSplitMultipartResponse](../../Models/Operations/RequestBodyPostMultipleContentTypesSplitMultipartResponse.md)**
 
+### Errors
+
+| Error Type          | Status Code         | Content Type        |
+| ------------------- | ------------------- | ------------------- |
+| Errors\SDKException | 4XX, 5XX            | \*/\*               |
 
 ## requestBodyPostNotNullableNotRequiredStringBody
 
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI;
-use \OpenAPI\OpenAPI\Models\Shared;
+require 'vendor/autoload.php';
 
-$security = new Shared\Security();
-$security->apiKeyAuth = 'Token YOUR_API_KEY';
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Shared;
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
+    ->setSecurity(
+        new Shared\Security(
+            apiKeyAuth: 'Token YOUR_API_KEY',
+        )
+    )
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
     ->build();
 
-try {
-'string'
+$request = null;
 
-    $response = $sdk->requestBodies->requestBodyPostNotNullableNotRequiredStringBody($request);
+$response = $sdk->requestBodies->requestBodyPostNotNullableNotRequiredStringBody(
+    request: $request
+);
 
-    if ($response->object !== null) {
-        // handle response
-    }
-} catch (Exception $e) {
-    // handle exception
+if ($response->object !== null) {
+    // handle response
 }
 ```
 
@@ -3256,44 +5313,48 @@ try {
 | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
 | `$request`                                 | [string](../../.md)                        | :heavy_check_mark:                         | The request object to use for the request. |
 
-
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\RequestBodyPostNotNullableNotRequiredStringBodyResponse](../../Models/Operations/RequestBodyPostNotNullableNotRequiredStringBodyResponse.md)**
+**[?Operations\RequestBodyPostNotNullableNotRequiredStringBodyResponse](../../Models/Operations/RequestBodyPostNotNullableNotRequiredStringBodyResponse.md)**
 
+### Errors
+
+| Error Type          | Status Code         | Content Type        |
+| ------------------- | ------------------- | ------------------- |
+| Errors\SDKException | 4XX, 5XX            | \*/\*               |
 
 ## requestBodyPostNullArray
 
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI;
-use \OpenAPI\OpenAPI\Models\Shared;
+require 'vendor/autoload.php';
 
-$security = new Shared\Security();
-$security->apiKeyAuth = 'Token YOUR_API_KEY';
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Shared;
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
+    ->setSecurity(
+        new Shared\Security(
+            apiKeyAuth: 'Token YOUR_API_KEY',
+        )
+    )
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
     ->build();
 
-try {
-    $request = [
-        'string',
-    ]
+$request = null;
 
-    $response = $sdk->requestBodies->requestBodyPostNullArray($request);
+$response = $sdk->requestBodies->requestBodyPostNullArray(
+    request: $request
+);
 
-    if ($response->object !== null) {
-        // handle response
-    }
-} catch (Exception $e) {
-    // handle exception
+if ($response->object !== null) {
+    // handle response
 }
 ```
 
@@ -3301,46 +5362,50 @@ try {
 
 | Parameter                                  | Type                                       | Required                                   | Description                                |
 | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
-| `$request`                                 | [array](../../.md)                         | :heavy_check_mark:                         | The request object to use for the request. |
-
+| `$request`                                 | [array<string>](../../.md)                 | :heavy_check_mark:                         | The request object to use for the request. |
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\RequestBodyPostNullArrayResponse](../../Models/Operations/RequestBodyPostNullArrayResponse.md)**
+**[?Operations\RequestBodyPostNullArrayResponse](../../Models/Operations/RequestBodyPostNullArrayResponse.md)**
 
+### Errors
+
+| Error Type          | Status Code         | Content Type        |
+| ------------------- | ------------------- | ------------------- |
+| Errors\SDKException | 4XX, 5XX            | \*/\*               |
 
 ## requestBodyPostNullDictionary
 
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI;
-use \OpenAPI\OpenAPI\Models\Shared;
+require 'vendor/autoload.php';
 
-$security = new Shared\Security();
-$security->apiKeyAuth = 'Token YOUR_API_KEY';
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Shared;
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
+    ->setSecurity(
+        new Shared\Security(
+            apiKeyAuth: 'Token YOUR_API_KEY',
+        )
+    )
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
     ->build();
 
-try {
-    $request = [
-        'Intersex' => 'string',
-    ]
+$request = null;
 
-    $response = $sdk->requestBodies->requestBodyPostNullDictionary($request);
+$response = $sdk->requestBodies->requestBodyPostNullDictionary(
+    request: $request
+);
 
-    if ($response->object !== null) {
-        // handle response
-    }
-} catch (Exception $e) {
-    // handle exception
+if ($response->object !== null) {
+    // handle response
 }
 ```
 
@@ -3348,44 +5413,50 @@ try {
 
 | Parameter                                  | Type                                       | Required                                   | Description                                |
 | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
-| `$request`                                 | [array](../../.md)                         | :heavy_check_mark:                         | The request object to use for the request. |
-
+| `$request`                                 | [array<string, string>](../../.md)         | :heavy_check_mark:                         | The request object to use for the request. |
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\RequestBodyPostNullDictionaryResponse](../../Models/Operations/RequestBodyPostNullDictionaryResponse.md)**
+**[?Operations\RequestBodyPostNullDictionaryResponse](../../Models/Operations/RequestBodyPostNullDictionaryResponse.md)**
 
+### Errors
+
+| Error Type          | Status Code         | Content Type        |
+| ------------------- | ------------------- | ------------------- |
+| Errors\SDKException | 4XX, 5XX            | \*/\*               |
 
 ## requestBodyPostNullableNotRequiredStringBody
 
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI;
-use \OpenAPI\OpenAPI\Models\Shared;
+require 'vendor/autoload.php';
 
-$security = new Shared\Security();
-$security->apiKeyAuth = 'Token YOUR_API_KEY';
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Shared;
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
+    ->setSecurity(
+        new Shared\Security(
+            apiKeyAuth: 'Token YOUR_API_KEY',
+        )
+    )
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
     ->build();
 
-try {
-'string'
+$request = null;
 
-    $response = $sdk->requestBodies->requestBodyPostNullableNotRequiredStringBody($request);
+$response = $sdk->requestBodies->requestBodyPostNullableNotRequiredStringBody(
+    request: $request
+);
 
-    if ($response->object !== null) {
-        // handle response
-    }
-} catch (Exception $e) {
-    // handle exception
+if ($response->object !== null) {
+    // handle response
 }
 ```
 
@@ -3395,42 +5466,48 @@ try {
 | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
 | `$request`                                 | [string](../../.md)                        | :heavy_check_mark:                         | The request object to use for the request. |
 
-
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\RequestBodyPostNullableNotRequiredStringBodyResponse](../../Models/Operations/RequestBodyPostNullableNotRequiredStringBodyResponse.md)**
+**[?Operations\RequestBodyPostNullableNotRequiredStringBodyResponse](../../Models/Operations/RequestBodyPostNullableNotRequiredStringBodyResponse.md)**
 
+### Errors
+
+| Error Type          | Status Code         | Content Type        |
+| ------------------- | ------------------- | ------------------- |
+| Errors\SDKException | 4XX, 5XX            | \*/\*               |
 
 ## requestBodyPostNullableRequiredStringBody
 
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI;
-use \OpenAPI\OpenAPI\Models\Shared;
+require 'vendor/autoload.php';
 
-$security = new Shared\Security();
-$security->apiKeyAuth = 'Token YOUR_API_KEY';
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Shared;
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
+    ->setSecurity(
+        new Shared\Security(
+            apiKeyAuth: 'Token YOUR_API_KEY',
+        )
+    )
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
     ->build();
 
-try {
-'string'
+$request = null;
 
-    $response = $sdk->requestBodies->requestBodyPostNullableRequiredStringBody($request);
+$response = $sdk->requestBodies->requestBodyPostNullableRequiredStringBody(
+    request: $request
+);
 
-    if ($response->object !== null) {
-        // handle response
-    }
-} catch (Exception $e) {
-    // handle exception
+if ($response->object !== null) {
+    // handle response
 }
 ```
 
@@ -3440,42 +5517,99 @@ try {
 | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
 | `$request`                                 | [string](../../.md)                        | :heavy_check_mark:                         | The request object to use for the request. |
 
+### Response
+
+**[?Operations\RequestBodyPostNullableRequiredStringBodyResponse](../../Models/Operations/RequestBodyPostNullableRequiredStringBodyResponse.md)**
+
+### Errors
+
+| Error Type          | Status Code         | Content Type        |
+| ------------------- | ------------------- | ------------------- |
+| Errors\SDKException | 4XX, 5XX            | \*/\*               |
+
+## requestBodyPostWildcard
+
+### Example Usage
+
+```php
+declare(strict_types=1);
+
+require 'vendor/autoload.php';
+
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Shared;
+
+$sdk = OpenAPI\SDK::builder()
+    ->setSecurity(
+        new Shared\Security(
+            apiKeyAuth: 'Token YOUR_API_KEY',
+        )
+    )
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->build();
+
+$request = '0xDFED6bCc5A';
+
+$response = $sdk->requestBodies->requestBodyPostWildcard(
+    request: $request
+);
+
+if ($response->res !== null) {
+    // handle response
+}
+```
+
+### Parameters
+
+| Parameter                                  | Type                                       | Required                                   | Description                                |
+| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
+| `$request`                                 | [string](../../.md)                        | :heavy_check_mark:                         | The request object to use for the request. |
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\RequestBodyPostNullableRequiredStringBodyResponse](../../Models/Operations/RequestBodyPostNullableRequiredStringBodyResponse.md)**
+**[?Operations\RequestBodyPostWildcardResponse](../../Models/Operations/RequestBodyPostWildcardResponse.md)**
 
+### Errors
+
+| Error Type          | Status Code         | Content Type        |
+| ------------------- | ------------------- | ------------------- |
+| Errors\SDKException | 4XX, 5XX            | \*/\*               |
 
 ## requestBodyPutBytes
 
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI;
-use \OpenAPI\OpenAPI\Models\Shared;
+require 'vendor/autoload.php';
 
-$security = new Shared\Security();
-$security->apiKeyAuth = 'Token YOUR_API_KEY';
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Shared;
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
+    ->setSecurity(
+        new Shared\Security(
+            apiKeyAuth: 'Token YOUR_API_KEY',
+        )
+    )
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
     ->build();
 
-try {
-'0x5DbFFb1Ff9'
+$request = '0x5bF1f34D13';
 
-    $response = $sdk->requestBodies->requestBodyPutBytes($request);
+$response = $sdk->requestBodies->requestBodyPutBytes(
+    request: $request
+);
 
-    if ($response->res !== null) {
-        // handle response
-    }
-} catch (Exception $e) {
-    // handle exception
+if ($response->res !== null) {
+    // handle response
 }
 ```
 
@@ -3485,43 +5619,50 @@ try {
 | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
 | `$request`                                 | [string](../../.md)                        | :heavy_check_mark:                         | The request object to use for the request. |
 
-
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\RequestBodyPutBytesResponse](../../Models/Operations/RequestBodyPutBytesResponse.md)**
+**[?Operations\RequestBodyPutBytesResponse](../../Models/Operations/RequestBodyPutBytesResponse.md)**
 
+### Errors
+
+| Error Type          | Status Code         | Content Type        |
+| ------------------- | ------------------- | ------------------- |
+| Errors\SDKException | 4XX, 5XX            | \*/\*               |
 
 ## requestBodyPutBytesWithParams
 
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI;
-use \OpenAPI\OpenAPI\Models\Shared;
-use \OpenAPI\OpenAPI\Models\Operations;
+require 'vendor/autoload.php';
 
-$security = new Shared\Security();
-$security->apiKeyAuth = 'Token YOUR_API_KEY';
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Shared;
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
+    ->setSecurity(
+        new Shared\Security(
+            apiKeyAuth: 'Token YOUR_API_KEY',
+        )
+    )
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
     ->build();
 
-try {
 
 
-    $response = $sdk->requestBodies->requestBodyPutBytesWithParams('0xC1B9cA4eb5', 'string');
+$response = $sdk->requestBodies->requestBodyPutBytesWithParams(
+    requestBody: '0xCBc4b0D930',
+    queryStringParam: '<value>'
 
-    if ($response->res !== null) {
-        // handle response
-    }
-} catch (Exception $e) {
-    // handle exception
+);
+
+if ($response->res !== null) {
+    // handle response
 }
 ```
 
@@ -3532,283 +5673,528 @@ try {
 | `requestBody`      | *string*           | :heavy_check_mark: | N/A                |
 | `queryStringParam` | *string*           | :heavy_check_mark: | N/A                |
 
-
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\RequestBodyPutBytesWithParamsResponse](../../Models/Operations/RequestBodyPutBytesWithParamsResponse.md)**
+**[?Operations\RequestBodyPutBytesWithParamsResponse](../../Models/Operations/RequestBodyPutBytesWithParamsResponse.md)**
 
+### Errors
+
+| Error Type          | Status Code         | Content Type        |
+| ------------------- | ------------------- | ------------------- |
+| Errors\SDKException | 4XX, 5XX            | \*/\*               |
 
 ## requestBodyPutMultipartDeep
 
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI;
-use \OpenAPI\OpenAPI\Models\Shared;
+require 'vendor/autoload.php';
 
-$security = new Shared\Security();
-$security->apiKeyAuth = 'Token YOUR_API_KEY';
+use Brick\DateTime\LocalDate;
+use Brick\Math\BigDecimal;
+use Brick\Math\BigInteger;
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Shared;
+use OpenAPI\OpenAPI\Utils;
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
+    ->setSecurity(
+        new Shared\Security(
+            apiKeyAuth: 'Token YOUR_API_KEY',
+        )
+    )
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
     ->build();
 
-try {
-    $request = new Shared\DeepObject();
-    $request->any = 'anyOf[0]';
-    $request->arr = [
-        new Shared\SimpleObject(),
-    ];
-    $request->bool = true;
-    $request->int = 1;
-    $request->map = [
-        'Chevrolet' => new Shared\SimpleObject(),
-    ];
-    $request->num = 1.1;
-    $request->obj = new Shared\SimpleObject();
-    $request->obj->any = 'any';
-    $request->obj->bigint = 8821239038968084;
-    $request->obj->bigintStr = '9223372036854775808';
-    $request->obj->bool = true;
-    $request->obj->boolOpt = true;
-    $request->obj->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
-    $request->obj->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00.000000001Z');
-    $request->obj->decimal = 3.141592653589793;
-    $request->obj->decimalStr = '3.14159265358979344719667586';
-    $request->obj->enum = Shared\Enum::One;
-    $request->obj->float32 = 1.1;
-    $request->obj->int = 1;
-    $request->obj->int32 = 1;
-    $request->obj->int32Enum = Shared\Int32Enum::OneHundredAndEightyOne;
-    $request->obj->intEnum = Shared\IntEnum::Second;
-    $request->obj->intOptNull = 731372;
-    $request->obj->num = 1.1;
-    $request->obj->numOptNull = 8739.03;
-    $request->obj->str = 'test';
-    $request->obj->strOpt = 'testOptional';
-    $request->str = 'test';
-    $request->type = 'string';
+$request = new Shared\DeepObject(
+    any: new Shared\SimpleObject(
+        any: 'any',
+        bool: true,
+        date: LocalDate::parse('2020-01-01'),
+        dateTime: Utils\Utils::parseDateTime('2020-01-01T00:00:00.001Z'),
+        enum: Shared\Enum::One,
+        float32: 1.1,
+        int: 1,
+        int32: 1,
+        int32Enum: Shared\Int32Enum::FiftyFive,
+        intEnum: Shared\IntEnum::Second,
+        num: 1.1,
+        str: 'test',
+        bigint: BigInteger::of('8821239038968084'),
+        bigintStr: BigInteger::of('9223372036854775808'),
+        boolOpt: true,
+        decimal: BigDecimal::of('3.141592653589793'),
+        decimalStr: BigDecimal::of('3.14159265358979344719667586'),
+        float64Str: '1.1',
+        int64Str: '100',
+        strOpt: 'testOptional',
+    ),
+    arr: [
+        new Shared\SimpleObject(
+            any: 'any',
+            bool: true,
+            date: LocalDate::parse('2020-01-01'),
+            dateTime: Utils\Utils::parseDateTime('2020-01-01T00:00:00.001Z'),
+            enum: Shared\Enum::One,
+            float32: 1.1,
+            int: 1,
+            int32: 1,
+            int32Enum: Shared\Int32Enum::FiftyFive,
+            intEnum: Shared\IntEnum::Second,
+            num: 1.1,
+            str: 'test',
+            bigint: BigInteger::of('8821239038968084'),
+            bigintStr: BigInteger::of('9223372036854775808'),
+            boolOpt: true,
+            decimal: BigDecimal::of('3.141592653589793'),
+            decimalStr: BigDecimal::of('3.14159265358979344719667586'),
+            float64Str: '1.1',
+            int64Str: '100',
+            strOpt: 'testOptional',
+        ),
+        new Shared\SimpleObject(
+            any: 'any',
+            bool: true,
+            date: LocalDate::parse('2020-01-01'),
+            dateTime: Utils\Utils::parseDateTime('2020-01-01T00:00:00.001Z'),
+            enum: Shared\Enum::One,
+            float32: 1.1,
+            int: 1,
+            int32: 1,
+            int32Enum: Shared\Int32Enum::FiftyFive,
+            intEnum: Shared\IntEnum::Second,
+            num: 1.1,
+            str: 'test',
+            bigint: BigInteger::of('8821239038968084'),
+            bigintStr: BigInteger::of('9223372036854775808'),
+            boolOpt: true,
+            decimal: BigDecimal::of('3.141592653589793'),
+            decimalStr: BigDecimal::of('3.14159265358979344719667586'),
+            float64Str: '1.1',
+            int64Str: '100',
+            strOpt: 'testOptional',
+        ),
+    ],
+    bool: true,
+    int: 1,
+    map: [
+        'key' => new Shared\SimpleObject(
+            any: 'any',
+            bool: true,
+            date: LocalDate::parse('2020-01-01'),
+            dateTime: Utils\Utils::parseDateTime('2020-01-01T00:00:00.001Z'),
+            enum: Shared\Enum::One,
+            float32: 1.1,
+            int: 1,
+            int32: 1,
+            int32Enum: Shared\Int32Enum::FiftyFive,
+            intEnum: Shared\IntEnum::Second,
+            num: 1.1,
+            str: 'test',
+            bigint: BigInteger::of('8821239038968084'),
+            bigintStr: BigInteger::of('9223372036854775808'),
+            boolOpt: true,
+            decimal: BigDecimal::of('3.141592653589793'),
+            decimalStr: BigDecimal::of('3.14159265358979344719667586'),
+            float64Str: '1.1',
+            int64Str: '100',
+            strOpt: 'testOptional',
+        ),
+        'key2' => new Shared\SimpleObject(
+            any: 'any',
+            bool: true,
+            date: LocalDate::parse('2020-01-01'),
+            dateTime: Utils\Utils::parseDateTime('2020-01-01T00:00:00.001Z'),
+            enum: Shared\Enum::One,
+            float32: 1.1,
+            int: 1,
+            int32: 1,
+            int32Enum: Shared\Int32Enum::FiftyFive,
+            intEnum: Shared\IntEnum::Second,
+            num: 1.1,
+            str: 'test',
+            bigint: BigInteger::of('8821239038968084'),
+            bigintStr: BigInteger::of('9223372036854775808'),
+            boolOpt: true,
+            decimal: BigDecimal::of('3.141592653589793'),
+            decimalStr: BigDecimal::of('3.14159265358979344719667586'),
+            float64Str: '1.1',
+            int64Str: '100',
+            strOpt: 'testOptional',
+        ),
+    ],
+    num: 1.1,
+    obj: new Shared\SimpleObject(
+        any: 'any',
+        bool: true,
+        date: LocalDate::parse('2020-01-01'),
+        dateTime: Utils\Utils::parseDateTime('2020-01-01T00:00:00.001Z'),
+        enum: Shared\Enum::One,
+        float32: 1.1,
+        int: 1,
+        int32: 1,
+        int32Enum: Shared\Int32Enum::FiftyFive,
+        intEnum: Shared\IntEnum::Second,
+        num: 1.1,
+        str: 'test',
+        bigint: BigInteger::of('8821239038968084'),
+        bigintStr: BigInteger::of('9223372036854775808'),
+        boolOpt: true,
+        decimal: BigDecimal::of('3.141592653589793'),
+        decimalStr: BigDecimal::of('3.14159265358979344719667586'),
+        float64Str: '1.1',
+        int64Str: '100',
+        strOpt: 'testOptional',
+    ),
+    str: 'test',
+);
 
-    $response = $sdk->requestBodies->requestBodyPutMultipartDeep($request);
+$response = $sdk->requestBodies->requestBodyPutMultipartDeep(
+    request: $request
+);
 
-    if ($response->res !== null) {
-        // handle response
-    }
-} catch (Exception $e) {
-    // handle exception
+if ($response->res !== null) {
+    // handle response
 }
 ```
 
 ### Parameters
 
-| Parameter                                                                      | Type                                                                           | Required                                                                       | Description                                                                    |
-| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
-| `$request`                                                                     | [\OpenAPI\OpenAPI\Models\Shared\DeepObject](../../Models/Shared/DeepObject.md) | :heavy_check_mark:                                                             | The request object to use for the request.                                     |
-
+| Parameter                                              | Type                                                   | Required                                               | Description                                            |
+| ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ | ------------------------------------------------------ |
+| `$request`                                             | [Shared\DeepObject](../../Models/Shared/DeepObject.md) | :heavy_check_mark:                                     | The request object to use for the request.             |
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\RequestBodyPutMultipartDeepResponse](../../Models/Operations/RequestBodyPutMultipartDeepResponse.md)**
+**[?Operations\RequestBodyPutMultipartDeepResponse](../../Models/Operations/RequestBodyPutMultipartDeepResponse.md)**
 
+### Errors
+
+| Error Type          | Status Code         | Content Type        |
+| ------------------- | ------------------- | ------------------- |
+| Errors\SDKException | 4XX, 5XX            | \*/\*               |
 
 ## requestBodyPutMultipartDifferentFileName
 
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI;
-use \OpenAPI\OpenAPI\Models\Shared;
-use \OpenAPI\OpenAPI\Models\Operations;
+require 'vendor/autoload.php';
 
-$security = new Shared\Security();
-$security->apiKeyAuth = 'Token YOUR_API_KEY';
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Operations;
+use OpenAPI\OpenAPI\Models\Shared;
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
+    ->setSecurity(
+        new Shared\Security(
+            apiKeyAuth: 'Token YOUR_API_KEY',
+        )
+    )
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
     ->build();
 
-try {
-    $request = new Operations\RequestBodyPutMultipartDifferentFileNameRequestBody();
-    $request->differentFileName = new Operations\DifferentFileName();
-    $request->differentFileName->content = '0xdF19d43dd2';
-    $request->differentFileName->fileName = 'west_tunisian.pdf';
+$request = new Operations\RequestBodyPutMultipartDifferentFileNameRequestBody();
 
-    $response = $sdk->requestBodies->requestBodyPutMultipartDifferentFileName($request);
+$response = $sdk->requestBodies->requestBodyPutMultipartDifferentFileName(
+    request: $request
+);
 
-    if ($response->res !== null) {
-        // handle response
-    }
-} catch (Exception $e) {
-    // handle exception
+if ($response->res !== null) {
+    // handle response
 }
 ```
 
 ### Parameters
 
-| Parameter                                                                                                                                                                | Type                                                                                                                                                                     | Required                                                                                                                                                                 | Description                                                                                                                                                              |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `$request`                                                                                                                                                               | [\OpenAPI\OpenAPI\Models\Operations\RequestBodyPutMultipartDifferentFileNameRequestBody](../../Models/Operations/RequestBodyPutMultipartDifferentFileNameRequestBody.md) | :heavy_check_mark:                                                                                                                                                       | The request object to use for the request.                                                                                                                               |
-
+| Parameter                                                                                                                                        | Type                                                                                                                                             | Required                                                                                                                                         | Description                                                                                                                                      |
+| ------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `$request`                                                                                                                                       | [Operations\RequestBodyPutMultipartDifferentFileNameRequestBody](../../Models/Operations/RequestBodyPutMultipartDifferentFileNameRequestBody.md) | :heavy_check_mark:                                                                                                                               | The request object to use for the request.                                                                                                       |
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\RequestBodyPutMultipartDifferentFileNameResponse](../../Models/Operations/RequestBodyPutMultipartDifferentFileNameResponse.md)**
+**[?Operations\RequestBodyPutMultipartDifferentFileNameResponse](../../Models/Operations/RequestBodyPutMultipartDifferentFileNameResponse.md)**
 
+### Errors
+
+| Error Type          | Status Code         | Content Type        |
+| ------------------- | ------------------- | ------------------- |
+| Errors\SDKException | 4XX, 5XX            | \*/\*               |
 
 ## requestBodyPutMultipartFile
 
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI;
-use \OpenAPI\OpenAPI\Models\Shared;
-use \OpenAPI\OpenAPI\Models\Operations;
+require 'vendor/autoload.php';
 
-$security = new Shared\Security();
-$security->apiKeyAuth = 'Token YOUR_API_KEY';
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Operations;
+use OpenAPI\OpenAPI\Models\Shared;
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
+    ->setSecurity(
+        new Shared\Security(
+            apiKeyAuth: 'Token YOUR_API_KEY',
+        )
+    )
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
     ->build();
 
-try {
-    $request = new Operations\RequestBodyPutMultipartFileRequestBody();
-    $request->file = new Operations\File();
-    $request->file->content = '0xa9f2Ee38c3';
-    $request->file->fileName = 'bandwidth_sedan.pdf';
+$request = new Operations\RequestBodyPutMultipartFileRequestBody();
 
-    $response = $sdk->requestBodies->requestBodyPutMultipartFile($request);
+$response = $sdk->requestBodies->requestBodyPutMultipartFile(
+    request: $request
+);
 
-    if ($response->res !== null) {
-        // handle response
-    }
-} catch (Exception $e) {
-    // handle exception
+if ($response->res !== null) {
+    // handle response
 }
 ```
 
 ### Parameters
 
-| Parameter                                                                                                                                      | Type                                                                                                                                           | Required                                                                                                                                       | Description                                                                                                                                    |
-| ---------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
-| `$request`                                                                                                                                     | [\OpenAPI\OpenAPI\Models\Operations\RequestBodyPutMultipartFileRequestBody](../../Models/Operations/RequestBodyPutMultipartFileRequestBody.md) | :heavy_check_mark:                                                                                                                             | The request object to use for the request.                                                                                                     |
-
+| Parameter                                                                                                              | Type                                                                                                                   | Required                                                                                                               | Description                                                                                                            |
+| ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
+| `$request`                                                                                                             | [Operations\RequestBodyPutMultipartFileRequestBody](../../Models/Operations/RequestBodyPutMultipartFileRequestBody.md) | :heavy_check_mark:                                                                                                     | The request object to use for the request.                                                                             |
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\RequestBodyPutMultipartFileResponse](../../Models/Operations/RequestBodyPutMultipartFileResponse.md)**
+**[?Operations\RequestBodyPutMultipartFileResponse](../../Models/Operations/RequestBodyPutMultipartFileResponse.md)**
 
+### Errors
+
+| Error Type          | Status Code         | Content Type        |
+| ------------------- | ------------------- | ------------------- |
+| Errors\SDKException | 4XX, 5XX            | \*/\*               |
+
+## requestBodyPutMultipartFileRef
+
+### Example Usage
+
+```php
+declare(strict_types=1);
+
+require 'vendor/autoload.php';
+
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Operations;
+use OpenAPI\OpenAPI\Models\Shared;
+
+$sdk = OpenAPI\SDK::builder()
+    ->setSecurity(
+        new Shared\Security(
+            apiKeyAuth: 'Token YOUR_API_KEY',
+        )
+    )
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->build();
+
+$request = new Operations\RequestBodyPutMultipartFileRefRequestBody();
+
+$response = $sdk->requestBodies->requestBodyPutMultipartFileRef(
+    request: $request
+);
+
+if ($response->res !== null) {
+    // handle response
+}
+```
+
+### Parameters
+
+| Parameter                                                                                                                    | Type                                                                                                                         | Required                                                                                                                     | Description                                                                                                                  |
+| ---------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
+| `$request`                                                                                                                   | [Operations\RequestBodyPutMultipartFileRefRequestBody](../../Models/Operations/RequestBodyPutMultipartFileRefRequestBody.md) | :heavy_check_mark:                                                                                                           | The request object to use for the request.                                                                                   |
+
+### Response
+
+**[?Operations\RequestBodyPutMultipartFileRefResponse](../../Models/Operations/RequestBodyPutMultipartFileRefResponse.md)**
+
+### Errors
+
+| Error Type          | Status Code         | Content Type        |
+| ------------------- | ------------------- | ------------------- |
+| Errors\SDKException | 4XX, 5XX            | \*/\*               |
+
+## requestBodyPutMultipartOptionalRequestBody
+
+### Example Usage
+
+```php
+declare(strict_types=1);
+
+require 'vendor/autoload.php';
+
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Operations;
+use OpenAPI\OpenAPI\Models\Shared;
+
+$sdk = OpenAPI\SDK::builder()
+    ->setSecurity(
+        new Shared\Security(
+            apiKeyAuth: 'Token YOUR_API_KEY',
+        )
+    )
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->build();
+
+$request = new Operations\RequestBodyPutMultipartOptionalRequestBodyRequestBody();
+
+$response = $sdk->requestBodies->requestBodyPutMultipartOptionalRequestBody(
+    request: $request
+);
+
+if ($response->res !== null) {
+    // handle response
+}
+```
+
+### Parameters
+
+| Parameter                                                                                                                                            | Type                                                                                                                                                 | Required                                                                                                                                             | Description                                                                                                                                          |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `$request`                                                                                                                                           | [Operations\RequestBodyPutMultipartOptionalRequestBodyRequestBody](../../Models/Operations/RequestBodyPutMultipartOptionalRequestBodyRequestBody.md) | :heavy_check_mark:                                                                                                                                   | The request object to use for the request.                                                                                                           |
+
+### Response
+
+**[?Operations\RequestBodyPutMultipartOptionalRequestBodyResponse](../../Models/Operations/RequestBodyPutMultipartOptionalRequestBodyResponse.md)**
+
+### Errors
+
+| Error Type          | Status Code         | Content Type        |
+| ------------------- | ------------------- | ------------------- |
+| Errors\SDKException | 4XX, 5XX            | \*/\*               |
 
 ## requestBodyPutMultipartSimple
 
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI;
-use \OpenAPI\OpenAPI\Models\Shared;
+require 'vendor/autoload.php';
 
-$security = new Shared\Security();
-$security->apiKeyAuth = 'Token YOUR_API_KEY';
+use Brick\DateTime\LocalDate;
+use Brick\Math\BigDecimal;
+use Brick\Math\BigInteger;
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Shared;
+use OpenAPI\OpenAPI\Utils;
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
+    ->setSecurity(
+        new Shared\Security(
+            apiKeyAuth: 'Token YOUR_API_KEY',
+        )
+    )
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
     ->build();
 
-try {
-    $request = new Shared\SimpleObject();
-    $request->any = 'any';
-    $request->bigint = 8821239038968084;
-    $request->bigintStr = '9223372036854775808';
-    $request->bool = true;
-    $request->boolOpt = true;
-    $request->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
-    $request->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00.000000001Z');
-    $request->decimal = 3.141592653589793;
-    $request->decimalStr = '3.14159265358979344719667586';
-    $request->enum = Shared\Enum::One;
-    $request->float32 = 1.1;
-    $request->int = 1;
-    $request->int32 = 1;
-    $request->int32Enum = Shared\Int32Enum::FiftyFive;
-    $request->intEnum = Shared\IntEnum::Third;
-    $request->intOptNull = 544005;
-    $request->num = 1.1;
-    $request->numOptNull = 7648.28;
-    $request->str = 'test';
-    $request->strOpt = 'testOptional';
+$request = new Shared\SimpleObject(
+    any: 'any',
+    bool: true,
+    date: LocalDate::parse('2020-01-01'),
+    dateTime: Utils\Utils::parseDateTime('2020-01-01T00:00:00.001Z'),
+    enum: Shared\Enum::One,
+    float32: 1.1,
+    int: 1,
+    int32: 1,
+    int32Enum: Shared\Int32Enum::FiftyFive,
+    intEnum: Shared\IntEnum::Second,
+    num: 1.1,
+    str: 'test',
+    bigint: BigInteger::of('8821239038968084'),
+    bigintStr: BigInteger::of('9223372036854775808'),
+    boolOpt: true,
+    decimal: BigDecimal::of('3.141592653589793'),
+    decimalStr: BigDecimal::of('3.14159265358979344719667586'),
+    float64Str: '1.1',
+    int64Str: '100',
+    strOpt: 'testOptional',
+);
 
-    $response = $sdk->requestBodies->requestBodyPutMultipartSimple($request);
+$response = $sdk->requestBodies->requestBodyPutMultipartSimple(
+    request: $request
+);
 
-    if ($response->res !== null) {
-        // handle response
-    }
-} catch (Exception $e) {
-    // handle exception
+if ($response->res !== null) {
+    // handle response
 }
 ```
 
 ### Parameters
 
-| Parameter                                                                          | Type                                                                               | Required                                                                           | Description                                                                        |
-| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| `$request`                                                                         | [\OpenAPI\OpenAPI\Models\Shared\SimpleObject](../../Models/Shared/SimpleObject.md) | :heavy_check_mark:                                                                 | The request object to use for the request.                                         |
-
+| Parameter                                                  | Type                                                       | Required                                                   | Description                                                |
+| ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- |
+| `$request`                                                 | [Shared\SimpleObject](../../Models/Shared/SimpleObject.md) | :heavy_check_mark:                                         | The request object to use for the request.                 |
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\RequestBodyPutMultipartSimpleResponse](../../Models/Operations/RequestBodyPutMultipartSimpleResponse.md)**
+**[?Operations\RequestBodyPutMultipartSimpleResponse](../../Models/Operations/RequestBodyPutMultipartSimpleResponse.md)**
 
+### Errors
+
+| Error Type          | Status Code         | Content Type        |
+| ------------------- | ------------------- | ------------------- |
+| Errors\SDKException | 4XX, 5XX            | \*/\*               |
 
 ## requestBodyPutString
 
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI;
-use \OpenAPI\OpenAPI\Models\Shared;
+require 'vendor/autoload.php';
 
-$security = new Shared\Security();
-$security->apiKeyAuth = 'Token YOUR_API_KEY';
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Shared;
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
+    ->setSecurity(
+        new Shared\Security(
+            apiKeyAuth: 'Token YOUR_API_KEY',
+        )
+    )
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
     ->build();
 
-try {
-'string'
+$request = 'Hello World';
 
-    $response = $sdk->requestBodies->requestBodyPutString($request);
+$response = $sdk->requestBodies->requestBodyPutString(
+    request: $request
+);
 
-    if ($response->res !== null) {
-        // handle response
-    }
-} catch (Exception $e) {
-    // handle exception
+if ($response->res !== null) {
+    // handle response
 }
 ```
 
@@ -3818,386 +6204,475 @@ try {
 | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
 | `$request`                                 | [string](../../.md)                        | :heavy_check_mark:                         | The request object to use for the request. |
 
-
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\RequestBodyPutStringResponse](../../Models/Operations/RequestBodyPutStringResponse.md)**
+**[?Operations\RequestBodyPutStringResponse](../../Models/Operations/RequestBodyPutStringResponse.md)**
 
+### Errors
+
+| Error Type          | Status Code         | Content Type        |
+| ------------------- | ------------------- | ------------------- |
+| Errors\SDKException | 4XX, 5XX            | \*/\*               |
 
 ## requestBodyPutStringWithParams
 
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI;
-use \OpenAPI\OpenAPI\Models\Shared;
-use \OpenAPI\OpenAPI\Models\Operations;
+require 'vendor/autoload.php';
 
-$security = new Shared\Security();
-$security->apiKeyAuth = 'Token YOUR_API_KEY';
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Shared;
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
+    ->setSecurity(
+        new Shared\Security(
+            apiKeyAuth: 'Token YOUR_API_KEY',
+        )
+    )
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
     ->build();
 
-try {
 
 
-    $response = $sdk->requestBodies->requestBodyPutStringWithParams('string', 'string');
+$response = $sdk->requestBodies->requestBodyPutStringWithParams(
+    requestBody: 'Hello world',
+    queryStringParam: 'test param'
 
-    if ($response->res !== null) {
-        // handle response
-    }
-} catch (Exception $e) {
-    // handle exception
+);
+
+if ($response->res !== null) {
+    // handle response
 }
 ```
 
 ### Parameters
 
-| Parameter          | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `requestBody`      | *string*           | :heavy_check_mark: | N/A                |
-| `queryStringParam` | *string*           | :heavy_check_mark: | N/A                |
-
+| Parameter          | Type               | Required           | Description        | Example            |
+| ------------------ | ------------------ | ------------------ | ------------------ | ------------------ |
+| `requestBody`      | *string*           | :heavy_check_mark: | N/A                | Hello world        |
+| `queryStringParam` | *string*           | :heavy_check_mark: | N/A                | test param         |
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\RequestBodyPutStringWithParamsResponse](../../Models/Operations/RequestBodyPutStringWithParamsResponse.md)**
+**[?Operations\RequestBodyPutStringWithParamsResponse](../../Models/Operations/RequestBodyPutStringWithParamsResponse.md)**
 
+### Errors
+
+| Error Type          | Status Code         | Content Type        |
+| ------------------- | ------------------- | ------------------- |
+| Errors\SDKException | 4XX, 5XX            | \*/\*               |
 
 ## requestBodyReadAndWrite
 
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI;
-use \OpenAPI\OpenAPI\Models\Shared;
+require 'vendor/autoload.php';
 
-$security = new Shared\Security();
-$security->apiKeyAuth = 'Token YOUR_API_KEY';
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Shared;
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
+    ->setSecurity(
+        new Shared\Security(
+            apiKeyAuth: 'Token YOUR_API_KEY',
+        )
+    )
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
     ->build();
 
-try {
-    $request = new Shared\ReadWriteObject();
-    $request->num1 = 797612;
-    $request->num2 = 89374;
-    $request->num3 = 459345;
+$request = new Shared\ReadWriteObject(
+    num1: 1,
+    num2: 2,
+    num3: 4,
+);
 
-    $response = $sdk->requestBodies->requestBodyReadAndWrite($request);
+$response = $sdk->requestBodies->requestBodyReadAndWrite(
+    request: $request
+);
 
-    if ($response->readWriteObject !== null) {
-        // handle response
-    }
-} catch (Exception $e) {
-    // handle exception
+if ($response->readWriteObject !== null) {
+    // handle response
 }
 ```
 
 ### Parameters
 
-| Parameter                                                                                | Type                                                                                     | Required                                                                                 | Description                                                                              |
-| ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
-| `$request`                                                                               | [\OpenAPI\OpenAPI\Models\Shared\ReadWriteObject](../../Models/Shared/ReadWriteObject.md) | :heavy_check_mark:                                                                       | The request object to use for the request.                                               |
-| `$serverURL`                                                                             | *string*                                                                                 | :heavy_minus_sign:                                                                       | An optional server URL to use.                                                           |
-
+| Parameter                                                        | Type                                                             | Required                                                         | Description                                                      |
+| ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
+| `$request`                                                       | [Shared\ReadWriteObject](../../Models/Shared/ReadWriteObject.md) | :heavy_check_mark:                                               | The request object to use for the request.                       |
+| `$serverURL`                                                     | *string*                                                         | :heavy_minus_sign:                                               | An optional server URL to use.                                   |
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\RequestBodyReadAndWriteResponse](../../Models/Operations/RequestBodyReadAndWriteResponse.md)**
+**[?Operations\RequestBodyReadAndWriteResponse](../../Models/Operations/RequestBodyReadAndWriteResponse.md)**
 
+### Errors
+
+| Error Type          | Status Code         | Content Type        |
+| ------------------- | ------------------- | ------------------- |
+| Errors\SDKException | 4XX, 5XX            | \*/\*               |
 
 ## requestBodyReadOnlyInput
 
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI;
-use \OpenAPI\OpenAPI\Models\Shared;
+require 'vendor/autoload.php';
 
-$security = new Shared\Security();
-$security->apiKeyAuth = 'Token YOUR_API_KEY';
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Shared;
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
+    ->setSecurity(
+        new Shared\Security(
+            apiKeyAuth: 'Token YOUR_API_KEY',
+        )
+    )
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
     ->build();
 
-try {
-    $request = new Shared\ReadOnlyObjectInput();
+$request = new Shared\ReadOnlyObjectInput();
 
-    $response = $sdk->requestBodies->requestBodyReadOnlyInput($request);
+$response = $sdk->requestBodies->requestBodyReadOnlyInput(
+    request: $request
+);
 
-    if ($response->readOnlyObject !== null) {
-        // handle response
-    }
-} catch (Exception $e) {
-    // handle exception
+if ($response->readOnlyObject !== null) {
+    // handle response
 }
 ```
 
 ### Parameters
 
-| Parameter                                                                                        | Type                                                                                             | Required                                                                                         | Description                                                                                      |
-| ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ |
-| `$request`                                                                                       | [\OpenAPI\OpenAPI\Models\Shared\ReadOnlyObjectInput](../../Models/Shared/ReadOnlyObjectInput.md) | :heavy_check_mark:                                                                               | The request object to use for the request.                                                       |
-| `$serverURL`                                                                                     | *string*                                                                                         | :heavy_minus_sign:                                                                               | An optional server URL to use.                                                                   |
-
+| Parameter                                                                | Type                                                                     | Required                                                                 | Description                                                              |
+| ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
+| `$request`                                                               | [Shared\ReadOnlyObjectInput](../../Models/Shared/ReadOnlyObjectInput.md) | :heavy_check_mark:                                                       | The request object to use for the request.                               |
+| `$serverURL`                                                             | *string*                                                                 | :heavy_minus_sign:                                                       | An optional server URL to use.                                           |
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\RequestBodyReadOnlyInputResponse](../../Models/Operations/RequestBodyReadOnlyInputResponse.md)**
+**[?Operations\RequestBodyReadOnlyInputResponse](../../Models/Operations/RequestBodyReadOnlyInputResponse.md)**
 
+### Errors
+
+| Error Type          | Status Code         | Content Type        |
+| ------------------- | ------------------- | ------------------- |
+| Errors\SDKException | 4XX, 5XX            | \*/\*               |
 
 ## requestBodyReadOnlyUnion
 
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI;
-use \OpenAPI\OpenAPI\Models\Shared;
+require 'vendor/autoload.php';
 
-$security = new Shared\Security();
-$security->apiKeyAuth = 'Token YOUR_API_KEY';
+use Brick\DateTime\LocalDate;
+use Brick\Math\BigDecimal;
+use Brick\Math\BigInteger;
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Shared;
+use OpenAPI\OpenAPI\Utils;
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
+    ->setSecurity(
+        new Shared\Security(
+            apiKeyAuth: 'Token YOUR_API_KEY',
+        )
+    )
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
     ->build();
 
-try {
-'string'
+$request = new Shared\SimpleObject(
+    any: 'any',
+    bool: true,
+    date: LocalDate::parse('2020-01-01'),
+    dateTime: Utils\Utils::parseDateTime('2020-01-01T00:00:00.001Z'),
+    enum: Shared\Enum::One,
+    float32: 1.1,
+    int: 1,
+    int32: 1,
+    int32Enum: Shared\Int32Enum::FiftyFive,
+    intEnum: Shared\IntEnum::Second,
+    num: 1.1,
+    str: 'test',
+    bigint: BigInteger::of('8821239038968084'),
+    bigintStr: BigInteger::of('9223372036854775808'),
+    boolOpt: true,
+    decimal: BigDecimal::of('3.141592653589793'),
+    decimalStr: BigDecimal::of('3.14159265358979344719667586'),
+    float64Str: '1.1',
+    int64Str: '100',
+    strOpt: 'testOptional',
+);
 
-    $response = $sdk->requestBodies->requestBodyReadOnlyUnion($request);
+$response = $sdk->requestBodies->requestBodyReadOnlyUnion(
+    request: $request
+);
 
-    if ($response->weaklyTypedOneOfReadOnlyObject !== null) {
-        // handle response
-    }
-} catch (Exception $e) {
-    // handle exception
+if ($response->weaklyTypedOneOfReadOnlyObject !== null) {
+    // handle response
 }
 ```
 
 ### Parameters
 
-| Parameter                                  | Type                                       | Required                                   | Description                                |
-| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
-| `$request`                                 | [mixed](../../.md)                         | :heavy_check_mark:                         | The request object to use for the request. |
-| `$serverURL`                               | *string*                                   | :heavy_minus_sign:                         | An optional server URL to use.             |
-
+| Parameter                                                                                                    | Type                                                                                                         | Required                                                                                                     | Description                                                                                                  |
+| ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ |
+| `$request`                                                                                                   | [Shared\SimpleObject\|Shared\ReadOnlyObjectInput](../../Models/Shared/WeaklyTypedOneOfReadOnlyObjectInput.md) | :heavy_check_mark:                                                                                           | The request object to use for the request.                                                                   |
+| `$serverURL`                                                                                                 | *string*                                                                                                     | :heavy_minus_sign:                                                                                           | An optional server URL to use.                                                                               |
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\RequestBodyReadOnlyUnionResponse](../../Models/Operations/RequestBodyReadOnlyUnionResponse.md)**
+**[?Operations\RequestBodyReadOnlyUnionResponse](../../Models/Operations/RequestBodyReadOnlyUnionResponse.md)**
 
+### Errors
+
+| Error Type          | Status Code         | Content Type        |
+| ------------------- | ------------------- | ------------------- |
+| Errors\SDKException | 4XX, 5XX            | \*/\*               |
 
 ## requestBodyReadWriteOnlyUnion
 
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI;
-use \OpenAPI\OpenAPI\Models\Shared;
+require 'vendor/autoload.php';
 
-$security = new Shared\Security();
-$security->apiKeyAuth = 'Token YOUR_API_KEY';
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Shared;
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
+    ->setSecurity(
+        new Shared\Security(
+            apiKeyAuth: 'Token YOUR_API_KEY',
+        )
+    )
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
     ->build();
 
-try {
-'string'
+$request = new Shared\ReadWriteObject(
+    num1: 1,
+    num2: 2,
+    num3: 4,
+);
 
-    $response = $sdk->requestBodies->requestBodyReadWriteOnlyUnion($request);
+$response = $sdk->requestBodies->requestBodyReadWriteOnlyUnion(
+    request: $request
+);
 
-    if ($response->weaklyTypedOneOfReadWriteObject !== null) {
-        // handle response
-    }
-} catch (Exception $e) {
-    // handle exception
+if ($response->weaklyTypedOneOfReadWriteObject !== null) {
+    // handle response
 }
 ```
 
 ### Parameters
 
-| Parameter                                  | Type                                       | Required                                   | Description                                |
-| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
-| `$request`                                 | [mixed](../../.md)                         | :heavy_check_mark:                         | The request object to use for the request. |
-| `$serverURL`                               | *string*                                   | :heavy_minus_sign:                         | An optional server URL to use.             |
-
+| Parameter                                                                                            | Type                                                                                                 | Required                                                                                             | Description                                                                                          |
+| ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
+| `$request`                                                                                           | [Shared\SimpleObject\|Shared\ReadWriteObject](../../Models/Shared/WeaklyTypedOneOfReadWriteObject.md) | :heavy_check_mark:                                                                                   | The request object to use for the request.                                                           |
+| `$serverURL`                                                                                         | *string*                                                                                             | :heavy_minus_sign:                                                                                   | An optional server URL to use.                                                                       |
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\RequestBodyReadWriteOnlyUnionResponse](../../Models/Operations/RequestBodyReadWriteOnlyUnionResponse.md)**
+**[?Operations\RequestBodyReadWriteOnlyUnionResponse](../../Models/Operations/RequestBodyReadWriteOnlyUnionResponse.md)**
 
+### Errors
+
+| Error Type          | Status Code         | Content Type        |
+| ------------------- | ------------------- | ------------------- |
+| Errors\SDKException | 4XX, 5XX            | \*/\*               |
 
 ## requestBodyWriteOnly
 
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI;
-use \OpenAPI\OpenAPI\Models\Shared;
+require 'vendor/autoload.php';
 
-$security = new Shared\Security();
-$security->apiKeyAuth = 'Token YOUR_API_KEY';
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Shared;
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
+    ->setSecurity(
+        new Shared\Security(
+            apiKeyAuth: 'Token YOUR_API_KEY',
+        )
+    )
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
     ->build();
 
-try {
-    $request = new Shared\WriteOnlyObject();
-    $request->bool = false;
-    $request->num = 3888.42;
-    $request->string = 'string';
+$request = new Shared\WriteOnlyObject(
+    bool: true,
+    num: 1,
+    string: 'hello',
+);
 
-    $response = $sdk->requestBodies->requestBodyWriteOnly($request);
+$response = $sdk->requestBodies->requestBodyWriteOnly(
+    request: $request
+);
 
-    if ($response->readOnlyObject !== null) {
-        // handle response
-    }
-} catch (Exception $e) {
-    // handle exception
+if ($response->readOnlyObject !== null) {
+    // handle response
 }
 ```
 
 ### Parameters
 
-| Parameter                                                                                | Type                                                                                     | Required                                                                                 | Description                                                                              |
-| ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
-| `$request`                                                                               | [\OpenAPI\OpenAPI\Models\Shared\WriteOnlyObject](../../Models/Shared/WriteOnlyObject.md) | :heavy_check_mark:                                                                       | The request object to use for the request.                                               |
-| `$serverURL`                                                                             | *string*                                                                                 | :heavy_minus_sign:                                                                       | An optional server URL to use.                                                           |
-
+| Parameter                                                        | Type                                                             | Required                                                         | Description                                                      |
+| ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
+| `$request`                                                       | [Shared\WriteOnlyObject](../../Models/Shared/WriteOnlyObject.md) | :heavy_check_mark:                                               | The request object to use for the request.                       |
+| `$serverURL`                                                     | *string*                                                         | :heavy_minus_sign:                                               | An optional server URL to use.                                   |
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\RequestBodyWriteOnlyResponse](../../Models/Operations/RequestBodyWriteOnlyResponse.md)**
+**[?Operations\RequestBodyWriteOnlyResponse](../../Models/Operations/RequestBodyWriteOnlyResponse.md)**
 
+### Errors
+
+| Error Type          | Status Code         | Content Type        |
+| ------------------- | ------------------- | ------------------- |
+| Errors\SDKException | 4XX, 5XX            | \*/\*               |
 
 ## requestBodyWriteOnlyOutput
 
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI;
-use \OpenAPI\OpenAPI\Models\Shared;
+require 'vendor/autoload.php';
 
-$security = new Shared\Security();
-$security->apiKeyAuth = 'Token YOUR_API_KEY';
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Shared;
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
+    ->setSecurity(
+        new Shared\Security(
+            apiKeyAuth: 'Token YOUR_API_KEY',
+        )
+    )
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
     ->build();
 
-try {
-    $request = new Shared\WriteOnlyObject();
-    $request->bool = false;
-    $request->num = 3867.69;
-    $request->string = 'string';
+$request = new Shared\WriteOnlyObject(
+    bool: true,
+    num: 1,
+    string: 'hello',
+);
 
-    $response = $sdk->requestBodies->requestBodyWriteOnlyOutput($request);
+$response = $sdk->requestBodies->requestBodyWriteOnlyOutput(
+    request: $request
+);
 
-    if ($response->writeOnlyObject !== null) {
-        // handle response
-    }
-} catch (Exception $e) {
-    // handle exception
+if ($response->writeOnlyObject !== null) {
+    // handle response
 }
 ```
 
 ### Parameters
 
-| Parameter                                                                                | Type                                                                                     | Required                                                                                 | Description                                                                              |
-| ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
-| `$request`                                                                               | [\OpenAPI\OpenAPI\Models\Shared\WriteOnlyObject](../../Models/Shared/WriteOnlyObject.md) | :heavy_check_mark:                                                                       | The request object to use for the request.                                               |
-| `$serverURL`                                                                             | *string*                                                                                 | :heavy_minus_sign:                                                                       | An optional server URL to use.                                                           |
-
+| Parameter                                                        | Type                                                             | Required                                                         | Description                                                      |
+| ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- | ---------------------------------------------------------------- |
+| `$request`                                                       | [Shared\WriteOnlyObject](../../Models/Shared/WriteOnlyObject.md) | :heavy_check_mark:                                               | The request object to use for the request.                       |
+| `$serverURL`                                                     | *string*                                                         | :heavy_minus_sign:                                               | An optional server URL to use.                                   |
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\RequestBodyWriteOnlyOutputResponse](../../Models/Operations/RequestBodyWriteOnlyOutputResponse.md)**
+**[?Operations\RequestBodyWriteOnlyOutputResponse](../../Models/Operations/RequestBodyWriteOnlyOutputResponse.md)**
 
+### Errors
+
+| Error Type          | Status Code         | Content Type        |
+| ------------------- | ------------------- | ------------------- |
+| Errors\SDKException | 4XX, 5XX            | \*/\*               |
 
 ## requestBodyWriteOnlyUnion
 
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI;
-use \OpenAPI\OpenAPI\Models\Shared;
+require 'vendor/autoload.php';
 
-$security = new Shared\Security();
-$security->apiKeyAuth = 'Token YOUR_API_KEY';
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Shared;
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
+    ->setSecurity(
+        new Shared\Security(
+            apiKeyAuth: 'Token YOUR_API_KEY',
+        )
+    )
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
     ->build();
 
-try {
-'string'
+$request = new Shared\WriteOnlyObject(
+    bool: true,
+    num: 1,
+    string: 'hello',
+);
 
-    $response = $sdk->requestBodies->requestBodyWriteOnlyUnion($request);
+$response = $sdk->requestBodies->requestBodyWriteOnlyUnion(
+    request: $request
+);
 
-    if ($response->weaklyTypedOneOfWriteOnlyObject !== null) {
-        // handle response
-    }
-} catch (Exception $e) {
-    // handle exception
+if ($response->weaklyTypedOneOfWriteOnlyObject !== null) {
+    // handle response
 }
 ```
 
 ### Parameters
 
-| Parameter                                  | Type                                       | Required                                   | Description                                |
-| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
-| `$request`                                 | [mixed](../../.md)                         | :heavy_check_mark:                         | The request object to use for the request. |
-| `$serverURL`                               | *string*                                   | :heavy_minus_sign:                         | An optional server URL to use.             |
-
+| Parameter                                                                                            | Type                                                                                                 | Required                                                                                             | Description                                                                                          |
+| ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
+| `$request`                                                                                           | [Shared\SimpleObject\|Shared\WriteOnlyObject](../../Models/Shared/WeaklyTypedOneOfWriteOnlyObject.md) | :heavy_check_mark:                                                                                   | The request object to use for the request.                                                           |
+| `$serverURL`                                                                                         | *string*                                                                                             | :heavy_minus_sign:                                                                                   | An optional server URL to use.                                                                       |
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\RequestBodyWriteOnlyUnionResponse](../../Models/Operations/RequestBodyWriteOnlyUnionResponse.md)**
+**[?Operations\RequestBodyWriteOnlyUnionResponse](../../Models/Operations/RequestBodyWriteOnlyUnionResponse.md)**
 
+### Errors
+
+| Error Type          | Status Code         | Content Type        |
+| ------------------- | ------------------- | ------------------- |
+| Errors\SDKException | 4XX, 5XX            | \*/\*               |

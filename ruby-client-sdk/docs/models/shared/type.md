@@ -3,6 +3,6 @@
 
 ## Values
 
-| Name   | Value  |
-| ------ | ------ |
-| `OBJ1` | obj1   |
+| Name              | Value             |
+| ----------------- | ----------------- |
+| `WEBHOOK_CREATED` | webhook.created   |
