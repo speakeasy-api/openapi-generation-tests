@@ -2243,6 +2243,42 @@ paths:
                       - X-Header-Array
                 required:
                   - headers
+  /anything/headers/nil:
+    get:
+      x-speakeasy-max-method-params: 0
+      operationId: headerParamsNil
+      tags:
+        - parameters
+      parameters:
+        - name: Optional-Header
+          in: header
+          required: false
+          schema:
+            type: string
+        - name: Nullable-Header
+          in: header
+          required: true
+          schema:
+            type: [string, "null"]          
+        - name: Optional-Nullable-Header
+          in: header
+          required: false
+          schema:
+            type: [string, "null"]
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: res
+                type: object
+                properties:
+                  headers:
+                    type: object
+                    additionalProperties: true
+                required:
+                  - headers
   /anything/inferredOptionalRequestWrapper:
     get:
       # We don't want to flatten because we are testing when the request wrapper
@@ -2519,6 +2555,31 @@ paths:
                 example:
                   json:
                     str: "testvalue"
+  /anything/requestBodies/post/wildcard:
+    post:
+      operationId: requestBodyPostWildcard
+      tags:
+        - requestBodies
+      requestBody:
+        content:
+          "*/*":
+            schema:
+              type: string
+              format: binary
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: res
+                type: object
+                properties:
+                  headers:
+                    type: object
+                    additionalProperties: true
+                  data:
+                    type: string
   /requestbody#array:
     post:
       operationId: requestBodyPostApplicationJsonArray
