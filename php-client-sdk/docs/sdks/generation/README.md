@@ -1,5 +1,5 @@
 # Generation
-
+(*generation*)
 
 ## Overview
 
@@ -10,13 +10,15 @@ Endpoints for purely testing valid generation behavior.
 * [anchorTypesGet](#anchortypesget)
 * [arrayCircularReferenceGet](#arraycircularreferenceget)
 * [circularReferenceGet](#circularreferenceget)
+* [circularReferenceOneDegree](#circularreferenceonedegree) - A reference cycle that spans three models separated by one degree
 * [dateParamWithDefault](#dateparamwithdefault)
 * [dateTimeParamWithDefault](#datetimeparamwithdefault)
 * [decimalParamWithDefault](#decimalparamwithdefault)
 * [deprecatedFieldInSchemaPost](#deprecatedfieldinschemapost)
 * [deprecatedObjectInSchemaGet](#deprecatedobjectinschemaget)
 * [~~deprecatedOperationNoCommentsGet~~](#deprecatedoperationnocommentsget) - deprecatedOperationNoCommentsGet :warning: **Deprecated**
-* [~~deprecatedOperationWithCommentsGet~~](#deprecatedoperationwithcommentsget) - This is an endpoint setup to test deprecation with comments :warning: **Deprecated** Use `simplePathParameterObjects` instead.
+* [~~deprecatedOperationWithCommentsGet~~](#deprecatedoperationwithcommentsget) - This is an endpoint setup to test deprecation with comments :warning: **Deprecated** Use [simplePathParameterObjects](docs/sdks/parameters/README.md#simplepathparameterobjects) instead.
+* [~~deprecatedOperationWithMultilineCommentGet~~](#deprecatedoperationwithmultilinecommentget) - This is an endpoint setup to test deprecation with multiline comments :warning: **Deprecated** Use [simplePathParameterObjects](docs/sdks/parameters/README.md#simplepathparameterobjects) instead.
 * [emptyObjectGet](#emptyobjectget)
 * [emptyResponseObjectWithCommentGet](#emptyresponseobjectwithcommentget)
 * [globalNameOverridden](#globalnameoverridden)
@@ -25,6 +27,11 @@ Endpoints for purely testing valid generation behavior.
 * [nameOverride](#nameoverride)
 * [objectCircularReferenceGet](#objectcircularreferenceget)
 * [oneOfCircularReferenceGet](#oneofcircularreferenceget)
+* [reactHookCombinedOptions](#reacthookcombinedoptions)
+* [reactHookDisabled](#reacthookdisabled)
+* [reactHookGetAsMutation](#reacthookgetasmutation)
+* [reactHookPostAsQuery](#reacthookpostasquery)
+* [reactHookRenamed](#reacthookrenamed)
 * [typedParameterGenerationGet](#typedparametergenerationget)
 * [usageExamplePost](#usageexamplepost) - An operation used for testing usage examples
 
@@ -33,143 +40,217 @@ Endpoints for purely testing valid generation behavior.
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI;
-use \OpenAPI\OpenAPI\Models\Shared;
+require 'vendor/autoload.php';
 
-$security = new Shared\Security();
-$security->apiKeyAuth = 'Token YOUR_API_KEY';
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Shared;
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
+    ->setSecurity(
+        new Shared\Security(
+            apiKeyAuth: 'Token YOUR_API_KEY',
+        )
+    )
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
     ->build();
 
-try {
-    $response = $sdk->generation->anchorTypesGet();
 
-    if ($response->typeFromAnchor !== null) {
-        // handle response
-    }
-} catch (Exception $e) {
-    // handle exception
+
+$response = $sdk->generation->anchorTypesGet(
+
+);
+
+if ($response->typeFromAnchor !== null) {
+    // handle response
 }
 ```
 
-
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\AnchorTypesGetResponse](../../Models/Operations/AnchorTypesGetResponse.md)**
+**[?Operations\AnchorTypesGetResponse](../../Models/Operations/AnchorTypesGetResponse.md)**
 
+### Errors
+
+| Error Type          | Status Code         | Content Type        |
+| ------------------- | ------------------- | ------------------- |
+| Errors\SDKException | 4XX, 5XX            | \*/\*               |
 
 ## arrayCircularReferenceGet
 
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI;
-use \OpenAPI\OpenAPI\Models\Shared;
+require 'vendor/autoload.php';
 
-$security = new Shared\Security();
-$security->apiKeyAuth = 'Token YOUR_API_KEY';
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Shared;
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
+    ->setSecurity(
+        new Shared\Security(
+            apiKeyAuth: 'Token YOUR_API_KEY',
+        )
+    )
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
     ->build();
 
-try {
-    $response = $sdk->generation->arrayCircularReferenceGet();
 
-    if ($response->arrayCircularReferenceObject !== null) {
-        // handle response
-    }
-} catch (Exception $e) {
-    // handle exception
+
+$response = $sdk->generation->arrayCircularReferenceGet(
+
+);
+
+if ($response->arrayCircularReferenceObject !== null) {
+    // handle response
 }
 ```
 
-
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\ArrayCircularReferenceGetResponse](../../Models/Operations/ArrayCircularReferenceGetResponse.md)**
+**[?Operations\ArrayCircularReferenceGetResponse](../../Models/Operations/ArrayCircularReferenceGetResponse.md)**
 
+### Errors
+
+| Error Type          | Status Code         | Content Type        |
+| ------------------- | ------------------- | ------------------- |
+| Errors\SDKException | 4XX, 5XX            | \*/\*               |
 
 ## circularReferenceGet
 
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI;
-use \OpenAPI\OpenAPI\Models\Shared;
+require 'vendor/autoload.php';
 
-$security = new Shared\Security();
-$security->apiKeyAuth = 'Token YOUR_API_KEY';
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Shared;
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
+    ->setSecurity(
+        new Shared\Security(
+            apiKeyAuth: 'Token YOUR_API_KEY',
+        )
+    )
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
     ->build();
 
-try {
-    $response = $sdk->generation->circularReferenceGet();
 
-    if ($response->validCircularReferenceObject !== null) {
-        // handle response
-    }
-} catch (Exception $e) {
-    // handle exception
+
+$response = $sdk->generation->circularReferenceGet(
+
+);
+
+if ($response->validCircularReferenceObject !== null) {
+    // handle response
 }
 ```
 
+### Response
+
+**[?Operations\CircularReferenceGetResponse](../../Models/Operations/CircularReferenceGetResponse.md)**
+
+### Errors
+
+| Error Type          | Status Code         | Content Type        |
+| ------------------- | ------------------- | ------------------- |
+| Errors\SDKException | 4XX, 5XX            | \*/\*               |
+
+## circularReferenceOneDegree
+
+A reference cycle that spans three models separated by one degree
+
+### Example Usage
+
+```php
+declare(strict_types=1);
+
+require 'vendor/autoload.php';
+
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Shared;
+
+$sdk = OpenAPI\SDK::builder()
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->build();
+
+$request = new Shared\FigmaComponentNode();
+
+$response = $sdk->generation->circularReferenceOneDegree(
+    request: $request
+);
+
+if ($response->object !== null) {
+    // handle response
+}
+```
+
+### Parameters
+
+| Parameter                                                              | Type                                                                   | Required                                                               | Description                                                            |
+| ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
+| `$request`                                                             | [Shared\FigmaComponentNode](../../Models/Shared/FigmaComponentNode.md) | :heavy_check_mark:                                                     | The request object to use for the request.                             |
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\CircularReferenceGetResponse](../../Models/Operations/CircularReferenceGetResponse.md)**
+**[?Operations\CircularReferenceOneDegreeResponse](../../Models/Operations/CircularReferenceOneDegreeResponse.md)**
 
+### Errors
+
+| Error Type          | Status Code         | Content Type        |
+| ------------------- | ------------------- | ------------------- |
+| Errors\SDKException | 4XX, 5XX            | \*/\*               |
 
 ## dateParamWithDefault
 
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI;
-use \OpenAPI\OpenAPI\Models\Shared;
-use \OpenAPI\OpenAPI\Models\Operations;
+require 'vendor/autoload.php';
 
-$security = new Shared\Security();
-$security->apiKeyAuth = 'Token YOUR_API_KEY';
+use Brick\DateTime\LocalDate;
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Shared;
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
+    ->setSecurity(
+        new Shared\Security(
+            apiKeyAuth: 'Token YOUR_API_KEY',
+        )
+    )
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
     ->build();
 
-try {
 
 
-    $response = $sdk->generation->dateParamWithDefault(DateTime::createFromFormat('Y-m-d', '2021-11-30'));
+$response = $sdk->generation->dateParamWithDefault(
+    dateInput: LocalDate::parse('2023-10-13')
+);
 
-    if ($response->statusCode === 200) {
-        // handle response
-    }
-} catch (Exception $e) {
-    // handle exception
+if ($response->statusCode === 200) {
+    // handle response
 }
 ```
 
@@ -179,43 +260,49 @@ try {
 | ------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------- |
 | `dateInput`                                                   | [\DateTime](https://www.php.net/manual/en/class.datetime.php) | :heavy_check_mark:                                            | A date parameter with a default value                         |
 
-
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\DateParamWithDefaultResponse](../../Models/Operations/DateParamWithDefaultResponse.md)**
+**[?Operations\DateParamWithDefaultResponse](../../Models/Operations/DateParamWithDefaultResponse.md)**
 
+### Errors
+
+| Error Type          | Status Code         | Content Type        |
+| ------------------- | ------------------- | ------------------- |
+| Errors\SDKException | 4XX, 5XX            | \*/\*               |
 
 ## dateTimeParamWithDefault
 
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI;
-use \OpenAPI\OpenAPI\Models\Shared;
-use \OpenAPI\OpenAPI\Models\Operations;
+require 'vendor/autoload.php';
 
-$security = new Shared\Security();
-$security->apiKeyAuth = 'Token YOUR_API_KEY';
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Shared;
+use OpenAPI\OpenAPI\Utils;
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
+    ->setSecurity(
+        new Shared\Security(
+            apiKeyAuth: 'Token YOUR_API_KEY',
+        )
+    )
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
     ->build();
 
-try {
 
 
-    $response = $sdk->generation->dateTimeParamWithDefault(DateTime::createFromFormat('Y-m-d\TH:i:s+', '2023-02-09T21:53:21.077Z'));
+$response = $sdk->generation->dateTimeParamWithDefault(
+    dateTimeInput: Utils\Utils::parseDateTime('2023-10-13T12:42:42.999+00:00')
+);
 
-    if ($response->statusCode === 200) {
-        // handle response
-    }
-} catch (Exception $e) {
-    // handle exception
+if ($response->statusCode === 200) {
+    // handle response
 }
 ```
 
@@ -225,43 +312,49 @@ try {
 | ------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------- |
 | `dateTimeInput`                                               | [\DateTime](https://www.php.net/manual/en/class.datetime.php) | :heavy_check_mark:                                            | A date time parameter with a default value                    |
 
-
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\DateTimeParamWithDefaultResponse](../../Models/Operations/DateTimeParamWithDefaultResponse.md)**
+**[?Operations\DateTimeParamWithDefaultResponse](../../Models/Operations/DateTimeParamWithDefaultResponse.md)**
 
+### Errors
+
+| Error Type          | Status Code         | Content Type        |
+| ------------------- | ------------------- | ------------------- |
+| Errors\SDKException | 4XX, 5XX            | \*/\*               |
 
 ## decimalParamWithDefault
 
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI;
-use \OpenAPI\OpenAPI\Models\Shared;
-use \OpenAPI\OpenAPI\Models\Operations;
+require 'vendor/autoload.php';
 
-$security = new Shared\Security();
-$security->apiKeyAuth = 'Token YOUR_API_KEY';
+use Brick\Math\BigDecimal;
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Shared;
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
+    ->setSecurity(
+        new Shared\Security(
+            apiKeyAuth: 'Token YOUR_API_KEY',
+        )
+    )
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
     ->build();
 
-try {
 
 
-    $response = $sdk->generation->decimalParamWithDefault(4060.06);
+$response = $sdk->generation->decimalParamWithDefault(
+    decimalInput: BigDecimal::of('903275809834567300000')
+);
 
-    if ($response->statusCode === 200) {
-        // handle response
-    }
-} catch (Exception $e) {
-    // handle exception
+if ($response->statusCode === 200) {
+    // handle response
 }
 ```
 
@@ -269,97 +362,113 @@ try {
 
 | Parameter                                | Type                                     | Required                                 | Description                              |
 | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
-| `decimalInput`                           | *float*                                  | :heavy_check_mark:                       | A decimal parameter with a default value |
-
+| `decimalInput`                           | *\Brick\Math\BigDecimal*                 | :heavy_check_mark:                       | A decimal parameter with a default value |
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\DecimalParamWithDefaultResponse](../../Models/Operations/DecimalParamWithDefaultResponse.md)**
+**[?Operations\DecimalParamWithDefaultResponse](../../Models/Operations/DecimalParamWithDefaultResponse.md)**
 
+### Errors
+
+| Error Type          | Status Code         | Content Type        |
+| ------------------- | ------------------- | ------------------- |
+| Errors\SDKException | 4XX, 5XX            | \*/\*               |
 
 ## deprecatedFieldInSchemaPost
 
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI;
-use \OpenAPI\OpenAPI\Models\Shared;
+require 'vendor/autoload.php';
 
-$security = new Shared\Security();
-$security->apiKeyAuth = 'Token YOUR_API_KEY';
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Shared;
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
+    ->setSecurity(
+        new Shared\Security(
+            apiKeyAuth: 'Token YOUR_API_KEY',
+        )
+    )
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
     ->build();
 
-try {
-    $request = new Shared\DeprecatedFieldInObject();
-    $request->deprecatedField = 'string';
-    $request->newField = 'string';
+$request = new Shared\DeprecatedFieldInObject();
 
-    $response = $sdk->generation->deprecatedFieldInSchemaPost($request);
+$response = $sdk->generation->deprecatedFieldInSchemaPost(
+    request: $request
+);
 
-    if ($response->statusCode === 200) {
-        // handle response
-    }
-} catch (Exception $e) {
-    // handle exception
+if ($response->statusCode === 200) {
+    // handle response
 }
 ```
 
 ### Parameters
 
-| Parameter                                                                                                | Type                                                                                                     | Required                                                                                                 | Description                                                                                              |
-| -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
-| `$request`                                                                                               | [\OpenAPI\OpenAPI\Models\Shared\DeprecatedFieldInObject](../../Models/Shared/DeprecatedFieldInObject.md) | :heavy_check_mark:                                                                                       | The request object to use for the request.                                                               |
-
+| Parameter                                                                        | Type                                                                             | Required                                                                         | Description                                                                      |
+| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
+| `$request`                                                                       | [Shared\DeprecatedFieldInObject](../../Models/Shared/DeprecatedFieldInObject.md) | :heavy_check_mark:                                                               | The request object to use for the request.                                       |
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\DeprecatedFieldInSchemaPostResponse](../../Models/Operations/DeprecatedFieldInSchemaPostResponse.md)**
+**[?Operations\DeprecatedFieldInSchemaPostResponse](../../Models/Operations/DeprecatedFieldInSchemaPostResponse.md)**
 
+### Errors
+
+| Error Type          | Status Code         | Content Type        |
+| ------------------- | ------------------- | ------------------- |
+| Errors\SDKException | 4XX, 5XX            | \*/\*               |
 
 ## deprecatedObjectInSchemaGet
 
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI;
-use \OpenAPI\OpenAPI\Models\Shared;
+require 'vendor/autoload.php';
 
-$security = new Shared\Security();
-$security->apiKeyAuth = 'Token YOUR_API_KEY';
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Shared;
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
+    ->setSecurity(
+        new Shared\Security(
+            apiKeyAuth: 'Token YOUR_API_KEY',
+        )
+    )
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
     ->build();
 
-try {
-    $response = $sdk->generation->deprecatedObjectInSchemaGet();
 
-    if ($response->object !== null) {
-        // handle response
-    }
-} catch (Exception $e) {
-    // handle exception
+
+$response = $sdk->generation->deprecatedObjectInSchemaGet(
+
+);
+
+if ($response->object !== null) {
+    // handle response
 }
 ```
 
-
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\DeprecatedObjectInSchemaGetResponse](../../Models/Operations/DeprecatedObjectInSchemaGetResponse.md)**
+**[?Operations\DeprecatedObjectInSchemaGetResponse](../../Models/Operations/DeprecatedObjectInSchemaGetResponse.md)**
 
+### Errors
+
+| Error Type          | Status Code         | Content Type        |
+| ------------------- | ------------------- | ------------------- |
+| Errors\SDKException | 4XX, 5XX            | \*/\*               |
 
 ## ~~deprecatedOperationNoCommentsGet~~
 
@@ -370,32 +479,33 @@ deprecatedOperationNoCommentsGet
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI;
-use \OpenAPI\OpenAPI\Models\Shared;
-use \OpenAPI\OpenAPI\Models\Operations;
+require 'vendor/autoload.php';
 
-$security = new Shared\Security();
-$security->apiKeyAuth = 'Token YOUR_API_KEY';
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Shared;
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
+    ->setSecurity(
+        new Shared\Security(
+            apiKeyAuth: 'Token YOUR_API_KEY',
+        )
+    )
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
     ->build();
 
-try {
 
 
-    $response = $sdk->generation->deprecatedOperationNoCommentsGet('string');
+$response = $sdk->generation->deprecatedOperationNoCommentsGet(
+    deprecatedParameter: '<value>'
+);
 
-    if ($response->statusCode === 200) {
-        // handle response
-    }
-} catch (Exception $e) {
-    // handle exception
+if ($response->statusCode === 200) {
+    // handle response
 }
 ```
 
@@ -403,13 +513,17 @@ try {
 
 | Parameter                                                                                                               | Type                                                                                                                    | Required                                                                                                                | Description                                                                                                             |
 | ----------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
-| `deprecatedParameter`                                                                                                   | *string*                                                                                                                | :heavy_minus_sign:                                                                                                      | : warning: ** DEPRECATED **: This will be removed in a future release, please migrate away from it as soon as possible. |
-
+| `deprecatedParameter`                                                                                                   | *?string*                                                                                                               | :heavy_minus_sign:                                                                                                      | : warning: ** DEPRECATED **: This will be removed in a future release, please migrate away from it as soon as possible. |
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\DeprecatedOperationNoCommentsGetResponse](../../Models/Operations/DeprecatedOperationNoCommentsGetResponse.md)**
+**[?Operations\DeprecatedOperationNoCommentsGetResponse](../../Models/Operations/DeprecatedOperationNoCommentsGetResponse.md)**
 
+### Errors
+
+| Error Type          | Status Code         | Content Type        |
+| ------------------- | ------------------- | ------------------- |
+| Errors\SDKException | 4XX, 5XX            | \*/\*               |
 
 ## ~~deprecatedOperationWithCommentsGet~~
 
@@ -420,32 +534,35 @@ This is an endpoint setup to test deprecation with comments
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI;
-use \OpenAPI\OpenAPI\Models\Shared;
-use \OpenAPI\OpenAPI\Models\Operations;
+require 'vendor/autoload.php';
 
-$security = new Shared\Security();
-$security->apiKeyAuth = 'Token YOUR_API_KEY';
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Shared;
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
+    ->setSecurity(
+        new Shared\Security(
+            apiKeyAuth: 'Token YOUR_API_KEY',
+        )
+    )
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
     ->build();
 
-try {
 
 
-    $response = $sdk->generation->deprecatedOperationWithCommentsGet('string', 'string');
+$response = $sdk->generation->deprecatedOperationWithCommentsGet(
+    deprecatedParameter: '<value>',
+    newParameter: '<value>'
 
-    if ($response->statusCode === 200) {
-        // handle response
-    }
-} catch (Exception $e) {
-    // handle exception
+);
+
+if ($response->statusCode === 200) {
+    // handle response
 }
 ```
 
@@ -453,393 +570,795 @@ try {
 
 | Parameter                                                                                                        | Type                                                                                                             | Required                                                                                                         | Description                                                                                                      |
 | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
-| `deprecatedParameter`                                                                                            | *string*                                                                                                         | :heavy_minus_sign:                                                                                               | : warning: ** DEPRECATED **: This parameter is deprecated. Use newParameter instead.<br/><br/>This is a string parameter |
-| `newParameter`                                                                                                   | *string*                                                                                                         | :heavy_minus_sign:                                                                                               | This is a string parameter                                                                                       |
-
+| `deprecatedParameter`                                                                                            | *?string*                                                                                                        | :heavy_minus_sign:                                                                                               | : warning: ** DEPRECATED **: This parameter is deprecated. Use newParameter instead.<br/><br/>This is a string parameter |
+| `newParameter`                                                                                                   | *?string*                                                                                                        | :heavy_minus_sign:                                                                                               | This is a string parameter                                                                                       |
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\DeprecatedOperationWithCommentsGetResponse](../../Models/Operations/DeprecatedOperationWithCommentsGetResponse.md)**
+**[?Operations\DeprecatedOperationWithCommentsGetResponse](../../Models/Operations/DeprecatedOperationWithCommentsGetResponse.md)**
 
+### Errors
+
+| Error Type          | Status Code         | Content Type        |
+| ------------------- | ------------------- | ------------------- |
+| Errors\SDKException | 4XX, 5XX            | \*/\*               |
+
+## ~~deprecatedOperationWithMultilineCommentGet~~
+
+This is an endpoint setup to test deprecation with multiline comments
+
+> :warning: **DEPRECATED**: This operation is deprecated.
+Its deprecation message has newlines.
+. Use `simplePathParameterObjects` instead.
+
+### Example Usage
+
+```php
+declare(strict_types=1);
+
+require 'vendor/autoload.php';
+
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Shared;
+
+$sdk = OpenAPI\SDK::builder()
+    ->setSecurity(
+        new Shared\Security(
+            apiKeyAuth: 'Token YOUR_API_KEY',
+        )
+    )
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->build();
+
+
+
+$response = $sdk->generation->deprecatedOperationWithMultilineCommentGet(
+    deprecatedParameter: '<value>',
+    newParameter: '<value>'
+
+);
+
+if ($response->statusCode === 200) {
+    // handle response
+}
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                | Type                                                                                                                                                     | Required                                                                                                                                                 | Description                                                                                                                                              |
+| -------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `deprecatedParameter`                                                                                                                                    | *?string*                                                                                                                                                | :heavy_minus_sign:                                                                                                                                       | : warning: ** DEPRECATED **: This parameter is deprecated.<br/>Its deprecation message has newlines.<br/>. Use newParameter instead.<br/><br/>This is a string parameter |
+| `newParameter`                                                                                                                                           | *?string*                                                                                                                                                | :heavy_minus_sign:                                                                                                                                       | This is a string parameter                                                                                                                               |
+
+### Response
+
+**[?Operations\DeprecatedOperationWithMultilineCommentGetResponse](../../Models/Operations/DeprecatedOperationWithMultilineCommentGetResponse.md)**
+
+### Errors
+
+| Error Type          | Status Code         | Content Type        |
+| ------------------- | ------------------- | ------------------- |
+| Errors\SDKException | 4XX, 5XX            | \*/\*               |
 
 ## emptyObjectGet
 
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI;
-use \OpenAPI\OpenAPI\Models\Shared;
-use \OpenAPI\OpenAPI\Models\Operations;
+require 'vendor/autoload.php';
 
-$security = new Shared\Security();
-$security->apiKeyAuth = 'Token YOUR_API_KEY';
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Shared;
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
+    ->setSecurity(
+        new Shared\Security(
+            apiKeyAuth: 'Token YOUR_API_KEY',
+        )
+    )
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
     ->build();
 
-try {
-    $emptyObject = new Shared\EmptyObjectParam();
+$emptyObject = new Shared\EmptyObjectParam();
 
-    $response = $sdk->generation->emptyObjectGet($emptyObject);
+$response = $sdk->generation->emptyObjectGet(
+    emptyObject: $emptyObject
+);
 
-    if ($response->statusCode === 200) {
-        // handle response
-    }
-} catch (Exception $e) {
-    // handle exception
+if ($response->statusCode === 200) {
+    // handle response
 }
 ```
 
 ### Parameters
 
-| Parameter                                                                                  | Type                                                                                       | Required                                                                                   | Description                                                                                |
-| ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
-| `emptyObject`                                                                              | [\OpenAPI\OpenAPI\Models\Shared\EmptyObjectParam](../../Models/Shared/EmptyObjectParam.md) | :heavy_check_mark:                                                                         | N/A                                                                                        |
-
+| Parameter                                                          | Type                                                               | Required                                                           | Description                                                        |
+| ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ |
+| `emptyObject`                                                      | [Shared\EmptyObjectParam](../../Models/Shared/EmptyObjectParam.md) | :heavy_check_mark:                                                 | N/A                                                                |
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\EmptyObjectGetResponse](../../Models/Operations/EmptyObjectGetResponse.md)**
+**[?Operations\EmptyObjectGetResponse](../../Models/Operations/EmptyObjectGetResponse.md)**
 
+### Errors
+
+| Error Type          | Status Code         | Content Type        |
+| ------------------- | ------------------- | ------------------- |
+| Errors\SDKException | 4XX, 5XX            | \*/\*               |
 
 ## emptyResponseObjectWithCommentGet
 
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI;
-use \OpenAPI\OpenAPI\Models\Shared;
+require 'vendor/autoload.php';
 
-$security = new Shared\Security();
-$security->apiKeyAuth = 'Token YOUR_API_KEY';
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Shared;
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
+    ->setSecurity(
+        new Shared\Security(
+            apiKeyAuth: 'Token YOUR_API_KEY',
+        )
+    )
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
     ->build();
 
-try {
-    $response = $sdk->generation->emptyResponseObjectWithCommentGet();
 
-    if ($response->body !== null) {
-        // handle response
-    }
-} catch (Exception $e) {
-    // handle exception
+
+$response = $sdk->generation->emptyResponseObjectWithCommentGet(
+
+);
+
+if ($response->body !== null) {
+    // handle response
 }
 ```
 
-
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\EmptyResponseObjectWithCommentGetResponse](../../Models/Operations/EmptyResponseObjectWithCommentGetResponse.md)**
+**[?Operations\EmptyResponseObjectWithCommentGetResponse](../../Models/Operations/EmptyResponseObjectWithCommentGetResponse.md)**
 
+### Errors
+
+| Error Type          | Status Code         | Content Type        |
+| ------------------- | ------------------- | ------------------- |
+| Errors\SDKException | 4XX, 5XX            | \*/\*               |
 
 ## globalNameOverridden
 
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI;
-use \OpenAPI\OpenAPI\Models\Shared;
+require 'vendor/autoload.php';
 
-$security = new Shared\Security();
-$security->apiKeyAuth = 'Token YOUR_API_KEY';
+use Brick\DateTime\LocalDate;
+use Brick\Math\BigDecimal;
+use Brick\Math\BigInteger;
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Shared;
+use OpenAPI\OpenAPI\Utils;
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
+    ->setSecurity(
+        new Shared\Security(
+            apiKeyAuth: 'Token YOUR_API_KEY',
+        )
+    )
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
     ->build();
 
-try {
-    $response = $sdk->generation->globalNameOverridden();
+$request = new Shared\SimpleObject(
+    any: 'any',
+    bool: true,
+    date: LocalDate::parse('2020-01-01'),
+    dateTime: Utils\Utils::parseDateTime('2020-01-01T00:00:00.001Z'),
+    enum: Shared\Enum::One,
+    float32: 1.1,
+    int: 1,
+    int32: 1,
+    int32Enum: Shared\Int32Enum::FiftyFive,
+    intEnum: Shared\IntEnum::Second,
+    num: 1.1,
+    str: 'test',
+    bigint: BigInteger::of('8821239038968084'),
+    bigintStr: BigInteger::of('9223372036854775808'),
+    boolOpt: true,
+    decimal: BigDecimal::of('3.141592653589793'),
+    decimalStr: BigDecimal::of('3.14159265358979344719667586'),
+    float64Str: '1.1',
+    int64Str: '100',
+    strOpt: 'testOptional',
+);
 
-    if ($response->object !== null) {
-        // handle response
-    }
-} catch (Exception $e) {
-    // handle exception
+$response = $sdk->generation->globalNameOverridden(
+    request: $request
+);
+
+if ($response->object !== null) {
+    // handle response
 }
 ```
 
+### Parameters
+
+| Parameter                                                  | Type                                                       | Required                                                   | Description                                                |
+| ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- |
+| `$request`                                                 | [Shared\SimpleObject](../../Models/Shared/SimpleObject.md) | :heavy_check_mark:                                         | The request object to use for the request.                 |
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\GetGlobalNameOverrideResponse](../../Models/Operations/GetGlobalNameOverrideResponse.md)**
+**[?Operations\GetGlobalNameOverrideResponse](../../Models/Operations/GetGlobalNameOverrideResponse.md)**
 
+### Errors
+
+| Error Type          | Status Code         | Content Type        |
+| ------------------- | ------------------- | ------------------- |
+| Errors\SDKException | 4XX, 5XX            | \*/\*               |
 
 ## ignoredGenerationGet
 
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI;
-use \OpenAPI\OpenAPI\Models\Shared;
+require 'vendor/autoload.php';
 
-$security = new Shared\Security();
-$security->apiKeyAuth = 'Token YOUR_API_KEY';
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Shared;
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
+    ->setSecurity(
+        new Shared\Security(
+            apiKeyAuth: 'Token YOUR_API_KEY',
+        )
+    )
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
     ->build();
 
-try {
-    $response = $sdk->generation->ignoredGenerationGet();
 
-    if ($response->object !== null) {
-        // handle response
-    }
-} catch (Exception $e) {
-    // handle exception
+
+$response = $sdk->generation->ignoredGenerationGet(
+
+);
+
+if ($response->object !== null) {
+    // handle response
 }
 ```
 
-
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\IgnoredGenerationGetResponse](../../Models/Operations/IgnoredGenerationGetResponse.md)**
+**[?Operations\IgnoredGenerationGetResponse](../../Models/Operations/IgnoredGenerationGetResponse.md)**
 
+### Errors
+
+| Error Type          | Status Code         | Content Type        |
+| ------------------- | ------------------- | ------------------- |
+| Errors\SDKException | 4XX, 5XX            | \*/\*               |
 
 ## ignoresPost
 
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI;
-use \OpenAPI\OpenAPI\Models\Shared;
-use \OpenAPI\OpenAPI\Models\Operations;
+require 'vendor/autoload.php';
 
-$security = new Shared\Security();
-$security->apiKeyAuth = 'Token YOUR_API_KEY';
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Operations;
+use OpenAPI\OpenAPI\Models\Shared;
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
+    ->setSecurity(
+        new Shared\Security(
+            apiKeyAuth: 'Token YOUR_API_KEY',
+        )
+    )
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
     ->build();
 
-try {
-    $requestBody = new Operations\IgnoresPostRequestBody();
-    $requestBody->callbackUrl = 'http://diligent-activist.biz';
-    $requestBody->testProp = 'string';
+$requestBody = new Operations\IgnoresPostRequestBody();
 
-    $response = $sdk->generation->ignoresPost($requestBody, 'string');
+$response = $sdk->generation->ignoresPost(
+    requestBody: $requestBody,
+    testParam: '<value>'
 
-    if ($response->httpBinSimpleJsonObject !== null) {
-        // handle response
-    }
-} catch (Exception $e) {
-    // handle exception
+);
+
+if ($response->httpBinSimpleJsonObject !== null) {
+    // handle response
 }
 ```
 
 ### Parameters
 
-| Parameter                                                                                                      | Type                                                                                                           | Required                                                                                                       | Description                                                                                                    |
-| -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
-| `requestBody`                                                                                                  | [\OpenAPI\OpenAPI\Models\Operations\IgnoresPostRequestBody](../../Models/Operations/IgnoresPostRequestBody.md) | :heavy_check_mark:                                                                                             | N/A                                                                                                            |
-| `testParam`                                                                                                    | *string*                                                                                                       | :heavy_minus_sign:                                                                                             | N/A                                                                                                            |
-
+| Parameter                                                                              | Type                                                                                   | Required                                                                               | Description                                                                            |
+| -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| `requestBody`                                                                          | [Operations\IgnoresPostRequestBody](../../Models/Operations/IgnoresPostRequestBody.md) | :heavy_check_mark:                                                                     | N/A                                                                                    |
+| `testParam`                                                                            | *?string*                                                                              | :heavy_minus_sign:                                                                     | N/A                                                                                    |
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\IgnoresPostResponse](../../Models/Operations/IgnoresPostResponse.md)**
+**[?Operations\IgnoresPostResponse](../../Models/Operations/IgnoresPostResponse.md)**
 
+### Errors
+
+| Error Type          | Status Code         | Content Type        |
+| ------------------- | ------------------- | ------------------- |
+| Errors\SDKException | 4XX, 5XX            | \*/\*               |
 
 ## nameOverride
 
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI;
-use \OpenAPI\OpenAPI\Models\Shared;
-use \OpenAPI\OpenAPI\Models\Operations;
+require 'vendor/autoload.php';
 
-$security = new Shared\Security();
-$security->apiKeyAuth = 'Token YOUR_API_KEY';
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Operations;
+use OpenAPI\OpenAPI\Models\Shared;
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
+    ->setSecurity(
+        new Shared\Security(
+            apiKeyAuth: 'Token YOUR_API_KEY',
+        )
+    )
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
     ->build();
 
-try {
 
 
-    $response = $sdk->generation->nameOverride(Operations\EnumNameOverride::Value3, 'example');
+$response = $sdk->generation->nameOverride(
+    testEnumQueryParam: Operations\EnumNameOverride::Value3,
+    testQueryParam: 'example'
 
-    if ($response->overriddenResponse !== null) {
-        // handle response
-    }
-} catch (Exception $e) {
-    // handle exception
+);
+
+if ($response->overriddenResponse !== null) {
+    // handle response
 }
 ```
 
 ### Parameters
 
-| Parameter                                                                                          | Type                                                                                               | Required                                                                                           | Description                                                                                        | Example                                                                                            |
-| -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
-| `testEnumQueryParam`                                                                               | [\OpenAPI\OpenAPI\Models\Operations\EnumNameOverride](../../Models/Operations/EnumNameOverride.md) | :heavy_check_mark:                                                                                 | An enum type                                                                                       | value3                                                                                             |
-| `testQueryParam`                                                                                   | *string*                                                                                           | :heavy_check_mark:                                                                                 | N/A                                                                                                | example                                                                                            |
-
+| Parameter                                                                  | Type                                                                       | Required                                                                   | Description                                                                | Example                                                                    |
+| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| `testEnumQueryParam`                                                       | [Operations\EnumNameOverride](../../Models/Operations/EnumNameOverride.md) | :heavy_check_mark:                                                         | An enum type                                                               | value3                                                                     |
+| `testQueryParam`                                                           | *string*                                                                   | :heavy_check_mark:                                                         | N/A                                                                        | example                                                                    |
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\NameOverrideGetResponse](../../Models/Operations/NameOverrideGetResponse.md)**
+**[?Operations\NameOverrideGetResponse](../../Models/Operations/NameOverrideGetResponse.md)**
 
+### Errors
+
+| Error Type          | Status Code         | Content Type        |
+| ------------------- | ------------------- | ------------------- |
+| Errors\SDKException | 4XX, 5XX            | \*/\*               |
 
 ## objectCircularReferenceGet
 
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI;
-use \OpenAPI\OpenAPI\Models\Shared;
+require 'vendor/autoload.php';
 
-$security = new Shared\Security();
-$security->apiKeyAuth = 'Token YOUR_API_KEY';
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Shared;
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
+    ->setSecurity(
+        new Shared\Security(
+            apiKeyAuth: 'Token YOUR_API_KEY',
+        )
+    )
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
     ->build();
 
-try {
-    $response = $sdk->generation->objectCircularReferenceGet();
 
-    if ($response->objectCircularReferenceObject !== null) {
-        // handle response
-    }
-} catch (Exception $e) {
-    // handle exception
+
+$response = $sdk->generation->objectCircularReferenceGet(
+
+);
+
+if ($response->objectCircularReferenceObject !== null) {
+    // handle response
 }
 ```
 
-
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\ObjectCircularReferenceGetResponse](../../Models/Operations/ObjectCircularReferenceGetResponse.md)**
+**[?Operations\ObjectCircularReferenceGetResponse](../../Models/Operations/ObjectCircularReferenceGetResponse.md)**
 
+### Errors
+
+| Error Type          | Status Code         | Content Type        |
+| ------------------- | ------------------- | ------------------- |
+| Errors\SDKException | 4XX, 5XX            | \*/\*               |
 
 ## oneOfCircularReferenceGet
 
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI;
-use \OpenAPI\OpenAPI\Models\Shared;
+require 'vendor/autoload.php';
 
-$security = new Shared\Security();
-$security->apiKeyAuth = 'Token YOUR_API_KEY';
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Shared;
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
+    ->setSecurity(
+        new Shared\Security(
+            apiKeyAuth: 'Token YOUR_API_KEY',
+        )
+    )
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
     ->build();
 
-try {
-    $response = $sdk->generation->oneOfCircularReferenceGet();
 
-    if ($response->oneOfCircularReferenceObject !== null) {
-        // handle response
-    }
-} catch (Exception $e) {
-    // handle exception
+
+$response = $sdk->generation->oneOfCircularReferenceGet(
+
+);
+
+if ($response->oneOfCircularReferenceObject !== null) {
+    // handle response
 }
 ```
 
+### Response
+
+**[?Operations\OneOfCircularReferenceGetResponse](../../Models/Operations/OneOfCircularReferenceGetResponse.md)**
+
+### Errors
+
+| Error Type          | Status Code         | Content Type        |
+| ------------------- | ------------------- | ------------------- |
+| Errors\SDKException | 4XX, 5XX            | \*/\*               |
+
+## reactHookCombinedOptions
+
+### Example Usage
+
+```php
+declare(strict_types=1);
+
+require 'vendor/autoload.php';
+
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Shared;
+
+$sdk = OpenAPI\SDK::builder()
+    ->setSecurity(
+        new Shared\Security(
+            apiKeyAuth: 'Token YOUR_API_KEY',
+        )
+    )
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->build();
+
+
+
+$responses = $sdk->generation->reactHookCombinedOptions(
+    page: 122236
+);
+
+
+foreach ($responses as $response) {
+    if ($response->statusCode === 200) {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter          | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `page`             | *int*              | :heavy_check_mark: | N/A                |
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\OneOfCircularReferenceGetResponse](../../Models/Operations/OneOfCircularReferenceGetResponse.md)**
+**[?Operations\ReactHookCombinedOptionsResponse](../../Models/Operations/ReactHookCombinedOptionsResponse.md)**
 
+### Errors
+
+| Error Type          | Status Code         | Content Type        |
+| ------------------- | ------------------- | ------------------- |
+| Errors\SDKException | 4XX, 5XX            | \*/\*               |
+
+## reactHookDisabled
+
+### Example Usage
+
+```php
+declare(strict_types=1);
+
+require 'vendor/autoload.php';
+
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Shared;
+
+$sdk = OpenAPI\SDK::builder()
+    ->setSecurity(
+        new Shared\Security(
+            apiKeyAuth: 'Token YOUR_API_KEY',
+        )
+    )
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->build();
+
+
+
+$response = $sdk->generation->reactHookDisabled(
+
+);
+
+if ($response->object !== null) {
+    // handle response
+}
+```
+
+### Response
+
+**[?Operations\ReactHookDisabledResponse](../../Models/Operations/ReactHookDisabledResponse.md)**
+
+### Errors
+
+| Error Type          | Status Code         | Content Type        |
+| ------------------- | ------------------- | ------------------- |
+| Errors\SDKException | 4XX, 5XX            | \*/\*               |
+
+## reactHookGetAsMutation
+
+### Example Usage
+
+```php
+declare(strict_types=1);
+
+require 'vendor/autoload.php';
+
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Shared;
+
+$sdk = OpenAPI\SDK::builder()
+    ->setSecurity(
+        new Shared\Security(
+            apiKeyAuth: 'Token YOUR_API_KEY',
+        )
+    )
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->build();
+
+
+
+$response = $sdk->generation->reactHookGetAsMutation(
+
+);
+
+if ($response->res !== null) {
+    // handle response
+}
+```
+
+### Response
+
+**[?Operations\ReactHookGetAsMutationResponse](../../Models/Operations/ReactHookGetAsMutationResponse.md)**
+
+### Errors
+
+| Error Type          | Status Code         | Content Type        |
+| ------------------- | ------------------- | ------------------- |
+| Errors\SDKException | 4XX, 5XX            | \*/\*               |
+
+## reactHookPostAsQuery
+
+### Example Usage
+
+```php
+declare(strict_types=1);
+
+require 'vendor/autoload.php';
+
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Shared;
+
+$sdk = OpenAPI\SDK::builder()
+    ->setSecurity(
+        new Shared\Security(
+            apiKeyAuth: 'Token YOUR_API_KEY',
+        )
+    )
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->build();
+
+
+
+$response = $sdk->generation->reactHookPostAsQuery(
+
+);
+
+if ($response->res !== null) {
+    // handle response
+}
+```
+
+### Response
+
+**[?Operations\ReactHookPostAsQueryResponse](../../Models/Operations/ReactHookPostAsQueryResponse.md)**
+
+### Errors
+
+| Error Type          | Status Code         | Content Type        |
+| ------------------- | ------------------- | ------------------- |
+| Errors\SDKException | 4XX, 5XX            | \*/\*               |
+
+## reactHookRenamed
+
+### Example Usage
+
+```php
+declare(strict_types=1);
+
+require 'vendor/autoload.php';
+
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Shared;
+
+$sdk = OpenAPI\SDK::builder()
+    ->setSecurity(
+        new Shared\Security(
+            apiKeyAuth: 'Token YOUR_API_KEY',
+        )
+    )
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
+    ->build();
+
+
+
+$response = $sdk->generation->reactHookRenamed(
+
+);
+
+if ($response->object !== null) {
+    // handle response
+}
+```
+
+### Response
+
+**[?Operations\ReactHookRenamedResponse](../../Models/Operations/ReactHookRenamedResponse.md)**
+
+### Errors
+
+| Error Type          | Status Code         | Content Type        |
+| ------------------- | ------------------- | ------------------- |
+| Errors\SDKException | 4XX, 5XX            | \*/\*               |
 
 ## typedParameterGenerationGet
 
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI;
-use \OpenAPI\OpenAPI\Models\Shared;
-use \OpenAPI\OpenAPI\Models\Operations;
+require 'vendor/autoload.php';
 
-$security = new Shared\Security();
-$security->apiKeyAuth = 'Token YOUR_API_KEY';
+use Brick\DateTime\LocalDate;
+use Brick\Math\BigDecimal;
+use Brick\Math\BigInteger;
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Operations;
+use OpenAPI\OpenAPI\Models\Shared;
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
+    ->setSecurity(
+        new Shared\Security(
+            apiKeyAuth: 'Token YOUR_API_KEY',
+        )
+    )
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
     ->build();
 
-try {
-    $obj = new Operations\Obj();
-    $obj->bool = false;
-    $obj->num = 8792.75;
-    $obj->str = 'string';
+$obj = new Operations\Obj(
+    bool: false,
+    num: 8792.75,
+    str: '<value>',
+);
 
-    $response = $sdk->generation->typedParameterGenerationGet(960186, DateTime::createFromFormat('Y-m-d', '2022-01-02'), 4778.06, $obj);
+$response = $sdk->generation->typedParameterGenerationGet(
+    bigint: BigInteger::of('334696'),
+    date: LocalDate::parse('2025-09-07'),
+    decimal: BigDecimal::of('6735.52'),
+    obj: $obj
 
-    if ($response->statusCode === 200) {
-        // handle response
-    }
-} catch (Exception $e) {
-    // handle exception
+);
+
+if ($response->statusCode === 200) {
+    // handle response
 }
 ```
 
 ### Parameters
 
-| Parameter                                                                | Type                                                                     | Required                                                                 | Description                                                              |
-| ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
-| `bigint`                                                                 | *int*                                                                    | :heavy_minus_sign:                                                       | N/A                                                                      |
-| `date`                                                                   | [\DateTime](https://www.php.net/manual/en/class.datetime.php)            | :heavy_minus_sign:                                                       | N/A                                                                      |
-| `decimal`                                                                | *float*                                                                  | :heavy_minus_sign:                                                       | N/A                                                                      |
-| `obj`                                                                    | [\OpenAPI\OpenAPI\Models\Operations\Obj](../../Models/Operations/Obj.md) | :heavy_minus_sign:                                                       | N/A                                                                      |
-
+| Parameter                                                     | Type                                                          | Required                                                      | Description                                                   |
+| ------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------- |
+| `bigint`                                                      | *?\Brick\Math\BigInteger*                                     | :heavy_minus_sign:                                            | N/A                                                           |
+| `date`                                                        | [\DateTime](https://www.php.net/manual/en/class.datetime.php) | :heavy_minus_sign:                                            | N/A                                                           |
+| `decimal`                                                     | *?\Brick\Math\BigDecimal*                                     | :heavy_minus_sign:                                            | N/A                                                           |
+| `obj`                                                         | [?Operations\Obj](../../Models/Operations/Obj.md)             | :heavy_minus_sign:                                            | N/A                                                           |
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\TypedParameterGenerationGetResponse](../../Models/Operations/TypedParameterGenerationGetResponse.md)**
+**[?Operations\TypedParameterGenerationGetResponse](../../Models/Operations/TypedParameterGenerationGetResponse.md)**
 
+### Errors
+
+| Error Type          | Status Code         | Content Type        |
+| ------------------- | ------------------- | ------------------- |
+| Errors\SDKException | 4XX, 5XX            | \*/\*               |
 
 ## usageExamplePost
 
@@ -851,160 +1370,210 @@ Usage example docs
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI;
-use \OpenAPI\OpenAPI\Models\Shared;
-use \OpenAPI\OpenAPI\Models\Operations;
+require 'vendor/autoload.php';
+
+use Brick\DateTime\LocalDate;
+use Brick\Math\BigDecimal;
+use Brick\Math\BigInteger;
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Operations;
+use OpenAPI\OpenAPI\Models\Shared;
+use OpenAPI\OpenAPI\Utils;
 
 $sdk = OpenAPI\SDK::builder()
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
     ->build();
 
-try {
-    $request = new Operations\UsageExamplePostRequest();
-    $request->requestBody = new Operations\UsageExamplePostRequestBody();
-    $request->requestBody->fakerFormattedStrings = new Shared\FakerFormattedStrings();
-    $request->requestBody->fakerFormattedStrings->addressFormat = '48525 Maude Fall';
-    $request->requestBody->fakerFormattedStrings->directoryFormat = '/etc/defaults';
-    $request->requestBody->fakerFormattedStrings->domainFormat = 'next-conflict.name';
-    $request->requestBody->fakerFormattedStrings->emailFormat = 'Fermin_Koelpin@gmail.com';
-    $request->requestBody->fakerFormattedStrings->filenameFormat = 'northeast.wav';
-    $request->requestBody->fakerFormattedStrings->filepathFormat = '/lib/pizza_integrated.hbs';
-    $request->requestBody->fakerFormattedStrings->imageFormat = 'https://loremflickr.com/640/480';
-    $request->requestBody->fakerFormattedStrings->ipv4Format = '75.42.25.241';
-    $request->requestBody->fakerFormattedStrings->ipv6Format = '36a9:c057:a71b:b73a:c9ee:2348:d76c:3164';
-    $request->requestBody->fakerFormattedStrings->jsonFormat = '{key: 66681, key1: null, key2: "string"}';
-    $request->requestBody->fakerFormattedStrings->macFormat = '25:8b:e7:e1:35:86';
-    $request->requestBody->fakerFormattedStrings->passwordFormat = 'IKpiCb6eWzdveK0';
-    $request->requestBody->fakerFormattedStrings->phoneFormat = '1-803-587-3283';
-    $request->requestBody->fakerFormattedStrings->timezoneFormat = 'America/Argentina/Buenos_Aires';
-    $request->requestBody->fakerFormattedStrings->unknownFormat = 'string';
-    $request->requestBody->fakerFormattedStrings->urlFormat = 'http://beneficial-inconvenience.net';
-    $request->requestBody->fakerFormattedStrings->uuidFormat = '342442b8-aff3-42e0-b62d-e2e2d47a9bf1';
-    $request->requestBody->fakerFormattedStrings->zipcodeFormat = '09432';
-    $request->requestBody->fakerStrings = new Shared\FakerStrings();
-    $request->requestBody->fakerStrings->city = 'McLaughlinchester';
-    $request->requestBody->fakerStrings->iban = 'TL232743267267003560099';
-    $request->requestBody->fakerStrings->id = '<ID>';
-    $request->requestBody->fakerStrings->iPv4 = '208.201.244.247';
-    $request->requestBody->fakerStrings->iPv6 = 'bd3a:d72b:208b:2c81:8830:8bb9:7902:374e';
-    $request->requestBody->fakerStrings->account = '65982652';
-    $request->requestBody->fakerStrings->address = '0010 Assunta Throughway';
-    $request->requestBody->fakerStrings->amount = '616.94';
-    $request->requestBody->fakerStrings->avatar = 'https://loremflickr.com/640/480';
-    $request->requestBody->fakerStrings->color = 'tan';
-    $request->requestBody->fakerStrings->comment = 'New range of formal shirts are designed keeping you in mind. With fits and styling that will make you stand apart';
-    $request->requestBody->fakerStrings->company = 'Volkman LLC';
-    $request->requestBody->fakerStrings->country = 'Nicaragua';
-    $request->requestBody->fakerStrings->countryCode = 'MO';
-    $request->requestBody->fakerStrings->currency = 'Canadian Dollar';
-    $request->requestBody->fakerStrings->datatype = 'point';
-    $request->requestBody->fakerStrings->default = 'string';
-    $request->requestBody->fakerStrings->description = 'Quality-focused full-range circuit';
-    $request->requestBody->fakerStrings->directory = '/usr/ports';
-    $request->requestBody->fakerStrings->domainName = 'klutzy-prostacyclin.com';
-    $request->requestBody->fakerStrings->emailAddr = 'Jalyn_Haley47@gmail.com';
-    $request->requestBody->fakerStrings->extension = 'png';
-    $request->requestBody->fakerStrings->filename = 'panel.jpeg';
-    $request->requestBody->fakerStrings->filepath = '/opt/share/yahoo.xul';
-    $request->requestBody->fakerStrings->filetype = 'video';
-    $request->requestBody->fakerStrings->firstName = 'Trystan';
-    $request->requestBody->fakerStrings->fullName = 'Mrs. Lillian Bode';
-    $request->requestBody->fakerStrings->gender = 'Cis female';
-    $request->requestBody->fakerStrings->job = 'Future Solutions Specialist';
-    $request->requestBody->fakerStrings->json = '{key: 95274, key1: null, key2: "string"}';
-    $request->requestBody->fakerStrings->key = '<key>';
-    $request->requestBody->fakerStrings->lastName = 'Renner';
-    $request->requestBody->fakerStrings->latitude = '-71.5944';
-    $request->requestBody->fakerStrings->locale = 'sv';
-    $request->requestBody->fakerStrings->longitude = '-131.8166';
-    $request->requestBody->fakerStrings->mac = 'e9:ee:6a:24:2a:1b';
-    $request->requestBody->fakerStrings->manufacturer = 'Volvo';
-    $request->requestBody->fakerStrings->material = 'Plastic';
-    $request->requestBody->fakerStrings->middleName = 'Sawyer';
-    $request->requestBody->fakerStrings->model = 'Mustang';
-    $request->requestBody->fakerStrings->password = 'YAC_QiNrTzqbDz8';
-    $request->requestBody->fakerStrings->phone = '(650) 469-3026 x116';
-    $request->requestBody->fakerStrings->pin = '9497';
-    $request->requestBody->fakerStrings->postalCode = '64696';
-    $request->requestBody->fakerStrings->price = '25.00';
-    $request->requestBody->fakerStrings->product = 'Recycled Granite Pants';
-    $request->requestBody->fakerStrings->sex = 'male';
-    $request->requestBody->fakerStrings->street = 'Lura Wells';
-    $request->requestBody->fakerStrings->timezone = 'Africa/Nairobi';
-    $request->requestBody->fakerStrings->unit = 'degree Celsius';
-    $request->requestBody->fakerStrings->url = 'https://crooked-dulcimer.name';
-    $request->requestBody->fakerStrings->username = 'Mable76';
-    $request->requestBody->fakerStrings->uuid = '16b919d6-51cd-4e97-81e2-5221b7b6969f';
-    $request->requestBody->simpleObject = new Shared\SimpleObject();
-    $request->requestBody->simpleObject->any = 'any';
-    $request->requestBody->simpleObject->bigint = 8821239038968084;
-    $request->requestBody->simpleObject->bigintStr = '9223372036854775808';
-    $request->requestBody->simpleObject->bool = true;
-    $request->requestBody->simpleObject->boolOpt = true;
-    $request->requestBody->simpleObject->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
-    $request->requestBody->simpleObject->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00.000000001Z');
-    $request->requestBody->simpleObject->decimal = 3.141592653589793;
-    $request->requestBody->simpleObject->decimalStr = '3.14159265358979344719667586';
-    $request->requestBody->simpleObject->enum = Shared\Enum::One;
-    $request->requestBody->simpleObject->float32 = 1.1;
-    $request->requestBody->simpleObject->int = 1;
-    $request->requestBody->simpleObject->int32 = 1;
-    $request->requestBody->simpleObject->int32Enum = Shared\Int32Enum::OneHundredAndEightyOne;
-    $request->requestBody->simpleObject->intEnum = Shared\IntEnum::Second;
-    $request->requestBody->simpleObject->intOptNull = 165468;
-    $request->requestBody->simpleObject->num = 1.1;
-    $request->requestBody->simpleObject->numOptNull = 5944.32;
-    $request->requestBody->simpleObject->str = 'test';
-    $request->requestBody->simpleObject->strOpt = 'testOptional';
-    $request->bigintParameter = 924793;
-    $request->bigintParameterOptional = 583481;
-    $request->bigintStrParameter = 'string';
-    $request->bigintStrParameterOptional = 'string';
-    $request->boolParameter = false;
-    $request->dateParameter = DateTime::createFromFormat('Y-m-d', '2023-12-21');
-    $request->dateTimeDefaultParameter = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2021-03-16T01:25:42.471Z');
-    $request->dateTimeParameter = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2023-05-24T07:01:53.326Z');
-    $request->decimalParameter = 4713.96;
-    $request->decimalParameterOptional = 9349.54;
-    $request->decimalStrParameter = 'string';
-    $request->decimalStrParameterOptional = 'string';
-    $request->doubleParameter = 8700.78;
-    $request->enumParameter = Operations\EnumParameter::Value2;
-    $request->falseyNumberParameter = 0;
-    $request->float32Parameter = 1341.86;
-    $request->floatParameter = 5429.24;
-    $request->int64Parameter = 101970;
-    $request->intParameter = 938852;
-    $request->optEnumParameter = Operations\OptEnumParameter::Value3;
-    $request->strParameter = 'example 3';
+$request = new Operations\UsageExamplePostRequest(
+    bigintParameter: BigInteger::of('168827'),
+    bigintStrParameter: BigInteger::of('813724'),
+    boolParameter: false,
+    dateParameter: LocalDate::parse('2023-10-21'),
+    dateTimeDefaultParameter: Utils\Utils::parseDateTime('2023-11-16T02:05:07.748Z'),
+    dateTimeParameter: Utils\Utils::parseDateTime('2023-09-08T13:40:52.532Z'),
+    decimalParameter: BigDecimal::of('5669.99'),
+    decimalStrParameter: BigDecimal::of('5696.63'),
+    doubleParameter: 3527.78,
+    enumParameter: Operations\EnumParameter::Value2,
+    falseyNumberParameter: 0,
+    float32Parameter: 200.81,
+    float64StringParameter: '<value>',
+    floatParameter: 1062.86,
+    int64Parameter: 234682,
+    int64StringParameter: '<value>',
+    intParameter: 215216,
+    strParameter: 'example 2',
+    requestBody: new Operations\UsageExamplePostRequestBody(
+        fakerCamelCasePropertyNameStrings: new Shared\FakerCamelCasePropertyNameStrings(
+            city: 'Fort Cassandra',
+            iban: 'TR115005745241192470211411',
+            id: '<id>',
+            iPv4: '221.80.210.91',
+            iPv6: 'c41e:563b:f5df:3eec:ade0:f7ff:8aae:bcff',
+        ),
+        fakerFormattedStrings: new Shared\FakerFormattedStrings(
+            addressFormat: '2256 Jackie Way',
+            dateFormat: LocalDate::parse('2025-05-13'),
+            datetimeFormat: Utils\Utils::parseDateTime('2025-11-24T05:08:23.961Z'),
+            directoryFormat: '/usr/obj',
+            domainFormat: 'prudent-kettledrum.net',
+            emailFormat: 'Monserrat4@gmail.com',
+            filenameFormat: 'example.file',
+            filepathFormat: '/srv/far_off_though.mp2',
+            imageFormat: 'https://picsum.photos/seed/1jCnxsrVm/3900/1676',
+            ipv4Format: '241.49.29.216',
+            ipv6Format: '56ad:dd82:32fe:d68b:eafe:fe5c:0e75:3e9a',
+            jsonFormat: '{key: 5416874389095425, key1: null, key2: "<value>"}',
+            macFormat: 'aa:75:4f:92:a3:c6',
+            passwordFormat: 'ZYIrZwC2gbXZm0x',
+            phoneFormat: '895.693.7701 x78668',
+            timezoneFormat: 'Africa/Juba',
+            unknownFormat: '<value>',
+            urlFormat: 'https://devoted-lady.info/',
+            uuidFormat: '95e36984-1bdb-4972-b8f8-91d21ba1e292',
+            zipcodeFormat: '09108',
+        ),
+        fakerKebobCasePropertyNameStrings: new Shared\FakerKebobCasePropertyNameStrings(
+            postalCode: '00476',
+        ),
+        fakerPascalCasePropertyNameStrings: new Shared\FakerPascalCasePropertyNameStrings(
+            account: '05267398',
+            address: '8854 Alta Road',
+            amount: '101.02',
+            avatar: 'https://loremflickr.com/2780/914?lock=8012325154053812',
+            city: 'Maggioboro',
+            color: 'fuchsia',
+            comment: 'Andy shoes are designed to keeping in mind durability as well as trends, the most stylish range of shoes & sandals',
+            company: 'Anderson and Sons',
+            continent: 'Europe',
+            country: 'Russian Federation',
+            countryCode: 'YE',
+            createdAt: '1707997678559',
+            currency: 'Hong Kong Dollar',
+            currencyCode: 'ISK',
+            currencyISO: 'SSP',
+            datatype: 'point',
+            default: '<value>',
+            description: 'without vice um granny straw',
+            directory: '/var/spool',
+            domain: 'informal-rawhide.info',
+            domainName: 'zany-drive.biz',
+            email: 'Kamryn_Harris-Rice@yahoo.com',
+            emailAddr: 'Mackenzie.Homenick43@gmail.com',
+            emailAddress: 'Jodie_Sawayn64@hotmail.com',
+            expiredAt: '1735899721607',
+            expires: '<value>',
+            expiresAt: '1750494893563',
+            extension: 'mp4',
+            filename: 'example.file',
+            filepath: '/root/what_enlist.dmg',
+            filetype: 'text',
+            firstName: 'Rick',
+            fullName: 'Jim Raynor',
+            gender: 'Trans male',
+            host: 'nice-version.net',
+            hostName: 'incomparable-expansion.biz',
+            httpStatus: '403',
+            iban: 'PT82007863030094674087035',
+            id: '<id>',
+            ip: '95.76.43.117',
+            ipAddr: '3b0a:a56f:c6c2:9330:cbeb:47ed:5aa7:4ccc',
+            ipAddress: '6aa0:e917:5cea:beae:91db:bbbe:a1eb:c170',
+            ipv4: '93.70.29.69',
+            ipv6: 'cbde:29fa:2b6c:517a:79fe:aa67:2895:1c28',
+            job: 'Future Accountability Consultant',
+            json: '{key: 4839465338338305, key1: null, key2: "<value>"}',
+            key: '<key>',
+            lastName: 'Luettgen',
+            latitude: '16.1719',
+            locale: 'sv',
+            longitude: '167.6076',
+            mac: '58:68:b7:7b:b2:42',
+            manufacturer: 'Polestar',
+            material: 'Steel',
+            middleName: 'Emerson',
+            model: 'Civic',
+            password: '0sOktqRR3ChOYIc',
+            phone: '948.650.8331 x5779',
+            pin: '2379',
+            postalCode: '54207',
+            price: '447.26',
+            product: 'Rustic Cotton Towels',
+            sex: 'female',
+            statusCode: '507',
+            street: 'Sydnee Falls',
+            timezone: 'America/Cancun',
+            unit: 'steradian',
+            updatedAt: '1736958206775',
+            uri: 'https://tricky-hydrant.biz',
+            url: 'https://selfish-epic.net',
+            username: 'Katlyn_OHara',
+            uuid: '34551a37-e5ee-4d18-a1e2-0e05958b9b2d',
+        ),
+        fakerSnakeCasePropertyNameStrings: new Shared\FakerSnakeCasePropertyNameStrings(
+            countryCode: 'NC',
+            createdAt: '1722550447321',
+            expiredAt: '1736554471765',
+            updatedAt: '1736923265051',
+        ),
+        simpleObject: new Shared\SimpleObject(
+            any: 'any',
+            bool: true,
+            date: LocalDate::parse('2020-01-01'),
+            dateTime: Utils\Utils::parseDateTime('2020-01-01T00:00:00.001Z'),
+            enum: Shared\Enum::One,
+            float32: 1.1,
+            int: 1,
+            int32: 1,
+            int32Enum: Shared\Int32Enum::FiftyFive,
+            intEnum: Shared\IntEnum::Second,
+            num: 1.1,
+            str: 'test',
+            bigint: BigInteger::of('8821239038968084'),
+            bigintStr: BigInteger::of('9223372036854775808'),
+            boolOpt: true,
+            decimal: BigDecimal::of('3.141592653589793'),
+            decimalStr: BigDecimal::of('3.14159265358979344719667586'),
+            float64Str: '1.1',
+            int64Str: '100',
+            strOpt: 'testOptional',
+        ),
+    ),
+    optEnumParameter: Operations\OptEnumParameter::Value3,
+);
+$requestSecurity = new Operations\UsageExamplePostSecurity(
+    password: 'YOUR_PASSWORD',
+    username: 'YOUR_USERNAME',
+);
 
-    $requestSecurity = new Operations\UsageExamplePostSecurity();
-    $requestSecurity->password = 'YOUR_PASSWORD';
-    $requestSecurity->username = 'YOUR_USERNAME';
+$response = $sdk->generation->usageExamplePost(
+    request: $request,
+    security: $requestSecurity
+);
 
-    $response = $sdk->generation->usageExamplePost($request, $requestSecurity);
-
-    if ($response->object !== null) {
-        // handle response
-    }
-} catch (Exception $e) {
-    // handle exception
+if ($response->object !== null) {
+    // handle response
 }
 ```
 
 ### Parameters
 
-| Parameter                                                                                                          | Type                                                                                                               | Required                                                                                                           | Description                                                                                                        |
-| ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ |
-| `$request`                                                                                                         | [\OpenAPI\OpenAPI\Models\Operations\UsageExamplePostRequest](../../Models/Operations/UsageExamplePostRequest.md)   | :heavy_check_mark:                                                                                                 | The request object to use for the request.                                                                         |
-| `security`                                                                                                         | [\OpenAPI\OpenAPI\Models\Operations\UsageExamplePostSecurity](../../Models/Operations/UsageExamplePostSecurity.md) | :heavy_check_mark:                                                                                                 | The security requirements to use for the request.                                                                  |
-
+| Parameter                                                                                  | Type                                                                                       | Required                                                                                   | Description                                                                                |
+| ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
+| `$request`                                                                                 | [Operations\UsageExamplePostRequest](../../Models/Operations/UsageExamplePostRequest.md)   | :heavy_check_mark:                                                                         | The request object to use for the request.                                                 |
+| `security`                                                                                 | [Operations\UsageExamplePostSecurity](../../Models/Operations/UsageExamplePostSecurity.md) | :heavy_check_mark:                                                                         | The security requirements to use for the request.                                          |
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\UsageExamplePostResponse](../../Models/Operations/UsageExamplePostResponse.md)**
+**[?Operations\UsageExamplePostResponse](../../Models/Operations/UsageExamplePostResponse.md)**
 
+### Errors
+
+| Error Type          | Status Code         | Content Type        |
+| ------------------- | ------------------- | ------------------- |
+| Errors\SDKException | 4XX, 5XX            | \*/\*               |
