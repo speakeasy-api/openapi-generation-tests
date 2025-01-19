@@ -1,5 +1,5 @@
 # Errors
-
+(*errors*)
 
 ## Overview
 
@@ -16,29 +16,33 @@ Endpoints for testing error responses.
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI;
-use \OpenAPI\OpenAPI\Models\Shared;
+require 'vendor/autoload.php';
 
-$security = new Shared\Security();
-$security->apiKeyAuth = 'Token YOUR_API_KEY';
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Shared;
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
+    ->setSecurity(
+        new Shared\Security(
+            apiKeyAuth: 'Token YOUR_API_KEY',
+        )
+    )
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
     ->build();
 
-try {
-    $response = $sdk->errors->connectionErrorGet();
 
-    if ($response->statusCode === 200) {
-        // handle response
-    }
-} catch (Exception $e) {
-    // handle exception
+
+$response = $sdk->errors->connectionErrorGet(
+
+);
+
+if ($response->statusCode === 200) {
+    // handle response
 }
 ```
 
@@ -48,43 +52,48 @@ try {
 | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ |
 | `$serverURL`                   | *string*                       | :heavy_minus_sign:             | An optional server URL to use. |
 
-
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\ConnectionErrorGetResponse](../../Models/Operations/ConnectionErrorGetResponse.md)**
+**[?Operations\ConnectionErrorGetResponse](../../Models/Operations/ConnectionErrorGetResponse.md)**
 
+### Errors
+
+| Error Type          | Status Code         | Content Type        |
+| ------------------- | ------------------- | ------------------- |
+| Errors\SDKException | 4XX, 5XX            | \*/\*               |
 
 ## statusGetError
 
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI;
-use \OpenAPI\OpenAPI\Models\Shared;
-use \OpenAPI\OpenAPI\Models\Operations;
+require 'vendor/autoload.php';
 
-$security = new Shared\Security();
-$security->apiKeyAuth = 'Token YOUR_API_KEY';
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Shared;
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
+    ->setSecurity(
+        new Shared\Security(
+            apiKeyAuth: 'Token YOUR_API_KEY',
+        )
+    )
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
     ->build();
 
-try {
 
 
-    $response = $sdk->errors->statusGetError(458364);
+$response = $sdk->errors->statusGetError(
+    statusCode: 303
+);
 
-    if ($response->statusCode === 200) {
-        // handle response
-    }
-} catch (Exception $e) {
-    // handle exception
+if ($response->statusCode === 200) {
+    // handle response
 }
 ```
 
@@ -94,43 +103,48 @@ try {
 | ------------------ | ------------------ | ------------------ | ------------------ |
 | `statusCode`       | *int*              | :heavy_check_mark: | N/A                |
 
-
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\StatusGetErrorResponse](../../Models/Operations/StatusGetErrorResponse.md)**
+**[?Operations\StatusGetErrorResponse](../../Models/Operations/StatusGetErrorResponse.md)**
 
+### Errors
+
+| Error Type          | Status Code         | Content Type        |
+| ------------------- | ------------------- | ------------------- |
+| Errors\SDKException | 4XX, 5XX            | \*/\*               |
 
 ## statusGetXSpeakeasyErrors
 
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI;
-use \OpenAPI\OpenAPI\Models\Shared;
-use \OpenAPI\OpenAPI\Models\Operations;
+require 'vendor/autoload.php';
 
-$security = new Shared\Security();
-$security->apiKeyAuth = 'Token YOUR_API_KEY';
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Shared;
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
+    ->setSecurity(
+        new Shared\Security(
+            apiKeyAuth: 'Token YOUR_API_KEY',
+        )
+    )
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
     ->build();
 
-try {
 
 
-    $response = $sdk->errors->statusGetXSpeakeasyErrors(385913);
+$response = $sdk->errors->statusGetXSpeakeasyErrors(
+    statusCode: 203
+);
 
-    if ($response->statusCode === 200) {
-        // handle response
-    }
-} catch (Exception $e) {
-    // handle exception
+if ($response->statusCode === 200) {
+    // handle response
 }
 ```
 
@@ -141,8 +155,14 @@ try {
 | `statusCode`                   | *int*                          | :heavy_check_mark:             | N/A                            |
 | `$serverURL`                   | *string*                       | :heavy_minus_sign:             | An optional server URL to use. |
 
-
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\StatusGetXSpeakeasyErrorsResponse](../../Models/Operations/StatusGetXSpeakeasyErrorsResponse.md)**
+**[?Operations\StatusGetXSpeakeasyErrorsResponse](../../Models/Operations/StatusGetXSpeakeasyErrorsResponse.md)**
 
+### Errors
+
+| Error Type                                   | Status Code                                  | Content Type                                 |
+| -------------------------------------------- | -------------------------------------------- | -------------------------------------------- |
+| Errors\Error                                 | 500                                          | application/json                             |
+| Errors\StatusGetXSpeakeasyErrorsResponseBody | 501                                          | application/json                             |
+| Errors\SDKException                          | 4XX, 5XX                                     | \*/\*                                        |
