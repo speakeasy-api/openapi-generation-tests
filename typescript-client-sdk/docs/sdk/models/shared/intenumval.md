@@ -2,6 +2,13 @@
 
 An integer enum property.
 
+## Example Usage
+
+```typescript
+import { IntEnumVal } from "openapi/sdk/models/shared";
+
+let value: IntEnumVal = IntEnumVal.Third;
+```
 
 ## Values
 
