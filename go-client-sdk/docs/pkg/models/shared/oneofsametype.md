@@ -9,9 +9,9 @@
 oneOfSameType := shared.CreateOneOfSameTypeStr(string{/* values here */})
 ```
 
-### Two
+### OneOfGenerationStressTest2
 
 ```go
-oneOfSameType := shared.CreateOneOfSameTypeTwo(shared.Two{/* values here */})
+oneOfSameType := shared.CreateOneOfSameTypeOneOfGenerationStressTest2(shared.OneOfGenerationStressTest2{/* values here */})
 ```
 

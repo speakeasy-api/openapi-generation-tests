@@ -1,16 +1,55 @@
-<!-- Start SDK Example Usage -->
+<!-- Start SDK Example Usage [usage] -->
 ```swift
 import Foundation
 import OpenAPI
 
 let client = Client(security: .apiKeyAuth("Token YOUR_API_KEY"))
 
-let response = try await client.generation.getGlobalNameOverride()
+let response = try await client.generation.getGlobalNameOverride(
+    request: Shared.SimpleObject(
+        any: AnyValue("any"), 
+        bool: true, 
+        date: Date(), 
+        dateTime: Date(), 
+        `enum`: .one, 
+        float32: 1.1, 
+        int: 1, 
+        int32: 1, 
+        int32Enum: .fiftyFive, 
+        intEnum: .second, 
+        num: 1.1, 
+        str: "test", 
+        bigint: 8821239038968084, 
+        bigintStr: "9223372036854775808", 
+        boolOpt: true, 
+        decimal: 3.141592653589793, 
+        decimalStr: "3.14159265358979344719667586", 
+        float64Str: "1.1", 
+        int64Str: "100", 
+        strOpt: "testOptional"
+    )
+)
 
 switch response.data {
 case .object(let object):
     // Handle response
     break
+case .empty:
+    // Handle empty response
+    break
+}
+
+```
+
+```swift
+import Foundation
+import OpenAPI
+
+let client = Client(security: .apiKeyAuth("Token YOUR_API_KEY"))
+
+let response = try await client.servers.selectGlobalServer()
+
+switch response.data {
 case .empty:
     // Handle empty response
     break
@@ -26,106 +65,141 @@ Do this second
 import Foundation
 import OpenAPI
 
-let client = Client(security: .apiKeyAuth("Token YOUR_API_KEY"))
+let client = Client()
 
 let response = try await client.generation.usageExamplePost(
     request: Operations.UsageExamplePostRequest(
         bigintParameter: 168827, 
-        bigintStrParameter: "string", 
+        bigintStrParameter: "<value>", 
         boolParameter: false, 
         dateParameter: Date(), 
         dateTimeDefaultParameter: Date(), 
         dateTimeParameter: Date(), 
-        decimalParameter: 2679.33, 
-        decimalStrParameter: "string", 
-        doubleParameter: 5223.72, 
-        enumParameter: .value1, 
+        decimalParameter: 2286.22, 
+        decimalStrParameter: "<value>", 
+        doubleParameter: 5669.99, 
+        enumParameter: .value2, 
         falseyNumberParameter: 0, 
-        float32Parameter: 6946.59, 
-        floatParameter: 2286.22, 
-        int64Parameter: 102975, 
-        intParameter: 566999, 
+        float32Parameter: 3527.78, 
+        float64StringParameter: "<value>", 
+        floatParameter: 4819.51, 
+        int64Parameter: 20081, 
+        int64StringParameter: "<value>", 
+        intParameter: 106286, 
         strParameter: "example 1", 
-        bigintParameterOptional: 569663, 
-        bigintStrParameterOptional: "string", 
-        decimalParameterOptional: 2642.95, 
-        decimalStrParameterOptional: "string", 
         optEnumParameter: .value3, 
         requestBody: Operations.UsageExamplePostRequestBody(
-            fakerFormattedStrings: Shared.FakerFormattedStrings(
-                addressFormat: "4470 Bennett Forest", 
-                directoryFormat: "/lib", 
-                domainFormat: "ornate-courthouse.org", 
-                emailFormat: "Sofia_Gulgowski29@yahoo.com", 
-                filenameFormat: "southwest.mp2a", 
-                filepathFormat: "/usr/green_target.z4", 
-                imageFormat: "https://loremflickr.com/640/480", 
-                ipv4Format: "116.31.181.178", 
-                ipv6Format: "73ac:9ee2:348d:76c3:164a:258b:e7e1:3586", 
-                jsonFormat: "{key: 42822, key1: null, key2: \"string\"}", 
-                macFormat: "7d:ac:95:a0:15:23", 
-                passwordFormat: "eWzdveK0sHokC9n", 
-                phoneFormat: "1-340-562-2122 x175", 
-                timezoneFormat: "Asia/Yekaterinburg", 
-                unknownFormat: "string", 
-                urlFormat: "https://wilted-cytoplasm.biz", 
-                uuidFormat: "e0f62de2-e2d4-47a9-bf10-0f753b9b364b", 
-                zipcodeFormat: "73625"
+            fakerCamelCasePropertyNameStrings: Shared.FakerCamelCasePropertyNameStrings(
+                city: "South Elenora", 
+                iban: "TN5904044452411924702151", 
+                id: "<id>", 
+                iPv4: "229.114.35.42", 
+                iPv6: "d6c7:c41e:563b:f5df:3eec:ade0:f7ff:8aae"
             ), 
-            fakerStrings: Shared.FakerStrings(
-                account: "68772663", 
-                address: "192 Lind Route", 
-                amount: "654.25", 
-                avatar: "https://loremflickr.com/640/480", 
-                city: "Ashleytown", 
-                color: "turquoise", 
+            fakerFormattedStrings: Shared.FakerFormattedStrings(
+                addressFormat: "8763 Deanna Mews", 
+                dateFormat: Date(), 
+                datetimeFormat: Date(), 
+                directoryFormat: "/private", 
+                domainFormat: "worldly-scorpion.org", 
+                emailFormat: "Lukas72@hotmail.com", 
+                filenameFormat: "example.file", 
+                filepathFormat: "/etc/valiantly_bog.text", 
+                imageFormat: "https://picsum.photos/seed/YpQH1jCn/2014/464", 
+                ipv4Format: "137.115.112.235", 
+                ipv6Format: "7e42:c56a:ddd8:232f:ed68:beaf:efe5:c0e7", 
+                jsonFormat: "{key: 2129207196153289, key1: null, key2: \"<value>\"}", 
+                macFormat: "2a:6b:9a:a7:54:f9", 
+                passwordFormat: "4iGZYIrZwC2gbXZ", 
+                phoneFormat: "399-895-5937 x70178", 
+                timezoneFormat: "Asia/Tokyo", 
+                unknownFormat: "<value>", 
+                urlFormat: "https://super-bakeware.biz", 
+                uuidFormat: "38595e36-9841-4bdb-8972-8f891d21ba1e", 
+                zipcodeFormat: "18209-1084"
+            ), 
+            fakerKebobCasePropertyNameStrings: Shared.FakerKebobCasePropertyNameStrings(
+                postalCode: "04760"
+            ), 
+            fakerPascalCasePropertyNameStrings: Shared.FakerPascalCasePropertyNameStrings(
+                account: "52673985", 
+                address: "854 Alta Road", 
+                amount: "101.02", 
+                avatar: "https://loremflickr.com/2780/914?lock=8012325154053812", 
+                city: "Maggioboro", 
+                color: "fuchsia", 
                 comment: "Andy shoes are designed to keeping in mind durability as well as trends, the most stylish range of shoes & sandals", 
-                company: "Schultz, Schaefer and Will", 
-                country: "Venezuela", 
-                countryCode: "PT", 
-                currency: "Hryvnia", 
-                datatype: "datetime", 
-                `default`: "string", 
-                description: "Profit-focused systematic initiative", 
-                directory: "/etc/periodic", 
-                domainName: "shimmering-cloudburst.com", 
-                emailAddr: "Monserrat_Dare8@yahoo.com", 
-                `extension`: "jpg", 
-                filename: "malawi.mpg4", 
-                filepath: "/srv/androgyne_forge.sql", 
-                filetype: "image", 
-                firstName: "Sven", 
-                fullName: "Nathan Mosciski", 
-                gender: "Male to female transsexual woman", 
-                iban: "AZ39AEBC00680065007140036325", 
-                id: "<ID>", 
-                iPv4: "39.115.3.112", 
-                iPv6: "4e65:3f13:113d:0305:fb1e:2e9e:e6a2:42a1", 
-                job: "International Metrics Administrator", 
-                json: "{key: 91937, key1: null, key2: \"string\"}", 
+                company: "Anderson and Sons", 
+                continent: "Europe", 
+                country: "Russian Federation", 
+                countryCode: "YE", 
+                createdAt: "1708429501766", 
+                currency: "Hong Kong Dollar", 
+                currencyCode: "ISK", 
+                currencyISO: "SSP", 
+                datatype: "point", 
+                `default`: "<value>", 
+                description: "without vice um granny straw", 
+                directory: "/var/spool", 
+                domain: "informal-rawhide.info", 
+                domainName: "zany-drive.biz", 
+                email: "Kamryn_Harris-Rice@yahoo.com", 
+                emailAddr: "Mackenzie.Homenick43@gmail.com", 
+                emailAddress: "Jodie_Sawayn64@hotmail.com", 
+                expiredAt: "1736331544814", 
+                expires: "<value>", 
+                expiresAt: "1750926716770", 
+                `extension`: "mp4", 
+                filename: "example.file", 
+                filepath: "/root/what_enlist.dmg", 
+                filetype: "text", 
+                firstName: "Rick", 
+                fullName: "Jim Raynor", 
+                gender: "Trans male", 
+                host: "nice-version.net", 
+                hostName: "incomparable-expansion.biz", 
+                httpStatus: "403", 
+                iban: "PT82007863030094674087035", 
+                id: "<id>", 
+                ip: "95.76.43.117", 
+                ipAddr: "3b0a:a56f:c6c2:9330:cbeb:47ed:5aa7:4ccc", 
+                ipAddress: "6aa0:e917:5cea:beae:91db:bbbe:a1eb:c170", 
+                ipv4: "93.70.29.69", 
+                ipv6: "cbde:29fa:2b6c:517a:79fe:aa67:2895:1c28", 
+                job: "Future Accountability Consultant", 
+                json: "{key: 4839465338338305, key1: null, key2: \"<value>\"}", 
                 key: "<key>", 
-                lastName: "Bergnaum", 
-                latitude: "16.9358", 
-                locale: "ar", 
-                longitude: "-80.3158", 
-                mac: "55:a8:ca:17:df:8f", 
-                manufacturer: "Smart", 
-                material: "Metal", 
-                middleName: "Greer", 
-                model: "Fortwo", 
-                password: "8AXYBy71wIwgEZJ", 
-                phone: "1-960-553-5269 x5671", 
-                pin: "2662", 
-                postalCode: "70476", 
-                price: "100.00", 
-                product: "Awesome Fresh Table", 
+                lastName: "Luettgen", 
+                latitude: "16.1719", 
+                locale: "sv", 
+                longitude: "167.6076", 
+                mac: "58:68:b7:7b:b2:42", 
+                manufacturer: "Polestar", 
+                material: "Steel", 
+                middleName: "Emerson", 
+                model: "Civic", 
+                password: "0sOktqRR3ChOYIc", 
+                phone: "948.650.8331 x5779", 
+                pin: "2379", 
+                postalCode: "54207", 
+                price: "447.26", 
+                product: "Rustic Cotton Towels", 
                 sex: "female", 
-                street: "Penelope Terrace", 
-                timezone: "Australia/Hobart", 
-                unit: "degree Celsius", 
-                url: "http://absolute-barbecue.org", 
-                username: "Casimer17", 
-                uuid: "1b7b6969-fc72-49e9-b1c7-ed9281fd55b6"
+                statusCode: "507", 
+                street: "Sydnee Falls", 
+                timezone: "America/Cancun", 
+                unit: "steradian", 
+                updatedAt: "1737390029982", 
+                uri: "https://tricky-hydrant.biz", 
+                url: "https://selfish-epic.net", 
+                username: "Katlyn_OHara", 
+                uuid: "34551a37-e5ee-4d18-a1e2-0e05958b9b2d", 
+            ), 
+            fakerSnakeCasePropertyNameStrings: Shared.FakerSnakeCasePropertyNameStrings(
+                countryCode: "NC", 
+                createdAt: "1722982270528", 
+                expiredAt: "1736986294972", 
+                updatedAt: "1737355088258"
             ), 
             simpleObject: Shared.SimpleObject(
                 any: AnyValue("any"), 
@@ -136,7 +210,7 @@ let response = try await client.generation.usageExamplePost(
                 float32: 1.1, 
                 int: 1, 
                 int32: 1, 
-                int32Enum: .oneHundredAndEightyOne, 
+                int32Enum: .fiftyFive, 
                 intEnum: .second, 
                 num: 1.1, 
                 str: "test", 
@@ -145,8 +219,8 @@ let response = try await client.generation.usageExamplePost(
                 boolOpt: true, 
                 decimal: 3.141592653589793, 
                 decimalStr: "3.14159265358979344719667586", 
-                intOptNull: 69000, 
-                numOptNull: 4369.7, 
+                float64Str: "1.1", 
+                int64Str: "100", 
                 strOpt: "testOptional"
             )
         )
@@ -164,4 +238,4 @@ case .empty:
 }
 
 ```
-<!-- End SDK Example Usage -->
+<!-- End SDK Example Usage [usage] -->
