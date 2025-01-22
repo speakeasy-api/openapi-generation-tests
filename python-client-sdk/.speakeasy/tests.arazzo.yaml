@@ -1,0 +1,1803 @@
+arazzo: 1.0.0
+info:
+  title: Test Suite
+  summary: Migrated from /github/workspace/repo/test.yaml
+  version: 0.0.1
+sourceDescriptions:
+  - name: /github/workspace/repo/test.yaml
+    url: https://TBD.com
+    type: openapi
+workflows:
+  - workflowId: responseBodyJsonGet
+    steps:
+      - stepId: test
+        operationId: responseBodyJsonGet
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {
+                "slideshow": {
+                  "author": "Yours Truly",
+                  "date": "date of publication",
+                  "slides": [
+                    {
+                      "title": "Wake up to WonderWidgets!",
+                      "type": "all"
+                    },
+                    {
+                      "items": [
+                        "Why \u003cem\u003eWonderWidgets\u003c/em\u003e are great",
+                        "Who \u003cem\u003ebuys\u003c/em\u003e WonderWidgets"
+                      ],
+                      "title": "Overview",
+                      "type": "all"
+                    }
+                  ],
+                  "title": "Sample Slide Show"
+                }
+              }
+            type: simple
+    x-speakeasy-test-group: SDK
+    x-speakeasy-test-internal-id: response-bodies-json-get
+  - workflowId: overriddenFieldNamesPost
+    steps:
+      - stepId: test
+        operationId: overriddenFieldNamesPost
+        requestBody:
+          contentType: application/json
+          payload:
+            int: 1
+            str: test
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {
+                "json": {
+                  "int": 1,
+                  "str": "test"
+                }
+              }
+            type: simple
+    x-speakeasy-test-group: responseBodies
+    x-speakeasy-test-internal-id: response-bodies-overridden-field-names
+  - workflowId: responseBodyAdditionalPropertiesAnyPost
+    steps:
+      - stepId: test
+        operationId: responseBodyAdditionalPropertiesAnyPost
+        requestBody:
+          contentType: application/json
+          payload:
+            key1: value2
+            key2: <value>
+            key3:
+              foo: bar
+              subkey1:
+                foo: bar
+            key4:
+              - foo
+              - bar
+            normalField: normal
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {
+                "json": {
+                  "normalField": "normal",
+                  "key1": "value2",
+                  "key2": "\u003cvalue\u003e",
+                  "key3": {
+                    "foo": "bar",
+                    "subkey1": {
+                      "foo": "bar"
+                    }
+                  },
+                  "key4": [
+                    "foo",
+                    "bar"
+                  ]
+                }
+              }
+            type: simple
+    x-speakeasy-test-group: responseBodies
+    x-speakeasy-test-internal-id: response-bodies-additional-properties-any-values
+  - workflowId: responseBodyAdditionalPropertiesComplexNumbersPost
+    steps:
+      - stepId: test
+        operationId: responseBodyAdditionalPropertiesComplexNumbersPost
+        requestBody:
+          contentType: application/json
+          payload:
+            key1: 1
+            normalField: normal
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {
+                "json": {
+                  "normalField": "normal",
+                  "key1": 1
+                }
+              }
+            type: simple
+    x-speakeasy-test-group: responseBodies
+    x-speakeasy-test-internal-id: response-bodies-additional-properties-complex-numbers
+  - workflowId: responseBodyAdditionalPropertiesDatePost
+    steps:
+      - stepId: test
+        operationId: responseBodyAdditionalPropertiesDatePost
+        requestBody:
+          contentType: application/json
+          payload:
+            key1: "2020-01-01"
+            normalField: normal
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {
+                "json": {
+                  "normalField": "normal",
+                  "key1": "2020-01-01"
+                }
+              }
+            type: simple
+    x-speakeasy-test-group: responseBodies
+    x-speakeasy-test-internal-id: response-bodies-additional-properties-date
+  - workflowId: responseBodyAdditionalPropertiesObjectPost
+    steps:
+      - stepId: test
+        operationId: responseBodyAdditionalPropertiesObjectPost
+        requestBody:
+          contentType: application/json
+          payload:
+            AdditionalProperties:
+              - 1
+              - 2
+              - 3
+            datetime: "2020-01-01T00:00:00.001Z"
+            key1:
+              any: any
+              bigint: 8821239038968084
+              bigintStr: "9223372036854775808"
+              bool: true
+              boolOpt: true
+              date: "2020-01-01"
+              dateTime: "2020-01-01T00:00:00.001Z"
+              decimal: 3.141592653589793
+              decimalStr: "3.14159265358979344719667586"
+              enum: one
+              float32: 1.1
+              float64Str: "1.1"
+              int: 1
+              int32: 1
+              int32Enum: 55
+              int64Str: "100"
+              intEnum: 2
+              num: 1.1
+              str: test
+              strOpt: testOptional
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {
+                "json": {
+                  "AdditionalProperties": [
+                    1,
+                    2,
+                    3
+                  ],
+                  "datetime": "2020-01-01T00:00:00.001Z",
+                  "key1": {
+                    "any": "any",
+                    "bigint": 8821239038968084,
+                    "bigintStr": "9223372036854775808",
+                    "bool": true,
+                    "boolOpt": true,
+                    "date": "2020-01-01",
+                    "dateTime": "2020-01-01T00:00:00.001Z",
+                    "decimal": 3.141592653589793,
+                    "decimalStr": "3.14159265358979344719667586",
+                    "enum": "one",
+                    "float32": 1.1,
+                    "float64Str": "1.1",
+                    "int": 1,
+                    "int32": 1,
+                    "int32Enum": 55,
+                    "int64Str": "100",
+                    "intEnum": 2,
+                    "num": 1.1,
+                    "str": "test",
+                    "strOpt": "testOptional"
+                  }
+                }
+              }
+            type: simple
+    x-speakeasy-test-group: responseBodies
+    x-speakeasy-test-internal-id: response-bodies-additional-properties-object
+  - workflowId: responseBodyAdditionalPropertiesPost-string
+    steps:
+      - stepId: test
+        operationId: responseBodyAdditionalPropertiesPost
+        requestBody:
+          contentType: application/json
+          payload:
+            key1: value1
+            normalField: normal
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {
+                "json": {
+                  "normalField": "normal",
+                  "key1": "value1"
+                }
+              }
+            type: simple
+    x-speakeasy-test-group: responseBodies
+    x-speakeasy-test-internal-id: response-bodies-additional-properties-string
+  - workflowId: responseBodyDecimalStr
+    steps:
+      - stepId: test
+        operationId: responseBodyDecimalStr
+        requestBody:
+          contentType: application/json
+          payload: 3.141592653589793
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              3.141592653589793
+            type: simple
+    x-speakeasy-test-group: responseBodies
+    x-speakeasy-test-internal-id: response-bodies-decimal-string
+  - workflowId: responseBodyMultilineStringPost
+    steps:
+      - stepId: test
+        operationId: responseBodyMultilineStringPost
+        requestBody:
+          contentType: application/json
+          payload:
+            array:
+              - |-
+                BEGIN:VEVENT
+                DTSTART:20220612T090000
+                DURATION:PT8H
+                RRULE:FREQ=WEEKLY;BYDAY=SU
+                END:VEVENT
+              - |-
+                BEGIN:VEVENT
+                DTSTART:20220606T090000
+                DURATION:PT8H
+                RRULE:FREQ=WEEKLY;BYDAY=MO
+                END:VEVENT
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {
+                "json": {
+                  "array": [
+                    "BEGIN:VEVENT\nDTSTART:20220612T090000\nDURATION:PT8H\nRRULE:FREQ=WEEKLY;BYDAY=SU\nEND:VEVENT",
+                    "BEGIN:VEVENT\nDTSTART:20220606T090000\nDURATION:PT8H\nRRULE:FREQ=WEEKLY;BYDAY=MO\nEND:VEVENT"
+                  ]
+                }
+              }
+            type: simple
+    x-speakeasy-test-group: responseBodies
+    x-speakeasy-test-internal-id: response-bodies-multiline-string
+  - workflowId: responseBodyOptionalGet-default
+    steps:
+      - stepId: test
+        operationId: responseBodyOptionalGet
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {
+                "type": "obj1",
+                "value": "JSON"
+              }
+            type: simple
+    x-speakeasy-test-group: responseBodies
+    x-speakeasy-test-internal-id: response-bodies-accept-header-default
+  - workflowId: responseBodyOptionalGet-override
+    steps:
+      - stepId: test
+        operationId: responseBodyOptionalGet
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == text/plain
+          - context: $response.body
+            condition: |
+              "Success"
+            type: simple
+    x-speakeasy-test-group: responseBodies
+    x-speakeasy-test-internal-id: response-bodies-accept-header-override
+  - workflowId: responseBodyReadOnly
+    steps:
+      - stepId: test
+        operationId: responseBodyReadOnly
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {
+                "bool": true,
+                "num": 1,
+                "string": "hello"
+              }
+            type: simple
+    x-speakeasy-test-group: responseBodies
+    x-speakeasy-test-internal-id: response-bodies-read-only
+  - workflowId: responseBodyStringGet
+    steps:
+      - stepId: test
+        operationId: responseBodyStringGet
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == text/html
+          - context: $response.body
+            condition: |
+              "\u003c!DOCTYPE html\u003e\\n\u003chtml\u003e\\n  \u003chead\u003e\\n  \u003c/head\u003e\\n  \u003cbody\u003e\\n      \u003ch1\u003eHerman Melville - Moby-Dick\u003c/h1\u003e\\n\\n      \u003cdiv\u003e\\n        \u003cp\u003e\\n          Availing himself of the mild, summer-cool weather that now reigned in these latitudes, and in preparation for the peculiarly active pursuits shortly to be anticipated, Perth, the begrimed, blistered old blacksmith, had not removed his portable forge to the hold again, after concluding his contributory work for Ahab's leg, but still retained it on deck, fast lashed to ringbolts by the foremast; being now almost incessantly invoked by the headsmen, and harpooneers, and bowsmen to do some little job for them; altering, or repairing, or new shaping their various weapons and boat furniture. Often he would be surrounded by an eager circle, all waiting to be served; holding boat-spades, pike-heads, harpoons, and lances, and jealously watching his every sooty movement, as he toiled. Nevertheless, this old man's was a patient hammer wielded by a patient arm. No murmur, no impatience, no petulance did come from him. Silent, slow, and solemn; bowing over still further his chronically broken back, he toiled away, as if toil were life itself, and the heavy beating of his hammer the heavy beating of his heart. And so it was.—Most miserable! A peculiar walk in this old man, a certain slight but painful appearing yawing in his gait, had at an early period of the voyage excited the curiosity of the mariners. And to the importunity of their persisted questionings he had finally given in; and so it came to pass that every one now knew the shameful story of his wretched fate. Belated, and not innocently, one bitter winter's midnight, on the road running between two country towns, the blacksmith half-stupidly felt the deadly numbness stealing over him, and sought refuge in a leaning, dilapidated barn. The issue was, the loss of the extremities of both feet. Out of this revelation, part by part, at last came out the four acts of the gladness, and the one long, and as yet uncatastrophied fifth act of the grief of his life's drama. He was an old man, who, at the age of nearly sixty, had postponedly encountered that thing in sorrow's technicals called ruin. He had been an artisan of famed excellence, and with plenty to do; owned a house and garden; embraced a youthful, daughter-like, loving wife, and three blithe, ruddy children; every Sunday went to a cheerful-looking church, planted in a grove. But one night, under cover of darkness, and further concealed in a most cunning disguisement, a desperate burglar slid into his happy home, and robbed them all of everything. And darker yet to tell, the blacksmith himself did ignorantly conduct this burglar into his family's heart. It was the Bottle Conjuror! Upon the opening of that fatal cork, forth flew the fiend, and shrivelled up his home. Now, for prudent, most wise, and economic reasons, the blacksmith's shop was in the basement of his dwelling, but with a separate entrance to it; so that always had the young and loving healthy wife listened with no unhappy nervousness, but with vigorous pleasure, to the stout ringing of her young-armed old husband's hammer; whose reverberations, muffled by passing through the floors and walls, came up to her, not unsweetly, in her nursery; and so, to stout Labor's iron lullaby, the blacksmith's infants were rocked to slumber. Oh, woe on woe! Oh, Death, why canst thou not sometimes be timely? Hadst thou taken this old blacksmith to thyself ere his full ruin came upon him, then had the young widow had a delicious grief, and her orphans a truly venerable, legendary sire to dream of in their after years; and all of them a care-killing competency.\\n        \u003c/p\u003e\\n      \u003c/div\u003e\\n  \u003c/body\u003e\\n\u003c/html\u003e"
+            type: simple
+    x-speakeasy-test-group: responseBodies
+    x-speakeasy-test-internal-id: response-bodies-string-get
+  - workflowId: responseBodyXmlGet
+    steps:
+      - stepId: test
+        operationId: responseBodyXmlGet
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/xml
+          - context: $response.body
+            condition: |
+              "\u003c?xml version='1.0' encoding='us-ascii'?\u003e\\n\\n\u003c!--  A SAMPLE set of slides  --\u003e\\n\\n\u003cslideshow \\n    title=\"Sample Slide Show\"\\n    date=\"Date of publication\"\\n    author=\"Yours Truly\"\\n    \u003e\\n\\n    \u003c!-- TITLE SLIDE --\u003e\\n    \u003cslide type=\"all\"\u003e\\n      \u003ctitle\u003eWake up to WonderWidgets!\u003c/title\u003e\\n    \u003c/slide\u003e\\n\\n    \u003c!-- OVERVIEW --\u003e\\n    \u003cslide type=\"all\"\u003e\\n        \u003ctitle\u003eOverview\u003c/title\u003e\\n        \u003citem\u003eWhy \u003cem\u003eWonderWidgets\u003c/em\u003e are great\u003c/item\u003e\\n        \u003citem/\u003e\\n        \u003citem\u003eWho \u003cem\u003ebuys\u003c/em\u003e WonderWidgets\u003c/item\u003e\\n    \u003c/slide\u003e\\n\\n\u003c/slideshow\u003e"
+            type: simple
+    x-speakeasy-test-group: responseBodies
+    x-speakeasy-test-internal-id: response-bodies-xml-get
+  - workflowId: deepObjectQueryParamsDeepObject
+    steps:
+      - stepId: test
+        operationId: deepObjectQueryParamsDeepObject
+        parameters:
+          - name: deepObj
+            in: query
+            value:
+              arr:
+                - test1
+                - test2
+              bool: true
+              int: 1
+              map:
+                testkey1: testvalue1
+                testkey2: testvalue2
+              num: 1.1
+              obj:
+                any: any
+                bigint: 8821239038968084
+                bigintStr: "9223372036854775808"
+                bool: true
+                boolOpt: true
+                date: "2020-01-01"
+                dateTime: "2020-01-01T00:00:00.001Z"
+                decimal: 3.141592653589793
+                decimalStr: "3.14159265358979344719667586"
+                enum: one
+                float32: 1.1
+                float64Str: "1.1"
+                int: 1
+                int32: 1
+                int32Enum: 55
+                int64Str: "100"
+                intEnum: 2
+                num: 1.1
+                str: test
+                strOpt: testOptional
+              oneof: test
+              oneofnestedobject:
+                nested: test
+              str: test
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {
+                "args": {
+                  "deepObj[arr]": [
+                    "test1",
+                    "test2"
+                  ],
+                  "deepObj[bool]": "true",
+                  "deepObj[int]": "1",
+                  "deepObj[map][testkey1]": "testvalue1",
+                  "deepObj[map][testkey2]": "testvalue2",
+                  "deepObj[num]": "1.1",
+                  "deepObj[obj][any]": "any",
+                  "deepObj[obj][bigintStr]": "9223372036854775808",
+                  "deepObj[obj][bigint]": "8821239038968084",
+                  "deepObj[obj][boolOpt]": "true",
+                  "deepObj[obj][bool]": "true",
+                  "deepObj[obj][dateTime]": "2020-01-01T00:00:00.001Z",
+                  "deepObj[obj][date]": "2020-01-01",
+                  "deepObj[obj][decimalStr]": "3.14159265358979344719667586",
+                  "deepObj[obj][decimal]": "3.141592653589793",
+                  "deepObj[obj][enum]": "one",
+                  "deepObj[obj][float32]": "1.1",
+                  "deepObj[obj][float64Str]": "1.1",
+                  "deepObj[obj][int32Enum]": "55",
+                  "deepObj[obj][int32]": "1",
+                  "deepObj[obj][int64Str]": "100",
+                  "deepObj[obj][intEnum]": "2",
+                  "deepObj[obj][int]": "1",
+                  "deepObj[obj][num]": "1.1",
+                  "deepObj[obj][strOpt]": "testOptional",
+                  "deepObj[obj][str]": "test",
+                  "deepObj[oneof]": "test",
+                  "deepObj[str]": "test"
+                },
+                "url": "http://localhost:35123/anything/queryParams/deepObject/deepObj?deepObj[arr]=test1\u0026deepObj[arr]=test2\u0026deepObj[bool]=true\u0026deepObj[int]=1\u0026deepObj[map][testkey1]=testvalue1\u0026deepObj[map][testkey2]=testvalue2\u0026deepObj[num]=1.1\u0026deepObj[obj][any]=any\u0026deepObj[obj][bigintStr]=9223372036854775808\u0026deepObj[obj][bigint]=8821239038968084\u0026deepObj[obj][boolOpt]=true\u0026deepObj[obj][bool]=true\u0026deepObj[obj][dateTime]=2020-01-01T00%3A00%3A00.001Z\u0026deepObj[obj][date]=2020-01-01\u0026deepObj[obj][decimalStr]=3.14159265358979344719667586\u0026deepObj[obj][decimal]=3.141592653589793\u0026deepObj[obj][enum]=one\u0026deepObj[obj][float32]=1.1\u0026deepObj[obj][float64Str]=1.1\u0026deepObj[obj][int32Enum]=55\u0026deepObj[obj][int32]=1\u0026deepObj[obj][int64Str]=100\u0026deepObj[obj][intEnum]=2\u0026deepObj[obj][int]=1\u0026deepObj[obj][num]=1.1\u0026deepObj[obj][strOpt]=testOptional\u0026deepObj[obj][str]=test\u0026deepObj[oneof]=test\u0026deepObj[oneofnestedobject][nested]=test\u0026deepObj[str]=test"
+              }
+            type: simple
+    x-speakeasy-test-group: parameters
+    x-speakeasy-test-internal-id: parameters-deep-object-query-params-deep-object
+  - workflowId: deepObjectQueryParamsMap
+    steps:
+      - stepId: test
+        operationId: deepObjectQueryParamsMap
+        parameters:
+          - name: mapParam
+            in: query
+            value:
+              test: value
+              test2: value2
+          - name: mapArrParam
+            in: query
+            value:
+              test:
+                - test
+                - test2
+              test2:
+                - test3
+                - test4
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {
+                "args": {
+                  "mapArrParam[test]": [
+                    "test",
+                    "test2"
+                  ],
+                  "mapArrParam[test2]": [
+                    "test3",
+                    "test4"
+                  ],
+                  "mapParam[test]": "value",
+                  "mapParam[test2]": "value2"
+                },
+                "url": "http://localhost:35123/anything/queryParams/deepObject/map?mapArrParam[test2]=test3\u0026mapArrParam[test2]=test4\u0026mapArrParam[test]=test\u0026mapArrParam[test]=test2\u0026mapParam[test2]=value2\u0026mapParam[test]=value"
+              }
+            type: simple
+    x-speakeasy-test-group: parameters
+    x-speakeasy-test-internal-id: parameters-deep-object-query-params-map
+  - workflowId: deepObjectQueryParamsObject
+    steps:
+      - stepId: test
+        operationId: deepObjectQueryParamsObject
+        parameters:
+          - name: objParam
+            in: query
+            value:
+              any: any
+              bigint: 8821239038968084
+              bigintStr: "9223372036854775808"
+              bool: true
+              boolOpt: true
+              date: "2020-01-01"
+              dateTime: "2020-01-01T00:00:00.001Z"
+              decimal: 3.141592653589793
+              decimalStr: "3.14159265358979344719667586"
+              enum: one
+              float32: 1.1
+              float64Str: "1.1"
+              int: 1
+              int32: 1
+              int32Enum: 55
+              int64Str: "100"
+              intEnum: 2
+              num: 1.1
+              str: test
+              strOpt: testOptional
+          - name: objArrParam
+            in: query
+            value:
+              arr:
+                - test
+                - test2
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {
+                "args": {
+                  "objArrParam[arr]": [
+                    "test",
+                    "test2"
+                  ],
+                  "objParam[any]": "any",
+                  "objParam[bigintStr]": "9223372036854775808",
+                  "objParam[bigint]": "8821239038968084",
+                  "objParam[boolOpt]": "true",
+                  "objParam[bool]": "true",
+                  "objParam[dateTime]": "2020-01-01T00:00:00.001Z",
+                  "objParam[date]": "2020-01-01",
+                  "objParam[decimalStr]": "3.14159265358979344719667586",
+                  "objParam[decimal]": "3.141592653589793",
+                  "objParam[enum]": "one",
+                  "objParam[float32]": "1.1",
+                  "objParam[float64Str]": "1.1",
+                  "objParam[int32Enum]": "55",
+                  "objParam[int32]": "1",
+                  "objParam[int64Str]": "100",
+                  "objParam[intEnum]": "2",
+                  "objParam[int]": "1",
+                  "objParam[num]": "1.1",
+                  "objParam[strOpt]": "testOptional",
+                  "objParam[str]": "test"
+                },
+                "url": "http://localhost:35123/anything/queryParams/deepObject/obj?objArrParam[arr]=test\u0026objArrParam[arr]=test2\u0026objParam[any]=any\u0026objParam[bigintStr]=9223372036854775808\u0026objParam[bigint]=8821239038968084\u0026objParam[boolOpt]=true\u0026objParam[bool]=true\u0026objParam[dateTime]=2020-01-01T00%3A00%3A00.001Z\u0026objParam[date]=2020-01-01\u0026objParam[decimalStr]=3.14159265358979344719667586\u0026objParam[decimal]=3.141592653589793\u0026objParam[enum]=one\u0026objParam[float32]=1.1\u0026objParam[float64Str]=1.1\u0026objParam[int32Enum]=55\u0026objParam[int32]=1\u0026objParam[int64Str]=100\u0026objParam[intEnum]=2\u0026objParam[int]=1\u0026objParam[num]=1.1\u0026objParam[strOpt]=testOptional\u0026objParam[str]=test"
+              }
+            type: simple
+    x-speakeasy-test-group: parameters
+    x-speakeasy-test-internal-id: parameters-deep-object-query-params-object
+  - workflowId: formQueryParamsArray
+    steps:
+      - stepId: test
+        operationId: formQueryParamsArray
+        parameters:
+          - name: arrParam
+            in: query
+            value:
+              - test
+              - test2
+          - name: arrParamExploded
+            in: query
+            value:
+              - 1
+              - 2
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {
+                "args": {
+                  "arrParam": "test,test2",
+                  "arrParamExploded": [
+                    "1",
+                    "2"
+                  ]
+                },
+                "url": "http://localhost:35123/anything/queryParams/form/array?arrParam=test%2Ctest2\u0026arrParamExploded=1\u0026arrParamExploded=2"
+              }
+            type: simple
+    x-speakeasy-test-group: parameters
+    x-speakeasy-test-internal-id: parameters-form-query-params-array
+  - workflowId: formQueryParamsCamelObject
+    steps:
+      - stepId: test
+        operationId: formQueryParamsCamelObject
+        parameters:
+          - name: obj_param_exploded
+            in: query
+            value:
+              item_count: "10"
+              search_term: foo
+          - name: obj_param
+            in: query
+            value:
+              encoded_count: "11"
+              encoded_term: bar
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {
+                "args": {
+                  "item_count": "10",
+                  "search_term": "foo"
+                },
+                "url": "http://localhost:35123/anything/queryParams/form/camelObj?item_count=10\u0026obj_param=encoded_count%2C11%2Cencoded_term%2Cbar\u0026search_term=foo"
+              }
+            type: simple
+    x-speakeasy-test-group: parameters
+    x-speakeasy-test-internal-id: parameters-form-query-params-camel-object
+  - workflowId: formQueryParamsMap
+    steps:
+      - stepId: test
+        operationId: formQueryParamsMap
+        parameters:
+          - name: mapParam
+            in: query
+            value:
+              test: value
+              test2: value2
+          - name: mapParamExploded
+            in: query
+            value:
+              test: 1
+              test2: 2
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {
+                "args": {
+                  "mapParam": "test,value,test2,value2",
+                  "test": "1",
+                  "test2": "2"
+                },
+                "url": "http://localhost:35123/anything/queryParams/form/map?mapParam=test%2Cvalue%2Ctest2%2Cvalue2\u0026test=1\u0026test2=2"
+              }
+            type: simple
+    x-speakeasy-test-group: parameters
+    x-speakeasy-test-internal-id: parameters-form-query-params-map
+  - workflowId: formQueryParamsObject
+    steps:
+      - stepId: test
+        operationId: formQueryParamsObject
+        parameters:
+          - name: objParamExploded
+            in: query
+            value:
+              any: any
+              bigint: 8821239038968084
+              bigintStr: "9223372036854775808"
+              bool: true
+              boolOpt: true
+              date: "2020-01-01"
+              dateTime: "2020-01-01T00:00:00.001Z"
+              decimal: 3.141592653589793
+              decimalStr: "3.14159265358979344719667586"
+              enum: one
+              float32: 1.1
+              float64Str: "1.1"
+              int: 1
+              int32: 1
+              int32Enum: 55
+              int64Str: "100"
+              intEnum: 2
+              num: 1.1
+              str: test
+              strOpt: testOptional
+          - name: objParam
+            in: query
+            value:
+              any: any
+              bigint: 8821239038968084
+              bigintStr: "9223372036854775808"
+              bool: true
+              boolOpt: true
+              date: "2020-01-01"
+              dateTime: "2020-01-01T00:00:00.001Z"
+              decimal: 3.141592653589793
+              decimalStr: "3.14159265358979344719667586"
+              enum: one
+              float32: 1.1
+              float64Str: "1.1"
+              int: 1
+              int32: 1
+              int32Enum: 55
+              int64Str: "100"
+              intEnum: 2
+              num: 1.1
+              str: test
+              strOpt: testOptional
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {
+                "args": {
+                  "any": "any",
+                  "bigint": "8821239038968084",
+                  "bigintStr": "9223372036854775808",
+                  "bool": "true",
+                  "boolOpt": "true",
+                  "date": "2020-01-01",
+                  "dateTime": "2020-01-01T00:00:00.001Z",
+                  "decimal": "3.141592653589793",
+                  "decimalStr": "3.14159265358979344719667586",
+                  "enum": "one",
+                  "float32": "1.1",
+                  "float64Str": "1.1",
+                  "int": "1",
+                  "int32": "1",
+                  "int32Enum": "55",
+                  "int64Str": "100",
+                  "intEnum": "2",
+                  "num": "1.1",
+                  "objParam": "any,any,bigint,8821239038968084,bigintStr,9223372036854775808,bool,true,boolOpt,true,date,2020-01-01,dateTime,2020-01-01T00:00:00.001Z,decimal,3.141592653589793,decimalStr,3.14159265358979344719667586,enum,one,float32,1.1,float64Str,1.1,int,1,int32,1,int32Enum,55,int64Str,100,intEnum,2,num,1.1,str,test,strOpt,testOptional",
+                  "str": "test",
+                  "strOpt": "testOptional"
+                },
+                "url": "http://localhost:35123/anything/queryParams/form/obj?any=any\u0026bigint=8821239038968084\u0026bigintStr=9223372036854775808\u0026bool=true\u0026boolOpt=true\u0026date=2020-01-01\u0026dateTime=2020-01-01T00%3A00%3A00.001Z\u0026decimal=3.141592653589793\u0026decimalStr=3.14159265358979344719667586\u0026enum=one\u0026float32=1.1\u0026float64Str=1.1\u0026int=1\u0026int32=1\u0026int32Enum=55\u0026int64Str=100\u0026intEnum=2\u0026num=1.1\u0026objParam=any%2Cany%2Cbigint%2C8821239038968084%2CbigintStr%2C9223372036854775808%2Cbool%2Ctrue%2CboolOpt%2Ctrue%2Cdate%2C2020-01-01%2CdateTime%2C2020-01-01T00%3A00%3A00.001Z%2Cdecimal%2C3.141592653589793%2CdecimalStr%2C3.14159265358979344719667586%2Cenum%2Cone%2Cfloat32%2C1.1%2Cfloat64Str%2C1.1%2Cint%2C1%2Cint32%2C1%2Cint32Enum%2C55%2Cint64Str%2C100%2CintEnum%2C2%2Cnum%2C1.1%2Cstr%2Ctest%2CstrOpt%2CtestOptional\u0026str=test\u0026strOpt=testOptional"
+              }
+            type: simple
+    x-speakeasy-test-group: parameters
+    x-speakeasy-test-internal-id: parameters-form-query-params-object
+  - workflowId: formQueryParamsPrimitive
+    steps:
+      - stepId: test
+        operationId: formQueryParamsPrimitive
+        parameters:
+          - name: strParam
+            in: query
+            value: test
+          - name: boolParam
+            in: query
+            value: true
+          - name: intParam
+            in: query
+            value: 1
+          - name: numParam
+            in: query
+            value: 1.1
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {
+                "args": {
+                  "boolParam": "true",
+                  "intParam": "1",
+                  "numParam": "1.1",
+                  "strParam": "test"
+                },
+                "url": "http://localhost:35123/anything/queryParams/form/primitive?boolParam=true\u0026intParam=1\u0026numParam=1.1\u0026strParam=test"
+              }
+            type: simple
+    x-speakeasy-test-group: parameters
+    x-speakeasy-test-internal-id: parameters-form-query-params-primitive
+  - workflowId: formQueryParamsRefParamObject
+    steps:
+      - stepId: test
+        operationId: formQueryParamsRefParamObject
+        parameters:
+          - name: refObjParamExploded
+            in: query
+            value:
+              bool: true
+              int: 1
+              num: 1.1
+              str: test
+          - name: refObjParam
+            in: query
+            value:
+              bool: true
+              int: 1
+              num: 1.1
+              str: test
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {
+                "args": {
+                  "bool": "true",
+                  "int": "1",
+                  "num": "1.1",
+                  "refObjParam": "bool,true,int,1,num,1.1,str,test",
+                  "str": "test"
+                },
+                "url": "http://localhost:35123/anything/queryParams/form/refParamObject?bool=true\u0026int=1\u0026num=1.1\u0026refObjParam=bool%2Ctrue%2Cint%2C1%2Cnum%2C1.1%2Cstr%2Ctest\u0026str=test"
+              }
+            type: simple
+    x-speakeasy-test-group: parameters
+    x-speakeasy-test-internal-id: parameters-form-query-params-ref-param-object
+  - workflowId: headerParamsArray
+    steps:
+      - stepId: test
+        operationId: headerParamsArray
+        parameters:
+          - name: X-Header-Array
+            in: header
+            value:
+              - test1
+              - test2
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {
+                "headers": {
+                  "X-Header-Array": "test1,test2"
+                }
+              }
+            type: simple
+    x-speakeasy-test-group: parameters
+    x-speakeasy-test-internal-id: parameters-header-params-array
+  - workflowId: headerParamsMap
+    steps:
+      - stepId: test
+        operationId: headerParamsMap
+        parameters:
+          - name: X-Header-Map
+            in: header
+            value:
+              key1: value1
+              key2: value2
+          - name: X-Header-Map-Explode
+            in: header
+            value:
+              test1: val1
+              test2: val2
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {
+                "headers": {
+                  "X-Header-Map": "key1,value1,key2,value2",
+                  "X-Header-Map-Explode": "test1=val1,test2=val2"
+                }
+              }
+            type: simple
+    x-speakeasy-test-group: parameters
+    x-speakeasy-test-internal-id: parameters-header-params-map
+  - workflowId: headerParamsObject
+    steps:
+      - stepId: test
+        operationId: headerParamsObject
+        parameters:
+          - name: X-Header-Obj
+            in: header
+            value:
+              any: any
+              bigint: 8821239038968084
+              bigintStr: "9223372036854775808"
+              bool: true
+              boolOpt: true
+              date: "2020-01-01"
+              dateTime: "2020-01-01T00:00:00.001Z"
+              decimal: 3.141592653589793
+              decimalStr: "3.14159265358979344719667586"
+              enum: one
+              float32: 1.1
+              float64Str: "1.1"
+              int: 1
+              int32: 1
+              int32Enum: 55
+              int64Str: "100"
+              intEnum: 2
+              num: 1.1
+              str: test
+              strOpt: testOptional
+          - name: X-Header-Obj-Explode
+            in: header
+            value:
+              any: any
+              bigint: 8821239038968084
+              bigintStr: "9223372036854775808"
+              bool: true
+              boolOpt: true
+              date: "2020-01-01"
+              dateTime: "2020-01-01T00:00:00.001Z"
+              decimal: 3.141592653589793
+              decimalStr: "3.14159265358979344719667586"
+              enum: one
+              float32: 1.1
+              float64Str: "1.1"
+              int: 1
+              int32: 1
+              int32Enum: 55
+              int64Str: "100"
+              intEnum: 2
+              num: 1.1
+              str: test
+              strOpt: testOptional
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {
+                "headers": {
+                  "X-Header-Obj": "any,any,bigint,8821239038968084,bigintStr,9223372036854775808,bool,true,boolOpt,true,date,2020-01-01,dateTime,2020-01-01T00:00:00.001Z,decimal,3.141592653589793,decimalStr,3.14159265358979344719667586,enum,one,float32,1.1,float64Str,1.1,int,1,int32,1,int32Enum,55,int64Str,100,intEnum,2,num,1.1,str,test,strOpt,testOptional",
+                  "X-Header-Obj-Explode": "any=any,bigint=8821239038968084,bigintStr=9223372036854775808,bool=true,boolOpt=true,date=2020-01-01,dateTime=2020-01-01T00:00:00.001Z,decimal=3.141592653589793,decimalStr=3.14159265358979344719667586,enum=one,float32=1.1,float64Str=1.1,int=1,int32=1,int32Enum=55,int64Str=100,intEnum=2,num=1.1,str=test,strOpt=testOptional"
+                }
+              }
+            type: simple
+    x-speakeasy-test-group: parameters
+    x-speakeasy-test-internal-id: parameters-header-params-object
+  - workflowId: headerParamsPrimitive
+    steps:
+      - stepId: test
+        operationId: headerParamsPrimitive
+        parameters:
+          - name: X-Header-String
+            in: header
+            value: test
+          - name: X-Header-Boolean
+            in: header
+            value: true
+          - name: X-Header-Integer
+            in: header
+            value: 1
+          - name: X-Header-Number
+            in: header
+            value: 1.1
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {
+                "headers": {
+                  "X-Header-Boolean": "true",
+                  "X-Header-Integer": "1",
+                  "X-Header-Number": "1.1",
+                  "X-Header-String": "test"
+                }
+              }
+            type: simple
+    x-speakeasy-test-group: parameters
+    x-speakeasy-test-internal-id: parameters-header-params-primitive
+  - workflowId: jsonQueryParamsObjectSmaller
+    steps:
+      - stepId: test
+        operationId: jsonQueryParamsObjectSmaller
+        parameters:
+          - name: simpleObjParam
+            in: query
+            value:
+              any: any
+              bigint: 8821239038968084
+              bigintStr: "9223372036854775808"
+              bool: true
+              boolOpt: true
+              date: "2020-01-01"
+              dateTime: "2020-01-01T00:00:00.001Z"
+              decimal: 3.141592653589793
+              decimalStr: "3.14159265358979344719667586"
+              enum: one
+              float32: 1.1
+              float64Str: "1.1"
+              int: 1
+              int32: 1
+              int32Enum: 55
+              int64Str: "100"
+              intEnum: 2
+              num: 1.1
+              str: test
+              strOpt: testOptional
+          - name: deepObjParam
+            in: query
+            value:
+              any:
+                any: any
+                bigint: 8821239038968084
+                bigintStr: "9223372036854775808"
+                bool: true
+                boolOpt: true
+                date: "2020-01-01"
+                dateTime: "2020-01-01T00:00:00.001Z"
+                decimal: 3.141592653589793
+                decimalStr: "3.14159265358979344719667586"
+                enum: one
+                float32: 1.1
+                float64Str: "1.1"
+                int: 1
+                int32: 1
+                int32Enum: 55
+                int64Str: "100"
+                intEnum: 2
+                num: 1.1
+                str: test
+                strOpt: testOptional
+              arr:
+                - any: any
+                  bigint: 8821239038968084
+                  bigintStr: "9223372036854775808"
+                  bool: true
+                  boolOpt: true
+                  date: "2020-01-01"
+                  dateTime: "2020-01-01T00:00:00.001Z"
+                  decimal: 3.141592653589793
+                  decimalStr: "3.14159265358979344719667586"
+                  enum: one
+                  float32: 1.1
+                  float64Str: "1.1"
+                  int: 1
+                  int32: 1
+                  int32Enum: 55
+                  int64Str: "100"
+                  intEnum: 2
+                  num: 1.1
+                  str: test
+                  strOpt: testOptional
+                - any: any
+                  bigint: 8821239038968084
+                  bigintStr: "9223372036854775808"
+                  bool: true
+                  boolOpt: true
+                  date: "2020-01-01"
+                  dateTime: "2020-01-01T00:00:00.001Z"
+                  decimal: 3.141592653589793
+                  decimalStr: "3.14159265358979344719667586"
+                  enum: one
+                  float32: 1.1
+                  float64Str: "1.1"
+                  int: 1
+                  int32: 1
+                  int32Enum: 55
+                  int64Str: "100"
+                  intEnum: 2
+                  num: 1.1
+                  str: test
+                  strOpt: testOptional
+              bool: true
+              int: 1
+              map:
+                key:
+                  any: any
+                  bigint: 8821239038968084
+                  bigintStr: "9223372036854775808"
+                  bool: true
+                  boolOpt: true
+                  date: "2020-01-01"
+                  dateTime: "2020-01-01T00:00:00.001Z"
+                  decimal: 3.141592653589793
+                  decimalStr: "3.14159265358979344719667586"
+                  enum: one
+                  float32: 1.1
+                  float64Str: "1.1"
+                  int: 1
+                  int32: 1
+                  int32Enum: 55
+                  int64Str: "100"
+                  intEnum: 2
+                  num: 1.1
+                  str: test
+                  strOpt: testOptional
+              num: 1.1
+              obj:
+                any: any
+                bigint: 8821239038968084
+                bigintStr: "9223372036854775808"
+                bool: true
+                boolOpt: true
+                date: "2020-01-01"
+                dateTime: "2020-01-01T00:00:00.001Z"
+                decimal: 3.141592653589793
+                decimalStr: "3.14159265358979344719667586"
+                enum: one
+                float32: 1.1
+                float64Str: "1.1"
+                int: 1
+                int32: 1
+                int32Enum: 55
+                int64Str: "100"
+                intEnum: 2
+                num: 1.1
+                str: test
+                strOpt: testOptional
+              str: test
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {
+                "args": {
+                  "deepObjParam": "{\"any\":{\"any\":\"any\",\"bigint\":8821239038968084,\"bigintStr\":\"9223372036854775808\",\"bool\":true,\"boolOpt\":true,\"date\":\"2020-01-01\",\"dateTime\":\"2020-01-01T00:00:00.001Z\",\"decimal\":3.141592653589793,\"decimalStr\":\"3.14159265358979344719667586\",\"enum\":\"one\",\"float32\":1.1,\"float64Str\":\"1.1\",\"int\":1,\"int32\":1,\"int32Enum\":55,\"int64Str\":\"100\",\"intEnum\":2,\"num\":1.1,\"str\":\"test\",\"strOpt\":\"testOptional\"},\"arr\":[{\"any\":\"any\",\"bigint\":8821239038968084,\"bigintStr\":\"9223372036854775808\",\"bool\":true,\"boolOpt\":true,\"date\":\"2020-01-01\",\"dateTime\":\"2020-01-01T00:00:00.001Z\",\"decimal\":3.141592653589793,\"decimalStr\":\"3.14159265358979344719667586\",\"enum\":\"one\",\"float32\":1.1,\"float64Str\":\"1.1\",\"int\":1,\"int32\":1,\"int32Enum\":55,\"int64Str\":\"100\",\"intEnum\":2,\"num\":1.1,\"str\":\"test\",\"strOpt\":\"testOptional\"},{\"any\":\"any\",\"bigint\":8821239038968084,\"bigintStr\":\"9223372036854775808\",\"bool\":true,\"boolOpt\":true,\"date\":\"2020-01-01\",\"dateTime\":\"2020-01-01T00:00:00.001Z\",\"decimal\":3.141592653589793,\"decimalStr\":\"3.14159265358979344719667586\",\"enum\":\"one\",\"float32\":1.1,\"float64Str\":\"1.1\",\"int\":1,\"int32\":1,\"int32Enum\":55,\"int64Str\":\"100\",\"intEnum\":2,\"num\":1.1,\"str\":\"test\",\"strOpt\":\"testOptional\"}],\"bool\":true,\"int\":1,\"map\":{\"key\":{\"any\":\"any\",\"bigint\":8821239038968084,\"bigintStr\":\"9223372036854775808\",\"bool\":true,\"boolOpt\":true,\"date\":\"2020-01-01\",\"dateTime\":\"2020-01-01T00:00:00.001Z\",\"decimal\":3.141592653589793,\"decimalStr\":\"3.14159265358979344719667586\",\"enum\":\"one\",\"float32\":1.1,\"float64Str\":\"1.1\",\"int\":1,\"int32\":1,\"int32Enum\":55,\"int64Str\":\"100\",\"intEnum\":2,\"num\":1.1,\"str\":\"test\",\"strOpt\":\"testOptional\"}},\"num\":1.1,\"obj\":{\"any\":\"any\",\"bigint\":8821239038968084,\"bigintStr\":\"9223372036854775808\",\"bool\":true,\"boolOpt\":true,\"date\":\"2020-01-01\",\"dateTime\":\"2020-01-01T00:00:00.001Z\",\"decimal\":3.141592653589793,\"decimalStr\":\"3.14159265358979344719667586\",\"enum\":\"one\",\"float32\":1.1,\"float64Str\":\"1.1\",\"int\":1,\"int32\":1,\"int32Enum\":55,\"int64Str\":\"100\",\"intEnum\":2,\"num\":1.1,\"str\":\"test\",\"strOpt\":\"testOptional\"},\"str\":\"test\"}",
+                  "simpleObjParam": "{\"any\":\"any\",\"bigint\":8821239038968084,\"bigintStr\":\"9223372036854775808\",\"bool\":true,\"boolOpt\":true,\"date\":\"2020-01-01\",\"dateTime\":\"2020-01-01T00:00:00.001Z\",\"decimal\":3.141592653589793,\"decimalStr\":\"3.14159265358979344719667586\",\"enum\":\"one\",\"float32\":1.1,\"float64Str\":\"1.1\",\"int\":1,\"int32\":1,\"int32Enum\":55,\"int64Str\":\"100\",\"intEnum\":2,\"num\":1.1,\"str\":\"test\",\"strOpt\":\"testOptional\"}"
+                },
+                "url": "http://localhost:35123/anything/queryParams/json/objsmaller?deepObjParam={\"any\"%3A{\"any\"%3A\"any\"%2C\"bigint\"%3A8821239038968084%2C\"bigintStr\"%3A\"9223372036854775808\"%2C\"bool\"%3Atrue%2C\"boolOpt\"%3Atrue%2C\"date\"%3A\"2020-01-01\"%2C\"dateTime\"%3A\"2020-01-01T00%3A00%3A00.001Z\"%2C\"decimal\"%3A3.141592653589793%2C\"decimalStr\"%3A\"3.14159265358979344719667586\"%2C\"enum\"%3A\"one\"%2C\"float32\"%3A1.1%2C\"float64Str\"%3A\"1.1\"%2C\"int\"%3A1%2C\"int32\"%3A1%2C\"int32Enum\"%3A55%2C\"int64Str\"%3A\"100\"%2C\"intEnum\"%3A2%2C\"num\"%3A1.1%2C\"str\"%3A\"test\"%2C\"strOpt\"%3A\"testOptional\"}%2C\"arr\"%3A[{\"any\"%3A\"any\"%2C\"bigint\"%3A8821239038968084%2C\"bigintStr\"%3A\"9223372036854775808\"%2C\"bool\"%3Atrue%2C\"boolOpt\"%3Atrue%2C\"date\"%3A\"2020-01-01\"%2C\"dateTime\"%3A\"2020-01-01T00%3A00%3A00.001Z\"%2C\"decimal\"%3A3.141592653589793%2C\"decimalStr\"%3A\"3.14159265358979344719667586\"%2C\"enum\"%3A\"one\"%2C\"float32\"%3A1.1%2C\"float64Str\"%3A\"1.1\"%2C\"int\"%3A1%2C\"int32\"%3A1%2C\"int32Enum\"%3A55%2C\"int64Str\"%3A\"100\"%2C\"intEnum\"%3A2%2C\"num\"%3A1.1%2C\"str\"%3A\"test\"%2C\"strOpt\"%3A\"testOptional\"}%2C{\"any\"%3A\"any\"%2C\"bigint\"%3A8821239038968084%2C\"bigintStr\"%3A\"9223372036854775808\"%2C\"bool\"%3Atrue%2C\"boolOpt\"%3Atrue%2C\"date\"%3A\"2020-01-01\"%2C\"dateTime\"%3A\"2020-01-01T00%3A00%3A00.001Z\"%2C\"decimal\"%3A3.141592653589793%2C\"decimalStr\"%3A\"3.14159265358979344719667586\"%2C\"enum\"%3A\"one\"%2C\"float32\"%3A1.1%2C\"float64Str\"%3A\"1.1\"%2C\"int\"%3A1%2C\"int32\"%3A1%2C\"int32Enum\"%3A55%2C\"int64Str\"%3A\"100\"%2C\"intEnum\"%3A2%2C\"num\"%3A1.1%2C\"str\"%3A\"test\"%2C\"strOpt\"%3A\"testOptional\"}]%2C\"bool\"%3Atrue%2C\"int\"%3A1%2C\"map\"%3A{\"key\"%3A{\"any\"%3A\"any\"%2C\"bigint\"%3A8821239038968084%2C\"bigintStr\"%3A\"9223372036854775808\"%2C\"bool\"%3Atrue%2C\"boolOpt\"%3Atrue%2C\"date\"%3A\"2020-01-01\"%2C\"dateTime\"%3A\"2020-01-01T00%3A00%3A00.001Z\"%2C\"decimal\"%3A3.141592653589793%2C\"decimalStr\"%3A\"3.14159265358979344719667586\"%2C\"enum\"%3A\"one\"%2C\"float32\"%3A1.1%2C\"float64Str\"%3A\"1.1\"%2C\"int\"%3A1%2C\"int32\"%3A1%2C\"int32Enum\"%3A55%2C\"int64Str\"%3A\"100\"%2C\"intEnum\"%3A2%2C\"num\"%3A1.1%2C\"str\"%3A\"test\"%2C\"strOpt\"%3A\"testOptional\"}}%2C\"num\"%3A1.1%2C\"obj\"%3A{\"any\"%3A\"any\"%2C\"bigint\"%3A8821239038968084%2C\"bigintStr\"%3A\"9223372036854775808\"%2C\"bool\"%3Atrue%2C\"boolOpt\"%3Atrue%2C\"date\"%3A\"2020-01-01\"%2C\"dateTime\"%3A\"2020-01-01T00%3A00%3A00.001Z\"%2C\"decimal\"%3A3.141592653589793%2C\"decimalStr\"%3A\"3.14159265358979344719667586\"%2C\"enum\"%3A\"one\"%2C\"float32\"%3A1.1%2C\"float64Str\"%3A\"1.1\"%2C\"int\"%3A1%2C\"int32\"%3A1%2C\"int32Enum\"%3A55%2C\"int64Str\"%3A\"100\"%2C\"intEnum\"%3A2%2C\"num\"%3A1.1%2C\"str\"%3A\"test\"%2C\"strOpt\"%3A\"testOptional\"}%2C\"str\"%3A\"test\"}\u0026simpleObjParam={\"any\"%3A\"any\"%2C\"bigint\"%3A8821239038968084%2C\"bigintStr\"%3A\"9223372036854775808\"%2C\"bool\"%3Atrue%2C\"boolOpt\"%3Atrue%2C\"date\"%3A\"2020-01-01\"%2C\"dateTime\"%3A\"2020-01-01T00%3A00%3A00.001Z\"%2C\"decimal\"%3A3.141592653589793%2C\"decimalStr\"%3A\"3.14159265358979344719667586\"%2C\"enum\"%3A\"one\"%2C\"float32\"%3A1.1%2C\"float64Str\"%3A\"1.1\"%2C\"int\"%3A1%2C\"int32\"%3A1%2C\"int32Enum\"%3A55%2C\"int64Str\"%3A\"100\"%2C\"intEnum\"%3A2%2C\"num\"%3A1.1%2C\"str\"%3A\"test\"%2C\"strOpt\"%3A\"testOptional\"}"
+              }
+            type: simple
+    x-speakeasy-test-group: parameters
+    x-speakeasy-test-internal-id: parameters-json-query-params-object
+  - workflowId: mixedParametersCamelCase
+    steps:
+      - stepId: test
+        operationId: mixedParametersCamelCase
+        parameters:
+          - name: path_param
+            in: path
+            value: pathValue
+          - name: query_string_param
+            in: query
+            value: queryValue
+          - name: header_param
+            in: header
+            value: headerValue
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {
+                "args": {
+                  "query_string_param": "queryValue"
+                },
+                "headers": {
+                  "Header-Param": "headerValue"
+                },
+                "url": "http://localhost:35123/anything/mixedParams/path/pathValue/camelcase?query_string_param=queryValue"
+              }
+            type: simple
+    x-speakeasy-test-group: parameters
+    x-speakeasy-test-internal-id: parameters-camel-case
+  - workflowId: mixedParametersPrimitives
+    steps:
+      - stepId: test
+        operationId: mixedParametersPrimitives
+        parameters:
+          - name: pathParam
+            in: path
+            value: pathValue
+          - name: queryStringParam
+            in: query
+            value: queryValue
+          - name: headerParam
+            in: header
+            value: headerValue
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {
+                "args": {
+                  "queryStringParam": "queryValue"
+                },
+                "headers": {
+                  "Headerparam": "headerValue"
+                },
+                "url": "http://localhost:35123/anything/mixedParams/path/pathValue?queryStringParam=queryValue"
+              }
+            type: simple
+    x-speakeasy-test-group: parameters
+    x-speakeasy-test-internal-id: parameters-mixed-primitives
+  - workflowId: mixedQueryParams
+    steps:
+      - stepId: test
+        operationId: mixedQueryParams
+        parameters:
+          - name: jsonParam
+            in: query
+            value:
+              any: any
+              bigint: 8821239038968084
+              bigintStr: "9223372036854775808"
+              bool: true
+              boolOpt: true
+              date: "2020-01-01"
+              dateTime: "2020-01-01T00:00:00.001Z"
+              decimal: 3.141592653589793
+              decimalStr: "3.14159265358979344719667586"
+              enum: one
+              float32: 1.1
+              float64Str: "1.1"
+              int: 1
+              int32: 1
+              int32Enum: 55
+              int64Str: "100"
+              intEnum: 2
+              num: 1.1
+              str: test
+              strOpt: testOptional
+          - name: formParam
+            in: query
+            value:
+              any: any
+              bigint: 8821239038968084
+              bigintStr: "9223372036854775808"
+              bool: true
+              boolOpt: true
+              date: "2020-01-01"
+              dateTime: "2020-01-01T00:00:00.001Z"
+              decimal: 3.141592653589793
+              decimalStr: "3.14159265358979344719667586"
+              enum: one
+              float32: 1.1
+              float64Str: "1.1"
+              int: 1
+              int32: 1
+              int32Enum: 55
+              int64Str: "100"
+              intEnum: 2
+              num: 1.1
+              str: test
+              strOpt: testOptional
+          - name: deepObjectParam
+            in: query
+            value:
+              any: any
+              bigint: 8821239038968084
+              bigintStr: "9223372036854775808"
+              bool: true
+              boolOpt: true
+              date: "2020-01-01"
+              dateTime: "2020-01-01T00:00:00.001Z"
+              decimal: 3.141592653589793
+              decimalStr: "3.14159265358979344719667586"
+              enum: one
+              float32: 1.1
+              float64Str: "1.1"
+              int: 1
+              int32: 1
+              int32Enum: 55
+              int64Str: "100"
+              intEnum: 2
+              num: 1.1
+              str: test
+              strOpt: testOptional
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {
+                "args": {
+                  "any": "any",
+                  "bigint": "8821239038968084",
+                  "bigintStr": "9223372036854775808",
+                  "bool": "true",
+                  "boolOpt": "true",
+                  "date": "2020-01-01",
+                  "dateTime": "2020-01-01T00:00:00.001Z",
+                  "deepObjectParam[any]": "any",
+                  "deepObjectParam[bigint]": "8821239038968084",
+                  "deepObjectParam[bigintStr]": "9223372036854775808",
+                  "deepObjectParam[boolOpt]": "true",
+                  "deepObjectParam[bool]": "true",
+                  "deepObjectParam[dateTime]": "2020-01-01T00:00:00.001Z",
+                  "deepObjectParam[date]": "2020-01-01",
+                  "deepObjectParam[enum]": "one",
+                  "deepObjectParam[float32]": "1.1",
+                  "deepObjectParam[float64Str]": "1.1",
+                  "deepObjectParam[int32]": "1",
+                  "deepObjectParam[int]": "1",
+                  "deepObjectParam[intEnum]": "2",
+                  "deepObjectParam[int32Enum]": "55",
+                  "deepObjectParam[int64Str]": "100",
+                  "deepObjectParam[num]": "1.1",
+                  "deepObjectParam[decimal]": "3.141592653589793",
+                  "deepObjectParam[decimalStr]": "3.14159265358979344719667586",
+                  "deepObjectParam[strOpt]": "testOptional",
+                  "deepObjectParam[str]": "test",
+                  "enum": "one",
+                  "float32": "1.1",
+                  "float64Str": "1.1",
+                  "int": "1",
+                  "int32": "1",
+                  "intEnum": "2",
+                  "int32Enum": "55",
+                  "int64Str": "100",
+                  "jsonParam": "{\"any\":\"any\",\"bigint\":8821239038968084,\"bigintStr\":\"9223372036854775808\",\"bool\":true,\"boolOpt\":true,\"date\":\"2020-01-01\",\"dateTime\":\"2020-01-01T00:00:00.001Z\",\"decimal\":3.141592653589793,\"decimalStr\":\"3.14159265358979344719667586\",\"enum\":\"one\",\"float32\":1.1,\"float64Str\":\"1.1\",\"int\":1,\"int32\":1,\"int32Enum\":55,\"int64Str\":\"100\",\"intEnum\":2,\"num\":1.1,\"str\":\"test\",\"strOpt\":\"testOptional\"}",
+                  "num": "1.1",
+                  "decimal": "3.141592653589793",
+                  "decimalStr": "3.14159265358979344719667586",
+                  "str": "test",
+                  "strOpt": "testOptional"
+                },
+                "url": "http://localhost:35123/anything/queryParams/mixed?any=any\u0026bigint=8821239038968084\u0026bigintStr=9223372036854775808\u0026bool=true\u0026boolOpt=true\u0026date=2020-01-01\u0026dateTime=2020-01-01T00%3A00%3A00.001Z\u0026decimal=3.141592653589793\u0026decimalStr=3.14159265358979344719667586\u0026deepObjectParam[any]=any\u0026deepObjectParam[bigintStr]=9223372036854775808\u0026deepObjectParam[bigint]=8821239038968084\u0026deepObjectParam[boolOpt]=true\u0026deepObjectParam[bool]=true\u0026deepObjectParam[dateTime]=2020-01-01T00%3A00%3A00.001Z\u0026deepObjectParam[date]=2020-01-01\u0026deepObjectParam[decimalStr]=3.14159265358979344719667586\u0026deepObjectParam[decimal]=3.141592653589793\u0026deepObjectParam[enum]=one\u0026deepObjectParam[float32]=1.1\u0026deepObjectParam[float64Str]=1.1\u0026deepObjectParam[int32Enum]=55\u0026deepObjectParam[int32]=1\u0026deepObjectParam[int64Str]=100\u0026deepObjectParam[intEnum]=2\u0026deepObjectParam[int]=1\u0026deepObjectParam[num]=1.1\u0026deepObjectParam[strOpt]=testOptional\u0026deepObjectParam[str]=test\u0026enum=one\u0026float32=1.1\u0026float64Str=1.1\u0026int=1\u0026int32=1\u0026int32Enum=55\u0026int64Str=100\u0026intEnum=2\u0026jsonParam={\"any\"%3A\"any\"%2C\"bigint\"%3A8821239038968084%2C\"bigintStr\"%3A\"9223372036854775808\"%2C\"bool\"%3Atrue%2C\"boolOpt\"%3Atrue%2C\"date\"%3A\"2020-01-01\"%2C\"dateTime\"%3A\"2020-01-01T00%3A00%3A00.001Z\"%2C\"decimal\"%3A3.141592653589793%2C\"decimalStr\"%3A\"3.14159265358979344719667586\"%2C\"enum\"%3A\"one\"%2C\"float32\"%3A1.1%2C\"float64Str\"%3A\"1.1\"%2C\"int\"%3A1%2C\"int32\"%3A1%2C\"int32Enum\"%3A55%2C\"int64Str\"%3A\"100\"%2C\"intEnum\"%3A2%2C\"num\"%3A1.1%2C\"str\"%3A\"test\"%2C\"strOpt\"%3A\"testOptional\"}\u0026num=1.1\u0026str=test\u0026strOpt=testOptional"
+              }
+            type: simple
+    x-speakeasy-test-group: parameters
+    x-speakeasy-test-internal-id: parameters-mixed-query-params
+  - workflowId: pathParameterJson
+    steps:
+      - stepId: test
+        operationId: pathParameterJson
+        parameters:
+          - name: jsonObj
+            in: path
+            value:
+              any: any
+              bigint: 8821239038968084
+              bigintStr: "9223372036854775808"
+              bool: true
+              boolOpt: true
+              date: "2020-01-01"
+              dateTime: "2020-01-01T00:00:00.001Z"
+              decimal: 3.141592653589793
+              decimalStr: "3.14159265358979344719667586"
+              enum: one
+              float32: 1.1
+              float64Str: "1.1"
+              int: 1
+              int32: 1
+              int32Enum: 55
+              int64Str: "100"
+              intEnum: 2
+              num: 1.1
+              str: test
+              strOpt: testOptional
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {
+                "url": "http://localhost:35123/anything/pathParams/json/{\"any\":\"any\",\"bigint\":8821239038968084,\"bigintStr\":\"9223372036854775808\",\"bool\":true,\"boolOpt\":true,\"date\":\"2020-01-01\",\"dateTime\":\"2020-01-01T00:00:00.001Z\",\"decimal\":3.141592653589793,\"decimalStr\":\"3.14159265358979344719667586\",\"enum\":\"one\",\"float32\":1.1,\"float64Str\":\"1.1\",\"int\":1,\"int32\":1,\"int32Enum\":55,\"int64Str\":\"100\",\"intEnum\":2,\"num\":1.1,\"str\":\"test\",\"strOpt\":\"testOptional\"}"
+              }
+            type: simple
+    x-speakeasy-test-group: parameters
+    x-speakeasy-test-internal-id: parameters-path-parameter-json
+  - workflowId: pipeDelimitedQueryParamsArray
+    steps:
+      - stepId: test
+        operationId: pipeDelimitedQueryParamsArray
+        parameters:
+          - name: arrParam
+            in: query
+            value:
+              - test
+              - test2
+          - name: arrParamExploded
+            in: query
+            value:
+              - 1
+              - 2
+          - name: objParam
+            in: query
+            value:
+              any: any
+              bigint: 8821239038968084
+              bigintStr: "9223372036854775808"
+              bool: true
+              boolOpt: true
+              date: "2020-01-01"
+              dateTime: "2020-01-01T00:00:00.001Z"
+              decimal: 3.141592653589793
+              decimalStr: "3.14159265358979344719667586"
+              enum: one
+              float32: 1.1
+              float64Str: "1.1"
+              int: 1
+              int32: 1
+              int32Enum: 55
+              int64Str: "100"
+              intEnum: 2
+              num: 1.1
+              str: test
+              strOpt: testOptional
+          - name: mapParam
+            in: query
+            value:
+              key1: val1
+              key2: val2
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {
+                "args": {
+                  "arrParam": "test|test2",
+                  "arrParamExploded": [
+                    "1",
+                    "2"
+                  ]
+                },
+                "url": "http://localhost:35123/anything/queryParams/pipe/array?arrParam=test|test2\u0026arrParamExploded=1\u0026arrParamExploded=2\u0026mapParam=key1|val1|key2|val2\u0026objParam=any|any|bigint|8821239038968084|bigintStr|9223372036854775808|bool|true|boolOpt|true|date|2020-01-01|dateTime|2020-01-01T00%3A00%3A00.001Z|decimal|3.141592653589793|decimalStr|3.14159265358979344719667586|enum|one|float32|1.1|float64Str|1.1|int|1|int32|1|int32Enum|55|int64Str|100|intEnum|2|num|1.1|str|test|strOpt|testOptional"
+              }
+            type: simple
+    x-speakeasy-test-group: parameters
+    x-speakeasy-test-internal-id: parameters-pipe-query-params-array
+  - workflowId: simplePathParameterArrays
+    steps:
+      - stepId: test
+        operationId: simplePathParameterArrays
+        parameters:
+          - name: arrParam
+            in: path
+            value:
+              - test
+              - test2
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {
+                "url": "http://localhost:35123/anything/pathParams/arr/test,test2"
+              }
+            type: simple
+    x-speakeasy-test-group: parameters
+    x-speakeasy-test-internal-id: parameters-simple-path-parameter-arrays
+  - workflowId: simplePathParameterMaps
+    steps:
+      - stepId: test
+        operationId: simplePathParameterMaps
+        parameters:
+          - name: mapParam
+            in: path
+            value:
+              test: value
+              test2: value2
+          - name: mapParamExploded
+            in: path
+            value:
+              test: 1
+              test2: 2
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {
+                "url": "http://localhost:35123/anything/pathParams/map/test,value,test2,value2/mapExploded/test=1,test2=2"
+              }
+            type: simple
+    x-speakeasy-test-group: parameters
+    x-speakeasy-test-internal-id: parameters-simple-path-parameter-maps
+  - workflowId: simplePathParameterObjects
+    steps:
+      - stepId: test
+        operationId: simplePathParameterObjects
+        parameters:
+          - name: objParam
+            in: path
+            value:
+              any: any
+              bigint: 8821239038968084
+              bigintStr: "9223372036854775808"
+              bool: true
+              boolOpt: true
+              date: "2020-01-01"
+              dateTime: "2020-01-01T00:00:00.001Z"
+              decimal: 3.141592653589793
+              decimalStr: "3.14159265358979344719667586"
+              enum: one
+              float32: 1.1
+              float64Str: "1.1"
+              int: 1
+              int32: 1
+              int32Enum: 55
+              int64Str: "100"
+              intEnum: 2
+              num: 1.1
+              str: test
+              strOpt: testOptional
+          - name: objParamExploded
+            in: path
+            value:
+              any: any
+              bigint: 8821239038968084
+              bigintStr: "9223372036854775808"
+              bool: true
+              boolOpt: true
+              date: "2020-01-01"
+              dateTime: "2020-01-01T00:00:00.001Z"
+              decimal: 3.141592653589793
+              decimalStr: "3.14159265358979344719667586"
+              enum: one
+              float32: 1.1
+              float64Str: "1.1"
+              int: 1
+              int32: 1
+              int32Enum: 55
+              int64Str: "100"
+              intEnum: 2
+              num: 1.1
+              str: test
+              strOpt: testOptional
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {
+                "url": "http://localhost:35123/anything/pathParams/obj/any,any,bigint,8821239038968084,bigintStr,9223372036854775808,bool,true,boolOpt,true,date,2020-01-01,dateTime,2020-01-01T00:00:00.001Z,decimal,3.141592653589793,decimalStr,3.14159265358979344719667586,enum,one,float32,1.1,float64Str,1.1,int,1,int32,1,int32Enum,55,int64Str,100,intEnum,2,num,1.1,str,test,strOpt,testOptional/objExploded/any=any,bigint=8821239038968084,bigintStr=9223372036854775808,bool=true,boolOpt=true,date=2020-01-01,dateTime=2020-01-01T00:00:00.001Z,decimal=3.141592653589793,decimalStr=3.14159265358979344719667586,enum=one,float32=1.1,float64Str=1.1,int=1,int32=1,int32Enum=55,int64Str=100,intEnum=2,num=1.1,str=test,strOpt=testOptional"
+              }
+            type: simple
+    x-speakeasy-test-group: parameters
+    x-speakeasy-test-internal-id: parameters-simple-path-parameter-objects
+  - workflowId: simplePathParameterPrimitives
+    steps:
+      - stepId: test
+        operationId: simplePathParameterPrimitives
+        parameters:
+          - name: strParam
+            in: path
+            value: test
+          - name: boolParam
+            in: path
+            value: true
+          - name: intParam
+            in: path
+            value: 1
+          - name: numParam
+            in: path
+            value: 1.1
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {
+                "url": "http://localhost:35123/anything/pathParams/str/test/bool/true/int/1/num/1.1"
+              }
+            type: simple
+    x-speakeasy-test-group: parameters
+    x-speakeasy-test-internal-id: parameters-simple-path-parameter-primitives
+  - workflowId: testHooks
+    steps:
+      - stepId: test
+        operationId: testHooks
+        parameters:
+          - name: someParam
+            in: query
+            value: someInitialValue
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {
+                "args": {
+                  "someParam": "overriddenParam"
+                },
+                "headers": {
+                  "Client-Level-Header": "added by client",
+                  "Idempotency-Key": "some-key"
+                },
+                "url": "http://localhost:35123/anything/hooks?someParam=overriddenParam"
+              }
+            type: simple
+    x-speakeasy-test-group: hooks
+    x-speakeasy-test-server:
+      baseUrl: http://localhost:35123
+    x-speakeasy-test-internal-id: test-hooks
+  - workflowId: requestBodyDeprecatedRequestBodyRefPost
+    steps:
+      - stepId: test
+        operationId: requestBodyDeprecatedRequestBodyRefPost
+        requestBody:
+          contentType: application/json
+          payload:
+            str: testvalue
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {
+                "json": {
+                  "str": "testvalue"
+                }
+              }
+            type: simple
+    x-speakeasy-test-group: requestBodies
+    x-speakeasy-test-internal-id: request-bodies-deprecated-request-body-ref
+  - workflowId: requestBodyPostMultipleContentTypesComponentFiltered-multipart-form-data
+    steps:
+      - stepId: test
+        operationId: requestBodyPostMultipleContentTypesComponentFiltered
+        requestBody:
+          contentType: application/json
+          payload:
+            any: any
+            bigint: 8821239038968084
+            bigintStr: "9223372036854775808"
+            bool: true
+            boolOpt: true
+            date: "2020-01-01"
+            dateTime: "2020-01-01T00:00:00.001Z"
+            decimal: 3.141592653589793
+            decimalStr: "3.14159265358979344719667586"
+            enum: one
+            float32: 1.1
+            float64Str: "1.1"
+            int: 1
+            int32: 1
+            int32Enum: 55
+            int64Str: "100"
+            intEnum: 2
+            num: 1.1
+            str: test
+            strOpt: testOptional
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {
+                "json": {
+                  "any": "any",
+                  "bigint": 8821239038968084,
+                  "bigintStr": "9223372036854775808",
+                  "bool": true,
+                  "boolOpt": true,
+                  "date": "2020-01-01",
+                  "dateTime": "2020-01-01T00:00:00.001Z",
+                  "decimal": 3.141592653589793,
+                  "decimalStr": "3.14159265358979344719667586",
+                  "enum": "one",
+                  "float32": 1.1,
+                  "float64Str": "1.1",
+                  "int": 1,
+                  "int32": 1,
+                  "int32Enum": 55,
+                  "int64Str": "100",
+                  "intEnum": 2,
+                  "num": 1.1,
+                  "str": "test",
+                  "strOpt": "testOptional"
+                }
+              }
+            type: simple
+    x-speakeasy-test-group: requestBodies
+    x-speakeasy-test-internal-id: request-bodies-post-multiple-content-types-component-filtered-multipart-form-data
+  - workflowId: requestBodyPostMultipleContentTypesComponentFiltered-application-json
+    steps:
+      - stepId: test
+        operationId: requestBodyPostMultipleContentTypesComponentFiltered
+        requestBody:
+          contentType: application/json
+          payload:
+            any: any
+            bigint: 8821239038968084
+            bigintStr: "9223372036854775808"
+            bool: true
+            boolOpt: true
+            date: "2020-01-01"
+            dateTime: "2020-01-01T00:00:00.001Z"
+            decimal: 3.141592653589793
+            decimalStr: "3.14159265358979344719667586"
+            enum: one
+            float32: 1.1
+            float64Str: "1.1"
+            int: 1
+            int32: 1
+            int32Enum: 55
+            int64Str: "100"
+            intEnum: 2
+            num: 1.1
+            str: test
+            strOpt: testOptional
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {
+                "json": {
+                  "any": "any",
+                  "bigint": 8821239038968084,
+                  "bigintStr": "9223372036854775808",
+                  "bool": true,
+                  "boolOpt": true,
+                  "date": "2020-01-01",
+                  "dateTime": "2020-01-01T00:00:00.001Z",
+                  "decimal": 3.141592653589793,
+                  "decimalStr": "3.14159265358979344719667586",
+                  "enum": "one",
+                  "float32": 1.1,
+                  "float64Str": "1.1",
+                  "int": 1,
+                  "int32": 1,
+                  "int32Enum": 55,
+                  "int64Str": "100",
+                  "intEnum": 2,
+                  "num": 1.1,
+                  "str": "test",
+                  "strOpt": "testOptional"
+                }
+              }
+            type: simple
+    x-speakeasy-test-group: requestBodies
+    x-speakeasy-test-internal-id: request-bodies-post-multiple-content-types-component-filtered-application-json
+  - workflowId: requestBodyPostMultipleContentTypesComponentFilteredDefaultTest
+    steps:
+      - stepId: test
+        operationId: requestBodyPostMultipleContentTypesComponentFilteredDefaultTest
+        requestBody:
+          contentType: application/json
+          payload:
+            any: any
+            bigint: 8821239038968084
+            bigintStr: "9223372036854775808"
+            bool: true
+            boolOpt: true
+            date: "2020-01-01"
+            dateTime: "2020-01-01T00:00:00.001Z"
+            decimal: 3.141592653589793
+            decimalStr: "3.14159265358979344719667586"
+            enum: one
+            float32: 1.1
+            float64Str: "1.1"
+            int: 1
+            int32: 1
+            int32Enum: 55
+            int64Str: "100"
+            intEnum: 2
+            num: 1.1
+            str: test
+            strOpt: testOptional
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {
+                "json": {
+                  "any": "any",
+                  "bigint": 8821239038968084,
+                  "bigintStr": "9223372036854775808",
+                  "bool": true,
+                  "boolOpt": true,
+                  "date": "2020-01-01",
+                  "dateTime": "2020-01-01T00:00:00.001Z",
+                  "decimal": 3.141592653589793,
+                  "decimalStr": "3.14159265358979344719667586",
+                  "enum": "one",
+                  "float32": 1.1,
+                  "float64Str": "1.1",
+                  "int": 1,
+                  "int32": 1,
+                  "int32Enum": 55,
+                  "int64Str": "100",
+                  "intEnum": 2,
+                  "num": 1.1,
+                  "str": "test",
+                  "strOpt": "testOptional"
+                }
+              }
+            type: simple
+    x-speakeasy-test-group: requestBodies
+  - workflowId: requestBodyPostNotNullableNotRequiredStringBody
+    steps:
+      - stepId: test
+        operationId: requestBodyPostNotNullableNotRequiredStringBody
+        successCriteria:
+          - condition: $statusCode == 200
+          - condition: $response.header.Content-Type == application/json
+          - context: $response.body
+            condition: |
+              {
+                "data": ""
+              }
+            type: simple
+    x-speakeasy-test-group: requestBodies
+    x-speakeasy-test-internal-id: request-bodies-post-not-nullable-not-required-string-body
+  - workflowId: nestedFirstGet
+    steps:
+      - stepId: test
+        operationId: nestedFirstGet
+        successCriteria:
+          - condition: $statusCode == 200
+    x-speakeasy-test-group: SDK_nested_first
+    x-speakeasy-test-internal-id: multi-level-grouping

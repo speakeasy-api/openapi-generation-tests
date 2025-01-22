@@ -1,5 +1,5 @@
 # Documentation
-
+(*documentation*)
 
 ## Overview
 
@@ -16,32 +16,33 @@ Gets documentation for some language, I guess.
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI;
-use \OpenAPI\OpenAPI\Models\Shared;
-use \OpenAPI\OpenAPI\Models\Operations;
+require 'vendor/autoload.php';
 
-$security = new Shared\Security();
-$security->apiKeyAuth = 'Token YOUR_API_KEY';
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Shared;
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
+    ->setSecurity(
+        new Shared\Security(
+            apiKeyAuth: 'Token YOUR_API_KEY',
+        )
+    )
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
     ->build();
 
-try {
 
 
-    $response = $sdk->documentation->getDocumentationPerLanguage('string');
+$response = $sdk->documentation->getDocumentationPerLanguage(
+    language: '<value>'
+);
 
-    if ($response->statusCode === 200) {
-        // handle response
-    }
-} catch (Exception $e) {
-    // handle exception
+if ($response->statusCode === 200) {
+    // handle response
 }
 ```
 
@@ -51,8 +52,12 @@ try {
 | ----------------------------------------- | ----------------------------------------- | ----------------------------------------- | ----------------------------------------- |
 | `language`                                | *string*                                  | :heavy_check_mark:                        | The language parameter for this endpoint. |
 
-
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\GetDocumentationPerLanguageResponse](../../Models/Operations/GetDocumentationPerLanguageResponse.md)**
+**[?Operations\GetDocumentationPerLanguageResponse](../../Models/Operations/GetDocumentationPerLanguageResponse.md)**
 
+### Errors
+
+| Error Type          | Status Code         | Content Type        |
+| ------------------- | ------------------- | ------------------- |
+| Errors\SDKException | 4XX, 5XX            | \*/\*               |
