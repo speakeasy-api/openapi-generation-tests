@@ -1,5 +1,5 @@
 # Auth
-
+(*auth*)
 
 ## Overview
 
@@ -22,373 +22,414 @@ Endpoints for testing authentication.
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI;
-use \OpenAPI\OpenAPI\Models\Shared;
-use \OpenAPI\OpenAPI\Models\Operations;
+require 'vendor/autoload.php';
+
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Shared;
 
 $sdk = OpenAPI\SDK::builder()
+    ->setSecurity(
+        new Shared\Security(
+            apiKeyAuth: 'Token YOUR_API_KEY',
+        )
+    )
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
     ->build();
 
-try {
-    $requestSecurity = new Operations\ApiKeyAuthSecurity();
-    $requestSecurity->apiKeyAuth = 'Token YOUR_API_KEY';
 
-    $response = $sdk->auth->apiKeyAuth($requestSecurity);
 
-    if ($response->token !== null) {
-        // handle response
-    }
-} catch (Exception $e) {
-    // handle exception
+$response = $sdk->auth->apiKeyAuth(
+
+);
+
+if ($response->token !== null) {
+    // handle response
 }
 ```
 
-### Parameters
-
-| Parameter                                                                                              | Type                                                                                                   | Required                                                                                               | Description                                                                                            |
-| ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ |
-| `security`                                                                                             | [\OpenAPI\OpenAPI\Models\Operations\ApiKeyAuthSecurity](../../Models/Operations/ApiKeyAuthSecurity.md) | :heavy_check_mark:                                                                                     | The security requirements to use for the request.                                                      |
-
-
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\ApiKeyAuthResponse](../../Models/Operations/ApiKeyAuthResponse.md)**
+**[?Operations\ApiKeyAuthResponse](../../Models/Operations/ApiKeyAuthResponse.md)**
 
+### Errors
+
+| Error Type          | Status Code         | Content Type        |
+| ------------------- | ------------------- | ------------------- |
+| Errors\SDKException | 4XX, 5XX            | \*/\*               |
 
 ## apiKeyAuthGlobal
 
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI;
-use \OpenAPI\OpenAPI\Models\Shared;
+require 'vendor/autoload.php';
 
-$security = new Shared\Security();
-$security->apiKeyAuth = 'Token YOUR_API_KEY';
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Shared;
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
+    ->setSecurity(
+        new Shared\Security(
+            apiKeyAuth: 'Token YOUR_API_KEY',
+        )
+    )
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
     ->build();
 
-try {
-    $response = $sdk->auth->apiKeyAuthGlobal();
 
-    if ($response->token !== null) {
-        // handle response
-    }
-} catch (Exception $e) {
-    // handle exception
+
+$response = $sdk->auth->apiKeyAuthGlobal(
+
+);
+
+if ($response->token !== null) {
+    // handle response
 }
 ```
 
-
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\ApiKeyAuthGlobalResponse](../../Models/Operations/ApiKeyAuthGlobalResponse.md)**
+**[?Operations\ApiKeyAuthGlobalResponse](../../Models/Operations/ApiKeyAuthGlobalResponse.md)**
 
+### Errors
+
+| Error Type          | Status Code         | Content Type        |
+| ------------------- | ------------------- | ------------------- |
+| Errors\SDKException | 4XX, 5XX            | \*/\*               |
 
 ## basicAuth
 
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI;
-use \OpenAPI\OpenAPI\Models\Shared;
-use \OpenAPI\OpenAPI\Models\Operations;
+require 'vendor/autoload.php';
+
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Operations;
 
 $sdk = OpenAPI\SDK::builder()
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
     ->build();
 
-try {
 
+$requestSecurity = new Operations\BasicAuthSecurity(
+    password: 'YOUR_PASSWORD',
+    username: 'YOUR_USERNAME',
+);
 
-    $requestSecurity = new Operations\BasicAuthSecurity();
-    $requestSecurity->password = 'YOUR_PASSWORD';
-    $requestSecurity->username = 'YOUR_USERNAME';
+$response = $sdk->auth->basicAuth(
+    security: $requestSecurity,
+    passwd: 'cBKWsBqmT5r5EcU',
+    user: 'Verner74'
 
-    $response = $sdk->auth->basicAuth($requestSecurity, 'string', 'string');
+);
 
-    if ($response->user !== null) {
-        // handle response
-    }
-} catch (Exception $e) {
-    // handle exception
+if ($response->user !== null) {
+    // handle response
 }
 ```
 
 ### Parameters
 
-| Parameter                                                                                            | Type                                                                                                 | Required                                                                                             | Description                                                                                          |
-| ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
-| `security`                                                                                           | [\OpenAPI\OpenAPI\Models\Operations\BasicAuthSecurity](../../Models/Operations/BasicAuthSecurity.md) | :heavy_check_mark:                                                                                   | The security requirements to use for the request.                                                    |
-| `passwd`                                                                                             | *string*                                                                                             | :heavy_check_mark:                                                                                   | N/A                                                                                                  |
-| `user`                                                                                               | *string*                                                                                             | :heavy_check_mark:                                                                                   | N/A                                                                                                  |
-
+| Parameter                                                                    | Type                                                                         | Required                                                                     | Description                                                                  |
+| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| `security`                                                                   | [Operations\BasicAuthSecurity](../../Models/Operations/BasicAuthSecurity.md) | :heavy_check_mark:                                                           | The security requirements to use for the request.                            |
+| `passwd`                                                                     | *string*                                                                     | :heavy_check_mark:                                                           | N/A                                                                          |
+| `user`                                                                       | *string*                                                                     | :heavy_check_mark:                                                           | N/A                                                                          |
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\BasicAuthResponse](../../Models/Operations/BasicAuthResponse.md)**
+**[?Operations\BasicAuthResponse](../../Models/Operations/BasicAuthResponse.md)**
 
+### Errors
+
+| Error Type          | Status Code         | Content Type        |
+| ------------------- | ------------------- | ------------------- |
+| Errors\SDKException | 4XX, 5XX            | \*/\*               |
 
 ## bearerAuth
 
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI;
-use \OpenAPI\OpenAPI\Models\Shared;
-use \OpenAPI\OpenAPI\Models\Operations;
+require 'vendor/autoload.php';
+
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Operations;
 
 $sdk = OpenAPI\SDK::builder()
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
     ->build();
 
-try {
-    $requestSecurity = new Operations\BearerAuthSecurity();
-    $requestSecurity->bearerAuth = 'YOUR_JWT';
 
-    $response = $sdk->auth->bearerAuth($requestSecurity);
+$requestSecurity = new Operations\BearerAuthSecurity(
+    bearerAuth: 'YOUR_JWT',
+);
 
-    if ($response->token !== null) {
-        // handle response
-    }
-} catch (Exception $e) {
-    // handle exception
+$response = $sdk->auth->bearerAuth(
+    security: $requestSecurity
+);
+
+if ($response->token !== null) {
+    // handle response
 }
 ```
 
 ### Parameters
 
-| Parameter                                                                                              | Type                                                                                                   | Required                                                                                               | Description                                                                                            |
-| ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ |
-| `security`                                                                                             | [\OpenAPI\OpenAPI\Models\Operations\BearerAuthSecurity](../../Models/Operations/BearerAuthSecurity.md) | :heavy_check_mark:                                                                                     | The security requirements to use for the request.                                                      |
-
+| Parameter                                                                      | Type                                                                           | Required                                                                       | Description                                                                    |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `security`                                                                     | [Operations\BearerAuthSecurity](../../Models/Operations/BearerAuthSecurity.md) | :heavy_check_mark:                                                             | The security requirements to use for the request.                              |
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\BearerAuthResponse](../../Models/Operations/BearerAuthResponse.md)**
+**[?Operations\BearerAuthResponse](../../Models/Operations/BearerAuthResponse.md)**
 
+### Errors
+
+| Error Type          | Status Code         | Content Type        |
+| ------------------- | ------------------- | ------------------- |
+| Errors\SDKException | 4XX, 5XX            | \*/\*               |
 
 ## globalBearerAuth
 
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI;
-use \OpenAPI\OpenAPI\Models\Shared;
+require 'vendor/autoload.php';
 
-$security = new Shared\Security();
-$security->apiKeyAuth = 'Token YOUR_API_KEY';
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Shared;
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
+    ->setSecurity(
+        new Shared\Security(
+            apiKeyAuth: 'Token YOUR_API_KEY',
+        )
+    )
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
     ->build();
 
-try {
-    $response = $sdk->auth->globalBearerAuth();
 
-    if ($response->token !== null) {
-        // handle response
-    }
-} catch (Exception $e) {
-    // handle exception
+
+$response = $sdk->auth->globalBearerAuth(
+
+);
+
+if ($response->token !== null) {
+    // handle response
 }
 ```
 
-
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\GlobalBearerAuthResponse](../../Models/Operations/GlobalBearerAuthResponse.md)**
+**[?Operations\GlobalBearerAuthResponse](../../Models/Operations/GlobalBearerAuthResponse.md)**
 
+### Errors
+
+| Error Type          | Status Code         | Content Type        |
+| ------------------- | ------------------- | ------------------- |
+| Errors\SDKException | 4XX, 5XX            | \*/\*               |
 
 ## noAuth
 
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI;
-use \OpenAPI\OpenAPI\Models\Shared;
+require 'vendor/autoload.php';
 
-$security = new Shared\Security();
-$security->apiKeyAuth = 'Token YOUR_API_KEY';
+use OpenAPI\OpenAPI;
 
 $sdk = OpenAPI\SDK::builder()
-    ->setSecurity($security)
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
     ->build();
 
-try {
-    $response = $sdk->auth->noAuth();
 
-    if ($response->statusCode === 200) {
-        // handle response
-    }
-} catch (Exception $e) {
-    // handle exception
+
+$response = $sdk->auth->noAuth(
+
+);
+
+if ($response->statusCode === 200) {
+    // handle response
 }
 ```
 
-
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\NoAuthResponse](../../Models/Operations/NoAuthResponse.md)**
+**[?Operations\NoAuthResponse](../../Models/Operations/NoAuthResponse.md)**
 
+### Errors
+
+| Error Type          | Status Code         | Content Type        |
+| ------------------- | ------------------- | ------------------- |
+| Errors\SDKException | 4XX, 5XX            | \*/\*               |
 
 ## oauth2Auth
 
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI;
-use \OpenAPI\OpenAPI\Models\Shared;
-use \OpenAPI\OpenAPI\Models\Operations;
+require 'vendor/autoload.php';
+
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Shared;
 
 $sdk = OpenAPI\SDK::builder()
+    ->setSecurity(
+        new Shared\Security(
+            apiKeyAuth: 'Token YOUR_API_KEY',
+        )
+    )
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
     ->build();
 
-try {
-    $requestSecurity = new Operations\Oauth2AuthSecurity();
-    $requestSecurity->oauth2 = 'Bearer YOUR_OAUTH2_TOKEN';
 
-    $response = $sdk->auth->oauth2Auth($requestSecurity);
 
-    if ($response->token !== null) {
-        // handle response
-    }
-} catch (Exception $e) {
-    // handle exception
+$response = $sdk->auth->oauth2Auth(
+
+);
+
+if ($response->token !== null) {
+    // handle response
 }
 ```
 
-### Parameters
-
-| Parameter                                                                                              | Type                                                                                                   | Required                                                                                               | Description                                                                                            |
-| ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ |
-| `security`                                                                                             | [\OpenAPI\OpenAPI\Models\Operations\Oauth2AuthSecurity](../../Models/Operations/Oauth2AuthSecurity.md) | :heavy_check_mark:                                                                                     | The security requirements to use for the request.                                                      |
-
-
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\Oauth2AuthResponse](../../Models/Operations/Oauth2AuthResponse.md)**
+**[?Operations\Oauth2AuthResponse](../../Models/Operations/Oauth2AuthResponse.md)**
 
+### Errors
+
+| Error Type          | Status Code         | Content Type        |
+| ------------------- | ------------------- | ------------------- |
+| Errors\SDKException | 4XX, 5XX            | \*/\*               |
 
 ## oauth2Override
 
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI;
-use \OpenAPI\OpenAPI\Models\Shared;
-use \OpenAPI\OpenAPI\Models\Operations;
+require 'vendor/autoload.php';
+
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Shared;
 
 $sdk = OpenAPI\SDK::builder()
+    ->setSecurity(
+        new Shared\Security(
+            apiKeyAuth: 'Token YOUR_API_KEY',
+        )
+    )
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
     ->build();
 
-try {
 
 
-    $requestSecurity = new Operations\Oauth2OverrideSecurity();
-    $requestSecurity->oauth2 = 'Bearer YOUR_OAUTH2_TOKEN';
+$response = $sdk->auth->oauth2Override(
 
-    $response = $sdk->auth->oauth2Override($requestSecurity);
+);
 
-    if ($response->token !== null) {
-        // handle response
-    }
-} catch (Exception $e) {
-    // handle exception
+if ($response->token !== null) {
+    // handle response
 }
 ```
 
-### Parameters
-
-| Parameter                                                                                                      | Type                                                                                                           | Required                                                                                                       | Description                                                                                                    |
-| -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
-| `security`                                                                                                     | [\OpenAPI\OpenAPI\Models\Operations\Oauth2OverrideSecurity](../../Models/Operations/Oauth2OverrideSecurity.md) | :heavy_check_mark:                                                                                             | The security requirements to use for the request.                                                              |
-
-
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\Oauth2OverrideResponse](../../Models/Operations/Oauth2OverrideResponse.md)**
+**[?Operations\Oauth2OverrideResponse](../../Models/Operations/Oauth2OverrideResponse.md)**
 
+### Errors
+
+| Error Type          | Status Code         | Content Type        |
+| ------------------- | ------------------- | ------------------- |
+| Errors\SDKException | 4XX, 5XX            | \*/\*               |
 
 ## openIdConnectAuth
 
 ### Example Usage
 
 ```php
-<?php
-
 declare(strict_types=1);
-require_once 'vendor/autoload.php';
 
-use \OpenAPI\OpenAPI;
-use \OpenAPI\OpenAPI\Models\Shared;
-use \OpenAPI\OpenAPI\Models\Operations;
+require 'vendor/autoload.php';
+
+use OpenAPI\OpenAPI;
+use OpenAPI\OpenAPI\Models\Operations;
 
 $sdk = OpenAPI\SDK::builder()
+    ->setGlobalHeaderParam(true)
+    ->setGlobalHiddenQueryParam('hello')
+    ->setGlobalPathParam(100)
+    ->setGlobalQueryParam('some example global query param')
     ->build();
 
-try {
-    $requestSecurity = new Operations\OpenIdConnectAuthSecurity();
-    $requestSecurity->openIdConnect = 'Bearer YOUR_OPENID_TOKEN';
 
-    $response = $sdk->auth->openIdConnectAuth($requestSecurity);
+$requestSecurity = new Operations\OpenIdConnectAuthSecurity(
+    openIdConnect: 'Bearer YOUR_OPENID_TOKEN',
+);
 
-    if ($response->token !== null) {
-        // handle response
-    }
-} catch (Exception $e) {
-    // handle exception
+$response = $sdk->auth->openIdConnectAuth(
+    security: $requestSecurity
+);
+
+if ($response->token !== null) {
+    // handle response
 }
 ```
 
 ### Parameters
 
-| Parameter                                                                                                            | Type                                                                                                                 | Required                                                                                                             | Description                                                                                                          |
-| -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
-| `security`                                                                                                           | [\OpenAPI\OpenAPI\Models\Operations\OpenIdConnectAuthSecurity](../../Models/Operations/OpenIdConnectAuthSecurity.md) | :heavy_check_mark:                                                                                                   | The security requirements to use for the request.                                                                    |
-
+| Parameter                                                                                    | Type                                                                                         | Required                                                                                     | Description                                                                                  |
+| -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
+| `security`                                                                                   | [Operations\OpenIdConnectAuthSecurity](../../Models/Operations/OpenIdConnectAuthSecurity.md) | :heavy_check_mark:                                                                           | The security requirements to use for the request.                                            |
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\OpenIdConnectAuthResponse](../../Models/Operations/OpenIdConnectAuthResponse.md)**
+**[?Operations\OpenIdConnectAuthResponse](../../Models/Operations/OpenIdConnectAuthResponse.md)**
 
+### Errors
+
+| Error Type          | Status Code         | Content Type        |
+| ------------------- | ------------------- | ------------------- |
+| Errors\SDKException | 4XX, 5XX            | \*/\*               |
