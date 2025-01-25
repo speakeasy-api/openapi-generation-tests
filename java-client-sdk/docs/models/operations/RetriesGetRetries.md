@@ -7,4 +7,4 @@ OK
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `retries`          | *Long*             | :heavy_check_mark: | N/A                |
+| `retries`          | *long*             | :heavy_check_mark: | N/A                |
