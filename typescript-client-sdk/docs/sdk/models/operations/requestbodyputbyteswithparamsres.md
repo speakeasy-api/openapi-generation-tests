@@ -2,6 +2,18 @@
 
 OK
 
+## Example Usage
+
+```typescript
+import { RequestBodyPutBytesWithParamsRes } from "openapi/sdk/models/operations";
+
+let value: RequestBodyPutBytesWithParamsRes = {
+  args: {
+    queryStringParam: "<value>",
+  },
+  data: "<value>",
+};
+```
 
 ## Fields
 

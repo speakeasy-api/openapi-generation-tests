@@ -5,7 +5,7 @@ OK
 
 ## Fields
 
-| Field                     | Type                      | Required                  | Description               |
-| ------------------------- | ------------------------- | ------------------------- | ------------------------- |
-| `data`                    | *String*                  | :heavy_check_mark:        | N/A                       |
-| `json`                    | T::Hash[Symbol, *String*] | :heavy_check_mark:        | N/A                       |
+| Field                       | Type                        | Required                    | Description                 | Example                     |
+| --------------------------- | --------------------------- | --------------------------- | --------------------------- | --------------------------- |
+| `data`                      | *::String*                  | :heavy_check_mark:          | N/A                         | {"test":"1"}                |
+| `json`                      | T::Hash[Symbol, *::String*] | :heavy_check_mark:          | N/A                         | {<br/>"test": "1"<br/>}     |
