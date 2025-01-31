@@ -9751,6 +9751,55 @@ paths:
                   status:
                    type: string
                    example: "OK"
+  /anything/requestBodies/post/bodyUnderDataKey:
+    post:
+      operationId: bodyUnderDataKey
+      tags:
+        - flattening
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                data:
+                  $ref: "components.yaml#/components/schemas/simpleObject"
+        required: true
+      parameters:
+        - name: paramStr
+          in: query
+          schema:
+            type: string
+          required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: res
+                type: object
+                properties:
+                  json:
+                    $ref: "components.yaml#/components/schemas/simpleObject"
+                  args:
+                    type: object
+                    additionalProperties:
+                      type: string
+                required:
+                  - json
+                  - args
+        "403":
+          description: Forbidden
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
   /method/post:
     post:
       operationId: methodPost
