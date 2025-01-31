@@ -741,6 +741,33 @@ paths:
                 properties:
                   url:
                     type: string
+  /anything/params/{param1}/{param2}/{param1}:
+    get:
+      operationId: duplicatePathParam
+      tags:
+        - parameters
+      parameters:
+        - name: param1
+          in: path
+          schema:
+            type: string
+          required: true
+        - name: param2
+          in: path
+          schema:
+            type: string
+          required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: duplicatePathParamResponse
+                type: object
+                properties:
+                  url:
+                    type: string
   /anything/mixedParams/path/{path_param}/camelcase:
     get:
       x-speakeasy-test: true
