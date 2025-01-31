@@ -7831,6 +7831,30 @@ paths:
                     $ref: "components.yaml#/components/schemas/arrayOfDiscriminatedUnions"
                 required:
                   - json
+  /anything/enumWithDuplicateMembers:
+    post:
+      operationId: enumWithDuplicateMembers
+      tags:
+        - unions
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "components.yaml#/components/schemas/enumWithDuplicateMembers"
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: res
+                type: object
+                properties:
+                  json:
+                    $ref: "components.yaml#/components/schemas/enumWithDuplicateMembers"
+                required:
+                  - json
   /anything/arrayOfDiscriminatedUnionsMap:
     post:
       operationId: arrayOfDiscriminatedUnionsMap

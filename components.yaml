@@ -2060,6 +2060,16 @@ components:
     binaryString:
       type: string
       format: binary
+    enumWithDuplicateMembers:
+      type: object
+      properties:
+        enumField:
+          type: string
+          enum:
+            - "one"
+            - "one"
+            - "two"
+            - "three"
   responses:
     tokenAuthResponse:
       description: Successful authentication.
