@@ -1957,6 +1957,50 @@ paths:
                 required:
                   - url
                   - args
+  /anything/queryParams/const:
+    get:
+      x-speakeasy-exclude-test-sdk: [csharp, javav2, php]
+      x-speakeasy-test: true
+      x-speakeasy-test-internal-id: parameters-const-query-params
+      operationId: constQueryParams
+      tags:
+        - parameters
+      parameters:
+        - name: constParam
+          in: query
+          schema:
+            type: string
+            const: constvalue
+          required: false
+        - name: configurableParam
+          in: query
+          schema:
+            type: string
+          required: false
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  url:
+                    type: string
+                    example: 'http://localhost:35123/anything/queryParams/const?constParam=constvalue'
+                    x-speakeasy-test-internal-directives:
+                      - sortQueryParameters: {}
+                  args:
+                    type: object
+                    additionalProperties:
+                      type: string
+                    example:
+                      {
+                        "constParam": "constvalue",
+                      }
+                required:
+                  - url
+                  - args
   /anything/queryParams/mixed:
     get:
       x-speakeasy-test: ["go", "python", "pythonv2"]
