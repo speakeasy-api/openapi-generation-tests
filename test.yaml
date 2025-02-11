@@ -997,6 +997,191 @@ paths:
                 required:
                   - url
           description: OK
+  /anything/duplicatePathParameterAtOperationLevel/{param}:
+    get:
+      # TODO: Set to true when python (v1) has been sunset.
+      x-speakeasy-test: ["go", "typescriptv2", "pythonv2"]
+      x-speakeasy-test-internal-id: duplicate-path-parameter-at-operation-level-does-not-error
+      # TODO: Remove when mockserver is default
+      x-speakeasy-test-server: "x-env: TEST_SERVER_URL"
+      operationId: duplicatePathParameterAtOperationLevelDoesNotError
+      tags:
+        - parameters
+      parameters:
+        - name: param
+          in: path
+          required: true
+          schema:
+            type: string
+            example: "test"
+        - name: param
+          in: path
+          required: true
+          schema:
+            type: integer
+            example: 0
+      responses:
+        "200":
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  json:
+                    type: string
+                    example: "test"
+  /anything/duplicatePathParameter/atPathLevel/{param}:
+    parameters:
+      - name: param
+        in: path
+        required: true
+        schema:
+          type: boolean
+      - name: param
+        in: path
+        required: true
+        schema:
+          type: integer
+    get:
+      # TODO: Set to true when python (v1) has been sunset.
+      x-speakeasy-test: ["go", "typescriptv2", "pythonv2"]
+      x-speakeasy-test-internal-id: duplicate-path-parameter-at-path-level-does-not-error
+      operationId: duplicatePathParameterAtPathLevelDoesNotError
+      # TODO: Remove when mockserver is default
+      x-speakeasy-test-server: "x-env: TEST_SERVER_URL"
+      tags:
+        - parameters
+      responses:
+        "200":
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                type: string
+                example: "test"
+  
+  /anything/duplicateQueryParamAtOperationLevel/:
+    get:
+      # TODO: Set to true when python (v1) has been sunset.
+      x-speakeasy-test: ["go", "typescriptv2", "pythonv2"]
+      x-speakeasy-test-internal-id: duplicate-query-parameter-at-operation-level-does-not-error
+      operationId: duplicateQueryParameterAtOperationLevelDoesNotError
+      # TODO: Remove when mockserver is default
+      x-speakeasy-test-server: "x-env: TEST_SERVER_URL"
+      tags:
+        - parameters
+      parameters:
+        - name: param
+          in: query
+          required: true
+          schema:
+            type: string
+            example: "test1"
+        - name: param
+          in: query
+          required: true
+          schema:
+            type: integer
+            example: 0
+      responses:
+        "200":
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                type: string
+                example: "test"
+  /anything/duplicateQueryParam/atPathLevel/:
+    parameters:
+      - name: param
+        in: query
+        required: true
+        schema:
+          type: boolean
+      - name: param
+        in: query
+        required: true
+        schema:
+          type: integer
+    get:
+      # TODO: Set to true when python (v1) has been sunset.
+      x-speakeasy-test: ["go", "typescriptv2", "pythonv2"]
+      x-speakeasy-test-internal-id: duplicate-query-parameter-at-path-level-does-not-error
+      operationId: duplicateQueryParameterAtPathLevelDoesNotError
+      # TODO: Remove when mockserver is default
+      x-speakeasy-test-server: "x-env: TEST_SERVER_URL"
+      tags:
+        - parameters
+      responses:
+        "200":
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                type: string
+                example: "test"
+  
+  /anything/duplicateHeaderParamAtOperationLevel/:
+    get:
+      # TODO: Set to true when python (v1) has been sunset.
+      x-speakeasy-test: ["go", "typescriptv2", "pythonv2"]
+      x-speakeasy-test-internal-id: duplicate-header-parameter-at-operation-level-does-not-error
+      operationId: duplicateHeaderParameterAtOperationLevelDoesNotError
+      # TODO: Remove when mockserver is default
+      x-speakeasy-test-server: "x-env: TEST_SERVER_URL"
+      tags:
+        - parameters
+      parameters:
+        - name: param
+          in: header
+          required: true
+          schema:
+            type: string
+            example: "test1"
+        - name: param
+          in: header
+          required: true
+          schema:
+            type: integer
+            example: 0
+      responses:
+        "200":
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                type: string
+                example: "test"
+  /anything/duplicateHeaderParam/atPathLevel/:
+    parameters:
+      - name: param
+        in: header
+        required: true
+        schema:
+          type: boolean
+      - name: param
+        in: header
+        required: true
+        schema:
+          type: integer
+    get:
+      # TODO: Set to true when python (v1) has been sunset.
+      x-speakeasy-test: ["go", "typescriptv2", "pythonv2"]
+      x-speakeasy-test-internal-id: duplicate-header-parameter-at-path-level-does-not-error
+      operationId: duplicateHeaderParameterAtPathLevelDoesNotError
+      # TODO: Remove when mockserver is default
+      x-speakeasy-test-server: "x-env: TEST_SERVER_URL"
+      tags:
+        - parameters
+      responses:
+        "200":
+          description: Successful Response
+          content:
+            application/json:
+              schema:
+                type: string
+                example: "test"
   /anything/queryParams/form/primitive:
     get:
       x-speakeasy-test: true
