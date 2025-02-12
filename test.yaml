@@ -8437,6 +8437,31 @@ paths:
             type: cursor
         outputs:
           nextCursor: $.resultArray[(@.length-1)]
+  /pagination/cursor_non_numeric#nullable:
+    get:
+      operationId: paginationCursorNonNumericNullable
+      servers:
+        - url: http://localhost:35456
+      parameters:
+        - name: cursor
+          in: query
+          description: The page token used to request a specific page of the search results
+          schema:
+            type: string
+            nullable: true
+      responses:
+        "200":
+          $ref: "components.yaml#/components/responses/paginationResponseNonNumeric"
+      tags:
+        - pagination
+      x-speakeasy-pagination:
+        type: cursor
+        inputs:
+          - name: cursor
+            in: parameters
+            type: cursor
+        outputs:
+          nextCursor: $.cursor
   /pagination/cursor_non_numeric#withRetries:
     get:
       operationId: paginationWithRetries

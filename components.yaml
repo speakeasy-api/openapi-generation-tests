@@ -2295,6 +2295,9 @@ components:
                 type: integer
               next:
                 type: string
+              cursor:
+                type: string
+                nullable: true
               resultArray:
                 type: array
                 items:
