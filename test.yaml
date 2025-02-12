@@ -2186,6 +2186,50 @@ paths:
                 required:
                   - url
                   - args
+  /anything/queryParams/default:
+    get:
+      x-speakeasy-exclude-test-sdk: [python]
+      x-speakeasy-test: true
+      x-speakeasy-test-internal-id: parameters-default-query-params
+      operationId: defaultQueryParams
+      tags:
+        - parameters
+      parameters:
+        - name: defaultParam
+          in: query
+          schema:
+            type: string
+            default: defaultvalue
+          required: false
+        - name: configurableParam
+          in: query
+          schema:
+            type: string
+          required: false
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  url:
+                    type: string
+                    example: 'http://localhost:35123/anything/queryParams/default?defaultParam=defaultvalue'
+                    x-speakeasy-test-internal-directives:
+                      - sortQueryParameters: {}
+                  args:
+                    type: object
+                    additionalProperties:
+                      type: string
+                    example:
+                      {
+                        "defaultParam": "defaultvalue",
+                      }
+                required:
+                  - url
+                  - args
   /anything/queryParams/mixed:
     get:
       x-speakeasy-test: ["go", "python", "pythonv2"]
