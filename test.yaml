@@ -9679,6 +9679,8 @@ paths:
   /clientcredentials/authenticatedrequest:
     post:
       operationId: authenticatedRequest
+      servers:
+        - url: http://localhost:35456
       security:
         - clientCredentials: [write]
       requestBody:
@@ -10199,7 +10201,7 @@ paths:
           allowReserved: true
       responses:
         "200":
-          description: OK          
+          description: OK
 x-speakeasy-webhooks:
   security:
     type: signature
