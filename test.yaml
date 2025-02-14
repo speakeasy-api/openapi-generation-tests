@@ -6222,6 +6222,27 @@ paths:
             application/json:
               schema:
                 $ref: "components.yaml#/components/schemas/oneOfCircularReferenceObject"
+  /anything/requestBodyCircularReference:
+    post:
+      operationId: requestBodyCircularReference
+      tags:
+        - generation
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "components.yaml#/components/schemas/validCircularReferenceObject"
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
   /anything/circularReferenceOneDegree:
     x-speakeasy-exclude-test-sdk: [python,pythonv2]
     post:
