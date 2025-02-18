@@ -8229,6 +8229,63 @@ paths:
                     $ref: "components.yaml#/components/schemas/nestedArrayOfDiscriminatedUnions"
                 required:
                   - json
+  /anything/collectionsContainingNull:
+    post:
+      operationId: collectionsContainingNull
+      tags: [collections]
+      requestBody:
+        content:
+          application/json:
+            schema:
+              title: NullishCollections
+              type: object
+              required: [requiredArray, requiredMap]
+              properties:
+                requiredArray:
+                  type: array
+                  items:
+                    type: [string, "null"]
+                requiredMap:
+                  type: object
+                  additionalProperties:
+                    type: [string, integer, "null"]
+                optionalArray:
+                  type: array
+                  items:
+                    type: [string, "null"]
+                optionalMap:
+                  type: object
+                  additionalProperties:
+                    type: [string, integer, "null"]
+                arrayOfNullUnion:
+                  type: array
+                  items:
+                    oneOf:
+                      - type: string
+                      - type: integer
+                      - type: boolean
+                      - type: "null"
+                mapOfNullUnion:
+                  type: object
+                  additionalProperties:
+                    oneOf:
+                      - type: string
+                      - type: integer
+                      - type: boolean
+                      - type: "null"
+      responses:
+        "200":
+          description: Ok
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  json:
+                    type: object
+                    additionalProperties: true
+                required:
+                  - json
   /status/{statusCode}:
     get:
       operationId: statusGetError
