@@ -102,6 +102,11 @@ x-speakeasy-globals:
       schema:
         type: string
       x-speakeasy-globals-hidden: true
+    - name: globalHeaderHiddenParam
+      in: header
+      schema:
+        $ref: "components.yaml#/components/schemas/enum"
+      x-speakeasy-globals-hidden: true
 x-speakeasy-name-override:
   - operationId: getGlobalNameOverride
     methodNameOverride: globalNameOverridden
