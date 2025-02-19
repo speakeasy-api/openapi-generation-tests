@@ -663,7 +663,6 @@ paths:
           in: path
           schema:
             type: string
-          required: true
           examples:
             test:
               value: pathValue
