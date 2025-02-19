@@ -9846,6 +9846,22 @@ paths:
       responses:
         '200':
           description: OK
+  /clientcredentials/authenticatedrequest#globalServer:
+    post:
+      operationId: authenticatedRequestGlobalServer
+      security:
+        - clientCredentials: [write]
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+      responses:
+        '200':
+          description: OK
   /anything/flattenedUnionResponse:
     get:
       operationId: flattenedUnionResponse
