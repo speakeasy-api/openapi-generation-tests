@@ -6080,6 +6080,15 @@ paths:
                       "str": "test"
                     }
                   }
+  /anything/operationId/colon:
+    get:
+      x-speakeasy-test: true
+      operationId: "operationIdColon:get"
+      tags:
+        - generation
+      responses:
+        "200":
+          description: OK
   /anything/{emptyObject}:
     get:
       operationId: emptyObjectGet
