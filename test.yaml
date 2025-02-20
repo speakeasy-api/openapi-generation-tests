@@ -1701,6 +1701,8 @@ paths:
     get:
       x-speakeasy-test: true
       x-speakeasy-test-internal-id: parameters-deep-object-query-params-object
+      x-speakeasy-mcp:
+        disabled: true
       operationId: deepObjectQueryParamsObject
       tags:
         - parameters
@@ -1832,6 +1834,8 @@ paths:
     get:
       x-speakeasy-test: true
       x-speakeasy-test-internal-id: parameters-deep-object-query-params-deep-object
+      x-speakeasy-mcp:
+        disabled: true
       operationId: deepObjectQueryParamsDeepObject
       tags:
         - parameters
@@ -2909,6 +2913,8 @@ paths:
                   $ref: "components.yaml#/components/schemas/simpleObject"
   /requestbody#arrayCamelCase:
     post:
+      x-speakeasy-mcp:
+        name: camel-cased-body
       operationId: requestBodyPostApplicationJsonArrayCamelCase
       tags:
         - requestBodies
@@ -3297,7 +3303,10 @@ paths:
                 example: [["foo", "bar"], ["buzz", "bazz"]]
   /requestbody#mapOfMapsOfPrimitives:
     post:
+      x-speakeasy-mcp:
+        description: This endpoint is used to test MCP server generation and shows how a Record<string, Record<string, string>> could work as a request body.
       operationId: requestBodyPostApplicationJsonMapOfMapOfPrimitive
+      description: The OpenAPI description for this operation
       tags:
         - requestBodies
       servers:
@@ -9276,6 +9285,8 @@ paths:
                 $ref: "#/components/schemas/ArrayDataSource"
   /resource/object/{resourceId}:
     get:
+      x-speakeasy-mcp:
+        scopes: [read]
       x-speakeasy-entity-operation: ExampleResource#read
       operationId: getResource
       tags:
@@ -9295,6 +9306,8 @@ paths:
               schema:
                 $ref: "#/components/schemas/ExampleResource"
     post:
+      x-speakeasy-mcp:
+        scopes: [write]
       x-speakeasy-entity-operation:
         - ExampleResource#create#2
         - ExampleResource#update
@@ -9318,6 +9331,8 @@ paths:
           description: OK
     delete:
       x-speakeasy-entity-operation: ExampleResource#delete
+      x-speakeasy-mcp:
+        scopes: [destructive, write]
       operationId: deleteResource
       tags:
         - resource
