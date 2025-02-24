@@ -2305,6 +2305,29 @@ components:
             required:
               - numPages
               - resultArray
+    paginationResponseUnion:
+      description: OK
+      content:
+        application/json:
+          schema:
+            title: res
+            oneOf:
+              - type: string
+              - type: object
+                title: resultObject
+                properties:
+                  numPages:
+                    type: integer
+                  cursor:
+                    type: string
+                    nullable: true
+                  resultArray:
+                    type: array
+                    items:
+                      type: integer
+                required:
+                  - numPages
+                  - resultArray
     errorUnionResponse:
       description: Internal Server Error
       content:

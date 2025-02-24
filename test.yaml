@@ -8725,6 +8725,30 @@ paths:
             type: page
         outputs:
           results: $.resultArray
+  /pagination/limitoffset/page#inUnion:
+    get:
+      x-speakeasy-exclude-test-sdk: [javav2]
+      operationId: paginationLimitOffsetUnionOutputPageParams
+      servers:
+        - url: http://localhost:35456
+      tags:
+        - pagination
+      parameters:
+        - name: page
+          in: query
+          schema:
+            type: integer
+      responses:
+        "200":
+          $ref: "components.yaml#/components/responses/paginationResponseUnion"
+      x-speakeasy-pagination:
+        type: offsetLimit
+        inputs:
+          - name: page
+            in: parameters
+            type: page
+        outputs:
+          results: $.resultArray
   /pagination/limitoffset/deep_outputs/page:
     put:
       operationId: paginationLimitOffsetDeepOutputsPageBody
@@ -9999,6 +10023,55 @@ paths:
                 required:
                   - numPages
                   - resultArray
+      x-speakeasy-pagination:
+        type: cursor
+        inputs:
+          - name: cursor
+            in: parameters
+            type: cursor
+        outputs:
+          nextCursor: $.resultArray[(@.length-1)]
+  /anything/flattenedEnvelopeUnionPaginationResponse:
+    get:
+      operationId: flattenedEnvelopeUnionPaginationResponse
+      tags:
+        - responseBodies
+      parameters:
+        - name: cursor
+          in: query
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: res
+                type: object
+                properties:
+                  numPages:
+                    type: integer
+                  next:
+                    type: string
+                  resultArray:
+                    type: array
+                    items:
+                      type: string
+                required:
+                  - numPages
+                  - resultArray
+        "201":
+          description: Created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                required:
+                  - message
       x-speakeasy-pagination:
         type: cursor
         inputs:
