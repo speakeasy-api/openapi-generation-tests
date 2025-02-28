@@ -272,7 +272,6 @@ paths:
           description: OK
   /ping:
     get:
-      x-speakeasy-exclude-test-sdk: [python]
       operationId: check
       servers:
         - url: http://localhost:35456
@@ -972,7 +971,7 @@ paths:
                   - url
   /anything/pathParams/json/{jsonObj}:
     get:
-      x-speakeasy-test: ["go", "python", "pythonv2"]
+      x-speakeasy-test: ["go", "pythonv2"]
       x-speakeasy-test-internal-id: parameters-path-parameter-json
       operationId: pathParameterJson
       tags:
@@ -1003,8 +1002,7 @@ paths:
           description: OK
   /anything/duplicatePathParameterAtOperationLevel/{param}:
     get:
-      # TODO: Set to true when python (v1) has been sunset.
-      x-speakeasy-test: ["go", "typescriptv2", "pythonv2"]
+      x-speakeasy-test: true
       x-speakeasy-test-internal-id: duplicate-path-parameter-at-operation-level-does-not-error
       # TODO: Remove when mockserver is default
       x-speakeasy-test-server: "x-env: TEST_SERVER_URL"
@@ -1048,8 +1046,7 @@ paths:
         schema:
           type: integer
     get:
-      # TODO: Set to true when python (v1) has been sunset.
-      x-speakeasy-test: ["go", "typescriptv2", "pythonv2"]
+      x-speakeasy-test: true
       x-speakeasy-test-internal-id: duplicate-path-parameter-at-path-level-does-not-error
       operationId: duplicatePathParameterAtPathLevelDoesNotError
       # TODO: Remove when mockserver is default
@@ -1067,8 +1064,7 @@ paths:
   
   /anything/duplicateQueryParamAtOperationLevel/:
     get:
-      # TODO: Set to true when python (v1) has been sunset.
-      x-speakeasy-test: ["go", "typescriptv2", "pythonv2"]
+      x-speakeasy-test: true
       x-speakeasy-test-internal-id: duplicate-query-parameter-at-operation-level-does-not-error
       operationId: duplicateQueryParameterAtOperationLevelDoesNotError
       # TODO: Remove when mockserver is default
@@ -1109,8 +1105,7 @@ paths:
         schema:
           type: integer
     get:
-      # TODO: Set to true when python (v1) has been sunset.
-      x-speakeasy-test: ["go", "typescriptv2", "pythonv2"]
+      x-speakeasy-test: true
       x-speakeasy-test-internal-id: duplicate-query-parameter-at-path-level-does-not-error
       operationId: duplicateQueryParameterAtPathLevelDoesNotError
       # TODO: Remove when mockserver is default
@@ -1128,8 +1123,7 @@ paths:
   
   /anything/duplicateHeaderParamAtOperationLevel/:
     get:
-      # TODO: Set to true when python (v1) has been sunset.
-      x-speakeasy-test: ["go", "typescriptv2", "pythonv2"]
+      x-speakeasy-test: true
       x-speakeasy-test-internal-id: duplicate-header-parameter-at-operation-level-does-not-error
       operationId: duplicateHeaderParameterAtOperationLevelDoesNotError
       # TODO: Remove when mockserver is default
@@ -1170,8 +1164,7 @@ paths:
         schema:
           type: integer
     get:
-      # TODO: Set to true when python (v1) has been sunset.
-      x-speakeasy-test: ["go", "typescriptv2", "pythonv2"]
+      x-speakeasy-test: true
       x-speakeasy-test-internal-id: duplicate-header-parameter-at-path-level-does-not-error
       operationId: duplicateHeaderParameterAtPathLevelDoesNotError
       # TODO: Remove when mockserver is default
@@ -2097,7 +2090,7 @@ paths:
 
   /anything/queryParams/json/objsmaller:
     get:
-      x-speakeasy-test: ["go", "python", "pythonv2"]
+      x-speakeasy-test: ["go", "pythonv2"]
       x-speakeasy-test-internal-id: parameters-json-query-params-object
       operationId: jsonQueryParamsObjectSmaller
       tags:
@@ -2196,7 +2189,6 @@ paths:
                   - args
   /anything/queryParams/default:
     get:
-      x-speakeasy-exclude-test-sdk: [python]
       x-speakeasy-test: true
       x-speakeasy-test-internal-id: parameters-default-query-params
       operationId: defaultQueryParams
@@ -2240,7 +2232,7 @@ paths:
                   - args
   /anything/queryParams/mixed:
     get:
-      x-speakeasy-test: ["go", "python", "pythonv2"]
+      x-speakeasy-test: ["go", "pythonv2"]
       x-speakeasy-test-internal-id: parameters-mixed-query-params
       operationId: mixedQueryParams
       tags:
@@ -5986,8 +5978,7 @@ paths:
     get:
       # Reference: https://linear.app/speakeasy/issue/GEN-813/bug-missing-example-value-in-2xx-200-ast-handling
       operationId: responseBodies2xxJSONObjectAllOptionalProperties
-      # TODO: Set to true when python (v1) has been sunset.
-      x-speakeasy-test: ["go", "pythonv2", "typescriptv2"]
+      x-speakeasy-test: true
       x-speakeasy-test-internal-id: response-bodies2xx-json-object-all-optional-properties
       # TODO: Remove when mockserver is default
       x-speakeasy-test-server: "x-env: TEST_SERVER_URL"
@@ -6266,7 +6257,7 @@ paths:
                   success:
                     type: boolean
   /anything/circularReferenceOneDegree:
-    x-speakeasy-exclude-test-sdk: [python,pythonv2]
+    x-speakeasy-exclude-test-sdk: [pythonv2]
     post:
       # Other examples in this spec have demonstrated self-referencing models
       # instead of several distinct models forming reference cycles.
@@ -7249,8 +7240,7 @@ paths:
         This operation requires a globally optional path parameter. A failing
         test with 404 likely indicates that the path parameter value is not
         being templated into the operation request (.../globals//...).
-      # TODO: Set to true when python (v1) has been sunset.
-      x-speakeasy-test: ["go", "pythonv2", "typescriptv2"]
+      x-speakeasy-test: true
       x-speakeasy-test-internal-id: globals-optional-path-parameter-operation-required
       # TODO: Remove when mockserver is default
       x-speakeasy-test-server: "x-env: TEST_SERVER_URL"
@@ -7284,8 +7274,7 @@ paths:
         This path requires a globally optional path parameter. A failing
         test with 404 likely indicates that the path parameter value is not
         being templated into the operation request (.../globals//...).
-      # TODO: Set to true when python (v1) has been sunset.
-      x-speakeasy-test: ["go", "pythonv2", "typescriptv2"]
+      x-speakeasy-test: true
       x-speakeasy-test-internal-id: globals-optional-path-parameter-path-required
       # TODO: Remove when mockserver is default
       x-speakeasy-test-server: "x-env: TEST_SERVER_URL"
@@ -7301,8 +7290,7 @@ paths:
         This operation requires a globally optional hidden path parameter. A
         failing test with 404 likely indicates that the path parameter value is
         not being templated into the client (.../hidden//...).
-      # TODO: Set to true when python (v1) has been sunset.
-      x-speakeasy-test: ["go", "pythonv2", "typescriptv2"]
+      x-speakeasy-test: true
       x-speakeasy-test-internal-id: globals-optional-hidden-path-parameter-operation-required
       # TODO: Remove when mockserver is default
       x-speakeasy-test-server: "x-env: TEST_SERVER_URL"
@@ -7336,8 +7324,7 @@ paths:
         This path requires a globally optional hidden path parameter. A failing
         test with 404 likely indicates that the path parameter value is not
         being templated into the client (.../hidden//...).
-      # TODO: Set to true when python (v1) has been sunset.
-      x-speakeasy-test: ["go", "pythonv2", "typescriptv2"]
+      x-speakeasy-test: true
       x-speakeasy-test-internal-id: globals-optional-hidden-path-parameter-path-required
       # TODO: Remove when mockserver is default
       x-speakeasy-test-server: "x-env: TEST_SERVER_URL"
@@ -8326,8 +8313,7 @@ paths:
   /statusCode/2XX:
     get:
       operationId: statusCode2XX
-      # TODO: Set to true when python (v1) has been sunset.
-      x-speakeasy-test: ["go", "pythonv2", "typescriptv2"]
+      x-speakeasy-test: true
       x-speakeasy-test-internal-id: status-code2-xx
       # TODO: Remove when mockserver is default
       x-speakeasy-test-server: "x-env: TEST_SERVER_URL"
@@ -8339,8 +8325,7 @@ paths:
   /statusCode/4XX:
     get:
       operationId: statusCode4XX
-      # TODO: Set to true when python (v1) has been sunset.
-      x-speakeasy-test: ["go", "pythonv2", "typescriptv2"]
+      x-speakeasy-test: true
       x-speakeasy-test-internal-id: status-code4-xx
       # TODO: Remove when mockserver is default
       x-speakeasy-test-server: "x-env: TEST_SERVER_URL"
@@ -8352,8 +8337,7 @@ paths:
   /statusCode/5XX:
     get:
       operationId: statusCode5XX
-      # TODO: Set to true when python (v1) has been sunset.
-      x-speakeasy-test: ["go", "pythonv2", "typescriptv2"]
+      x-speakeasy-test: true
       x-speakeasy-test-internal-id: status-code5-xx
       # TODO: Remove when mockserver is default
       x-speakeasy-test-server: "x-env: TEST_SERVER_URL"
@@ -8365,8 +8349,7 @@ paths:
   /statusCode/default:
     get:
       operationId: statusCodeDefault
-      # TODO: Set to true when python (v1) has been sunset.
-      x-speakeasy-test: ["go", "pythonv2", "typescriptv2"]
+      x-speakeasy-test: true
       x-speakeasy-test-internal-id: status-code-default
       # TODO: Remove when mockserver is default
       x-speakeasy-test-server: "x-env: TEST_SERVER_URL"
@@ -8967,7 +8950,7 @@ paths:
         outputs:
           nextCursor: $.resultArray[(@.length-1)]
   /pagination/limitoffset/offset#paginationBodyFlattenedWithSecurity:
-    x-speakeasy-exclude-test-sdk: [javav2,python,swift]
+    x-speakeasy-exclude-test-sdk: [javav2,swift]
     get:
       operationId: paginationBodyFlattenedWithSecurity
       x-speakeasy-max-method-params: 20
@@ -9003,7 +8986,7 @@ paths:
         outputs:
           results: $.resultArray
   /pagination/limitoffset/offset#paginationBodyFlattenedOptionalSecurity:
-    x-speakeasy-exclude-test-sdk: [javav2,python,swift]
+    x-speakeasy-exclude-test-sdk: [javav2,swift]
     get:
       operationId: paginationBodyFlattenedOptionalSecurity
       x-speakeasy-max-method-params: 20
@@ -9040,7 +9023,7 @@ paths:
         outputs:
           results: $.resultArray
   /pagination/limitoffset/page#paginationBodyWrappedRequest:
-    x-speakeasy-exclude-test-sdk: [go,javav2,python,pythonv2,swift,terraform]
+    x-speakeasy-exclude-test-sdk: [go,javav2,pythonv2,swift,terraform]
     put:
       description: |
         This operation has a request wrapper type that encapsulates the
@@ -9084,7 +9067,7 @@ paths:
         outputs:
           numPages: $.numPages
   /pagination/cursor#ambiguousInput:
-    x-speakeasy-exclude-test-sdk: [go,javav2,python,pythonv2,swift,terraform]
+    x-speakeasy-exclude-test-sdk: [go,javav2,pythonv2,swift,terraform]
     put:
       description: |
         This is a paginated operation where there is both a query parameter and
@@ -9124,7 +9107,7 @@ paths:
         outputs:
           nextCursor: $.resultArray[(@.length-1)]
   /pagination/cursor#encapsulatedParameter:
-    x-speakeasy-exclude-test-sdk: [go,javav2,python,pythonv2,swift,terraform]
+    x-speakeasy-exclude-test-sdk: [go,javav2,pythonv2,swift,terraform]
     put:
       description: |
         This is a paginated operation where the input is a query parameter
@@ -9157,7 +9140,7 @@ paths:
         outputs:
           nextCursor: $.resultArray[(@.length-1)]
   /pagination/limitoffset/offset#paginationWrappedOptionalBody:
-    x-speakeasy-exclude-test-sdk: [go,javav2,python,pythonv2,terraform]
+    x-speakeasy-exclude-test-sdk: [go,javav2,pythonv2,terraform]
     put:
       operationId: paginationWrappedOptionalBody
       x-speakeasy-max-method-params: 0
