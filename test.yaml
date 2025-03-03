@@ -6257,7 +6257,6 @@ paths:
                   success:
                     type: boolean
   /anything/circularReferenceOneDegree:
-    x-speakeasy-exclude-test-sdk: [pythonv2]
     post:
       # Other examples in this spec have demonstrated self-referencing models
       # instead of several distinct models forming reference cycles.
