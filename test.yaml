@@ -1024,7 +1024,7 @@ paths:
                   - url
   /anything/pathParams/json/{jsonObj}:
     get:
-      x-speakeasy-test: ["go", "pythonv2"]
+      x-speakeasy-test: ["go"]
       x-speakeasy-test-internal-id: parameters-path-parameter-json
       operationId: pathParameterJson
       tags:
@@ -2176,6 +2176,7 @@ paths:
                     type: string
                     example: "http://localhost:35123/anything/queryParams/json/objsmaller?deepObjParam={\"any\"%3A{\"any\"%3A\"any\"%2C\"bigint\"%3A8821239038968084%2C\"bigintStr\"%3A\"9223372036854775808\"%2C\"bool\"%3Atrue%2C\"boolOpt\"%3Atrue%2C\"date\"%3A\"2020-01-01\"%2C\"dateTime\"%3A\"2020-01-01T00%3A00%3A00.001Z\"%2C\"decimal\"%3A3.141592653589793%2C\"decimalStr\"%3A\"3.14159265358979344719667586\"%2C\"enum\"%3A\"one\"%2C\"float32\"%3A1.1%2C\"float64Str\"%3A\"1.1\"%2C\"int\"%3A1%2C\"int32\"%3A1%2C\"int32Enum\"%3A55%2C\"int64Str\"%3A\"100\"%2C\"intEnum\"%3A2%2C\"num\"%3A1.1%2C\"str\"%3A\"test\"%2C\"strOpt\"%3A\"testOptional\"}%2C\"arr\"%3A[{\"any\"%3A\"any\"%2C\"bigint\"%3A8821239038968084%2C\"bigintStr\"%3A\"9223372036854775808\"%2C\"bool\"%3Atrue%2C\"boolOpt\"%3Atrue%2C\"date\"%3A\"2020-01-01\"%2C\"dateTime\"%3A\"2020-01-01T00%3A00%3A00.001Z\"%2C\"decimal\"%3A3.141592653589793%2C\"decimalStr\"%3A\"3.14159265358979344719667586\"%2C\"enum\"%3A\"one\"%2C\"float32\"%3A1.1%2C\"float64Str\"%3A\"1.1\"%2C\"int\"%3A1%2C\"int32\"%3A1%2C\"int32Enum\"%3A55%2C\"int64Str\"%3A\"100\"%2C\"intEnum\"%3A2%2C\"num\"%3A1.1%2C\"str\"%3A\"test\"%2C\"strOpt\"%3A\"testOptional\"}%2C{\"any\"%3A\"any\"%2C\"bigint\"%3A8821239038968084%2C\"bigintStr\"%3A\"9223372036854775808\"%2C\"bool\"%3Atrue%2C\"boolOpt\"%3Atrue%2C\"date\"%3A\"2020-01-01\"%2C\"dateTime\"%3A\"2020-01-01T00%3A00%3A00.001Z\"%2C\"decimal\"%3A3.141592653589793%2C\"decimalStr\"%3A\"3.14159265358979344719667586\"%2C\"enum\"%3A\"one\"%2C\"float32\"%3A1.1%2C\"float64Str\"%3A\"1.1\"%2C\"int\"%3A1%2C\"int32\"%3A1%2C\"int32Enum\"%3A55%2C\"int64Str\"%3A\"100\"%2C\"intEnum\"%3A2%2C\"num\"%3A1.1%2C\"str\"%3A\"test\"%2C\"strOpt\"%3A\"testOptional\"}]%2C\"bool\"%3Atrue%2C\"int\"%3A1%2C\"map\"%3A{\"key\"%3A{\"any\"%3A\"any\"%2C\"bigint\"%3A8821239038968084%2C\"bigintStr\"%3A\"9223372036854775808\"%2C\"bool\"%3Atrue%2C\"boolOpt\"%3Atrue%2C\"date\"%3A\"2020-01-01\"%2C\"dateTime\"%3A\"2020-01-01T00%3A00%3A00.001Z\"%2C\"decimal\"%3A3.141592653589793%2C\"decimalStr\"%3A\"3.14159265358979344719667586\"%2C\"enum\"%3A\"one\"%2C\"float32\"%3A1.1%2C\"float64Str\"%3A\"1.1\"%2C\"int\"%3A1%2C\"int32\"%3A1%2C\"int32Enum\"%3A55%2C\"int64Str\"%3A\"100\"%2C\"intEnum\"%3A2%2C\"num\"%3A1.1%2C\"str\"%3A\"test\"%2C\"strOpt\"%3A\"testOptional\"}}%2C\"num\"%3A1.1%2C\"obj\"%3A{\"any\"%3A\"any\"%2C\"bigint\"%3A8821239038968084%2C\"bigintStr\"%3A\"9223372036854775808\"%2C\"bool\"%3Atrue%2C\"boolOpt\"%3Atrue%2C\"date\"%3A\"2020-01-01\"%2C\"dateTime\"%3A\"2020-01-01T00%3A00%3A00.001Z\"%2C\"decimal\"%3A3.141592653589793%2C\"decimalStr\"%3A\"3.14159265358979344719667586\"%2C\"enum\"%3A\"one\"%2C\"float32\"%3A1.1%2C\"float64Str\"%3A\"1.1\"%2C\"int\"%3A1%2C\"int32\"%3A1%2C\"int32Enum\"%3A55%2C\"int64Str\"%3A\"100\"%2C\"intEnum\"%3A2%2C\"num\"%3A1.1%2C\"str\"%3A\"test\"%2C\"strOpt\"%3A\"testOptional\"}%2C\"str\"%3A\"test\"}&simpleObjParam={\"any\"%3A\"any\"%2C\"bigint\"%3A8821239038968084%2C\"bigintStr\"%3A\"9223372036854775808\"%2C\"bool\"%3Atrue%2C\"boolOpt\"%3Atrue%2C\"date\"%3A\"2020-01-01\"%2C\"dateTime\"%3A\"2020-01-01T00%3A00%3A00.001Z\"%2C\"decimal\"%3A3.141592653589793%2C\"decimalStr\"%3A\"3.14159265358979344719667586\"%2C\"enum\"%3A\"one\"%2C\"float32\"%3A1.1%2C\"float64Str\"%3A\"1.1\"%2C\"int\"%3A1%2C\"int32\"%3A1%2C\"int32Enum\"%3A55%2C\"int64Str\"%3A\"100\"%2C\"intEnum\"%3A2%2C\"num\"%3A1.1%2C\"str\"%3A\"test\"%2C\"strOpt\"%3A\"testOptional\"}"
                     x-speakeasy-test-internal-directives:
+                      - sortQueryParameters: {"jsonParams": ["deepObjParam", "simpleObjParam"]}
                       - sanitizeTimestamp: {}
                   args:
                     type: object
@@ -2184,11 +2185,13 @@ paths:
                         type: string
                         example: '{"any":"any","bigint":8821239038968084,"bigintStr":"9223372036854775808","bool":true,"boolOpt":true,"date":"2020-01-01","dateTime":"2020-01-01T00:00:00.001Z","decimal":3.141592653589793,"decimalStr":"3.14159265358979344719667586","enum":"one","float32":1.1,"float64Str":"1.1","int":1,"int32":1,"int32Enum":55,"int64Str":"100","intEnum":2,"num":1.1,"str":"test","strOpt":"testOptional"}'
                         x-speakeasy-test-internal-directives:
+                          - sortJSONObjectKeys: {}
                           - sanitizeTimestamp: {}
                       deepObjParam:
                         type: string
                         example: '{"any":{"any":"any","bigint":8821239038968084,"bigintStr":"9223372036854775808","bool":true,"boolOpt":true,"date":"2020-01-01","dateTime":"2020-01-01T00:00:00.001Z","decimal":3.141592653589793,"decimalStr":"3.14159265358979344719667586","enum":"one","float32":1.1,"float64Str":"1.1","int":1,"int32":1,"int32Enum":55,"int64Str":"100","intEnum":2,"num":1.1,"str":"test","strOpt":"testOptional"},"arr":[{"any":"any","bigint":8821239038968084,"bigintStr":"9223372036854775808","bool":true,"boolOpt":true,"date":"2020-01-01","dateTime":"2020-01-01T00:00:00.001Z","decimal":3.141592653589793,"decimalStr":"3.14159265358979344719667586","enum":"one","float32":1.1,"float64Str":"1.1","int":1,"int32":1,"int32Enum":55,"int64Str":"100","intEnum":2,"num":1.1,"str":"test","strOpt":"testOptional"},{"any":"any","bigint":8821239038968084,"bigintStr":"9223372036854775808","bool":true,"boolOpt":true,"date":"2020-01-01","dateTime":"2020-01-01T00:00:00.001Z","decimal":3.141592653589793,"decimalStr":"3.14159265358979344719667586","enum":"one","float32":1.1,"float64Str":"1.1","int":1,"int32":1,"int32Enum":55,"int64Str":"100","intEnum":2,"num":1.1,"str":"test","strOpt":"testOptional"}],"bool":true,"int":1,"map":{"key":{"any":"any","bigint":8821239038968084,"bigintStr":"9223372036854775808","bool":true,"boolOpt":true,"date":"2020-01-01","dateTime":"2020-01-01T00:00:00.001Z","decimal":3.141592653589793,"decimalStr":"3.14159265358979344719667586","enum":"one","float32":1.1,"float64Str":"1.1","int":1,"int32":1,"int32Enum":55,"int64Str":"100","intEnum":2,"num":1.1,"str":"test","strOpt":"testOptional"}},"num":1.1,"obj":{"any":"any","bigint":8821239038968084,"bigintStr":"9223372036854775808","bool":true,"boolOpt":true,"date":"2020-01-01","dateTime":"2020-01-01T00:00:00.001Z","decimal":3.141592653589793,"decimalStr":"3.14159265358979344719667586","enum":"one","float32":1.1,"float64Str":"1.1","int":1,"int32":1,"int32Enum":55,"int64Str":"100","intEnum":2,"num":1.1,"str":"test","strOpt":"testOptional"},"str":"test"}'
                         x-speakeasy-test-internal-directives:
+                          - sortJSONObjectKeys: {}
                           - sanitizeTimestamp: {}
                     required:
                       - simpleObjParam
@@ -2323,7 +2326,7 @@ paths:
                     type: string
                     example: 'http://localhost:35123/anything/queryParams/mixed?any=any&bigint=8821239038968084&bigintStr=9223372036854775808&bool=true&boolOpt=true&date=2020-01-01&dateTime=2020-01-01T00%3A00%3A00.001Z&decimal=3.141592653589793&decimalStr=3.14159265358979344719667586&deepObjectParam[any]=any&deepObjectParam[bigintStr]=9223372036854775808&deepObjectParam[bigint]=8821239038968084&deepObjectParam[boolOpt]=true&deepObjectParam[bool]=true&deepObjectParam[dateTime]=2020-01-01T00%3A00%3A00.001Z&deepObjectParam[date]=2020-01-01&deepObjectParam[decimalStr]=3.14159265358979344719667586&deepObjectParam[decimal]=3.141592653589793&deepObjectParam[enum]=one&deepObjectParam[float32]=1.1&deepObjectParam[float64Str]=1.1&deepObjectParam[int32Enum]=55&deepObjectParam[int32]=1&deepObjectParam[int64Str]=100&deepObjectParam[intEnum]=2&deepObjectParam[int]=1&deepObjectParam[num]=1.1&deepObjectParam[strOpt]=testOptional&deepObjectParam[str]=test&enum=one&float32=1.1&float64Str=1.1&int=1&int32=1&int32Enum=55&int64Str=100&intEnum=2&jsonParam={"any"%3A"any"%2C"bigint"%3A8821239038968084%2C"bigintStr"%3A"9223372036854775808"%2C"bool"%3Atrue%2C"boolOpt"%3Atrue%2C"date"%3A"2020-01-01"%2C"dateTime"%3A"2020-01-01T00%3A00%3A00.001Z"%2C"decimal"%3A3.141592653589793%2C"decimalStr"%3A"3.14159265358979344719667586"%2C"enum"%3A"one"%2C"float32"%3A1.1%2C"float64Str"%3A"1.1"%2C"int"%3A1%2C"int32"%3A1%2C"int32Enum"%3A55%2C"int64Str"%3A"100"%2C"intEnum"%3A2%2C"num"%3A1.1%2C"str"%3A"test"%2C"strOpt"%3A"testOptional"}&num=1.1&str=test&strOpt=testOptional'
                     x-speakeasy-test-internal-directives:
-                      - sortQueryParameters: {}
+                      - sortQueryParameters: {"jsonParams": ["jsonParam"]}
                       - sanitizeTimestamp: {}
                   args:
                     type: object
@@ -2375,6 +2378,7 @@ paths:
                       }
                     x-speakeasy-test-internal-directives:
                       - sanitizeTimestamp: {}
+                      - sortJSONObjectKeys: {"fields": ["jsonParam"]}
                 required:
                   - url
                   - args
