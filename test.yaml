@@ -9002,7 +9002,7 @@ paths:
         outputs:
           nextCursor: $.resultArray[(@.length-1)]
   /pagination/limitoffset/offset#paginationBodyFlattenedWithSecurity:
-    x-speakeasy-exclude-test-sdk: [javav2,swift]
+    x-speakeasy-exclude-test-sdk: [javav2]
     get:
       operationId: paginationBodyFlattenedWithSecurity
       x-speakeasy-max-method-params: 20
@@ -9038,7 +9038,7 @@ paths:
         outputs:
           results: $.resultArray
   /pagination/limitoffset/offset#paginationBodyFlattenedOptionalSecurity:
-    x-speakeasy-exclude-test-sdk: [javav2,swift]
+    x-speakeasy-exclude-test-sdk: [javav2]
     get:
       operationId: paginationBodyFlattenedOptionalSecurity
       x-speakeasy-max-method-params: 20
@@ -9075,7 +9075,7 @@ paths:
         outputs:
           results: $.resultArray
   /pagination/limitoffset/page#paginationBodyWrappedRequest:
-    x-speakeasy-exclude-test-sdk: [go,javav2,pythonv2,swift,terraform]
+    x-speakeasy-exclude-test-sdk: [go,javav2,pythonv2,terraform]
     put:
       description: |
         This operation has a request wrapper type that encapsulates the
@@ -9119,7 +9119,7 @@ paths:
         outputs:
           numPages: $.numPages
   /pagination/cursor#ambiguousInput:
-    x-speakeasy-exclude-test-sdk: [go,javav2,pythonv2,swift,terraform]
+    x-speakeasy-exclude-test-sdk: [go,javav2,pythonv2,terraform]
     put:
       description: |
         This is a paginated operation where there is both a query parameter and
@@ -9159,7 +9159,7 @@ paths:
         outputs:
           nextCursor: $.resultArray[(@.length-1)]
   /pagination/cursor#encapsulatedParameter:
-    x-speakeasy-exclude-test-sdk: [go,javav2,pythonv2,swift,terraform]
+    x-speakeasy-exclude-test-sdk: [go,javav2,pythonv2,terraform]
     put:
       description: |
         This is a paginated operation where the input is a query parameter
