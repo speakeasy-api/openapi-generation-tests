@@ -1674,6 +1674,12 @@ components:
         constStrSQuotes:
           type: string
           const: "const with 'single quotes'"
+        constStrBackticks:
+          type: string
+          const: "const with `backticks`"
+        constStrBrackets:
+          type: string
+          const: "const with ${<brackets>}"
         constStrNull:
           type: string
           const: null
@@ -1734,6 +1740,12 @@ components:
         defaultStrSQuotes:
           type: string
           default: "default with 'single quotes'"
+        defaultStrBackticks:
+          type: string
+          default: 'default with `backticks`'
+        defaultStrBrackets:
+          type: string
+          default: 'default with ${<brackets>}'
         defaultStrNullable:
           type: string
           default: null
