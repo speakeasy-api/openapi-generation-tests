@@ -9547,6 +9547,57 @@ paths:
         statusCodes:
           - 503
         retryConnectionErrors: false
+  /retries#timeout:
+    get:
+      operationId: retriesGetTimeout
+      servers:
+        - url: http://localhost:35456
+      parameters:
+        - name: request-id
+          in: query
+          schema:
+            type: string
+          required: true
+        - name: num-retries
+          in: query
+          schema:
+            type: integer
+        # Below required for fault middleware
+        - name: request-id
+          in: header
+          schema:
+            type: string
+            default: retriesGetTimeout
+        - name: fault-settings
+          in: header
+          schema:
+            type: string
+            default: '{"delay_count": 1, "delay_ms": 1500}'
+      tags:
+        - retries
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: retries
+                type: object
+                properties:
+                  retries:
+                    type: integer
+                required:
+                  - retries
+      x-speakeasy-retries:
+        strategy: backoff
+        backoff:
+          initialInterval: 10 # 10 ms
+          maxInterval: 200 # 200 ms
+          maxElapsedTime: 1000 # 1 seconds
+          exponent: 1.5
+        statusCodes:
+          - 503
+        retryConnectionErrors: false
   /retriesFlatEmptyResponse:
     post:
       operationId: retriesFlatEmptyResponsePost
