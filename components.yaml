@@ -1481,6 +1481,11 @@ components:
           type: string
         required:
           - orphaned
+    seperatedCircularReferenceObject:
+      type: object
+      properties:
+        circular:
+          $ref: "#/components/schemas/validCircularReferenceObject"
     validCircularReferenceObject:
       type: object
       properties:
@@ -1488,6 +1493,8 @@ components:
           type: array
           items:
             $ref: "#/components/schemas/validCircularReferenceObject"
+        separated:
+          $ref: "#/components/schemas/seperatedCircularReferenceObject"
     arrayCircularReferenceObject:
       type: array
       items:
