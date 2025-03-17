@@ -203,6 +203,7 @@ components:
             properties:
               baz:
                 type: string
+
     mixedUnionTypes:
       oneOf:
         - $ref: "#/components/schemas/Bike"
@@ -234,6 +235,17 @@ components:
       oneOf:
         - type: boolean
         - type: string
+    oneOfCollectionEnum:
+      oneOf:
+        - type: string
+        - $ref: "#/components/schemas/simpleObject"
+        - type: array
+          items:
+          - type: string
+            title: nestedenum
+            enum: 
+            - "abc"
+            - "def"
     oneOfOverlappingObjects:
       oneOf:
         - type: object

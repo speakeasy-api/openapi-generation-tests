@@ -7774,6 +7774,27 @@ paths:
                     $ref: "components.yaml#/components/schemas/collectionOneOfObject"
                 required:
                   - json
+  /anything/oneOfCollectionEnum:
+    post:
+      operationId: oneOfCollectionEnum
+      tags:
+        - unions
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "components.yaml#/components/schemas/oneOfCollectionEnum"
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: res
+                type: object
+                properties:
+                  json:
+                    $ref: "components.yaml#/components/schemas/oneOfCollectionEnum"
   /anything/flattenedTypedObject:
     post:
       operationId: flattenedTypedObjectPost
