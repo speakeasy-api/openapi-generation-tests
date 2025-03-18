@@ -8710,6 +8710,29 @@ paths:
         statusCodes:
           - 503
         retryConnectionErrors: false
+  /pagination/cursor/response_envelope:
+    get:
+      operationId: paginationCursorResponseEnvelope
+      servers:
+        - url: http://localhost:35456
+      parameters:
+        - name: cursor
+          in: query
+          schema:
+            type: string
+      responses:
+        "200":
+          $ref: "components.yaml#/components/responses/paginationResponseDeep"
+      tags:
+        - pagination
+      x-speakeasy-pagination:
+        type: cursor
+        inputs:
+          - name: cursor
+            in: parameters
+            type: cursor
+        outputs:
+          nextCursor: $.pageInfo.next
   /pagination/limitoffset/page:
     get:
       operationId: paginationLimitOffsetPageParams
