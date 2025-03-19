@@ -10027,6 +10027,29 @@ paths:
       responses:
         '200':
           description: OK
+  /clientcredentials/authenticatedrequest#unflattened:
+    post:
+      operationId: authenticatedRequestUnflattened
+      description: OAuth2 ClientCredentials as a security scheme option
+      tags:
+        - authNew
+      servers:
+        - url: http://localhost:35456
+      security:
+        - clientCredentials: [write]
+        - oauth2: []
+        - basicAuth: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+      responses:
+        '200':
+          description: OK
   /clientcredentials/authenticatedrequest#globalServer:
     post:
       operationId: authenticatedRequestGlobalServer
