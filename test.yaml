@@ -145,6 +145,8 @@ tags:
     description: Endpoints for testing the pagination extension
   - name: eventstreams
     description: Endpoints for testing server-sent events streaming
+  - name: jsonl
+    description: Endpoints for testing streaming data in JsonL format
   - name: documentation
     description: Testing for documentation extensions and tooling.
     x-speakeasy-docs:
@@ -9847,6 +9849,46 @@ paths:
               x-speakeasy-sse-sentinel: "[DONE]"
               schema:
                 $ref: "components.yaml#/components/schemas/chatCompletionEvent"
+  /jsonl:
+    get:
+      tags:
+        - jsonl
+      operationId: jsonl_stream
+      servers:
+        - url: http://localhost:35456
+      responses:
+        "200":
+          description: Ok
+          content:
+            application/jsonl:
+              schema:
+                type: object
+                properties:
+                  name:
+                    type: string
+                    example: "John"
+                  skills:
+                    $ref: "components.yaml#/components/schemas/arrPrimitiveValue"
+  /jsonl/chunks:
+    get:
+      tags:
+        - jsonl
+      operationId: jsonl_stream_chunks
+      servers:
+        - url: http://localhost:35456
+      responses:
+        "200":
+          description: Ok
+          content:
+            application/jsonl:
+              schema:
+                type: object
+                properties:
+                  name:
+                    type: string
+                    example: "John"
+                  skills:
+                    $ref: "components.yaml#/components/schemas/arrPrimitiveValue"
 
   /docs/per-language-docs:
     get:
