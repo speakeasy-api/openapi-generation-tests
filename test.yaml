@@ -165,6 +165,7 @@ tags:
 security:
   - apiKeyAuth: []
   - oauth2: []
+  - clientCredentials: [read]
   - {}
 paths:
   /anything/selectGlobalServer:
@@ -10124,6 +10125,22 @@ paths:
       operationId: authenticatedRequestGlobalServer
       security:
         - clientCredentials: [write]
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+      responses:
+        '200':
+          description: OK
+  /clientcredentials/authenticatedrequest#globalSecurity:
+    post:
+      operationId: authenticatedRequestGlobalSecurity
+      servers:
+        - url: http://localhost:35456
       requestBody:
         content:
           application/json:
