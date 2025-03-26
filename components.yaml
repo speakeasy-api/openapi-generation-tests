@@ -123,7 +123,18 @@ components:
       required:
         - tag
         - profileId 
-        
+    conflictingObject:
+      type: object
+      properties:
+        security:
+          type: integer
+          description: security code
+        reason:
+          type: integer
+          description: reason for the incident
+      required:
+        - security
+        - reason
     ## test generation when objects are members of multiple 
     ## oneOf definitions 
     Vehicle:

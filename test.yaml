@@ -7126,6 +7126,33 @@ paths:
       responses:
         "200":
           description: OK
+  /anything/flattenedRequestFieldsNameConflicts:
+    get:
+      operationId: flattenedRequestFieldsNameConflicts
+      tags:
+        - generation
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: reason
+          description: conflicts with requestBody parameter of the same name
+          in: query
+          schema:
+            type: string
+        - name: security
+          description: conflicts with both op-level security and requestBody param
+          in: query
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: 'components.yaml#/components/schemas/conflictingObject'
+      responses:
+        "200":
+          description: OK
   /anything/ignoredPath:
     x-my-ignore: true
     get:
