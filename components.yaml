@@ -1608,6 +1608,7 @@ components:
           x-speakeasy-error-message: true
         type:
           $ref: "#/components/schemas/errorType"
+      additionalProperties: true
     errorType:
       type: string
       enum:
