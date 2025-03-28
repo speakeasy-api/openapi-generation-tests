@@ -9917,7 +9917,46 @@ paths:
                     example: "John"
                   skills:
                     $ref: "components.yaml#/components/schemas/arrPrimitiveValue"
-
+  /x-ndjson:
+    get:
+      tags:
+        - jsonl
+      operationId: x_ndjson_stream
+      servers:
+        - url: http://localhost:35456
+      responses:
+        "200":
+          description: Ok
+          content:
+            application/x-ndjson:
+              schema:
+                type: object
+                properties:
+                  name:
+                    type: string
+                    example: "John"
+                  skills:
+                    $ref: "components.yaml#/components/schemas/arrPrimitiveValue"
+  /x-ndjson/chunks:
+    get:
+      tags:
+        - jsonl
+      operationId: x_ndjson_stream_chunks
+      servers:
+        - url: http://localhost:35456
+      responses:
+        "200":
+          description: Ok
+          content:
+            application/x-ndjson:
+              schema:
+                type: object
+                properties:
+                  name:
+                    type: string
+                    example: "John"
+                  skills:
+                    $ref: "components.yaml#/components/schemas/arrPrimitiveValue"
   /docs/per-language-docs:
     get:
       operationId: getDocumentationPerLanguage
