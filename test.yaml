@@ -158,8 +158,8 @@ tags:
         description: Testing for documentation extensions in TypeScript.
   - name: hooks
     description: Endpoints for testing hooks
-  - name: openEnums
-    description: Endpoints for testing open/closed enums
+  - name: enums
+    description: Endpoints for testing enums (open/closed/unsupported)
   - name: customClient
     description: Endpoints for testing custom HTTP clients
 security:
@@ -10100,11 +10100,11 @@ paths:
           $ref: "components.yaml#/components/responses/tokenAuthResponse"
         "401":
           description: Unsuccessful authentication.
-  /anything/openEnums/unrecognized:
+  /anything/enums/openEnumUnrecognized:
     post:
-      operationId: openEnumsPostUnrecognized
+      operationId: enumsPostOpenEnumUnrecognized
       tags:
-        - openEnums
+        - enums
       requestBody:
         required: true
         content:
@@ -10118,6 +10118,20 @@ paths:
             application/json:
               schema:
                 $ref: "components.yaml#/components/schemas/themeResponse"
+  /anything/enums/refToNumberEnum:
+    post:
+      operationId: enumsPostRefToNumberEnum
+      tags:
+        - enums
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/numberEnum"
+      responses:
+        "200":
+          description: OK
   /clientcredentials/authenticatedrequest:
     post:
       operationId: authenticatedRequest
@@ -11076,6 +11090,11 @@ components:
             id:
               type: string
           title: "allOf4"
+    numberEnum:
+      type: number
+      enum:
+        - 1.5
+        - 2.5
     unsupportedEnums:
       type: object
       x-speakeasy-include: true
