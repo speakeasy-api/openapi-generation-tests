@@ -166,6 +166,7 @@ security:
   - apiKeyAuth: []
   - oauth2: []
   - clientCredentials: [read]
+  - customSchemeAppId: []
   - {}
 paths:
   /anything/selectGlobalServer:
@@ -646,7 +647,7 @@ paths:
         - authNew
       servers:
         - url: http://localhost:35456
-      security:
+      security:  # Warning: op-level security gets hoisted in primary, but not secondary
         - customSchemeAppId: []
       responses:
         "200":
