@@ -9898,6 +9898,25 @@ paths:
                     example: "John"
                   skills:
                     $ref: "components.yaml#/components/schemas/arrPrimitiveValue"
+  /jsonl/deserialization_verification:
+    get:
+      tags:
+        - jsonl
+      operationId: jsonl_deserialization_verification
+      description: The response object has camelCase properties. The sdk should be able to deserialize these properties
+      servers:
+        - url: http://localhost:35456
+      responses:
+        "200":
+          description: OK
+          content:
+            application/jsonl:
+              schema:
+                type: object
+                properties:
+                  isFinished: string
+                required:
+                  - isFinished
   /jsonl/chunks:
     get:
       tags:
