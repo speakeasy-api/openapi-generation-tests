@@ -4660,6 +4660,52 @@ paths:
                     $ref: "components.yaml#/components/schemas/defaultsAndConsts"
                 required:
                   - json
+  /anything/requestBodies/post/defaultEmptyString:
+    post:
+      x-speakeasy-test: true
+      x-speakeasy-test-internal-id: request-bodies-default-empty-string
+      operationId: requestBodyPostDefaultEmptyString
+      description: |
+        Test that default: "" for an optional property is set to "" when omitted.
+        Reference: https://linear.app/speakeasy/issue/GEN-1285/bug-params-are-serialized-to-null-if-undefined-even-when-they-have
+      tags:
+        - requestBodies
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                optionalString:
+                  type: string
+                  default: ""
+            examples:
+              string:
+                value: {}
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  json:
+                    type: object
+                    properties:
+                      optionalString:
+                        type: string
+                        description: Intentionally omit default in request to ensure it is not being only reflected.
+                required:
+                  - json
+              examples:
+                string:
+                  value: {
+                    "json": {
+                      "optionalString": ""
+                    }
+                  }
   /anything/requestBodies/post/nullEnum:
     post:
       operationId: nullEnumPost
@@ -5952,6 +5998,54 @@ paths:
                       "datetime": "2020-01-01T00:00:00.001Z",
                       "AdditionalProperties": [1,2,3],
                       "key1": "..."
+                    }
+                  }
+  /anything/responseBodies/defaultEmptyString:
+    post:
+      x-speakeasy-test: true
+      x-speakeasy-test-internal-id: response-bodies-default-empty-string
+      # TODO: https://linear.app/speakeasy/issue/GEN-1333/bug-oas-default-of-empty-string-not-respected-in-javav2-json-response
+      x-speakeasy-exclude-test-sdk: [javav2]
+      operationId: responseBodyDefaultEmptyString
+      description: |
+        Test that default: "" for an optional property is set to "" when omitted.
+        Reference: https://linear.app/speakeasy/issue/GEN-1285/bug-params-are-serialized-to-null-if-undefined-even-when-they-have
+      tags:
+        - responseBodies
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                optionalString:
+                  type: string
+                  description: Intentionally omit default in request to ensure it is not being only reflected.
+            examples:
+              string:
+                value: {}
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  json:
+                    type: object
+                    properties:
+                      optionalString:
+                        type: string
+                        default: ""
+                required:
+                  - json
+              examples:
+                string:
+                  value: {
+                    "json": {
+                      "optionalString": ""
                     }
                   }
   # Reference: https://linear.app/speakeasy/issue/SPE-4103/bug-test-generation-in-typescriptv2-unterminated-multiline-strings
