@@ -8766,6 +8766,37 @@ paths:
             type: cursor
         outputs:
           nextCursor: $.resultArray[(@.length-1)]
+  /pagination/cursor_non_numeric_with_limit:
+    get:
+      operationId: paginationCursorNonNumericWithLimit
+      servers:
+        - url: http://localhost:35456
+      parameters:
+        - name: cursor
+          in: query
+          description: The page token used to request a specific page of the search results
+          schema:
+            type: string
+        - name: limit
+          in: query
+          schema:
+            type: integer
+      responses:
+        "200":
+          $ref: "components.yaml#/components/responses/paginationResponseNonNumeric"
+      tags:
+        - pagination
+      x-speakeasy-pagination:
+        type: cursor
+        inputs:
+          - name: cursor
+            in: parameters
+            type: cursor
+          - name: limit
+            in: parameters
+            type: limit
+        outputs:
+          nextCursor: $.resultArray[(@.length-1)]
   /pagination/cursor_non_numeric#nullable:
     get:
       operationId: paginationCursorNonNumericNullable
