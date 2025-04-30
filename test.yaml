@@ -560,6 +560,7 @@ paths:
       security:
         - apiKeyAuthNew: []
         - oauth2: []
+        - customSchemeAppId: []
       servers:
         - url: http://localhost:35456
       requestBody:
