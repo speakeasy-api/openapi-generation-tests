@@ -789,8 +789,8 @@ components:
         oneof:
           oneOf:
             - type: string
+              example: test
             - type: integer
-          example: test
         oneofnestedobject:
           oneOf:
             - type: string
@@ -798,7 +798,7 @@ components:
               properties:
                 nested:
                   type: string
-          example: { "nested": "test" }
+                  example: test
         str:
           type: string
           example: "test"
