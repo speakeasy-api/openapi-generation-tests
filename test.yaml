@@ -3861,6 +3861,65 @@ paths:
       responses:
         "200":
           $ref: "components.yaml#/components/responses/deepObjectFormResponse"
+  /anything/requestBodies/put/multipart/usingUnionOfPrimitiveTypeAndObject:
+    put:
+      operationId: requestBodyPutMultipartUsingUnionOfPrimitiveTypeAndObject
+      tags:
+        - requestBodies
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                likes:
+                  oneOf:
+                    - type: string
+                    - type: object
+                      properties:
+                        name:
+                          type: string
+                        age:
+                          type: number
+        required: true
+      responses:
+        "200":
+          $ref: "components.yaml#/components/responses/deepObjectFormResponse"
+  /anything/requestBodies/put/multipart/usingDeepUnion:
+    put:
+      operationId: requestBodyPutMultipartUsingDeepUnion
+      tags:
+        - requestBodies
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                likes:
+                  oneOf:
+                    - type: string
+                    - type: object
+                      properties:
+                        name:
+                          type: string
+                        hobbies:
+                          oneOf:
+                            - type: string
+                            - type: object
+                              properties:
+                                name:
+                                  type: string
+                                easy:
+                                  type: boolean
+        required: true
+      responses:
+        "200":
+          $ref: "components.yaml#/components/responses/deepObjectFormResponse"
   /anything/requestBodies/put/multipart/file:
     put:
       operationId: requestBodyPutMultipartFile
