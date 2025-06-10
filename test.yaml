@@ -3951,6 +3951,66 @@ paths:
                       type: string
                 required:
                   - files
+  /requestbody/multipart-form/files:
+    post:
+      operationId: requestBodyPutMultipartFilesArray
+      tags:
+        - requestBodies
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                files:
+                  type: array
+                  items:
+                    type: string
+                    format: binary
+                  example: ["x-file: testUpload.json", "x-file: testUpload.json;fileName=some-other-name.json"]
+              required:
+                - files
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: res
+                type: object
+                properties:
+                  files:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        fieldName:
+                          type: string
+                        filename:
+                          type: string
+                        size:
+                          type: integer
+                          format: int64
+                        contentType:
+                          type: string
+                        content:
+                          type: string
+                          description: Base64 encoded content for small files
+                      required:
+                        - fieldName
+                        - filename
+                        - size
+                        - contentType
+                  formFields:
+                    type: object
+                    additionalProperties:
+                      type: array
+                      items:
+                        type: string
+                required:
+                  - files
+                  - formFields
   /anything/requestBodies/put/multipart/fileRef:
     put:
       operationId: requestBodyPutMultipartFileRef
