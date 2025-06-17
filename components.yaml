@@ -1848,6 +1848,8 @@ components:
         - constBigIntStr
         - constDecimal
         - constDecimalStr
+        - constStrBackticks
+        - constStrBrackets
         - defaultStr
         - defaultStrNullable
         - defaultStrDQuotes

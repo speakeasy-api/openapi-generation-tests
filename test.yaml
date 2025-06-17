@@ -2218,7 +2218,7 @@ paths:
           schema:
             type: string
             const: constvalue
-          required: false
+          required: true
         - name: configurableParam
           in: query
           schema:
