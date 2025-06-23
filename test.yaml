@@ -11399,6 +11399,15 @@ components:
         - oneOfFromArrayOfTypes
         - nullableAny
         - any
+    openEnum:
+      type: integer
+      description: "An integer based open enum"
+      enum:
+        - 101
+        - 404
+      example: 123
+      x-speakeasy-unknown-values: allow
+      x-speakeasy-include: true
   securitySchemes:
     basicAuth:
       type: http
