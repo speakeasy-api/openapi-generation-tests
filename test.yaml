@@ -710,8 +710,6 @@ paths:
           numPages: $.pagination.max_page
   /anything/mixedParams/path/{pathParam}:
     get:
-      x-speakeasy-test: true
-      x-speakeasy-test-internal-id: parameters-mixed-primitives
       operationId: mixedParametersPrimitives
       tags:
         - parameters
@@ -831,8 +829,6 @@ paths:
                     type: string
   /anything/mixedParams/path/{path_param}/camelcase:
     get:
-      x-speakeasy-test: true
-      x-speakeasy-test-internal-id: parameters-camel-case
       operationId: mixedParametersCamelCase
       tags:
         - parameters
@@ -889,8 +885,6 @@ paths:
                   - headers
   /anything/pathParams/str/{strParam}/bool/{boolParam}/int/{intParam}/num/{numParam}:
     get:
-      x-speakeasy-test: true
-      x-speakeasy-test-internal-id: parameters-simple-path-parameter-primitives
       operationId: simplePathParameterPrimitives
       tags:
         - parameters
@@ -915,8 +909,6 @@ paths:
                   - url
   /anything/pathParams/obj/{objParam}/objExploded/{objParamExploded}:
     get:
-      x-speakeasy-test: true
-      x-speakeasy-test-internal-id: parameters-simple-path-parameter-objects
       operationId: simplePathParameterObjects
       tags:
         - parameters
@@ -952,8 +944,6 @@ paths:
                   - url
   /anything/pathParams/arr/{arrParam}:
     get:
-      x-speakeasy-test: true
-      x-speakeasy-test-internal-id: parameters-simple-path-parameter-arrays
       operationId: simplePathParameterArrays
       tags:
         - parameters
@@ -984,8 +974,6 @@ paths:
                   - url
   /anything/pathParams/map/{mapParam}/mapExploded/{mapParamExploded}:
     get:
-      x-speakeasy-test: true
-      x-speakeasy-test-internal-id: parameters-simple-path-parameter-maps
       operationId: simplePathParameterMaps
       tags:
         - parameters
@@ -1029,8 +1017,6 @@ paths:
                   - url
   /anything/pathParams/json/{jsonObj}:
     get:
-      x-speakeasy-test: ["go"]
-      x-speakeasy-test-internal-id: parameters-path-parameter-json
       operationId: pathParameterJson
       tags:
         - parameters
@@ -1060,10 +1046,6 @@ paths:
           description: OK
   /anything/duplicatePathParameterAtOperationLevel/{param}:
     get:
-      x-speakeasy-test: true
-      x-speakeasy-test-internal-id: duplicate-path-parameter-at-operation-level-does-not-error
-      # TODO: Remove when mockserver is default
-      x-speakeasy-test-server: "x-env: TEST_SERVER_URL"
       operationId: duplicatePathParameterAtOperationLevelDoesNotError
       tags:
         - parameters
@@ -1104,11 +1086,7 @@ paths:
         schema:
           type: integer
     get:
-      x-speakeasy-test: true
-      x-speakeasy-test-internal-id: duplicate-path-parameter-at-path-level-does-not-error
       operationId: duplicatePathParameterAtPathLevelDoesNotError
-      # TODO: Remove when mockserver is default
-      x-speakeasy-test-server: "x-env: TEST_SERVER_URL"
       tags:
         - parameters
       responses:
@@ -1122,11 +1100,7 @@ paths:
   
   /anything/duplicateQueryParamAtOperationLevel/:
     get:
-      x-speakeasy-test: true
-      x-speakeasy-test-internal-id: duplicate-query-parameter-at-operation-level-does-not-error
       operationId: duplicateQueryParameterAtOperationLevelDoesNotError
-      # TODO: Remove when mockserver is default
-      x-speakeasy-test-server: "x-env: TEST_SERVER_URL"
       tags:
         - parameters
       parameters:
@@ -1163,11 +1137,7 @@ paths:
         schema:
           type: integer
     get:
-      x-speakeasy-test: true
-      x-speakeasy-test-internal-id: duplicate-query-parameter-at-path-level-does-not-error
       operationId: duplicateQueryParameterAtPathLevelDoesNotError
-      # TODO: Remove when mockserver is default
-      x-speakeasy-test-server: "x-env: TEST_SERVER_URL"
       tags:
         - parameters
       responses:
@@ -1181,11 +1151,7 @@ paths:
   
   /anything/duplicateHeaderParamAtOperationLevel/:
     get:
-      x-speakeasy-test: true
-      x-speakeasy-test-internal-id: duplicate-header-parameter-at-operation-level-does-not-error
       operationId: duplicateHeaderParameterAtOperationLevelDoesNotError
-      # TODO: Remove when mockserver is default
-      x-speakeasy-test-server: "x-env: TEST_SERVER_URL"
       tags:
         - parameters
       parameters:
@@ -1222,11 +1188,7 @@ paths:
         schema:
           type: integer
     get:
-      x-speakeasy-test: true
-      x-speakeasy-test-internal-id: duplicate-header-parameter-at-path-level-does-not-error
       operationId: duplicateHeaderParameterAtPathLevelDoesNotError
-      # TODO: Remove when mockserver is default
-      x-speakeasy-test-server: "x-env: TEST_SERVER_URL"
       tags:
         - parameters
       responses:
@@ -1239,8 +1201,6 @@ paths:
                 example: "test"
   /anything/queryParams/form/primitive:
     get:
-      x-speakeasy-test: true
-      x-speakeasy-test-internal-id: parameters-form-query-params-primitive
       operationId: formQueryParamsPrimitive
       tags:
         - parameters
@@ -1308,8 +1268,6 @@ paths:
                   - url
   /anything/queryParams/form/obj:
     get:
-      x-speakeasy-test: true
-      x-speakeasy-test-internal-id: parameters-form-query-params-object
       operationId: formQueryParamsObject
       tags:
         - parameters
@@ -1437,8 +1395,6 @@ paths:
                   - args
   /anything/queryParams/form/camelObj:
     get:
-      x-speakeasy-test: true
-      x-speakeasy-test-internal-id: parameters-form-query-params-camel-object
       operationId: formQueryParamsCamelObject
       tags:
         - parameters
@@ -1499,8 +1455,6 @@ paths:
                   - args
   /anything/queryParams/form/refParamObject:
     get:
-      x-speakeasy-test: true
-      x-speakeasy-test-internal-id: parameters-form-query-params-ref-param-object
       operationId: formQueryParamsRefParamObject
       tags:
         - parameters
@@ -1550,8 +1504,6 @@ paths:
                   - args
   /anything/queryParams/form/array:
     get:
-      x-speakeasy-test: true
-      x-speakeasy-test-internal-id: parameters-form-query-params-array
       operationId: formQueryParamsArray
       tags:
         - parameters
@@ -1611,8 +1563,6 @@ paths:
                   - args
   /anything/queryParams/pipe/array:
     get:
-      x-speakeasy-test: true
-      x-speakeasy-test-internal-id: parameters-pipe-query-params-array
       operationId: pipeDelimitedQueryParamsArray
       tags:
         - parameters
@@ -1692,8 +1642,6 @@ paths:
                   - args
   /anything/queryParams/form/map:
     get:
-      x-speakeasy-test: true
-      x-speakeasy-test-internal-id: parameters-form-query-params-map
       operationId: formQueryParamsMap
       tags:
         - parameters
@@ -1750,8 +1698,6 @@ paths:
                   - args
   /anything/queryParams/deepObject/obj:
     get:
-      x-speakeasy-test: true
-      x-speakeasy-test-internal-id: parameters-deep-object-query-params-object
       x-speakeasy-mcp:
         disabled: true
       operationId: deepObjectQueryParamsObject
@@ -1883,8 +1829,6 @@ paths:
                   - args
   /anything/queryParams/deepObject/deepObj:
     get:
-      x-speakeasy-test: true
-      x-speakeasy-test-internal-id: parameters-deep-object-query-params-deep-object
       x-speakeasy-mcp:
         disabled: true
       operationId: deepObjectQueryParamsDeepObject
@@ -2035,8 +1979,6 @@ paths:
                   - args
   /anything/queryParams/deepObject/map:
     get:
-      x-speakeasy-test: true
-      x-speakeasy-test-internal-id: parameters-deep-object-query-params-map
       operationId: deepObjectQueryParamsMap
       tags:
         - parameters
@@ -2148,8 +2090,6 @@ paths:
 
   /anything/queryParams/json/objsmaller:
     get:
-      x-speakeasy-test: ["go", "pythonv2"]
-      x-speakeasy-test-internal-id: parameters-json-query-params-object
       operationId: jsonQueryParamsObjectSmaller
       tags:
         - parameters
@@ -2207,8 +2147,6 @@ paths:
   /anything/queryParams/const:
     get:
       x-speakeasy-exclude-test-sdk: [csharp, javav2, php]
-      x-speakeasy-test: true
-      x-speakeasy-test-internal-id: parameters-const-query-params
       operationId: constQueryParams
       tags:
         - parameters
@@ -2250,8 +2188,6 @@ paths:
                   - args
   /anything/queryParams/default:
     get:
-      x-speakeasy-test: true
-      x-speakeasy-test-internal-id: parameters-default-query-params
       operationId: defaultQueryParams
       tags:
         - parameters
@@ -2293,8 +2229,6 @@ paths:
                   - args
   /anything/queryParams/mixed:
     get:
-      x-speakeasy-test: ["go", "pythonv2"]
-      x-speakeasy-test-internal-id: parameters-mixed-query-params
       operationId: mixedQueryParams
       tags:
         - parameters
@@ -2403,8 +2337,6 @@ paths:
           description: OK
   /anything/headers/primitive:
     get:
-      x-speakeasy-test: true
-      x-speakeasy-test-internal-id: parameters-header-params-primitive
       operationId: headerParamsPrimitive
       tags:
         - parameters
@@ -2466,8 +2398,6 @@ paths:
                   - headers
   /anything/headers/obj:
     get:
-      x-speakeasy-test: true
-      x-speakeasy-test-internal-id: parameters-header-params-object
       operationId: headerParamsObject
       tags:
         - parameters
@@ -2516,8 +2446,6 @@ paths:
                   - headers
   /anything/headers/map:
     get:
-      x-speakeasy-test: true
-      x-speakeasy-test-internal-id: parameters-header-params-map
       operationId: headerParamsMap
       tags:
         - parameters
@@ -2570,8 +2498,6 @@ paths:
                   - headers
   /anything/headers/array:
     get:
-      x-speakeasy-test: true
-      x-speakeasy-test-internal-id: parameters-header-params-array
       operationId: headerParamsArray
       tags:
         - parameters
@@ -2648,10 +2574,8 @@ paths:
       # a result.
       x-speakeasy-flatten-request: false
       x-speakeasy-max-method-params: 0
-      x-speakeasy-test: [typescriptv2, pythonv2] # TODO: fix go bug
       # This test is useful for any targets that implement:
       # methodArguments: infer-optional-args
-      x-speakeasy-test-internal-id: request-bodies-get-inferred-optional-request-wrapper
       operationId: requestBodyGetInferredOptionalRequestWrapper
       servers:
         - url: http://localhost:35123
@@ -2891,8 +2815,6 @@ paths:
   /anything/requestBodies/deprecatedRequestBodyRef:
     post:
       # Reference: https://linear.app/speakeasy/issue/SPE-4115/bug-request-body-deprecated-object-ref-causes-incomplete-test
-      x-speakeasy-test: true
-      x-speakeasy-test-internal-id: request-bodies-deprecated-request-body-ref
       operationId: requestBodyDeprecatedRequestBodyRefPost
       tags:
         - requestBodies
@@ -3550,8 +3472,6 @@ paths:
   /anything/requestBodies/post/multiple/contentTypes/component/filtered:
     post:
       operationId: requestBodyPostMultipleContentTypesComponentFiltered
-      x-speakeasy-test: true # Not moving to tests.yaml to test in spec handling of this
-      x-speakeasy-test-internal-id: request-bodies-post-multiple-content-types-component-filtered
       tags:
         - requestBodies
       requestBody:
@@ -3593,7 +3513,6 @@ paths:
   /anything/requestBodies/post/multiple/contentTypes/component/filtered#defaultTest:
     post:
       operationId: requestBodyPostMultipleContentTypesComponentFilteredDefaultTest
-      x-speakeasy-test: true # Not moving to tests.yaml to test in spec handling of this
       tags:
         - requestBodies
       requestBody:
@@ -3923,7 +3842,6 @@ paths:
   /anything/requestBodies/put/multipart/file:
     put:
       operationId: requestBodyPutMultipartFile
-      # x-speakeasy-test: true - can't enable until we find a way to control file upload for tests
       tags:
         - requestBodies
       requestBody:
@@ -4014,7 +3932,6 @@ paths:
   /anything/requestBodies/put/multipart/fileRef:
     put:
       operationId: requestBodyPutMultipartFileRef
-      # x-speakeasy-test: true - can't enable until we find a way to control file upload for tests
       tags:
         - requestBodies
       requestBody:
@@ -4044,7 +3961,6 @@ paths:
   /anything/requestBodies/put/multipart/differentFileName:
     put:
       operationId: requestBodyPutMultipartDifferentFileName
-      # x-speakeasy-test: true - can't enable until we find a way to control file upload for tests
       tags:
         - requestBodies
       requestBody:
@@ -4075,7 +3991,6 @@ paths:
   /anything/requestBodies/put/multipart/optionalRequestBody:
     put:
       operationId: requestBodyPutMultipartOptionalRequestBody
-      # x-speakeasy-test: true - can't enable until we find a way to control file upload for tests
       tags:
         - requestBodies
       requestBody:
@@ -4782,8 +4697,6 @@ paths:
                   - json
   /anything/requestBodies/post/defaultEmptyString:
     post:
-      x-speakeasy-test: true
-      x-speakeasy-test-internal-id: request-bodies-default-empty-string
       operationId: requestBodyPostDefaultEmptyString
       description: |
         Test that default: "" for an optional property is set to "" when omitted.
@@ -5510,8 +5423,6 @@ paths:
   /anything/requestBodies/post/notnullable/notrequired/string:
     post:
       operationId: requestBodyPostNotNullableNotRequiredStringBody
-      x-speakeasy-test: true # Not moving to tests.yaml until we figure out how to signal unset
-      x-speakeasy-test-internal-id: request-bodies-post-not-nullable-not-required-string-body
       tags:
         - requestBodies
       requestBody:
@@ -5766,8 +5677,6 @@ paths:
           description: OK
   /json:
     get:
-      x-speakeasy-test: true
-      x-speakeasy-test-internal-id: response-bodies-json-get
       operationId: responseBodyJsonGet
       # No tag as we want this simple request in the root sdk for testing operations get generated there
       responses:
@@ -5782,8 +5691,6 @@ paths:
                   value: {"slideshow": {"author": "Yours Truly","date": "date of publication","title": "Sample Slide Show","slides": [{"title": "Wake up to WonderWidgets!","type": "all"},{"title": "Overview","type": "all","items": ["Why <em>WonderWidgets</em> are great","Who <em>buys</em> WonderWidgets"]}]}}
   /html:
     get:
-      x-speakeasy-test: true
-      x-speakeasy-test-internal-id: response-bodies-string-get
       operationId: responseBodyStringGet
       tags:
         - responseBodies
@@ -5800,8 +5707,6 @@ paths:
                   value: "<!DOCTYPE html>\\n<html>\\n  <head>\\n  </head>\\n  <body>\\n      <h1>Herman Melville - Moby-Dick</h1>\\n\\n      <div>\\n        <p>\\n          Availing himself of the mild, summer-cool weather that now reigned in these latitudes, and in preparation for the peculiarly active pursuits shortly to be anticipated, Perth, the begrimed, blistered old blacksmith, had not removed his portable forge to the hold again, after concluding his contributory work for Ahab's leg, but still retained it on deck, fast lashed to ringbolts by the foremast; being now almost incessantly invoked by the headsmen, and harpooneers, and bowsmen to do some little job for them; altering, or repairing, or new shaping their various weapons and boat furniture. Often he would be surrounded by an eager circle, all waiting to be served; holding boat-spades, pike-heads, harpoons, and lances, and jealously watching his every sooty movement, as he toiled. Nevertheless, this old man's was a patient hammer wielded by a patient arm. No murmur, no impatience, no petulance did come from him. Silent, slow, and solemn; bowing over still further his chronically broken back, he toiled away, as if toil were life itself, and the heavy beating of his hammer the heavy beating of his heart. And so it was.—Most miserable! A peculiar walk in this old man, a certain slight but painful appearing yawing in his gait, had at an early period of the voyage excited the curiosity of the mariners. And to the importunity of their persisted questionings he had finally given in; and so it came to pass that every one now knew the shameful story of his wretched fate. Belated, and not innocently, one bitter winter's midnight, on the road running between two country towns, the blacksmith half-stupidly felt the deadly numbness stealing over him, and sought refuge in a leaning, dilapidated barn. The issue was, the loss of the extremities of both feet. Out of this revelation, part by part, at last came out the four acts of the gladness, and the one long, and as yet uncatastrophied fifth act of the grief of his life's drama. He was an old man, who, at the age of nearly sixty, had postponedly encountered that thing in sorrow's technicals called ruin. He had been an artisan of famed excellence, and with plenty to do; owned a house and garden; embraced a youthful, daughter-like, loving wife, and three blithe, ruddy children; every Sunday went to a cheerful-looking church, planted in a grove. But one night, under cover of darkness, and further concealed in a most cunning disguisement, a desperate burglar slid into his happy home, and robbed them all of everything. And darker yet to tell, the blacksmith himself did ignorantly conduct this burglar into his family's heart. It was the Bottle Conjuror! Upon the opening of that fatal cork, forth flew the fiend, and shrivelled up his home. Now, for prudent, most wise, and economic reasons, the blacksmith's shop was in the basement of his dwelling, but with a separate entrance to it; so that always had the young and loving healthy wife listened with no unhappy nervousness, but with vigorous pleasure, to the stout ringing of her young-armed old husband's hammer; whose reverberations, muffled by passing through the floors and walls, came up to her, not unsweetly, in her nursery; and so, to stout Labor's iron lullaby, the blacksmith's infants were rocked to slumber. Oh, woe on woe! Oh, Death, why canst thou not sometimes be timely? Hadst thou taken this old blacksmith to thyself ere his full ruin came upon him, then had the young widow had a delicious grief, and her orphans a truly venerable, legendary sire to dream of in their after years; and all of them a care-killing competency.\\n        </p>\\n      </div>\\n  </body>\\n</html>"
   /xml:
     get:
-      x-speakeasy-test: true
-      x-speakeasy-test-internal-id: response-bodies-xml-get
       operationId: responseBodyXmlGet
       tags:
         - responseBodies
@@ -5839,8 +5744,6 @@ paths:
                 format: binary
   /optional:
     get:
-      x-speakeasy-test: true
-      x-speakeasy-test-internal-id: response-bodies-accept-header
       operationId: responseBodyOptionalGet
       tags:
         - responseBodies
@@ -5864,8 +5767,6 @@ paths:
                   value: "Success"
   /readonlyorwriteonly#readOnly:
     post:
-      x-speakeasy-test: true
-      x-speakeasy-test-internal-id: response-bodies-read-only
       operationId: responseBodyReadOnly
       servers:
         - url: http://localhost:35456
@@ -5909,8 +5810,6 @@ paths:
                 type: number
   /anything/responseBodies/additionalProperties:
     post:
-      x-speakeasy-test: true
-      x-speakeasy-test-internal-id: response-bodies-additional-properties-string
       operationId: responseBodyAdditionalPropertiesPost
       tags:
         - responseBodies
@@ -5948,8 +5847,6 @@ paths:
                   }
   /anything/responseBodies/additionalPropertiesAny:
     post:
-      x-speakeasy-test: true
-      x-speakeasy-test-internal-id: response-bodies-additional-properties-any-values
       operationId: responseBodyAdditionalPropertiesAnyPost
       tags:
         - responseBodies
@@ -6003,8 +5900,6 @@ paths:
                   }
   /anything/responseBodies/additionalPropertiesComplexNumbers:
     post:
-      x-speakeasy-test: true
-      x-speakeasy-test-internal-id: response-bodies-additional-properties-complex-numbers
       operationId: responseBodyAdditionalPropertiesComplexNumbersPost
       tags:
         - responseBodies
@@ -6042,8 +5937,6 @@ paths:
                   }
   /anything/responseBodies/additionalPropertiesDate:
     post:
-      x-speakeasy-test: true
-      x-speakeasy-test-internal-id: response-bodies-additional-properties-date
       operationId: responseBodyAdditionalPropertiesDatePost
       tags:
         - responseBodies
@@ -6081,8 +5974,6 @@ paths:
                   }
   /anything/responseBodies/additionalPropertiesObject:
     post:
-      x-speakeasy-test: true
-      x-speakeasy-test-internal-id: response-bodies-additional-properties-object
       operationId: responseBodyAdditionalPropertiesObjectPost
       tags:
         - responseBodies
@@ -6122,8 +6013,6 @@ paths:
                   }
   /anything/responseBodies/defaultEmptyString:
     post:
-      x-speakeasy-test: true
-      x-speakeasy-test-internal-id: response-bodies-default-empty-string
       # TODO: https://linear.app/speakeasy/issue/GEN-1333/bug-oas-default-of-empty-string-not-respected-in-javav2-json-response
       x-speakeasy-exclude-test-sdk: [javav2]
       operationId: responseBodyDefaultEmptyString
@@ -6171,8 +6060,6 @@ paths:
   # Reference: https://linear.app/speakeasy/issue/SPE-4103/bug-test-generation-in-typescriptv2-unterminated-multiline-strings
   /anything/responseBodies/multilineString:
     post:
-      x-speakeasy-test: true
-      x-speakeasy-test-internal-id: response-bodies-multiline-string
       operationId: responseBodyMultilineStringPost
       tags:
         - responseBodies
@@ -6253,10 +6140,6 @@ paths:
     get:
       # Reference: https://linear.app/speakeasy/issue/GEN-813/bug-missing-example-value-in-2xx-200-ast-handling
       operationId: responseBodies2xxJSONObjectAllOptionalProperties
-      x-speakeasy-test: true
-      x-speakeasy-test-internal-id: response-bodies2xx-json-object-all-optional-properties
-      # TODO: Remove when mockserver is default
-      x-speakeasy-test-server: "x-env: TEST_SERVER_URL"
       tags:
         - responseBodies
       responses:
@@ -6272,8 +6155,6 @@ paths:
   /reflect#decimalStr:
     post:
       operationId: responseBodyDecimalStr
-      x-speakeasy-test: true
-      x-speakeasy-test-internal-id: response-bodies-decimal-string
       tags:
         - responseBodies
       servers:
@@ -6302,8 +6183,6 @@ paths:
   /anything/overriddenFieldNames:
     post:
       operationId: overriddenFieldNamesPost
-      x-speakeasy-test: true
-      x-speakeasy-test-internal-id: response-bodies-overridden-field-names
       tags:
         - responseBodies
       requestBody:
@@ -6357,7 +6236,6 @@ paths:
                   }
   /anything/operationId/colon:
     get:
-      x-speakeasy-test: true
       operationId: "operationIdColon:get"
       tags:
         - generation
@@ -6673,7 +6551,6 @@ paths:
       # Enable to review faker generated values in generated test.
       # The generated test is not expected to pass due to mismatch between the
       # generated request values and generated response values.
-      x-speakeasy-test: false
       x-speakeasy-usage-example:
         title: "Second"
         description: "Do this second"
@@ -7541,10 +7418,6 @@ paths:
         This operation requires a globally optional path parameter. A failing
         test with 404 likely indicates that the path parameter value is not
         being templated into the operation request (.../globals//...).
-      x-speakeasy-test: true
-      x-speakeasy-test-internal-id: globals-optional-path-parameter-operation-required
-      # TODO: Remove when mockserver is default
-      x-speakeasy-test-server: "x-env: TEST_SERVER_URL"
       tags:
         - globals
       parameters:
@@ -7575,10 +7448,6 @@ paths:
         This path requires a globally optional path parameter. A failing
         test with 404 likely indicates that the path parameter value is not
         being templated into the operation request (.../globals//...).
-      x-speakeasy-test: true
-      x-speakeasy-test-internal-id: globals-optional-path-parameter-path-required
-      # TODO: Remove when mockserver is default
-      x-speakeasy-test-server: "x-env: TEST_SERVER_URL"
       tags:
         - globals
       responses:
@@ -7591,10 +7460,6 @@ paths:
         This operation requires a globally optional hidden path parameter. A
         failing test with 404 likely indicates that the path parameter value is
         not being templated into the client (.../hidden//...).
-      x-speakeasy-test: true
-      x-speakeasy-test-internal-id: globals-optional-hidden-path-parameter-operation-required
-      # TODO: Remove when mockserver is default
-      x-speakeasy-test-server: "x-env: TEST_SERVER_URL"
       tags:
         - globals
       parameters:
@@ -7625,10 +7490,6 @@ paths:
         This path requires a globally optional hidden path parameter. A failing
         test with 404 likely indicates that the path parameter value is not
         being templated into the client (.../hidden//...).
-      x-speakeasy-test: true
-      x-speakeasy-test-internal-id: globals-optional-hidden-path-parameter-path-required
-      # TODO: Remove when mockserver is default
-      x-speakeasy-test-server: "x-env: TEST_SERVER_URL"
       tags:
         - globals
       responses:
@@ -7836,8 +7697,6 @@ paths:
                   - json
   /anything/unionOfArrays:
     post:
-      x-speakeasy-test: [typescriptv2, pythonv2, go, javav2]
-      x-speakeasy-test-internal-id: unions-union-of-arrays
       operationId: unionOfArraysPost
       tags:
         - unions
@@ -8635,10 +8494,6 @@ paths:
   /statusCode/2XX:
     get:
       operationId: statusCode2XX
-      x-speakeasy-test: true
-      x-speakeasy-test-internal-id: status-code2-xx
-      # TODO: Remove when mockserver is default
-      x-speakeasy-test-server: "x-env: TEST_SERVER_URL"
       tags:
         - statusCode
       responses:
@@ -8647,10 +8502,6 @@ paths:
   /statusCode/4XX:
     get:
       operationId: statusCode4XX
-      x-speakeasy-test: true
-      x-speakeasy-test-internal-id: status-code4-xx
-      # TODO: Remove when mockserver is default
-      x-speakeasy-test-server: "x-env: TEST_SERVER_URL"
       tags:
         - statusCode
       responses:
@@ -8659,10 +8510,6 @@ paths:
   /statusCode/5XX:
     get:
       operationId: statusCode5XX
-      x-speakeasy-test: true
-      x-speakeasy-test-internal-id: status-code5-xx
-      # TODO: Remove when mockserver is default
-      x-speakeasy-test-server: "x-env: TEST_SERVER_URL"
       tags:
         - statusCode
       responses:
@@ -8671,10 +8518,6 @@ paths:
   /statusCode/default:
     get:
       operationId: statusCodeDefault
-      x-speakeasy-test: true
-      x-speakeasy-test-internal-id: status-code-default
-      # TODO: Remove when mockserver is default
-      x-speakeasy-test-server: "x-env: TEST_SERVER_URL"
       tags:
         - statusCode
       responses:
@@ -9584,8 +9427,6 @@ paths:
       operationId: nestedFirstGet
       x-speakeasy-name-override: get
       x-speakeasy-group: nested.first
-      x-speakeasy-test: true
-      x-speakeasy-test-internal-id: multi-level-grouping
       responses:
         "200":
           description: OK
@@ -10262,9 +10103,6 @@ paths:
   /anything/hooks:
     get:
       operationId: testHooks
-      x-speakeasy-test: true
-      x-speakeasy-test-internal-id: test-hooks
-      x-speakeasy-test-server: http://localhost:35123
       tags:
         - hooks
       parameters:
@@ -10957,7 +10795,6 @@ paths:
   /anything/additionalPropertiesWithNullableFields:
     post:
       operationId: postAdditionalPropertiesWithNullableFields
-      x-speakeasy-test: ["go", "pythonv2", "typescriptv2"]
       responses:
         "200":
           description: Ok
