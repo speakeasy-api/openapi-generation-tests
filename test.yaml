@@ -6543,6 +6543,7 @@ paths:
   /anything/usageExample:
     post:
       operationId: usageExamplePost
+      x-speakeasy-test: false
       summary: An operation used for testing usage examples
       description: An operation used for testing usage examples that includes a large array of parameters and input types to ensure that all are handled correctly
       externalDocs:
@@ -10176,6 +10177,7 @@ paths:
   /anything/hooks/afterResponseValidation:
     get:
       operationId: testHooksAfterResponse
+      x-speakeasy-test: false
       tags:
         - hooks
       responses:
@@ -10183,6 +10185,7 @@ paths:
           description: OK
   /status/400#testHooksError:
     get:
+      x-speakeasy-test: false
       operationId: testHooksError
       tags:
         - hooks
@@ -10193,6 +10196,7 @@ paths:
           description: Bad Request
   /bearer#authorizationHeaderModification:
     get:
+      x-speakeasy-test: false
       operationId: authorizationHeaderModification
       tags:
         - hooks
