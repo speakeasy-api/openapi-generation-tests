@@ -2115,6 +2115,20 @@ components:
             - "one"
             - "two"
             - "three"
+    unwieldyComponent:
+      type: object
+      properties:
+        optionalList:
+          type: array
+          items:
+            type: object
+            properties:
+              optionalItem:
+                type: object
+                properties:
+                  deeplyNestedAttribute:
+                    type: string
+                    example: "hard to reach"
   responses:
     tokenAuthResponse:
       description: Successful authentication.
