@@ -9965,6 +9965,21 @@ paths:
               x-speakeasy-sse-sentinel: "[DONE]"
               schema:
                 $ref: "components.yaml#/components/schemas/chatCompletionEvent"
+  /eventstreams/stayopen:
+    post:
+      tags:
+        - eventstreams
+      operationId: stayOpen
+      servers:
+        - url: http://localhost:35456
+      responses:
+        "200":
+          description: Ok
+          content:
+            text/event-stream:
+              x-speakeasy-sse-sentinel: "[SENTINEL]"
+              schema:
+                $ref: "components.yaml#/components/schemas/textEvent"
   /jsonl:
     get:
       tags:
