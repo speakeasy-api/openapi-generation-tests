@@ -9760,6 +9760,56 @@ paths:
         statusCodes:
           - 503
         retryConnectionErrors: false
+  /retries#retryConnectionErrors:
+    get:
+      operationId: retriesGetRetryConnectionErrors
+      description: Request with initial connection error then passing retry
+      servers:
+        - url: http://localhost:35456
+      tags:
+        - retries
+      parameters:
+        - name: num-retries
+          in: query
+          schema:
+            type: integer
+          required: true
+        - name: request-id
+          in: query
+          schema:
+            type: string
+          required: true
+        # Below required for fault middleware
+        - name: fault-settings
+          in: header
+          schema:
+            type: string
+            example: '{"reject_count": 1}'
+          required: true
+        - name: request-id
+          in: header
+          schema:
+            type: string
+          required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: retries
+                type: object
+                properties:
+                  retries:
+                    type: integer
+                required:
+                  - retries
+      x-speakeasy-retries:
+        strategy: backoff
+        # Using extension defaults
+        statusCodes:
+          - "5XX"
+        retryConnectionErrors: true
   /retriesFlatEmptyResponse:
     post:
       operationId: retriesFlatEmptyResponsePost
