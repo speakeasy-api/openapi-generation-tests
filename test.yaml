@@ -1044,6 +1044,44 @@ paths:
                 required:
                   - url
           description: OK
+  /anything/openEnum/{param-p}/suffix:
+    get:
+      operationId: parameterOpenEnum
+      tags:
+        - parameters
+      parameters:
+        - name: param-p
+          in: path
+          required: true
+          schema:
+            $ref: "#/components/schemas/openEnum"
+        - name: param-q
+          in: query
+          required: true
+          schema:
+            $ref: "#/components/schemas/openEnum"
+        - name: param-h
+          in: header
+          required: true
+          schema:
+            $ref: "#/components/schemas/openEnum"
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: res
+                type: object
+                properties:
+                  url:
+                    type: string
+                  headers:
+                    type: object
+                    additionalProperties: true                    
+                required:
+                  - url
+                  - headers
   /anything/duplicatePathParameterAtOperationLevel/{param}:
     get:
       operationId: duplicatePathParameterAtOperationLevelDoesNotError
