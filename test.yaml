@@ -10980,6 +10980,51 @@ paths:
             application/json:
               schema:
                 $ref: "components.yaml#/components/schemas/unwieldyComponent"
+  /anything/trickyToUnmarshalWeakUnion:
+    post:
+      operationId: trickyToUnmarshalWeakUnion
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              title: trickyToUnmarshalWeakUnionRequest
+              properties:
+                id:
+                  type: string
+                name:
+                  type: string
+                optionalItem:
+                  type: string
+              required: [id]
+      responses:
+        "200":
+          description: Ok
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  json:
+                    title: trickyToUnmarshalWeakUnionResponse
+                    oneOf:
+                      - type: object
+                        title: entityWithID
+                        properties:
+                          id:
+                            type: string
+                        required: [id]
+                        additionalProperties: true
+                      - type: object
+                        title: entityWithIDAndName
+                        properties:
+                          id:
+                            type: string
+                          name:
+                            type: string
+                        required: [id, name]
+                required:
+                  - json      
 x-speakeasy-webhooks:
   security:
     type: signature
