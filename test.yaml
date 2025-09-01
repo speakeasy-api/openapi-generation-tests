@@ -1078,7 +1078,7 @@ paths:
                     type: string
                   headers:
                     type: object
-                    additionalProperties: true                    
+                    additionalProperties: true
                 required:
                   - url
                   - headers
@@ -1135,7 +1135,7 @@ paths:
               schema:
                 type: string
                 example: "test"
-  
+
   /anything/duplicateQueryParamAtOperationLevel/:
     get:
       operationId: duplicateQueryParameterAtOperationLevelDoesNotError
@@ -1186,7 +1186,7 @@ paths:
               schema:
                 type: string
                 example: "test"
-  
+
   /anything/duplicateHeaderParamAtOperationLevel/:
     get:
       operationId: duplicateHeaderParameterAtOperationLevelDoesNotError
@@ -2585,7 +2585,7 @@ paths:
           in: header
           required: true
           schema:
-            type: [string, "null"]          
+            type: [string, "null"]
         - name: Optional-Nullable-Header
           in: header
           required: false
@@ -2769,7 +2769,7 @@ paths:
             schema:
               $ref: "components.yaml#/components/schemas/weaklyTypedOneOfWriteOnlyObject"
             examples:
-              writeOnlyObject: 
+              writeOnlyObject:
                 value: "oneOf[1]"
         required: true
       responses:
@@ -3210,7 +3210,7 @@ paths:
                   type: object
                   additionalProperties:
                     $ref: "components.yaml#/components/schemas/simpleObject"
-                example: [{"mapElem1": "...", "mapElem2": "..."}, {"mapElem1": "...", "mapElem2": "..."}]    
+                example: [{"mapElem1": "...", "mapElem2": "..."}, {"mapElem1": "...", "mapElem2": "..."}]
   /requestbody#arrayOfMapsCamelCase:
     post:
       operationId: requestBodyPostApplicationJsonArrayOfMapCamelCase
@@ -6234,7 +6234,7 @@ paths:
                   x-speakeasy-name-override: inInt
                 str:
                   type: string
-                  x-speakeasy-name-override: inStr                
+                  x-speakeasy-name-override: inStr
             examples:
               test:
                 value: {
@@ -6258,7 +6258,7 @@ paths:
                         x-speakeasy-name-override: outInt
                       str:
                         type: string
-                        x-speakeasy-name-override: outStr  
+                        x-speakeasy-name-override: outStr
                     required:
                       - int
                       - str
@@ -6354,7 +6354,7 @@ paths:
       tags:
         - generation
       x-speakeasy-react-hook:
-        name: TextSearch 
+        name: TextSearch
         type: query
       x-speakeasy-pagination:
         type: offsetLimit
@@ -7606,7 +7606,7 @@ paths:
                     $ref: "components.yaml#/components/schemas/stronglyTypedOneOfDiscriminatedObject"
                 required:
                   - json
-                  
+
   # discriminating property is defined as const
   /anything/constDiscriminatedOneOf:
     post:
@@ -7631,8 +7631,8 @@ paths:
                   json:
                     $ref: "components.yaml#/components/schemas/constDiscriminatedOneOf"
                 required:
-                  - json     
-               
+                  - json
+
   # an object participates in multiple discriminated oneOf definitions
   /anything/discriminatedOneMultipleMemberships:
     post:
@@ -7657,7 +7657,7 @@ paths:
                   json:
                     $ref: "components.yaml#/components/schemas/Vehicle"
                 required:
-                  - json    
+                  - json
 
   # ensure that the HasWheels type is generated as well
   # so we can properly test multiple memberships
@@ -7684,8 +7684,8 @@ paths:
                   json:
                     $ref: "components.yaml#/components/schemas/HasWheels"
                 required:
-                  - json                      
-                                         
+                  - json
+
   /anything/infectedWithAny:
     post:
       operationId: infectedWithAny
@@ -10649,7 +10649,7 @@ paths:
                   - url
                   - args
                   - headers
-                  
+
   /anything/multilineExample:
     get:
       operationId: multilineExample
@@ -10667,7 +10667,7 @@ paths:
       responses:
         "201":
           description: OK
-          
+
   /anything/multiMatchAnyOf:
     get:
       operationId: multiMatchAnyOf
@@ -10677,15 +10677,15 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/AnyOfMultiMatch"     
+              $ref: "#/components/schemas/AnyOfMultiMatch"
       responses:
         "200":
           description: OK
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/AnyOfMultiMatch"     
-          
+                $ref: "#/components/schemas/AnyOfMultiMatch"
+
   /method/delete:
     delete:
       operationId: methodDelete
@@ -11031,7 +11031,7 @@ paths:
                             type: string
                         required: [id, name]
                 required:
-                  - json      
+                  - json
 x-speakeasy-webhooks:
   security:
     type: signature
@@ -11111,7 +11111,7 @@ components:
         details:
           type: string
       required: [name, description]
-      
+
     ExampleVehicle:
       type: object
       oneOf:
