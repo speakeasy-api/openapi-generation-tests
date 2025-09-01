@@ -8570,6 +8570,7 @@ paths:
         statusCodes:
           - "400"
           - "401"
+          - "418"
           - "4XX"
           - "500"
           - "501"
@@ -8589,6 +8590,12 @@ paths:
           description: Multiple Choices
         "400":
           description: Bad Request
+        "418":
+          description: I'm a Teapot
+          content:
+            application/json:
+              schema:
+                $ref: "components.yaml#/components/schemas/error"
         "500":
           description: Internal Server Error
           content:

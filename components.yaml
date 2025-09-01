@@ -1639,7 +1639,7 @@ components:
       properties:
         tag:
           type: string
-          enum: [tag1]
+          enum: [tag0, tag1]
         error:
           type: string
       required:
