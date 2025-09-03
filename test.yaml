@@ -1304,6 +1304,57 @@ paths:
                 required:
                   - args
                   - url
+  /anything/queryParams/form/union:
+    get:
+      operationId: formQueryParamsUnion
+      tags:
+        - parameters
+      parameters:
+        - name: strParam
+          in: query
+          schema:
+            type: string
+            example: test
+          required: true
+        - name: unionParam
+          in: query
+          style: deepObject
+          explode: true
+          schema:
+            oneOf:
+              - type: string
+              - type: array
+                items:
+                  type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: res
+                type: object
+                properties:
+                  args:
+                    type: object
+                    properties:
+                      strParam:
+                        type: string
+                        example: "test"
+                      unionParam:
+                        type: array
+                        example: "test1,test2"
+                    required:
+                      - strParam
+                      - unionParam
+                  url:
+                    type: string
+                    example: http://localhost:35123/anything/queryParams/form/union?strParam=test3&unionParam=test1&unionParam=test2
+                    x-speakeasy-test-internal-directives:
+                      - sortQueryParameters: {}
+                required:
+                  - args
+                  - url
   /anything/queryParams/form/obj:
     get:
       operationId: formQueryParamsObject
