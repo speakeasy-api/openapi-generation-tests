@@ -8882,6 +8882,37 @@ paths:
             type: cursor
         outputs:
           nextCursor: $.cursor
+  /pagination/cursor_non_numeric#emptyString:
+    get:
+      operationId: paginationCursorNonNumericEmptyString
+      servers:
+        - url: http://localhost:35456
+      parameters:
+        - name: cursor
+          in: query
+          description: The page token used to request a specific page of the search results
+          schema:
+            type: string
+        - name: endCursor
+          in: query
+          description: The cursor value sent when there are no more pages.
+          required: true
+          schema:
+            type: string
+            default: ""
+      responses:
+        "200":
+          $ref: "components.yaml#/components/responses/paginationResponseNonNumeric"
+      tags:
+        - pagination
+      x-speakeasy-pagination:
+        type: cursor
+        inputs:
+          - name: cursor
+            in: parameters
+            type: cursor
+        outputs:
+          nextCursor: $.cursor
   /pagination/cursor_non_numeric#withRetries:
     get:
       operationId: paginationWithRetries
