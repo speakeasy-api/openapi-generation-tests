@@ -778,6 +778,115 @@ paths:
                       "Headerparam": "headerValue"
                     }
                   }
+  /anything/flatParametersOrdering/{requiredPathParam}:
+    post:
+      operationId: flatParametersOrdering
+      description: It checks for https://learn.microsoft.com/en-sg/dotnet/csharp/language-reference/compiler-messages/cs1737 within c# sdk. In earlier implementation of generator - requiredPathParam would appear before requiredQueryParam hence triggering cs1737.
+      tags:
+        - parameters
+      parameters:
+        - name: requiredPathParam
+          in: path
+          schema:
+            type: string
+            default: defaultValueForPathParam
+        - name: optionalQueryParam
+          in: query
+          schema:
+            type: integer
+            default: 1
+        - name: requiredQueryParam
+          in: query
+          schema:
+            type: boolean
+          required: true
+        - name: requiredHeaderParam
+          in: header
+          schema:
+            type: string
+            example: requiredHeaderParam
+          required: true
+        - name: optionalHeaderParam
+          in: header
+          schema:
+            type: boolean
+            example: false
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                data:
+                  type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: res
+                type: object
+                properties:
+                  url:
+                    type: string
+                required:
+                  - url
+  /anything/flatParametersOrdering/usingOptionalRequestBody/{requiredPathParam}:
+    post:
+      operationId: flatParametersOrderingUsingOptionalRequestBody
+      description: It checks for https://learn.microsoft.com/en-sg/dotnet/csharp/language-reference/compiler-messages/cs1737 within c# sdk. In earlier implementation of generator - requiredPathParam would appear before requiredQueryParam hence triggering cs1737.
+      tags:
+        - parameters
+      parameters:
+        - name: requiredPathParam
+          in: path
+          schema:
+            type: string
+            default: defaultValueForPathParam
+        - name: optionalQueryParam
+          in: query
+          schema:
+            type: integer
+            default: 1
+        - name: requiredQueryParam
+          in: query
+          schema:
+            type: boolean
+          required: true
+        - name: requiredHeaderParam
+          in: header
+          schema:
+            type: string
+            example: requiredHeaderParam
+          required: true
+        - name: optionalHeaderParam
+          in: header
+          schema:
+            type: boolean
+            example: false
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                data:
+                  type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: res
+                type: object
+                properties:
+                  url:
+                    type: string
+                required:
+                  - url
   /anything/params/{duplicateParamRequest}:
     get:
       operationId: duplicateParam
