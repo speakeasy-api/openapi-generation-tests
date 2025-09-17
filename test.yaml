@@ -17,7 +17,7 @@ externalDocs:
   description: Speakeasy Docs
 servers:
   - url: http://localhost:35123
-    description: The default server.
+    description: The default server (httpbin)
   - url: http://broken
     description: A server url to a non-existent server.
   - url: http://{hostname}:{port}
@@ -51,6 +51,8 @@ servers:
       hostname:
         default: localhost
         description: The hostname of the server.
+  - url: http://localhost:35456
+    descritpion: API test server (speakeasy-api-test-service)
 x-speakeasy-globals:
   parameters:
     - name: globalQueryParam
