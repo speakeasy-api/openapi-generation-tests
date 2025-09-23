@@ -164,6 +164,8 @@ tags:
     description: Endpoints for testing enums (open/closed/unsupported)
   - name: customClient
     description: Endpoints for testing custom HTTP clients
+  - name: redirects
+    description: Endpoints for testing http redirects
 security:
   - apiKeyAuth: []
   - oauth2: []
@@ -11225,6 +11227,24 @@ paths:
                         required: [id, name]
                 required:
                   - json
+  /followRedirect/oldPage:
+    get:
+      tags:
+        - redirects
+      servers:
+        - url: http://localhost:35456
+      operationId: redirectsAreFollowed
+      description: This endpoint returns a 302 and redirects to /followRedirect/newPage which returns a 200 response. We use this endpoint to test if the http client follows the redirect.
+      responses:
+        "200":
+          description: Ok
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  name: string
+                  example: "John Doe"
 x-speakeasy-webhooks:
   security:
     type: signature
