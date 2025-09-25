@@ -77,6 +77,13 @@ components:
         - $ref: "#/components/schemas/deepObjectWithType"
       discriminator:
         propertyName: type
+    stronglyTypedNullableOneOfObject:
+      oneOf:
+        - $ref: "#/components/schemas/nestedEnumArray"
+        - $ref: "#/components/schemas/nestedEnumMap"
+      nullable: true
+      discriminator:
+        propertyName: tags
     stronglyTypedOneOfObjectWithNonStandardDiscriminatorName:
       oneOf:
         - $ref: "#/components/schemas/simpleObjectWithNonStandardTypeName"
@@ -435,9 +442,12 @@ components:
     nestedEnumMap:
       type: object
       properties:
+        tags:
+          type: string
         enums:
           $ref: "#/components/schemas/enumMap"
       required:
+        - tags
         - enums
     arrayOfDiscriminatedUnions:
       type: array
@@ -704,6 +714,14 @@ components:
               type: string
           required:
             - type
+    anotherObjectWithType:
+      type: object
+      properties:
+        type:
+          type: string
+        bool:
+          type: boolean
+      required: [type, bool]
     simpleObjectWithNonStandardTypeName:
       allOf:
         - $ref: "#/components/schemas/simpleObject"
