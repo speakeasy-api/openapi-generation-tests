@@ -160,6 +160,8 @@ tags:
         description: Testing for documentation extensions in TypeScript.
   - name: hooks
     description: Endpoints for testing hooks
+  - name: cancellation
+    description: Endpoints for testing request cancellation.
   - name: enums
     description: Endpoints for testing enums (open/closed/unsupported)
   - name: customClient
@@ -288,6 +290,74 @@ paths:
       responses:
         "200":
           description: OK
+  /delay/{seconds}:
+    get:
+      operationId: cancelledRequest
+      summary: Delay endpoint
+      description: Waits for specified seconds before returning a response
+      servers:
+        - url: http://localhost:35456
+      tags:
+        - cancellation
+      parameters:
+        - name: seconds
+          in: path
+          required: true
+          description: Number of seconds to delay
+          schema:
+            type: integer
+            minimum: 0
+      responses:
+        "200":
+          description: Successful delayed response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  delay_seconds:
+                    type: integer
+                required:
+                  - message
+                  - delay_seconds
+        "400":
+          description: Invalid delay seconds parameter
+  /delay/{seconds}#cancellationHook:
+    get:
+      operationId: cancellationHook
+      summary: Delay endpoint for cancellation hook testing
+      description: Waits for specified seconds before returning a response - used for testing cancellation within hooks
+      servers:
+        - url: http://localhost:35456
+      tags:
+        - cancellation
+      parameters:
+        - name: seconds
+          in: path
+          required: true
+          description: Number of seconds to delay
+          schema:
+            type: integer
+            minimum: 0
+      responses:
+        "200":
+          description: Successful delayed response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  delay_seconds:
+                    type: integer
+                required:
+                  - message
+                  - delay_seconds
+        "400":
+          description: Invalid delay seconds parameter
   /ping#serversOverrideGlobalServerURL:
     get:
       operationId: serversOverrideGlobalServerURL
