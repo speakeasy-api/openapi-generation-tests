@@ -187,6 +187,46 @@ components:
         colour:
           type: string
       required: [vehicleType, wheelsType, colour]
+    NestedDiscUnion:
+      oneOf:
+        - $ref: "#/components/schemas/TypeA"
+        - $ref: "#/components/schemas/TypeB"
+      discriminator:
+        propertyName: type
+        mapping:
+          a: "#/components/schemas/TypeA"
+          b: "#/components/schemas/TypeB"
+    TypeA:
+      oneOf:
+        - $ref: "#/components/schemas/TypeA1"
+        - $ref: "#/components/schemas/TypeA2"
+    TypeA1:
+      type: object
+      required: [type, value]
+      properties:
+        type:
+          type: string
+          const: a
+        value:
+          type: string
+    TypeA2:
+      type: object
+      required: [type, count]
+      properties:
+        type:
+          type: string
+          const: a
+        count:
+          type: integer
+    TypeB:
+      type: object
+      required: [type, data]
+      properties:
+        type:
+          type: string
+          const: b
+        data:
+          type: string
     infectedWithAny:
       type: object
       required: [data]
