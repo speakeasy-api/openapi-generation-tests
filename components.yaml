@@ -261,7 +261,164 @@ components:
             properties:
               baz:
                 type: string
-
+    objectWithOptionalTrueNullableTrueField:
+      type: object
+      required:
+        - id
+      properties:
+        id:
+          type: integer
+          example: 1
+        # this is needed to coerce the generator into making a bespoke unmarshalJSON method
+        type:
+          type: string
+          const: mammal
+        medicalRecord:
+          nullable: true
+          default: null
+          type: object
+          properties:
+            diagnosis:
+              type: string
+              example: "fluffy is sick"
+    objectWithOptionalFalseNullableTrueField:
+      type: object
+      required:
+        - id
+        - medicalRecord
+      properties:
+        id:
+          type: integer
+          example: 1
+        # this is needed to coerce the generator into making a bespoke unmarshalJSON method
+        type:
+          type: string
+          const: mammal
+        medicalRecord:
+          nullable: true
+          default: null
+          type: object
+          properties:
+            diagnosis:
+              type: string
+              example: "fluffy is sick"
+    objectWithOptionalTrueNullableFalseField:
+      type: object
+      required:
+        - id
+      properties:
+        id:
+          type: integer
+          example: 1
+        # this is needed to coerce the generator into making a bespoke unmarshalJSON method
+        type:
+          type: string
+          const: mammal
+        medicalRecord:
+          nullable: false
+          type: object
+          properties:
+            diagnosis:
+              type: string
+              example: "fluffy is sick"
+    objectWithOptionalFalseNullableFalseField:
+      type: object
+      required:
+        - id
+        - medicalRecord
+      properties:
+        id:
+          type: integer
+          example: 1
+        # this is needed to coerce the generator into making a bespoke unmarshalJSON method
+        type:
+          type: string
+          const: mammal
+        medicalRecord:
+          nullable: false
+          type: object
+          properties:
+            diagnosis:
+              type: string
+              example: "fluffy is sick"
+    mixedNullableUnionTypes:
+      oneOf:
+        - type: object
+          required:
+            - id
+          properties:
+            id:
+              type: integer
+              example: 1
+            # this is needed to coerce the generator into making a bespoke unmarshalJSON method
+            type:
+              type: string
+              const: mammal
+            medicalRecord:
+              nullable: true
+              default: null
+              type: object
+              properties:
+                diagnosis:
+                  type: string
+                  example: "fluffy is sick"
+        - type: object
+          required:
+            - id
+            - medicalRecord
+          properties:
+            id:
+              type: integer
+              example: 1
+            # this is needed to coerce the generator into making a bespoke unmarshalJSON method
+            type:
+              type: string
+              const: mammal
+            medicalRecord:
+              nullable: true
+              default: null
+              type: object
+              properties:
+                diagnosis:
+                  type: string
+                  example: "fluffy is sick"
+        - type: object
+          required:
+            - id
+            - medicalRecord
+          properties:
+            id:
+              type: integer
+              example: 1
+            # this is needed to coerce the generator into making a bespoke unmarshalJSON method
+            type:
+              type: string
+              const: mammal
+            medicalRecord:
+              nullable: false
+              type: object
+              properties:
+                diagnosis:
+                  type: string
+                  example: "fluffy is sick"
+        - type: object
+          required:
+            - id
+          properties:
+            id:
+              type: integer
+              example: 1
+            # this is needed to coerce the generator into making a bespoke unmarshalJSON method
+            type:
+              type: string
+              const: mammal
+            medicalRecord:
+              nullable: false
+              type: object
+              properties:
+                diagnosis:
+                  type: string
+                  example: "fluffy is sick"
     mixedUnionTypes:
       oneOf:
         - $ref: "#/components/schemas/Bike"

@@ -168,6 +168,8 @@ tags:
     description: Endpoints for testing custom HTTP clients
   - name: redirects
     description: Endpoints for testing http redirects
+  - name: optionalNullableFields
+    description: Endpoints for testing permutations of optional/nullable fields
 security:
   - apiKeyAuth: []
   - oauth2: []
@@ -7768,6 +7770,110 @@ paths:
       responses:
         "2XX":
           description: OK
+  /responseObjectWithOptionalTrueNullableTrueFieldDeserializes:
+    get:
+      parameters:
+        - name: scenario
+          in: query
+          description: The scenario to test. We can test full, medicalRecordAbsent, and medicalRecordNull.
+          schema:
+            type: string
+      operationId: objectWithOptionalTrueNullableTrueField
+      servers:
+        - url: http://localhost:35456
+      tags:
+        - optionalNullableFields
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "components.yaml#/components/schemas/objectWithOptionalTrueNullableTrueField"
+  /responseObjectWithOptionalFalseNullableTrueFieldDeserializes:
+    get:
+      parameters:
+        - name: scenario
+          in: query
+          description: The scenario to test.
+          schema:
+            type: string
+      operationId: objectWithOptionalFalseNullableTrueField
+      servers:
+        - url: http://localhost:35456
+      tags:
+        - optionalNullableFields
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "components.yaml#/components/schemas/objectWithOptionalFalseNullableTrueField"
+  /responseObjectWithOptionalTrueNullableFalseFieldDeserializes:
+    get:
+      parameters:
+        - name: scenario
+          in: query
+          description: The scenario to test. We can test full, medicalRecordAbsent, and medicalRecordNull.
+          schema:
+            type: string
+      operationId: objectWithOptionalTrueNullableFalseField
+      servers:
+        - url: http://localhost:35456
+      tags:
+        - optionalNullableFields
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "components.yaml#/components/schemas/objectWithOptionalTrueNullableFalseField"
+  /responseObjectWithOptionalFalseNullableFalseFieldDeserializes:
+    get:
+      parameters:
+        - name: scenario
+          in: query
+          description: The scenario to test. We can test full, medicalRecordAbsent, and medicalRecordNull.
+          schema:
+            type: string
+      operationId: objectWithOptionalFalseNullableFalseField
+      servers:
+        - url: http://localhost:35456
+      tags:
+        - optionalNullableFields
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "components.yaml#/components/schemas/objectWithOptionalFalseNullableFalseField"
+  # /optionalTrueNullableTrue:
+  #   post:
+  #     operationId: mixedNullableUnionTypes
+  #     tags:
+  #       - optionalNullableFields
+  #     requestBody:
+  #       content:
+  #         application/json:
+  #           schema:
+  #             $ref: "components.yaml#/components/schemas/mixedNullableUnionTypes"
+  #       required: true
+  #     responses:
+  #       "200":
+  #         description: OK
+  #         content:
+  #           application/json:
+  #             schema:
+  #               title: res
+  #               type: object
+  #               properties:
+  #                 json:
+  #                   $ref: "components.yaml#/components/schemas/mixedNullableUnionTypes"
+  #               required:
+  #                 - json
   /anything/stronglyTypedOneOf:
     post:
       operationId: stronglyTypedOneOfPost
