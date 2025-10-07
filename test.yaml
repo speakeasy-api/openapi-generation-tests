@@ -8513,6 +8513,44 @@ paths:
                       - $ref: "components.yaml#/components/schemas/simpleObject"
                 required:
                   - json
+  /anything/oneOfbooleanAndStringEnum:
+    post:
+      operationId: oneOfBooleanAndStringEnum
+      description: simulating a scenario where union of boolean and string enum was resulting in deserialization issue in ruby target
+      tags:
+        - unions
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                active:
+                  oneOf:
+                    - type: boolean
+                    - type: string
+                      enum: ["true", "false"]
+                  nullable: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: res
+                type: object
+                properties:
+                  json:
+                    type: object
+                    properties:
+                      active:
+                        oneOf:
+                          - type: boolean
+                          - type: string
+                            enum: ["true", "false"]
+                        nullable: true
+                required:
+                  - json
   /anything/unionDateNull:
     post:
       operationId: unionDateNull
