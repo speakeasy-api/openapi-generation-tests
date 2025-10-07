@@ -173,7 +173,7 @@ tags:
 security:
   - apiKeyAuth: []
   - oauth2: []
-  - clientCredentials: [read]
+  - clientCredentials: [read, write]
   - customSchemeAppId: []
   - {}
 paths:
@@ -10804,13 +10804,20 @@ paths:
       responses:
         "200":
           description: OK
-  /clientcredentials/authenticatedrequest:
+  /clientcredentials/authenticatedrequest#hoisted:
     post:
       operationId: authenticatedRequest
+      description: |
+        This operation is expected to use global security. The operation-level security gets
+        hoisted to the global level since the `clientCredentials` scheme is already included
+        in the global security block. However, the scopes defined in this operation will be
+        preserved and passed to the hook context associated with this method.
+      tags:
+        - hooks
       servers:
         - url: http://localhost:35456
       security:
-        - clientCredentials: [write]
+        - clientCredentials: [read, write, erase]
       requestBody:
         content:
           application/json:
@@ -10822,16 +10829,19 @@ paths:
       responses:
         '200':
           description: OK
-  /clientcredentials/authenticatedrequest#unflattened:
+  /clientcredentials/authenticatedrequest#operationSecurity:
     post:
       operationId: authenticatedRequestUnflattened
-      description: OAuth2 ClientCredentials as a security scheme option
+      description: |
+        This operation tests OAuth2 ClientCredentials as a security option.
+        Note the operation security is guaranteed *not* to be hoisted as long
+        as the basicAuth scheme is not part of the global security block.
       tags:
-        - authNew
+        - hooks
       servers:
         - url: http://localhost:35456
       security:
-        - clientCredentials: [write]
+        - clientCredentials: [read, write]
         - oauth2: []
         - basicAuth: []
       requestBody:
@@ -10848,8 +10858,10 @@ paths:
   /clientcredentials/authenticatedrequest#globalServer:
     post:
       operationId: authenticatedRequestGlobalServer
-      security:
-        - clientCredentials: [write]
+      description: |
+        This operation uses both the global server and global security configurations.
+      tags:
+        - hooks
       requestBody:
         content:
           application/json:
@@ -10866,6 +10878,37 @@ paths:
       operationId: authenticatedRequestGlobalSecurity
       servers:
         - url: http://localhost:35456
+      description: |
+        This operation uses global security, it is therefore expected to have both
+        `read` and `write` OAuth2 scopes passed to its hook context.
+      tags:
+        - hooks
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+      responses:
+        '200':
+          description: OK
+  /clientcredentials/authenticatedrequest#noScopes:
+    post:
+      operationId: authenticatedRequestNoScopes
+      servers:
+        - url: http://localhost:35456
+      security:
+        - clientCredentials: []
+      description: |
+        This operation will have its security hoisted to the global level since the
+        `clientCredentials` scheme is already included in the global security block.
+        OAuth2 scopes however are expected to be cleared, leading the token request
+        to fail since the /clientcredentials/token endpoint expects both `read` and
+        `write` scopes to be present.
+      tags:
+        - hooks
       requestBody:
         content:
           application/json:
@@ -11927,10 +11970,12 @@ components:
       type: oauth2
       flows:
         clientCredentials:
-          tokenUrl: /clientcredentials/token
+          tokenUrl: /clientcredentials/token?expires_in=90
+          x-speakeasy-overridable-scopes: true
           scopes:
             read: Read access
             write: Write access
+            erase: Erase access
     customSchemeAppId:
       type: http
       scheme: custom
