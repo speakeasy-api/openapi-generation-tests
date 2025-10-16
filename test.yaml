@@ -3038,6 +3038,44 @@ paths:
             application/json:
               schema:
                 $ref: "components.yaml#/components/schemas/weaklyTypedOneOfReadWriteObject"
+  /anything/requestBodies/post/application/json/additionalProperties:
+    post:
+      operationId: requestBodyPostApplicationJsonAdditionalProperties
+      tags:
+        - requestBodies
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: A fixed property
+              additionalProperties:
+                type: string
+              required:
+                - name
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  json:
+                    type: object
+                    properties:
+                      name:
+                        type: string
+                    additionalProperties:
+                      type: string
+                    required:
+                      - name
+                required:
+                  - json
   /anything/requestBodies/post/application/json/simple:
     post:
       operationId: requestBodyPostApplicationJsonSimple
