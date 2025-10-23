@@ -125,6 +125,8 @@ tags:
     description: Endpoints for testing request bodies.
   - name: responseBodies
     description: Endpoints for testing response bodies.
+  - name: responseHeaders
+    description: Endpoints for testing response headers.
   - name: methods
     description: Endpoints for testing HTTP methods.
   - name: retries
@@ -6098,7 +6100,7 @@ paths:
     post:
       operationId: responseBodyEmptyWithHeaders
       tags:
-        - responseBodies
+        - responseHeaders
       parameters:
         - name: X-String-Header
           in: query
@@ -6120,6 +6122,133 @@ paths:
             X-Number-Header:
               schema:
                 type: number
+  /response-headers/{statusCode}:
+    get:
+      operationId: responseHeaders
+      tags:
+        - responseHeaders
+      servers:
+        - url: http://localhost:35456
+      parameters:
+        - name: statusCode
+          description: |
+            The status code corresponding to the desired response.
+            If the value does not match any of the handled status codes,
+            a 500 error response will be returned by default.
+          in: path
+          required: true
+          schema:
+            type: integer
+            example: 200
+        - name: includeRequiredHeader
+          description: Whether to include X-Required-Header in the 200 response
+          in: query
+          required: true
+          schema:
+            type: boolean
+            example: true
+      responses:
+        "200":
+          description: OK
+          headers:
+            X-Required-Header:
+              description: |
+                This header is marked as required, which is used for
+                documentation only. No validation error should be raised
+                if the server does not return this header.
+              required: true
+              schema:
+                type: string
+                example: "required"
+            X-Optional-Header:
+              required: false
+              description: |
+                This header is marked as optional (default) and will
+                never be returned by the test server.
+              schema:
+                type: string
+                example: "optional"
+          content:
+            application/json:
+              schema:
+                $ref: "components.yaml#/components/schemas/authToken"
+              example:
+                  token: "test-token"
+        "400":
+          description: Bad Request
+        "500":
+          description: Internal Server Error
+          summary: An error response with a body but no header
+          content:
+            application/json:
+              schema:
+                type: string
+                example: Internal server error.
+  /error-response-headers/{statusCode}:
+    get:
+      operationId: errorResponseHeaders
+      tags:
+        - responseHeaders
+      servers:
+        - url: http://localhost:35456
+      parameters:
+        - name: statusCode
+          description: |
+            The status code corresponding to the desired response.
+            If the value does not match any of the handled status codes,
+            The 500 error response will be returned by default.
+          in: path
+          required: true
+          schema:
+            type: integer
+            example: 429
+        - name: includeHeader
+          description: |
+            Whether to include the X-500-Header header in the 500 response
+            and the X-Retry-After header in the 429 response
+          in: query
+          required: true
+          schema:
+            type: boolean
+            example: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "components.yaml#/components/schemas/authToken"
+              example:
+                  token: "test-token"
+        "400":
+          description: Bad Request
+        "429":
+          description: Rate limit exceeded
+          summary: An error response with a body and an optional header
+          headers:
+            Retry-After:
+              description: |
+                This header is optional and will only be returned by the
+                test server if includeHeader has been set to true.
+              schema:
+                type: integer
+                example: 60
+          content:
+            application/json:
+              schema:
+                type: string
+                example: Too many attempts. Please try again later.
+        "500":
+          description: Internal server Error
+          summary: An error response with no body but a required header
+          headers:
+            X-500-Header:
+              description: |
+                This header is optional and will only be returned by the
+                test server if includeHeader has been set to true.
+              schema:
+                type: string
+                example: "ok"
   /anything/responseBodies/additionalProperties:
     post:
       operationId: responseBodyAdditionalPropertiesPost

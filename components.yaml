@@ -174,7 +174,6 @@ components:
           type: string
           const: four
       required: [vehicleType, wheelsType]
-          
     Bike:
       type: object
       properties:
@@ -2344,6 +2343,14 @@ components:
                   deeplyNestedAttribute:
                     type: string
                     example: "hard to reach"
+    authToken:
+      type: object
+      required:
+        - token
+      properties:
+        token:
+          type: string
+
   responses:
     tokenAuthResponse:
       description: Successful authentication.
@@ -2623,6 +2630,7 @@ components:
               mapping:
                 tag1: "components.yaml#/components/schemas/taggedError1"
                 tag2: "components.yaml#/components/schemas/taggedError2"
+
   parameters:
     emptyObjectParam:
       name: emptyObject
