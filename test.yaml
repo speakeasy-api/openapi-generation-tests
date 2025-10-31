@@ -4900,6 +4900,126 @@ paths:
                         type: integer
                 required:
                   - json
+  /anything/requestBodies/post/optional-containers:
+    post:
+      operationId: requestBodyPostOptionalContainers
+      description: |
+        Test endpoint for validating the includeEmptyObjects setting behavior for the go SDK.
+        This endpoint contains optional objects and arrays to test whether they are
+        omitted from request bodies when empty, based on the includeEmptyObjects configuration.
+      tags:
+        - requestBodies
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                requiredField:
+                  type: string
+                  example: "required_value"
+                optionalObject:
+                  type: object
+                  properties:
+                    nestedField:
+                      type: string
+                  description: "Optional object that should be omitted when empty if includeEmptyObjects=false"
+                optionalArray:
+                  type: array
+                  items:
+                    type: string
+                  description: "Optional array that should be omitted when empty if includeEmptyObjects=false"
+                optionalMap:
+                  type: object
+                  additionalProperties:
+                    type: string
+                  description: "Optional map that should be omitted when empty if includeEmptyObjects=false"
+                optionalNestedContainer:
+                  type: object
+                  properties:
+                    optionalSubObject:
+                      type: object
+                      properties:
+                        value:
+                          type: string
+                    optionalSubArray:
+                      type: array
+                      items:
+                        type: integer
+                  description: "Nested container with optional sub-containers"
+              required:
+                - requiredField
+            examples:
+              withOptionalContainers:
+                summary: "Request with populated optional containers"
+                value:
+                  requiredField: "test"
+                  optionalObject:
+                    nestedField: "value"
+                  optionalArray: ["item1", "item2"]
+                  optionalMap:
+                    key1: "value1"
+                  optionalNestedContainer:
+                    optionalSubObject:
+                      value: "nested_value"
+                    optionalSubArray: [1, 2, 3]
+              withEmptyOptionalContainers:
+                summary: "Request with empty optional containers (should be omitted if includeEmptyObjects=false)"
+                value:
+                  requiredField: "test"
+                  optionalObject: {}
+                  optionalArray: []
+                  optionalMap: {}
+                  optionalNestedContainer:
+                    optionalSubObject: {}
+                    optionalSubArray: []
+              minimalRequest:
+                summary: "Request with only required fields"
+                value:
+                  requiredField: "test"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  json:
+                    type: object
+                    properties:
+                      requiredField:
+                        type: string
+                      optionalObject:
+                        type: object
+                        properties:
+                          nestedField:
+                            type: string
+                      optionalArray:
+                        type: array
+                        items:
+                          type: string
+                      optionalMap:
+                        type: object
+                        additionalProperties:
+                          type: string
+                      optionalNestedContainer:
+                        type: object
+                        properties:
+                          optionalSubObject:
+                            type: object
+                            properties:
+                              value:
+                                type: string
+                          optionalSubArray:
+                            type: array
+                            items:
+                              type: integer
+                    required:
+                      - requiredField
+                required:
+                  - json
   /anything/requestBodies/post/{pathBigInt}/{pathBigIntStr}/{pathDecimal}/{pathDecimalStr}/complex-number-types:
     post:
       operationId: requestBodyPostComplexNumberTypes
@@ -12131,6 +12251,154 @@ components:
       example: 123
       x-speakeasy-unknown-values: allow
       x-speakeasy-include: true
+
+    NonEmptyObject:
+      type: object
+      properties:
+        requiredField:
+          type: string
+          description: A required field that ensures this object is never empty
+      required:
+        - requiredField
+    
+    NestedObject:
+      type: object
+      properties:
+        name:
+          type: string
+          description: An optional name field - can be nil to test empty object behavior
+        nested:
+          $ref: "#/components/schemas/NestedObject"
+          description: An optional pointer to another NestedObject (self-referential)
+    
+    AlwaysEmptyObject:
+      type: object
+      description: An object type with no properties, always empty
+    
+    ComplexOptionalObject:
+      type: object
+      properties:
+        optionalMap:
+          type: object
+          additionalProperties:
+            type: string
+          description: Optional pointer to a map - tests if empty maps are included when pointed to
+        optionalArray:
+          type: array
+          items:
+            type: string
+          description: Optional pointer to an array - tests if empty arrays are included when pointed to
+        optionalNested:
+          $ref: "#/components/schemas/NestedObject"
+          description: Optional pointer to a nested object
+    
+    OptionalFieldTestObject:
+      x-speakeasy-include: true
+      type: object
+      properties:
+        # Required fields
+        requiredString:
+          type: string
+          description: Required primitive field
+        requiredInt:
+          type: integer
+          format: int64
+          description: Required primitive field
+        requiredBool:
+          type: boolean
+          description: Required primitive field
+        requiredFloat:
+          type: number
+          format: double
+          description: Required primitive field
+        requiredTime:
+          type: string
+          format: date-time
+          description: Required primitive field
+        requiredObject:
+          $ref: "#/components/schemas/NonEmptyObject"
+          description: Required object
+        
+        # Optional primitive fields
+        optionalString:
+          type: string
+          description: Optional primitive field
+        optionalInt:
+          type: integer
+          format: int64
+          description: Optional primitive field
+        optionalBool:
+          type: boolean
+          description: Optional primitive field
+        optionalFloat:
+          type: number
+          format: double
+          description: Optional primitive field
+        optionalTime:
+          type: string
+          format: date-time
+          description: Optional primitive field
+        optionalBigDecimal:
+          type: string
+          format: decimal
+          description: Optional big integer field (represented as string)
+        
+        # Optional object fields
+        optionalNonEmptyObject:
+          $ref: "#/components/schemas/NonEmptyObject"
+          description: Optional object field
+        optionalAlwaysEmptyObject:
+          $ref: "#/components/schemas/AlwaysEmptyObject"
+          description: Optional always empty object field
+        optionalNestedObject:
+          $ref: "#/components/schemas/NestedObject"
+          description: Optional nested object field
+        optionalComplexObject:
+          $ref: "#/components/schemas/ComplexOptionalObject"
+          description: Optional complex object field
+        
+        # Optional container fields
+        optionalStringArray:
+          type: array
+          items:
+            type: string
+          description: Optional array of strings - test difference between nil slice vs empty slice
+        optionalObjectArray:
+          type: array
+          items:
+            $ref: "#/components/schemas/NonEmptyObject"
+          description: Optional array of objects
+        optionalStringMap:
+          type: object
+          additionalProperties:
+            type: string
+          description: Optional map of strings - test difference between nil map vs empty map
+        optionalObjectMap:
+          type: object
+          additionalProperties:
+            $ref: "#/components/schemas/NonEmptyObject"
+          description: Optional map of objects
+        
+        # Optional nullable fields (tri-state behavior: unset, null, value)
+        optionalNullableInt:
+          type: integer
+          format: int64
+          nullable: true
+          description: Test tri-state behavior - unset, null, value
+        optionalNullableArray:
+          type: array
+          items:
+            type: string
+          nullable: true
+          description: Test tri-state behavior for arrays
+      required:
+        - requiredString
+        - requiredInt
+        - requiredBool
+        - requiredFloat
+        - requiredTime
+        - requiredObject
+
   securitySchemes:
     basicAuth:
       type: http
