@@ -147,6 +147,8 @@ tags:
     description: Endpoints for testing telemetry.
   - name: pagination
     description: Endpoints for testing the pagination extension
+  - name: polling
+    description: Endpoints for testing the polling extension
   - name: eventstreams
     description: Endpoints for testing server-sent events streaming
   - name: jsonl
@@ -10397,6 +10399,528 @@ paths:
       responses:
         204:
           description: No Content
+  /polling/delaySeconds:
+    get:
+      # Exclusions:
+      #  - php: (secondary) constructor invoked with 0 parameters, 1 required
+      #          for 201/204 responses as template is reusing shared model and
+      #          instantiating with no parameters.
+      #  - ruby: (secondary) Rubocop Style/MethodCallWithoutArgsParentheses for
+      #          201/204 responses as template is reusing shared model and
+      #          instantiating with no fields.
+      x-speakeasy-exclude-test-sdk: [php, ruby]
+      operationId: pollingDelaySecondsGet
+      description: |-
+        Verifies polling delaySeconds functionality. An initial (non-polling)
+        request should be sent to the endpoint before starting polling requests,
+        which will set timestamp on the server based on requestID.
+        
+        The server will respond with a 204 No Content:
+          - For <3 seconds after the initial request
+          - For >7 seconds after the initial request
+        
+        This ensures that the default delaySeconds of 1 second is not used and
+        that the 5 second polling delay is used instead.
+      servers:
+        - url: http://localhost:35456
+      tags:
+        - polling
+      parameters:
+        - name: requestID
+          in: query
+          schema:
+            type: string
+          required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Polling"
+        "201":
+          description: Created
+        "204":
+          description: No Content
+      x-speakeasy-name-override: DelaySeconds
+      x-speakeasy-polling:
+        - name: WaitForSuccess
+          delaySeconds: 5
+          failureCriteria:
+            - condition: $statusCode == 204
+          successCriteria:
+            - condition: $statusCode == 200
+  /polling/delaySeconds#override:
+    get:
+      # Exclusions:
+      #  - php: (secondary) constructor invoked with 0 parameters, 1 required
+      #          for 201/204 responses as template is reusing shared model and
+      #          instantiating with no parameters.
+      #  - ruby: (secondary) Rubocop Style/MethodCallWithoutArgsParentheses for
+      #          201/204 responses as template is reusing shared model and
+      #          instantiating with no fields.
+      x-speakeasy-exclude-test-sdk: [php, ruby]
+      operationId: pollingDelaySecondsOverrideGet
+      description: |-
+        Verifies polling delaySeconds functionality. An initial (non-polling)
+        request should be sent to the endpoint before starting polling requests,
+        which will set timestamp on the server based on requestID.
+        
+        The server will respond with a 204 No Content:
+          - For <3 seconds after the initial request
+          - For >7 seconds after the initial request
+        
+        This operation is intentionally configured with the default
+        delaySeconds of 1 to verify that using the override set to 5 seconds
+        is used instead.
+      servers:
+        - url: http://localhost:35456
+      tags:
+        - polling
+      parameters:
+        - name: requestID
+          in: query
+          schema:
+            type: string
+          required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Polling"
+        "201":
+          description: Created
+        "204":
+          description: No Content
+      x-speakeasy-name-override: DelaySecondsOverride
+      x-speakeasy-polling:
+        - name: WaitForSuccess
+          # intentionally using default delaySeconds to require override
+          failureCriteria:
+            - condition: $statusCode == 204
+          successCriteria:
+            - condition: $statusCode == 200
+  /polling/failureCriteria/responseBody:
+    get:
+      operationId: pollingFailureCriteriaResponseBodyGet
+      description: |-
+        Verifies polling failureCriteria functionality based on response body.
+        This endpoint always returns a 200 OK with a status of "failed", which
+        should always cause an polling error due to the failureCriteria.
+      servers:
+        - url: http://localhost:35456
+      tags:
+        - polling
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Polling"
+      x-speakeasy-name-override: FailureCriteriaResponseBody
+      x-speakeasy-polling:
+        - name: WaitForStatusCompleted
+          failureCriteria:
+            - condition: $statusCode == 200
+            - condition: $response.body#/status == "failed"
+          successCriteria:
+            - condition: $statusCode == 200
+            - condition: $response.body#/status == "completed"
+  /polling/failureCriteria/responseBody/nested:
+    get:
+      operationId: pollingFailureCriteriaResponseBodyNestedGet
+      description: |-
+        Verifies polling failureCriteria functionality based on response body.
+        This endpoint always returns a 200 OK with a status of "failed", which
+        should always cause an polling error due to the failureCriteria.
+      servers:
+        - url: http://localhost:35456
+      tags:
+        - polling
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PollingNested"
+      x-speakeasy-name-override: FailureCriteriaResponseBodyNested
+      x-speakeasy-polling:
+        - name: WaitForStatusCompleted
+          failureCriteria:
+            - condition: $statusCode == 200
+            - condition: $response.body#/nested/status == "failed"
+          successCriteria:
+            - condition: $statusCode == 200
+            - condition: $response.body#/nested/status == "completed"
+  /polling/failureCriteria/responseBody#optional:
+    get:
+      operationId: pollingFailureCriteriaResponseBodyGetOptional
+      description: |-
+        Verifies polling failureCriteria functionality based on response body.
+        This endpoint always returns a 200 OK with a status of "failed", which
+        should always cause an polling error due to the failureCriteria.
+      servers:
+        - url: http://localhost:35456
+      tags:
+        - polling
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PollingOptional"
+      x-speakeasy-name-override: FailureCriteriaResponseBodyOptional
+      x-speakeasy-polling:
+        - name: WaitForStatusCompleted
+          failureCriteria:
+            - condition: $statusCode == 200
+            - condition: $response.body#/status == "failed"
+          successCriteria:
+            - condition: $statusCode == 200
+            - condition: $response.body#/status == "completed"
+  /polling/failureCriteria/statusCode:
+    get:
+      # Exclusions:
+      #  - php: (secondary) constructor invoked with 0 parameters, 1 required
+      #          for 202 response as template is reusing shared model and
+      #          instantiating with no parameters.
+      #  - ruby: (secondary) Rubocop Style/MethodCallWithoutArgsParentheses for
+      #          202 response as template is reusing shared model and
+      #          instantiating with no fields.
+      x-speakeasy-exclude-test-sdk: [php, ruby]
+      operationId: pollingFailureCriteriaStatusCodeGet
+      description: |-
+        Verifies polling failureCriteria functionality based on status code.
+        This endpoint always returns a 202 Accepted, which should always cause
+        an error due to the failureCriteria.
+      servers:
+        - url: http://localhost:35456
+      tags:
+        - polling
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Polling"
+        "202":
+          description: Accepted
+      x-speakeasy-name-override: FailureCriteriaStatusCode
+      x-speakeasy-polling:
+        - name: WaitForSuccess
+          failureCriteria:
+            - condition: $statusCode == 202
+          successCriteria:
+            - condition: $statusCode == 200
+  /polling/intervalSeconds:
+    get:
+      # Exclusions:
+      #  - php: (secondary) constructor invoked with 0 parameters, 1 required
+      #          for 201/204 responses as template is reusing shared model and
+      #          instantiating with no parameters.
+      #  - ruby: (secondary) Rubocop Style/MethodCallWithoutArgsParentheses for
+      #          201/204 responses as template is reusing shared model and
+      #          instantiating with no fields.
+      x-speakeasy-exclude-test-sdk: [php, ruby]
+      operationId: pollingIntervalSecondsGet
+      description: |-
+        Verifies polling intervalSeconds functionality. Based on requestID, the
+        server will ensure requests are delayed by the expected interval.
+        
+        The server will respond with a 204 No Content:
+          - When interval is <3 seconds after the last request
+          - When interval is >7 seconds after the last request
+        
+        This ensures that the default intervalSeconds of 1 second is not used
+        and that the 5 second polling interval is used instead.
+      servers:
+        - url: http://localhost:35456
+      tags:
+        - polling
+      parameters:
+        - name: requestID
+          in: query
+          schema:
+            type: string
+          required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Polling"
+        "201":
+          description: Created
+        "204":
+          description: No Content
+      x-speakeasy-name-override: IntervalSeconds
+      x-speakeasy-polling:
+        - name: WaitForSuccess
+          intervalSeconds: 5
+          failureCriteria:
+            - condition: $statusCode == 204
+          successCriteria:
+            - condition: $statusCode == 200
+  /polling/intervalSeconds#override:
+    get:
+      # Exclusions:
+      #  - php: (secondary) constructor invoked with 0 parameters, 1 required
+      #          for 201/204 responses as template is reusing shared model and
+      #          instantiating with no parameters.
+      #  - ruby: (secondary) Rubocop Style/MethodCallWithoutArgsParentheses for
+      #          201/204 responses as template is reusing shared model and
+      #          instantiating with no fields.
+      x-speakeasy-exclude-test-sdk: [php, ruby]
+      operationId: pollingIntervalSecondsOverrideGet
+      description: |-
+        Verifies polling intervalSeconds functionality. Based on requestID, the
+        server will ensure requests are delayed by the expected interval.
+        
+        The server will respond with a 204 No Content:
+          - When interval is <3 seconds after the last request
+          - When interval is >7 seconds after the last request
+        
+        This operation is intentionally configured with the default
+        intervalSeconds of 1 to verify that using the override set to 5 seconds
+        is used instead.
+      servers:
+        - url: http://localhost:35456
+      tags:
+        - polling
+      parameters:
+        - name: requestID
+          in: query
+          schema:
+            type: string
+          required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Polling"
+        "201":
+          description: Created
+        "204":
+          description: No Content
+      x-speakeasy-name-override: IntervalSecondsOverride
+      x-speakeasy-polling:
+        - name: WaitForSuccess
+          # intentionally using default intervalSeconds to require override
+          failureCriteria:
+            - condition: $statusCode == 204
+          successCriteria:
+            - condition: $statusCode == 200
+  /polling/limitCount:
+    get:
+      operationId: pollingLimitCountGet
+      description: |-
+        Verifies polling limitCount functionality. Based on requestID, the
+        server will ensure requests are limited by the expected count.
+        
+        The server will respond with a "running" status for the first 5 requests
+        then respond with "failed" status beyond.
+
+        This ensures that the default limitCount of 60 is not used and that the
+        the 5 polling request limit is used instead.
+      servers:
+        - url: http://localhost:35456
+      tags:
+        - polling
+      parameters:
+        - name: requestID
+          in: query
+          schema:
+            type: string
+          required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Polling"
+      x-speakeasy-name-override: LimitCount
+      x-speakeasy-polling:
+        - name: WaitForStatusCompleted
+          limitCount: 5
+          successCriteria:
+            - condition: $statusCode == 200
+            - condition: $response.body#/status == "completed"
+  /polling/limitCount#override:
+    get:
+      operationId: pollingLimitCountOverrideGet
+      description: |-
+        Verifies polling limitCount functionality. Based on requestID, the
+        server will ensure requests are limited by the expected count.
+        
+        The server will respond with a "running" status for the first 5 requests
+        then respond with "failed" status beyond.
+
+        This operation is intentionally configured with the default limitCount
+        of 60 to verify that using the override set to 5 polling request limit
+        is used instead.
+      servers:
+        - url: http://localhost:35456
+      tags:
+        - polling
+      parameters:
+        - name: requestID
+          in: query
+          schema:
+            type: string
+          required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Polling"
+      x-speakeasy-name-override: LimitCountOverride
+      x-speakeasy-polling:
+        - name: WaitForStatusCompleted
+          # intentionally using default limitCount to require override
+          successCriteria:
+            - condition: $statusCode == 200
+            - condition: $response.body#/status == "completed"
+  /polling/successCriteria/responseBody:
+    get:
+      operationId: pollingSuccessCriteriaResponseBodyGet
+      description: |-
+        Verifies polling successCriteria functionality based on response body.
+        Based on requestID, this endpoint returns 200 OK with initial status of
+        "pending", then "running", and then "completed".
+      servers:
+        - url: http://localhost:35456
+      tags:
+        - polling
+      parameters:
+        - name: requestID
+          in: query
+          schema:
+            type: string
+          required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Polling"
+      x-speakeasy-name-override: SuccessCriteriaResponseBody
+      x-speakeasy-polling:
+        - name: WaitForStatusCompleted
+          successCriteria:
+            - condition: $statusCode == 200
+            - condition: $response.body#/status == "completed"
+  /polling/successCriteria/responseBody/nested:
+    get:
+      operationId: pollingSuccessCriteriaResponseBodyNestedGet
+      description: |-
+        Verifies polling successCriteria functionality based on response body.
+        Based on requestID, this endpoint returns 200 OK with initial status of
+        "pending", then "running", and then "completed".
+      servers:
+        - url: http://localhost:35456
+      tags:
+        - polling
+      parameters:
+        - name: requestID
+          in: query
+          schema:
+            type: string
+          required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PollingNested"
+      x-speakeasy-name-override: SuccessCriteriaResponseBodyNested
+      x-speakeasy-polling:
+        - name: WaitForStatusCompleted
+          successCriteria:
+            - condition: $statusCode == 200
+            - condition: $response.body#/nested/status == "completed"
+  /polling/successCriteria/responseBody#optional:
+    get:
+      operationId: pollingSuccessCriteriaResponseBodyOptionalGet
+      description: |-
+        Verifies polling successCriteria functionality based on response body.
+        Based on requestID, this endpoint returns 200 OK with initial status of
+        "pending", then "running", and then "completed".
+      servers:
+        - url: http://localhost:35456
+      tags:
+        - polling
+      parameters:
+        - name: requestID
+          in: query
+          schema:
+            type: string
+          required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PollingOptional"
+      x-speakeasy-name-override: SuccessCriteriaResponseBodyOptional
+      x-speakeasy-polling:
+        - name: WaitForStatusCompleted
+          successCriteria:
+            - condition: $statusCode == 200
+            - condition: $response.body#/status == "completed"
+  /polling/successCriteria/statusCode:
+    get:
+      # Exclusions:
+      #  - php: (secondary) constructor invoked with 0 parameters, 1 required
+      #          for 202 response as template is reusing shared model and
+      #          instantiating with no parameters.
+      #  - ruby: (secondary) Rubocop Style/MethodCallWithoutArgsParentheses for
+      #          202 response as template is reusing shared model and
+      #          instantiating with no fields.
+      x-speakeasy-exclude-test-sdk: [php, ruby]
+      operationId: pollingSuccessCriteriaStatusCodeGet
+      description: |-
+        Verifies polling successCriteria functionality based on status code.
+        Based on requestID, this endpoint returns a 202 Accepted for the first
+        request and a 200 OK for subsequent requests.
+      servers:
+        - url: http://localhost:35456
+      tags:
+        - polling
+      parameters:
+        - name: requestID
+          in: query
+          schema:
+            type: string
+          required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Polling"
+        "202":
+          description: Accepted
+      x-speakeasy-name-override: SuccessCriteriaStatusCode
+      x-speakeasy-polling:
+        - name: WaitForSuccess
+          successCriteria:
+            - condition: $statusCode == 200
   /retries/after:
     get:
       operationId: retriesAfter
@@ -12399,6 +12923,33 @@ components:
         - requiredTime
         - requiredObject
 
+    Polling:
+      type: object
+      properties:
+        status:
+          $ref: "#/components/schemas/PollingStatus"
+      required:
+        - status
+    PollingOptional:
+      description: Polling, but with optional status.
+      type: object
+      properties:
+        status:
+          $ref: "#/components/schemas/PollingStatus"
+    PollingNested:
+      type: object
+      properties:
+        nested:
+          $ref: "#/components/schemas/Polling"
+      required:
+        - nested
+    PollingStatus:
+      type: string
+      enum:
+        - completed
+        - failed
+        - pending
+        - running
   securitySchemes:
     basicAuth:
       type: http
