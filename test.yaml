@@ -6996,6 +6996,45 @@ paths:
                 properties:
                   json:
                     $ref: "components.yaml#/components/schemas/figma_ComponentNode"
+  /anything/circularReferenceOneOfWithMapAndArrayVariants:
+    post:
+      operationId: circularReferenceOneOfWithMapAndArrayVariants
+      tags:
+        - generation
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CircularOneOfMapRoot'
+      responses:
+        "200":
+          description: OK
+  /anything/circularReferenceTreeNode:
+    post:
+      operationId: circularReferenceTreeNode
+      tags:
+        - generation
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CircularTreeNode'
+      responses:
+        "200":
+          description: OK
+  /anything/circularReferenceOneOfMultiLevel:
+    get:
+      operationId: circularReferenceOneOfMultiLevel
+      tags:
+        - generation
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CircularMultiLevelRoot'
   /anything/emptyResponseObjectWithComment:
     get:
       operationId: emptyResponseObjectWithCommentGet
@@ -12922,6 +12961,57 @@ components:
         - requiredFloat
         - requiredTime
         - requiredObject
+
+    # Recursive oneOf test schemas
+    CircularOneOfMapRoot:
+      type: object
+      additionalProperties:
+        $ref: '#/components/schemas/CircularOneOfUnion'
+    CircularOneOfUnion:
+      oneOf:
+        - type: string
+        - type: number
+        - type: boolean
+        - $ref: '#/components/schemas/CircularOneOfMapVariant'
+        - $ref: '#/components/schemas/CircularOneOfArrayVariant'
+    CircularOneOfMapVariant:
+      type: object
+      additionalProperties:
+        $ref: '#/components/schemas/CircularOneOfUnion'
+    CircularOneOfArrayVariant:
+      type: array
+      items:
+        $ref: '#/components/schemas/CircularOneOfUnion'
+
+    # Tree node with circular reference via children array
+    CircularTreeNode:
+      type: object
+      properties:
+        value:
+          type: string
+        children:
+          type: array
+          items:
+            $ref: '#/components/schemas/CircularTreeNode'
+
+    # Multi-level circular reference with oneOf
+    CircularMultiLevelRoot:
+      type: object
+      properties:
+        level2:
+          $ref: '#/components/schemas/CircularMultiLevelMiddle'
+    CircularMultiLevelMiddle:
+      type: object
+      properties:
+        level3:
+          $ref: '#/components/schemas/CircularMultiLevelLeaf'
+    CircularMultiLevelLeaf:
+      oneOf:
+        - type: string
+        - $ref: '#/components/schemas/CircularMultiLevelRoot'
+        - type: object
+          additionalProperties:
+            $ref: '#/components/schemas/CircularMultiLevelMiddle'
 
     Polling:
       type: object
