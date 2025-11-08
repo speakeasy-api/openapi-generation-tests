@@ -13040,6 +13040,191 @@ components:
         - failed
         - pending
         - running
+    # Smart member resolution test schemas
+    smartResolutionFieldCountTest:
+      x-speakeasy-include: true
+      oneOf:
+        - $ref: "#/components/schemas/basicObject"
+        - $ref: "#/components/schemas/extendedObject"
+    basicObject:
+      x-speakeasy-include: true
+      type: object
+      properties:
+        name:
+          type: string
+        id:
+          type: integer
+      required:
+        - name
+        - id
+    extendedObject:
+      x-speakeasy-include: true
+      type: object
+      properties:
+        name:
+          type: string
+        id:
+          type: integer
+        description:
+          type: string
+        category:
+          type: string
+        priority:
+          type: integer
+      required:
+        - name
+        - id
+        - description
+        - category
+        - priority
+    smartResolutionEnumTest:
+      x-speakeasy-include: true
+      oneOf:
+        - $ref: "#/components/schemas/objectWithEnum"
+        - $ref: "#/components/schemas/objectWithMultipleEnums"
+    objectWithEnum:
+      x-speakeasy-include: true
+      type: object
+      properties:
+        name:
+          type: string
+        status:
+          type: string
+          enum: ["active", "inactive", "pending"]
+        value:
+          type: integer
+      required:
+        - name
+        - status
+        - value
+    objectWithMultipleEnums:
+      x-speakeasy-include: true
+      type: object
+      properties:
+        name:
+          type: string
+        status:
+          type: string
+          enum: ["active", "inactive", "pending"]
+        priority:
+          type: string
+          enum: ["low", "medium", "high"]
+        category:
+          type: string
+          enum: ["type1", "type2", "type3"]
+        value:
+          type: integer
+      required:
+        - name
+        - status
+        - priority
+        - category
+        - value
+    smartResolutionJsonSizeTest:
+      x-speakeasy-include: true
+      oneOf:
+        - $ref: "#/components/schemas/compactObject"
+        - $ref: "#/components/schemas/verboseObject"
+    compactObject:
+      x-speakeasy-include: true
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+      required:
+        - id
+        - name
+    verboseObject:
+      x-speakeasy-include: true
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        longDescriptionField:
+          type: string
+        anotherVeryLongFieldName:
+          type: string
+        yetAnotherExtensivePropertyName:
+          type: string
+      required:
+        - id
+        - name
+        - longDescriptionField
+        - anotherVeryLongFieldName
+        - yetAnotherExtensivePropertyName
+    smartResolutionComplexTest:
+      x-speakeasy-include: true
+      oneOf:
+        - $ref: "#/components/schemas/simpleMatch"
+        - $ref: "#/components/schemas/betterMatch"
+        - $ref: "#/components/schemas/bestMatch"
+    simpleMatch:
+      x-speakeasy-include: true
+      type: object
+      properties:
+        type:
+          type: string
+        value:
+          type: string
+      required:
+        - type
+        - value
+    betterMatch:
+      x-speakeasy-include: true
+      type: object
+      properties:
+        type:
+          type: string
+        value:
+          type: string
+        status:
+          type: string
+          enum: ["draft", "published", "archived"]
+        count:
+          type: integer
+      required:
+        - type
+        - value
+        - status
+        - count
+    bestMatch:
+      x-speakeasy-include: true
+      type: object
+      properties:
+        type:
+          type: string
+        value:
+          type: string
+        status:
+          type: string
+          enum: ["draft", "published", "archived"]
+        priority:
+          type: string
+          enum: ["low", "medium", "high", "critical"]
+        category:
+          type: string
+          enum: ["news", "blog", "documentation", "tutorial"]
+        count:
+          type: integer
+        metadata:
+          type: string
+        tags:
+          type: array
+          items:
+            type: string
+      required:
+        - type
+        - value
+        - status
+        - priority
+        - category
+        - count
+        - metadata
+        - tags
   securitySchemes:
     basicAuth:
       type: http
