@@ -2364,6 +2364,91 @@ components:
       properties:
         token:
           type: string
+    # Smart Union test schemas
+    smartUnionOpenEnumsCat:
+      type: object
+      properties:
+        kind:
+          type: string
+          enum:
+            - cat
+          x-speakeasy-unknown-values: allow
+      required:
+        - kind
+    smartUnionOpenEnumsDog:
+      type: object
+      properties:
+        kind:
+          type: string
+          enum:
+            - dog
+          x-speakeasy-unknown-values: allow
+      required:
+        - kind
+    smartUnionOpenEnumsAndSizeCatWithName:
+      type: object
+      properties:
+        kind:
+          type: string
+          enum:
+            - cat
+          x-speakeasy-unknown-values: allow
+        name:
+          type: string
+      required:
+        - kind
+        - name
+    smartUnionOpenEnumsAndSizeDogSimple:
+      type: object
+      properties:
+        kind:
+          type: string
+          enum:
+            - dog
+          x-speakeasy-unknown-values: allow
+      required:
+        - kind
+    smartUnionDeeplyNestedArrayObjectA:
+      type: object
+      properties:
+        x:
+          type: object
+          properties:
+            a:
+              type: string
+          required:
+            - a
+      required:
+        - x
+    smartUnionDeeplyNestedArrayObjectB:
+      type: object
+      properties:
+        x:
+          type: object
+          properties:
+            a:
+              type: string
+            b:
+              type: boolean
+          required:
+            - a
+            - b
+      required:
+        - x
+    smartUnionEmptyStringObjectA:
+      type: object
+      properties:
+        a:
+          type: string
+      required:
+        - a
+    smartUnionEmptyStringObjectB:
+      type: object
+      properties:
+        b:
+          type: string
+      required:
+        - b
 
   responses:
     tokenAuthResponse:

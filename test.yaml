@@ -12094,6 +12094,147 @@ paths:
               schema:
                 $ref: "#/components/schemas/AnyOfMultiMatch"
 
+  /anything/smartUnion/openEnums:
+    post:
+      operationId: smartUnionOpenEnums
+      summary: Respect affinity of open enums
+      description: |
+        Test case: respect affinity of open enums
+        Types: { kind: OpenEnum["cat"] } | { kind: OpenEnum["dog"] }
+        Payload: { kind: "dog" }
+      tags:
+        - unions
+      requestBody:
+        content:
+          application/json:
+            schema:
+              oneOf:
+                - $ref: "components.yaml#/components/schemas/smartUnionOpenEnumsCat"
+                - $ref: "components.yaml#/components/schemas/smartUnionOpenEnumsDog"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: res
+                type: object
+                properties:
+                  json:
+                    oneOf:
+                      - $ref: "components.yaml#/components/schemas/smartUnionOpenEnumsCat"
+                      - $ref: "components.yaml#/components/schemas/smartUnionOpenEnumsDog"
+                required:
+                  - json
+  /anything/smartUnion/openEnumsAndSize:
+    post:
+      operationId: smartUnionOpenEnumsAndSize
+      summary: Respect affinity of size and tolerate open enum
+      description: |
+        Test case: respect affinity of size and tolerate open enum
+        Types: { kind: OpenEnum["dog"] } | { kind: OpenEnum["cat"], name: string }
+        Payload: { kind: "bat", name: "asdf" }
+      tags:
+        - unions
+      requestBody:
+        content:
+          application/json:
+            schema:
+              oneOf:
+                - $ref: "components.yaml#/components/schemas/smartUnionOpenEnumsAndSizeDogSimple"
+                - $ref: "components.yaml#/components/schemas/smartUnionOpenEnumsAndSizeCatWithName"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: res
+                type: object
+                properties:
+                  json:
+                    oneOf:
+                      - $ref: "components.yaml#/components/schemas/smartUnionOpenEnumsAndSizeDogSimple"
+                      - $ref: "components.yaml#/components/schemas/smartUnionOpenEnumsAndSizeCatWithName"
+                required:
+                  - json
+  /anything/smartUnion/deeplyNestedArray:
+    post:
+      operationId: smartUnionDeeplyNestedArray
+      summary: Respect size with deeply nested array
+      description: |
+        Test case: respect size with deeply nested array
+        Types: Array<{ x: { a: string } }> | Array<{ x: { a: string; b: boolean } }>
+        Payload: [{ x: { a: "", b: false } }]
+      tags:
+        - unions
+      requestBody:
+        content:
+          application/json:
+            schema:
+              oneOf:
+                - type: array
+                  items:
+                    $ref: "components.yaml#/components/schemas/smartUnionDeeplyNestedArrayObjectA"
+                - type: array
+                  items:
+                    $ref: "components.yaml#/components/schemas/smartUnionDeeplyNestedArrayObjectB"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: res
+                type: object
+                properties:
+                  json:
+                    oneOf:
+                      - type: array
+                        items:
+                          $ref: "components.yaml#/components/schemas/smartUnionDeeplyNestedArrayObjectA"
+                      - type: array
+                        items:
+                          $ref: "components.yaml#/components/schemas/smartUnionDeeplyNestedArrayObjectB"
+                required:
+                  - json
+  /anything/smartUnion/emptyString:
+    post:
+      operationId: smartUnionEmptyString
+      summary: Respect empty string
+      description: |
+        Test case: respect empty string
+        Types: { a: string } | { b: string }
+        Payload: { b: "" }
+      tags:
+        - unions
+      requestBody:
+        content:
+          application/json:
+            schema:
+              oneOf:
+                - $ref: "components.yaml#/components/schemas/smartUnionEmptyStringObjectA"
+                - $ref: "components.yaml#/components/schemas/smartUnionEmptyStringObjectB"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: res
+                type: object
+                properties:
+                  json:
+                    oneOf:
+                      - $ref: "components.yaml#/components/schemas/smartUnionEmptyStringObjectA"
+                      - $ref: "components.yaml#/components/schemas/smartUnionEmptyStringObjectB"
+                required:
+                  - json
+
   /method/delete:
     delete:
       operationId: methodDelete
