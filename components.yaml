@@ -129,7 +129,21 @@ components:
           type: string
       required:
         - tag
-        - profileId 
+        - profileId
+    conflictingDiscriminatorMappingKey:
+      type: object
+      required: [prefix, prefixTag2]
+      properties:
+        prefix:
+          $ref: "#/components/schemas/stronglyTypedOneOfDiscriminatedObject"
+        prefixTag2:
+          type: object
+          description: |
+            In Go, this property conflicts with the `prefix` property when concatenated
+            with the discriminator key `tag1` in the `GetPrefixTag2()` getter method.
+          properties:
+            str:
+              type: string
     conflictingObject:
       type: object
       properties:

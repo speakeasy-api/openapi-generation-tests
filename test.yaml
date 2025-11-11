@@ -8325,6 +8325,31 @@ paths:
                 required:
                   - json
 
+  /anything/conflictingDiscriminatorMappingKey:
+    post:
+      operationId: conflictingDiscriminatorMappingKey
+      tags:
+        - unions
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "components.yaml#/components/schemas/conflictingDiscriminatorMappingKey"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: res
+                type: object
+                properties:
+                  json:
+                    $ref: "components.yaml#/components/schemas/conflictingDiscriminatorMappingKey"
+                required:
+                  - json
+
   # an object participates in multiple discriminated oneOf definitions
   /anything/discriminatedOneMultipleMemberships:
     post:
