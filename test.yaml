@@ -4304,6 +4304,57 @@ paths:
                       type: string
                 required:
                   - files
+  /anything/requestBodies/put/multipart/withEncoding:
+    put:
+      operationId: requestBodyPutMultipartWithEncoding
+      tags:
+        - requestBodies
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+                  format: binary
+                metadata:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                    description:
+                      type: string
+                    tags:
+                      type: array
+                      items:
+                        type: string
+              required:
+                - file
+            encoding:
+              file:
+                contentType: application/octet-stream
+              metadata:
+                contentType: application/json
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: res
+                type: object
+                properties:
+                  files:
+                    type: object
+                    additionalProperties:
+                      type: string
+                  form:
+                    type: object
+                    additionalProperties: true
+                required:
+                  - files
   /anything/requestBodies/put/multipart/optionalRequestBody:
     put:
       operationId: requestBodyPutMultipartOptionalRequestBody
