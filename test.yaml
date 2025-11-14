@@ -10118,6 +10118,30 @@ paths:
             type: cursor
         outputs:
           nextCursor: $.resultArray[(@.length-1)]
+  /pagination/cursor/body_shadowed_field:
+    post:
+      operationId: paginationCursorBodyShadowedField
+      servers:
+        - url: http://localhost:35456
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "components.yaml#/components/schemas/filter"
+        required: true
+      responses:
+        "200":
+          $ref: "components.yaml#/components/responses/paginationResponseNonNumeric"
+      tags:
+        - pagination
+      x-speakeasy-pagination:
+        type: cursor
+        inputs:
+          - name: token
+            in: requestBody
+            type: cursor
+        outputs:
+          nextCursor: $.cursor
   /pagination/limitoffset/offset#paginationBodyFlattenedWithSecurity:
     x-speakeasy-exclude-test-sdk: [javav2]
     get:

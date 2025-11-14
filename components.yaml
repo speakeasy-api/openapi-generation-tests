@@ -1826,6 +1826,15 @@ components:
         limit:
           type: integer
           default: 15
+    filter:
+      type: object
+      properties:
+        filter:
+          type: string
+          description: A filter query string
+        token:
+          type: string
+          description: Pagination token
     error:
       type: object
       properties:
