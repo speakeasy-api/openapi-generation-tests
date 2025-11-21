@@ -52,7 +52,7 @@ servers:
         default: localhost
         description: The hostname of the server.
   - url: http://localhost:35456
-    descritpion: API test server (speakeasy-api-test-service)
+    description: API test server (speakeasy-api-test-service)
 x-speakeasy-globals:
   parameters:
     - name: globalQueryParam
@@ -109,6 +109,13 @@ x-speakeasy-globals:
       schema:
         $ref: "components.yaml#/components/schemas/enum"
       x-speakeasy-globals-hidden: true
+    - name: kebab-case-param
+      description: A kebab-cased global query parameter to test naming conversions
+      in: query
+      required: false
+      schema:
+        type: string
+        example: "kebab-case-value"
 x-speakeasy-name-override:
   - operationId: getGlobalNameOverride
     methodNameOverride: globalNameOverridden
@@ -8002,6 +8009,37 @@ paths:
                     type: object
                     additionalProperties:
                       type: string
+  /anything/globals/kebabCaseParam:
+    get:
+      operationId: globalsKebabCaseParamGet
+      description: |
+        Tests that kebab-cased global parameters are correctly converted to
+        appropriate naming conventions (camelCase, PascalCase, etc.) in generated SDKs.
+      tags:
+        - globals
+      x-speakeasy-usage-example:
+        tags:
+          - global-parameters
+      parameters:
+        - name: kebab-case-param
+          in: query
+          required: false
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: res
+                type: object
+                properties:
+                  args:
+                    type: object
+                    additionalProperties: true
+                required:
+                  - args
   /anything/globals/hidden/{globalHiddenPathParam}:
     post:
       operationId: globalsHiddenPost
@@ -8160,6 +8198,64 @@ paths:
       responses:
         "2XX":
           description: OK
+  /anything/globals/operationScopedExclusive/{operationPathParam}:
+    get:
+      operationId: globalsOperationScopedExclusive
+      description: |
+        Tests that when an operation defines its own parameters (not redefining globals),
+        the global parameters should NOT be included when operationScopedParamsNov2025 fix is enabled.
+        This endpoint defines operation-specific query, path, and header parameters.
+        The test should verify that globals (globalQueryParam, globalPathParam, globalHeaderParam, etc.)
+        are NOT included in the request.
+      tags:
+        - globals
+      parameters:
+        - name: operationQueryParam
+          in: query
+          required: true
+          schema:
+            type: string
+          description: Operation-specific query parameter
+        - name: operationPathParam
+          in: path
+          required: true
+          schema:
+            type: string
+          description: Operation-specific path parameter
+        - name: operationHeaderParam
+          in: header
+          required: true
+          schema:
+            type: string
+          description: Operation-specific header parameter
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                title: res
+                properties:
+                  args:
+                    type: object
+                    additionalProperties:
+                      type: string
+                    description: Query parameters received
+                  url:
+                    type: string
+                    additionalProperties:
+                      type: string
+                    description: URL with path parameter
+                  headers:
+                    type: object
+                    additionalProperties:
+                      type: string
+                    description: Headers received
+                required:
+                  - args
+                  - url
+                  - headers
   /responseObjectWithOptionalTrueNullableTrueFieldDeserializes:
     get:
       parameters:
