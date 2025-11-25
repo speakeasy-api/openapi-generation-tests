@@ -2415,8 +2415,6 @@ components:
           enum:
             - dog
           x-speakeasy-unknown-values: allow
-      required:
-        - kind
     smartUnionDeeplyNestedArrayObjectA:
       type: object
       properties:
