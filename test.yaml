@@ -3049,6 +3049,44 @@ paths:
             application/json:
               schema:
                 $ref: "components.yaml#/components/schemas/weaklyTypedOneOfReadWriteObject"
+  /anything/requestBodies/form/stringArray:
+    post:
+      operationId: formRequestBodyStringArray
+      tags:
+        - requestBodies
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                stuff:
+                  type: array
+                  items:
+                    type: string
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: res
+                type: object
+                properties:
+                  url:
+                    type: string
+                  form:
+                    type: object
+                    additionalProperties:
+                      oneOf:
+                        - type: string
+                        - type: array
+                          items:
+                            type: string
+                required:
+                  - url
+                  - form
   /anything/requestBodies/post/application/json/additionalProperties:
     post:
       operationId: requestBodyPostApplicationJsonAdditionalProperties
