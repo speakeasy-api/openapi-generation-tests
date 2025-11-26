@@ -865,6 +865,55 @@ paths:
                       "Headerparam": "headerValue"
                     }
                   }
+  /anything/allowEmptyValue:
+    get:
+      operationId: allowEmptyValueQueryParams
+      tags:
+        - parameters
+      parameters:
+        - name: strParam
+          in: query
+          description: Empty strings are included by default
+          schema:
+            type: string
+        - name: arrParamOmitEmpty
+          in: query
+          description: Empty arrays are omitted by default
+          schema:
+            type: array
+            items:
+              type: string
+        - name: nullableStrParam
+          in: query
+          schema:
+            type: string
+            nullable: true
+          x-speakeasy-allow-empty-value: true
+        - name: numParam
+          in: query
+          schema:
+            type: integer
+          x-speakeasy-allow-empty-value: true
+        - name: arrParam
+          in: query
+          schema:
+            type: array
+            items:
+              type: string
+          x-speakeasy-allow-empty-value: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: res
+                type: object
+                properties:
+                  url:
+                    type: string
+                  args:
+                    type: object
   /anything/flatParametersOrdering/{requiredPathParam}:
     post:
       operationId: flatParametersOrdering
