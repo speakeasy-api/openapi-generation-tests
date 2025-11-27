@@ -2456,6 +2456,61 @@ components:
           type: string
       required:
         - b
+    # Nested union test schemas - tests that only the winning inner option's
+    # unrecognized count is propagated to the parent union
+    smartUnionNestedInnerCat:
+      type: object
+      properties:
+        kind:
+          type: string
+          enum:
+            - cat
+          x-speakeasy-unknown-values: allow
+        name:
+          type: string
+      required:
+        - kind
+        - name
+    smartUnionNestedInnerDog:
+      type: object
+      properties:
+        kind:
+          type: string
+          enum:
+            - dog
+          x-speakeasy-unknown-values: allow
+      required:
+        - kind
+    smartUnionNestedInnerBird:
+      type: object
+      properties:
+        kind:
+          type: string
+          enum:
+            - bird
+          x-speakeasy-unknown-values: allow
+      required:
+        - kind
+    smartUnionNestedOuterB:
+      type: object
+      description: |
+        Option B for outer union - has 2 open enum fields.
+        Both kind and name are open enums, so parsing unknown values
+        will count 2 unrecognized.
+      properties:
+        kind:
+          type: string
+          enum:
+            - x
+          x-speakeasy-unknown-values: allow
+        name:
+          type: string
+          enum:
+            - y
+          x-speakeasy-unknown-values: allow
+      required:
+        - kind
+        - name
 
   responses:
     tokenAuthResponse:
