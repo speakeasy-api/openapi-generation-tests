@@ -13763,12 +13763,15 @@ components:
       name: x-api-key
       x-speakeasy-example: Token <YOUR_API_KEY>
     oauth2:
+      description: A flow that needs to be implemented by custom hooks
       type: oauth2
       flows:
         implicit:
           authorizationUrl: http://localhost:35123/oauth2/authorize
-          scopes: {}
-      x-speakeasy-example: Bearer YOUR_OAUTH2_TOKEN
+          scopes:
+            models:read: Grants read access on models
+            store_manage: Allows management operations
+            impersonation: ""
     openIdConnect:
       type: openIdConnect
       openIdConnectUrl: http://localhost:35123/.well-known/openid-configuration
@@ -13783,6 +13786,8 @@ components:
             read: Read access
             write: Write access
             erase: Erase access
+            alt:one: First alternative test scope
+            alt:two: Second alternative test scope
     customSchemeAppId:
       type: http
       scheme: custom
