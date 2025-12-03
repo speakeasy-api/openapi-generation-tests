@@ -11240,6 +11240,12 @@ paths:
           schema:
             type: string
           required: true
+        - name: statusCode
+          in: query
+          description: Override subsequent response 200 status code with another.
+          schema:
+            type: integer
+          required: true
       responses:
         "200":
           description: OK
@@ -11249,8 +11255,17 @@ paths:
                 $ref: "#/components/schemas/Polling"
         "202":
           description: Accepted
+        "404":
+          description: Not Found (as defined response)
+        # 410 Gone intentionally used as undefined/"unknown" response error code.
       x-speakeasy-name-override: SuccessCriteriaStatusCode
       x-speakeasy-polling:
+        - name: WaitForGone
+          successCriteria:
+            - condition: $statusCode == 410
+        - name: WaitForNotFound
+          successCriteria:
+            - condition: $statusCode == 404
         - name: WaitForSuccess
           successCriteria:
             - condition: $statusCode == 200
