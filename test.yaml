@@ -10862,6 +10862,15 @@ paths:
           successCriteria:
             - condition: $statusCode == 200
             - condition: $response.body#/status == "completed"
+        - name: WaitForStatusCompletedRegex
+          failureCriteria:
+            - condition: $statusCode == 200
+            - context: $response.body#/status
+              condition: "^(failed|ready-for-next-step)$"
+              type: regex
+          successCriteria:
+            - condition: $statusCode == 200
+            - condition: $response.body#/status == "completed"
   /polling/failureCriteria/responseBody/nested:
     get:
       operationId: pollingFailureCriteriaResponseBodyNestedGet
@@ -10949,6 +10958,13 @@ paths:
         - name: WaitForSuccess
           failureCriteria:
             - condition: $statusCode == 202
+          successCriteria:
+            - condition: $statusCode == 200
+        - name: WaitForSuccessRegex
+          failureCriteria:
+            - context: $statusCode
+              condition: "^(202|204)$"
+              type: regex
           successCriteria:
             - condition: $statusCode == 200
   /polling/intervalSeconds:
@@ -11155,6 +11171,12 @@ paths:
           successCriteria:
             - condition: $statusCode == 200
             - condition: $response.body#/status == "completed"
+        - name: WaitForStatusRegex
+          successCriteria:
+            - condition: $statusCode == 200
+            - context: $response.body#/status
+              condition: "^(completed|ready-for-next-step)$"
+              type: regex
   /polling/successCriteria/responseBody/nested:
     get:
       operationId: pollingSuccessCriteriaResponseBodyNestedGet
@@ -11266,9 +11288,19 @@ paths:
         - name: WaitForNotFound
           successCriteria:
             - condition: $statusCode == 404
+        - name: WaitForNotFoundRegex
+          successCriteria:
+            - context: $statusCode
+              condition: "^(404|410)$"
+              type: regex
         - name: WaitForSuccess
           successCriteria:
             - condition: $statusCode == 200
+        - name: WaitForSuccessRegex
+          successCriteria:
+            - context: $statusCode
+              condition: "^(200|204)$"
+              type: regex
   /retries/after:
     get:
       operationId: retriesAfter
@@ -13566,6 +13598,7 @@ components:
         - completed
         - failed
         - pending
+        - ready-for-next-step
         - running
     # Smart member resolution test schemas
     smartResolutionFieldCountTest:
