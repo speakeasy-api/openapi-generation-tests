@@ -12443,6 +12443,40 @@ paths:
                       - $ref: "components.yaml#/components/schemas/smartUnionOpenEnumsDog"
                 required:
                   - json
+  /anything/smartUnion/allConsts:
+    post:
+      operationId: smartUnionAllConsts
+      summary: Discriminate between types with all const fields
+      description: |
+        Test case: discriminate based on const field presence when both types have all consts
+        Types: { a: "A", b: "B" } | { b: "B", c: "C" }
+        Payload: { b: "B", c: "C" }
+        Expected: should match second type (B) because it has field c
+      tags:
+        - unions
+      requestBody:
+        content:
+          application/json:
+            schema:
+              oneOf:
+                - $ref: "components.yaml#/components/schemas/smartUnionAllConstsA"
+                - $ref: "components.yaml#/components/schemas/smartUnionAllConstsB"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: res
+                type: object
+                properties:
+                  json:
+                    oneOf:
+                      - $ref: "components.yaml#/components/schemas/smartUnionAllConstsA"
+                      - $ref: "components.yaml#/components/schemas/smartUnionAllConstsB"
+                required:
+                  - json
   /anything/smartUnion/openEnumsAndSize:
     post:
       operationId: smartUnionOpenEnumsAndSize
@@ -12574,29 +12608,6 @@ paths:
         - url: http://localhost:35456
       tags:
         - unions
-      requestBody:
-        content:
-          application/json:
-            schema:
-              oneOf:
-                - type: object
-                  title: smartUnionNestedOuterA
-                  properties:
-                    data:
-                      oneOf:
-                        - $ref: "components.yaml#/components/schemas/smartUnionNestedInnerCat"
-                        - $ref: "components.yaml#/components/schemas/smartUnionNestedInnerDog"
-                        - $ref: "components.yaml#/components/schemas/smartUnionNestedInnerBird"
-                  required:
-                    - data
-                - type: object
-                  title: smartUnionNestedOuterBWrapper
-                  properties:
-                    data:
-                      $ref: "components.yaml#/components/schemas/smartUnionNestedOuterB"
-                  required:
-                    - data
-        required: true
       responses:
         "200":
           description: OK
@@ -12625,6 +12636,438 @@ paths:
                             $ref: "components.yaml#/components/schemas/smartUnionNestedOuterB"
                         required:
                           - data
+                required:
+                  - json
+
+  # Smart union round-trip test endpoints
+  /anything/smartUnion/selectsMoreMatchedFields:
+    post:
+      operationId: smartUnionSelectsMoreMatchedFields
+      summary: Selects type with more matched fields
+      tags:
+        - unions
+      requestBody:
+        content:
+          application/json:
+            schema:
+              oneOf:
+                - $ref: "components.yaml#/components/schemas/smartUnionMoreFieldsA"
+                - $ref: "components.yaml#/components/schemas/smartUnionMoreFieldsB"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: res
+                type: object
+                properties:
+                  json:
+                    oneOf:
+                      - $ref: "components.yaml#/components/schemas/smartUnionMoreFieldsA"
+                      - $ref: "components.yaml#/components/schemas/smartUnionMoreFieldsB"
+                required:
+                  - json
+
+  /anything/smartUnion/prefersFewerUnmatchedFields:
+    post:
+      operationId: smartUnionPrefersFewerUnmatchedFields
+      summary: Prefers type with fewer unmatched fields
+      tags:
+        - unions
+      requestBody:
+        content:
+          application/json:
+            schema:
+              oneOf:
+                - $ref: "components.yaml#/components/schemas/smartUnionFewerUnmatchedA"
+                - $ref: "components.yaml#/components/schemas/smartUnionFewerUnmatchedB"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: res
+                type: object
+                properties:
+                  json:
+                    oneOf:
+                      - $ref: "components.yaml#/components/schemas/smartUnionFewerUnmatchedA"
+                      - $ref: "components.yaml#/components/schemas/smartUnionFewerUnmatchedB"
+                required:
+                  - json
+
+  /anything/smartUnion/nestedStructs:
+    post:
+      operationId: smartUnionNestedStructs
+      summary: Handles nested structs
+      tags:
+        - unions
+      requestBody:
+        content:
+          application/json:
+            schema:
+              oneOf:
+                - $ref: "components.yaml#/components/schemas/smartUnionNestedStructsA"
+                - $ref: "components.yaml#/components/schemas/smartUnionNestedStructsB"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: res
+                type: object
+                properties:
+                  json:
+                    oneOf:
+                      - $ref: "components.yaml#/components/schemas/smartUnionNestedStructsA"
+                      - $ref: "components.yaml#/components/schemas/smartUnionNestedStructsB"
+                required:
+                  - json
+
+  /anything/smartUnion/arrayFields:
+    post:
+      operationId: smartUnionArrayFields
+      summary: Handles array of structs
+      tags:
+        - unions
+      requestBody:
+        content:
+          application/json:
+            schema:
+              oneOf:
+                - type: array
+                  items:
+                    $ref: "components.yaml#/components/schemas/smartUnionArrayItemA"
+                - type: array
+                  items:
+                    $ref: "components.yaml#/components/schemas/smartUnionArrayItemB"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: res
+                type: object
+                properties:
+                  json:
+                    oneOf:
+                      - type: array
+                        items:
+                          $ref: "components.yaml#/components/schemas/smartUnionArrayItemA"
+                      - type: array
+                        items:
+                          $ref: "components.yaml#/components/schemas/smartUnionArrayItemB"
+                required:
+                  - json
+
+  /anything/smartUnion/preservesOrderOnTie:
+    post:
+      operationId: smartUnionPreservesOrderOnTie
+      summary: Preserves order on tie (first wins)
+      tags:
+        - unions
+      requestBody:
+        content:
+          application/json:
+            schema:
+              oneOf:
+                - $ref: "components.yaml#/components/schemas/smartUnionTieA"
+                - $ref: "components.yaml#/components/schemas/smartUnionTieB"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: res
+                type: object
+                properties:
+                  json:
+                    oneOf:
+                      - $ref: "components.yaml#/components/schemas/smartUnionTieA"
+                      - $ref: "components.yaml#/components/schemas/smartUnionTieB"
+                required:
+                  - json
+
+  /anything/smartUnion/optionalPointerFields:
+    post:
+      operationId: smartUnionOptionalPointerFields
+      summary: Handles optional pointer fields
+      tags:
+        - unions
+      requestBody:
+        content:
+          application/json:
+            schema:
+              oneOf:
+                - $ref: "components.yaml#/components/schemas/smartUnionOptionalPointerA"
+                - $ref: "components.yaml#/components/schemas/smartUnionOptionalPointerB"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: res
+                type: object
+                properties:
+                  json:
+                    oneOf:
+                      - $ref: "components.yaml#/components/schemas/smartUnionOptionalPointerA"
+                      - $ref: "components.yaml#/components/schemas/smartUnionOptionalPointerB"
+                required:
+                  - json
+
+  /anything/smartUnion/optionalPointerStructs:
+    post:
+      operationId: smartUnionOptionalPointerStructs
+      summary: Handles optional pointer structs
+      tags:
+        - unions
+      requestBody:
+        content:
+          application/json:
+            schema:
+              oneOf:
+                - $ref: "components.yaml#/components/schemas/smartUnionOptionalPointerStructsA"
+                - $ref: "components.yaml#/components/schemas/smartUnionOptionalPointerStructsB"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: res
+                type: object
+                properties:
+                  json:
+                    oneOf:
+                      - $ref: "components.yaml#/components/schemas/smartUnionOptionalPointerStructsA"
+                      - $ref: "components.yaml#/components/schemas/smartUnionOptionalPointerStructsB"
+                required:
+                  - json
+
+  /anything/smartUnion/threeWayFieldDiscrimination:
+    post:
+      operationId: smartUnionThreeWayFieldDiscrimination
+      summary: Three-way field discrimination
+      tags:
+        - unions
+      requestBody:
+        content:
+          application/json:
+            schema:
+              oneOf:
+                - $ref: "components.yaml#/components/schemas/smartUnionThreeWayA"
+                - $ref: "components.yaml#/components/schemas/smartUnionThreeWayB"
+                - $ref: "components.yaml#/components/schemas/smartUnionThreeWayC"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: res
+                type: object
+                properties:
+                  json:
+                    oneOf:
+                      - $ref: "components.yaml#/components/schemas/smartUnionThreeWayA"
+                      - $ref: "components.yaml#/components/schemas/smartUnionThreeWayB"
+                      - $ref: "components.yaml#/components/schemas/smartUnionThreeWayC"
+                required:
+                  - json
+
+  /anything/smartUnion/constFieldDiscrimination:
+    post:
+      operationId: smartUnionConstFieldDiscrimination
+      summary: Const field discrimination
+      tags:
+        - unions
+      requestBody:
+        content:
+          application/json:
+            schema:
+              oneOf:
+                - $ref: "components.yaml#/components/schemas/smartUnionConstFieldA"
+                - $ref: "components.yaml#/components/schemas/smartUnionConstFieldB"
+                - $ref: "components.yaml#/components/schemas/smartUnionConstFieldC"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: res
+                type: object
+                properties:
+                  json:
+                    oneOf:
+                      - $ref: "components.yaml#/components/schemas/smartUnionConstFieldA"
+                      - $ref: "components.yaml#/components/schemas/smartUnionConstFieldB"
+                      - $ref: "components.yaml#/components/schemas/smartUnionConstFieldC"
+                required:
+                  - json
+
+  /anything/smartUnion/anyFieldType:
+    post:
+      operationId: smartUnionAnyFieldType
+      summary: Any field type
+      tags:
+        - unions
+      requestBody:
+        content:
+          application/json:
+            schema:
+              oneOf:
+                - $ref: "components.yaml#/components/schemas/smartUnionAnyFieldA"
+                - $ref: "components.yaml#/components/schemas/smartUnionAnyFieldB"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: res
+                type: object
+                properties:
+                  json:
+                    oneOf:
+                      - $ref: "components.yaml#/components/schemas/smartUnionAnyFieldA"
+                      - $ref: "components.yaml#/components/schemas/smartUnionAnyFieldB"
+                required:
+                  - json
+
+  /anything/smartUnion/nestedUnionVsFlatStruct:
+    post:
+      operationId: smartUnionNestedUnionVsFlatStruct
+      summary: Nested union vs flat struct - flat struct with more fields wins
+      description: |
+        Test case: nested union vs flat struct field count comparison
+        A = A_X | A_Y | A_Z (union with 3 variants, each with 1 field):
+          - A_X: { x }  (1 field)
+          - A_Y: { y }  (1 field)
+          - A_Z: { z }  (1 field)
+        B_XY (flat struct with 2 fields):
+          - B_XY: { x, y }  (2 fields)
+        Outer union:
+          - A: { data: A_X | A_Y | A_Z }
+          - B: { data: B_XY }
+        Payload: { data: { x: "", y: "" } }
+        Expected: B should win because B_XY matches 2 fields (x, y),
+        while the inner union A only matches 1 field at best
+      tags:
+        - unions
+      requestBody:
+        content:
+          application/json:
+            schema:
+              oneOf:
+                - type: object
+                  title: smartUnionNestedVsFlatOuterA
+                  properties:
+                    data:
+                      oneOf:
+                        - $ref: "components.yaml#/components/schemas/smartUnionNestedVsFlatInnerX"
+                        - $ref: "components.yaml#/components/schemas/smartUnionNestedVsFlatInnerY"
+                        - $ref: "components.yaml#/components/schemas/smartUnionNestedVsFlatInnerZ"
+                  required:
+                    - data
+                - type: object
+                  title: smartUnionNestedVsFlatOuterB
+                  properties:
+                    data:
+                      $ref: "components.yaml#/components/schemas/smartUnionNestedVsFlatB"
+                  required:
+                    - data
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: res
+                type: object
+                properties:
+                  json:
+                    oneOf:
+                      - type: object
+                        title: smartUnionNestedVsFlatOuterA
+                        properties:
+                          data:
+                            oneOf:
+                              - $ref: "components.yaml#/components/schemas/smartUnionNestedVsFlatInnerX"
+                              - $ref: "components.yaml#/components/schemas/smartUnionNestedVsFlatInnerY"
+                              - $ref: "components.yaml#/components/schemas/smartUnionNestedVsFlatInnerZ"
+                        required:
+                          - data
+                      - type: object
+                        title: smartUnionNestedVsFlatOuterB
+                        properties:
+                          data:
+                            $ref: "components.yaml#/components/schemas/smartUnionNestedVsFlatB"
+                        required:
+                          - data
+                required:
+                  - json
+
+  /anything/smartUnion/unionVsUnion:
+    post:
+      operationId: smartUnionUnionVsUnion
+      summary: Union vs union - larger inner union wins
+      description: |
+        Test case: union vs union field count comparison
+        A = { a: string } | { b: string }
+        B = { a: string, b: string } | { a: string, b: string, c: string }
+        Payload: { a: "", b: "", c: "" }
+        Expected: B should win because B's second variant matches 3 fields (a, b, c),
+        while A can only match 1 field at best
+      tags:
+        - unions
+      requestBody:
+        content:
+          application/json:
+            schema:
+              oneOf:
+                - oneOf:
+                    - $ref: "components.yaml#/components/schemas/smartUnionVsUnionA1"
+                    - $ref: "components.yaml#/components/schemas/smartUnionVsUnionA2"
+                - oneOf:
+                    - $ref: "components.yaml#/components/schemas/smartUnionVsUnionB1"
+                    - $ref: "components.yaml#/components/schemas/smartUnionVsUnionB2"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: res
+                type: object
+                properties:
+                  json:
+                    oneOf:
+                      - oneOf:
+                          - $ref: "components.yaml#/components/schemas/smartUnionVsUnionA1"
+                          - $ref: "components.yaml#/components/schemas/smartUnionVsUnionA2"
+                      - oneOf:
+                          - $ref: "components.yaml#/components/schemas/smartUnionVsUnionB1"
+                          - $ref: "components.yaml#/components/schemas/smartUnionVsUnionB2"
                 required:
                   - json
 

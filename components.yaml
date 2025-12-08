@@ -2415,6 +2415,30 @@ components:
           enum:
             - dog
           x-speakeasy-unknown-values: allow
+    smartUnionAllConstsA:
+      type: object
+      properties:
+        a:
+          type: string
+          const: "A"
+        b:
+          type: string
+          const: "B"
+      required:
+        - a
+        - b
+    smartUnionAllConstsB:
+      type: object
+      properties:
+        b:
+          type: string
+          const: "B"
+        c:
+          type: string
+          const: "C"
+      required:
+        - b
+        - c
     smartUnionDeeplyNestedArrayObjectA:
       type: object
       properties:
@@ -2466,11 +2490,8 @@ components:
           enum:
             - cat
           x-speakeasy-unknown-values: allow
-        name:
-          type: string
       required:
         - kind
-        - name
     smartUnionNestedInnerDog:
       type: object
       properties:
@@ -2511,6 +2532,322 @@ components:
       required:
         - kind
         - name
+
+    # Smart union round-trip test schemas
+    # TestSmartUnionSelectsMoreMatchedFields: {foo} | {foo, bar} -> B wins with {foo, bar}
+    smartUnionMoreFieldsA:
+      type: object
+      properties:
+        foo:
+          type: string
+      required:
+        - foo
+    smartUnionMoreFieldsB:
+      type: object
+      properties:
+        foo:
+          type: string
+        bar:
+          type: string
+      required:
+        - foo
+        - bar
+
+    # TestSmartUnionPrefersFewerUnmatchedFields: {foo, bar} | {foo} -> B wins with {foo}
+    smartUnionFewerUnmatchedA:
+      type: object
+      properties:
+        foo:
+          type: string
+        bar:
+          type: string
+      required:
+        - foo
+        - bar
+    smartUnionFewerUnmatchedB:
+      type: object
+      properties:
+        foo:
+          type: string
+      required:
+        - foo
+
+    # TestSmartUnionNestedStructs
+    smartUnionNestedStructsInnerA:
+      type: object
+      properties:
+        value:
+          type: string
+      required:
+        - value
+    smartUnionNestedStructsInnerB:
+      type: object
+      properties:
+        value:
+          type: string
+        extra:
+          type: string
+      required:
+        - value
+        - extra
+    smartUnionNestedStructsA:
+      type: object
+      properties:
+        nested:
+          $ref: "#/components/schemas/smartUnionNestedStructsInnerA"
+      required:
+        - nested
+    smartUnionNestedStructsB:
+      type: object
+      properties:
+        nested:
+          $ref: "#/components/schemas/smartUnionNestedStructsInnerB"
+      required:
+        - nested
+
+    # TestSmartUnionArrayFields
+    smartUnionArrayItemA:
+      type: object
+      properties:
+        name:
+          type: string
+      required:
+        - name
+    smartUnionArrayItemB:
+      type: object
+      properties:
+        name:
+          type: string
+        value:
+          type: string
+      required:
+        - name
+        - value
+
+    # TestSmartUnionPreservesOrderOnTie: identical types, first wins
+    smartUnionTieA:
+      type: object
+      properties:
+        foo:
+          type: string
+      required:
+        - foo
+    smartUnionTieB:
+      type: object
+      properties:
+        foo:
+          type: string
+      required:
+        - foo
+
+    # TestSmartUnionOptionalPointerFields
+    smartUnionOptionalPointerA:
+      type: object
+      properties:
+        foo:
+          type: string
+    smartUnionOptionalPointerB:
+      type: object
+      properties:
+        foo:
+          type: string
+        bar:
+          type: string
+
+    # TestSmartUnionOptionalPointerStructs
+    smartUnionOptionalPointerStructsInnerA:
+      type: object
+      properties:
+        name:
+          type: string
+      required:
+        - name
+    smartUnionOptionalPointerStructsInnerB:
+      type: object
+      properties:
+        name:
+          type: string
+        value:
+          type: string
+      required:
+        - name
+        - value
+    smartUnionOptionalPointerStructsA:
+      type: object
+      properties:
+        nested:
+          $ref: "#/components/schemas/smartUnionOptionalPointerStructsInnerA"
+    smartUnionOptionalPointerStructsB:
+      type: object
+      properties:
+        nested:
+          $ref: "#/components/schemas/smartUnionOptionalPointerStructsInnerB"
+
+    # TestSmartUnionThreeWayFieldDiscrimination: {a,b} | {a,c} | {b,c}
+    smartUnionThreeWayA:
+      type: object
+      properties:
+        a:
+          type: string
+        b:
+          type: string
+      required:
+        - a
+        - b
+    smartUnionThreeWayB:
+      type: object
+      properties:
+        a:
+          type: string
+        c:
+          type: string
+      required:
+        - a
+        - c
+    smartUnionThreeWayC:
+      type: object
+      properties:
+        b:
+          type: string
+        c:
+          type: string
+      required:
+        - b
+        - c
+
+    # TestSmartUnionConstFieldDiscrimination
+    smartUnionConstFieldA:
+      type: object
+      properties:
+        a:
+          type: string
+          const: "x"
+        b:
+          type: string
+          const: "1"
+      required:
+        - a
+        - b
+    smartUnionConstFieldB:
+      type: object
+      properties:
+        a:
+          type: string
+          const: "x"
+        c:
+          type: string
+          const: "1"
+      required:
+        - a
+        - c
+    smartUnionConstFieldC:
+      type: object
+      properties:
+        b:
+          type: string
+          const: "1"
+        c:
+          type: string
+          const: "1"
+      required:
+        - b
+        - c
+
+    # TestSmartUnionAnyFieldType
+    smartUnionAnyFieldA:
+      type: object
+      properties:
+        a:
+          type: string
+      required:
+        - a
+    smartUnionAnyFieldB:
+      type: object
+      properties:
+        b: {}
+      required:
+        - b
+
+    # Test: nested union vs flat struct - B should win when it matches more fields
+    # A = A_X | A_Y | A_Z (union with 3 variants, each with 1 field)
+    # B_XY (flat struct with 2 fields: x, y)
+    # Outer union: { data: A } | { data: B_XY }
+    # Payload: { data: { x: "", y: "", z: "" } }
+    # Expected: B should win because B_XY matches 2 fields (x, y)
+    smartUnionNestedVsFlatInnerX:
+      type: object
+      properties:
+        x:
+          type: string
+      required:
+        - x
+    smartUnionNestedVsFlatInnerY:
+      type: object
+      properties:
+        y:
+          type: string
+      required:
+        - y
+    smartUnionNestedVsFlatInnerZ:
+      type: object
+      properties:
+        z:
+          type: string
+      required:
+        - z
+    smartUnionNestedVsFlatB:
+      type: object
+      properties:
+        x:
+          type: string
+        y:
+          type: string
+      required:
+        - x
+        - y
+
+    # Test: union vs union - B should win when its inner variant matches more fields
+    # A = { a: string } | { b: string }
+    # B = { a: string, b: string } | { a: string, b: string, c: string }
+    # Payload: { a: "", b: "", c: "" }
+    # Expected: B should win because B's second variant matches 3 fields
+    smartUnionVsUnionA1:
+      type: object
+      properties:
+        a:
+          type: string
+      required:
+        - a
+    smartUnionVsUnionA2:
+      type: object
+      properties:
+        b:
+          type: string
+      required:
+        - b
+    smartUnionVsUnionB1:
+      type: object
+      properties:
+        a:
+          type: string
+        b:
+          type: string
+      required:
+        - a
+        - b
+    smartUnionVsUnionB2:
+      type: object
+      properties:
+        a:
+          type: string
+        b:
+          type: string
+        c:
+          type: string
+      required:
+        - a
+        - b
+        - c
 
   responses:
     tokenAuthResponse:
