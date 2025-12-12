@@ -8719,6 +8719,30 @@ paths:
                     $ref: "components.yaml#/components/schemas/mixedUnionTypes"
                 required:
                   - json
+  /anything/discriminatedOpenEnum:
+    post:
+      operationId: discriminatedOpenEnum
+      tags:
+        - unions
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "components.yaml#/components/schemas/discriminatedOpenEnumUnion"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: res
+                type: object
+                properties:
+                  json:
+                    $ref: "components.yaml#/components/schemas/discriminatedOpenEnumUnion"
+                required:
+                  - json
   /anything/unionOfArrays:
     post:
       operationId: unionOfArraysPost
@@ -12510,6 +12534,105 @@ paths:
                       - $ref: "components.yaml#/components/schemas/smartUnionOpenEnumsAndSizeCatWithName"
                 required:
                   - json
+  /anything/openEnums/responseUsage/requestOnly:
+    post:
+      operationId: openEnumsResponseUsageRequestOnly
+      summary: Enum used only in request should remain closed
+      tags:
+        - openEnums
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "components.yaml#/components/schemas/objectWithEnumInRequestOnly"
+        required: true
+      responses:
+        "200":
+          description: OK - echoes back the request as raw JSON
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  json:
+                    type: object
+                    additionalProperties: true
+                required:
+                  - json
+  /anything/openEnums/responseUsage/explicitlyOpen:
+    post:
+      operationId: openEnumsResponseUsageExplicitlyOpen
+      summary: Enum explicitly marked open should be open even if request-only
+      tags:
+        - openEnums
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "components.yaml#/components/schemas/objectWithEnumExplicitlyOpen"
+        required: true
+      responses:
+        "200":
+          description: OK - echoes back the request as raw JSON
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  json:
+                    type: object
+                    additionalProperties: true
+                required:
+                  - json
+  /anything/openEnums/responseUsage/bothRequestAndResponse:
+    post:
+      operationId: openEnumsResponseUsageBothRequestAndResponse
+      summary: Enum used in both request and response should be automatically opened
+      tags:
+        - openEnums
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "components.yaml#/components/schemas/objectWithEnumInBoth"
+        required: true
+      responses:
+        "200":
+          description: OK - echoes back with the enum in response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  json:
+                    $ref: "components.yaml#/components/schemas/objectWithEnumInBoth"
+                required:
+                  - json
+  /anything/openEnums/responseUsage/responseOnly:
+    post:
+      operationId: openEnumsResponseUsageResponseOnly
+      summary: Enum used only in response should be automatically opened
+      tags:
+        - openEnums
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties: true
+        required: true
+      responses:
+        "200":
+          description: OK - returns object with enum in response only
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  json:
+                    $ref: "components.yaml#/components/schemas/objectWithEnumInResponseOnly"
+                required:
+                  - json                  
   /anything/smartUnion/deeplyNestedArray:
     post:
       operationId: smartUnionDeeplyNestedArray
@@ -14043,49 +14166,8 @@ components:
         - pending
         - ready-for-next-step
         - running
-    # Smart member resolution test schemas
-    smartResolutionFieldCountTest:
-      x-speakeasy-include: true
-      oneOf:
-        - $ref: "#/components/schemas/basicObject"
-        - $ref: "#/components/schemas/extendedObject"
-    basicObject:
-      x-speakeasy-include: true
-      type: object
-      properties:
-        name:
-          type: string
-        id:
-          type: integer
-      required:
-        - name
-        - id
-    extendedObject:
-      x-speakeasy-include: true
-      type: object
-      properties:
-        name:
-          type: string
-        id:
-          type: integer
-        description:
-          type: string
-        category:
-          type: string
-        priority:
-          type: integer
-      required:
-        - name
-        - id
-        - description
-        - category
-        - priority
-    smartResolutionEnumTest:
-      x-speakeasy-include: true
-      oneOf:
-        - $ref: "#/components/schemas/objectWithEnum"
-        - $ref: "#/components/schemas/objectWithMultipleEnums"
-    objectWithEnum:
+    # Open Enum Test Schemas
+    objectWithKnownOpenEnum:
       x-speakeasy-include: true
       type: object
       properties:
@@ -14093,14 +14175,16 @@ components:
           type: string
         status:
           type: string
-          enum: ["active", "inactive", "pending"]
+          enum: [active, inactive]
+          x-speakeasy-unknown-values: allow
         value:
           type: integer
       required:
         - name
         - status
         - value
-    objectWithMultipleEnums:
+    
+    objectWithUnknownOpenEnum:
       x-speakeasy-include: true
       type: object
       properties:
@@ -14108,126 +14192,20 @@ components:
           type: string
         status:
           type: string
-          enum: ["active", "inactive", "pending"]
+          enum: [pending, processing]
+          x-speakeasy-unknown-values: allow
         priority:
           type: string
-          enum: ["low", "medium", "high"]
-        category:
-          type: string
-          enum: ["type1", "type2", "type3"]
+          enum: [low, high]
+          x-speakeasy-unknown-values: allow
         value:
           type: integer
       required:
         - name
         - status
         - priority
-        - category
         - value
-    smartResolutionJsonSizeTest:
-      x-speakeasy-include: true
-      oneOf:
-        - $ref: "#/components/schemas/compactObject"
-        - $ref: "#/components/schemas/verboseObject"
-    compactObject:
-      x-speakeasy-include: true
-      type: object
-      properties:
-        id:
-          type: integer
-        name:
-          type: string
-      required:
-        - id
-        - name
-    verboseObject:
-      x-speakeasy-include: true
-      type: object
-      properties:
-        id:
-          type: integer
-        name:
-          type: string
-        longDescriptionField:
-          type: string
-        anotherVeryLongFieldName:
-          type: string
-        yetAnotherExtensivePropertyName:
-          type: string
-      required:
-        - id
-        - name
-        - longDescriptionField
-        - anotherVeryLongFieldName
-        - yetAnotherExtensivePropertyName
-    smartResolutionComplexTest:
-      x-speakeasy-include: true
-      oneOf:
-        - $ref: "#/components/schemas/simpleMatch"
-        - $ref: "#/components/schemas/betterMatch"
-        - $ref: "#/components/schemas/bestMatch"
-    simpleMatch:
-      x-speakeasy-include: true
-      type: object
-      properties:
-        type:
-          type: string
-        value:
-          type: string
-      required:
-        - type
-        - value
-    betterMatch:
-      x-speakeasy-include: true
-      type: object
-      properties:
-        type:
-          type: string
-        value:
-          type: string
-        status:
-          type: string
-          enum: ["draft", "published", "archived"]
-        count:
-          type: integer
-      required:
-        - type
-        - value
-        - status
-        - count
-    bestMatch:
-      x-speakeasy-include: true
-      type: object
-      properties:
-        type:
-          type: string
-        value:
-          type: string
-        status:
-          type: string
-          enum: ["draft", "published", "archived"]
-        priority:
-          type: string
-          enum: ["low", "medium", "high", "critical"]
-        category:
-          type: string
-          enum: ["news", "blog", "documentation", "tutorial"]
-        count:
-          type: integer
-        metadata:
-          type: string
-        tags:
-          type: array
-          items:
-            type: string
-      required:
-        - type
-        - value
-        - status
-        - priority
-        - category
-        - count
-        - metadata
-        - tags
+    
   securitySchemes:
     basicAuth:
       type: http

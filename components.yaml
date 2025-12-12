@@ -631,6 +631,75 @@ components:
         - "three"
         - "four_and_more"
       example: "one"
+    enumUsedInResponseOnly:
+      type: string
+      description: "Enum used only in responses - should be automatically opened"
+      enum:
+        - "success"
+        - "pending"
+        - "failed"
+      example: "success"
+    enumUsedInRequestOnly:
+      type: string
+      description: "Enum used only in requests - should remain closed"
+      enum:
+        - "create"
+        - "update"
+        - "delete"
+      example: "create"
+    enumUsedInRequestExplicitlyOpen:
+      type: string
+      description: "Enum used only in requests but explicitly marked open"
+      enum:
+        - "alpha"
+        - "beta"
+        - "gamma"
+      x-speakeasy-unknown-values: allow
+      example: "alpha"
+    enumUsedInBothRequestAndResponse:
+      type: string
+      description: "Enum used in both request and response - should be automatically opened"
+      enum:
+        - "active"
+        - "inactive"
+        - "suspended"
+      example: "active"
+    objectWithEnumInResponseOnly:
+      type: object
+      properties:
+        status:
+          $ref: "#/components/schemas/enumUsedInResponseOnly"
+        message:
+          type: string
+      required:
+        - status
+    objectWithEnumInRequestOnly:
+      type: object
+      properties:
+        action:
+          $ref: "#/components/schemas/enumUsedInRequestOnly"
+        data:
+          type: string
+      required:
+        - action
+    objectWithEnumExplicitlyOpen:
+      type: object
+      properties:
+        mode:
+          $ref: "#/components/schemas/enumUsedInRequestExplicitlyOpen"
+        value:
+          type: string
+      required:
+        - mode
+    objectWithEnumInBoth:
+      type: object
+      properties:
+        state:
+          $ref: "#/components/schemas/enumUsedInBothRequestAndResponse"
+        description:
+          type: string
+      required:
+        - state
     enumArray:
       type: array
       items:
@@ -681,6 +750,47 @@ components:
             $ref: "#/components/schemas/arrayOfDiscriminatedUnions"
       required:
         - nestedArray
+    discriminatedOpenEnumUnion:
+      oneOf:
+        - $ref: "#/components/schemas/objectWithOpenEnumStatus1"
+        - $ref: "#/components/schemas/objectWithOpenEnumStatus2"
+      discriminator:
+        propertyName: status
+        mapping:
+          active: "#/components/schemas/objectWithOpenEnumStatus1"
+          inactive: "#/components/schemas/objectWithOpenEnumStatus2"
+          pending: "#/components/schemas/objectWithOpenEnumStatus1"
+          archived: "#/components/schemas/objectWithOpenEnumStatus2"
+    objectWithOpenEnumStatus1:
+      type: object
+      properties:
+        status:
+          type: string
+          enum: [active, pending]
+          x-speakeasy-unknown-values: allow
+        userId:
+          type: string
+        activeAt:
+          type: string
+          format: date-time
+      required:
+        - status
+        - userId
+    objectWithOpenEnumStatus2:
+      type: object
+      properties:
+        status:
+          type: string
+          enum: [inactive, archived]
+          x-speakeasy-unknown-values: allow
+        reason:
+          type: string
+        inactiveSince:
+          type: string
+          format: date-time
+      required:
+        - status
+        - reason
     simpleObject:
       description: "A simple object that uses all our supported primitive types and enums and has optional properties."
       externalDocs:
@@ -2759,8 +2869,6 @@ components:
       properties:
         a:
           type: string
-      required:
-        - a
     smartUnionAnyFieldB:
       type: object
       properties:
