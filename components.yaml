@@ -2388,6 +2388,27 @@ components:
           type: string
       required:
         - url
+    optionalDataEvent:
+      description: Represents an SSE event where the data field is optional (not in required array)
+      type: object
+      properties:
+        event:
+          type: string
+        data:
+          $ref: "#/components/schemas/optionalDataEventPayload"
+        id:
+          type: string
+        retry:
+          type: integer
+      required:
+        - event
+    optionalDataEventPayload:
+      type: object
+      properties:
+        content:
+          type: string
+      required:
+        - content
     themeRequestOpaque:
       type: object
       properties:

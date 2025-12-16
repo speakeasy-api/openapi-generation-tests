@@ -11779,6 +11779,21 @@ paths:
               x-speakeasy-sse-sentinel: "[SENTINEL]"
               schema:
                 $ref: "components.yaml#/components/schemas/textEvent"
+  /eventstreams/optionaldata:
+    post:
+      tags:
+        - eventstreams
+      operationId: optionalData
+      description: Test SSE endpoint with optional data field in the event schema
+      servers:
+        - url: http://localhost:35456
+      responses:
+        "200":
+          description: Ok
+          content:
+            text/event-stream:
+              schema:
+                $ref: "components.yaml#/components/schemas/optionalDataEvent"
   /jsonl:
     get:
       tags:
