@@ -3504,6 +3504,29 @@ paths:
                   additionalProperties:
                     $ref: "components.yaml#/components/schemas/simpleObjectCamelCase"
                 example: { "mapElem1" : {"subMapElem1": "...", "subMapElem2": "..."}, "mapElem2" : {"subMapElem1": "...", "subMapElem2": "..."}}
+  /requestbody#mapOfAny:
+    post:
+      operationId: requestBodyPostApplicationJsonMapOfAny
+      tags:
+        - requestBodies
+      servers:
+        - url: http://localhost:35456
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "components.yaml#/components/schemas/mapAnyValue"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: res
+                type: object
+                additionalProperties: true
+                example: { "mapElemArray": ["array-test"], "mapElemBool": true, "mapElemNumber": 123, "mapElemObject": { "property": "property-test" }, "mapElemString": "string-test" }
   /requestbody#mapOfArrays:
     post:
       operationId: requestBodyPostApplicationJsonMapOfArray

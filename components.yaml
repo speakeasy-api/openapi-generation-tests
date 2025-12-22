@@ -1796,6 +1796,10 @@ components:
         additionalProperties:
           $ref: "#/components/schemas/simpleObjectCamelCase"
       example: [{"mapElem1": "...", "mapElem2": "..."}, {"mapElem1": "...", "mapElem2": "..."}]
+    mapAnyValue:
+      type: object
+      additionalProperties: true
+      example: { "mapElemArray": ["array-test"], "mapElemBool": true, "mapElemNumber": 123, "mapElemObject": { "property": "property-test" }, "mapElemString": "string-test" }
     mapArrValue:
       type: object
       additionalProperties:
