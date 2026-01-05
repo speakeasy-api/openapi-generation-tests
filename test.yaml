@@ -1566,6 +1566,7 @@ paths:
           style: form
           explode: true
           schema:
+            title: UnionParam Filter
             oneOf:
               - type: string
               - type: array
