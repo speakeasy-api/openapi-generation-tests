@@ -3151,10 +3151,21 @@ paths:
                 name:
                   type: string
                   description: A fixed property
+                nestedInt64Str:
+                  type: object
+                  description: Tests nested integer:"string" tag handling (GEN-2298)
+                  properties:
+                    value:
+                      type: string
+                      format: int64
+                      example: "9876543210"
+                  required:
+                    - value
               additionalProperties:
                 type: string
               required:
                 - name
+                - nestedInt64Str
         required: true
       responses:
         "200":
@@ -3169,10 +3180,19 @@ paths:
                     properties:
                       name:
                         type: string
+                      nestedInt64Str:
+                        type: object
+                        properties:
+                          value:
+                            type: string
+                            example: "9876543210"
+                        required:
+                          - value
                     additionalProperties:
                       type: string
                     required:
                       - name
+                      - nestedInt64Str
                 required:
                   - json
   /anything/requestBodies/post/application/json/simple:
