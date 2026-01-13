@@ -12493,6 +12493,28 @@ paths:
               schema:
                 $ref: "#/components/schemas/AnyOfMultiMatch"
 
+  /anything/crossRefUnions:
+    get:
+      operationId: crossRefUnions
+      summary: GEN-2264 - Test cross-referencing discriminated unions
+      description: |
+        Tests two mutually referencing unions where one union's array variant
+        references a different union (not itself). This tests the one-way
+        dependency ordering fix.
+      tags: [unions]
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  unionA:
+                    $ref: "#/components/schemas/CrossRefUnionA"
+                  unionB:
+                    $ref: "#/components/schemas/CrossRefUnionB"
+
   /anything/smartUnion/openEnums:
     post:
       operationId: smartUnionOpenEnums
@@ -13696,6 +13718,118 @@ components:
         details:
           type: string
       required: [name, description]
+
+    # GEN-2264: Test case for two mutually referencing unions where one union's
+    # array variant references a DIFFERENT union (not itself). This tests the
+    # one-way dependency ordering fix where a union depends on a local class
+    # that doesn't reference back to the same union.
+    # Pattern: CrossRefUnionA's array -> CrossRefUnionB
+    #          CrossRefUnionB's object -> CrossRefUnionA
+    CrossRefUnionA:
+      description: Union A - array variant references CrossRefUnionB (different union).
+      anyOf:
+        - type: object
+          title: CrossRefUnionAText
+          description: A text field
+          properties:
+            type:
+              type: string
+              const: text
+            label:
+              type: string
+          required:
+            - label
+            - type
+        - type: object
+          title: CrossRefUnionANumber
+          description: A number field
+          properties:
+            type:
+              type: string
+              const: number
+            label:
+              type: string
+          required:
+            - label
+            - type
+        - type: object
+          title: CrossRefUnionAArray
+          description: An array field containing CrossRefUnionB items
+          properties:
+            type:
+              type: string
+              const: array
+            label:
+              type: string
+            item_type:
+              $ref: "#/components/schemas/CrossRefUnionB"
+          required:
+            - label
+            - type
+            - item_type
+      discriminator:
+        propertyName: type
+    CrossRefUnionB:
+      description: Union B - object variant references CrossRefUnionA, array variant is self-referential.
+      anyOf:
+        - type: object
+          title: CrossRefUnionBText
+          description: A text field
+          properties:
+            type:
+              type: string
+              const: text
+            label:
+              type: string
+          required:
+            - label
+            - type
+        - type: object
+          title: CrossRefUnionBNumber
+          description: A number field
+          properties:
+            type:
+              type: string
+              const: number
+            label:
+              type: string
+          required:
+            - label
+            - type
+        - type: object
+          title: CrossRefUnionBObject
+          description: An object field with properties from CrossRefUnionA
+          properties:
+            type:
+              type: string
+              const: object
+            label:
+              type: string
+            properties:
+              type: object
+              additionalProperties:
+                $ref: "#/components/schemas/CrossRefUnionA"
+          required:
+            - label
+            - type
+            - properties
+        - type: object
+          title: CrossRefUnionBArray
+          description: An array field containing CrossRefUnionB items (self-ref)
+          properties:
+            type:
+              type: string
+              const: array
+            label:
+              type: string
+            item_type:
+              $ref: "#/components/schemas/CrossRefUnionB"
+          required:
+            - label
+            - type
+            - item_type
+      discriminator:
+        propertyName: type
 
     ExampleVehicle:
       type: object
