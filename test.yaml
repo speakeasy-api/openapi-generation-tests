@@ -14398,7 +14398,31 @@ components:
         - status
         - priority
         - value
-    
+
+    BooleanSerializationTest:
+      x-speakeasy-include: true
+      type: object
+      properties:
+        isActive:
+          type: boolean
+          description: Test boolean field with is prefix
+        isEnabled:
+          type: boolean
+          description: Test another boolean field with is prefix
+        isPublic:
+          type: boolean
+          description: Test third boolean field with is prefix
+        normalBoolean:
+          type: boolean
+          description: Normal boolean without is prefix for comparison
+        name:
+          type: string
+          description: Regular string field
+      required:
+        - isActive
+        - isEnabled
+        - name
+
   securitySchemes:
     basicAuth:
       type: http
