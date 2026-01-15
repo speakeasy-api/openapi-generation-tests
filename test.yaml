@@ -12080,6 +12080,102 @@ paths:
           $ref: "components.yaml#/components/responses/tokenAuthResponse"
         "401":
           description: Unsuccessful authentication.
+  /anything/async-hooks:
+    get:
+      operationId: testAsyncHooks
+      tags:
+        - hooks
+      parameters:
+        - name: someParam
+          in: query
+          required: true
+          schema:
+            type: string
+            example: someInitialValue
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: res
+                type: object
+                properties:
+                  args:
+                    type: object
+                    properties:
+                      asyncParam:
+                        type: string
+                        example: asyncOverriddenParam
+                    required:
+                      - asyncParam
+                  headers:
+                    type: object
+                    properties:
+                      Async-Idempotency-Key:
+                        type: string
+                        example: async-key
+                      Async-Client-Level-Header:
+                        type: string
+                        example: added by async client
+                    required:
+                      - Async-Idempotency-Key
+                      - Async-Client-Level-Header
+                required:
+                  - args
+                  - headers
+  /anything/async-hooks/afterResponse:
+    get:
+      x-speakeasy-test: false
+      operationId: testAsyncHooksAfterResponse
+      tags:
+        - hooks
+      responses:
+        "200":
+          description: OK
+  /status/400#testAsyncHooksError:
+    get:
+      x-speakeasy-test: false
+      operationId: testAsyncHooksError
+      tags:
+        - hooks
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad Request
+  /anything/async-hooks/beforeCreateRequestPaths/{namespace}:
+    get:
+      x-speakeasy-test: false
+      operationId: testAsyncHooksBeforeCreateRequestPaths
+      tags:
+        - hooks
+      parameters:
+        - name: namespace
+          in: path
+          required: true
+          schema:
+            type: string
+            example: "foo/bar"
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: res
+                type: object
+                properties:
+                  url:
+                    type: string
+                  headers:
+                    type: object
+                    properties:
+                      async-old-pathname:
+                        type: string
+                required:
+                  - url
+                  - headers
   /anything/enums/openEnumUnrecognized:
     post:
       operationId: enumsPostOpenEnumUnrecognized
