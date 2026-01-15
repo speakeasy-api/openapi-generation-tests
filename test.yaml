@@ -808,6 +808,7 @@ paths:
           examples:
             test:
               value: pathValue
+          required: true
         - name: queryStringParam
           in: query
           schema:
@@ -4482,7 +4483,7 @@ paths:
               metadata:
                 contentType: application/json
               attachments:
-                contentType: image/png image/jpeg image/gif image/webp image/svg+xml image/bmp image/tiff image/ico image/webp image/svg+xml image/bmp image/tiff image/ico
+                contentType: image/png, image/jpeg, image/gif, image/webp, image/svg+xml, image/bmp, image/tiff, image/ico, image/webp, image/svg+xml, image/bmp, image/tiff, image/ico
               plainTextData:
                 contentType: text/plain
         required: true
@@ -4936,8 +4937,6 @@ paths:
                         nullable: true
                         type: string
                         format: decimal
-                      x-speakeasy-test-internal-directives:
-                        - sanitizeTimestamp: {}
   /anything/requestBodies/post/nullableRequiredSharedObject:
     post:
       operationId: nullableRequiredSharedObjectPost
@@ -11874,7 +11873,8 @@ paths:
               schema:
                 type: object
                 properties:
-                  isFinished: string
+                  isFinished:
+                    type: string
                 required:
                   - isFinished
   /jsonl/chunks:
@@ -13637,8 +13637,9 @@ paths:
               schema:
                 type: object
                 properties:
-                  name: string
-                  example: "John Doe"
+                  name: 
+                    type: string
+                    example: "John Doe"
 x-speakeasy-webhooks:
   security:
     type: signature
@@ -13992,7 +13993,7 @@ components:
       properties:
         nullableTypeArray:
           type:
-            - null
+            - "null"
             - string
         nullableType:
           type: string

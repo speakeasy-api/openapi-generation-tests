@@ -469,7 +469,7 @@ components:
         - $ref: "#/components/schemas/simpleObject"
         - type: array
           items:
-          - type: string
+            type: string
             title: nestedenum
             enum: 
             - "abc"
@@ -1726,8 +1726,8 @@ components:
             $ref: "#/components/schemas/simpleObject"
           type: array
           example: ["...", "..."]
-        required:
-          - json
+      required:
+        - json
     arrObjValueCamelCase:
       type: object
       properties:
@@ -1736,8 +1736,8 @@ components:
             $ref: "#/components/schemas/simpleObjectCamelCase"
           type: array
           example: ["...", "..."]
-        required:
-          - json
+      required:
+        - json
     mapValue:
       type: object
       additionalProperties:
@@ -1770,8 +1770,8 @@ components:
           additionalProperties:
             $ref: "#/components/schemas/simpleObject"
           example: { "mapElem1": "...", "mapElem2": "..." }
-        required:
-          - json
+      required:
+        - json
     mapObjValueCamelCase:
       type: object
       properties:
@@ -1780,8 +1780,8 @@ components:
           additionalProperties:
             $ref: "#/components/schemas/simpleObjectCamelCase"
           example: { "mapElem1": "...", "mapElem2": "..." }
-        required:
-          - json
+      required:
+        - json
     arrMapValue:
       type: array
       items:
