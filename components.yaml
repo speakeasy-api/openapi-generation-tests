@@ -3241,7 +3241,18 @@ components:
                   - numPages
                   - resultArray
     errorUnionResponse:
-      description: Internal Server Error
+      description: |-
+        Internal Server Error. Expect one of the following:
+        <list type="bullet">
+          <item>
+            <term>ErrorType1</term>
+            <description>Error of type one</description>
+          </item>
+          <item>
+            <term>ErrorType2</term>
+            <description>Error of type two</description>
+          </item>
+        </list>
       content:
         application/json:
           schema:

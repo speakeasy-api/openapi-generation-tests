@@ -2660,7 +2660,7 @@ paths:
   /anything/queryParams/namespaceConflict:
     get:
       operationId: ambiguousQueryParam
-      summary: Tests conflict with C# System namespace
+      summary: Tests conflict with C# <see cref="System"/> namespace
       parameters:
         - name: console
           in: query
