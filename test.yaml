@@ -188,6 +188,20 @@ security:
   - customSchemeAppId: []
   - {}
 paths:
+  /collision:
+    get:
+      operationId: getCollision
+      summary: Test collision
+      x-speakeasy-group: collision
+      description: |-
+        This endpoint tests a collision between a model name and a class name.
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Collision"
   /anything/selectGlobalServer:
     get:
       operationId: selectGlobalServer
@@ -13771,6 +13785,15 @@ webhooks:
           description: Consumer's response
 components:
   schemas:
+    Collision:
+      type: object
+      description: A model that tests a collision between a model name and a class name.
+      properties:
+        collision:
+          type: string
+          example: "collision"
+      required:
+        - collision
     WebhookRequestCreated:
       type: object
       properties:
