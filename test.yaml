@@ -9809,6 +9809,51 @@ paths:
           description: OK
         "4XX":
           $ref: "components.yaml#/components/responses/errorUnionDiscriminatedResponse"
+  # Test operations for shared discriminated error type
+  # These test that Discriminator.Mapping references are updated when the same
+  # SharedDiscriminatedError type is used across multiple error response oneOfs
+  /errors/400#sharedErrorUnion1:
+    servers:
+      - url: http://localhost:35456
+    post:
+      operationId: sharedErrorUnionPost1
+      tags:
+        - errors
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                value:
+                  type: string
+      responses:
+        "200":
+          description: OK
+        "4XX":
+          $ref: "components.yaml#/components/responses/sharedErrorUnionResponse1"
+  /errors/400#sharedErrorUnion2:
+    servers:
+      - url: http://localhost:35456
+    post:
+      operationId: sharedErrorUnionPost2
+      tags:
+        - errors
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                value:
+                  type: string
+      responses:
+        "200":
+          description: OK
+        "4XX":
+          $ref: "components.yaml#/components/responses/sharedErrorUnionResponse2"
   /anything/telemetry/user-agent:
     get:
       operationId: telemetryUserAgentGet

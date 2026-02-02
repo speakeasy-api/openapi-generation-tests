@@ -2012,6 +2012,42 @@ components:
       required:
         - tag
         - error
+    # Test case for shared error type in multiple discriminated error unions
+    # This tests that Discriminator.Mapping references are properly updated
+    # when the same type is used in multiple error response oneOfs
+    SharedDiscriminatedError:
+      type: object
+      properties:
+        errorType:
+          type: string
+          const: shared_error
+        message:
+          type: string
+      required:
+        - errorType
+        - message
+    SpecificError1:
+      type: object
+      properties:
+        errorType:
+          type: string
+          const: specific_error_1
+        details:
+          type: string
+      required:
+        - errorType
+        - details
+    SpecificError2:
+      type: object
+      properties:
+        errorType:
+          type: string
+          const: specific_error_2
+        reason:
+          type: string
+      required:
+        - errorType
+        - reason
     teapotJSONError:
       type: object
       properties:
@@ -3272,6 +3308,35 @@ components:
               mapping:
                 tag1: "components.yaml#/components/schemas/taggedError1"
                 tag2: "components.yaml#/components/schemas/taggedError2"
+    # Test responses for shared discriminated error type
+    # These test that Discriminator.Mapping references are updated when the same
+    # SharedDiscriminatedError type is used across multiple error response oneOfs
+    sharedErrorUnionResponse1:
+      description: Error response 1 with shared error type
+      content:
+        application/json:
+          schema:
+            oneOf:
+              - $ref: "components.yaml#/components/schemas/SpecificError1"
+              - $ref: "components.yaml#/components/schemas/SharedDiscriminatedError"
+            discriminator:
+              propertyName: errorType
+              mapping:
+                specific_error_1: "components.yaml#/components/schemas/SpecificError1"
+                shared_error: "components.yaml#/components/schemas/SharedDiscriminatedError"
+    sharedErrorUnionResponse2:
+      description: Error response 2 with shared error type
+      content:
+        application/json:
+          schema:
+            oneOf:
+              - $ref: "components.yaml#/components/schemas/SpecificError2"
+              - $ref: "components.yaml#/components/schemas/SharedDiscriminatedError"
+            discriminator:
+              propertyName: errorType
+              mapping:
+                specific_error_2: "components.yaml#/components/schemas/SpecificError2"
+                shared_error: "components.yaml#/components/schemas/SharedDiscriminatedError"
 
   parameters:
     emptyObjectParam:
