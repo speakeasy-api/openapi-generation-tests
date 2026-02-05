@@ -2327,6 +2327,20 @@ components:
       properties:
         data:
           type: string
+    sseEvent:
+      description: Represents a single event with standard fields
+      type: object
+      required: [data]
+      properties:
+        id:
+          type: string
+        event:
+          type: string
+        retry:
+          type: integer
+          format: int64
+        data:
+          type: string
     richStream:
       oneOf:
         - $ref: "#/components/schemas/richCompletionEvent"
@@ -2409,14 +2423,20 @@ components:
           type: string
         event:
           type: string
-          enum: [message, url]
+          enum: [message, url, array, primitive]
         data:
           oneOf:
             - $ref: "#/components/schemas/messageEvent"
             - $ref: "#/components/schemas/urlEvent"
+            - $ref: "#/components/schemas/arrayEvent"
+            - type: boolean
+            - type: number
+              format: float
     messageEvent:
       type: object
       properties:
+        id:
+          type: integer
         content:
           type: string
       required:
@@ -2428,6 +2448,34 @@ components:
           type: string
       required:
         - url
+    arrayEvent:
+      type: array
+      items:
+        type: integer
+    partialWithCommentsEvent:
+      type: object
+      properties:
+        id:
+          type: string
+        event:
+          type: string
+        data:
+          type: object
+          properties:
+            message:
+              type: string
+            status:
+              type: string
+            progress:
+              type: integer
+            result:
+              type: string
+            test:
+              type: string
+            another:
+              type: string
+      required:
+        - data
     optionalDataEvent:
       description: Represents an SSE event where the data field is optional (not in required array)
       type: object

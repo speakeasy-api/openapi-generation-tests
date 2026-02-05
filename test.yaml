@@ -11881,6 +11881,22 @@ paths:
               x-speakeasy-sse-sentinel: "[SENTINEL]"
               schema:
                 $ref: "components.yaml#/components/schemas/textEvent"
+  /eventstreams/partial-with-comments:
+    post:
+      tags:
+        - eventstreams
+      operationId: partialWithComments
+      description: SSE with comments, partial messages and mixed boundaries
+      servers:
+        - url: http://localhost:35456
+      responses:
+        "200":
+          description: Ok
+          content:
+            text/event-stream:
+              x-speakeasy-sse-sentinel: "[DONE]"
+              schema:
+                $ref: "components.yaml#/components/schemas/partialWithCommentsEvent"
   /eventstreams/optionaldata:
     post:
       tags:
@@ -11896,6 +11912,21 @@ paths:
             text/event-stream:
               schema:
                 $ref: "components.yaml#/components/schemas/optionalDataEvent"
+  /eventstreams/wpt-compliance:
+    get:
+      tags:
+        - eventstreams
+      operationId: wptCompliance
+      description: SSE parsing edge cases per HTML Living Standard
+      servers:
+        - url: http://localhost:35456
+      responses:
+        "200":
+          description: Ok
+          content:
+            text/event-stream:
+              schema:
+                $ref: "components.yaml#/components/schemas/sseEvent"
   /jsonl:
     get:
       tags:
