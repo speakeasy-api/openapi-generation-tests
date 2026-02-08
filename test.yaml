@@ -202,6 +202,88 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Collision"
+  /parameterShadowing:
+    post:
+      operationId: parameterShadowingTest
+      x-speakeasy-group: collision
+      summary: Parameter Shadowing Test
+      description: |-
+        This endpoint tests that user parameters named after internal locals
+        and module imports (utils, models, errors, request, http_res, etc.)
+        are handled correctly without shadowing issues.
+      x-speakeasy-flatten: all
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - request
+              properties:
+                request:
+                  type: string
+                  title: Request
+                  description: A field named request to conflict with internal local
+                req:
+                  type: string
+                  title: Req
+                  description: A field named req to conflict with internal local
+                base_url:
+                  type: string
+                  title: Base URL
+                  description: A field named base_url to conflict with internal local
+                url_variables:
+                  type: string
+                  title: URL Variables
+                  description: A field named url_variables to conflict with internal local
+                retry_config:
+                  type: string
+                  title: Retry Config
+                  description: A field named retry_config to conflict with internal local
+                http_res:
+                  type: integer
+                  title: HTTP Res
+                  description: A field named http_res to conflict with internal local
+                response_data:
+                  type: string
+                  title: Response Data
+                  description: A field named response_data to conflict with internal local
+                http_res_text:
+                  type: string
+                  title: HTTP Res Text
+                  description: A field named http_res_text to conflict with internal local
+                utils:
+                  type: string
+                  title: Utils
+                  description: Conflicts with utils module import
+                models:
+                  type: string
+                  title: Models
+                  description: Conflicts with models module import
+                errors:
+                  type: string
+                  title: Errors
+                  description: Conflicts with errors module import
+                operations:
+                  type: string
+                  title: Operations
+                  description: Conflicts with operations module import
+                types:
+                  type: string
+                  title: Types
+                  description: Conflicts with types module import
+                shared:
+                  type: string
+                  title: Shared
+                  description: Conflicts with shared module import
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Collision"
   /anything/selectGlobalServer:
     get:
       operationId: selectGlobalServer
