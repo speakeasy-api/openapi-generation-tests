@@ -12724,7 +12724,32 @@ paths:
                   - url
                   - args
                   - headers
-
+  /proxy:
+    post:
+      operationId: proxy
+      tags:
+        - customClient
+      servers:
+        - url: http://bypassed.com
+      description: |
+        Tests HTTP proxy support. The server URL is set to an unreachable host
+        so the request only succeeds if proxied through the localhost:35456 where
+        the api test service handles the CONNECT tunnel and forwards the request
+        to httpbin's /anything endpoint, which echoes the request body back.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: string
+              example: "proxied"
+      responses:
+        "200":
+          description: Ok
+          content:
+            application/json:
+              schema:
+                type: string
+                example: "proxied"
   /anything/multilineExample:
     get:
       operationId: multilineExample
