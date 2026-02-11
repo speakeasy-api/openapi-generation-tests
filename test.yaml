@@ -8786,6 +8786,7 @@ paths:
                     $ref: "components.yaml#/components/schemas/HasWheels"
                 required:
                   - json
+
   /anything/discriminatedNestedUnion:
     post:
       operationId: nestedDiscUnion
