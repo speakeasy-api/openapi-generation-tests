@@ -10650,6 +10650,49 @@ paths:
             type: page
         outputs:
           numPages: $.numPages
+  /pagination/limitoffset/offset#paginationParamsWrappedRequest:
+    x-speakeasy-exclude-test-sdk: [go,javav2,pythonv2,terraform]
+    put:
+      description: |
+        This operation has a request wrapper type that encapsulates both
+        the parameters (where pagination inputs are) and the request body.
+      operationId: paginationParamsWrappedRequest
+      x-speakeasy-max-method-params: 0
+      servers:
+        - url: http://localhost:35456
+      parameters:
+        - name: offset
+          in: query
+          schema:
+            type: integer
+        - name: limit
+          in: query
+          schema:
+            type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                page:
+                  type: integer
+      responses:
+        "200":
+          $ref: "components.yaml#/components/responses/paginationResponse"
+      tags:
+        - pagination
+      x-speakeasy-pagination:
+        type: offsetLimit
+        inputs:
+          - name: limit
+            in: parameters
+            type: limit
+          - name: offset
+            in: parameters
+            type: offset
+        outputs:
+          results: $.resultArray
   /pagination/cursor#ambiguousInput:
     x-speakeasy-exclude-test-sdk: [go,javav2,pythonv2,terraform]
     put:
