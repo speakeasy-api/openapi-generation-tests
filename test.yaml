@@ -12007,6 +12007,21 @@ paths:
               x-speakeasy-sse-sentinel: "[SENTINEL]"
               schema:
                 $ref: "components.yaml#/components/schemas/textEvent"
+  /eventstreams/union-with-comments:
+    post:
+      tags:
+        - eventstreams
+      operationId: unionWithComments
+      description: SSE union events with comments and partial delivery
+      servers:
+        - url: http://localhost:35456
+      responses:
+        "200":
+          description: Ok
+          content:
+            text/event-stream:
+              schema:
+                $ref: "components.yaml#/components/schemas/unionWithCommentsStream"
   /eventstreams/partial-with-comments:
     post:
       tags:

@@ -2452,6 +2452,49 @@ components:
       type: array
       items:
         type: integer
+    unionWithCommentsStream:
+      oneOf:
+        - $ref: "#/components/schemas/statusEvent"
+        - $ref: "#/components/schemas/progressEvent"
+      discriminator:
+        propertyName: event
+        mapping:
+          status: "#/components/schemas/statusEvent"
+          progress: "#/components/schemas/progressEvent"
+    statusEvent:
+      description: Represents a status update event
+      type: object
+      required: [event, data]
+      properties:
+        event:
+          type: string
+        data:
+          $ref: "#/components/schemas/statusEventData"
+    statusEventData:
+      type: object
+      required: [status, message]
+      properties:
+        status:
+          type: string
+        message:
+          type: string
+    progressEvent:
+      description: Represents a progress update event
+      type: object
+      required: [event, data]
+      properties:
+        event:
+          type: string
+        data:
+          $ref: "#/components/schemas/progressEventData"
+    progressEventData:
+      type: object
+      required: [percent, detail]
+      properties:
+        percent:
+          type: integer
+        detail:
+          type: string
     partialWithCommentsEvent:
       type: object
       properties:
