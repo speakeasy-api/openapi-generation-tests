@@ -14027,6 +14027,17 @@ webhooks:
           description: Consumer's response
 components:
   schemas:
+    # Ruby Issue #1: Gem filename too long test - this schema name is intentionally
+    # very long to test that generated filenames are truncated to avoid
+    # Gem::Package::TooLongFileName errors during gem packaging.
+    GeneratePriceEstimateForDedicatedInferenceV1FlowPricingInferenceDedicatedPostResponseBody:
+      x-speakeasy-include: true
+      type: object
+      properties:
+        price:
+          type: number
+        currency:
+          type: string
     Collision:
       type: object
       description: A model that tests a collision between a model name and a class name.
@@ -14784,6 +14795,123 @@ components:
         - isActive
         - isEnabled
         - name
+
+    # Ruby Issue #3c: Schema name with dots test
+    docker.ContainerInfo:
+      x-speakeasy-include: true
+      type: object
+      properties:
+        id:
+          type: string
+        status:
+          type: string
+    docker.DeploymentStatus:
+      x-speakeasy-include: true
+      type: object
+      properties:
+        containers:
+          type: array
+          items:
+            $ref: "#/components/schemas/docker.ContainerInfo"
+
+    # Ruby Issue #2b: RuboCop Style/NumericLiterals test
+    RubyNumericLiteralsTest:
+      x-speakeasy-include: true
+      type: object
+      properties:
+        speed:
+          type: integer
+          default: 64512
+        asn:
+          type: integer
+          default: 5143232
+        smallNum:
+          type: integer
+          default: 1234
+        sixDigit:
+          type: integer
+          default: 100000
+        fiveDigit:
+          type: integer
+          default: 10000
+        sevenDigit:
+          type: integer
+          default: 1234567
+        constLargeNum:
+          type: integer
+          const: 999999
+
+    # Ruby Issue #2a: RuboCop Style/NumericPredicate test
+    RubyNumericPredicateTest:
+      x-speakeasy-include: true
+      type: object
+      properties:
+        commandType:
+          type: integer
+          oneOf:
+            - title: SUB_COMMAND
+              const: 0
+            - title: SUB_COMMAND_GROUP
+              const: 1
+            - title: STRING
+              const: 2
+
+    # Ruby Issue #4: Tapioca Models namespace collision test
+    Models:
+      x-speakeasy-include: true
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            type: string
+        count:
+          type: integer
+
+    # Ruby Issue #5: Sorbet T namespace shadow test
+    RubySorbetTShadowTest:
+      x-speakeasy-include: true
+      type: object
+      properties:
+        borders:
+          type: object
+          properties:
+            l:
+              type: string
+              enum: [unknown, invisible, visible]
+            t:
+              type: string
+              enum: [unknown, invisible, visible]
+            r:
+              type: string
+              enum: [unknown, invisible, visible]
+            b:
+              type: string
+              enum: [unknown, invisible, visible]
+
+    # Ruby Issue #3b: Reserved word enum value test
+    RubyReservedEnumValueTest:
+      x-speakeasy-include: true
+      type: string
+      enum:
+        - ENB
+        - ENC
+        - END
+        - ENE
+        - BEGIN
+        - EOF
+
+    # Ruby Issue #3d: Special characters in enum values test
+    RubySpecialCharEnumTest:
+      x-speakeasy-include: true
+      type: string
+      enum:
+        - "Polar::Models::Organization"
+        - "simple_value"
+        - "value;with;semicolons"
+        - "key=value"
+        - "it's quoted"
+        - "back\\slash"
 
   securitySchemes:
     basicAuth:
