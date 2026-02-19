@@ -162,6 +162,8 @@ tags:
     description: Endpoints for testing streaming data in JsonL format
   - name: documentation
     description: Testing for documentation extensions and tooling.
+  - name: fileProcessing
+    description: Endpoints for testing async method name collision.
     x-speakeasy-docs:
       go:
         description: Testing for documentation extensions in Go.
@@ -569,6 +571,24 @@ paths:
           $ref: "components.yaml#/components/responses/tokenAuthResponse"
         "401":
           description: Unsuccessful authentication.
+  /transfers#duplicateScopeOAuth2:
+    post:
+      operationId: duplicateScopeAuth
+      tags:
+        - auth
+      security:
+        - duplicateScopeOAuth2:
+            - /accounts/{accountID}/transfers.write
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
   /bearer#global:
     get:
       operationId: globalBearerAuth
@@ -6666,6 +6686,33 @@ paths:
               schema:
                 type: string
                 example: "ok"
+  /response-headers-with-no-body-success:
+    get:
+      operationId: responseHeadersWithNoBodySuccess
+      tags:
+        - responseHeaders
+      summary: |
+        Test operation where a 200 response has both headers and a JSON body,
+        but a 204 response has no body. In flat response format, the headers
+        force a response envelope with a Result field. The 204 no-body path
+        passes result=None, which must be Optional in the Result type.
+      responses:
+        "200":
+          description: OK
+          headers:
+            X-Result-Header:
+              description: A response header returned with the 200 response
+              schema:
+                type: string
+                example: "header-value"
+          content:
+            application/json:
+              schema:
+                $ref: "components.yaml#/components/schemas/authToken"
+              example:
+                token: "test-token"
+        "204":
+          description: No Content
   /anything/responseBodies/additionalProperties:
     post:
       operationId: responseBodyAdditionalPropertiesPost
@@ -7010,6 +7057,43 @@ paths:
                 properties:
                   data:
                     type: string
+  /filenameTooLong:
+    get:
+      operationId: thisIsAnExtremelyLongOperationIdThatWillCauseTheGeneratedPythonFileNameToExceedTheTwoHundredAndFiftyFiveCharacterOperatingSystemLimitWhenCombinedWithThePathAndOtherPrefixesThatTheGeneratorAddsToTheFileNameAutomaticallyAndWeNeedToMakeSureThisIsLongEnoughToTriggerTruncation
+      tags:
+        - responseBodies
+      x-speakeasy-group: responseBodies
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: string
+  /anything/responseBodies/baseModelOverride:
+    get:
+      operationId: responseBodyBaseModelOverride
+      tags:
+        - responseBodies
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseModelOverrideModel"
+  /anything/responseBodies/modelConfigCollision:
+    get:
+      operationId: responseBodyModelConfigCollision
+      tags:
+        - responseBodies
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ModelConfigCollisionModel"
   /reflect#decimalStr:
     post:
       operationId: responseBodyDecimalStr
@@ -8046,6 +8130,23 @@ paths:
           schema:
             type: string
           deprecated: true
+      responses:
+        "200":
+          description: OK
+  /anything/deprecatedOperationWithDeprecatedParam:
+    get:
+      operationId: deprecatedOperationWithDeprecatedParam
+      tags:
+        - generation
+      deprecated: true
+      x-speakeasy-deprecation-message: Use the new endpoint instead
+      summary: Deprecated operation that also has a parameter named deprecated
+      parameters:
+        - name: deprecated
+          in: query
+          schema:
+            type: string
+          description: A parameter named deprecated that shadows the typing_extensions import
       responses:
         "200":
           description: OK
@@ -13992,6 +14093,236 @@ paths:
                   name: 
                     type: string
                     example: "John Doe"
+  /noneDefault:
+    get:
+      operationId: noneDefaultTest
+      tags:
+        - responseBodies
+      x-speakeasy-group: responseBodies
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/NoneDefaultModel"
+  /anything/queryParams/builtinShadow:
+    get:
+      operationId: builtinShadowQueryParams
+      tags:
+        - parameters
+      parameters:
+        - name: hash
+          in: query
+          schema:
+            type: string
+        - name: list
+          in: query
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: res
+                type: object
+                properties:
+                  args:
+                    type: object
+                    properties:
+                      hash:
+                        type: string
+                      list:
+                        type: string
+                  url:
+                    type: string
+  /recursiveTypes:
+    get:
+      operationId: getRecursiveTypes
+      tags:
+        - generation
+      x-speakeasy-group: generation
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/RecursiveNodeContainer"
+  /objects:
+    get:
+      operationId: listObjects
+      tags:
+        - generation
+      x-speakeasy-group: generation
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Object"
+  /files/process:
+    post:
+      operationId: processFile
+      tags:
+        - fileProcessing
+      responses:
+        "200":
+          description: OK
+  /files/processAsync:
+    post:
+      operationId: processFileAsync
+      tags:
+        - fileProcessing
+      responses:
+        "200":
+          description: OK
+  # Test: stdlib module name collision (G10) - schema named "Mapping"
+  /anything/responseBodies/mappingCollision:
+    get:
+      operationId: responseBodyMappingCollision
+      tags:
+        - responseBodies
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MappingConsumer"
+  /anything/responseBodies/baseModelCollision:
+    get:
+      operationId: responseBodyBaseModelCollision
+      tags:
+        - responseBodies
+      x-speakeasy-group: responseBodies
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BaseModel"
+  /inline-type-name-collision:
+    post:
+      operationId: inlineTypeNameCollision
+      tags:
+        - collision
+      x-speakeasy-group: collision
+      summary: Test inline type name disambiguation
+      description: |-
+        Tests that inline types whose names collide with auto-generated TypedDict
+        companion names are properly disambiguated. An inline property named
+        "result" generates both Result and ResultTypedDict, which would collide
+        with another inline property named "result_typed_dict" that also generates
+        a class called ResultTypedDict.
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: object
+                    properties:
+                      value:
+                        type: string
+                  result_typed_dict:
+                    type: object
+                    properties:
+                      other:
+                        type: integer
+  /inline-type-name-collision-cascading:
+    post:
+      operationId: inlineTypeNameCollisionCascading
+      tags:
+        - collision
+      x-speakeasy-group: collision
+      summary: Test cascading TypedDict companion name disambiguation
+      description: |-
+        Exercises every level of the cascading TypedDict suffix strategy.
+        The inline property "item" needs a TypedDict companion, but its default
+        name collides with "item_typed_dict" (level 2: TypedDictModel), then
+        "item_typed_dict_model" (level 3: TypedDictCompanion), then
+        "item_typed_dict_companion" (level 4: TypedDictCompanionModel), then
+        "item_typed_dict_companion_model" (level 5: TypedDict2 numeric fallback).
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  item:
+                    type: object
+                    description: "Companion tries TypedDict → TypedDictModel → TypedDictCompanion → TypedDictCompanionModel → TypedDict2"
+                    properties:
+                      name:
+                        type: string
+                  item_typed_dict:
+                    type: object
+                    description: "Blocks the default TypedDict suffix for item"
+                    properties:
+                      a:
+                        type: integer
+                  item_typed_dict_model:
+                    type: object
+                    description: "Blocks the TypedDictModel suffix for item"
+                    properties:
+                      b:
+                        type: integer
+                  item_typed_dict_companion:
+                    type: object
+                    description: "Blocks the TypedDictCompanion suffix for item"
+                    properties:
+                      c:
+                        type: integer
+                  item_typed_dict_companion_model:
+                    type: object
+                    description: "Blocks the TypedDictCompanionModel suffix for item"
+                    properties:
+                      d:
+                        type: integer
+  /optionalRequestBody:
+    post:
+      operationId: optionalRequestBodyPost
+      tags:
+        - requestBodies
+      x-speakeasy-group: requestBodies
+      parameters:
+        - name: page_size
+          in: query
+          required: false
+          schema:
+            type: integer
+      requestBody:
+        description: An optional request body (no required flag)
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                customer_id:
+                  type: string
+                  format: uuid
+                include_archived:
+                  type: boolean
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
 x-speakeasy-webhooks:
   security:
     type: signature
@@ -14025,6 +14356,21 @@ webhooks:
       responses:
         '200':
           description: Consumer's response
+  /forwardRefOrdering:
+    get:
+      operationId: getForwardRefOrdering
+      summary: Test forward reference ordering
+      x-speakeasy-group: collision
+      description: |-
+        This endpoint tests that union types referencing other union types
+        and inline enum types are correctly ordered in the generated output.
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ForwardRefOrdering"
 components:
   schemas:
     # Ruby Issue #1: Gem filename too long test - this schema name is intentionally
@@ -14913,6 +15259,181 @@ components:
         - "it's quoted"
         - "back\\slash"
 
+    # Test: BaseModel method override (G9)
+    # Properties named 'copy', 'model_copy', 'model_dump' etc. override
+    # Pydantic BaseModel methods with incompatible signatures.
+    BaseModelOverrideModel:
+      type: object
+      properties:
+        id:
+          type: string
+        copy:
+          type: string
+          description: Carbon copy recipients
+        model_copy:
+          type: string
+          description: Model copy field
+        model_dump:
+          type: string
+          description: Model dump field
+
+    NoneDefaultModel:
+      type: object
+      required:
+        - name
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+          default: null
+
+    # Test schemas for forward reference ordering (Issue 03).
+    # Creates deeply nested inline types within a single model file that produce
+    # union→union dependency chains requiring topological sort.
+    # The key is that "diagnostics" has an inline oneOf (union) that references
+    # inline object types, each of which has inline oneOf (union) properties
+    # referencing inline enum types. All of these end up in the same model file
+    # and must be ordered correctly.
+    ForwardRefOrdering:
+      type: object
+      properties:
+        diagnostics:
+          description: >-
+            A nested union structure that produces forward reference ordering
+            issues within a single generated model file.
+          oneOf:
+            - type: object
+              title: ForwardRefDiagSection
+              properties:
+                style:
+                  oneOf:
+                    - type: string
+                      enum: [bold, italic]
+                    - type: string
+                      enum: [compact, expanded]
+                    - type: string
+                      enum: [default]
+                priority:
+                  oneOf:
+                    - type: string
+                      enum: [high, medium, low]
+                    - type: integer
+            - type: object
+              title: ForwardRefDiagMetrics
+              properties:
+                format:
+                  oneOf:
+                    - type: string
+                      enum: [json, xml]
+                    - type: string
+                      enum: [csv, tsv]
+                    - type: string
+                      enum: [raw]
+
+    # Test: Module-as-type (issue class 04)
+    # A schema named "Object" generates object.py, which shadows the module
+    # reference in __init__.py, triggering pyright "Module cannot be used as a type".
+    Object:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+
+    # Test: Recursive schema (issue class 04)
+    # A self-referencing schema produces TypeAliasType for its union.
+    # The TypeAliasType variable cannot be used in Union[] type expressions
+    # or instantiated as RecursiveNode(...).
+    RecursiveNode:
+      type: object
+      properties:
+        value:
+          type: string
+        children:
+          type: array
+          items:
+            $ref: "#/components/schemas/RecursiveNode"
+
+    # Test: Union producing TypeAliasType (issue class 04, sub-pattern B)
+    # A non-discriminated oneOf with 2+ object members produces a TypeAliasType.
+    # When this type is referenced in another oneOf, it gets nested inside Union[],
+    # which pyright rejects: "Variable not allowed in type expression".
+    RecursiveNodeData:
+      oneOf:
+        - $ref: "#/components/schemas/RecursiveNode"
+        - type: object
+          properties:
+            label:
+              type: string
+    RecursiveNodeContainer:
+      type: object
+      properties:
+        node_or_label:
+          oneOf:
+            - $ref: "#/components/schemas/RecursiveNodeData"
+            - type: string
+
+    # Test: Pydantic model_config collision (Issue 13)
+    # Property named 'modelConfig' gets snake_cased to 'model_config',
+    # which collides with Pydantic BaseModel's reserved 'model_config: ConfigDict'.
+    ModelConfigCollisionConfig:
+      type: object
+      properties:
+        theme:
+          type: string
+        language:
+          type: string
+    ModelConfigCollisionModel:
+      type: object
+      properties:
+        id:
+          type: string
+        modelConfig:
+          $ref: "#/components/schemas/ModelConfigCollisionConfig"
+      required:
+        - id
+        - modelConfig
+
+    # Test: stdlib/typing module name collision (G10)
+    # A schema named "Mapping" generates mapping.py which can shadow
+    # typing.Mapping or collections.abc.Mapping imports.
+    Mapping:
+      x-speakeasy-include: true
+      type: object
+      required:
+        - key
+        - value
+      properties:
+        key:
+          type: string
+        value:
+          type: string
+    # This schema references Mapping and also uses typing.Optional,
+    # exercising the import path to detect shadowing.
+    MappingConsumer:
+      x-speakeasy-include: true
+      type: object
+      required:
+        - mapping
+      properties:
+        mapping:
+          $ref: "#/components/schemas/Mapping"
+        label:
+          type: string
+
+    BaseModel:
+      type: object
+      required:
+        - id
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+
+
   securitySchemes:
     basicAuth:
       type: http
@@ -14981,3 +15502,15 @@ components:
           required:
             - appId
             - secret
+    duplicateScopeOAuth2:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: /oauth2/authorize
+          tokenUrl: /oauth2/token
+          scopes:
+            /accounts/{account_id}/transfers.write: "Write transfers (underscore)"
+            /accounts/{account_id}/transfers.read: "Read transfers (underscore)"
+            /accounts/{account-id}/transfers.write: "Write transfers (hyphen)"
+            /accounts/{account-id}/transfers.read: "Read transfers (hyphen)"
+            /accounts/{account.id}/transfers.write: "Write transfers (dot)"
