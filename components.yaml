@@ -1883,6 +1883,41 @@ components:
             - $ref: "#/components/schemas/simpleObject"
       required:
         - child
+    objWithRenamedProperties:
+      type: object
+      properties:
+        direct:
+          $ref: "#/components/schemas/renamedSchema"
+        namespaced:
+          $ref: "#/components/schemas/namespacedSchema"
+        shadow:
+          x-speakeasy-name-override: overridden
+          $ref: "#/components/schemas/renamedSchema"
+        allof:
+          $ref: "#/components/schemas/renamedAllOfSchema"
+    renamedSchema:
+      x-speakeasy-name-override: Boole
+      type: object
+      properties:
+        bool:
+          type: boolean
+    renamedAllOfSchema:
+      x-speakeasy-name-override: Aloof
+      allOf:
+        - $ref: '#/components/schemas/renamedSchema'
+        - x-speakeasy-name-override: noEffect
+        - type: object
+          properties:
+            int:
+              type: integer
+    namespacedSchema:
+      x-speakeasy-model-namespace: baz
+      x-speakeasy-name-override: namespaced
+      type: object
+      properties:
+        namespace:
+          type: string
+          const: baz
     conflictingEnum:
       type: object
       properties:

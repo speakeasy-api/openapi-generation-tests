@@ -7865,6 +7865,13 @@ paths:
       operationId: nameOverrideGet
       x-speakeasy-name-override: nameOverride
       x-speakeasy-usage-example: false
+      description: |
+        Tests x-speakeasy-name-override behavior across schema composition patterns.
+        When nameOverrideFeb2026 is enabled, child-level name-overrides in allOf schemas
+        are no longer hoisted into the parent, preventing unintended renames.
+        The 'previously' prefix in child override values refers to the behavior when flag
+        is disabled. See response_additional_test.go in primary (nameOverrideFeb2026: true)
+        and secondary (nameOverrideFeb2026: false) for more details.
       tags:
         - generation
       parameters:
@@ -7897,20 +7904,47 @@ paths:
                 type: object
                 x-speakeasy-name-override: overriddenResponse
                 properties:
-                  json:
+                  as-is:
                     $ref: "components.yaml#/components/schemas/simpleObject"
-                  normal:
+                  overridden1:
                     type: object
-                    x-speakeasy-name-override: overriddenNormal
-                  allOf:
+                    x-speakeasy-name-override: inline
+                  overridden2:
+                    x-speakeasy-name-override: reference
+                    $ref: "components.yaml#/components/schemas/simpleObject"
+                  overridden3:
+                    x-speakeasy-name-override: renamed-all-of
                     allOf:
                       - type: object
-                      - x-speakeasy-name-override: overriddenAllOf
-                  deepAllOf:
+                      - x-speakeasy-name-override: ignored
+                  all-of:
+                    allOf:
+                      - x-speakeasy-name-override: ignored-previously-hoisted
+                        type: object
+                        properties:
+                          str:
+                            type: string
+                      - type: object
+                        properties:
+                          int:
+                            type: integer
+                  nested-all-of:
                     allOf:
                       - allOf:
-                        - x-speakeasy-name-override: deepOverriddenAllOf
-                        - type: object
+                        - x-speakeasy-name-override: ignored-previously-lost
+                          type: object
+                          properties:
+                            str:
+                              type: string
+                        - x-speakeasy-name-override: ignored-previously-won
+                          type: object
+                          properties:
+                            int:
+                              type: integer
+                      - type: object
+                        properties:
+                          bool:
+                            type: boolean
   /anything/globalNameOverride:
     post:
       x-speakeasy-usage-example: true
