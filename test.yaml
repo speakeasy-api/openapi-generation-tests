@@ -190,6 +190,26 @@ security:
   - customSchemeAppId: []
   - {}
 paths:
+  /multipart_additional_props:
+    post:
+      operationId: uploadMultipartAdditionalProps
+      tags:
+        - requestBodies
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/RestoreGenRequestComposed'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
   /collision:
     get:
       operationId: getCollision
@@ -204,6 +224,35 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Collision"
+  /options_collision/{apiKey}/{optionsName}:
+    post:
+      operationId: options
+      summary: Test operationId 'options' collision with SDK Options type
+      description: |-
+        This endpoint tests that an operation named 'options' does not
+        collide with the SDK's internal Options type (TS2345/TS2416/TS4114).
+      security: []
+      parameters:
+        - name: apiKey
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: optionsName
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: string
   /parameterShadowing:
     post:
       operationId: parameterShadowingTest
@@ -4621,6 +4670,46 @@ paths:
                     additionalProperties: true
                 required:
                   - files
+  /anything/requestBodies/post/multipart/nullableArrayWithEncoding:
+    post:
+      operationId: requestBodyPostMultipartNullableArrayWithEncoding
+      tags:
+        - requestBodies
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                files:
+                  type: array
+                  items:
+                    type: string
+                    format: binary
+                  nullable: true
+                tags:
+                  type: array
+                  items:
+                    type: string
+                  nullable: true
+                Model:
+                  $ref: '#/components/schemas/MultipartModelWithNullableArray'
+                File:
+                  type: string
+                  format: binary
+            encoding:
+              Model:
+                contentType: application/json
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
   /anything/requestBodies/put/multipart/optionalRequestBody:
     put:
       operationId: requestBodyPutMultipartOptionalRequestBody
@@ -9937,6 +10026,32 @@ paths:
                     type: string
                   type:
                     $ref: "components.yaml#/components/schemas/errorType"
+  /errors/duplicateExportCollision:
+    servers:
+      - url: http://localhost:35456
+    get:
+      x-speakeasy-errors:
+        statusCodes:
+          - "408"
+      operationId: getDuplicateExportCollision
+      tags:
+        - errors
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: string
+        "408":
+          description: Request Timeout
+          content:
+            application/json:
+              schema:
+                $ref: "components.yaml#/components/schemas/RequestTimeoutErrorData"
   /anything/connectionError:
     get:
       operationId: connectionErrorGet
@@ -10942,6 +11057,41 @@ paths:
             type: offset
         outputs:
           results: $.resultArray
+  /pagination/cursor#paginationRequiredBodyFields:
+    post:
+      operationId: paginationCursorBodyRequiredFields
+      x-speakeasy-max-method-params: 20
+      servers:
+        - url: http://localhost:35456
+      parameters:
+        - name: limit
+          in: query
+          schema:
+            type: integer
+          required: true
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ListBalancesRequest'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListBalancesResponse'
+      tags:
+        - pagination
+      x-speakeasy-pagination:
+        type: cursor
+        inputs:
+          - name: next_page
+            in: requestBody
+            type: cursor
+        outputs:
+          nextCursor: $.next_page
   /group/first:
     get:
       operationId: groupFirstGet
@@ -12203,6 +12353,21 @@ paths:
             text/event-stream:
               schema:
                 $ref: "components.yaml#/components/schemas/sseEvent"
+  /eventstreams/nullable-id:
+    get:
+      tags:
+        - eventstreams
+      operationId: nullableIdStream
+      description: SSE endpoint where event schema has nullable id field
+      servers:
+        - url: http://localhost:35456
+      responses:
+        "200":
+          description: Ok
+          content:
+            text/event-stream:
+              schema:
+                $ref: "components.yaml#/components/schemas/nullableIdEvent"
   /jsonl:
     get:
       tags:
@@ -14357,6 +14522,18 @@ paths:
                 properties:
                   message:
                     type: string
+  /promotional_draw:
+    get:
+      operationId: getPromotionalDraw
+      tags:
+        - generation
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PromotionalDrawTest'
 x-speakeasy-webhooks:
   security:
     type: signature
@@ -14405,6 +14582,18 @@ webhooks:
             application/json:
               schema:
                 $ref: "#/components/schemas/ForwardRefOrdering"
+  /invalid_default_value:
+    get:
+      operationId: getInvalidDefaultValue
+      tags:
+        - generation
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ObjectWithInvalidDefault'
 components:
   schemas:
     # Ruby Issue #1: Gem filename too long test - this schema name is intentionally
@@ -14417,6 +14606,41 @@ components:
         price:
           type: number
         currency:
+          type: string
+    MultipartModelWithNullableArray:
+      type: object
+      properties:
+        files:
+          type: array
+          items:
+            type: string
+          nullable: true
+        tags:
+          type: array
+          items:
+            type: string
+          nullable: true
+    ListBalancesRequest:
+      type: object
+      required:
+        - customer_id
+      properties:
+        customer_id:
+          type: string
+          format: uuid
+        next_page:
+          type: string
+    ListBalancesResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            type: object
+            properties:
+              balance:
+                type: number
+        next_page:
           type: string
     Collision:
       type: object
@@ -15466,7 +15690,41 @@ components:
           type: string
         name:
           type: string
+    ObjectWithInvalidDefault:
+      type: object
+      properties:
+        deleted:
+          type: boolean
+          default: variant
+        count:
+          type: integer
+          default: variant
+        name:
+          type: string
+    PromotionalDrawTest:
+      type: object
+      properties:
+        promotional-drawId:
+          type: integer
+        name:
+          type: string
 
+    SimpleEnqueueRequestBase:
+      type: object
+      properties:
+        image:
+          type: string
+          format: binary
+        source_id:
+          type: string
+      additionalProperties:
+        type: string
+    RestoreGenRequestComposed:
+      allOf:
+        - $ref: '#/components/schemas/SimpleEnqueueRequestBase'
+      properties:
+        model:
+          type: string
 
   securitySchemes:
     basicAuth:

@@ -2083,6 +2083,26 @@ components:
       required:
         - errorType
         - reason
+    RequestTimeoutErrorData:
+      x-speakeasy-name-override: RequestTimeoutError
+      type: object
+      properties:
+        code:
+          type: integer
+        message:
+          type: string
+    ErrorWithAdditionalProps:
+      type: object
+      properties:
+        type:
+          type: string
+        title:
+          type: string
+        status:
+          type: integer
+        detail:
+          type: string
+      additionalProperties: {}
     teapotJSONError:
       type: object
       properties:
@@ -2575,6 +2595,23 @@ components:
           type: string
       required:
         - content
+    nullableIdEvent:
+      description: Represents an SSE event where the id field is nullable
+      type: object
+      required:
+        - event
+        - data
+      properties:
+        id:
+          type: string
+          nullable: true
+        event:
+          type: string
+        data:
+          type: object
+          properties:
+            status:
+              type: string
     themeRequestOpaque:
       type: object
       properties:
