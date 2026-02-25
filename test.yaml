@@ -11408,6 +11408,35 @@ paths:
           successCriteria:
             - condition: $statusCode == 200
             - condition: $response.body#/status == "completed"
+  /polling/failureCriteria/responseBody/nameOverride:
+    get:
+      operationId: pollingFailureCriteriaResponseBodyNameOverrideGet
+      description: |-
+        Verifies polling failureCriteria functionality based on response body
+        when the polling condition references a property with
+        x-speakeasy-name-override. This endpoint always returns a 200 OK with
+        a status of "failed", which should always cause a polling error due to
+        the failureCriteria.
+      servers:
+        - url: http://localhost:35456
+      tags:
+        - polling
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PollingNameOverride"
+      x-speakeasy-name-override: FailureCriteriaResponseBodyNameOverride
+      x-speakeasy-polling:
+        - name: WaitForStatusCompleted
+          failureCriteria:
+            - condition: $statusCode == 200
+            - condition: $response.body#/polling_status == "failed"
+          successCriteria:
+            - condition: $statusCode == 200
+            - condition: $response.body#/polling_status == "completed"
   /polling/failureCriteria/responseBody/nested:
     get:
       operationId: pollingFailureCriteriaResponseBodyNestedGet
@@ -15312,6 +15341,15 @@ components:
       type: object
       properties:
         status:
+          $ref: "#/components/schemas/PollingStatus"
+      required:
+        - status
+    PollingNameOverride:
+      description: Polling, but with x-speakeasy-name-override on status property.
+      type: object
+      properties:
+        status:
+          x-speakeasy-name-override: polling_status
           $ref: "#/components/schemas/PollingStatus"
       required:
         - status
