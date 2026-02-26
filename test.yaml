@@ -15815,6 +15815,10 @@ components:
             erase: Erase access
             alt:one: First alternative test scope
             alt:two: Second alternative test scope
+          x-speakeasy-token-endpoint-additional-properties:
+            audience:
+              type: string
+              example: "AUD"
     customSchemeAppId:
       type: http
       scheme: custom
