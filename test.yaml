@@ -12884,6 +12884,62 @@ paths:
       responses:
         '200':
           description: OK
+  /clientcredentials/authenticatedrequest#duplicateNameA:
+    post:
+      operationId: authenticatedRequestDuplicateNameA
+      x-speakeasy-name-override: authReqDuplicateName
+      x-speakeasy-group: groupA
+      description: |
+        Tests that per-operation client credentials with duplicate name overrides
+        across different groups generate unique credential function names. This
+        operation and authenticatedRequestDuplicateNameB share the same name override
+        but are in different groups, have different raw operationIds, and use
+        different security schemes.
+      tags:
+        - hooks
+      servers:
+        - url: http://localhost:35456
+      security:
+        - alternateClientCredentials: [read, write]
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+      responses:
+        '200':
+          description: OK
+  /clientcredentials/authenticatedrequest#duplicateNameB:
+    post:
+      operationId: authenticatedRequestDuplicateNameB
+      x-speakeasy-name-override: authReqDuplicateName
+      x-speakeasy-group: groupB
+      description: |
+        Tests that per-operation client credentials with duplicate name overrides
+        across different groups generate unique credential function names. This
+        operation shares the same name override as authenticatedRequestDuplicateNameA
+        but is in a different group, has a different raw operationId, and uses
+        a different security scheme.
+      tags:
+        - hooks
+      servers:
+        - url: http://localhost:35456
+      security:
+        - alternateClientCredentials2: [read, write]
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+      responses:
+        '200':
+          description: OK
   /anything/flattenedUnionResponse:
     get:
       operationId: flattenedUnionResponse
@@ -15819,6 +15875,22 @@ components:
             audience:
               type: string
               example: "AUD"
+    alternateClientCredentials:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: /clientcredentials/token?expires_in=90
+          scopes:
+            read: Read access
+            write: Write access
+    alternateClientCredentials2:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: /clientcredentials/token?expires_in=90
+          scopes:
+            read: Read access
+            write: Write access
     customSchemeAppId:
       type: http
       scheme: custom
