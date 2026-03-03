@@ -2507,6 +2507,26 @@ components:
       type: array
       items:
         type: integer
+    mixedDataEvent:
+      description: Represents an event with either JSON or plain text data
+      type: object
+      required: [event, data]
+      properties:
+        event:
+          type: string
+          enum: [completion, text, loading]
+        data:
+          oneOf:
+            - $ref: "#/components/schemas/messageEvent"
+            - type: string
+      discriminator:
+        propertyName: event
+        mapping:
+          completion: "#/components/schemas/messageEvent"
+          text: "#/components/schemas/stringData"
+          loading: "#/components/schemas/stringData"
+    stringData:
+      type: string
     unionWithCommentsStream:
       oneOf:
         - $ref: "#/components/schemas/statusEvent"
