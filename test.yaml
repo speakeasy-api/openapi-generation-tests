@@ -14634,6 +14634,28 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/PromotionalDrawTest'
+  /api/v1/skills/{skill_identifier}:
+    get:
+      operationId: getSkillByIdApiV1SkillsSkillIdentifierGet
+      tags:
+        - skills
+      x-speakeasy-group: skills
+      parameters:
+        - name: skill_identifier
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Skill response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SkillInfo"
+              example:
+                id: "skill_123"
+                type: "skill"
 x-speakeasy-webhooks:
   security:
     type: signature
@@ -14742,6 +14764,26 @@ components:
                 type: number
         next_page:
           type: string
+    SkillInfo:
+      x-speakeasy-model-namespace: skills
+      type: object
+      required:
+        - id
+      properties:
+        id:
+          type: string
+          example: skill_123
+        type:
+          anyOf:
+            - $ref: "#/components/schemas/SkillType"
+    SkillType:
+      x-speakeasy-model-namespace: skills
+      type: string
+      enum:
+        - skill
+        - capability
+        - workflow
+      example: skill
     Collision:
       type: object
       description: A model that tests a collision between a model name and a class name.
