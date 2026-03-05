@@ -354,6 +354,24 @@ components:
             diagnosis:
               type: string
               example: "fluffy is sick"
+    objectWithOptionalNullableDiscriminatedUnion:
+      type: object
+      required:
+        - id
+      properties:
+        id:
+          type: integer
+          example: 1
+        unionField:
+          nullable: true
+          oneOf:
+            - $ref: "#/components/schemas/taggedObject1"
+            - $ref: "#/components/schemas/taggedObject2"
+          discriminator:
+            propertyName: tag
+            mapping:
+              tag1: "#/components/schemas/taggedObject1"
+              tag2: "#/components/schemas/taggedObject2"
     mixedNullableUnionTypes:
       oneOf:
         - type: object

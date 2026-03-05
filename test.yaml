@@ -8786,6 +8786,30 @@ paths:
             application/json:
               schema:
                 $ref: "components.yaml#/components/schemas/objectWithOptionalFalseNullableFalseField"
+  /anything/optionalNullableDiscriminatedUnion:
+    post:
+      operationId: optionalNullableDiscriminatedUnionPost
+      tags:
+        - optionalNullableFields
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "components.yaml#/components/schemas/objectWithOptionalNullableDiscriminatedUnion"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: res
+                type: object
+                properties:
+                  json:
+                    $ref: "components.yaml#/components/schemas/objectWithOptionalNullableDiscriminatedUnion"
+                required:
+                  - json
   # /optionalTrueNullableTrue:
   #   post:
   #     operationId: mixedNullableUnionTypes
