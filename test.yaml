@@ -7005,6 +7005,26 @@ paths:
                       "key1": "..."
                     }
                   }
+  /anything/responseBodies/emptyObjectFreeformResponse:
+    get:
+      operationId: responseBodyEmptyObjectFreeformGet
+      description: |
+        Test that a response with type: object, additionalProperties: true and no properties
+        (a free-form object) correctly generates test assertions with an empty map value {}.
+        Regression test for: empty optional map responses producing empty toEqual() calls.
+      tags:
+        - responseBodies
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: true
+              examples:
+                test:
+                  value: {}
   /anything/responseBodies/defaultEmptyString:
     post:
       # TODO: https://linear.app/speakeasy/issue/GEN-1333/bug-oas-default-of-empty-string-not-respected-in-javav2-json-response
@@ -9129,6 +9149,40 @@ paths:
                 properties:
                   json:
                     $ref: "components.yaml#/components/schemas/discriminatedOpenEnumUnion"
+                required:
+                  - json
+  /anything/unionWithGenericVariant:
+    post:
+      operationId: unionWithGenericVariantPost
+      description: |
+        Test that union types with generic container variants (e.g. array of freeform objects
+        producing List<Map<String, Object>> in Java) generate valid accessor method names.
+        Regression test for: generic type params leaking into Java union accessor names.
+      tags:
+        - unions
+      requestBody:
+        content:
+          application/json:
+            examples:
+              test:
+                value: "plain string"
+            schema:
+              $ref: "components.yaml#/components/schemas/unionWithGenericVariant"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              examples:
+                test:
+                  value: { "json": "plain string" }
+              schema:
+                title: res
+                type: object
+                properties:
+                  json:
+                    $ref: "components.yaml#/components/schemas/unionWithGenericVariant"
                 required:
                   - json
   /anything/unionOfArrays:

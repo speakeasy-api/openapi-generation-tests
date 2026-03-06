@@ -274,6 +274,13 @@ components:
             properties:
               baz:
                 type: string
+    unionWithGenericVariant:
+      oneOf:
+        - type: string
+        - type: array
+          items:
+            type: object
+            additionalProperties: true
     objectWithOptionalTrueNullableTrueField:
       type: object
       required:
