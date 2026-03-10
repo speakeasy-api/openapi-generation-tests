@@ -15954,6 +15954,16 @@ components:
       properties:
         model:
           type: string
+    # Test for duplicate enum values after normalization (e.g. UNKNOWN and unknown
+    # both normalize to "Unknown" in Go). The generator must deduplicate these.
+    ContractType:
+      x-speakeasy-include: true
+      type: string
+      enum:
+        - UNKNOWN
+        - unknown
+        - ACTIVE
+        - active
 
   securitySchemes:
     basicAuth:
