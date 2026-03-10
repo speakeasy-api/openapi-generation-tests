@@ -16055,3 +16055,13 @@ components:
             /accounts/{account-id}/transfers.write: "Write transfers (hyphen)"
             /accounts/{account-id}/transfers.read: "Read transfers (hyphen)"
             /accounts/{account.id}/transfers.write: "Write transfers (dot)"
+            /accounts/{account.id}/transfers.read: "Read transfers (dot)"
+    # OAuth2 password flow security scheme.
+    # Tests that the generated oauth2_password.go hook uses the correct SDKInit
+    # signature and that duplicate operations are deduplicated.
+    oAuth2Password:
+      type: oauth2
+      flows:
+        password:
+          tokenUrl: /oauth2/password/token
+          scopes: {}
