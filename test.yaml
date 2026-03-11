@@ -4961,11 +4961,8 @@ paths:
               schema:
                 type: object
                 properties:
-                  empty:
+                  json:
                     type: object
-                  emptyRespWithEmptyProperies:
-                    type: object
-                    properties: {}
   /anything/requestBodies/post/null-dictionary:
     post:
       operationId: requestBodyPostNullDictionary

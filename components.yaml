@@ -1275,12 +1275,12 @@ components:
     complexNumberArrays:
       type: object
       properties:
-        bigintArray:
+        bigIntArray:
             type: array
             items:
               type: integer
               format: bigint
-        bigintStrArray:
+        bigIntStrArray:
             type: array
             items:
               type: string
