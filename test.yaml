@@ -15977,7 +15977,6 @@ components:
         - unknown
         - ACTIVE
         - active
-
   securitySchemes:
     basicAuth:
       type: http
