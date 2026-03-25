@@ -188,6 +188,8 @@ security:
   - oauth2: []
   - clientCredentials: [read, write]
   - customSchemeAppId: []
+  - basicHttp: []
+  - accessToken: []
   - {}
 paths:
   /multipart_additional_props:
@@ -891,6 +893,103 @@ paths:
       responses:
         "200":
           description: OK
+        "401":
+          description: Unsuccessful authentication.
+  /auth/token#apiKeyFirst:
+    get:
+      operationId: hoistedSecurityApiKeyFirst
+      tags:
+        - auth
+      servers:
+        - url: http://localhost:35456
+      security:
+        - apiKeyAuth: []
+        - accessToken: []
+      responses:
+        "200":
+          $ref: "components.yaml#/components/responses/tokenAuthResponse"
+        "401":
+          description: Unsuccessful authentication.
+  /auth/token#hoistedAccessTokenFirst:
+    get:
+      operationId: hoistedSecurityAccessTokenFirst
+      tags:
+        - auth
+      servers:
+        - url: http://localhost:35456
+      security:
+        - accessToken: []
+        - apiKeyAuth: []
+      responses:
+        "200":
+          $ref: "components.yaml#/components/responses/tokenAuthResponse"
+        "401":
+          description: Unsuccessful authentication.
+  /auth/token#hoistedAccessTokenOnly:
+    get:
+      operationId: hoistedSecurityAccessTokenOnly
+      tags:
+        - auth
+      servers:
+        - url: http://localhost:35456
+      security:
+        - accessToken: []
+      responses:
+        "200":
+          $ref: "components.yaml#/components/responses/tokenAuthResponse"
+        "401":
+          description: Unsuccessful authentication.
+  /basic-auth/testUser/testPass#basicHttpOnly:
+    get:
+      operationId: hoistedSecurityBasicHttpOnly
+      tags:
+        - auth
+      security:
+        - basicHttp: []
+      responses:
+        "200":
+          description: Successful authentication.
+          content:
+            application/json:
+              schema:
+                title: basicAuth
+                type: object
+                properties:
+                  authenticated:
+                    type: boolean
+                  user:
+                    type: string
+                required:
+                  - authenticated
+                  - user
+        "401":
+          description: Unsuccessful authentication.
+  /basic-auth/testUser/testPass#basicHttpGlobal:
+    get:
+      operationId: globalSecurityBasicHttp
+      description: |
+        In primary, maintainOpenAPIOrder:false is set (legacy) so security fields are still
+        sorted alphabetically. This means that if multiple security alternatives are provided
+        when instantiating the SDK, say apiKeyAuth and basicHttp, then apiKeyAuth will take
+        precedence, which is invalid for this endpoint.
+      tags:
+        - auth
+      responses:
+        "200":
+          description: Successful authentication.
+          content:
+            application/json:
+              schema:
+                title: basicAuth
+                type: object
+                properties:
+                  authenticated:
+                    type: boolean
+                  user:
+                    type: string
+                required:
+                  - authenticated
+                  - user
         "401":
           description: Unsuccessful authentication.
   /auth/customsecurity/customSchemeAppId:
@@ -15982,6 +16081,10 @@ components:
       type: http
       scheme: basic
       x-speakeasy-example: YOUR_USERNAME;YOUR_PASSWORD
+    basicHttp:
+      type: http
+      scheme: basic
+      x-speakeasy-example: testUser;testPass
     apiKeyAuth:
       type: apiKey
       in: header
@@ -16002,6 +16105,10 @@ components:
       in: header
       name: x-api-key
       x-speakeasy-example: Token <YOUR_API_KEY>
+    accessToken:
+      type: http
+      scheme: bearer
+      x-speakeasy-example: ghp_xxxx
     oauth2:
       description: A flow that needs to be implemented by custom hooks
       type: oauth2
