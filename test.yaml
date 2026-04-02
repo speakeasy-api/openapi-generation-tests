@@ -5522,7 +5522,7 @@ paths:
                       - requiredField
                 required:
                   - json
-  /anything/requestBodies/post/{pathBigInt}/{pathBigIntStr}/{pathDecimal}/{pathDecimalStr}/complex-number-types:
+  /anything/requestBodies/post/{pathBigInt}/{pathBigIntStr}/{pathDecimal}/{pathDecimalStr}/{pathInt64Str}/{pathFloat64Str}/complex-number-types:
     post:
       operationId: requestBodyPostComplexNumberTypes
       tags:
@@ -5556,6 +5556,20 @@ paths:
             format: decimal
             example: "3.14159265358979344719667586"
           required: true
+        - name: pathInt64Str
+          in: path
+          schema:
+            type: string
+            format: int64
+            example: "100"
+          required: true
+        - name: pathFloat64Str
+          in: path
+          schema:
+            type: string
+            format: float64
+            example: "1.1"
+          required: true
         - name: queryBigInt
           in: query
           schema:
@@ -5584,6 +5598,20 @@ paths:
             format: decimal
             example: "3.14159265358979344719667586"
           required: true
+        - name: queryInt64Str
+          in: query
+          schema:
+            type: string
+            format: int64
+            example: "100"
+          required: true
+        - name: queryFloat64Str
+          in: query
+          schema:
+            type: string
+            format: float64
+            example: "1.1"
+          required: true
       requestBody:
         content:
           application/json:
@@ -5602,12 +5630,58 @@ paths:
                     $ref: "components.yaml#/components/schemas/complexNumberTypes"
                   url:
                     type: string
-                    example: "http://localhost:35123/anything/requestBodies/post/8821239038968084/9223372036854775808/3.141592653589793/3.14159265358979344719667586/complex-number-types?queryBigInt=8821239038968084&queryBigIntStr=9223372036854775808&queryDecimal=3.141592653589793&queryDecimalStr=3.14159265358979344719667586"
+                    example: "http://localhost:35123/anything/requestBodies/post/8821239038968084/9223372036854775808/3.141592653589793/3.14159265358979344719667586/100/1.1/complex-number-types?queryBigInt=8821239038968084&queryBigIntStr=9223372036854775808&queryDecimal=3.141592653589793&queryDecimalStr=3.14159265358979344719667586&queryFloat64Str=1.1&queryInt64Str=100"
                     x-speakeasy-test-internal-directives:
                       - sortQueryParameters: {}
                 required:
                   - json
                   - url
+  /anything/requestBodies/post/complex-number-types-optional:
+    post:
+      operationId: requestBodyPostComplexNumberTypesOptional
+      tags:
+        - requestBodies
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "components.yaml#/components/schemas/optionalComplexNumberTypes"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  json:
+                    $ref: "components.yaml#/components/schemas/optionalComplexNumberTypes"
+                required:
+                  - json
+  /anything/requestBodies/post/complex-number-types-nullable:
+    post:
+      operationId: requestBodyPostComplexNumberTypesNullable
+      tags:
+        - requestBodies
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "components.yaml#/components/schemas/nullableComplexNumberTypes"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  json:
+                    $ref: "components.yaml#/components/schemas/nullableComplexNumberTypes"
+                required:
+                  - json
   /anything/requestBodies/post/defaultsAndConsts:
     post:
       operationId: requestBodyPostDefaultsAndConsts

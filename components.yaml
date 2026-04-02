@@ -2152,11 +2152,76 @@ components:
           type: string
           format: decimal
           example: "3.14159265358979344719667586"
+        int64Str:
+          type: string
+          format: int64
+          example: "100"
+        float64Str:
+          type: string
+          format: float64
+          example: "1.1"
       required:
         - bigintStr
         - bigint
         - decimal
         - decimalStr
+        - int64Str
+        - float64Str
+    optionalComplexNumberTypes:
+      type: object
+      properties:
+        bigintStr:
+          type: string
+          format: bigint
+          example: "9223372036854775808"
+        bigint:
+          type: integer
+          format: bigint
+          example: 8821239038968084
+        decimal:
+          type: number
+          format: decimal
+          example: 3.141592653589793
+        decimalStr:
+          type: string
+          format: decimal
+          example: "3.14159265358979344719667586"
+        int64Str:
+          type: string
+          format: int64
+          example: "100"
+        float64Str:
+          type: string
+          format: float64
+          example: "1.1"
+    nullableComplexNumberTypes:
+      type: object
+      properties:
+        bigintStr:
+          type: ["string", "null"]
+          format: bigint
+        bigint:
+          type: ["integer", "null"]
+          format: bigint
+        decimal:
+          type: ["number", "null"]
+          format: decimal
+        decimalStr:
+          type: ["string", "null"]
+          format: decimal
+        int64Str:
+          type: ["string", "null"]
+          format: int64
+        float64Str:
+          type: ["string", "null"]
+          format: float64
+      required:
+        - bigintStr
+        - bigint
+        - decimal
+        - decimalStr
+        - int64Str
+        - float64Str
     defaultsAndConsts:
       type: object
       properties:
