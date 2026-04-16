@@ -10169,9 +10169,12 @@ paths:
                     additionalProperties: true
                 required:
                   - json
-  /status/{statusCode}:
+  /status/{statusCode}#clientServerErrors:
     get:
       operationId: statusGetError
+      description: |
+        when `clientServerStatusCodesAsErrors` is true (default)
+        4XX and 5XX status codes are treated as errors
       tags:
         - errors
       parameters:
@@ -10183,12 +10186,61 @@ paths:
       responses:
         "200":
           description: OK
-        "300":
-          description: Multiple Choices
         "400":
           description: Bad Request
         "500":
           description: Internal Server Error
+        default:
+          description: Default
+  /status/{statusCode}#nonErrors:
+    get:
+      operationId: statusGetNonError
+      description: |
+        `x-speakeasy-errors` is used to override the
+        `clientServerStatusCodesAsErrors` setting
+        by marking all responses as non-errors.
+      x-speakeasy-errors:
+        override: true
+        statusCodes: ["0"]
+      tags:
+        - errors
+      parameters:
+        - name: statusCode
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: OK
+        "4XX":
+          description: Good Request
+        "500":
+          description: Everything's fine
+  /status/{statusCode}#defaultErrors:
+    get:
+      operationId: statusGetDefaultError
+      description: |
+        `x-speakeasy-errors` is used to override the
+        `clientServerStatusCodesAsErrors` setting
+        by only marking *unspecified* responses as errors.
+      x-speakeasy-errors:
+        override: true
+        statusCodes:
+          - "default"
+      tags:
+        - errors
+      parameters:
+        - name: statusCode
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Good Request
   /statusCode/2XX:
     get:
       operationId: statusCode2XX
@@ -10226,13 +10278,12 @@ paths:
       - url: http://localhost:35456
     get:
       x-speakeasy-errors:
+        override: true
         statusCodes:
           - "400"
           - "401"
           - "418"
-          - "4XX"
-          - "500"
-          - "501"
+          - "5XX"
       operationId: statusGetXSpeakeasyErrors
       tags:
         - errors
