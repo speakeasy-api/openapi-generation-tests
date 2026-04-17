@@ -1908,6 +1908,20 @@ components:
             - $ref: "#/components/schemas/simpleObject"
       required:
         - child
+    recursiveOneOfValue:
+      description: >
+        A oneOf schema recursive via both array items and additionalProperties,
+        with a string base case. Must be referenced as a field inside an object
+        so the circular reference validator allows it through.
+      x-speakeasy-include: true
+      oneOf:
+        - type: string
+        - type: array
+          items:
+            $ref: "#/components/schemas/recursiveOneOfValue"
+        - type: object
+          additionalProperties:
+            $ref: "#/components/schemas/recursiveOneOfValue"
     objWithRenamedProperties:
       type: object
       properties:
