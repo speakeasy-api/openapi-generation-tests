@@ -10374,6 +10374,23 @@ paths:
             application/json:
               schema:
                 $ref: "components.yaml#/components/schemas/RequestTimeoutErrorData"
+  /errors/errorMessageCollision:
+    get:
+      operationId: getErrorMessageCollision
+      description: |
+        In C#, when `x-speakeasy-error-message: true` is set, the `ErrorMessage` method
+        defined on the generated error model may clash with the enclosing type.
+      tags:
+        - errors
+      responses:
+        "200":
+          description: OK
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: "components.yaml#/components/schemas/errorMessage"
   /anything/connectionError:
     get:
       operationId: connectionErrorGet

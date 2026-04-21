@@ -2034,6 +2034,14 @@ components:
         type:
           $ref: "#/components/schemas/errorType"
       additionalProperties: true
+    errorMessage:
+      type: object
+      properties:
+        code:
+          type: integer
+        description:
+          type: string
+          x-speakeasy-error-message: true
     errorType:
       type: string
       enum:
