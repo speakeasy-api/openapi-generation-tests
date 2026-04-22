@@ -7693,12 +7693,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/CircularMultiLevelRoot'
-
   /anything/circularReferenceRecursiveOneOf:
     post:
       operationId: circularReferenceRecursiveOneOf
       tags:
-        - generation
+        - unions
       description: >
         Exercises a self-referential oneOf schema used as a field inside a
         request body object. Previously caused an infinite loop in CLI usage
@@ -7715,7 +7714,18 @@ paths:
       responses:
         "200":
           description: OK
-
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [json]
+                properties:
+                  json:
+                    type: object
+                    required: [value]
+                    properties:
+                      value:
+                        $ref: "components.yaml#/components/schemas/recursiveOneOfValue"
   /anything/emptyResponseObjectWithComment:
     get:
       operationId: emptyResponseObjectWithCommentGet
