@@ -15756,6 +15756,11 @@ components:
             type: string
           nullable: true
           description: Test tri-state behavior for arrays
+        optionalNullableDatetime:
+          type: string
+          format: date-time
+          nullable: true
+          description: Test tri-state behavior for date-time (OptionalNullable with complex value type)
       required:
         - requiredString
         - requiredInt
