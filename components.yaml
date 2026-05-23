@@ -2808,6 +2808,82 @@ components:
     binaryString:
       type: string
       format: binary
+    base64InputFileModeRequest:
+      description: |-
+        Exercises x-speakeasy-base64-input-mode: file on string fields.
+        Each opted-in property accepts pre-encoded base64 string, PathLike,
+        or binary IO; the generator must serialize non-string inputs to base64
+        before sending JSON. Control field stays plain string.
+      type: object
+      required:
+        - dataByte
+        - dataContentEncoding
+      properties:
+        dataByte:
+          description: format:byte opted in via extension; expects Union[str, Base64FileInput] in Python.
+          type: string
+          format: byte
+          x-speakeasy-base64-input-mode: file
+        dataContentEncoding:
+          description: contentEncoding:base64 spelling; same opt-in behavior as dataByte.
+          type: string
+          contentEncoding: base64
+          x-speakeasy-base64-input-mode: file
+        dataPlain:
+          description: format:byte without extension; control field, stays plain string.
+          type: string
+          format: byte
+    base64InputFileModeResponse:
+      description: |-
+        Response side for base64 file-input mode. Each property covers one row of the
+        opt-in matrix: a plain string, a base64 string without the extension, and a
+        base64 string with the extension applied. Response models must keep all three
+        as plain str — widening to a union would force consumers to narrow with typeof
+        on every read.
+      type: object
+      required:
+        - dataPlain
+        - dataByte
+        - dataContentEncoding
+      properties:
+        dataPlain:
+          description: Plain string, no base64 semantics.
+          type: string
+        dataByte:
+          description: Base64 string without the opt-in extension.
+          type: string
+          format: byte
+        dataContentEncoding:
+          description: Opt-in extension applied on a response-only field; must stay str.
+          type: string
+          contentEncoding: base64
+          x-speakeasy-base64-input-mode: file
+    base64InputFileModeShared:
+      description: |-
+        Single component used for both request body and response of the
+        /base64-input-mode-shared operation. Exists to surface what the generator
+        does when an opted-in schema is shared across both directions: ideally the
+        request-side gets the rich input surface while the response-side stays a
+        plain string. Without per-direction TypeDef splitting the response will
+        inherit the request shape, which is the limitation this fixture documents.
+      type: object
+      required:
+        - dataPlain
+        - dataByte
+        - dataContentEncoding
+      properties:
+        dataPlain:
+          description: Plain string, no base64 semantics.
+          type: string
+        dataByte:
+          description: Base64 string without the opt-in extension.
+          type: string
+          format: byte
+        dataContentEncoding:
+          description: Opt-in extension applied; request must be rich union, response must stay str.
+          type: string
+          contentEncoding: base64
+          x-speakeasy-base64-input-mode: file
     enumWithDuplicateMembers:
       type: object
       properties:
