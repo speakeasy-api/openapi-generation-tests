@@ -12628,6 +12628,46 @@ paths:
               schema:
                 $ref: "components.yaml#/components/schemas/chatCompletionStream"
 
+  /eventstreams/sse-overload:
+    post:
+      tags:
+        - eventstreams
+      operationId: sseOverloadChat
+      description: |
+        Exercises x-speakeasy-sse-overload. Server returns SSE when
+        body.sse is true, JSON otherwise.
+      x-speakeasy-sse-overload: true
+      servers:
+        - url: http://localhost:35456
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [prompt]
+              properties:
+                stream:
+                  type: boolean
+                prompt:
+                  type: string
+      responses:
+        "200":
+          description: Ok
+          content:
+            application/json:
+              schema:
+                $ref: "components.yaml#/components/schemas/chatCompletionResult"
+            text/event-stream:
+              schema:
+                $ref: "components.yaml#/components/schemas/chatCompletionStream"
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: "components.yaml#/components/schemas/error"
+
   /eventstreams/chat-heartbeat:
     post:
       tags:
