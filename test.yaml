@@ -12287,6 +12287,96 @@ paths:
         statusCodes:
           - 503
         retryConnectionErrors: false
+  /retries/attempt-count:
+    get:
+      operationId: retriesAttemptCount
+      servers:
+        - url: http://localhost:35456
+      parameters:
+        - name: request-id
+          in: query
+          schema:
+            type: string
+          required: true
+        - name: num-retries
+          in: query
+          schema:
+            type: integer
+        - name: retry-after-ms-val
+          in: query
+          schema:
+            type: integer
+      tags:
+        - retries
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: retries
+                type: object
+                properties:
+                  retries:
+                    type: integer
+                required:
+                  - retries
+      x-speakeasy-retries:
+        strategy: attempt-count-backoff
+        maxRetries: 2
+        backoff:
+          initialInterval: 60000 # 60 seconds, tests rely on retry-after-ms to stay fast
+          maxInterval: 60000 # 60 seconds
+          maxElapsedTime: 3600000 # ignored by attempt-count-backoff, retained for backoff shape parity
+          exponent: 2
+        statusCodes:
+          - 503
+        retryConnectionErrors: false
+  /retries/attempt-count-zero:
+    get:
+      operationId: retriesAttemptCountZero
+      servers:
+        - url: http://localhost:35456
+      parameters:
+        - name: request-id
+          in: query
+          schema:
+            type: string
+          required: true
+        - name: num-retries
+          in: query
+          schema:
+            type: integer
+        - name: retry-after-ms-val
+          in: query
+          schema:
+            type: integer
+      tags:
+        - retries
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: retries
+                type: object
+                properties:
+                  retries:
+                    type: integer
+                required:
+                  - retries
+      x-speakeasy-retries:
+        strategy: attempt-count-backoff
+        maxRetries: 0
+        backoff:
+          initialInterval: 60000 # 60 seconds, should never be used
+          maxInterval: 60000 # 60 seconds
+          maxElapsedTime: 3600000 # ignored by attempt-count-backoff, retained for backoff shape parity
+          exponent: 2
+        statusCodes:
+          - 503
+        retryConnectionErrors: false
   /retries:
     get:
       operationId: retriesGet
