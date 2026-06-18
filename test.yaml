@@ -12243,7 +12243,7 @@ paths:
             - context: $statusCode
               condition: "^(200|204)$"
               type: regex
-  /retries/after:
+  /retries#after:
     get:
       operationId: retriesAfter
       servers:
@@ -12287,7 +12287,7 @@ paths:
         statusCodes:
           - 503
         retryConnectionErrors: false
-  /retries/attempt-count:
+  /retries#attemptCount:
     get:
       operationId: retriesAttemptCount
       servers:
@@ -12299,6 +12299,10 @@ paths:
             type: string
           required: true
         - name: num-retries
+          in: query
+          schema:
+            type: integer
+        - name: status-code
           in: query
           schema:
             type: integer
@@ -12332,7 +12336,7 @@ paths:
         statusCodes:
           - 503
         retryConnectionErrors: false
-  /retries/attempt-count-zero:
+  /retries#attemptCountZero:
     get:
       operationId: retriesAttemptCountZero
       servers:
