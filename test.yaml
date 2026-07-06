@@ -15150,6 +15150,9 @@ paths:
                 customer_id:
                   type: string
                   format: uuid
+                session_timeout:
+                  type: string
+                  format: duration
                 include_archived:
                   type: boolean
       responses:
