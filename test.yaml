@@ -4485,6 +4485,116 @@ paths:
       responses:
         "200":
           $ref: "components.yaml#/components/responses/simpleObjectFormResponse"
+  /anything/requestBodies/put/multipart/optionalNullable:
+    put:
+      operationId: requestBodyPutMultipartOptionalNullable
+      tags:
+        - requestBodies
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              $ref: "components.yaml#/components/schemas/ObjectWithOptionalNullableField"
+        required: true
+      responses:
+        "200":
+          $ref: "components.yaml#/components/responses/optionalNullableFormResponse"
+  /anything/requestBodies/put/multipart/optionalNullable#sharedWithJsonEndpoint:
+    put:
+      operationId: requestBodyPutMultipartOptionalNullableJsonShared
+      tags:
+        - requestBodies
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              $ref: "components.yaml#/components/schemas/ObjectWithOptionalNullableFields"
+              # NB: ObjectWithOptionalNullableFields is shared across multipart, form,
+              # and JSON request bodies (see requestBodyPostJsonOptionalNullable below).
+        required: true
+      responses:
+        "200":
+          $ref: "components.yaml#/components/responses/optionalNullableFormResponse"
+  /anything/requestBodies/post/form/optionalNullable:
+    post:
+      operationId: requestBodyPostFormOptionalNullable
+      tags:
+        - requestBodies
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: "components.yaml#/components/schemas/ObjectWithOptionalNullableField"
+        required: true
+      responses:
+        "200":
+          $ref: "components.yaml#/components/responses/optionalNullableFormResponse"
+  /anything/requestBodies/post/form/optionalNullable#sharedWithJsonEndpoint:
+    post:
+      operationId: requestBodyPostFormOptionalNullableJsonShared
+      tags:
+        - requestBodies
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: "components.yaml#/components/schemas/ObjectWithOptionalNullableFields"
+              # NB: ObjectWithOptionalNullableFields is shared across multipart, form,
+              # and JSON request bodies (see requestBodyPostJsonOptionalNullable below).
+        required: true
+      responses:
+        "200":
+          $ref: "components.yaml#/components/responses/optionalNullableFormResponse"
+  /anything/requestBodies/post/json/optionalNullable:
+    post:
+      operationId: requestBodyPostJsonOptionalNullable
+      tags:
+        - requestBodies
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "components.yaml#/components/schemas/ObjectWithOptionalNullableFields"
+        required: true
+      responses:
+        "200":
+          $ref: "components.yaml#/components/responses/optionalNullableJsonResponse"
+  /anything/requestBodies/post/json/optionalNullableBodyAndParam:
+    post:
+      operationId: requestBodyPostJsonOptionalNullableBodyAndParam
+      tags:
+        - requestBodies
+      parameters:
+        - name: filter
+          in: query
+          style: deepObject
+          explode: true
+          schema:
+            $ref: "components.yaml#/components/schemas/OptionalNullableBodyAndParam"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "components.yaml#/components/schemas/OptionalNullableBodyAndParam"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: res
+                type: object
+                properties:
+                  json:
+                    $ref: "components.yaml#/components/schemas/OptionalNullableBodyAndParam"
+                  args:
+                    type: object
+                    additionalProperties:
+                      type: string
+                required:
+                  - json
+                  - args
   /anything/requestBodies/put/multipart/deep:
     put:
       operationId: requestBodyPutMultipartDeep
@@ -10428,6 +10538,49 @@ paths:
             application/json:
               schema:
                 $ref: "components.yaml#/components/schemas/errorMessage"
+  /errors/512#nullableOptionalErrorMessage:
+    servers:
+      - url: http://localhost:35456
+    get:
+      operationId: getNullableOptionalErrorMessage
+      description: |
+        An operation whose error response body has an optional+nullable `x-speakeasy-error-message` field
+      tags:
+        - errors
+      responses:
+        "200":
+          description: OK
+        "512":
+          description: Nullable optional error message
+          content:
+            application/json:
+              schema:
+                $ref: "components.yaml#/components/schemas/nullableOptionalErrorMessage"
+  /errors/512#nestedNullableOptionalErrorMessage:
+    servers:
+      - url: http://localhost:35456
+    get:
+      operationId: getNestedNullableOptionalErrorMessage
+      description: |
+        An operation whose error response body nests the `x-speakeasy-error-message` field inside an optional+nullable object
+      tags:
+        - errors
+      parameters:
+        - name: cause
+          in: query
+          description: When true, the test service nests the error message inside an optional+nullable `cause` object.
+          required: true
+          schema:
+            type: boolean
+      responses:
+        "200":
+          description: OK
+        "512":
+          description: Nested nullable optional error message
+          content:
+            application/json:
+              schema:
+                $ref: "components.yaml#/components/schemas/nestedNullableOptionalErrorMessage"
   /anything/connectionError:
     get:
       operationId: connectionErrorGet
@@ -14418,6 +14571,46 @@ paths:
                 required:
                   - json
 
+  /anything/smartUnion/nullableCollectionItem:
+    post:
+      operationId: smartUnionNullableCollectionItem
+      summary: Emits nullable-collection-item smart-union typedefs exercised by unit tests
+      tags:
+        - unions
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                nullableArrayItem:
+                  $ref: "components.yaml#/components/schemas/smartUnionNullableArrayItem"
+                nullableMapItem:
+                  $ref: "components.yaml#/components/schemas/smartUnionNullableMapItem"
+        required: true
+      responses:
+        "200":
+          description: OK
+
+  /anything/smartUnion/wrappedComplexFields:
+    post:
+      operationId: smartUnionWrappedComplexFields
+      summary: Emits wrapped-complex-fields smart-union typedefs exercised by unit tests
+      tags:
+        - unions
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                wrappedComplex:
+                  $ref: "components.yaml#/components/schemas/smartUnionWrappedComplex"
+        required: true
+      responses:
+        "200":
+          description: OK
+
   /anything/smartUnion/anyFieldType:
     post:
       operationId: smartUnionAnyFieldType
@@ -14566,6 +14759,45 @@ paths:
                           - $ref: "components.yaml#/components/schemas/smartUnionVsUnionB2"
                 required:
                   - json
+
+  /anything/smartUnion/nestedUnionVsNestedUnion:
+    get:
+      operationId: smartUnionNestedUnionVsNestedUnion
+      summary: Nested union vs nested union - resolves the member whose nested union matches
+      description: >-
+        Exercises an undiscriminated union whose two members each hold a nested undiscriminated union.
+        For a payload that is valid for one member, the other member's nested union may match none of
+        its variants. The outer union must select the member whose nested union resolves, regardless of
+        member declaration order, and a nested no-match must not abort deserialization of the outer union.
+      tags:
+        - unions
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "components.yaml#/components/schemas/NestedUnion"
+
+  /anything/smartUnion/nullableUnionNullableFields:
+    get:
+      operationId: smartUnionNullableUnionNullableFields
+      summary: Nullable member scoring - null matches any nullable field
+      description: >-
+        A nullable union with two object members. Both objects declare the same optional-nullable property
+        under a different type (a primitive integer in the first, a nested object in the second), so a
+        field-level null is valid for either. Smart-union scoring must treat null as a match for a nullable
+        field whatever its declared type; when both members score equally, first declared must win.
+        A top-level null must select the null member instead of either object.
+      tags:
+        - unions
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "components.yaml#/components/schemas/NullableUnionWithNullableFields"
 
   /method/delete:
     delete:

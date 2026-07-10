@@ -361,6 +361,164 @@ components:
             diagnosis:
               type: string
               example: "fluffy is sick"
+    OptionalNullable:
+      description: >
+        A model whose name collides with the C# SDK's internal OptionalNullable<T> helper type.
+      type: object
+      properties:
+        value:
+          type: [string, "null"]
+          description: "An optional-nullable field."
+    ObjectWithOptionalNullableFields:
+      description: >
+        A request body carrying various optional-nullable properties.
+      type: object
+      properties:
+        reqStr:
+          type: string
+          description: "A required baseline string."
+        optionalNullable:
+          $ref: "#/components/schemas/OptionalNullable"
+          description: "References a model named OptionalNullable to exercise reserved-class sanitization."
+        optStr:
+          type: string
+          description: "An optional (non-nullable) string."
+        optNullStr:
+          type: [string, "null"]
+          description: "An optional-nullable string."
+        optNullInt:
+          type: [integer, "null"]
+          description: "An optional-nullable integer."
+        optNullNum:
+          type: [number, "null"]
+          description: "An optional-nullable number."
+        optNullBool:
+          type: [boolean, "null"]
+          description: "An optional-nullable boolean."
+        optNullBigInt:
+          type: [integer, "null"]
+          format: bigint
+          description: "An optional-nullable big integer."
+        optNullBigIntStr:
+          type: [string, "null"]
+          format: bigint
+          description: "An optional-nullable big integer serialized as a string."
+        optNullDecimal:
+          type: [number, "null"]
+          format: decimal
+          description: "An optional-nullable decimal."
+        optNullDecimalStr:
+          type: [string, "null"]
+          format: decimal
+          description: "An optional-nullable decimal serialized as a string."
+        optNullArr:
+          type: [array, "null"]
+          items:
+            type: string
+          description: "An optional-nullable array of strings."
+        optNullBigIntStrArr:
+          type: [array, "null"]
+          items:
+            type: [string, "null"]
+            format: bigint
+          description: >
+            An optional-nullable array of string-serialized big integers.
+        optNullMap:
+          type: [object, "null"]
+          additionalProperties:
+            type: string
+          description: "An optional-nullable string-to-string map."
+        optNullDecimalStrMap:
+          type: [object, "null"]
+          additionalProperties:
+            type: [string, "null"]
+            format: decimal
+          description: >
+            An optional-nullable map of string-serialized decimals.
+        optNullUnion:
+          description: "An optional-nullable union of string or integer."
+          oneOf:
+            - type: string
+            - type: integer
+            - type: "null"
+        optNullObj:
+          type: [object, "null"]
+          description: "An optional-nullable object with optional-nullable field."
+          properties:
+            innerReqStr:
+              type: string
+              description: "A required inner string."
+            innerOptNullStr:
+              type: [string, "null"]
+              description: "An optional nullable inner string."
+          required:
+            - innerReqStr
+        optNullDateTime:
+          type: [string, "null"]
+          format: date-time
+          description: >
+            An optional-nullable date-time. Maps to the target's typed date
+            representation and exercises the wrapped-date tri-state
+            (absent / explicit null / set) round trip.
+        optNullDate:
+          type: [string, "null"]
+          format: date
+          description: >
+            An optional-nullable date. Maps to the target's typed date-only
+            representation and completes the date type matrix alongside the
+            plain string and date-time fields.
+        optNullEnum:
+          type: [string, "null"]
+          enum:
+            - first
+            - second
+            - third
+          description: >
+            An optional-nullable string enum. Exercises the wrapped-enum
+            tri-state (absent / explicit null / set) round trip.
+      required:
+        - reqStr
+    ObjectWithOptionalNullableField:
+      description: "A minimal optional-nullable payload"
+      type: object
+      properties:
+        reqStr:
+          type: string
+          description: "A required baseline string."
+        optNullStr:
+          type: [string, "null"]
+          description: "An optional-nullable string."
+      required:
+        - reqStr
+    OptionalNullableBodyAndParam:
+      description: "A component used as both a JSON body and a query parameter."
+      type: object
+      properties:
+        optNullStr:
+          type: [string, "null"]
+          description: >
+            An optional-nullable field used in both a JSON body and a query parameter.
+    NullableUnionWithNullableFields:
+      description: >
+        A nullable union whose two object members carry the same optional-nullable
+        field, a primitive scalar in the first and a nested object in the second.
+      oneOf:
+        - $ref: "#/components/schemas/ObjectWithNullableInteger"
+        - $ref: "#/components/schemas/ObjectWithNullableObject"
+        - type: "null"
+    ObjectWithNullableInteger:
+      type: object
+      properties:
+        value:
+          type: [integer, "null"]
+    ObjectWithNullableObject:
+      type: object
+      properties:
+        value:
+          type: [object, "null"]
+          properties:
+            name:
+              type: string
     objectWithOptionalNullableDiscriminatedUnion:
       type: object
       required:
@@ -2003,6 +2161,15 @@ components:
           type: integer
         limit:
           type: integer
+    nullableLimitOffsetConfig:
+      type: object
+      properties:
+        page:
+          type: integer
+          nullable: true
+        limit:
+          type: integer
+          nullable: true
     limitOffsetConfigWithDefaults:
       type: object
       properties:
@@ -2042,6 +2209,31 @@ components:
         description:
           type: string
           x-speakeasy-error-message: true
+    nullableOptionalErrorMessage:
+      type: object
+      properties:
+        code:
+          type: integer
+        message:
+          type: string
+          nullable: true
+          x-speakeasy-error-message: true
+      required:
+        - code
+    nestedNullableOptionalErrorMessage:
+      type: object
+      properties:
+        code:
+          type: integer
+        cause:
+          type: object
+          nullable: true
+          properties:
+            message:
+              type: string
+              x-speakeasy-error-message: true
+      required:
+        - code
     errorType:
       type: string
       enum:
@@ -3389,6 +3581,130 @@ components:
         - b
         - c
 
+    # TestSmartUnionNullableCollectionItem
+    smartUnionArrayWithUnionItems:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: "#/components/schemas/oneOfPrimitives"
+    smartUnionArrayWithNullableItems:
+      type: object
+      properties:
+        items:
+          type: array
+          items:
+            type: string
+            nullable: true
+    smartUnionNullableArrayItem:
+      oneOf:
+        - $ref: "#/components/schemas/smartUnionArrayWithUnionItems"
+        - $ref: "#/components/schemas/smartUnionArrayWithNullableItems"
+    smartUnionMapWithUnionValues:
+      type: object
+      properties:
+        entries:
+          type: object
+          additionalProperties:
+            $ref: "#/components/schemas/oneOfPrimitives"
+    smartUnionMapWithNullableValues:
+      type: object
+      properties:
+        entries:
+          type: object
+          additionalProperties:
+            type: string
+            nullable: true
+    smartUnionNullableMapItem:
+      oneOf:
+        - $ref: "#/components/schemas/smartUnionMapWithUnionValues"
+        - $ref: "#/components/schemas/smartUnionMapWithNullableValues"
+
+    # TestSmartUnionWrappedComplexFields
+    smartUnionWrappedComplexMember:
+      type: object
+      properties:
+        meta:
+          type: [object, "null"]
+          properties:
+            name:
+              type: string
+        tags:
+          type: [array, "null"]
+          items:
+            type: string
+        extras:
+          type: [object, "null"]
+          additionalProperties:
+            type: string
+    smartUnionWrappedPlainNote:
+      type: object
+      properties:
+        note:
+          type: string
+    smartUnionWrappedComplex:
+      oneOf:
+        - $ref: "#/components/schemas/smartUnionWrappedComplexMember"
+        - $ref: "#/components/schemas/smartUnionWrappedPlainNote"
+
+    # TestSmartUnionNestedUnionVsNestedUnion
+    NestedUnion:
+      type: object
+      required:
+        - selectedEvent
+      properties:
+        selectedEvent:
+          oneOf:
+            - $ref: "#/components/schemas/PaymentUnion"
+            - $ref: "#/components/schemas/ShipmentUnion"
+    PaymentUnion:
+      type: object
+      required:
+        - paymentMethod
+      properties:
+        paymentMethod:
+          oneOf:
+            - $ref: "#/components/schemas/CardPayment"
+            - $ref: "#/components/schemas/TransferPayment"
+    ShipmentUnion:
+      type: object
+      required:
+        - shipmentMethod
+      properties:
+        shipmentMethod:
+          oneOf:
+            - $ref: "#/components/schemas/AirShipment"
+            - $ref: "#/components/schemas/SeaShipment"
+    CardPayment:
+      type: object
+      required:
+        - cardNumber
+      properties:
+        cardNumber:
+          type: string
+    TransferPayment:
+      type: object
+      required:
+        - accountNumber
+      properties:
+        accountNumber:
+          type: string
+    AirShipment:
+      type: object
+      required:
+        - flightNumber
+      properties:
+        flightNumber:
+          type: string
+    SeaShipment:
+      type: object
+      required:
+        - vesselName
+      properties:
+        vesselName:
+          type: string
+
   responses:
     tokenAuthResponse:
       description: Successful authentication.
@@ -3501,6 +3817,73 @@ components:
             required:
               - form
               - headers
+    optionalNullableFormResponse:
+      description: OK
+      content:
+        application/json:
+          schema:
+            title: res
+            type: object
+            properties:
+              form:
+                type: object
+                description: >
+                properties:
+                  reqStr:
+                    type: string
+                    example: "base"
+                  optStr:
+                    type: string
+                  optNullStr:
+                    type: string
+                  optNullInt:
+                    type: string
+                  optNullNum:
+                    type: string
+                  optNullBool:
+                    type: string
+                  optNullBigInt:
+                    type: string
+                  optNullBigIntStr:
+                    type: string
+                  optNullDecimal:
+                    type: string
+                  optNullDecimalStr:
+                    type: string
+                  optNullArr:
+                    type: string
+                  optNullBigIntStrArr:
+                    type: string
+                  optNullMap:
+                    type: string
+                  optNullDecimalStrMap:
+                    type: string
+                  optNullUnion:
+                    type: string
+                  optNullObj:
+                    type: string
+                  optNullDateTime:
+                    type: string
+                  optNullDate:
+                    type: string
+                  optNullEnum:
+                    type: string
+                required:
+                  - reqStr
+            required:
+              - form
+    optionalNullableJsonResponse:
+      description: OK
+      content:
+        application/json:
+          schema:
+            title: res
+            type: object
+            properties:
+              json:
+                $ref: "#/components/schemas/ObjectWithOptionalNullableFields"
+            required:
+              - json
     deepObjectFormResponse:
       description: OK
       content:
