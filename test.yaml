@@ -16027,6 +16027,24 @@ components:
       x-speakeasy-unknown-values: allow
       x-speakeasy-include: true
 
+    OpenEnumSelfNamed:
+      type: string
+      description: >
+        An open enum (x-speakeasy-unknown-values: allow) containing a value
+        whose generated member name is identical to the enum's own type name
+        (OPEN_ENUM_SELF_NAMED -> OpenEnumSelfNamed). Targets that render open
+        enums as classes must escape that member, since some languages forbid a
+        class member sharing the name of its enclosing type. The enum also
+        contains a value that already occupies the escaped name
+        (OPEN_ENUM_SELF_NAMED_VALUE), so the escape must disambiguate rather
+        than introduce a duplicate member. This is a compile-time test.
+      enum:
+        - OPEN_ENUM_SELF_NAMED
+        - OPEN_ENUM_SELF_NAMED_VALUE
+        - ANOTHER_VALUE
+      x-speakeasy-unknown-values: allow
+      x-speakeasy-include: true
+
     NonEmptyObject:
       type: object
       properties:
