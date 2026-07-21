@@ -9290,6 +9290,31 @@ paths:
                 required:
                   - json
 
+  /anything/stronglyTypedOneOfOptionalDiscriminator:
+    post:
+      operationId: stronglyTypedOneOfOptionalDiscriminator
+      tags:
+        - unions
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "components.yaml#/components/schemas/stronglyTypedOneOfOptionalDiscriminator"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: res
+                type: object
+                properties:
+                  json:
+                    $ref: "components.yaml#/components/schemas/stronglyTypedOneOfOptionalDiscriminator"
+                required:
+                  - json
+
   /anything/conflictingDiscriminatorMappingKey:
     post:
       operationId: conflictingDiscriminatorMappingKey

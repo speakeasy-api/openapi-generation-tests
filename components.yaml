@@ -130,6 +130,42 @@ components:
       required:
         - tag
         - profileId
+    stronglyTypedOneOfOptionalDiscriminator:
+      description: |
+        Discriminated oneOf whose discriminator property `kind` is optional
+        (absent from each member's `required`), with an explicit injective
+        mapping (one discriminator value per member schema). Exercises how a
+        target handles an optional discriminator property: the value is still
+        determined by the chosen member, but the property is nullable/omittable
+        rather than mandatory.
+      oneOf:
+        - $ref: "#/components/schemas/optionalDiscriminatorObject1"
+        - $ref: "#/components/schemas/optionalDiscriminatorObject2"
+      discriminator:
+        propertyName: kind
+        mapping:
+          kind1: "#/components/schemas/optionalDiscriminatorObject1"
+          kind2: "#/components/schemas/optionalDiscriminatorObject2"
+    optionalDiscriminatorObject1:
+      type: object
+      properties:
+        kind:
+          type: string
+          enum: [kind1]
+        value:
+          type: string
+      required:
+        - value
+    optionalDiscriminatorObject2:
+      type: object
+      properties:
+        kind:
+          type: string
+          enum: [kind2]
+        profile:
+          type: string
+      required:
+        - profile
     conflictingDiscriminatorMappingKey:
       type: object
       required: [prefix, prefixTag2]
