@@ -12648,6 +12648,62 @@ paths:
         statusCodes:
           - 503
         retryConnectionErrors: false
+  /retries#binary:
+    post:
+      operationId: retriesPostBinaryRequestBody
+      description: >-
+        Tests SDK-level retry replay of a binary (application/octet-stream)
+        request body. The server fails with a retryable 503 until the
+        num-retries'th attempt for a given request-id, then echoes the request
+        body back. A repeatable body source (in-memory bytes) must be replayed
+        intact on the retried attempt.
+      servers:
+        - url: http://localhost:35456
+      parameters:
+        - name: request-id
+          in: query
+          schema:
+            type: string
+          required: true
+        - name: num-retries
+          in: query
+          schema:
+            type: integer
+      tags:
+        - retries
+      requestBody:
+        required: true
+        content:
+          application/octet-stream:
+            schema:
+              type: string
+              format: binary
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: retriesBody
+                type: object
+                properties:
+                  retries:
+                    type: integer
+                  body:
+                    type: string
+                required:
+                  - retries
+                  - body
+      x-speakeasy-retries:
+        strategy: backoff
+        backoff:
+          initialInterval: 10 # 10 ms
+          maxInterval: 200 # 200 ms
+          maxElapsedTime: 1000 # 1 seconds
+          exponent: 1.5
+        statusCodes:
+          - 503
+        retryConnectionErrors: false
   /retries#timeout:
     get:
       operationId: retriesGetTimeout
