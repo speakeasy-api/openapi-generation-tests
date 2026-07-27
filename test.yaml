@@ -9122,6 +9122,13 @@ paths:
   /anything/optionalNullableDiscriminatedUnion:
     post:
       operationId: optionalNullableDiscriminatedUnionPost
+      description: >-
+        Optional+nullable discriminated-union request field using the default
+        inference. Under forwardCompatibleUnionsByDefault: tagged-only this
+        renders as an OPEN union (parse_open_union), which serializes as a plain
+        Union and is unaffected by the Pydantic 2.13 drop. Contrast with
+        optionalNullableDiscriminatedClosedUnionPost, whose union is pinned
+        closed and does require the SerializeAsAny safeguard.
       tags:
         - optionalNullableFields
       requestBody:
@@ -9141,6 +9148,36 @@ paths:
                 properties:
                   json:
                     $ref: "components.yaml#/components/schemas/objectWithOptionalNullableDiscriminatedUnion"
+                required:
+                  - json
+  /anything/optionalNullableDiscriminatedClosedUnion:
+    post:
+      operationId: optionalNullableDiscriminatedClosedUnionPost
+      description: >-
+        Optional+nullable discriminated-union request field pinned closed via
+        x-speakeasy-unknown-values: disallow. This closed form is the one whose
+        present value is silently dropped during request-body serialization
+        under Pydantic 2.13; the pythonv2 template must wrap it in SerializeAsAny
+        so it serializes by runtime type and is preserved.
+      tags:
+        - optionalNullableFields
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "components.yaml#/components/schemas/objectWithOptionalNullableDiscriminatedClosedUnion"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: res
+                type: object
+                properties:
+                  json:
+                    $ref: "components.yaml#/components/schemas/objectWithOptionalNullableDiscriminatedClosedUnion"
                 required:
                   - json
   # /optionalTrueNullableTrue:
